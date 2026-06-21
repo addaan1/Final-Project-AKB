@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Galbay Predictor — Membaca Psikologi Gagal Bayar{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Galbay Predictor</h1>
+  <p class="tagline">Membaca psikologi gagal bayar anak muda dari jejak digital.</p>
+  <a class="btn" href="{{ url_for('main.dashboard') }}">Lihat Dashboard &rarr;</a>
+</section>
+<section class="cards">
+  <div class="card">
+    <h3>Termometer</h3>
+    <p>Deteksi tren "galbay", paylater, pinjol dari Google Trends & media.</p>
+  </div>
+  <div class="card">
+    <h3>Dokter</h3>
+    <p>Diagnosa pola bahasa impulsif & horizon berpikir pendek dari review/komentar.</p>
+  </div>
+  <div class="card">
+    <h3>Obat</h3>
+    <p>Financial behavior coach: peringatan pre-checkout, simulasi cicilan, edukasi.</p>
+  </div>
+</section>
+{% endblock %}

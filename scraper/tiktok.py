@@ -34,6 +34,15 @@ MAX_COMMENTS_PER_VIDEO = 20
 class TikTokScraper(BaseScraper):
     name = "tiktok"
 
+    def __init__(self, sleep_seconds: float = 0.0):
+        super().__init__(sleep_seconds)
+        ms_tokens_str = self.get_env("TIKTOK_MS_TOKENS", "")
+        self.ms_tokens = [t.strip() for t in ms_tokens_str.split(",") if t.strip()] if ms_tokens_str else []
+        if self.ms_tokens:
+            log.info("TikTok login: %d ms_tokens tersedia", len(self.ms_tokens))
+        else:
+            log.info("TikTok tanpa login (anti-bot mungkin block). Set TIKTOK_MS_TOKENS di .env.")
+
     @staticmethod
     def _redact_username(username: str) -> str:
         return hashlib.sha256(username.encode()).hexdigest()[:12]

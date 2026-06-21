@@ -121,13 +121,52 @@ class ForumScraper(BaseScraper):
         return posts
 
     def _scrape_reddit_fallback_json(self, subreddit: str, query: str, max_posts: int) -> list[dict]:
-        """Fallback: coba Reddit JSON dengan header lengkap (mungkin rate-limited)."""
+        """Fallback: coba Reddit JSON dengan header lengkap (mungkin rate-limited).
+        Kalau REDDIT_CLIENT_ID tersedia, pakai PRAW (lebih reliable, rate-limit lebih tinggi)."""
         posts = []
+
+        # Coba PRAW dulu kalau credentials tersedia
+        client_id = self.get_env("REDDIT_CLIENT_ID", "")
+        client_secret = self.get_env("REDDIT_CLIENT_SECRET", "")
+        user_agent = self.get_env("REDDIT_USER_AGENT", "GalbayPredictor/1.0 (academic research)")
+
+        if client_id and client_secret:
+            try:
+                import praw
+                reddit = praw.Reddit(
+                    client_id=client_id,
+                    client_secret=client_secret,
+                    user_agent=user_agent,
+                    check_for_async=False,
+                )
+                sub = reddit.subreddit(subreddit)
+                for post in sub.search(query, sort="relevance", time_filter="year", limit=max_posts):
+                    if post.stickied:
+                        continue
+                    posts.append({
+                        "source": "reddit",
+                        "subreddit": subreddit,
+                        "query": query,
+                        "post_id": post.id,
+                        "title": (post.title or "")[:200],
+                        "selftext": (post.selftext or "")[:1000],
+                        "url": f"https://www.reddit.com{post.permalink}",
+                        "score": post.score,
+                        "num_comments": post.num_comments,
+                        "created_utc": post.created_utc,
+                        "scraped_at": time.time(),
+                    })
+                log.info("PRAW r/%s '%s': %d posts", subreddit, query, len(posts))
+                return posts
+            except Exception as e:
+                log.warning("PRAW failed, falling back to JSON: %s", e)
+
+        # Plain JSON fallback
         try:
             url = f"https://www.reddit.com/r/{subreddit}/search.json"
             params = {"q": query, "sort": "relevance", "t": "year", "limit": max_posts, "raw_json": 1}
             headers = {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "User-Agent": user_agent,
                 "Accept": "application/json",
             }
             r = requests.get(url, params=params, headers=headers, timeout=15)

@@ -1,0 +1,22 @@
+# Normalize line endings (Windows dev + Linux prod)
+* text=auto eol=lf
+
+# Shell scripts always LF
+*.sh text eol=lf
+*.py text eol=lf
+
+# Windows-only
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.parquet binary
+*.xlsx binary
+*.zip binary
+*.gz binary

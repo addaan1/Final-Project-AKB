@@ -2,6 +2,9 @@
 
 Penggunaan:
     python -m scraper.runner --source play_reviews
+    python -m scraper.runner --source play_reviews --mode sample --count 1000
+    python -m scraper.runner --source play_reviews --mode all              # big data (semua review)
+    python -m scraper.runner --source play_reviews --mode all --max-per-app 5000
     python -m scraper.runner --source google_trends
     python -m scraper.runner --source all
     python -m scraper.runner --list
@@ -43,8 +46,12 @@ def load_class(path: str):
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Galbay Predictor scraper runner")
     parser.add_argument("--source", "-s", help="Nama source scraper")
-    parser.add_argument("--count", "-n", type=int, default=400, help="Jumlah review/item per app (default 400)")
+    parser.add_argument("--count", "-n", type=int, default=400, help="Jumlah review/item per app pada mode sample (default 400)")
     parser.add_argument("--apps", type=int, default=0, help="Batasi jumlah app (0 = semua)")
+    parser.add_argument("--mode", "-m", choices=["sample", "all"], default="sample",
+                        help="mode sample (cepat) atau all (semua review, big data)")
+    parser.add_argument("--max-per-app", type=int, default=0,
+                        help="Cap review per app pada mode all (0 = unlimited)")
     parser.add_argument("--list", action="store_true", help="Daftar source tersedia")
     parser.add_argument("--all", action="store_true", help="Jalankan semua source")
     args = parser.parse_args(argv)
@@ -78,6 +85,8 @@ def main(argv=None):
             kwargs = {}
             if src == "play_reviews":
                 kwargs["count"] = args.count
+                kwargs["mode"] = args.mode
+                kwargs["max_per_app"] = args.max_per_app
                 if args.apps:
                     kwargs["app_limit"] = args.apps
             result = scraper.run(**kwargs)

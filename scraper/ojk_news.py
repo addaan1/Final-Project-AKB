@@ -1,7 +1,11 @@
 """Scraper berita & siaran pers OJK + media besar (PRIORITAS 6).
 
-OJK: ojk.go.id (siaran pers, regulasi, berita).
+OJK: ojk.go.id (siaran pers, info terkini, regulasi).
 Media: kompas.com, detik.com, cnbcindonesia.com.
+
+URL OJK benar:
+- https://www.ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Default.aspx
+- https://www.ojk.go.id/id/berita-dan-kegiatan/info-terkini/Default.aspx
 
 Volume rendah-menengah tapi relevansi tinggi sebagai sinyal regulator & market.
 """
@@ -10,7 +14,6 @@ from __future__ import annotations
 import logging
 import re
 import time
-from datetime import datetime
 from typing import Any
 
 import requests
@@ -21,18 +24,29 @@ from scraper.base import BaseScraper
 
 log = logging.getLogger("scraper.ojk_news")
 
-OJK_QUERIES: list[str] = [
-    "paylater", "pinjol", "fintech", "gagal bayar",
-    "pinjaman online", "literasi keuangan",
+OJK_LISTING_PAGES: list[dict] = [
+    {
+        "label": "siaran_pers",
+        "url": "https://www.ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Default.aspx",
+        "link_pattern": "/siaran-pers/Pages/",
+    },
+    {
+        "label": "info_terkini",
+        "url": "https://www.ojk.go.id/id/berita-dan-kegiatan/info-terkini/Default.aspx",
+        "link_pattern": "/info-terkini/Pages/",
+    },
+]
+
+OJK_KEYWORDS: list[str] = [
+    "paylater", "pinjol", "pinjaman online", "fintech lending",
+    "galbay", "gagal bayar", "kredit", "konsumen", "nasabah",
 ]
 
 MEDIA_QUERIES: list[str] = [
     "galbay paylater", "pinjol gagal bayar", "fintech paylater",
-    "pinjaman online macet", "ditagih paylater",
+    "pinjaman online macet", "ditagih paylater", "galbay pinjol",
+    "paylater indonesia", "pinjol legal",
 ]
-
-OJK_BASE_URL = "https://www.ojk.go.id"
-OJK_SEARCH_URL = f"{OJK_BASE_URL}/id/berita-dan-kegiatan/siaran-pers/Pages/default.aspx"
 
 MEDIA_SOURCES: dict[str, str] = {
     "kompas": "https://search.kompas.com/search",
@@ -40,163 +54,185 @@ MEDIA_SOURCES: dict[str, str] = {
     "cnbc": "https://www.cnbcindonesia.com/search",
 }
 
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml",
+    "Accept-Language": "id-ID,id;q=0.9,en;q=0.8",
+}
+
 
 class OjkNewsScraper(BaseScraper):
     name = "ojk_news"
 
-    def _scrape_ojk(self, max_per_query: int = 30) -> list[dict]:
-        """Scrape OJK siaran pers & berita."""
+    def _fetch_page(self, url: str) -> str | None:
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=20)
+            if r.status_code == 200:
+                return r.text
+            log.warning("Status %d untuk %s", r.status_code, url)
+        except Exception as e:
+            log.warning("Gagal fetch %s: %s", url, e)
+        return None
+
+    def _scrape_ojk_listing(self, page: dict, max_articles: int = 20) -> list[dict]:
+        """Scrape OJK listing page → extract article links → visit each."""
+        html = self._fetch_page(page["url"])
+        if not html:
+            return []
+
+        soup = BeautifulSoup(html, "lxml")
+        all_links = soup.find_all("a", href=True)
+        article_links = []
+        for a in all_links:
+            href = a.get("href", "")
+            if page["link_pattern"] in href:
+                if not href.startswith("http"):
+                    href = "https://www.ojk.go.id" + href
+                title = a.get_text(strip=True)
+                if title and len(title) > 10:
+                    article_links.append({"url": href, "title": title})
+
+        article_links = article_links[:max_articles]
+        log.info("OJK %s: %d article links", page["label"], len(article_links))
+
         articles = []
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Accept": "text/html",
-            "Accept-Language": "id-ID,id;q=0.9",
-        }
+        for link in tqdm(article_links, desc=f"OJK {page['label']}"):
+            html = self._fetch_page(link["url"])
+            if not html:
+                continue
+            soup = BeautifulSoup(html, "lxml")
 
-        for query in tqdm(OJK_QUERIES, desc="OJK search"):
-            try:
-                params = {"q": query, "s": "relevance"}
-                resp = requests.get(OJK_SEARCH_URL, params=params, headers=headers, timeout=15)
-                if resp.status_code != 200:
-                    log.warning("OJK search '%s' status %d", query, resp.status_code)
-                    continue
+            # Extract main content
+            content_div = (
+                soup.find("div", class_=re.compile(r"content|article|post", re.I))
+                or soup.find("article")
+                or soup.find("main")
+                or soup.find("div", id=re.compile(r"content|article", re.I))
+            )
+            content = ""
+            if content_div:
+                paragraphs = content_div.find_all("p")
+                content = " ".join(p.get_text(strip=True) for p in paragraphs)
+            if not content:
+                # fallback: semua paragraf
+                paragraphs = soup.find_all("p")
+                content = " ".join(p.get_text(strip=True) for p in paragraphs if len(p.get_text(strip=True)) > 20)
 
-                soup = BeautifulSoup(resp.text, "lxml")
-                items = soup.select("div.search-result-item, article.news-item, div.item-berita")
+            # Filter keyword
+            full_text = (link["title"] + " " + content).lower()
+            if any(kw in full_text for kw in OJK_KEYWORDS):
+                articles.append({
+                    "source": f"ojk_{page['label']}",
+                    "url": link["url"],
+                    "title": link["title"],
+                    "content": content[:3000],
+                    "scraped_at": time.time(),
+                })
+            self.polite_sleep()
 
-                if not items:
-                    items = soup.select("div.row, li.search-result, div.content-item")
-
-                count = 0
-                for item in items:
-                    if count >= max_per_query:
-                        break
-                    try:
-                        title_el = item.select_one("h2 a, h3 a, a.title, a.news-title")
-                        if not title_el:
-                            title_el = item.select_one("a")
-                        if not title_el:
-                            continue
-
-                        title = title_el.get_text(strip=True)
-                        url = title_el.get("href", "")
-                        if url and not url.startswith("http"):
-                            url = OJK_BASE_URL + url
-
-                        snippet_el = item.select_one("p.snippet, div.snippet, p.description, span.summary")
-                        snippet = snippet_el.get_text(strip=True) if snippet_el else ""
-
-                        date_el = item.select_one("span.date, time, span.meta-date, span.tanggal")
-                        date_str = date_el.get_text(strip=True) if date_el else ""
-
-                        articles.append({
-                            "source": "ojk",
-                            "query": query,
-                            "title": title,
-                            "url": url,
-                            "snippet": snippet,
-                            "date": date_str,
-                            "scraped_at": time.time(),
-                        })
-                        count += 1
-                    except Exception as e:
-                        log.warning("Error parse OJK item: %s", e)
-
-                log.info("OJK '%s': %d articles", query, count)
-                self.polite_sleep()
-
-            except Exception as e:
-                log.warning("Gagal scrape OJK '%s': %s", query, e)
-
+        log.info("OJK %s: %d artikel relevan", page["label"], len(articles))
         return articles
 
-    def _scrape_media(self, max_per_query: int = 30) -> list[dict]:
-        """Scrape media besar (kompas, detik, cnbc)."""
-        articles = []
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Accept": "text/html",
+    def _scrape_media_listing(self, media_name: str, search_url: str, query: str) -> list[dict]:
+        """Scrape media search page → extract article links."""
+        try:
+            params = {"q": query}
+            if media_name == "detik":
+                params["site"] = "all"
+            elif media_name == "cnbc":
+                params["query"] = query
+            r = requests.get(search_url, params=params, headers=HEADERS, timeout=20)
+            if r.status_code != 200:
+                log.warning("%s search '%s' status %d", media_name, query, r.status_code)
+                return []
+        except Exception as e:
+            log.warning("Gagal %s search '%s': %s", media_name, query, e)
+            return []
+
+        soup = BeautifulSoup(r.text, "lxml")
+        article_links = []
+
+        for a in soup.find_all("a", href=True):
+            href = a.get("href", "")
+            title = a.get_text(strip=True)
+
+            if media_name == "kompas" and "kompas.com/read" in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
+            elif media_name == "detik" and "detik.com" in href and "/berita/" in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
+            elif media_name == "cnbc" and "cnbcindonesia.com" in href and "connect.detik" not in href and "oauth" not in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
+
+        # Dedup by URL
+        seen = set()
+        unique = []
+        for link in article_links:
+            if link["url"] not in seen:
+                seen.add(link["url"])
+                unique.append(link)
+
+        log.info("%s '%s': %d article links", media_name, query, len(unique))
+        return unique
+
+    def _scrape_media_article(self, media_name: str, url: str, title: str) -> dict | None:
+        """Visit satu artikel → extract content."""
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=20)
+            if r.status_code != 200:
+                return None
+        except Exception:
+            return None
+
+        soup = BeautifulSoup(r.text, "lxml")
+        for tag in soup.find_all(["script", "style", "nav", "footer", "header", "aside"]):
+            tag.decompose()
+
+        # Extract content
+        if media_name == "kompas":
+            content_div = soup.find("div", class_=re.compile(r"read__content|article__content", re.I))
+        elif media_name == "detik":
+            content_div = soup.find("div", class_=re.compile(r"detail__body|itp_bodycontent", re.I))
+        elif media_name == "cnbc":
+            content_div = soup.find("div", class_=re.compile(r"detail__body|article|content", re.I))
+        else:
+            content_div = None
+
+        if not content_div:
+            content_div = soup.find("article") or soup.find("main")
+
+        content = ""
+        if content_div:
+            paragraphs = content_div.find_all("p")
+            content = " ".join(p.get_text(strip=True) for p in paragraphs)
+
+        if not content:
+            return None
+
+        return {
+            "source": media_name,
+            "url": url,
+            "title": title,
+            "content": content[:3000],
+            "scraped_at": time.time(),
         }
 
-        for media_name, search_url in tqdm(MEDIA_SOURCES.items(), desc="Media search"):
-            for query in MEDIA_QUERIES:
-                try:
-                    params = {"q": query}
-                    if media_name == "detik":
-                        params["site"] = "all"
-                    elif media_name == "cnbc":
-                        params["search_query"] = query
-
-                    resp = requests.get(search_url, params=params, headers=headers, timeout=15)
-                    if resp.status_code != 200:
-                        log.warning("%s search '%s' status %d", media_name, query, resp.status_code)
-                        continue
-
-                    soup = BeautifulSoup(resp.text, "lxml")
-
-                    if media_name == "kompas":
-                        items = soup.select("div.search-result-item, article, div.card")
-                    elif media_name == "detik":
-                        items = soup.select("div.list-konten, article, div.search-result")
-                    elif media_name == "cnbc":
-                        items = soup.select("div.search-item, article, div.list-news")
-                    else:
-                        items = []
-
-                    count = 0
-                    for item in items:
-                        if count >= max_per_query:
-                            break
-                        try:
-                            title_el = item.select_one("h2 a, h3 a, a.title, a.news-title, h1 a")
-                            if not title_el:
-                                title_el = item.select_one("a[href]")
-                            if not title_el:
-                                continue
-
-                            title = title_el.get_text(strip=True)
-                            url = title_el.get("href", "")
-                            if url and not url.startswith("http"):
-                                if media_name == "kompas":
-                                    url = "https://www.kompas.com" + url
-                                elif media_name == "detik":
-                                    url = "https://www.detik.com" + url
-                                elif media_name == "cnbc":
-                                    url = "https://www.cnbcindonesia.com" + url
-
-                            snippet_el = item.select_one("p, div.snippet, div.summary, span.lead")
-                            snippet = snippet_el.get_text(strip=True) if snippet_el else ""
-                            if len(snippet) > 500:
-                                snippet = snippet[:500] + "..."
-
-                            date_el = item.select_one("span.date, time, div.date, span.meta-date")
-                            date_str = date_el.get_text(strip=True) if date_el else ""
-
-                            articles.append({
-                                "source": media_name,
-                                "query": query,
-                                "title": title,
-                                "url": url,
-                                "snippet": snippet,
-                                "date": date_str,
-                                "scraped_at": time.time(),
-                            })
-                            count += 1
-                        except Exception as e:
-                            log.warning("Error parse %s item: %s", media_name, e)
-
-                    log.info("%s '%s': %d articles", media_name, query, count)
-                    self.polite_sleep()
-
-                except Exception as e:
-                    log.warning("Gagal scrape %s '%s': %s", media_name, query, e)
-
-        return articles
-
-    def run(self, max_per_query: int = 30) -> dict[str, Any]:
+    def run(self, max_ojk_articles: int = 20, max_media_per_query: int = 10) -> dict[str, Any]:
         """Jalankan scraping OJK + media besar."""
-        ojk_articles = self._scrape_ojk(max_per_query=max_per_query)
-        media_articles = self._scrape_media(max_per_query=max_per_query)
+        # OJK
+        ojk_articles = []
+        for page in OJK_LISTING_PAGES:
+            ojk_articles.extend(self._scrape_ojk_listing(page, max_articles=max_ojk_articles))
+
+        # Media
+        media_articles = []
+        for media_name, search_url in MEDIA_SOURCES.items():
+            for query in MEDIA_QUERIES:
+                links = self._scrape_media_listing(media_name, search_url, query)
+                for link in links[:max_media_per_query]:
+                    article = self._scrape_media_article(media_name, link["url"], link["title"])
+                    if article:
+                        media_articles.append(article)
+                    self.polite_sleep()
 
         all_articles = ojk_articles + media_articles
 
@@ -204,7 +240,7 @@ class OjkNewsScraper(BaseScraper):
             "n_ojk": len(ojk_articles),
             "n_media": len(media_articles),
             "n_total": len(all_articles),
-            "ojk_queries": OJK_QUERIES,
+            "ojk_keywords": OJK_KEYWORDS,
             "media_queries": MEDIA_QUERIES,
             "media_sources": list(MEDIA_SOURCES.keys()),
         })

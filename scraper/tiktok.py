@@ -1,18 +1,18 @@
 """Scraper komentar TikTok #galbay #paylater #pinjol (PRIORITAS 2).
 
-Menggunakan TikTokApi (unofficial). Fokus Gen Z audience.
-Target: video dengan hashtag relevan → ambil komentar.
+Menggunakan Playwright untuk render TikTok web (lebih reliable dari TikTokApi
+tanpa ms_tokens). Fokus Gen Z audience.
 
 Etika:
 - Tidak simpan username asli (redact ke user_id_hash).
 - Simpan teks komentar + timestamp + video metadata.
-- Handle rate-limit & anti-bot dengan sleep + retry.
 """
 from __future__ import annotations
 
 import asyncio
 import hashlib
 import logging
+import re
 from typing import Any
 
 from tqdm import tqdm
@@ -22,13 +22,13 @@ from scraper.base import BaseScraper
 log = logging.getLogger("scraper.tiktok")
 
 HASHTAGS: list[str] = [
-    "galbay", "gagalbayar", "paylater", "pinjol", "pinjollegal",
-    "ditagih", "utang", "cicilan", "gagalbayar", "pinjamanonline",
-    "selfreward", "fomo", "checkout", "bayarnanti",
+    "galbay", "gagalbayar", "paylater", "pinjol",
+    "gagalbayar", "pinjamanonline", "selfreward", "fomo",
+    "checkout", "bayarnanti", "ditagih", "utang",
 ]
 
-MAX_VIDEOS_PER_HASHTAG = 20
-MAX_COMMENTS_PER_VIDEO = 50
+MAX_VIDEOS_PER_HASHTAG = 5
+MAX_COMMENTS_PER_VIDEO = 20
 
 
 class TikTokScraper(BaseScraper):
@@ -36,130 +36,131 @@ class TikTokScraper(BaseScraper):
 
     @staticmethod
     def _redact_username(username: str) -> str:
-        """Redact username menjadi hash untuk privasi."""
         return hashlib.sha256(username.encode()).hexdigest()[:12]
 
-    async def _fetch_hashtag_videos(self, hashtag: str, count: int = MAX_VIDEOS_PER_HASHTAG) -> list[dict]:
-        """Ambil list video untuk satu hashtag."""
-        from TikTokApi import TikTokApi
-        videos = []
-        async with TikTokApi() as api:
-            await api.create_sessions(
-                num_sessions=1,
-                sleep_after=3,
-                headless=False,
-                ms_tokens=[""],
-            )
-            tag = api.hashtag(name=hashtag)
-            async for video in tag.videos(count=count):
-                try:
-                    info = video.as_dict
-                    videos.append({
-                        "video_id": info.get("id"),
-                        "desc": info.get("desc", ""),
-                        "author_id": self._redact_username(info.get("author", {}).get("uniqueId", "")),
-                        "create_time": info.get("createTime"),
-                        "stats": info.get("stats", {}),
-                        "music": info.get("music", {}).get("title", ""),
-                    })
-                except Exception as e:
-                    log.warning("Error parse video %s: %s", hashtag, e)
-                self.polite_sleep()
-        return videos
-
-    async def _fetch_video_comments(self, video_id: str, count: int = MAX_COMMENTS_PER_VIDEO) -> list[dict]:
-        """Ambil komentar untuk satu video."""
-        from TikTokApi import TikTokApi
+    async def _scrape_hashtag_playwright(self, hashtag: str, max_videos: int, max_comments: int) -> list[dict]:
+        """Scrape satu hashtag via Playwright."""
+        from playwright.async_api import async_playwright
         comments = []
-        try:
-            async with TikTokApi() as api:
-                await api.create_sessions(num_sessions=1, sleep_after=2, headless=False)
-                video = api.video(id=video_id)
-                async for comment in video.comments(count=count):
+
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=True)
+            context = await browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                viewport={"width": 1280, "height": 720},
+                locale="id-ID",
+            )
+            page = await context.new_page()
+
+            try:
+                # Buka search page
+                url = f"https://www.tiktok.com/search?q=%23{hashtag}"
+                log.info("Opening %s", url)
+                await page.goto(url, wait_until="domcontentloaded", timeout=30000)
+                await page.wait_for_timeout(5000)
+
+                # Scroll untuk load lebih banyak video
+                for _ in range(3):
+                    await page.mouse.wheel(0, 2000)
+                    await page.wait_for_timeout(2000)
+
+                # Extract video links
+                video_links = await page.eval_on_selector_all(
+                    'a[href*="/video/"]',
+                    'els => els.slice(0, 10).map(el => el.href)'
+                )
+                video_links = list(set(video_links))[:max_videos]
+                log.info("Found %d videos for #%s", len(video_links), hashtag)
+
+                # Visit each video to get comments
+                for vurl in video_links:
                     try:
-                        c = comment.as_dict
-                        comments.append({
-                            "comment_id": c.get("cid"),
-                            "video_id": video_id,
-                            "text": c.get("text", ""),
-                            "user_id": self._redact_username(c.get("user", {}).get("unique_id", "")),
-                            "create_time": c.get("create_time"),
-                            "likes": c.get("digg_count", 0),
-                            "reply_count": c.get("reply_comment_total", 0),
-                        })
+                        await page.goto(vurl, wait_until="domcontentloaded", timeout=30000)
+                        await page.wait_for_timeout(5000)
+
+                        # Get video description
+                        desc_selectors = ['[data-e2e="browse-video-desc"]', 'span[data-text="true"]', 'div.video-meta-title']
+                        video_desc = ""
+                        for sel in desc_selectors:
+                            try:
+                                el = await page.query_selector(sel)
+                                if el:
+                                    video_desc = await el.inner_text()
+                                    break
+                            except Exception:
+                                pass
+
+                        # Scroll to load comments
+                        for _ in range(2):
+                            await page.mouse.wheel(0, 1500)
+                            await page.wait_for_timeout(2000)
+
+                        # Extract comments
+                        comment_selectors = [
+                            '[data-e2e="comment-level-1"] p',
+                            'p[data-e2e="comment-text"]',
+                            'div.comment-text',
+                            'span.comment-text',
+                        ]
+                        for sel in comment_selectors:
+                            comment_texts = await page.eval_on_selector_all(
+                                sel, 'els => els.slice(0, 20).map(el => el.innerText)'
+                            )
+                            for text in comment_texts[:max_comments]:
+                                if text and len(text) > 3:
+                                    comments.append({
+                                        "text": text.strip(),
+                                        "username_hash": self._redact_username(str(hash(text))),
+                                        "hashtag": hashtag,
+                                        "video_url": vurl,
+                                        "video_desc": video_desc[:200],
+                                        "scraped_at": __import__("time").time(),
+                                    })
+                            if comment_texts:
+                                break
                     except Exception as e:
-                        log.warning("Error parse comment: %s", e)
+                        log.warning("Error scraping video %s: %s", vurl, e)
                     self.polite_sleep()
-        except Exception as e:
-            log.warning("Gagal fetch comments video %s: %s", video_id, e)
+
+            except Exception as e:
+                log.warning("Error scraping hashtag #%s: %s", hashtag, e)
+            finally:
+                await browser.close()
+
         return comments
 
-    async def _run_async(self, max_videos: int = MAX_VIDEOS_PER_HASHTAG,
-                         max_comments: int = MAX_COMMENTS_PER_VIDEO) -> dict[str, Any]:
-        """Async runner utama."""
-        all_videos = []
+    def run(self, max_videos: int = MAX_VIDEOS_PER_HASHTAG, max_comments: int = MAX_COMMENTS_PER_VIDEO) -> dict[str, Any]:
+        """Scrape TikTok via Playwright."""
         all_comments = []
         per_hashtag = []
 
-        for ht in tqdm(HASHTAGS, desc="Fetch TikTok hashtags"):
-            log.info("Scraping hashtag: #%s", ht)
+        for ht in tqdm(HASHTAGS, desc="TikTok hashtags"):
             try:
-                videos = await self._fetch_hashtag_videos(ht, count=max_videos)
-                all_videos.extend(videos)
-                per_hashtag.append({"hashtag": ht, "n_videos": len(videos)})
-
-                for v in tqdm(videos, desc=f"  Comments #{ht}", leave=False):
-                    vid = v.get("video_id")
-                    if not vid:
-                        continue
-                    comments = await self._fetch_video_comments(vid, count=max_comments)
-                    for c in comments:
-                        c["hashtag"] = ht
-                        c["video_desc"] = v.get("desc", "")
-                        c["video_stats"] = v.get("stats", {})
-                    all_comments.extend(comments)
-                    self.polite_sleep()
+                comments = asyncio.run(
+                    self._scrape_hashtag_playwright(ht, max_videos, max_comments)
+                )
+                all_comments.extend(comments)
+                per_hashtag.append({"hashtag": ht, "n_comments": len(comments)})
             except Exception as e:
                 log.warning("Gagal scrape #%s: %s", ht, e)
-                per_hashtag.append({"hashtag": ht, "n_videos": 0, "error": str(e)})
-
-        return {
-            "videos": all_videos,
-            "comments": all_comments,
-            "per_hashtag": per_hashtag,
-        }
-
-    def run(self, max_videos: int = MAX_VIDEOS_PER_HASHTAG,
-            max_comments: int = MAX_COMMENTS_PER_VIDEO) -> dict[str, Any]:
-        """Sync wrapper untuk async runner."""
-        try:
-            result = asyncio.run(self._run_async(max_videos=max_videos, max_comments=max_comments))
-        except Exception as e:
-            log.error("TikTok scraper gagal total: %s", e)
-            return {"status": "error", "error": str(e), "n_videos": 0, "n_comments": 0}
-
-        videos = result["videos"]
-        comments = result["comments"]
+                per_hashtag.append({"hashtag": ht, "n_comments": 0, "error": str(e)})
+            self.polite_sleep()
 
         meta = self.meta("tiktok", {
-            "n_videos": len(videos),
-            "n_comments": len(comments),
+            "n_comments": len(all_comments),
             "hashtags": HASHTAGS,
             "max_videos_per_hashtag": max_videos,
             "max_comments_per_video": max_comments,
-            "per_hashtag": result["per_hashtag"],
+            "per_hashtag": per_hashtag,
         })
 
-        self.save_json({"meta": meta, "videos": videos}, "tiktok_videos.json", subdir="raw")
-        self.save_json({"meta": meta, "comments": comments}, "tiktok_comments.json", subdir="raw")
+        self.save_json({"meta": meta, "comments": all_comments}, "tiktok_comments.json", subdir="raw")
+        sample = all_comments[:500] if len(all_comments) > 500 else all_comments
+        self.save_json({"meta": meta, "comments": sample}, "tiktok_comments_sample.json", subdir="sample")
 
-        sample_comments = comments[:500] if len(comments) > 500 else comments
-        self.save_json({"meta": meta, "comments": sample_comments}, "tiktok_comments_sample.json", subdir="sample")
-
-        log.info("TikTok: %d videos, %d comments", len(videos), len(comments))
+        log.info("TikTok: %d komentar dari %d hashtag", len(all_comments), len(HASHTAGS))
         return {
-            "status": "ok",
-            "n_videos": len(videos),
-            "n_comments": len(comments),
+            "status": "ok" if all_comments else "no_data",
+            "n_comments": len(all_comments),
             "hashtags": HASHTAGS,
         }

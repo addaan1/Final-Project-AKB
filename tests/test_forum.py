@@ -10,6 +10,7 @@ def test_forum_scraper_init():
 
 def test_forum_scraper_has_methods():
     s = ForumScraper()
-    assert hasattr(s, "_scrape_kaskus")
-    assert hasattr(s, "_scrape_reddit")
+    assert hasattr(s, "_scrape_kaskus_playwright")
+    assert hasattr(s, "_scrape_reddit_playwright")
+    assert hasattr(s, "_scrape_reddit_fallback_json")
     assert hasattr(s, "run")

@@ -6,20 +6,23 @@ Dokumentasi sumber data, skema, dan etika scraping untuk reproducibility.
 
 | Source | Status | Lokasi output | Format |
 |---|---|---|---|
-| Google Play reviews (fintech) | ✅ Aktif | `data/raw/play_reviews_*.json` + `data/processed/*.csv` | JSON + 7 CSV |
-| Google Trends | ✅ Aktif | `data/raw/google_trends_12m.json` | time-series JSON |
-| TikTok komentar | ✅ Aktif | `data/raw/tiktok_comments.json` | JSON |
-| Twitter/X | ✅ Aktif | `data/raw/twitter_tweets.json` | JSON |
+| Google Play reviews (fintech) | ✅ Aktif (72K) | `data/raw/play_reviews_*.json` + `data/processed/*.csv` | JSON + 7 CSV |
+| Google Trends | ✅ Aktif (pytrends) | `data/raw/google_trends_12m.json` | time-series JSON |
+| Kaskus threads | ✅ Aktif via Playwright (66) | `data/raw/kaskus_threads.json` | JSON |
+| OJK + media (kompas/detik/cnbc) | ✅ Aktif (89) | `data/raw/news_all.json` | JSON |
+| TikTok komentar | ⚠️ Implementasi siap, headless blocked | `data/raw/tiktok_comments.json` | JSON |
+| Reddit | ⚠️ Network timeout dari env ini | `data/raw/reddit_posts.json` | JSON |
+| Twitter/X | ⚠️ Login wall (butuh auth) | `data/raw/twitter_tweets.json` | JSON |
 | Instagram | 🔲 Stub | - | - |
-| Forum (Kaskus/Reddit) | ✅ Aktif | `data/raw/forum_all.json` | JSON |
-| OJK + media (kompas/detik/cnbc) | ✅ Aktif | `data/raw/news_all.json` | JSON |
 
 ## Dataset saat ini (Juni 2025)
 
 - **24 app fintech** Indonesia (paylater, e-wallet, e-commerce, pinjol, P2P, banking, investasi).
 - **72.000 review** Google Play (mode all, cap 3.000/app).
-- **5.825 review relevan galbay** (8,09%) — mengandung 65+ keyword psikologis.
-- **36 MB** JSON raw + **7 CSV** processed + charts PNG + SQLite DB.
+- **5.823 review relevan galbay** (8,09%) — mengandung 65+ keyword psikologis.
+- **66 Kaskus threads** via Playwright render.
+- **89 artikel OJK + media** (16 OJK + 73 media besar).
+- **36 MB** JSON raw + **7 CSV** processed + 5 charts PNG + SQLite DB (15.8 MB).
 
 ## Skema: `play_reviews_*.json` & `play_reviews_all.json`
 

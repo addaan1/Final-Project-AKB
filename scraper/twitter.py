@@ -1,7 +1,8 @@
 """Scraper post X/Twitter keyword galbay/pinjol (PRIORITAS 4).
 
-Menggunakan Nitter instances (gratis, tidak stabil).
-Jika semua instance down, scraper gracefully skip.
+Menggunakan Playwright untuk render X/Twitter search.
+Nitter sudah mati (empty content), jadi langsung ke Twitter/X.
+Twitter/X tanpa login hanya menampilkan tweet publik terbatas.
 
 Etika:
 - Tidak simpan username asli (redact ke hash).
@@ -9,14 +10,12 @@ Etika:
 """
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import logging
-import re
 import time
 from typing import Any
 
-import requests
-from bs4 import BeautifulSoup
 from tqdm import tqdm
 
 from scraper.base import BaseScraper
@@ -28,16 +27,7 @@ QUERIES: list[str] = [
     "ditagih", "pinjaman online", "cicilan",
 ]
 
-NITTER_INSTANCES: list[str] = [
-    "https://nitter.privacydev.net",
-    "https://nitter.poast.org",
-    "https://nitter.woodland.cafe",
-    "https://nitter.1d4.us",
-    "https://nitter.kavin.rocks",
-    "https://nitter.net",
-]
-
-MAX_TWEETS_PER_QUERY = 50
+MAX_TWEETS_PER_QUERY = 20
 
 
 class TwitterScraper(BaseScraper):
@@ -47,95 +37,120 @@ class TwitterScraper(BaseScraper):
     def _redact_username(username: str) -> str:
         return hashlib.sha256(username.encode()).hexdigest()[:12]
 
-    def _find_working_instance(self) -> str | None:
-        """Cari Nitter instance yang aktif."""
-        for inst in NITTER_INSTANCES:
-            try:
-                resp = requests.get(inst, timeout=10, headers={
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-                })
-                if resp.status_code == 200:
-                    log.info("Working Nitter instance: %s", inst)
-                    return inst
-            except Exception:
-                continue
-        return None
-
-    def _scrape_nitter_search(self, instance: str, query: str, max_tweets: int = MAX_TWEETS_PER_QUERY) -> list[dict]:
-        """Scrape tweets dari satu Nitter instance."""
+    async def _scrape_twitter_playwright(self, query: str, max_tweets: int) -> list[dict]:
+        """Scrape X/Twitter via Playwright."""
+        from playwright.async_api import async_playwright
         tweets = []
-        try:
-            url = f"{instance}/search?f=tweets&q={requests.utils.quote(query)}"
-            headers = {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                "Accept": "text/html",
-            }
-            resp = requests.get(url, headers=headers, timeout=15)
-            if resp.status_code != 200:
-                log.warning("Nitter search '%s' status %d", query, resp.status_code)
-                return tweets
 
-            soup = BeautifulSoup(resp.text, "lxml")
-            items = soup.select("div.timeline-item, div.tweet-body, article.tweet")
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=True)
+            context = await browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                viewport={"width": 1280, "height": 720},
+                locale="id-ID",
+            )
+            page = await context.new_page()
 
-            for item in items:
-                if len(tweets) >= max_tweets:
-                    break
-                try:
-                    content_el = item.select_one("div.tweet-content, span.tweet-text, div.tweet-body")
-                    if not content_el:
-                        continue
-                    text = content_el.get_text(strip=True)
+            try:
+                url = f"https://x.com/search?q={query}&src=typed_query&f=live"
+                log.info("Opening %s", url)
+                await page.goto(url, wait_until="domcontentloaded", timeout=45000)
+                await page.wait_for_timeout(8000)
 
-                    username_el = item.select_one("a.username, span.username")
-                    username = username_el.get_text(strip=True).lstrip("@") if username_el else "unknown"
+                # Scroll untuk load more
+                for _ in range(3):
+                    await page.mouse.wheel(0, 2000)
+                    await page.wait_for_timeout(2000)
 
-                    time_el = item.select_one("span.tweet-date a, time.timestamp")
-                    tweet_url = time_el.get("href", "") if time_el else ""
-                    if tweet_url and not tweet_url.startswith("http"):
-                        tweet_url = "https://twitter.com" + tweet_url
+                # Twitter/X menggunakan article[data-testid="tweet"]
+                article_handles = await page.query_selector_all('article[data-testid="tweet"]')
+                log.info("Found %d tweet articles for q=%s", len(article_handles), query)
 
-                    date_el = item.select_one("span.tweet-date, time")
-                    date_str = date_el.get("title", "") if date_el else ""
+                for handle in article_handles[:max_tweets]:
+                    try:
+                        # Get tweet text
+                        text_el = await handle.query_selector('[data-testid="tweetText"]')
+                        text = ""
+                        if text_el:
+                            text = await text_el.inner_text()
 
-                    stats_el = item.select_one("div.tweet-stats, span.tweet-stat")
-                    stats_text = stats_el.get_text(strip=True) if stats_el else ""
+                        # Get username
+                        user_el = await handle.query_selector('[data-testid="User-Name"] a, [data-testid="User-Names"] a')
+                        username = ""
+                        if user_el:
+                            username = (await user_el.inner_text()).strip().replace("@", "")
 
-                    tweets.append({
-                        "query": query,
-                        "text": text,
-                        "username_hash": self._redact_username(username),
-                        "tweet_url": tweet_url,
-                        "date": date_str,
-                        "stats": stats_text,
-                        "scraped_at": time.time(),
-                    })
-                except Exception as e:
-                    log.warning("Error parse tweet: %s", e)
+                        # Get timestamp
+                        time_el = await handle.query_selector('time')
+                        timestamp = ""
+                        if time_el:
+                            timestamp = await time_el.get_attribute("datetime")
 
-        except Exception as e:
-            log.warning("Gagal scrape Nitter '%s': %s", query, e)
+                        # Get tweet link
+                        link_el = await handle.query_selector('a[href*="/status/"]')
+                        tweet_url = ""
+                        if link_el:
+                            href = await link_el.get_attribute("href")
+                            if href:
+                                tweet_url = f"https://x.com{href}" if href.startswith("/") else href
+
+                        # Get engagement
+                        like_el = await handle.query_selector('[data-testid="like"] span, [aria-label*="like"]')
+                        likes = ""
+                        if like_el:
+                            likes = await like_el.inner_text()
+
+                        rt_el = await handle.query_selector('[data-testid="retweet"] span, [aria-label*="repost"]')
+                        retweets = ""
+                        if rt_el:
+                            retweets = await rt_el.inner_text()
+
+                        if text:
+                            tweets.append({
+                                "query": query,
+                                "text": text.strip()[:1000],
+                                "username_hash": self._redact_username(username) if username else "anon",
+                                "tweet_url": tweet_url,
+                                "timestamp": timestamp,
+                                "likes": likes,
+                                "retweets": retweets,
+                                "scraped_at": time.time(),
+                            })
+                    except Exception as e:
+                        log.warning("Error extracting tweet: %s", e)
+
+            except Exception as e:
+                log.warning("Error scraping Twitter q=%s: %s", query, e)
+            finally:
+                await browser.close()
 
         return tweets
 
     def run(self, max_tweets: int = MAX_TWEETS_PER_QUERY) -> dict[str, Any]:
-        """Jalankan scraping Twitter via Nitter."""
-        instance = self._find_working_instance()
-        if not instance:
-            log.error("Tidak ada Nitter instance yang aktif. Skip Twitter scraping.")
-            return {"status": "no_instance", "n_tweets": 0}
-
+        """Scrape Twitter/X via Playwright."""
         all_tweets = []
         per_query = []
+        twitter_accessible = True
 
-        for query in tqdm(QUERIES, desc="Twitter/Nitter search"):
-            tweets = self._scrape_nitter_search(instance, query, max_tweets=max_tweets)
-            all_tweets.extend(tweets)
-            per_query.append({"query": query, "n_tweets": len(tweets)})
+        for query in tqdm(QUERIES, desc="Twitter/X queries"):
+            if not twitter_accessible:
+                break
+            try:
+                tweets = asyncio.run(
+                    self._scrape_twitter_playwright(query, max_tweets)
+                )
+                all_tweets.extend(tweets)
+                per_query.append({"query": query, "n_tweets": len(tweets)})
+            except Exception as e:
+                if "timeout" in str(e).lower() or "connection" in str(e).lower():
+                    log.warning("Twitter tidak accessible (network): %s. Skip.", e)
+                    twitter_accessible = False
+                    break
+                log.warning("Twitter %s error: %s", query, e)
+                per_query.append({"query": query, "n_tweets": 0, "error": str(e)})
             self.polite_sleep()
 
-        meta = self.meta("twitter_nitter", {
-            "instance": instance,
+        meta = self.meta("twitter_playwright", {
             "n_tweets": len(all_tweets),
             "queries": QUERIES,
             "max_tweets_per_query": max_tweets,
@@ -143,14 +158,12 @@ class TwitterScraper(BaseScraper):
         })
 
         self.save_json({"meta": meta, "tweets": all_tweets}, "twitter_tweets.json", subdir="raw")
-
         sample = all_tweets[:500] if len(all_tweets) > 500 else all_tweets
         self.save_json({"meta": meta, "tweets": sample}, "twitter_tweets_sample.json", subdir="sample")
 
         log.info("Twitter: %d tweets dari %d queries", len(all_tweets), len(QUERIES))
         return {
-            "status": "ok",
+            "status": "ok" if all_tweets else "no_data",
             "n_tweets": len(all_tweets),
             "queries": QUERIES,
-            "instance": instance,
         }

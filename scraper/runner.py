@@ -28,10 +28,10 @@ def get_sources():
     return {
         "play_reviews": ("scraper.fintech_reviews:GooglePlayReviewsScraper", "Google Play reviews app fintech (PRIORITAS 1, volume tinggi)"),
         "google_trends": ("scraper.google_trends:GoogleTrendsScraper", "Tren keyword galbay/paylater/pinjol (pytrends)"),
-        "tiktok": ("scraper.tiktok:TikTokScraper", "Komentar TikTok #galbay #paylater (TikTokApi)"),
-        "twitter": ("scraper.twitter:TwitterScraper", "Post X/Twitter keyword galbay (Nitter instances)"),
+        "tiktok": ("scraper.tiktok:TikTokScraper", "Komentar TikTok #galbay (Playwright)"),
+        "twitter": ("scraper.twitter:TwitterScraper", "Post X/Twitter (Playwright, login-wall)"),
         "instagram": ("scraper.instagram:InstagramScraper", "Caption/komentar Instagram (stub)"),
-        "forum": ("scraper.forum:ForumScraper", "Kaskus threads + Reddit posts (BS4 + public JSON)"),
+        "forum": ("scraper.forum:ForumScraper", "Kaskus threads + Reddit posts (Playwright)"),
         "ojk_news": ("scraper.ojk_news:OjkNewsScraper", "OJK siaran pers + media besar (kompas/detik/cnbc)"),
     }
 
@@ -110,7 +110,8 @@ def main(argv=None):
             elif src == "twitter":
                 kwargs["max_tweets"] = args.max_tweets
             elif src == "ojk_news":
-                kwargs["max_per_query"] = args.max_articles
+                kwargs["max_ojk_articles"] = args.max_articles
+                kwargs["max_media_per_query"] = max(5, args.max_articles // 2)
             result = scraper.run(**kwargs)
             summary[src] = result
             log.info("Selesai %s: %s", src, result)

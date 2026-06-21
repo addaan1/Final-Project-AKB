@@ -10,6 +10,7 @@ def test_ojk_scraper_init():
 
 def test_ojk_scraper_has_methods():
     s = OjkNewsScraper()
-    assert hasattr(s, "_scrape_ojk")
-    assert hasattr(s, "_scrape_media")
+    assert hasattr(s, "_scrape_ojk_listing")
+    assert hasattr(s, "_scrape_media_listing")
+    assert hasattr(s, "_scrape_media_article")
     assert hasattr(s, "run")

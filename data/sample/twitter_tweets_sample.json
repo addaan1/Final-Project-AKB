@@ -1,9 +1,8 @@
 {
   "meta": {
-    "source": "twitter_nitter",
-    "scraped_at": "2026-06-21T17:25:08.390245+00:00",
+    "source": "twitter_playwright",
+    "scraped_at": "2026-06-21T18:19:17.238632+00:00",
     "scraper": "twitter",
-    "instance": "https://nitter.net",
     "n_tweets": 0,
     "queries": [
       "galbay",
@@ -14,7 +13,7 @@
       "pinjaman online",
       "cicilan"
     ],
-    "max_tweets_per_query": 10,
+    "max_tweets_per_query": 5,
     "per_query": [
       {
         "query": "galbay",

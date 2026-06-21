@@ -1,0 +1,482 @@
+{
+  "meta": {
+    "source": "ojk_news",
+    "scraped_at": "2026-06-21T17:23:48.028816+00:00",
+    "scraper": "ojk_news",
+    "n_ojk": 0,
+    "n_media": 50,
+    "n_total": 50,
+    "ojk_queries": [
+      "paylater",
+      "pinjol",
+      "fintech",
+      "gagal bayar",
+      "pinjaman online",
+      "literasi keuangan"
+    ],
+    "media_queries": [
+      "galbay paylater",
+      "pinjol gagal bayar",
+      "fintech paylater",
+      "pinjaman online macet",
+      "ditagih paylater"
+    ],
+    "media_sources": [
+      "kompas",
+      "detik",
+      "cnbc"
+    ]
+  },
+  "sample": [
+    {
+      "source": "detik",
+      "query": "galbay paylater",
+      "title": "Dua Raksasa Otomotif Jepang Dikabarkan Mau Cabut dari RI, Pindah ke Vietnam!",
+      "url": "https://finance.detik.com/industri/d-8541024/dua-raksasa-otomotif-jepang-dikabarkan-mau-cabut-dari-ri-pindah-ke-vietnam",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062612.5326755
+    },
+    {
+      "source": "detik",
+      "query": "galbay paylater",
+      "title": "Penyanyi Iran Divonis 74 Cambukan Usai Tampil Tanpa Hijab di YouTube",
+      "url": "https://wolipop.detik.com/entertainment-news/d-8541126/penyanyi-iran-divonis-74-cambukan-usai-tampil-tanpa-hijab-di-youtube",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062612.5336936
+    },
+    {
+      "source": "detik",
+      "query": "galbay paylater",
+      "title": "Adam Deni Jadi Tersangka Usai Rusak Ruko-Pamer Airsoft Gun, Langsung Ditahan",
+      "url": "https://news.detik.com/berita/d-8540987/adam-deni-jadi-tersangka-usai-rusak-ruko-pamer-airsoft-gun-langsung-ditahan",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062612.5336936
+    },
+    {
+      "source": "detik",
+      "query": "galbay paylater",
+      "title": "PM Italia Meloni Semprot Trump: Fokuslah Pada Popularitas Anda Sendiri",
+      "url": "https://news.detik.com/internasional/d-8541077/pm-italia-meloni-semprot-trump-fokuslah-pada-popularitas-anda-sendiri",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062612.5336936
+    },
+    {
+      "source": "detik",
+      "query": "galbay paylater",
+      "title": "Gejala di Layar, Kepastian di Tangan Dokter",
+      "url": "https://news.detik.com/intermeso/d-8540839/gejala-di-layar-kepastian-di-tangan-dokter",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062612.5336936
+    },
+    {
+      "source": "detik",
+      "query": "galbay paylater",
+      "title": "Remaja Dibacok hingga Tewas Saat Konvoi Suporter Bola di Surabaya, Pelaku Ditangkap",
+      "url": "https://news.detik.com/berita/d-8541497/remaja-dibacok-hingga-tewas-saat-konvoi-suporter-bola-di-surabaya-pelaku-ditangkap",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062612.5349715
+    },
+    {
+      "source": "detik",
+      "query": "galbay paylater",
+      "title": "Pameran Makanan-Minuman Terbesar EastFood IIFEX 2026 Hadir di Surabaya",
+      "url": "https://news.detik.com/berita/d-8537275/pameran-makanan-minuman-terbesar-eastfood-iifex-2026-hadir-di-surabaya",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062612.5349715
+    },
+    {
+      "source": "detik",
+      "query": "galbay paylater",
+      "title": "Pemotor Luka-luka Dibacok OTK di Jalan Pajajaran Bogor, Polisi Selidiki",
+      "url": "https://news.detik.com/berita/d-8535259/pemotor-luka-luka-dibacok-otk-di-jalan-pajajaran-bogor-polisi-selidiki",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062612.5349715
+    },
+    {
+      "source": "detik",
+      "query": "galbay paylater",
+      "title": "Piala Dunia 2026: Spanyol Ungguli Arab Saudi 3-0 di Babak I",
+      "url": "https://sport.detik.com/sepakbola/bola-dunia/d-8541499/piala-dunia-2026-spanyol-ungguli-arab-saudi-3-0-di-babak-i",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062612.5359704
+    },
+    {
+      "source": "detik",
+      "query": "galbay paylater",
+      "title": "Akhir Polemik Patung Jenderal Sudirman Tak Jadi Digeser",
+      "url": "https://news.detik.com/berita/d-8541397/akhir-polemik-patung-jenderal-sudirman-tak-jadi-digeser",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062612.5359704
+    },
+    {
+      "source": "detik",
+      "query": "pinjol gagal bayar",
+      "title": "Dua Raksasa Otomotif Jepang Dikabarkan Mau Cabut dari RI, Pindah ke Vietnam!",
+      "url": "https://finance.detik.com/industri/d-8541024/dua-raksasa-otomotif-jepang-dikabarkan-mau-cabut-dari-ri-pindah-ke-vietnam",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062614.1745467
+    },
+    {
+      "source": "detik",
+      "query": "pinjol gagal bayar",
+      "title": "Penyanyi Iran Divonis 74 Cambukan Usai Tampil Tanpa Hijab di YouTube",
+      "url": "https://wolipop.detik.com/entertainment-news/d-8541126/penyanyi-iran-divonis-74-cambukan-usai-tampil-tanpa-hijab-di-youtube",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062614.1745467
+    },
+    {
+      "source": "detik",
+      "query": "pinjol gagal bayar",
+      "title": "Adam Deni Jadi Tersangka Usai Rusak Ruko-Pamer Airsoft Gun, Langsung Ditahan",
+      "url": "https://news.detik.com/berita/d-8540987/adam-deni-jadi-tersangka-usai-rusak-ruko-pamer-airsoft-gun-langsung-ditahan",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062614.1745467
+    },
+    {
+      "source": "detik",
+      "query": "pinjol gagal bayar",
+      "title": "PM Italia Meloni Semprot Trump: Fokuslah Pada Popularitas Anda Sendiri",
+      "url": "https://news.detik.com/internasional/d-8541077/pm-italia-meloni-semprot-trump-fokuslah-pada-popularitas-anda-sendiri",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062614.1745467
+    },
+    {
+      "source": "detik",
+      "query": "pinjol gagal bayar",
+      "title": "Gejala di Layar, Kepastian di Tangan Dokter",
+      "url": "https://news.detik.com/intermeso/d-8540839/gejala-di-layar-kepastian-di-tangan-dokter",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062614.1745467
+    },
+    {
+      "source": "detik",
+      "query": "pinjol gagal bayar",
+      "title": "Remaja Dibacok hingga Tewas Saat Konvoi Suporter Bola di Surabaya, Pelaku Ditangkap",
+      "url": "https://news.detik.com/berita/d-8541497/remaja-dibacok-hingga-tewas-saat-konvoi-suporter-bola-di-surabaya-pelaku-ditangkap",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062614.1755455
+    },
+    {
+      "source": "detik",
+      "query": "pinjol gagal bayar",
+      "title": "Pameran Makanan-Minuman Terbesar EastFood IIFEX 2026 Hadir di Surabaya",
+      "url": "https://news.detik.com/berita/d-8537275/pameran-makanan-minuman-terbesar-eastfood-iifex-2026-hadir-di-surabaya",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062614.1755455
+    },
+    {
+      "source": "detik",
+      "query": "pinjol gagal bayar",
+      "title": "Pemotor Luka-luka Dibacok OTK di Jalan Pajajaran Bogor, Polisi Selidiki",
+      "url": "https://news.detik.com/berita/d-8535259/pemotor-luka-luka-dibacok-otk-di-jalan-pajajaran-bogor-polisi-selidiki",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062614.1755455
+    },
+    {
+      "source": "detik",
+      "query": "pinjol gagal bayar",
+      "title": "Piala Dunia 2026: Spanyol Ungguli Arab Saudi 3-0 di Babak I",
+      "url": "https://sport.detik.com/sepakbola/bola-dunia/d-8541499/piala-dunia-2026-spanyol-ungguli-arab-saudi-3-0-di-babak-i",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062614.177047
+    },
+    {
+      "source": "detik",
+      "query": "pinjol gagal bayar",
+      "title": "Akhir Polemik Patung Jenderal Sudirman Tak Jadi Digeser",
+      "url": "https://news.detik.com/berita/d-8541397/akhir-polemik-patung-jenderal-sudirman-tak-jadi-digeser",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062614.177047
+    },
+    {
+      "source": "detik",
+      "query": "fintech paylater",
+      "title": "Dua Raksasa Otomotif Jepang Dikabarkan Mau Cabut dari RI, Pindah ke Vietnam!",
+      "url": "https://finance.detik.com/industri/d-8541024/dua-raksasa-otomotif-jepang-dikabarkan-mau-cabut-dari-ri-pindah-ke-vietnam",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062616.0003471
+    },
+    {
+      "source": "detik",
+      "query": "fintech paylater",
+      "title": "Penyanyi Iran Divonis 74 Cambukan Usai Tampil Tanpa Hijab di YouTube",
+      "url": "https://wolipop.detik.com/entertainment-news/d-8541126/penyanyi-iran-divonis-74-cambukan-usai-tampil-tanpa-hijab-di-youtube",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062616.0003471
+    },
+    {
+      "source": "detik",
+      "query": "fintech paylater",
+      "title": "Adam Deni Jadi Tersangka Usai Rusak Ruko-Pamer Airsoft Gun, Langsung Ditahan",
+      "url": "https://news.detik.com/berita/d-8540987/adam-deni-jadi-tersangka-usai-rusak-ruko-pamer-airsoft-gun-langsung-ditahan",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062616.001348
+    },
+    {
+      "source": "detik",
+      "query": "fintech paylater",
+      "title": "PM Italia Meloni Semprot Trump: Fokuslah Pada Popularitas Anda Sendiri",
+      "url": "https://news.detik.com/internasional/d-8541077/pm-italia-meloni-semprot-trump-fokuslah-pada-popularitas-anda-sendiri",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062616.001348
+    },
+    {
+      "source": "detik",
+      "query": "fintech paylater",
+      "title": "Gejala di Layar, Kepastian di Tangan Dokter",
+      "url": "https://news.detik.com/intermeso/d-8540839/gejala-di-layar-kepastian-di-tangan-dokter",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062616.001348
+    },
+    {
+      "source": "detik",
+      "query": "fintech paylater",
+      "title": "Remaja Dibacok hingga Tewas Saat Konvoi Suporter Bola di Surabaya, Pelaku Ditangkap",
+      "url": "https://news.detik.com/berita/d-8541497/remaja-dibacok-hingga-tewas-saat-konvoi-suporter-bola-di-surabaya-pelaku-ditangkap",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062616.001348
+    },
+    {
+      "source": "detik",
+      "query": "fintech paylater",
+      "title": "Pameran Makanan-Minuman Terbesar EastFood IIFEX 2026 Hadir di Surabaya",
+      "url": "https://news.detik.com/berita/d-8537275/pameran-makanan-minuman-terbesar-eastfood-iifex-2026-hadir-di-surabaya",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062616.001348
+    },
+    {
+      "source": "detik",
+      "query": "fintech paylater",
+      "title": "Pemotor Luka-luka Dibacok OTK di Jalan Pajajaran Bogor, Polisi Selidiki",
+      "url": "https://news.detik.com/berita/d-8535259/pemotor-luka-luka-dibacok-otk-di-jalan-pajajaran-bogor-polisi-selidiki",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062616.001348
+    },
+    {
+      "source": "detik",
+      "query": "fintech paylater",
+      "title": "Piala Dunia 2026: Spanyol Ungguli Arab Saudi 3-0 di Babak I",
+      "url": "https://sport.detik.com/sepakbola/bola-dunia/d-8541499/piala-dunia-2026-spanyol-ungguli-arab-saudi-3-0-di-babak-i",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062616.0033472
+    },
+    {
+      "source": "detik",
+      "query": "fintech paylater",
+      "title": "Akhir Polemik Patung Jenderal Sudirman Tak Jadi Digeser",
+      "url": "https://news.detik.com/berita/d-8541397/akhir-polemik-patung-jenderal-sudirman-tak-jadi-digeser",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062616.0033472
+    },
+    {
+      "source": "detik",
+      "query": "pinjaman online macet",
+      "title": "Dua Raksasa Otomotif Jepang Dikabarkan Mau Cabut dari RI, Pindah ke Vietnam!",
+      "url": "https://finance.detik.com/industri/d-8541024/dua-raksasa-otomotif-jepang-dikabarkan-mau-cabut-dari-ri-pindah-ke-vietnam",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062617.8563542
+    },
+    {
+      "source": "detik",
+      "query": "pinjaman online macet",
+      "title": "Penyanyi Iran Divonis 74 Cambukan Usai Tampil Tanpa Hijab di YouTube",
+      "url": "https://wolipop.detik.com/entertainment-news/d-8541126/penyanyi-iran-divonis-74-cambukan-usai-tampil-tanpa-hijab-di-youtube",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062617.8563542
+    },
+    {
+      "source": "detik",
+      "query": "pinjaman online macet",
+      "title": "Adam Deni Jadi Tersangka Usai Rusak Ruko-Pamer Airsoft Gun, Langsung Ditahan",
+      "url": "https://news.detik.com/berita/d-8540987/adam-deni-jadi-tersangka-usai-rusak-ruko-pamer-airsoft-gun-langsung-ditahan",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062617.8563542
+    },
+    {
+      "source": "detik",
+      "query": "pinjaman online macet",
+      "title": "PM Italia Meloni Semprot Trump: Fokuslah Pada Popularitas Anda Sendiri",
+      "url": "https://news.detik.com/internasional/d-8541077/pm-italia-meloni-semprot-trump-fokuslah-pada-popularitas-anda-sendiri",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062617.8573534
+    },
+    {
+      "source": "detik",
+      "query": "pinjaman online macet",
+      "title": "Gejala di Layar, Kepastian di Tangan Dokter",
+      "url": "https://news.detik.com/intermeso/d-8540839/gejala-di-layar-kepastian-di-tangan-dokter",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062617.8573534
+    },
+    {
+      "source": "detik",
+      "query": "pinjaman online macet",
+      "title": "Remaja Dibacok hingga Tewas Saat Konvoi Suporter Bola di Surabaya, Pelaku Ditangkap",
+      "url": "https://news.detik.com/berita/d-8541497/remaja-dibacok-hingga-tewas-saat-konvoi-suporter-bola-di-surabaya-pelaku-ditangkap",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062617.8573534
+    },
+    {
+      "source": "detik",
+      "query": "pinjaman online macet",
+      "title": "Pameran Makanan-Minuman Terbesar EastFood IIFEX 2026 Hadir di Surabaya",
+      "url": "https://news.detik.com/berita/d-8537275/pameran-makanan-minuman-terbesar-eastfood-iifex-2026-hadir-di-surabaya",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062617.8573534
+    },
+    {
+      "source": "detik",
+      "query": "pinjaman online macet",
+      "title": "Pemotor Luka-luka Dibacok OTK di Jalan Pajajaran Bogor, Polisi Selidiki",
+      "url": "https://news.detik.com/berita/d-8535259/pemotor-luka-luka-dibacok-otk-di-jalan-pajajaran-bogor-polisi-selidiki",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062617.8573534
+    },
+    {
+      "source": "detik",
+      "query": "pinjaman online macet",
+      "title": "Piala Dunia 2026: Spanyol Ungguli Arab Saudi 3-0 di Babak I",
+      "url": "https://sport.detik.com/sepakbola/bola-dunia/d-8541499/piala-dunia-2026-spanyol-ungguli-arab-saudi-3-0-di-babak-i",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062617.8583527
+    },
+    {
+      "source": "detik",
+      "query": "pinjaman online macet",
+      "title": "Akhir Polemik Patung Jenderal Sudirman Tak Jadi Digeser",
+      "url": "https://news.detik.com/berita/d-8541397/akhir-polemik-patung-jenderal-sudirman-tak-jadi-digeser",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062617.8583527
+    },
+    {
+      "source": "detik",
+      "query": "ditagih paylater",
+      "title": "Dua Raksasa Otomotif Jepang Dikabarkan Mau Cabut dari RI, Pindah ke Vietnam!",
+      "url": "https://finance.detik.com/industri/d-8541024/dua-raksasa-otomotif-jepang-dikabarkan-mau-cabut-dari-ri-pindah-ke-vietnam",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062619.743943
+    },
+    {
+      "source": "detik",
+      "query": "ditagih paylater",
+      "title": "Penyanyi Iran Divonis 74 Cambukan Usai Tampil Tanpa Hijab di YouTube",
+      "url": "https://wolipop.detik.com/entertainment-news/d-8541126/penyanyi-iran-divonis-74-cambukan-usai-tampil-tanpa-hijab-di-youtube",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062619.7449422
+    },
+    {
+      "source": "detik",
+      "query": "ditagih paylater",
+      "title": "Adam Deni Jadi Tersangka Usai Rusak Ruko-Pamer Airsoft Gun, Langsung Ditahan",
+      "url": "https://news.detik.com/berita/d-8540987/adam-deni-jadi-tersangka-usai-rusak-ruko-pamer-airsoft-gun-langsung-ditahan",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062619.7449422
+    },
+    {
+      "source": "detik",
+      "query": "ditagih paylater",
+      "title": "PM Italia Meloni Semprot Trump: Fokuslah Pada Popularitas Anda Sendiri",
+      "url": "https://news.detik.com/internasional/d-8541077/pm-italia-meloni-semprot-trump-fokuslah-pada-popularitas-anda-sendiri",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062619.7459428
+    },
+    {
+      "source": "detik",
+      "query": "ditagih paylater",
+      "title": "Gejala di Layar, Kepastian di Tangan Dokter",
+      "url": "https://news.detik.com/intermeso/d-8540839/gejala-di-layar-kepastian-di-tangan-dokter",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062619.7459428
+    },
+    {
+      "source": "detik",
+      "query": "ditagih paylater",
+      "title": "Remaja Dibacok hingga Tewas Saat Konvoi Suporter Bola di Surabaya, Pelaku Ditangkap",
+      "url": "https://news.detik.com/berita/d-8541497/remaja-dibacok-hingga-tewas-saat-konvoi-suporter-bola-di-surabaya-pelaku-ditangkap",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062619.7459428
+    },
+    {
+      "source": "detik",
+      "query": "ditagih paylater",
+      "title": "Pameran Makanan-Minuman Terbesar EastFood IIFEX 2026 Hadir di Surabaya",
+      "url": "https://news.detik.com/berita/d-8537275/pameran-makanan-minuman-terbesar-eastfood-iifex-2026-hadir-di-surabaya",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062619.7459428
+    },
+    {
+      "source": "detik",
+      "query": "ditagih paylater",
+      "title": "Pemotor Luka-luka Dibacok OTK di Jalan Pajajaran Bogor, Polisi Selidiki",
+      "url": "https://news.detik.com/berita/d-8535259/pemotor-luka-luka-dibacok-otk-di-jalan-pajajaran-bogor-polisi-selidiki",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062619.7459428
+    },
+    {
+      "source": "detik",
+      "query": "ditagih paylater",
+      "title": "Piala Dunia 2026: Spanyol Ungguli Arab Saudi 3-0 di Babak I",
+      "url": "https://sport.detik.com/sepakbola/bola-dunia/d-8541499/piala-dunia-2026-spanyol-ungguli-arab-saudi-3-0-di-babak-i",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062619.747943
+    },
+    {
+      "source": "detik",
+      "query": "ditagih paylater",
+      "title": "Akhir Polemik Patung Jenderal Sudirman Tak Jadi Digeser",
+      "url": "https://news.detik.com/berita/d-8541397/akhir-polemik-patung-jenderal-sudirman-tak-jadi-digeser",
+      "snippet": "",
+      "date": "",
+      "scraped_at": 1782062619.747943
+    }
+  ]
+}

@@ -6,20 +6,20 @@ Dokumentasi sumber data, skema, dan etika scraping untuk reproducibility.
 
 | Source | Status | Lokasi output | Format |
 |---|---|---|---|
-| Google Play reviews (fintech) | ✅ Aktif | `data/raw/play_reviews_*.json` + `data/processed/galbay_reviews.xlsx` | JSON + Excel 7-sheet |
+| Google Play reviews (fintech) | ✅ Aktif | `data/raw/play_reviews_*.json` + `data/processed/*.csv` | JSON + 7 CSV |
 | Google Trends | ✅ Aktif | `data/raw/google_trends_12m.json` | time-series JSON |
-| TikTok komentar | 🔲 Stub | - | - |
-| Twitter/X | 🔲 Stub | - | - |
+| TikTok komentar | ✅ Aktif | `data/raw/tiktok_comments.json` | JSON |
+| Twitter/X | ✅ Aktif | `data/raw/twitter_tweets.json` | JSON |
 | Instagram | 🔲 Stub | - | - |
-| Forum (Kaskus/Reddit) | 🔲 Stub | - | - |
-| OJK & berita media | 🔲 Stub | - | - |
+| Forum (Kaskus/Reddit) | ✅ Aktif | `data/raw/forum_all.json` | JSON |
+| OJK + media (kompas/detik/cnbc) | ✅ Aktif | `data/raw/news_all.json` | JSON |
 
-## Dataset saat ini (Mei 2025)
+## Dataset saat ini (Juni 2025)
 
 - **24 app fintech** Indonesia (paylater, e-wallet, e-commerce, pinjol, P2P, banking, investasi).
-- **72.000 review** total (mode all, cap 3.000/app).
+- **72.000 review** Google Play (mode all, cap 3.000/app).
 - **5.825 review relevan galbay** (8,09%) — mengandung 65+ keyword psikologis.
-- **36 MB** JSON raw + **5,25 MB** Excel processed + **106 KB** Excel sample.
+- **36 MB** JSON raw + **7 CSV** processed + charts PNG + SQLite DB.
 
 ## Skema: `play_reviews_*.json` & `play_reviews_all.json`
 
@@ -57,17 +57,28 @@ Dokumentasi sumber data, skema, dan etika scraping untuk reproducibility.
 }
 ```
 
-## Skema Excel: `galbay_reviews.xlsx` (7 sheet)
+## CSV Output (7 file di `data/processed/`)
 
-| Sheet | Kolom utama | Deskripsi |
+| File | Kolom utama | Deskripsi |
 |---|---|---|
-| **Overview** | Metric, Value | Ringkasan meta scrape |
-| **All Reviews** | query, category, app_name, score, content, content_len, thumbs_up, date, year_month, is_relevant, matched_categories_str, n_matched_categories, replied, version | Semua review |
-| **Relevant Only** | (sama minus is_relevant) | Filter `is_relevant=true` |
-| **Per-App Summary** | query, category, app_name, n_reviews, n_relevant, avg_score, median_score, n_score_1, n_score_5, avg_content_len, date_min, date_max, relevant_rate | Statistik per app |
-| **Keyword Frequency** | category, keyword, total_occurrence, in_relevant | Frekuensi 65+ keyword |
-| **Score Distribution** | query, score_1, score_2, score_3, score_4, score_5, Total | Cross-tab app × rating |
-| **Timeline** | year_month, <app1>, <app2>, ..., Total | Review per bulan per app |
+| `overview.csv` | metric, value | Ringkasan meta scrape |
+| `all_reviews.csv` | query, category, app_name, score, content, content_len, thumbs_up, date, year_month, is_relevant, matched_categories_str, n_matched_categories, replied, version | Semua review |
+| `relevant_only.csv` | (sama minus is_relevant) | Filter `is_relevant=true` |
+| `per_app_summary.csv` | query, category, app_name, n_reviews, n_relevant, avg_score, median_score, n_score_1, n_score_5, avg_content_len, date_min, date_max, relevant_rate | Statistik per app |
+| `keyword_frequency.csv` | category, keyword, total_occurrence, in_relevant | Frekuensi 65+ keyword |
+| `score_distribution.csv` | query, score_1, score_2, score_3, score_4, score_5, Total | Cross-tab app × rating |
+| `timeline.csv` | year_month, <app1>, <app2>, ..., Total | Review per bulan per app |
+
+## Processing Pipeline
+
+| Step | Modul | Output |
+|---|---|---|
+| 1. Build CSV | `processing.build_csv` | 7 CSV di `data/processed/` |
+| 2. Validation | `processing.validate` | `validated_*.csv` (dedup, clean) |
+| 3. Sentiment | `processing.sentiment` | `*_with_sentiment.csv` (VADER scores) |
+| 4. Preprocessing | `processing.preprocess` | `*_preprocessed.csv` (NLP cleaned) |
+| 5. Visualization | `processing.visualize` | `data/processed/charts/*.png` |
+| 6. SQLite export | `processing.export_sqlite` | `data/processed/galbay.db` |
 
 ## Keyword sinyal psikologis (65+ keyword, 7 kategori)
 
@@ -109,4 +120,3 @@ Lihat `scraper/fintech_reviews.py` untuk daftar lengkap (`GALBAY_KEYWORDS` dict)
 - Untuk distribusi: **GitHub Releases** atau **Git LFS** (konfigurasi menyusul).
 - Sample kecil (`data/sample/`) di-commit untuk reproducibility:
   - `play_reviews_sample.json` (1000 baris JSON)
-  - `galbay_reviews_sample.xlsx` (Excel 7-sheet, ~500 baris/app)

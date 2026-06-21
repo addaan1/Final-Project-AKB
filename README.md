@@ -11,7 +11,10 @@
 [![pandas](https://img.shields.io/badge/pandas-2.2.2-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![google-play-scraper](https://img.shields.io/badge/google--play--scraper-1.2.7-34A853?logo=googleplay&logoColor=white)](https://github.com/JoMingyu/google-play-scraper)
 [![pytrends](https://img.shields.io/badge/pytrends-4.9.2-4285F4?logo=google&logoColor=white)](https://github.com/GeneralMills/pytrends)
-[![xlsxwriter](https://img.shields.io/badge/xlsxwriter-3.2.9-20744A?logo=microsoftexcel&logoColor=white)](https://xlsxwriter.readthedocs.io/)
+[![TikTokApi](https://img.shields.io/badge/TikTokApi-7.3.3-000000?logo=tiktok&logoColor=white)](https://github.com/davidteather/TikTok-Api)
+[![NLTK](https://img.shields.io/badge/NLTK-3.9.4-004D8C?logo=python&logoColor=white)](https://www.nltk.org/)
+[![matplotlib](https://img.shields.io/badge/matplotlib-3.11.0-11557C?logo=python&logoColor=white)](https://matplotlib.org/)
+[![seaborn](https://img.shields.io/badge/seaborn-0.13.2-3B7BBF?logo=python&logoColor=white)](https://seaborn.pydata.org/)
 
 [![Status](https://img.shields.io/badge/status-active--development-success)]()
 [![Dataset](https://img.shields.io/badge/dataset-72K%20reviews-blueviolet)]()
@@ -47,7 +50,7 @@ Data tren hanya bertindak sebagai **termometer** (menunjukkan gejala). Galbay Pr
 | **App fintech** | 24 (paylater, e-wallet, e-commerce, pinjol, P2P, banking, investasi) |
 | **Review relevan galbay** | 5.825 (8,09%) |
 | **Keyword psikologis** | 65+ terkelompok dalam 7 kategori |
-| **Format** | JSON raw (36 MB) → Excel multi-sheet (5,25 MB) |
+| **Format** | JSON raw (36 MB) → 7 CSV terpisah |
 | **Periode** | review historis per app |
 
 ### Aplikasi yang di-scrape
@@ -98,22 +101,27 @@ galbay-predictor/
 │   ├── runner.py                 # CLI orchestrator
 │   ├── fintech_reviews.py        # ⭐ Google Play reviews (PRIORITAS 1)
 │   ├── google_trends.py          # Tren keyword 12-bulan (pytrends)
-│   ├── tiktok.py                 # Komentar TikTok (stub)
-│   ├── twitter.py                # Post X/Twitter (stub)
+│   ├── tiktok.py                 # ⭐ Komentar TikTok #galbay (TikTokApi)
+│   ├── twitter.py                # ⭐ Post X/Twitter (Nitter instances)
 │   ├── instagram.py              # Caption/komentar IG (stub)
-│   ├── forum.py                  # Kaskus & Reddit (stub)
-│   └── ojk_news.py               # Berita & siaran pers OJK (stub)
+│   ├── forum.py                  # ⭐ Kaskus threads + Reddit posts (BS4 + JSON)
+│   └── ojk_news.py               # ⭐ OJK + kompas/detik/cnbc (BS4)
 │
-├── processing/                   # Pre-processing data mentah
+├── processing/                   # Pre-processing & analisis data mentah
 │   ├── __init__.py
-│   └── build_excel.py            # ⭐ JSON → Excel multi-sheet (7 sheet)
+│   ├── build_csv.py              # ⭐ JSON → 7 CSV terpisah
+│   ├── validate.py               # Deduplication & validation
+│   ├── sentiment.py              # VADER sentiment analysis (NLTK)
+│   ├── preprocess.py             # NLP preprocessing (slang, cleaning)
+│   ├── visualize.py              # matplotlib/seaborn charts
+│   └── export_sqlite.py          # Export ke SQLite database
 │
 ├── data/
-│   ├── raw/                      # Data mentah (gitignored, big data 36 MB)
-│   ├── processed/                # Data bersih Excel (gitignored, 5,25 MB)
+│   ├── raw/                      # Data mentah (gitignored, big data)
+│   ├── processed/                # CSV, charts, SQLite (gitignored)
+│   │   └── charts/               # Visualisasi PNG
 │   ├── sample/                   # Sample kecil untuk reproducibility (di-commit)
-│   │   ├── play_reviews_sample.json
-│   │   └── galbay_reviews_sample.xlsx
+│   │   └── play_reviews_sample.json
 │   └── README.md                 # Skema & dokumentasi dataset
 │
 ├── docs/                         # Dokumen bisnis
@@ -160,47 +168,57 @@ python run.py
 # Lihat semua source tersedia
 python -m scraper.runner --list
 
+# === Google Play Reviews ===
 # Sample cepat (400 review/app, 24 app = ~9.600 review)
 python -m scraper.runner --source play_reviews --mode sample --count 400
 
 # Big data mode (semua review per app, cap 3000/app = 72.000 review)
 python -m scraper.runner --source play_reviews --mode all --max-per-app 3000
 
-# Unlimited (semua review, bisa ratusan ribu - lama untuk app besar)
-python -m scraper.runner --source play_reviews --mode all
+# === Sumber lain ===
+python -m scraper.runner --source google_trends        # Tren 12-bulan
+python -m scraper.runner --source tiktok                # Komentar TikTok #galbay
+python -m scraper.runner --source forum                 # Kaskus + Reddit
+python -m scraper.runner --source twitter               # X/Twitter via Nitter
+python -m scraper.runner --source ojk_news              # OJK + kompas/detik/cnbc
 
-# Google Trends (narasi tren 12-bulan)
-python -m scraper.runner --source google_trends
-
-# Jalankan semua source (stub di-skip otomatis)
+# Jalankan semua source
 python -m scraper.runner --all
 ```
 
-### Build Excel dari Raw JSON
+### Build CSV + Analisis
 
 ```powershell
-# Generate galbay_reviews.xlsx (7 sheet) + sample Excel
-python -m processing.build_excel
+# Generate 7 CSV dari review JSON
+python -m processing.build_csv
 
-# Custom sample size
-python -m processing.build_excel --sample-rows 1000
+# Data validation & deduplication
+python -m processing.validate
+
+# Sentiment analysis (VADER)
+python -m processing.sentiment
+
+# NLP preprocessing (slang normalization, cleaning)
+python -m processing.preprocess
+
+# Visualisasi (charts PNG)
+python -m processing.visualize
+
+# Export ke SQLite
+python -m processing.export_sqlite
 ```
 
-**Output:**
-- `data/processed/galbay_reviews.xlsx` — Excel full 5,25 MB (gitignored)
-- `data/sample/galbay_reviews_sample.xlsx` — Excel sample ~106 KB (di-commit)
+**Output CSV (7 file):**
 
-### Excel Sheet (7 tab)
-
-| Sheet | Isi |
+| File | Isi |
 |---|---|
-| **Overview** | Meta scrape: total, relevan, periode, kategori |
-| **All Reviews** | Semua review (app, score, content, tanggal, is_relevant) |
-| **Relevant Only** | Review berisi keyword galbay (sinyal psikologis) |
-| **Per-App Summary** | Statistik per app: n_reviews, relevant_rate, avg_score |
-| **Keyword Frequency** | Frekuensi 65+ keyword per kategori (diagnosa psikologis) |
-| **Score Distribution** | Cross-tab app × rating 1-5 |
-| **Timeline** | Review per bulan per app (sinyal tren waktu) |
+| `overview.csv` | Meta scrape: total, relevan, periode, kategori |
+| `all_reviews.csv` | Semua review (app, score, content, tanggal, is_relevant) |
+| `relevant_only.csv` | Review berisi keyword galbay (sinyal psikologis) |
+| `per_app_summary.csv` | Statistik per app: n_reviews, relevant_rate, avg_score |
+| `keyword_frequency.csv` | Frekuensi 65+ keyword per kategori (diagnosa psikologis) |
+| `score_distribution.csv` | Cross-tab app × rating 1-5 |
+| `timeline.csv` | Review per bulan per app (sinyal tren waktu) |
 
 ---
 
@@ -241,11 +259,11 @@ gh pr merge --squash --delete-branch=false
 | # | Source | Volume | Relevansi | Status | Tools |
 |---|---|---|---|---|---|
 | 1 | Google Play reviews fintech | Sangat tinggi | Tinggi | ✅ **Aktif** | google-play-scraper |
-| 2 | TikTok komentar #galbay | Tinggi | Sangat tinggi (Gen Z) | 🔲 Stub | TikTokApi/Playwright |
-| 3 | Forum Kaskus + Reddit | Menengah-tinggi | Tinggi | 🔲 Stub | BS4 / PRAW |
-| 4 | Twitter/X post | Tinggi | Tinggi | 🔲 Stub | X API v2 / snscrape |
+| 2 | TikTok komentar #galbay | Tinggi | Sangat tinggi (Gen Z) | ✅ **Aktif** | TikTokApi |
+| 3 | Forum Kaskus + Reddit | Menengah-tinggi | Tinggi | ✅ **Aktif** | BS4 + public JSON |
+| 4 | Twitter/X post | Tinggi | Tinggi | ✅ **Aktif** | Nitter instances |
 | 5 | Google Trends | Rendah (time-series) | Tinggi (narasi) | ✅ **Aktif** | pytrends |
-| 6 | Berita & siaran pers OJK | Rendah-menengah | Tinggi (regulator) | 🔲 Stub | requests + BS4 |
+| 6 | OJK + media (kompas/detik/cnbc) | Rendah-menengah | Tinggi (regulator) | ✅ **Aktif** | BS4 + requests |
 
 ---
 
@@ -293,12 +311,13 @@ gh pr merge --squash --delete-branch=false
 
 | Fase | Waktu | Output |
 |---|---|---|
-| ✅ F1 — Data foundation | Minggu 1-3 | Pipeline scraping jalan, 72K review, Excel multi-sheet |
-| 🔄 F2 — Insight & model | Minggu 3-6 | Risk score, NLP kategori psikologis |
-| 🔲 F3 — MVP web | Minggu 4-8 | Flask dashboard + simulasi cicilan |
-| 🔲 F4 — Pilot B2B | Minggu 8-12 | 1-2 kampus, 1 fintech |
-| 🔲 F5 — Monetisasi | Bulan 4+ | Kontrak B2B pertama |
-| 🔲 F6 — Scraping expand | Berkelanjutan | TikTok, Kaskus/Reddit, OJK news, Twitter |
+| ✅ F1 — Data foundation | Minggu 1-3 | Pipeline scraping jalan, 72K review, 7 CSV |
+| ✅ F2 — Multi-source scraping | Minggu 3-4 | TikTok, Kaskus, Reddit, Twitter, OJK + media |
+| ✅ F3 — Pre-processing | Minggu 4-5 | Validation, sentiment (VADER), NLP, charts, SQLite |
+| 🔄 F4 — Insight & model | Minggu 5-6 | Risk score, NLP kategori psikologis |
+| 🔲 F5 — MVP web | Minggu 6-8 | Flask dashboard + simulasi cicilan |
+| 🔲 F6 — Pilot B2B | Minggu 8-12 | 1-2 kampus, 1 fintech |
+| 🔲 F7 — Monetisasi | Bulan 4+ | Kontrak B2B pertama |
 
 ---
 
@@ -308,12 +327,4 @@ MIT License — lihat [LICENSE](LICENSE).
 
 Scraping dilakukan untuk keperluan akademik/analisis agregat. Data pribadi tidak disimpan; hanya teks, metadata agregat, dan timestamp.
 
----
 
-<div align="center">
-
-**Galbay Predictor** — *Karena gagal bayar bukan soal uang, tapi soal perilaku.*
-
-Made with ❤️ by Kelompok 1 — Analisis Keputusan Bisnis
-
-</div>

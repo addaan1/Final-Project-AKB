@@ -70,6 +70,7 @@ data/processed/**
 !data/sample/.gitkeep
 data/sample/**/*.parquet
 data/sample/**/*.csv.gz
+data/processed/charts/
 
 # ===== Scraping artifacts =====
 *.log

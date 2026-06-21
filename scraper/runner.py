@@ -1,0 +1,100 @@
+"""CLI orchestrator untuk menjalankan scraper.
+
+Penggunaan:
+    python -m scraper.runner --source play_reviews
+    python -m scraper.runner --source google_trends
+    python -m scraper.runner --source all
+    python -m scraper.runner --list
+"""
+from __future__ import annotations
+
+import argparse
+import logging
+import sys
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+log = logging.getLogger("scraper.runner")
+
+
+def get_sources():
+    """Registry source -> (import callable, deskripsi). Lazy import agar
+    stub yang library-nya belum terinstall tidak crash runner."""
+    return {
+        "play_reviews": ("scraper.fintech_reviews:GooglePlayReviewsScraper", "Google Play reviews app fintech (PRIORITAS 1, volume tinggi)"),
+        "google_trends": ("scraper.google_trends:GoogleTrendsScraper", "Tren keyword galbay/paylater/pinjol"),
+        "tiktok": ("scraper.tiktok:TikTokScraper", "Komentar TikTok #galbay #paylater (stub)"),
+        "twitter": ("scraper.twitter:TwitterScraper", "Post X/Twitter keyword galbay (stub)"),
+        "instagram": ("scraper.instagram:InstagramScraper", "Caption/komentar Instagram (stub)"),
+        "forum": ("scraper.forum:ForumScraper", "Kaskus & Reddit thread utang (stub)"),
+        "ojk_news": ("scraper.ojk_news:OjkNewsScraper", "Siaran pers & berita OJK (stub)"),
+    }
+
+
+def load_class(path: str):
+    module_name, class_name = path.split(":")
+    import importlib
+    mod = importlib.import_module(module_name)
+    return getattr(mod, class_name)
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description="Galbay Predictor scraper runner")
+    parser.add_argument("--source", "-s", help="Nama source scraper")
+    parser.add_argument("--count", "-n", type=int, default=400, help="Jumlah review/item per app (default 400)")
+    parser.add_argument("--apps", type=int, default=0, help="Batasi jumlah app (0 = semua)")
+    parser.add_argument("--list", action="store_true", help="Daftar source tersedia")
+    parser.add_argument("--all", action="store_true", help="Jalankan semua source")
+    args = parser.parse_args(argv)
+
+    sources = get_sources()
+
+    if args.list:
+        print("Source tersedia:")
+        for k, v in sources.items():
+            print(f"  {k:15s} — {v[1]}")
+        return 0
+
+    if args.all:
+        targets = list(sources.keys())
+    elif args.source:
+        if args.source not in sources:
+            log.error("Source '%s' tidak dikenal. Pakai --list untuk lihat opsi.", args.source)
+            return 1
+        targets = [args.source]
+    else:
+        parser.print_help()
+        return 1
+
+    summary = {}
+    for src in targets:
+        path, desc = sources[src]
+        log.info("=== Menjalankan %s (%s) ===", src, desc)
+        try:
+            cls = load_class(path)
+            scraper = cls()
+            kwargs = {}
+            if src == "play_reviews":
+                kwargs["count"] = args.count
+                if args.apps:
+                    kwargs["app_limit"] = args.apps
+            result = scraper.run(**kwargs)
+            summary[src] = result
+            log.info("Selesai %s: %s", src, result)
+        except NotImplementedError:
+            log.warning("Source '%s' masih stub (NotImplementedError). Skip.", src)
+            summary[src] = {"status": "stub"}
+        except Exception as e:
+            log.exception("Gagal menjalankan %s: %s", src, e)
+            summary[src] = {"status": "error", "error": str(e)}
+
+    print("\n=== RINGKASAN ===")
+    import json
+    print(json.dumps(summary, ensure_ascii=False, indent=2, default=str))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

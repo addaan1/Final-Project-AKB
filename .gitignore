@@ -62,9 +62,12 @@ $RECYCLE.BIN/
 # ===== Data (big data, tetap lokal; hanya sample kecil yang dikomit) =====
 data/raw/**
 data/processed/**
+!data/raw/.gitkeep
+!data/processed/.gitkeep
 !data/.gitkeep
 !data/README.md
 !data/sample/
+!data/sample/.gitkeep
 data/sample/**/*.parquet
 data/sample/**/*.csv.gz
 

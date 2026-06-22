@@ -70,6 +70,7 @@ data/processed/**
 !data/sample/.gitkeep
 data/sample/**/*.parquet
 data/sample/**/*.csv.gz
+data/processed/charts/
 
 # ===== Scraping artifacts =====
 *.log
@@ -101,3 +102,11 @@ instance/
 
 # ===== Uploads =====
 uploads/
+
+# ===== DVC =====
+# DVC cache files (data asli, besar, hanya ada di remote storage)
+.dvc/cache/
+.dvc/tmp/
+.dvc/config.local
+!data/raw.dvc
+!data/processed.dvc

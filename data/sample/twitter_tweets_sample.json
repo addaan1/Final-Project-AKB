@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "source": "twitter_playwright",
+    "scraped_at": "2026-06-21T18:19:17.238632+00:00",
+    "scraper": "twitter",
+    "n_tweets": 0,
+    "queries": [
+      "galbay",
+      "gagal bayar",
+      "paylater",
+      "pinjol",
+      "ditagih",
+      "pinjaman online",
+      "cicilan"
+    ],
+    "max_tweets_per_query": 5,
+    "per_query": [
+      {
+        "query": "galbay",
+        "n_tweets": 0
+      },
+      {
+        "query": "gagal bayar",
+        "n_tweets": 0
+      },
+      {
+        "query": "paylater",
+        "n_tweets": 0
+      },
+      {
+        "query": "pinjol",
+        "n_tweets": 0
+      },
+      {
+        "query": "ditagih",
+        "n_tweets": 0
+      },
+      {
+        "query": "pinjaman online",
+        "n_tweets": 0
+      },
+      {
+        "query": "cicilan",
+        "n_tweets": 0
+      }
+    ]
+  },
+  "tweets": []
+}

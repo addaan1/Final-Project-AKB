@@ -1,13 +1,9 @@
 Flask==3.0.3
-<<<<<<< HEAD
 dvc[gdrive]==3.67.1
-=======
->>>>>>> origin/main
 python-dotenv==1.0.1
 pytrends==4.9.2
 google-play-scraper==1.2.7
 beautifulsoup4==4.12.3
-<<<<<<< HEAD
 requests==2.34.2
 pandas==2.2.2
 tqdm==4.66.4
@@ -23,9 +19,3 @@ seaborn==0.13.2
 playwright==1.55.0
 # Optional scraper dependency:
 # app-store-scraper==0.3.5
-=======
-requests==2.32.3
-pandas==2.2.2
-tqdm==4.66.4
-lxml==5.2.2
->>>>>>> origin/main

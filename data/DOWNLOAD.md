@@ -1,112 +1,100 @@
-# Download Big Data (DVC + Google Drive)
+# Panduan Mengambil Dataset Besar
 
-Dataset Galbay Predictor terlalu besar untuk GitHub (>100MB). Distribusi utama
-dataset dilakukan lewat **DVC** dengan remote **Google Drive**.
+Dataset Galbay Predictor terlalu besar untuk disimpan langsung di GitHub. Karena itu, dataset dibagikan melalui **Google Drive tim**, sementara konfigurasi **DVC** tetap dipertahankan di repo untuk struktur proyek dan kemungkinan sinkronisasi otomatis di tahap berikutnya.
 
-## Link folder Drive
+## Folder Google Drive tim
 
-**Folder share tim:** https://drive.google.com/drive/folders/1Rgs0cgz70h0gMXjMTHjNjhFwjMHdI4T_
+Folder utama tim:
 
-Catatan:
+`https://drive.google.com/drive/folders/1Rgs0cgz70h0gMXjMTHjNjhFwjMHdI4T_`
 
-- Folder share di atas adalah pintu masuk manusia untuk tim.
-- Cache object DVC disimpan di subfolder khusus `dvc-cache` di dalam folder tersebut.
-- DVC **tidak** mengandalkan akses "anyone with the link". Setiap teammate harus
-  dishare langsung ke akun Google masing-masing.
+## Alur yang dipakai tim saat ini
 
-## Cara utama: `dvc pull`
+Untuk kondisi terbaru proyek, jalur yang paling disarankan adalah **manual download dari Google Drive**.
 
-### 1. Clone repo dan install dependency
+### 1. Clone repository
 
 ```powershell
 git clone https://github.com/addaan1/Final-Project-AKB.git
 cd Final-Project-AKB
+```
+
+### 2. Install dependency
+
+```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-### 2. Siapkan OAuth client Google Drive
+### 3. Download dataset besar dari Google Drive
 
-1. Buka `https://console.cloud.google.com`.
-2. Buat atau pilih project Google Cloud.
-3. Enable **Google Drive API**.
-4. Buat **OAuth 2.0 Client ID** dengan tipe **Desktop app**.
-5. Copy `client_id` dan `client_secret` ke `.env`.
+Setelah repository berhasil di-clone:
+
+1. buka folder Google Drive tim;
+2. download dataset versi terbaru yang sudah disinkronkan;
+3. pastikan folder `raw/` dan `processed/` ikut terbawa;
+4. pindahkan hasil download ke dalam folder `data/`.
+
+Struktur akhirnya minimal seperti ini:
+
+```text
+Final-Project-AKB/
+  data/
+    raw/
+    processed/
+```
+
+### 4. Cek file yang paling penting
+
+File yang disarankan untuk langsung dipakai:
+
+- `data/processed/all_reviews.csv`
+- `data/processed/relevant_only.csv`
+- `data/processed/per_app_summary.csv`
+- `data/processed/timeline.csv`
+- `data/processed/validated_forum.csv`
+- `data/processed/validated_news.csv`
+
+### 5. Jalankan aplikasi atau analisis
 
 ```powershell
-copy .env.example .env
+python run.py
 ```
 
-Isi minimal dua field ini di `.env`:
+Atau langsung buka file CSV untuk eksplorasi data.
 
-```env
-GDRIVE_CLIENT_ID=your-client-id.apps.googleusercontent.com
-GDRIVE_CLIENT_SECRET=your-client-secret
-```
+## Tentang DVC
 
-### 3. Tulis config lokal DVC
-
-```powershell
-python scripts/setup_dvc_gdrive.py
-```
-
-Script ini akan:
-
-- membaca `GDRIVE_CLIENT_ID` dan `GDRIVE_CLIENT_SECRET` dari `.env`,
-- menyimpan nilainya ke `.dvc/config.local`,
-- menjaga secret tetap lokal dan tidak ikut ke Git.
-
-### 4. Pull dataset
-
-```powershell
-dvc pull
-```
-
-Saat `dvc pull` pertama:
-
-- browser akan membuka Google consent screen,
-- login pakai akun Google yang **sudah di-share** ke folder Drive project,
-- approve akses, lalu kembali ke terminal.
-
-Jika consent ditutup atau ditolak, DVC akan gagal dengan error auth rejected.
-Jalankan `dvc pull` lagi dan selesaikan login.
-
-## Output yang akan dipulihkan
-
-- `data/raw/`
-- `data/processed/`
-
-Tracked output tetap memakai:
+Repository ini tetap menyimpan:
 
 - `data/raw.dvc`
 - `data/processed.dvc`
 
-## Fallback manual
+Artinya struktur proyek masih kompatibel dengan workflow DVC. Namun untuk update dataset terbaru saat ini, tim belum mengandalkan `dvc push` sebagai jalur utama karena akses remote Google Drive masih belum stabil dari sesi kerja ini.
 
-Gunakan ini hanya kalau setup OAuth benar-benar belum siap.
+## Jika nanti DVC sudah aktif lagi
 
-1. Buka folder Drive di atas.
-2. Download isi `raw/` dan `processed/`.
-3. Letakkan hasil download ke:
+Kalau remote DVC sudah aktif penuh, anggota tim bisa memakai alur berikut:
 
-```text
-Final-Project-AKB/
-└── data/
-    ├── raw/
-    └── processed/
+```powershell
+copy .env.example .env
+python scripts/setup_dvc_gdrive.py
+python -m dvc pull
 ```
 
-Fallback manual tidak menggantikan workflow DVC dan tidak memverifikasi versi
-cache object yang dipakai repo.
+Pada alur ini:
 
-## Troubleshooting singkat
+- setiap anggota tim tetap harus punya akses ke folder Google Drive;
+- `.dvc/config.local` bersifat lokal dan tidak boleh di-commit;
+- `python scripts/setup_dvc_gdrive.py` akan menulis konfigurasi OAuth lokal untuk mesin masing-masing.
 
-- `dvc` tidak dikenali:
-  aktifkan virtualenv lalu jalankan `pip install -r requirements.txt`.
-- Browser terbuka tapi gagal login:
-  pastikan akun Google yang dipakai sudah dishare ke folder Drive project.
-- Muncul `Authentication request was rejected`:
-  consent screen ditutup/ditolak; jalankan `dvc pull` lagi.
-- `.dvc/config.local` tidak ada:
-  jalankan `python scripts/setup_dvc_gdrive.py` setelah `.env` diisi.
+## Ringkasan singkat untuk teman satu tim
+
+Kalau tujuan temanmu hanya ingin cepat dapat dataset besar:
+
+1. clone repo GitHub;
+2. install dependency;
+3. download dataset besar dari folder Google Drive tim;
+4. taruh ke `data/raw/` dan `data/processed/`;
+5. mulai analisis dari `all_reviews.csv` dan `relevant_only.csv`.

@@ -1,11 +1,10 @@
-"""Build CSV dari data review Google Play.
+"""Build curated CSV outputs from Google Play review data.
 
-Output 3 CSV di data/processed/:
-1. relevant_only.csv   — review galbay relevan (35K rows, 8 MB) ← YANG KUNCI
-2. per_app_summary.csv — statistik per app (44 rows, <1 MB)
-3. timeline.csv        — review per bulan per app (50 rows, <1 MB)
-
-reviews_with_sentiment.csv dibuat oleh sentiment.py (349K rows, 78 MB) ← YANG UTAMA
+Output utama di data/processed/:
+1. all_reviews.csv     - master review table
+2. relevant_only.csv   - galbay-only filtered table
+3. per_app_summary.csv - per-app summary statistics
+4. timeline.csv        - monthly trend table
 
 Penggunaan:
     python -m processing.build_csv
@@ -18,15 +17,15 @@ import logging
 from pathlib import Path
 
 import pandas as pd
-from config import RAW_DIR, PROCESSED_DIR
-from scraper.fintech_reviews import GALBAY_KEYWORDS
+
+from config import PROCESSED_DIR, RAW_DIR
 
 log = logging.getLogger("processing.build_csv")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 
 
 def load_reviews(raw_path: Path) -> tuple[pd.DataFrame, dict]:
-    """Load JSON raw dan return (DataFrame, meta)."""
+    """Load raw JSON and return (DataFrame, metadata)."""
     log.info("Loading %s", raw_path)
     with raw_path.open("r", encoding="utf-8") as f:
         data = json.load(f)
@@ -48,71 +47,99 @@ def load_reviews(raw_path: Path) -> tuple[pd.DataFrame, dict]:
 
 
 def build_all_reviews(df: pd.DataFrame) -> pd.DataFrame:
-    """Semua review (data utama)."""
-    cols = ["query", "category", "app_name", "score", "content", "content_len",
-            "thumbs_up", "date", "year_month", "is_relevant", "matched_categories_str",
-            "n_matched_categories", "replied", "version"]
+    """Master review table for broad analysis."""
+    cols = [
+        "query",
+        "category",
+        "app_name",
+        "score",
+        "content",
+        "content_len",
+        "thumbs_up",
+        "date",
+        "year_month",
+        "is_relevant",
+        "matched_categories_str",
+        "n_matched_categories",
+        "replied",
+        "version",
+    ]
     cols = [c for c in cols if c in df.columns]
-    out = df[cols].copy()
-    return out.sort_values(["query", "date"], ascending=[True, False])
+    return df[cols].copy().sort_values(["query", "date"], ascending=[True, False])
 
 
 def build_relevant_only(df: pd.DataFrame) -> pd.DataFrame:
-    """Hanya review berisi keyword galbay (sinyal psikologis)."""
+    """Filtered table containing only galbay-related reviews."""
     if "is_relevant" not in df.columns:
         return pd.DataFrame()
     rel = df[df["is_relevant"]].copy()
-    cols = ["query", "category", "app_name", "score", "content", "content_len",
-            "thumbs_up", "date", "year_month", "matched_categories_str",
-            "n_matched_categories"]
+    cols = [
+        "query",
+        "category",
+        "app_name",
+        "score",
+        "content",
+        "content_len",
+        "thumbs_up",
+        "date",
+        "year_month",
+        "matched_categories_str",
+        "n_matched_categories",
+    ]
     cols = [c for c in cols if c in rel.columns]
     return rel[cols].sort_values(["query", "date"], ascending=[True, False])
 
 
 def build_per_app_summary(df: pd.DataFrame) -> pd.DataFrame:
-    """Statistik per app (agregat untuk analisis)."""
-    g = df.groupby(["query", "category", "app_name"]).agg(
-        n_reviews=("content", "count"),
-        n_relevant=("is_relevant", "sum"),
-        avg_score=("score", "mean"),
-        median_score=("score", "median"),
-        n_score_1=("score", lambda s: int((s == 1).sum())),
-        n_score_5=("score", lambda s: int((s == 5).sum())),
-        avg_content_len=("content_len", "mean"),
-        date_min=("at", "min"),
-        date_max=("at", "max"),
-    ).reset_index()
-    g["relevant_rate"] = (g["n_relevant"] / g["n_reviews"] * 100).round(2)
-    g["avg_score"] = g["avg_score"].round(2)
-    g["median_score"] = g["median_score"].round(2)
-    g["avg_content_len"] = g["avg_content_len"].round(1)
-    g["date_min"] = g["date_min"].dt.strftime("%Y-%m-%d")
-    g["date_max"] = g["date_max"].dt.strftime("%Y-%m-%d")
-    return g.sort_values("relevant_rate", ascending=False)
+    """Aggregate summary statistics per app."""
+    grouped = (
+        df.groupby(["query", "category", "app_name"])
+        .agg(
+            n_reviews=("content", "count"),
+            n_relevant=("is_relevant", "sum"),
+            avg_score=("score", "mean"),
+            median_score=("score", "median"),
+            n_score_1=("score", lambda s: int((s == 1).sum())),
+            n_score_5=("score", lambda s: int((s == 5).sum())),
+            avg_content_len=("content_len", "mean"),
+            date_min=("at", "min"),
+            date_max=("at", "max"),
+        )
+        .reset_index()
+    )
+    grouped["relevant_rate"] = (grouped["n_relevant"] / grouped["n_reviews"] * 100).round(2)
+    grouped["avg_score"] = grouped["avg_score"].round(2)
+    grouped["median_score"] = grouped["median_score"].round(2)
+    grouped["avg_content_len"] = grouped["avg_content_len"].round(1)
+    grouped["date_min"] = grouped["date_min"].dt.strftime("%Y-%m-%d")
+    grouped["date_max"] = grouped["date_max"].dt.strftime("%Y-%m-%d")
+    return grouped.sort_values("relevant_rate", ascending=False)
 
 
 def build_timeline(df: pd.DataFrame) -> pd.DataFrame:
-    """Review per bulan per app (tren waktu)."""
+    """Monthly review counts per app."""
     if "year_month" not in df.columns or "query" not in df.columns:
         return pd.DataFrame()
-    tl = df.groupby(["year_month", "query"]).size().reset_index(name="n_reviews")
-    tl = tl.pivot(index="year_month", columns="query", values="n_reviews").fillna(0).astype(int)
-    tl["Total"] = tl.sum(axis=1)
-    tl = tl.reset_index().sort_values("year_month")
-    return tl
+    timeline = df.groupby(["year_month", "query"]).size().reset_index(name="n_reviews")
+    timeline = timeline.pivot(index="year_month", columns="query", values="n_reviews").fillna(0).astype(int)
+    timeline["Total"] = timeline.sum(axis=1)
+    return timeline.reset_index().sort_values("year_month")
 
 
 def write_csvs(df: pd.DataFrame, out_dir: Path) -> dict[str, Path]:
-    """Tulis 3 CSV ke out_dir. Return dict {name: path}."""
+    """Write curated CSV outputs to out_dir."""
     out_dir.mkdir(parents=True, exist_ok=True)
-    log.info("Writing 3 CSV -> %s", out_dir)
+    log.info("Writing curated CSV package -> %s", out_dir)
 
-    files = {}
-    for name, frame in [
+    files: dict[str, Path] = {}
+    outputs = [
+        ("all_reviews", build_all_reviews(df)),
         ("relevant_only", build_relevant_only(df)),
         ("per_app_summary", build_per_app_summary(df)),
         ("timeline", build_timeline(df)),
-    ]:
+    ]
+
+    for name, frame in outputs:
         path = out_dir / f"{name}.csv"
         frame.to_csv(path, index=False, encoding="utf-8")
         files[name] = path
@@ -122,24 +149,21 @@ def write_csvs(df: pd.DataFrame, out_dir: Path) -> dict[str, Path]:
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Build 3 CSV dari review JSON")
+    parser = argparse.ArgumentParser(description="Build curated CSV package from review JSON")
     parser.add_argument("--input", default=str(Path(RAW_DIR) / "play_reviews_all.json"), help="Path JSON raw")
     parser.add_argument("--output", default=str(PROCESSED_DIR), help="Dir output CSV")
     args = parser.parse_args(argv)
 
-    df, meta = load_reviews(Path(args.input))
+    df, _meta = load_reviews(Path(args.input))
     files = write_csvs(df, Path(args.output))
 
-    print("\n=== RINGKASAN CSV ===")
+    print("\n=== CURATED CSV PACKAGE ===")
     print(f"Total review : {len(df)}")
     print(f"Relevant     : {int(df['is_relevant'].sum())} ({df['is_relevant'].mean()*100:.2f}%)")
     print(f"Apps         : {df['query'].nunique()}")
     print(f"Output dir   : {args.output}")
     for name, path in files.items():
-        print(f"  {name:22s} {path.stat().st_size/1e3:8.1f} KB")
-    print()
-    print("File utama (dibuat oleh sentiment.py):")
-    print(f"  reviews_with_sentiment.csv  ← GUNAKAN INI untuk analisis")
+        print(f"  {name:22s} {path.stat().st_size / 1e3:8.1f} KB")
     return 0
 
 

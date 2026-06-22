@@ -82,32 +82,9 @@ def main(argv=None):
         if reviews:
             df = pd.DataFrame(reviews)
             df["content_clean"] = preprocess_texts(df["content"].fillna("").tolist())
-            df.to_csv(out / "reviews_preprocessed.csv", index=False, encoding="utf-8")
             results["reviews"] = len(df)
 
-    tiktok_path = Path(RAW_DIR) / "tiktok_comments.json"
-    if tiktok_path.exists():
-        with tiktok_path.open("r", encoding="utf-8") as f:
-            data = json.load(f)
-        comments = data.get("comments", [])
-        if comments:
-            df = pd.DataFrame(comments)
-            df["text_clean"] = preprocess_texts(df["text"].fillna("").tolist())
-            df.to_csv(out / "tiktok_preprocessed.csv", index=False, encoding="utf-8")
-            results["tiktok"] = len(df)
-
-    twitter_path = Path(RAW_DIR) / "twitter_tweets.json"
-    if twitter_path.exists():
-        with twitter_path.open("r", encoding="utf-8") as f:
-            data = json.load(f)
-        tweets = data.get("tweets", [])
-        if tweets:
-            df = pd.DataFrame(tweets)
-            df["text_clean"] = preprocess_texts(df["text"].fillna("").tolist())
-            df.to_csv(out / "twitter_preprocessed.csv", index=False, encoding="utf-8")
-            results["twitter"] = len(df)
-
-    print("\n=== PREPROCESSING RESULTS ===")
+    print("\n=== PREPROCESSING RESULTS (in-memory, no CSV saved) ===")
     for k, v in results.items():
         print(f"  {k:15s}: {v} rows")
     return 0

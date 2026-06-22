@@ -1,15 +1,11 @@
 """Build CSV dari data review Google Play.
 
-Output 4 CSV utama di data/processed/:
-1. all_reviews.csv    — semua review (data utama, ~11 MB)
-2. relevant_only.csv  — review berisi keyword galbay (sinyal psikologis)
-3. per_app_summary.csv — statistik per app (agregat untuk analisis)
-4. timeline.csv       — review per bulan per app (tren waktu)
+Output 3 CSV di data/processed/:
+1. relevant_only.csv   — review galbay relevan (35K rows, 8 MB) ← YANG KUNCI
+2. per_app_summary.csv — statistik per app (44 rows, <1 MB)
+3. timeline.csv        — review per bulan per app (50 rows, <1 MB)
 
-CSV lain (overview, keyword_frequency, score_distribution) dihapus karena:
-- overview: info sudah ada di meta JSON & README
-- keyword_frequency: bisa di-generate on-demand dari all_reviews
-- score_distribution: mirip per_app_summary, bisa di-generate
+reviews_with_sentiment.csv dibuat oleh sentiment.py (349K rows, 78 MB) ← YANG UTAMA
 
 Penggunaan:
     python -m processing.build_csv
@@ -107,13 +103,12 @@ def build_timeline(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def write_csvs(df: pd.DataFrame, out_dir: Path) -> dict[str, Path]:
-    """Tulis 4 CSV utama ke out_dir. Return dict {name: path}."""
+    """Tulis 3 CSV ke out_dir. Return dict {name: path}."""
     out_dir.mkdir(parents=True, exist_ok=True)
-    log.info("Writing 4 CSV utama -> %s", out_dir)
+    log.info("Writing 3 CSV -> %s", out_dir)
 
     files = {}
     for name, frame in [
-        ("all_reviews", build_all_reviews(df)),
         ("relevant_only", build_relevant_only(df)),
         ("per_app_summary", build_per_app_summary(df)),
         ("timeline", build_timeline(df)),
@@ -127,7 +122,7 @@ def write_csvs(df: pd.DataFrame, out_dir: Path) -> dict[str, Path]:
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Build 4 CSV utama dari review JSON")
+    parser = argparse.ArgumentParser(description="Build 3 CSV dari review JSON")
     parser.add_argument("--input", default=str(Path(RAW_DIR) / "play_reviews_all.json"), help="Path JSON raw")
     parser.add_argument("--output", default=str(PROCESSED_DIR), help="Dir output CSV")
     args = parser.parse_args(argv)
@@ -135,13 +130,16 @@ def main(argv=None):
     df, meta = load_reviews(Path(args.input))
     files = write_csvs(df, Path(args.output))
 
-    print("\n=== RINGKASAN CSV (4 file utama) ===")
+    print("\n=== RINGKASAN CSV ===")
     print(f"Total review : {len(df)}")
     print(f"Relevant     : {int(df['is_relevant'].sum())} ({df['is_relevant'].mean()*100:.2f}%)")
     print(f"Apps         : {df['query'].nunique()}")
     print(f"Output dir   : {args.output}")
     for name, path in files.items():
         print(f"  {name:22s} {path.stat().st_size/1e3:8.1f} KB")
+    print()
+    print("File utama (dibuat oleh sentiment.py):")
+    print(f"  reviews_with_sentiment.csv  ← GUNAKAN INI untuk analisis")
     return 0
 
 

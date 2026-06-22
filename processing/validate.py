@@ -1,7 +1,7 @@
 """Data validation & deduplication.
 
 Menghapus duplikat berdasarkan ID unik per source, validasi field required,
-handle missing data.
+handle missing data. Hanya validasi in-memory, tidak menyimpan CSV.
 
 Penggunaan:
     python -m processing.validate
@@ -81,7 +81,7 @@ def main(argv=None):
 
     results = {}
 
-    # Reviews
+    # Reviews — validasi saja, tidak simpan CSV (sudah ada di sentiment.py)
     reviews_path = Path(RAW_DIR) / "play_reviews_all.json"
     if reviews_path.exists():
         with reviews_path.open("r", encoding="utf-8") as f:
@@ -89,7 +89,6 @@ def main(argv=None):
         df = pd.DataFrame(data.get("reviews", []))
         if not df.empty:
             df = validate_reviews(df)
-            df.to_csv(out / "validated_reviews.csv", index=False, encoding="utf-8")
             results["reviews"] = len(df)
 
     # TikTok
@@ -100,7 +99,6 @@ def main(argv=None):
         df = pd.DataFrame(data.get("comments", []))
         if not df.empty:
             df = validate_tiktok(df)
-            df.to_csv(out / "validated_tiktok.csv", index=False, encoding="utf-8")
             results["tiktok"] = len(df)
 
     # Forum
@@ -111,7 +109,6 @@ def main(argv=None):
         df = pd.DataFrame(data.get("all", []))
         if not df.empty:
             df = validate_forum(df)
-            df.to_csv(out / "validated_forum.csv", index=False, encoding="utf-8")
             results["forum"] = len(df)
 
     # Twitter
@@ -122,7 +119,6 @@ def main(argv=None):
         df = pd.DataFrame(data.get("tweets", []))
         if not df.empty:
             df = validate_twitter(df)
-            df.to_csv(out / "validated_twitter.csv", index=False, encoding="utf-8")
             results["twitter"] = len(df)
 
     # News
@@ -133,10 +129,9 @@ def main(argv=None):
         df = pd.DataFrame(data.get("all", []))
         if not df.empty:
             df = validate_news(df)
-            df.to_csv(out / "validated_news.csv", index=False, encoding="utf-8")
             results["news"] = len(df)
 
-    print("\n=== VALIDATION RESULTS ===")
+    print("\n=== VALIDATION RESULTS (in-memory, no CSV saved) ===")
     for k, v in results.items():
         print(f"  {k:15s}: {v} rows")
     return 0

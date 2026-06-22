@@ -47,13 +47,13 @@ Data tren hanya bertindak sebagai **termometer** (menunjukkan gejala). Galbay Pr
 
 | Metrik | Nilai |
 |---|---|
+| **Sumber data** | **Google Play Store** (single source) |
 | **Total review** | 349.200 |
 | **App fintech** | 44 (paylater, e-wallet, e-commerce, pinjol, P2P, bank digital, banking, investasi) |
 | **Review relevan galbay** | 35.968 (10,30%) |
 | **Keyword psikologis** | 65+ terkelompok dalam 7 kategori |
-| **Multi-source** | Google Play + Kaskus (152) + News (163) + Blog (44) |
 | **Format** | JSON raw → 4 CSV + SQLite DB (74 MB) |
-| **Distribusi** | Google Drive via DVC (lihat `data/DOWNLOAD.md`) |
+| **Distribusi** | Google Drive (lihat `data/DOWNLOAD.md`) |
 
 ### Aplikasi yang di-scrape (44 app)
 
@@ -127,10 +127,10 @@ galbay-predictor/
 │
 ├── processing/                   # Pre-processing & analisis data mentah
 │   ├── __init__.py
-│   ├── build_csv.py              # ⭐ JSON → 4 CSV utama
-│   ├── validate.py               # Deduplication & validation
-│   ├── sentiment.py              # VADER sentiment analysis (NLTK)
-│   ├── preprocess.py             # NLP preprocessing (slang, cleaning)
+│   ├── build_csv.py              # JSON → 3 CSV (relevant_only, per_app_summary, timeline)
+│   ├── validate.py               # Deduplication & validation (in-memory)
+│   ├── sentiment.py              # ⭐ VADER sentiment → reviews_with_sentiment.csv
+│   ├── preprocess.py             # NLP preprocessing (in-memory)
 │   ├── visualize.py              # matplotlib/seaborn charts
 │   └── export_sqlite.py          # Export ke SQLite database
 │
@@ -210,36 +210,29 @@ python -m scraper.runner --all
 ### Build CSV + Analisis
 
 ```powershell
-# Generate 7 CSV dari review JSON
+# 1. Build 3 CSV (relevant_only, per_app_summary, timeline)
 python -m processing.build_csv
 
-# Data validation & deduplication
-python -m processing.validate
-
-# Sentiment analysis (VADER)
+# 2. Sentiment analysis (VADER) → reviews_with_sentiment.csv
 python -m processing.sentiment
 
-# NLP preprocessing (slang normalization, cleaning)
-python -m processing.preprocess
-
-# Visualisasi (charts PNG)
+# 3. Visualisasi (charts PNG)
 python -m processing.visualize
 
-# Export ke SQLite
+# 4. Export ke SQLite
 python -m processing.export_sqlite
 ```
 
-**Output CSV (7 file):**
+**Output CSV (4 file — sudah disederhanakan):**
 
-| File | Isi |
-|---|---|
-| `overview.csv` | Meta scrape: total, relevan, periode, kategori |
-| `all_reviews.csv` | Semua review (app, score, content, tanggal, is_relevant) |
-| `relevant_only.csv` | Review berisi keyword galbay (sinyal psikologis) |
-| `per_app_summary.csv` | Statistik per app: n_reviews, relevant_rate, avg_score |
-| `keyword_frequency.csv` | Frekuensi 65+ keyword per kategori (diagnosa psikologis) |
-| `score_distribution.csv` | Cross-tab app × rating 1-5 |
-| `timeline.csv` | Review per bulan per app (sinyal tren waktu) |
+| File | Rows | Size | Fungsi |
+|---|---|---|---|
+| `reviews_with_sentiment.csv` | 349.200 | 78 MB | **FILE UTAMA** — semua review + sentiment score |
+| `relevant_only.csv` | 35.968 | 8 MB | **FILE KUNCI** — hanya review galbay relevan |
+| `per_app_summary.csv` | 44 | <1 MB | Ringkasan statistik per app |
+| `timeline.csv` | 50 | <1 MB | Tren review per bulan |
+
+> **Yang dipakai untuk analisis:** `reviews_with_sentiment.csv` (semua data) atau `relevant_only.csv` (hanya yang relevan galbay).
 
 ---
 
@@ -275,19 +268,21 @@ gh pr merge --squash --delete-branch=false
 
 ---
 
-## 🌐 Sumber Data & Prioritas
+## 🌐 Sumber Data
 
-| # | Source | Volume | Relevansi | Status | Tools |
-|---|---|---|---|---|---|
-| 1 | Google Play reviews fintech (44 app) | Sangat tinggi (349K) | Tinggi | ✅ **Aktif** | google-play-scraper |
-| 2 | Apple App Store reviews iOS (15 app) | Menengah (estimasi 75K) | Tinggi | ⚠️ 0 review (appId) | app_store_scraper |
-| 3 | TikTok komentar #galbay | Tinggi | Sangat tinggi (Gen Z) | ⚠️ Headless blocked | Playwright |
-| 4 | Forum Kaskus + Reddit | Menengah-tinggi (152) | Tinggi | ✅ **Aktif** | Playwright + public JSON |
-| 5 | Twitter/X post | Tinggi | Tinggi | ⚠️ Login wall | Playwright |
-| 6 | Google Trends | Rendah (time-series) | Tinggi (narasi) | ✅ **Aktif** | pytrends |
-| 7 | OJK + 12 media besar | Rendah-menengah (163) | Tinggi (regulator) | ✅ **Aktif** | BS4 + requests |
-| 8 | Blog posts (Medium + Dailysia) | Rendah (44) | Menengah | ✅ **Aktif** | BS4 + requests |
-| 9 | YouTube comments | Tinggi (10K+) | Tinggi | ⚠️ Butuh API key | YouTube Data API v3 |
+**Sumber utama: Google Play Store** — 349.200 review dari 44 aplikasi fintech Indonesia.
+
+| # | Source | Volume | Status | Tools |
+|---|---|---|---|---|
+| 1 | **Google Play reviews** (44 app) | **349.200 review** | ✅ **Aktif (sumber utama)** | google-play-scraper |
+| 2 | Google Trends | Time-series 12 bulan | ✅ Aktif (pelengkap) | pytrends |
+| 3 | Forum Kaskus | 152 threads | ⚠️ Data tersedia, belum masuk CSV | Playwright |
+| 4 | OJK + media | 163 artikel | ⚠️ Data tersedia, belum masuk CSV | BS4 + requests |
+| 5 | Blog posts | 44 post | ⚠️ Data tersedia, belum masuk CSV | BS4 + requests |
+| 6 | TikTok, Twitter, Reddit, YouTube | 0 | ❌ Blocked/login-wall/API key | - |
+| 7 | Apple App Store | 0 | ❌ API return 0 review | app_store_scraper |
+
+> **Catatan:** Dataset utama berasal dari **Google Play Store review** (single source). Data dari Kaskus, OJK, dan blog tersedia di `data/raw/` namun belum diintegrasikan ke CSV utama.
 
 ---
 
@@ -335,9 +330,9 @@ gh pr merge --squash --delete-branch=false
 
 | Fase | Waktu | Output |
 |---|---|---|
-| ✅ F1 — Data foundation | Minggu 1-3 | Pipeline scraping jalan, 72K review, 7 CSV |
-| ✅ F2 — Multi-source scraping | Minggu 3-4 | TikTok, Kaskus, Reddit, Twitter, OJK + media |
-| ✅ F3 — Pre-processing | Minggu 4-5 | Validation, sentiment (VADER), NLP, charts, SQLite |
+| ✅ F1 — Data foundation | Minggu 1-3 | Pipeline scraping Google Play, 349K review, 4 CSV |
+| ✅ F2 — Pre-processing | Minggu 3-4 | Validation, sentiment (VADER), charts, SQLite |
+| ✅ F3 — Big data pipeline | Minggu 4-5 | DVC + Google Drive, 44 app fintech |
 | 🔄 F4 — Insight & model | Minggu 5-6 | Risk score, NLP kategori psikologis |
 | 🔲 F5 — MVP web | Minggu 6-8 | Flask dashboard + simulasi cicilan |
 | 🔲 F6 — Pilot B2B | Minggu 8-12 | 1-2 kampus, 1 fintech |

@@ -1,7 +1,7 @@
 # Download Big Data (Google Drive)
 
-Dataset Galbay Predictor terlalu besar untuk GitHub (>100MB). Kami menggunakan
-**DVC (Data Version Control) + Google Drive** untuk distribusi big data.
+Dataset Galbay Predictor terlalu besar untuk GitHub (>100MB). Data disimpan di
+**Google Drive** untuk distribusi.
 
 ## Link Google Drive
 
@@ -34,25 +34,36 @@ galbay-predictor-data/
 
 ## Cara download
 
-### Opsi 1: Manual download (paling simple)
-1. Buka link Google Drive di atas
-2. Pilih folder yang mau didownload (`raw/` atau `processed/`)
-3. Klik "Download" atau drag ke local
+### Download manual (satu-satunya cara)
 
-### Opsi 2: DVC pull (rekomendasi)
+1. Buka link Google Drive di atas
+2. Klik folder `raw/` → Download semua file (atau pilih yang dibutuhkan)
+3. Klik folder `processed/` → Download semua file
+4. Extract/letakkan di folder project:
+   ```
+   Final-Project-AKB/
+   ── data/
+       ├── raw/          ← letakkan file raw di sini
+       └── processed/    ← letakkan file processed di sini
+   ```
+
+### Setelah download
+
 ```bash
 # Clone repo
 git clone https://github.com/addaan1/Final-Project-AKB.git
 cd Final-Project-AKB
 
-# Install DVC
-pip install dvc dvc-gdrive
+# Install dependencies
+pip install -r requirements.txt
 
-# Authenticate Google Drive (browser akan terbuka)
-# Ikuti instruksi di layar untuk login dengan akun Google yang punya akses ke folder
+# Download data dari Google Drive (lihat link di atas)
+# Letakkan di folder data/raw/ dan data/processed/
 
-# Pull data dari Google Drive
-dvc pull
+# Jalankan processing (opsional, jika ingin rebuild CSV)
+python processing/build_csv.py
+python processing/sentiment.py
+python processing/visualize.py
 ```
 
 ## Ringkasan dataset
@@ -72,19 +83,8 @@ dvc pull
 - Negative: 6.481
 - Neutral: 302.051
 
-## Update dataset
-
-Jika dataset di-update (re-scrape), jalankan:
-```bash
-dvc add data/raw data/processed
-dvc push
-```
-
-Ini akan upload file baru ke Google Drive dengan versioning DVC.
-
 ## Catatan
 
-- File di Google Drive hanya untuk distribusi, bukan versi terbaru
+- File di Google Drive adalah snapshot dataset
 - Versi terbaru selalu di repo ini (lihat `data/raw/` dan `data/processed/`)
-- Untuk kontribusi: clone repo → edit → `dvc push` → commit `.dvc` files
-- Google Drive folder di-share read-only untuk publik
+- Google Drive folder di-share untuk akses tim

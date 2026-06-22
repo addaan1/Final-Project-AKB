@@ -50,15 +50,35 @@ File mentah pendukung bisa mencakup:
 
 Tabel turunan yang lebih berat disimpan di `data/processed/advanced/` supaya folder utama tetap ringkas dan mudah dibaca tim.
 
+## Cakupan aplikasi
+
+Data review utama dikumpulkan dari `44` aplikasi fintech Indonesia dalam kategori:
+
+- `paylater`
+- `ecommerce`
+- `ewallet`
+- `pinjol`
+- `bank_digital`
+- `mobile_banking`
+- `p2p_lending`
+- `investasi`
+- `kartu_kredit`
+- `koperasi`
+- `travel`
+
+Daftar aplikasinya diringkas di [README.md](../README.md).
+
 ## Cara mengambil dataset
 
-Untuk kondisi proyek saat ini, cara yang paling direkomendasikan adalah:
+Jalur utama pengambilan dataset adalah melalui DVC:
 
 1. clone repository;
-2. install dependency dengan `pip install -r requirements.txt`;
-3. buka folder Google Drive tim;
-4. download dataset besar terbaru;
-5. salin hasil download ke `data/raw/` dan `data/processed/`.
+2. buat dan aktifkan virtual environment;
+3. install dependency dengan `pip install -r requirements.txt`;
+4. copy `.env.example` menjadi `.env`;
+5. isi `GDRIVE_CLIENT_ID` dan `GDRIVE_CLIENT_SECRET`;
+6. jalankan `python scripts/setup_dvc_gdrive.py`;
+7. jalankan `python -m dvc pull`.
 
 Detail langkahnya tersedia di [DOWNLOAD.md](DOWNLOAD.md).
 

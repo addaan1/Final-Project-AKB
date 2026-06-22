@@ -52,6 +52,15 @@ MEDIA_SOURCES: dict[str, str] = {
     "kompas": "https://search.kompas.com/search",
     "detik": "https://www.detik.com/search/searchall",
     "cnbc": "https://www.cnbcindonesia.com/search",
+    "antara": "https://www.antaranews.com/search",
+    "jawapos": "https://www.jawapos.com/search",
+    "tribunnews": "https://www.tribunnews.com/search",
+    "republika": "https://republika.co.id/search",
+    "suara": "https://www.suara.com/search",
+    "kontan": "https://www.kontan.co.id/search",
+    "tempo": "https://tempo.co/search",
+    "merdeka": "https://www.merdeka.com/search",
+    "jpnn": "https://www.jpnn.com/search",
 }
 
 HEADERS = {
@@ -162,6 +171,24 @@ class OjkNewsScraper(BaseScraper):
                 article_links.append({"url": href, "title": title})
             elif media_name == "cnbc" and "cnbcindonesia.com" in href and "connect.detik" not in href and "oauth" not in href and len(title) > 15:
                 article_links.append({"url": href, "title": title})
+            elif media_name == "antara" and "antaranews.com" in href and "/berita/" in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
+            elif media_name == "jawapos" and "jawapos.com" in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
+            elif media_name == "tribunnews" and "tribunnews.com" in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
+            elif media_name == "republika" and "republika.co.id" in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
+            elif media_name == "suara" and "suara.com" in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
+            elif media_name == "kontan" and "kontan.co.id" in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
+            elif media_name == "tempo" and "tempo.co" in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
+            elif media_name == "merdeka" and "merdeka.com" in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
+            elif media_name == "jpnn" and "jpnn.com" in href and len(title) > 15:
+                article_links.append({"url": href, "title": title})
 
         # Dedup by URL
         seen = set()
@@ -195,7 +222,10 @@ class OjkNewsScraper(BaseScraper):
         elif media_name == "cnbc":
             content_div = soup.find("div", class_=re.compile(r"detail__body|article|content", re.I))
         else:
-            content_div = None
+            content_div = (
+                soup.find("div", class_=re.compile(r"content|article|post|detail|berita", re.I))
+                or soup.find("article")
+            )
 
         if not content_div:
             content_div = soup.find("article") or soup.find("main")

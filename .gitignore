@@ -102,3 +102,10 @@ instance/
 
 # ===== Uploads =====
 uploads/
+
+# ===== DVC =====
+# DVC cache files (data asli, besar, hanya ada di remote storage)
+.dvc/cache/
+.dvc/tmp/
+!data/raw.dvc
+!data/processed.dvc

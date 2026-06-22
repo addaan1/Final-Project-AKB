@@ -26,13 +26,16 @@ def get_sources():
     """Registry source -> (import callable, deskripsi). Lazy import agar
     stub yang library-nya belum terinstall tidak crash runner."""
     return {
-        "play_reviews": ("scraper.fintech_reviews:GooglePlayReviewsScraper", "Google Play reviews app fintech (PRIORITAS 1, volume tinggi)"),
+        "play_reviews": ("scraper.fintech_reviews:GooglePlayReviewsScraper", "Google Play reviews app fintech (44 app, 15K cap)"),
         "google_trends": ("scraper.google_trends:GoogleTrendsScraper", "Tren keyword galbay/paylater/pinjol (pytrends)"),
+        "appstore": ("scraper.appstore_reviews:AppStoreReviewsScraper", "Apple App Store reviews iOS (15 app)"),
         "tiktok": ("scraper.tiktok:TikTokScraper", "Komentar TikTok #galbay (Playwright)"),
         "twitter": ("scraper.twitter:TwitterScraper", "Post X/Twitter (Playwright, login-wall)"),
         "instagram": ("scraper.instagram:InstagramScraper", "Caption/komentar Instagram (stub)"),
         "forum": ("scraper.forum:ForumScraper", "Kaskus threads + Reddit posts (Playwright)"),
-        "ojk_news": ("scraper.ojk_news:OjkNewsScraper", "OJK siaran pers + media besar (kompas/detik/cnbc)"),
+        "ojk_news": ("scraper.ojk_news:OjkNewsScraper", "OJK + 12 media besar (kompas/detik/cnbc/antara/dll)"),
+        "blogs": ("scraper.blogs:BlogScraper", "Blog posts (Medium + Dailysia)"),
+        "youtube": ("scraper.youtube:YouTubeScraper", "YouTube comments (butuh API key)"),
     }
 
 
@@ -101,6 +104,10 @@ def main(argv=None):
                 kwargs["max_per_app"] = args.max_per_app
                 if args.apps:
                     kwargs["app_limit"] = args.apps
+            elif src == "appstore":
+                kwargs["count"] = args.count
+                if args.apps:
+                    kwargs["app_limit"] = args.apps
             elif src == "tiktok":
                 kwargs["max_videos"] = args.max_videos
                 kwargs["max_comments"] = args.max_comments
@@ -112,6 +119,11 @@ def main(argv=None):
             elif src == "ojk_news":
                 kwargs["max_ojk_articles"] = args.max_articles
                 kwargs["max_media_per_query"] = max(5, args.max_articles // 2)
+            elif src == "blogs":
+                kwargs["max_per_query"] = max(10, args.max_articles)
+            elif src == "youtube":
+                kwargs["max_videos"] = args.max_videos
+                kwargs["max_comments"] = args.max_comments
             result = scraper.run(**kwargs)
             summary[src] = result
             log.info("Selesai %s: %s", src, result)

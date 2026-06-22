@@ -17,8 +17,9 @@
 [![seaborn](https://img.shields.io/badge/seaborn-0.13.2-3B7BBF?logo=python&logoColor=white)](https://seaborn.pydata.org/)
 
 [![Status](https://img.shields.io/badge/status-active--development-success)]()
-[![Dataset](https://img.shields.io/badge/dataset-72K%20reviews-blueviolet)]()
-[![Apps](https://img.shields.io/badge/fintech%20apps-24-orange)]()
+[![Dataset](https://img.shields.io/badge/dataset-349K%20reviews-blueviolet)]()
+[![Apps](https://img.shields.io/badge/fintech%20apps-44-orange)]()
+[![DVC](https://img.shields.io/badge/data-DVC%2BGoogle%20Drive-yellow)](https://drive.google.com/drive/folders/1Rgs0cgz70h0gMXjMTHjNjhFwjMHdI4T_)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/addaan1/Final-Project-AKB)](https://github.com/addaan1/Final-Project-AKB)
 [![Stars](https://img.shields.io/github/stars/addaan1/Final-Project-AKB?style=social)](https://github.com/addaan1/Final-Project-AKB)
@@ -46,30 +47,44 @@ Data tren hanya bertindak sebagai **termometer** (menunjukkan gejala). Galbay Pr
 
 | Metrik | Nilai |
 |---|---|
-| **Total review** | 72.000 |
-| **App fintech** | 24 (paylater, e-wallet, e-commerce, pinjol, P2P, banking, investasi) |
-| **Review relevan galbay** | 5.825 (8,09%) |
+| **Total review** | 349.200 |
+| **App fintech** | 44 (paylater, e-wallet, e-commerce, pinjol, P2P, bank digital, banking, investasi) |
+| **Review relevan galbay** | 35.968 (10,30%) |
 | **Keyword psikologis** | 65+ terkelompok dalam 7 kategori |
-| **Format** | JSON raw (36 MB) → 7 CSV terpisah |
-| **Periode** | review historis per app |
+| **Multi-source** | Google Play + Kaskus (152) + News (163) + Blog (44) |
+| **Format** | JSON raw → 4 CSV + SQLite DB (74 MB) |
+| **Distribusi** | Google Drive via DVC (lihat `data/DOWNLOAD.md`) |
 
-### Aplikasi yang di-scrape
+### Aplikasi yang di-scrape (44 app)
 
 <details>
-<summary><b>24 app fintech (klik untuk detail)</b></summary>
+<summary><b>Semua kategori fintech (klik untuk detail)</b></summary>
 
-| Kategori | App |
-|---|---|
-| **Paylater/BNPL** | Kredivo, Akulaku, Indodana |
-| **E-commerce** | Shopee, Tokopedia, Lazada, Bukalapak |
-| **Travel** | Traveloka, Tiket.com |
-| **E-wallet** | Gojek, GoPay, OVO, DANA, LinkAja, Sakuku |
-| **Pinjol** | RupiahCepat, KreditPintar, Tunaiku, AdaKami, Easycash, UangMe |
-| **P2P Lending** | KoinWorks |
-| **Mobile Banking** | BRImo |
-| **Investasi** | Stockbit |
+| Kategori | App | Jumlah |
+|---|---|---|
+| **Paylater/BNPL** | Kredivo, Akulaku, Indodana | 3 |
+| **E-commerce** | Shopee, Tokopedia, Lazada, Bukalapak | 4 |
+| **Travel** | Traveloka, Tiket.com | 2 |
+| **E-wallet** | Gojek, GoPay, OVO, DANA, LinkAja, Sakuku, ShopeePay, Flip | 8 |
+| **Pinjol** | RupiahCepat, KreditPintar, Tunaiku, AdaKami (2), Easycash (2), BantuSaku, Singa, FinPlus, KrediOne, Home Credit, JULO, KTA Kilat, Indosaku, Cairin, UangMe | 16 |
+| **P2P Lending** | KoinWorks | 1 |
+| **Bank Digital** | SeaBank, neobank BNC, Bank Jago, blu by BCA | 4 |
+| **Mobile Banking** | BRImo, Livin by Mandiri | 2 |
+| **Koperasi** | Artha Niaga | 1 |
+| **Kartu Kredit** | Honest | 1 |
+| **Investasi** | Stockbit | 1 |
+
+**Total: 44 app fintech Indonesia**
 
 </details>
+
+## 📦 Big Data di Google Drive
+
+Dataset >100MB tidak bisa di GitHub. Kami pakai **DVC + Google Drive** untuk distribusi.
+
+**Link Google Drive:** https://drive.google.com/drive/folders/1Rgs0cgz70h0gMXjMTHjNjhFwjMHdI4T_
+
+Lihat [`data/DOWNLOAD.md`](data/DOWNLOAD.md) untuk cara download via `dvc pull` atau manual.
 
 ### Keyword sinyal psikologis (65+ keyword)
 
@@ -97,19 +112,22 @@ galbay-predictor/
 │
 ├── scraper/                      # Pipeline scraping big data
 │   ├── __init__.py
-│   ├── base.py                   # BaseScraper (rate-limit, save_json, metadata)
+│   ├── base.py                   # BaseScraper (rate-limit, save_json, metadata, .env)
 │   ├── runner.py                 # CLI orchestrator
-│   ├── fintech_reviews.py        # ⭐ Google Play reviews (PRIORITAS 1)
+│   ├── fintech_reviews.py        # ⭐ Google Play reviews (44 app, 349K review)
+│   ├── appstore_reviews.py       # ⭐ Apple App Store reviews iOS
 │   ├── google_trends.py          # Tren keyword 12-bulan (pytrends)
-│   ├── tiktok.py                 # ⭐ Komentar TikTok #galbay (TikTokApi)
-│   ├── twitter.py                # ⭐ Post X/Twitter (Nitter instances)
+│   ├── tiktok.py                 # Komentar TikTok #galbay (Playwright)
+│   ├── twitter.py                # Post X/Twitter (Playwright, login-wall)
 │   ├── instagram.py              # Caption/komentar IG (stub)
-│   ├── forum.py                  # ⭐ Kaskus threads + Reddit posts (BS4 + JSON)
-│   └── ojk_news.py               # ⭐ OJK + kompas/detik/cnbc (BS4)
+│   ├── forum.py                  # ⭐ Kaskus threads + Reddit (Playwright)
+│   ├── ojk_news.py               # ⭐ OJK + 12 media besar
+│   ├── blogs.py                  # ⭐ Blog posts (Medium + Dailysia)
+│   └── youtube.py                # ⭐ YouTube comments (butuh API key)
 │
 ├── processing/                   # Pre-processing & analisis data mentah
 │   ├── __init__.py
-│   ├── build_csv.py              # ⭐ JSON → 7 CSV terpisah
+│   ├── build_csv.py              # ⭐ JSON → 4 CSV utama
 │   ├── validate.py               # Deduplication & validation
 │   ├── sentiment.py              # VADER sentiment analysis (NLTK)
 │   ├── preprocess.py             # NLP preprocessing (slang, cleaning)
@@ -117,12 +135,15 @@ galbay-predictor/
 │   └── export_sqlite.py          # Export ke SQLite database
 │
 ├── data/
-│   ├── raw/                      # Data mentah (gitignored, big data)
-│   ├── processed/                # CSV, charts, SQLite (gitignored)
+│   ├── raw/                      # Data mentah (DVC + Google Drive, ~100 MB)
+│   ├── processed/                # CSV, charts, SQLite (DVC + Google Drive, ~70 MB)
 │   │   └── charts/               # Visualisasi PNG
 │   ├── sample/                   # Sample kecil untuk reproducibility (di-commit)
 │   │   └── play_reviews_sample.json
-│   └── README.md                 # Skema & dokumentasi dataset
+│   ├── raw.dvc                   # DVC tracking untuk raw/
+│   ├── processed.dvc             # DVC tracking untuk processed/
+│   ├── README.md                 # Skema & dokumentasi dataset
+│   └── DOWNLOAD.md               # Panduan download dari Google Drive
 │
 ├── docs/                         # Dokumen bisnis
 │   ├── business_plan.md          # Business plan berbasis data
@@ -258,12 +279,15 @@ gh pr merge --squash --delete-branch=false
 
 | # | Source | Volume | Relevansi | Status | Tools |
 |---|---|---|---|---|---|
-| 1 | Google Play reviews fintech | Sangat tinggi | Tinggi | ✅ **Aktif** | google-play-scraper |
-| 2 | TikTok komentar #galbay | Tinggi | Sangat tinggi (Gen Z) | ✅ **Aktif** | TikTokApi |
-| 3 | Forum Kaskus + Reddit | Menengah-tinggi | Tinggi | ✅ **Aktif** | BS4 + public JSON |
-| 4 | Twitter/X post | Tinggi | Tinggi | ✅ **Aktif** | Nitter instances |
-| 5 | Google Trends | Rendah (time-series) | Tinggi (narasi) | ✅ **Aktif** | pytrends |
-| 6 | OJK + media (kompas/detik/cnbc) | Rendah-menengah | Tinggi (regulator) | ✅ **Aktif** | BS4 + requests |
+| 1 | Google Play reviews fintech (44 app) | Sangat tinggi (349K) | Tinggi | ✅ **Aktif** | google-play-scraper |
+| 2 | Apple App Store reviews iOS (15 app) | Menengah (estimasi 75K) | Tinggi | ⚠️ 0 review (appId) | app_store_scraper |
+| 3 | TikTok komentar #galbay | Tinggi | Sangat tinggi (Gen Z) | ⚠️ Headless blocked | Playwright |
+| 4 | Forum Kaskus + Reddit | Menengah-tinggi (152) | Tinggi | ✅ **Aktif** | Playwright + public JSON |
+| 5 | Twitter/X post | Tinggi | Tinggi | ⚠️ Login wall | Playwright |
+| 6 | Google Trends | Rendah (time-series) | Tinggi (narasi) | ✅ **Aktif** | pytrends |
+| 7 | OJK + 12 media besar | Rendah-menengah (163) | Tinggi (regulator) | ✅ **Aktif** | BS4 + requests |
+| 8 | Blog posts (Medium + Dailysia) | Rendah (44) | Menengah | ✅ **Aktif** | BS4 + requests |
+| 9 | YouTube comments | Tinggi (10K+) | Tinggi | ⚠️ Butuh API key | YouTube Data API v3 |
 
 ---
 

@@ -22,12 +22,14 @@ log = logging.getLogger("scraper.forum")
 
 REDDIT_QUERIES: list[str] = [
     "paylater", "pinjol", "galbay", "utang", "ditagih", "cicilan",
+    "self reward", "fomo", "checkout", "gagal bayar", "nunggak",
 ]
 REDDIT_SUBREDDITS: list[str] = ["indonesia", "finansial"]
 
 KASKUS_QUERIES: list[str] = [
     "paylater", "pinjol", "galbay", "gagal bayar", "utang",
-    "ditagih", "cicilan",
+    "ditagih", "cicilan", "self reward", "fomo", "checkout",
+    "bayar nanti", "kredit online", "pinjaman online",
 ]
 
 

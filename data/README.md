@@ -2,27 +2,39 @@
 
 Dokumentasi sumber data, skema, dan etika scraping untuk reproducibility.
 
+## ⚠️ Big Data di Google Drive
+
+Dataset terlalu besar untuk GitHub. **Lihat [DOWNLOAD.md](DOWNLOAD.md) untuk cara download dari Google Drive.**
+
+**Link:** https://drive.google.com/drive/folders/1Rgs0cgz70h0gMXjMTHjNjhFwjMHdI4T_
+
+Kami menggunakan **DVC (Data Version Control)** untuk track versi big data di Google Drive.
+
 ## Sumber data
 
 | Source | Status | Lokasi output | Format |
 |---|---|---|---|
-| Google Play reviews (fintech) | ✅ Aktif (72K) | `data/raw/play_reviews_*.json` + `data/processed/*.csv` | JSON + 7 CSV |
+| Google Play reviews (fintech) | ✅ Aktif (349K) | `data/raw/play_reviews_*.json` + `data/processed/*.csv` | JSON + 4 CSV |
 | Google Trends | ✅ Aktif (pytrends) | `data/raw/google_trends_12m.json` | time-series JSON |
-| Kaskus threads | ✅ Aktif via Playwright (66) | `data/raw/kaskus_threads.json` | JSON |
-| OJK + media (kompas/detik/cnbc) | ✅ Aktif (89) | `data/raw/news_all.json` | JSON |
-| TikTok komentar | ⚠️ Implementasi siap, headless blocked | `data/raw/tiktok_comments.json` | JSON |
+| Kaskus threads | ✅ Aktif via Playwright (152) | `data/raw/kaskus_threads.json` | JSON |
+| OJK + 12 media besar | ✅ Aktif (163) | `data/raw/news_all.json` | JSON |
+| Blog posts (Medium + Dailysia) | ✅ Aktif (44) | `data/raw/blogs_all.json` | JSON |
+| Apple App Store | ⚠️ API scraper 0 review (appId) | `data/raw/appstore_reviews_all.json` | JSON |
+| YouTube comments | ⚠️ Butuh YOUTUBE_API_KEY di .env | `data/raw/youtube_comments.json` | JSON |
+| TikTok komentar | ⚠️ Headless browser blocked | `data/raw/tiktok_comments.json` | JSON |
 | Reddit | ⚠️ Network timeout dari env ini | `data/raw/reddit_posts.json` | JSON |
 | Twitter/X | ⚠️ Login wall (butuh auth) | `data/raw/twitter_tweets.json` | JSON |
 | Instagram | 🔲 Stub | - | - |
 
 ## Dataset saat ini (Juni 2025)
 
-- **24 app fintech** Indonesia (paylater, e-wallet, e-commerce, pinjol, P2P, banking, investasi).
-- **72.000 review** Google Play (mode all, cap 3.000/app).
-- **5.823 review relevan galbay** (8,09%) — mengandung 65+ keyword psikologis.
-- **66 Kaskus threads** via Playwright render.
-- **89 artikel OJK + media** (16 OJK + 73 media besar).
-- **36 MB** JSON raw + **7 CSV** processed + 5 charts PNG + SQLite DB (15.8 MB).
+- **44 app fintech** Indonesia (paylater, e-wallet, e-commerce, pinjol, P2P, bank digital, banking, investasi).
+- **349.200 review** Google Play (mode all, cap 3K-15K/app).
+- **35.968 review relevan galbay** (10,30%) — mengandung 65+ keyword psikologis.
+- **152 Kaskus threads** via Playwright render.
+- **163 artikel OJK + media** (7 OJK + 156 media dari 12 sumber).
+- **44 blog posts** (Medium + Dailysia).
+- **~100 MB** JSON raw + **~70 MB** CSV processed + 5 charts PNG + SQLite DB (74 MB).
 
 ## Skema: `play_reviews_*.json` & `play_reviews_all.json`
 

@@ -56,6 +56,32 @@ APP_IDS: dict[str, dict] = {
     "BRImo": {"app_id": "id.co.bri.brimo", "category": "mobile_banking"},
     # Investasi (sinyal literasi finansial, pembanding)
     "Stockbit": {"app_id": "com.stockbit.android", "category": "investasi"},
+    # === Tambahan 20 app baru (Juni 2025) ===
+    # Bank digital
+    "SeaBank": {"app_id": "id.co.bankbkemobile.digitalbank", "category": "bank_digital"},
+    "neobank": {"app_id": "com.bnc.finance", "category": "bank_digital"},
+    "Bank Jago": {"app_id": "com.jago.digitalBanking", "category": "bank_digital"},
+    "blu by BCA": {"app_id": "com.bcadigital.blu", "category": "bank_digital"},
+    "Livin by Mandiri": {"app_id": "id.bmri.livin", "category": "mobile_banking"},
+    # Pinjol tambahan
+    "EasycashNew": {"app_id": "com.fintopia.idnEasycash.google", "category": "pinjol"},
+    "BantuSaku": {"app_id": "com.smartec.ft", "category": "pinjol"},
+    "AdaKamiNew": {"app_id": "com.adakami.dana.kredit.pinjaman", "category": "pinjol"},
+    "Singa": {"app_id": "com.asf.singa", "category": "pinjol"},
+    "FinPlus": {"app_id": "com.finplus.android", "category": "pinjol"},
+    "KrediOne": {"app_id": "com.id.kredi360", "category": "pinjol"},
+    "Home Credit": {"app_id": "id.co.myhomecredit", "category": "pinjol"},
+    "JULO": {"app_id": "com.julofinance.juloapp", "category": "pinjol"},
+    "KTA Kilat": {"app_id": "com.ktakilat.loan", "category": "pinjol"},
+    "Indosaku": {"app_id": "com.indosk.sensid", "category": "pinjol"},
+    "Cairin": {"app_id": "com.iss.client.cairin", "category": "pinjol"},
+    # E-wallet / transfer tambahan
+    "ShopeePay": {"app_id": "com.shopeepay.id", "category": "ewallet"},
+    "Flip": {"app_id": "id.flip", "category": "ewallet"},
+    # Koperasi
+    "Artha Niaga": {"app_id": "com.kpsto.artha.niaga", "category": "koperasi"},
+    # Kartu kredit digital
+    "Honest": {"app_id": "com.honestbank.android", "category": "kartu_kredit"},
 }
 
 # Keyword sinyal galbay & psikologis untuk filtering konten relevan.
@@ -200,7 +226,7 @@ class GooglePlayReviewsScraper(BaseScraper):
                 with cache_path.open("r", encoding="utf-8") as f:
                     import json
                     cached = json.load(f)
-                if isinstance(cached, list) and cached:
+                if isinstance(cached, list) and len(cached) > 0:
                     log.info("Resume: load %d review dari cache %s", len(cached), cache_path.name)
                     return cached
             except Exception as e:

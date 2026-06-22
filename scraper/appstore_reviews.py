@@ -8,10 +8,14 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from app_store_scraper import AppStore
 from tqdm import tqdm
 
 from scraper.base import BaseScraper
+
+try:
+    from app_store_scraper import AppStore
+except ImportError:  # pragma: no cover - exercised only when optional dep is absent
+    AppStore = None
 
 log = logging.getLogger("scraper.appstore_reviews")
 
@@ -38,6 +42,14 @@ MAX_REVIEWS_PER_APP = 5000
 
 class AppStoreReviewsScraper(BaseScraper):
     name = "appstore_reviews"
+
+    def __init__(self):
+        super().__init__()
+        if AppStore is None:
+            raise RuntimeError(
+                "Optional dependency `app-store-scraper` is not installed. "
+                "Install it manually if you need the Apple App Store scraper."
+            )
 
     @staticmethod
     def _normalize_row(r: dict, app: dict) -> dict:

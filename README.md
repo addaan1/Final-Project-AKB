@@ -84,7 +84,21 @@ Dataset >100MB tidak bisa di GitHub. Kami pakai **DVC + Google Drive** untuk dis
 
 **Link Google Drive:** https://drive.google.com/drive/folders/1Rgs0cgz70h0gMXjMTHjNjhFwjMHdI4T_
 
-Lihat [`data/DOWNLOAD.md`](data/DOWNLOAD.md) untuk cara download via `dvc pull` atau manual.
+Remote DVC tidak lagi memakai folder share publik sebagai root cache. Cache object DVC sekarang
+ditaruh di subfolder khusus `dvc-cache` di bawah folder Drive yang sama, supaya:
+
+- object cache DVC tidak bercampur dengan folder dataset yang dibaca manusia,
+- tim bisa `dvc pull` dari remote yang konsisten,
+- akses tetap memakai share ke akun Google tertentu, bukan "anyone with the link".
+
+**Aturan akses tim:**
+
+- Setiap anggota tim harus diberi akses langsung ke folder Drive via email Google masing-masing.
+- Isi `GDRIVE_CLIENT_ID` dan `GDRIVE_CLIENT_SECRET` di `.env` dari project Google Cloud kalian.
+- Jalankan `python scripts/setup_dvc_gdrive.py` untuk menyimpan OAuth client ke `.dvc/config.local`.
+- Jalankan `dvc pull` dari virtualenv aktif. Pada pull pertama browser akan membuka consent screen.
+
+Lihat [`data/DOWNLOAD.md`](data/DOWNLOAD.md) untuk panduan setup lengkap.
 
 ### Keyword sinyal psikologis (65+ keyword)
 
@@ -175,6 +189,22 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1        # Linux/macOS: source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
+### Sinkronisasi Big Data via DVC
+
+```powershell
+copy .env.example .env
+# isi GDRIVE_CLIENT_ID dan GDRIVE_CLIENT_SECRET di .env
+
+python scripts/setup_dvc_gdrive.py
+dvc pull
+```
+
+Catatan penting:
+
+- Akun Google Anda harus sudah di-share ke folder Drive project.
+- `scripts/setup_dvc_gdrive.py` hanya menulis `.dvc/config.local`, file ini lokal-only dan tidak boleh di-commit.
+- Jika browser ditutup atau consent ditolak, DVC akan gagal dengan pesan auth rejected. Jalankan `dvc pull` lagi dan selesaikan login.
 
 ### Jalankan Web App
 
@@ -345,5 +375,4 @@ gh pr merge --squash --delete-branch=false
 MIT License — lihat [LICENSE](LICENSE).
 
 Scraping dilakukan untuk keperluan akademik/analisis agregat. Data pribadi tidak disimpan; hanya teks, metadata agregat, dan timestamp.
-
 

@@ -1,11 +1,15 @@
 """Unit tests untuk scraper Apple App Store."""
 import pytest
-from scraper.appstore_reviews import AppStoreReviewsScraper, APPSTORE_IDS
+from scraper.appstore_reviews import APPSTORE_IDS, AppStore, AppStoreReviewsScraper
 
 
 def test_appstore_scraper_init():
-    s = AppStoreReviewsScraper()
-    assert s.name == "appstore_reviews"
+    if AppStore is None:
+        with pytest.raises(RuntimeError, match="app-store-scraper"):
+            AppStoreReviewsScraper()
+    else:
+        s = AppStoreReviewsScraper()
+        assert s.name == "appstore_reviews"
 
 
 def test_appstore_ids_not_empty():

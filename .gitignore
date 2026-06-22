@@ -107,5 +107,6 @@ uploads/
 # DVC cache files (data asli, besar, hanya ada di remote storage)
 .dvc/cache/
 .dvc/tmp/
+.dvc/config.local
 !data/raw.dvc
 !data/processed.dvc

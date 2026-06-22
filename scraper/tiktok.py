@@ -1,5 +1,6 @@
 """Scraper komentar TikTok #galbay #paylater #pinjol (PRIORITAS 2).
 
+<<<<<<< HEAD
 Menggunakan Playwright untuk render TikTok web (lebih reliable dari TikTokApi
 tanpa ms_tokens). Fokus Gen Z audience.
 
@@ -30,10 +31,22 @@ HASHTAGS: list[str] = [
 MAX_VIDEOS_PER_HASHTAG = 5
 MAX_COMMENTS_PER_VIDEO = 20
 
+=======
+STUB — implementasi menyusul. Catatan teknis:
+- TikTok anti-bot kuat; opsi: TikTokApi (unofficial) atau Playwright headless.
+- Target: komentar video dengan hashtag relevan, fokus Gen Z.
+- Etika: tidak simpan username asli (redact); simpan teks komentar + timestamp.
+"""
+from __future__ import annotations
+
+from scraper.base import BaseScraper
+
+>>>>>>> origin/main
 
 class TikTokScraper(BaseScraper):
     name = "tiktok"
 
+<<<<<<< HEAD
     def __init__(self, sleep_seconds: float = 0.0):
         super().__init__(sleep_seconds)
         ms_tokens_str = self.get_env("TIKTOK_MS_TOKENS", "")
@@ -173,3 +186,10 @@ class TikTokScraper(BaseScraper):
             "n_comments": len(all_comments),
             "hashtags": HASHTAGS,
         }
+=======
+    def run(self, **kwargs):
+        raise NotImplementedError(
+            "TikTok scraper belum diimplementasi. Gunakan TikTokApi/Playwright. "
+            "Lihat docstring modul untuk rencana implementasi."
+        )
+>>>>>>> origin/main

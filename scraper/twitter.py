@@ -1,5 +1,6 @@
 """Scraper post X/Twitter keyword galbay/pinjol (PRIORITAS 4).
 
+<<<<<<< HEAD
 Menggunakan Playwright untuk render X/Twitter search.
 Nitter sudah mati (empty content), jadi langsung ke Twitter/X.
 Twitter/X tanpa login hanya menampilkan login wall.
@@ -41,10 +42,22 @@ QUERIES: list[str] = [
 
 MAX_TWEETS_PER_QUERY = 20
 
+=======
+STUB — akses X API kini berbayar/terbatas. Alternatif yang akan dieksplor:
+- X API v2 tier free (limit 1500 read post/bulan, terbatas).
+- Nitter instance snapshot (tidak stabil).
+- Snscrape (mendukung Twitter, tapi break sering pas Twitter rate-limit).
+"""
+from __future__ import annotations
+
+from scraper.base import BaseScraper
+
+>>>>>>> origin/main
 
 class TwitterScraper(BaseScraper):
     name = "twitter"
 
+<<<<<<< HEAD
     def __init__(self, sleep_seconds: float = 0.0):
         super().__init__(sleep_seconds)
         self.auth_token = self.get_env("TWITTER_AUTH_TOKEN", "")
@@ -193,3 +206,10 @@ class TwitterScraper(BaseScraper):
             "queries": QUERIES,
             "logged_in": self.logged_in,
         }
+=======
+    def run(self, **kwargs):
+        raise NotImplementedError(
+            "Twitter/X scraper belum diimplementasi (akses berbayar/terbatas). "
+            "Eksplor: X API v2 free tier atau snscrape."
+        )
+>>>>>>> origin/main

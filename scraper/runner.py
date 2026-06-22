@@ -2,9 +2,12 @@
 
 Penggunaan:
     python -m scraper.runner --source play_reviews
+<<<<<<< HEAD
     python -m scraper.runner --source play_reviews --mode sample --count 1000
     python -m scraper.runner --source play_reviews --mode all              # big data (semua review)
     python -m scraper.runner --source play_reviews --mode all --max-per-app 5000
+=======
+>>>>>>> origin/main
     python -m scraper.runner --source google_trends
     python -m scraper.runner --source all
     python -m scraper.runner --list
@@ -26,6 +29,7 @@ def get_sources():
     """Registry source -> (import callable, deskripsi). Lazy import agar
     stub yang library-nya belum terinstall tidak crash runner."""
     return {
+<<<<<<< HEAD
         "play_reviews": ("scraper.fintech_reviews:GooglePlayReviewsScraper", "Google Play reviews app fintech (44 app, 15K cap)"),
         "google_trends": ("scraper.google_trends:GoogleTrendsScraper", "Tren keyword galbay/paylater/pinjol (pytrends)"),
         "appstore": ("scraper.appstore_reviews:AppStoreReviewsScraper", "Apple App Store reviews iOS (15 app)"),
@@ -36,6 +40,15 @@ def get_sources():
         "ojk_news": ("scraper.ojk_news:OjkNewsScraper", "OJK + 12 media besar (kompas/detik/cnbc/antara/dll)"),
         "blogs": ("scraper.blogs:BlogScraper", "Blog posts (Medium + Dailysia)"),
         "youtube": ("scraper.youtube:YouTubeScraper", "YouTube comments (butuh API key)"),
+=======
+        "play_reviews": ("scraper.fintech_reviews:GooglePlayReviewsScraper", "Google Play reviews app fintech (PRIORITAS 1, volume tinggi)"),
+        "google_trends": ("scraper.google_trends:GoogleTrendsScraper", "Tren keyword galbay/paylater/pinjol"),
+        "tiktok": ("scraper.tiktok:TikTokScraper", "Komentar TikTok #galbay #paylater (stub)"),
+        "twitter": ("scraper.twitter:TwitterScraper", "Post X/Twitter keyword galbay (stub)"),
+        "instagram": ("scraper.instagram:InstagramScraper", "Caption/komentar Instagram (stub)"),
+        "forum": ("scraper.forum:ForumScraper", "Kaskus & Reddit thread utang (stub)"),
+        "ojk_news": ("scraper.ojk_news:OjkNewsScraper", "Siaran pers & berita OJK (stub)"),
+>>>>>>> origin/main
     }
 
 
@@ -49,6 +62,7 @@ def load_class(path: str):
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Galbay Predictor scraper runner")
     parser.add_argument("--source", "-s", help="Nama source scraper")
+<<<<<<< HEAD
     parser.add_argument("--count", "-n", type=int, default=400, help="Jumlah review/item per app pada mode sample (default 400)")
     parser.add_argument("--apps", type=int, default=0, help="Batasi jumlah app (0 = semua)")
     parser.add_argument("--mode", "-m", choices=["sample", "all"], default="sample",
@@ -67,6 +81,10 @@ def main(argv=None):
                         help="Max tweets per query untuk Twitter/Nitter (default 50)")
     parser.add_argument("--max-articles", type=int, default=30,
                         help="Max articles per query untuk OJK/media (default 30)")
+=======
+    parser.add_argument("--count", "-n", type=int, default=400, help="Jumlah review/item per app (default 400)")
+    parser.add_argument("--apps", type=int, default=0, help="Batasi jumlah app (0 = semua)")
+>>>>>>> origin/main
     parser.add_argument("--list", action="store_true", help="Daftar source tersedia")
     parser.add_argument("--all", action="store_true", help="Jalankan semua source")
     args = parser.parse_args(argv)
@@ -100,6 +118,7 @@ def main(argv=None):
             kwargs = {}
             if src == "play_reviews":
                 kwargs["count"] = args.count
+<<<<<<< HEAD
                 kwargs["mode"] = args.mode
                 kwargs["max_per_app"] = args.max_per_app
                 if args.apps:
@@ -124,6 +143,10 @@ def main(argv=None):
             elif src == "youtube":
                 kwargs["max_videos"] = args.max_videos
                 kwargs["max_comments"] = args.max_comments
+=======
+                if args.apps:
+                    kwargs["app_limit"] = args.apps
+>>>>>>> origin/main
             result = scraper.run(**kwargs)
             summary[src] = result
             log.info("Selesai %s: %s", src, result)

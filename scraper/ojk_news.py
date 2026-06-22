@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """Scraper berita & siaran pers OJK + media besar (PRIORITAS 6).
 
 OJK: ojk.go.id (siaran pers, info terkini, regulasi).
@@ -6,11 +7,19 @@ Media: kompas.com, detik.com, cnbcindonesia.com.
 URL OJK benar:
 - https://www.ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Default.aspx
 - https://www.ojk.go.id/id/berita-dan-kegiatan/info-terkini/Default.aspx
+=======
+"""Scraper berita & siaran pers OJK (PRIORITAS 6).
+
+STUB — rencana:
+- OJK: scrape siaran pers & regulasi paylater/pinjol dari ojk.go.id.
+- Media: crawler berita (kompas, detik, cnbc) keyword "galbay"/"paylater".
+>>>>>>> origin/main
 
 Volume rendah-menengah tapi relevansi tinggi sebagai sinyal regulator & market.
 """
 from __future__ import annotations
 
+<<<<<<< HEAD
 import logging
 import re
 import time
@@ -69,10 +78,15 @@ HEADERS = {
     "Accept-Language": "id-ID,id;q=0.9,en;q=0.8",
 }
 
+=======
+from scraper.base import BaseScraper
+
+>>>>>>> origin/main
 
 class OjkNewsScraper(BaseScraper):
     name = "ojk_news"
 
+<<<<<<< HEAD
     def _fetch_page(self, url: str) -> str | None:
         try:
             r = requests.get(url, headers=HEADERS, timeout=20)
@@ -291,3 +305,9 @@ class OjkNewsScraper(BaseScraper):
             "n_media": len(media_articles),
             "n_total": len(all_articles),
         }
+=======
+    def run(self, **kwargs):
+        raise NotImplementedError(
+            "OJK/news scraper belum diimplementasi. Eksplor: requests+BS4."
+        )
+>>>>>>> origin/main

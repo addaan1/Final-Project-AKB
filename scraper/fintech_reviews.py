@@ -13,13 +13,18 @@ from __future__ import annotations
 import logging
 from typing import Any
 
+<<<<<<< HEAD
 from google_play_scraper import reviews, reviews_all, search, Sort
+=======
+from google_play_scraper import reviews, search, Sort
+>>>>>>> origin/main
 from tqdm import tqdm
 
 from scraper.base import BaseScraper
 
 log = logging.getLogger("scraper.fintech_reviews")
 
+<<<<<<< HEAD
 # Curated appId fintech Indonesia (terverifikasi via app() lookup Mei 2025).
 # Kategori: paylater/BNPL, e-wallet, e-commerce (dengan paylater), pinjol,
 # P2P lending, mobile banking, investasi (untuk diversifikasi sinyal literasi).
@@ -122,12 +127,43 @@ GALBAY_KEYWORDS: dict[str, tuple[str, ...]] = {
 # Flat set untuk flagging cepat is_relevant
 ALL_GALBAY_KEYWORDS: tuple[str, ...] = tuple(
     kw for group in GALBAY_KEYWORDS.values() for kw in group
+=======
+# Curated appId fintech Indonesia (terverifikasi via app() lookup).
+# Kategori: paylater/BNPL, e-wallet, e-commerce (dengan paylater), pinjol.
+# Catatan: beberapa pinjol kecil (AdaKami, Easycash, Julo, UangMe, TunaiKita,
+# Atome, Tunaiku, Pintarnya) TIDAK ditemukan di Play Store — kemungkinan
+# delist akibat penegakan OJK. Itu sendiri temuan data regulator.
+APP_IDS: dict[str, str] = {
+    "Kredivo": "com.finaccel.android",
+    "Akulaku": "io.silvrr.installment",
+    "Indodana": "com.indodana.app",
+    "Shopee": "com.shopee.id",
+    "Tokopedia": "com.tokopedia.tkpd",
+    "Lazada": "com.lazada.android",
+    "Traveloka": "com.traveloka.android",
+    "Tiket.com": "com.tiket.gits",
+    "Gojek": "com.gojek.app",
+    "OVO": "ovo.id",
+    "DANA": "id.dana",
+    "LinkAja": "com.telkom.mwallet",
+    "RupiahCepat": "com.loan.cash.credit.easy.kilat.cepat.pinjam.uang.dana.rupiah",
+    "KreditPintar": "com.kreditpintar",
+}
+
+# Keyword bahasa sinyal galbay untuk filtering konten relevan
+GALBAY_KEYWORDS: tuple[str, ...] = (
+    "galbay", "gagal bayar", "ditagih", "tagihan", "tagih", "dendanya",
+    "bunga", "menagih", "debt collector", "dc", "dicerewet", "kasbon",
+    "paylater", "pay later", "pinjol", "pinjaman online", "cicilan",
+    "telat bayar", "nunggak", "macet", "limit", "penagih",
+>>>>>>> origin/main
 )
 
 
 class GooglePlayReviewsScraper(BaseScraper):
     name = "fintech_reviews"
 
+<<<<<<< HEAD
     def resolve_apps(self, names: list[str] | None = None, app_limit: int = 0) -> list[dict]:
         """Resolve app_id untuk setiap nama. Pakai curated APP_IDS (reliable);
         fallback ke search() jika nama tidak ada di dict. Return list
@@ -139,6 +175,17 @@ class GooglePlayReviewsScraper(BaseScraper):
             entry = APP_IDS.get(name)
             app_id = entry.get("app_id") if entry else None
             category = entry.get("category") if entry else None
+=======
+    def resolve_apps(self, queries: list[str] | None = None, app_limit: int = 0) -> list[dict]:
+        """Resolve app_id untuk setiap nama. Pakai curated APP_IDS (reliable);
+        fallback ke search() jika nama tidak ada di dict. Return list
+        {query, app_id, title, score}."""
+        from google_play_scraper import app as app_info
+        names = queries or list(APP_IDS.keys())
+        resolved = []
+        for name in tqdm(names, desc="Resolve app"):
+            app_id = APP_IDS.get(name)
+>>>>>>> origin/main
             if app_id:
                 try:
                     info = app_info(app_id, lang="id", country="id")
@@ -148,7 +195,10 @@ class GooglePlayReviewsScraper(BaseScraper):
                         "title": info.get("title"),
                         "score": info.get("score"),
                         "installs": info.get("installs"),
+<<<<<<< HEAD
                         "category": category,
+=======
+>>>>>>> origin/main
                     })
                     self.polite_sleep()
                     continue
@@ -166,7 +216,10 @@ class GooglePlayReviewsScraper(BaseScraper):
                             "title": r.get("title"),
                             "score": r.get("score"),
                             "installs": None,
+<<<<<<< HEAD
                             "category": category,
+=======
+>>>>>>> origin/main
                         })
                         break
                 else:
@@ -179,6 +232,7 @@ class GooglePlayReviewsScraper(BaseScraper):
         log.info("Resolved %d app dari %d nama", len(resolved), len(names))
         return resolved
 
+<<<<<<< HEAD
     @staticmethod
     def _normalize_row(r: dict, app: dict) -> dict:
         """Normalisasi satu review mentah ke skema konsisten."""
@@ -198,6 +252,10 @@ class GooglePlayReviewsScraper(BaseScraper):
 
     def fetch_reviews(self, app: dict, count: int = 400) -> list[dict]:
         """Ambil sejumlah review terbatas untuk satu app (mode sample)."""
+=======
+    def fetch_reviews(self, app: dict, count: int = 400) -> list[dict]:
+        """Ambil review untuk satu app. count = jumlah review per app."""
+>>>>>>> origin/main
         app_id = app["app_id"]
         try:
             result, _continuation = reviews(
@@ -211,6 +269,7 @@ class GooglePlayReviewsScraper(BaseScraper):
         except Exception as e:
             log.warning("Gagal fetch reviews %s (%s): %s", app.get("title"), app_id, e)
             return []
+<<<<<<< HEAD
         return [self._normalize_row(r, app) for r in result]
 
     def fetch_all_reviews(self, app: dict, max_per_app: int = 0) -> list[dict]:
@@ -281,6 +340,34 @@ class GooglePlayReviewsScraper(BaseScraper):
         mode='all'    : ambil SEMUA review per app via continuation token
                         (big data, bisa lama). max_per_app>0 membatasi per-app.
         """
+=======
+
+        rows = []
+        for r in result:
+            content = (r.get("content") or "").strip()
+            rows.append({
+                "app_id": app_id,
+                "app_name": app.get("title"),
+                "query": app.get("query"),
+                "review_id": r.get("reviewId"),
+                "score": r.get("score"),
+                "content": content,
+                "thumbs_up": r.get("thumbsUpCount", 0),
+                "at": r.get("at").isoformat() if r.get("at") else None,
+                "replied": bool(r.get("replyContent")),
+                "version": r.get("reviewCreatedVersion"),
+            })
+        return rows
+
+    def _flag_relevant(self, rows: list[dict]) -> list[dict]:
+        """Tandai baris yang mengandung keyword galbay (sinyal perilaku)."""
+        for row in rows:
+            text = (row.get("content") or "").lower()
+            row["is_relevant"] = any(kw in text for kw in GALBAY_KEYWORDS)
+        return rows
+
+    def run(self, count: int = 400, app_limit: int = 0) -> dict[str, Any]:
+>>>>>>> origin/main
         apps = self.resolve_apps(app_limit=app_limit)
         if not apps:
             return {"status": "no_apps", "resolved": 0}
@@ -288,18 +375,24 @@ class GooglePlayReviewsScraper(BaseScraper):
         all_rows: list[dict] = []
         per_app_summary: list[dict] = []
 
+<<<<<<< HEAD
         fetch_desc = "Fetch reviews (ALL)" if mode == "all" else "Fetch reviews (sample)"
         for app in tqdm(apps, desc=fetch_desc):
             if mode == "all":
                 rows = self.fetch_all_reviews(app, max_per_app=max_per_app)
             else:
                 rows = self.fetch_reviews(app, count=count)
+=======
+        for app in tqdm(apps, desc="Fetch reviews"):
+            rows = self.fetch_reviews(app, count=count)
+>>>>>>> origin/main
             rows = self._flag_relevant(rows)
             all_rows.extend(rows)
             per_app_summary.append({
                 "app_id": app["app_id"],
                 "app_name": app.get("title"),
                 "query": app.get("query"),
+<<<<<<< HEAD
                 "category": app.get("category"),
                 "installs": app.get("installs"),
                 "n_reviews": len(rows),
@@ -307,6 +400,12 @@ class GooglePlayReviewsScraper(BaseScraper):
                 "mode": mode,
             })
             # simpan per-app (raw, gitignored) sebagai checkpoint resume
+=======
+                "n_reviews": len(rows),
+                "n_relevant": sum(1 for r in rows if r.get("is_relevant")),
+            })
+            # simpan per-app (raw, gitignored)
+>>>>>>> origin/main
             safe = (app.get("query") or "app").replace(" ", "_").lower()
             self.save_json(rows, f"play_reviews_{safe}.json", subdir="raw")
             self.polite_sleep()
@@ -315,10 +414,14 @@ class GooglePlayReviewsScraper(BaseScraper):
         meta = self.meta("google_play_reviews", {
             "n_apps": len(apps),
             "n_reviews_total": len(all_rows),
+<<<<<<< HEAD
             "mode": mode,
             "count_per_app": count if mode == "sample" else None,
             "max_per_app": max_per_app or None,
             "keyword_groups": list(GALBAY_KEYWORDS.keys()),
+=======
+            "count_per_app": count,
+>>>>>>> origin/main
             "per_app": per_app_summary,
         })
         combined = {"meta": meta, "reviews": all_rows}
@@ -338,7 +441,10 @@ class GooglePlayReviewsScraper(BaseScraper):
             "n_apps": len(apps),
             "n_reviews_total": len(all_rows),
             "n_relevant": n_relevant,
+<<<<<<< HEAD
             "mode": mode,
+=======
+>>>>>>> origin/main
             "sample_size": len(sample),
             "per_app": per_app_summary,
         }

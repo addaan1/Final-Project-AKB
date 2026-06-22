@@ -1,12 +1,19 @@
 """Scraper forum: Kaskus & Reddit thread utang/paylater (PRIORITAS 3).
 
+<<<<<<< HEAD
 Reddit: Playwright render HTML (JSON API blocked).
 Kaskus: Playwright render SPA (rate-limited + JS-heavy).
+=======
+STUB — rencana:
+- Kaskus: BeautifulSoup + requests pada forum "The Lounge"/"Finansial".
+- Reddit: PRAW (r/indonesia, r/finansial) keyword "utang"/"paylater"/"pinjol".
+>>>>>>> origin/main
 
 Volume menengah-tinggi, relevansi tinggi (diskusi panjang = konteks psikologi).
 """
 from __future__ import annotations
 
+<<<<<<< HEAD
 import asyncio
 import hashlib
 import logging
@@ -32,10 +39,15 @@ KASKUS_QUERIES: list[str] = [
     "bayar nanti", "kredit online", "pinjaman online",
 ]
 
+=======
+from scraper.base import BaseScraper
+
+>>>>>>> origin/main
 
 class ForumScraper(BaseScraper):
     name = "forum"
 
+<<<<<<< HEAD
     @staticmethod
     def _redact_username(username: str) -> str:
         return hashlib.sha256(username.encode()).hexdigest()[:12]
@@ -308,3 +320,10 @@ class ForumScraper(BaseScraper):
             "n_kaskus": len(all_kaskus),
             "n_total": len(all_items),
         }
+=======
+    def run(self, **kwargs):
+        raise NotImplementedError(
+            "Forum scraper (Kaskus/Reddit) belum diimplementasi. "
+            "Eksplor: requests+BS4 (Kaskus), PRAW (Reddit)."
+        )
+>>>>>>> origin/main

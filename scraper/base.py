@@ -5,24 +5,33 @@ Menyediakan:
 - helper simpan JSON
 - logging sederhana
 - rate-limit sopan (sleep) untuk etika scraping
+<<<<<<< HEAD
 - load kredensial dari .env (opsional, untuk login ke platform)
+=======
+>>>>>>> origin/main
 """
 from __future__ import annotations
 
 import json
 import logging
+<<<<<<< HEAD
 import os
+=======
+>>>>>>> origin/main
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
 
+<<<<<<< HEAD
 try:
     from dotenv import load_dotenv
     load_dotenv()  # load .env kalau ada
 except ImportError:
     pass  # python-dotenv belum terinstall, skip
 
+=======
+>>>>>>> origin/main
 from config import RAW_DIR, PROCESSED_DIR, SAMPLE_DIR
 
 
@@ -31,8 +40,13 @@ class BaseScraper:
 
     name: str = "base"
 
+<<<<<<< HEAD
     def __init__(self, sleep_seconds: float = 0.0):
         self.sleep_seconds = sleep_seconds or float(os.environ.get("SCRAPER_SLEEP_SECONDS", "1.0"))
+=======
+    def __init__(self, sleep_seconds: float = 1.0):
+        self.sleep_seconds = sleep_seconds
+>>>>>>> origin/main
         self.raw_dir = Path(RAW_DIR)
         self.processed_dir = Path(PROCESSED_DIR)
         self.sample_dir = Path(SAMPLE_DIR)
@@ -56,7 +70,11 @@ class BaseScraper:
         path = target_dir / filename
         with path.open("w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2, default=str)
+<<<<<<< HEAD
         self.logger.info("Saved %d items -> %s", len(data) if isinstance(data, list) else 1, path)
+=======
+        self.logger.info("Saved %s items -> %s", len(data) if isinstance(data, list) else 1, path)
+>>>>>>> origin/main
         return path
 
     def meta(self, source: str, extra: dict | None = None) -> dict:
@@ -73,7 +91,10 @@ class BaseScraper:
     def run(self, **kwargs) -> dict:
         """Override di subclass. Return ringkasan hasil."""
         raise NotImplementedError
+<<<<<<< HEAD
 
     def get_env(self, key: str, default: str | None = None) -> str | None:
         """Ambil env var dengan fallback. Return None kalau tidak ada."""
         return os.environ.get(key, default)
+=======
+>>>>>>> origin/main

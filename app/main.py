@@ -1,7 +1,7 @@
-"""Blueprint utama: landing, dashboard, dan aset proyek."""
+"""Blueprint utama: landing, dashboard multi-page, dan aset proyek."""
 from pathlib import Path
 
-from flask import Blueprint, current_app, render_template, send_from_directory
+from flask import Blueprint, current_app, redirect, render_template, send_from_directory, url_for
 
 main_bp = Blueprint("main", __name__)
 
@@ -13,7 +13,27 @@ def index():
 
 @main_bp.route("/dashboard")
 def dashboard():
-    return render_template("dashboard.html")
+    return redirect(url_for("main.ringkasan"))
+
+
+@main_bp.route("/dashboard/ringkasan")
+def ringkasan():
+    return render_template("dashboard/ringkasan.html", active_page="ringkasan")
+
+
+@main_bp.route("/dashboard/analisis")
+def analisis():
+    return render_template("dashboard/analisis.html", active_page="analisis")
+
+
+@main_bp.route("/dashboard/solusi")
+def solusi():
+    return render_template("dashboard/solusi.html", active_page="solusi")
+
+
+@main_bp.route("/dashboard/kesimpulan")
+def kesimpulan():
+    return render_template("dashboard/kesimpulan.html", active_page="kesimpulan")
 
 
 @main_bp.route("/health")

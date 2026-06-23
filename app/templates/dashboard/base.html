@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Dashboard{% endblock %} - Galbay Predictor</title>
+  <meta name="description" content="Dashboard analisis data mining perilaku galbay Gen Z dan Business Model Canvas.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/data.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <a href="{{ url_for('main.index') }}" class="topbar-brand">GALBAY <span>PREDICTOR</span></a>
+      <div class="topbar-subtitle">Data Mining &rarr; Business Model Canvas</div>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <nav class="topbar-nav" id="topbarNav" aria-label="Section navigation">
+      <a href="{{ url_for('main.ringkasan') }}" class="nav-pill {% if active_page == 'ringkasan' %}active{% endif %}">Ringkasan</a>
+      <a href="{{ url_for('main.analisis') }}" class="nav-pill {% if active_page == 'analisis' %}active{% endif %}">Analisis</a>
+      <a href="{{ url_for('main.solusi') }}" class="nav-pill {% if active_page == 'solusi' %}active{% endif %}">Solusi &amp; BMC</a>
+      <a href="{{ url_for('main.kesimpulan') }}" class="nav-pill {% if active_page == 'kesimpulan' %}active{% endif %}">Kesimpulan</a>
+    </nav>
+    <div class="topbar-right">
+      <a href="{{ url_for('main.index') }}" class="btn-back" title="Kembali ke Beranda">&larr; Beranda</a>
+      <div class="dropdown">
+        <button class="dropdown-toggle" id="moreBtn" aria-label="More options" aria-expanded="false">&#8943;</button>
+        <div class="dropdown-menu" id="moreMenu">
+          <a href="#" onclick="window.print();return false;">Print / Ekspor PDF</a>
+          <a href="https://github.com/addaan1/Final-Project-AKB" target="_blank" rel="noopener">GitHub Repo</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    {% block content %}{% endblock %}
+
+    <footer class="dashboard-footer">
+      <div class="dashboard-footer-inner">
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="{{ url_for('main.index') }}">Beranda</a>
+          <a href="{{ url_for('main.ringkasan') }}">Ringkasan</a>
+          <a href="{{ url_for('main.analisis') }}">Analisis</a>
+          <a href="{{ url_for('main.solusi') }}">Solusi &amp; BMC</a>
+          <a href="{{ url_for('main.kesimpulan') }}">Kesimpulan</a>
+        </nav>
+        <span class="footer-meta">Dashboard berbasis data ulasan nyata aplikasi fintech</span>
+      </div>
+    </footer>
+  </main>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" title="Kembali ke atas">&uarr;</button>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const d = window.GALBAY_DATA || {};
+    const mo = d.model || {};
+    const neg = document.getElementById('negWords');
+    const pos = document.getElementById('posWords');
+    if (neg) (mo.top_neg_words || []).forEach((w) => {
+      const s = document.createElement('span'); s.className = 'tag-pill'; s.textContent = w; neg.appendChild(s);
+    });
+    if (pos) (mo.top_pos_words || []).forEach((w) => {
+      const s = document.createElement('span'); s.className = 'tag-pill pos'; s.textContent = w; pos.appendChild(s);
+    });
+  });
+  </script>
+</body>
+</html>

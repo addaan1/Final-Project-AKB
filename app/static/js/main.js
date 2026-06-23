@@ -1,6 +1,7 @@
 // ============================================================
-// Galbay Predictor - Dashboard logic (data asli hasil scraping + modelling)
+// Galbay Predictor - Dashboard logic (data asli 349K + VADER)
 // Data di-load dari data.js (window.GALBAY_DATA)
+// Conditional chart init: hanya render chart yang canvas-nya ada di page
 // ============================================================
 const D = window.GALBAY_DATA || {};
 const COL = { lime:'#b8ff3c', pur:'#9b5de5', violet:'#6a0dad', red:'#f87171', org:'#f97316', blu:'#3b82f6', grn:'#4ade80', gray:'#6b5e80', text:'#a89ac0' };
@@ -10,11 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.Chart) initCharts();
   renderTopAppsTable();
   initAnimations();
-  initNavHighlight();
   initCounters();
   initScrollTop();
   initHamburger();
-  initStickyHeaders();
+  initDropdown();
 });
 
 // ── Isi angka teks dari data (elemen ber-atribut data-fill) ──
@@ -42,86 +42,10 @@ function fillNumbers() {
   });
 }
 
-// ── NAV HIGHLIGHT (topbar pill, auto-detect section) ──
-function initNavHighlight() {
-  const sections = document.querySelectorAll('section[id]');
-  const navPills = document.querySelectorAll('.nav-pill[data-section]');
-  if (!sections.length || !navPills.length) return;
-
-  // Map section ke group nav (topbar 4 menu utama)
-  // ringkasan -> ringkasan
-  // datamining, model, kritis -> analisis
-  // inovasi, bmc, risiko -> bmc
-  // kesimpulan -> kesimpulan
-  const groupMap = {
-    ringkasan: 'ringkasan',
-    datamining: 'analisis',
-    model: 'analisis',
-    kritis: 'analisis',
-    inovasi: 'bmc',
-    bmc: 'bmc',
-    risiko: 'bmc',
-    kesimpulan: 'kesimpulan',
-  };
-
-  function setActive(groupKey) {
-    navPills.forEach(n => n.classList.toggle('active', n.dataset.section === groupKey));
-  }
-
-  // Set initial dari hash
-  const hash = (window.location.hash || '').replace('#', '');
-  if (hash && groupMap[hash]) setActive(groupMap[hash]);
-
-  // Pakai scroll-based detection: section yang paling dominan di viewport
-  let lastVisible = null;
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        lastVisible = entry.target.id;
-      }
-    });
-    if (lastVisible && groupMap[lastVisible]) {
-      setActive(groupMap[lastVisible]);
-      // Sync URL hash tanpa scroll
-      const newHash = '#' + lastVisible;
-      if (window.location.hash !== newHash) {
-        history.replaceState(null, '', newHash);
-      }
-    }
-  }, { threshold: 0.15, rootMargin: '-80px 0px -50% 0px' });
-  sections.forEach(s => observer.observe(s));
-
-  // Click handler: set active langsung + hash update
-  navPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      const key = pill.dataset.section;
-      if (groupMap[key] || key) {
-        // Tentukan section target dari group
-        let target = key;
-        if (key === 'analisis') target = 'datamining';
-        else if (key === 'bmc') target = 'bmc';
-        setActive(key);
-        // Update URL hash
-        history.replaceState(null, '', '#' + target);
-        // smooth scroll ke section pertama dalam group
-        const el = document.getElementById(target);
-        if (el) {
-          window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
-        }
-      }
-    });
-  });
-
-  // Handle back/forward button
-  window.addEventListener('popstate', () => {
-    const h = (window.location.hash || '').replace('#', '');
-    if (h && groupMap[h]) setActive(groupMap[h]);
-  });
-}
-
 // ── COUNTER ANIMATION ──
 function initCounters() {
   const counters = document.querySelectorAll('[data-count]');
+  if (!counters.length) return;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting && !entry.target.dataset.done) {
@@ -150,11 +74,11 @@ function animateCounter(el) {
 
 // ── FADE ANIMATIONS ──
 function initAnimations() {
-  const els = document.querySelectorAll('.card, .chart-card, .bmc-block, .timeline-item, .metric-card');
+  const els = document.querySelectorAll('.chart-card, .info-card, .kpi-card, .bmc-block, .metric-card, .insight-box, .top-apps-table');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; }, i * 50);
+        setTimeout(() => { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; }, i * 40);
         observer.unobserve(entry.target);
       }
     });
@@ -163,6 +87,63 @@ function initAnimations() {
     el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
+  });
+}
+
+// ── SCROLL-TO-TOP BUTTON ──
+function initScrollTop() {
+  const btn = document.getElementById('scrollTop');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// ── MOBILE HAMBURGER ──
+function initHamburger() {
+  const btn = document.getElementById('hamburger');
+  const nav = document.getElementById('topbarNav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    btn.innerHTML = isOpen ? '&times;' : '&#9776;';
+  });
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !btn.contains(e.target) && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML = '&#9776;';
+    }
+  });
+  nav.querySelectorAll('.nav-pill').forEach(p => {
+    p.addEventListener('click', () => {
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML = '&#9776;';
+    });
+  });
+}
+
+// ── DROPDOWN (More menu) ──
+function initDropdown() {
+  const toggle = document.getElementById('moreBtn');
+  const menu = document.getElementById('moreMenu');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('open')) {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
   });
 }
 
@@ -178,19 +159,23 @@ const grid = { ticks: { color: COL.gray }, grid: { color: 'rgba(155,93,229,0.1)'
 const gridY = { ticks: { color: COL.text, font:{size:11} }, grid: { display:false } };
 function make(id, cfg){ const el=document.getElementById(id); if(!el) return; new Chart(el, cfg); }
 
+// ── CONDITIONAL CHART INIT: hanya render chart yang canvas ada di page ──
 function initCharts() {
   Chart.defaults.color = COL.text;
-  chartScoreDist();
-  chartScoreDist2();
-  chartCategory();
-  chartTimeline();
-  chartBehavior();
-  chartKeywords();
-  chartWordcloud();
-  chartSentimentCat();
-  chartTopApps();
-  chartSentimentDist();
-  chartModel();
+  const ids = new Set();
+  document.querySelectorAll('canvas[id]').forEach(c => ids.add(c.id));
+
+  if (ids.has('chartScoreDist')) chartScoreDist();
+  if (ids.has('chartScoreDist2')) chartScoreDist2();
+  if (ids.has('chartCategory')) chartCategory();
+  if (ids.has('chartTimeline')) chartTimeline();
+  if (ids.has('chartBehavior')) chartBehavior();
+  if (ids.has('chartKeywords')) chartKeywords();
+  if (ids.has('chartWordcloud')) chartWordcloud();
+  if (ids.has('chartSentimentCat')) chartSentimentCat();
+  if (ids.has('chartTopApps')) chartTopApps();
+  if (ids.has('chartSentimentDist')) chartSentimentDist();
+  if (ids.has('chartModel')) chartModel();
 }
 
 // 1) Distribusi skor rating
@@ -203,74 +188,7 @@ function chartScoreDist() {
   }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:grid} } });
 }
 
-// 2) Jumlah review per kategori
-function chartCategory() {
-  const c = (D.category_counts||[]);
-  make('chartCategory', { type:'bar', data:{
-    labels:c.map(x=>x.category), datasets:[{ label:'Review relevan', data:c.map(x=>x.count),
-      backgroundColor:'rgba(155,93,229,0.75)', borderRadius:5 }]
-  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
-}
-
-// 3) Tren waktu volume & distress
-function chartTimeline() {
-  const t = D.timeline || {labels:[]};
-  make('chartTimeline', { type:'line', data:{ labels:t.labels, datasets:[
-    { label:'Total review relevan', data:t.total, borderColor:COL.pur, backgroundColor:'rgba(155,93,229,0.08)', tension:0.35, fill:true, pointRadius:0, borderWidth:2 },
-    { label:'Kategori pinjol', data:t.pinjol, borderColor:COL.lime, backgroundColor:'rgba(184,255,60,0.06)', tension:0.35, fill:true, pointRadius:0, borderWidth:2 },
-    { label:'Sinyal distress galbay', data:t.distress, borderColor:COL.red, backgroundColor:'rgba(248,113,113,0.06)', tension:0.35, fill:true, pointRadius:0, borderWidth:2 },
-  ]}, options:{ ...chartDefaults, scales:{x:{...grid, ticks:{color:COL.gray, maxTicksLimit:10}}, y:grid} } });
-}
-
-// 4) Analisis perilaku (kategori bermakna)
-function chartBehavior() {
-  const b = (D.behavior||[]);
-  make('chartBehavior', { type:'bar', data:{
-    labels:b.map(x=>x.label), datasets:[{ label:'Jumlah review', data:b.map(x=>x.count),
-      backgroundColor:'rgba(184,255,60,0.75)', borderRadius:5 }]
-  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
-}
-
-// 5) Kata kunci galbay
-function chartKeywords() {
-  const k = (D.galbay_keywords||[]);
-  make('chartKeywords', { type:'bar', data:{
-    labels:k.map(x=>x.label), datasets:[{ label:'Frekuensi kemunculan', data:k.map(x=>x.count),
-      backgroundColor:'rgba(249,115,22,0.8)', borderRadius:5 }]
-  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
-}
-
-// 6) Sentimen per kategori (negatif vs positif)
-function chartSentimentCat() {
-  const c = (D.cat_stats||[]);
-  make('chartSentimentCat', { type:'bar', data:{
-    labels:c.map(x=>x.category), datasets:[
-      { label:'% Negatif (skor 1-2)', data:c.map(x=>x.neg_pct), backgroundColor:'rgba(248,113,113,0.8)', borderRadius:5 },
-      { label:'% Positif (skor 4-5)', data:c.map(x=>x.pos_pct), backgroundColor:'rgba(184,255,60,0.8)', borderRadius:5 },
-    ]
-  }, options:{ ...chartDefaults, scales:{x:{...grid, ticks:{color:COL.text, font:{size:10}}}, y:{...grid, max:100}} } });
-}
-
-// 7) Top aplikasi rasio negatif tertinggi
-function chartTopApps() {
-  const a = (D.top_neg_apps||[]);
-  make('chartTopApps', { type:'bar', data:{
-    labels:a.map(x=>x.app), datasets:[{ label:'% review negatif', data:a.map(x=>x.neg_pct),
-      backgroundColor:'rgba(248,113,113,0.8)', borderRadius:5 }]
-  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:{...grid,max:100},y:gridY} } });
-}
-
-// 8) Metrik evaluasi model
-function chartModel() {
-  const mo = D.model || {};
-  make('chartModel', { type:'bar', data:{
-    labels:['Accuracy','Precision','Recall','F1-Score'],
-    datasets:[{ label:'Skor (%)', data:[mo.accuracy*100, mo.precision*100, mo.recall*100, mo.f1*100].map(v=>+v.toFixed(1)),
-      backgroundColor:[COL.lime,COL.pur,COL.blu,COL.grn], borderRadius:6 }]
-  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:{...grid,max:100}} } });
-}
-
-// 9) Score distribution kedua (di section ringkasan)
+// 2) Score distribution kedua (di section ringkasan)
 function chartScoreDist2() {
   const s = D.score_dist || {};
   make('chartScoreDist2', { type:'bar', data:{
@@ -280,7 +198,74 @@ function chartScoreDist2() {
   }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:grid} } });
 }
 
-// 10) Donut chart distribusi prediksi model (TP/TN/FP/FN)
+// 3) Jumlah review per kategori
+function chartCategory() {
+  const c = (D.category_counts||[]);
+  make('chartCategory', { type:'bar', data:{
+    labels:c.map(x=>x.category), datasets:[{ label:'Review relevan', data:c.map(x=>x.count),
+      backgroundColor:'rgba(155,93,229,0.75)', borderRadius:5 }]
+  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
+}
+
+// 4) Tren waktu volume & distress
+function chartTimeline() {
+  const t = D.timeline || {labels:[]};
+  make('chartTimeline', { type:'line', data:{ labels:t.labels, datasets:[
+    { label:'Total review', data:t.total, borderColor:COL.pur, backgroundColor:'rgba(155,93,229,0.08)', tension:0.35, fill:true, pointRadius:0, borderWidth:2 },
+    { label:'Kategori pinjol', data:t.pinjol, borderColor:COL.lime, backgroundColor:'rgba(184,255,60,0.06)', tension:0.35, fill:true, pointRadius:0, borderWidth:2 },
+    { label:'Sinyal distress', data:t.distress, borderColor:COL.red, backgroundColor:'rgba(248,113,113,0.06)', tension:0.35, fill:true, pointRadius:0, borderWidth:2 },
+  ]}, options:{ ...chartDefaults, scales:{x:{...grid, ticks:{color:COL.gray, maxTicksLimit:10}}, y:grid} } });
+}
+
+// 5) Analisis perilaku
+function chartBehavior() {
+  const b = (D.behavior||[]);
+  make('chartBehavior', { type:'bar', data:{
+    labels:b.map(x=>x.label), datasets:[{ label:'Jumlah review', data:b.map(x=>x.count),
+      backgroundColor:'rgba(184,255,60,0.75)', borderRadius:5 }]
+  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
+}
+
+// 6) Kata kunci galbay
+function chartKeywords() {
+  const k = (D.galbay_keywords||[]).slice(0, 12);
+  make('chartKeywords', { type:'bar', data:{
+    labels:k.map(x=>x.label), datasets:[{ label:'Frekuensi', data:k.map(x=>x.count),
+      backgroundColor:'rgba(249,115,22,0.8)', borderRadius:5 }]
+  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
+}
+
+// 7) Metrik evaluasi model
+function chartModel() {
+  const mo = D.model || {};
+  make('chartModel', { type:'bar', data:{
+    labels:['Accuracy','Precision','Recall','F1-Score'],
+    datasets:[{ label:'Skor (%)', data:[mo.accuracy*100, mo.precision*100, mo.recall*100, mo.f1*100].map(v=>+v.toFixed(1)),
+      backgroundColor:[COL.lime,COL.pur,COL.blu,COL.grn], borderRadius:6 }]
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:{...grid,max:100}} } });
+}
+
+// 8) Sentimen per kategori
+function chartSentimentCat() {
+  const c = (D.cat_stats||[]);
+  make('chartSentimentCat', { type:'bar', data:{
+    labels:c.map(x=>x.category), datasets:[
+      { label:'% Negatif', data:c.map(x=>x.neg_pct), backgroundColor:'rgba(248,113,113,0.8)', borderRadius:5 },
+      { label:'% Positif', data:c.map(x=>x.pos_pct), backgroundColor:'rgba(184,255,60,0.8)', borderRadius:5 },
+    ]
+  }, options:{ ...chartDefaults, scales:{x:{...grid, ticks:{color:COL.text, font:{size:10}}}, y:{...grid, max:100}} } });
+}
+
+// 9) Top aplikasi rasio negatif
+function chartTopApps() {
+  const a = (D.top_neg_apps||[]);
+  make('chartTopApps', { type:'bar', data:{
+    labels:a.map(x=>x.app), datasets:[{ label:'% negatif', data:a.map(x=>x.neg_pct),
+      backgroundColor:'rgba(248,113,113,0.8)', borderRadius:5 }]
+  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:{...grid,max:100},y:gridY} } });
+}
+
+// 10) Donut chart distribusi prediksi model
 function chartSentimentDist() {
   const c = (D.model || {}).confusion || {};
   const tp = c.TP || 0, tn = c.TN || 0, fp = c.FP || 0, fn = c.FN || 0;
@@ -306,11 +291,10 @@ function chartSentimentDist() {
   }});
 }
 
-// 11) Wordcloud bar horizontal — 15 kata kunci paling dominan
+// 11) Wordcloud bar horizontal
 function chartWordcloud() {
   const k = (D.galbay_keywords || []).slice(0, 15);
   if (!k.length) return;
-  // Sort ascending agar yang paling banyak di atas
   const sorted = k.slice().sort((a,b)=>a.count-b.count);
   const maxCount = Math.max(...sorted.map(x=>x.count));
   make('chartWordcloud', { type:'bar', data:{
@@ -334,7 +318,7 @@ function chartWordcloud() {
   }});
 }
 
-// 12) Render top 10 apps table dari data
+// 12) Render top 10 apps table
 function renderTopAppsTable() {
   const tbody = document.querySelector('#topAppsTable tbody');
   if (!tbody) return;
@@ -343,7 +327,6 @@ function renderTopAppsTable() {
     tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--text-muted);">Data belum tersedia</td></tr>';
     return;
   }
-  // Cari max ratio untuk bar
   const maxRatio = Math.max(...apps.map(a=>a.neg_pct||0), 1);
   tbody.innerHTML = apps.map((a, i) => {
     const ratio = a.neg_pct || 0;
@@ -362,64 +345,4 @@ function renderTopAppsTable() {
       <td>${avgScore}</td>
     </tr>`;
   }).join('');
-}
-
-// ── SCROLL-TO-TOP BUTTON ──
-function initScrollTop() {
-  const btn = document.getElementById('scrollTop');
-  if (!btn) return;
-  window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 400);
-  }, { passive: true });
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-// ── MOBILE HAMBURGER ──
-function initHamburger() {
-  const btn = document.getElementById('hamburger');
-  const nav = document.getElementById('topbarNav');
-  if (!btn || !nav) return;
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = nav.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    btn.textContent = isOpen ? '✕' : '☰';
-  });
-  // Close saat click di luar
-  document.addEventListener('click', (e) => {
-    if (!nav.contains(e.target) && !btn.contains(e.target) && nav.classList.contains('open')) {
-      nav.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '☰';
-    }
-  });
-  // Close saat nav link diklik
-  nav.querySelectorAll('.nav-pill').forEach(p => {
-    p.addEventListener('click', () => {
-      nav.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '☰';
-    });
-  });
-}
-
-// ── STICKY SECTION HEADERS ──
-function initStickyHeaders() {
-  const sections = document.querySelectorAll('section[id]');
-  if (!sections.length) return;
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const header = entry.target.querySelector('.section-header');
-      if (!header) return;
-      // Sticky saat section sudah lewat setengah viewport
-      if (entry.boundingClientRect.top < 100) {
-        header.classList.add('sticky-header');
-      } else {
-        header.classList.remove('sticky-header');
-      }
-    });
-  }, { threshold: 0, rootMargin: '-100px 0px 0px 0px' });
-  sections.forEach(s => observer.observe(s));
 }

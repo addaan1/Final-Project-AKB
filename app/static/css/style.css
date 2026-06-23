@@ -1,0 +1,24 @@
+:root {
+  --bg: #0f1115;
+  --panel: #1a1d24;
+  --accent: #e74c3c;
+  --text: #e8e8e8;
+  --muted: #8a8f99;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: var(--panel); border-bottom: 1px solid #2a2e37; }
+.nav-brand { font-weight: 700; color: var(--accent); text-decoration: none; font-size: 1.1rem; }
+.nav-links a { color: var(--text); text-decoration: none; margin-left: 1.25rem; }
+.nav-links a:hover { color: var(--accent); }
+.container { max-width: 960px; margin: 0 auto; padding: 2rem; }
+.hero { text-align: center; padding: 4rem 1rem; }
+.hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.tagline { color: var(--muted); margin-bottom: 1.5rem; }
+.btn { display: inline-block; padding: 0.7rem 1.4rem; background: var(--accent); color: #fff; text-decoration: none; border-radius: 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.card, .panel { background: var(--panel); padding: 1.25rem; border-radius: 8px; }
+.card h3, .panel h3 { color: var(--accent); margin-bottom: 0.5rem; }
+.muted { color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.placeholder { color: var(--muted); padding: 2rem; text-align: center; }

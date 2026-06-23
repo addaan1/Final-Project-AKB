@@ -237,7 +237,7 @@ def calculate_simulation(nominal: float, bunga_pct: float, tenor: int, admin: fl
 WAITLIST_FILE = Path("data/waitlist.json")
 
 
-def add_to_waitlist(email: str, package: str = "general") -> dict:
+def add_to_waitlist(email: str, package: str = "general", name: str = "") -> dict:
     """Tambah email ke waitlist (demo, simpan ke JSON file)."""
     if not email or "@" not in email:
         return {"valid": False, "error": "Email tidak valid"}
@@ -257,6 +257,7 @@ def add_to_waitlist(email: str, package: str = "general") -> dict:
 
     entry = {
         "email": email,
+        "name": name or "",
         "package": package,
         "timestamp": datetime.now().isoformat() + "Z",
     }
@@ -296,9 +297,23 @@ def check_pinjol_status(app_name: str) -> dict:
     db = _load_pinjol_db()
     name_lower = app_name.lower().strip()
 
+    def _match(app, query):
+        """Match by name + aliases (case-insensitive, exact or partial)."""
+        candidates = [app["name"]] + app.get("aliases", [])
+        candidates_lower = [c.lower() for c in candidates]
+        # Exact match
+        if query in candidates_lower:
+            return "exact"
+        # Partial match
+        for c in candidates_lower:
+            if query in c or c in query:
+                return "partial"
+        return None
+
     # Exact match di legal
     for app in db.get("legal", []):
-        if app["name"].lower() == name_lower:
+        m = _match(app, name_lower)
+        if m == "exact":
             return {
                 "valid": True,
                 "found": True,
@@ -319,7 +334,8 @@ def check_pinjol_status(app_name: str) -> dict:
 
     # Partial match di legal
     for app in db.get("legal", []):
-        if name_lower in app["name"].lower() or app["name"].lower() in name_lower:
+        m = _match(app, name_lower)
+        if m == "partial":
             return {
                 "valid": True,
                 "found": True,
@@ -337,14 +353,15 @@ def check_pinjol_status(app_name: str) -> dict:
 
     # Match di ilegal sample
     for app in db.get("ilegal_sample", []):
-        if name_lower in app["name"].lower() or app["name"].lower() in name_lower:
+        m = _match(app, name_lower)
+        if m in ("exact", "partial"):
             return {
                 "valid": True,
                 "found": True,
                 "status": "ilegal",
                 "status_label": "TIDAK TERDAFTAR / ILEGAL",
                 "name": app["name"],
-                "message": f"{app['name']} TIDAK TERDAFTAR di database OJK kami. Berisiko tinggi.",
+                "message": f"{app['name']} TIDAK TERDAFTAR di database OJK. Berisiko tinggi.",
                 "recommendations": [
                     "JANGAN pinjam dari app ini",
                     "Laporkan ke OJK di 157 atau ojk.go.id",
@@ -756,4 +773,463 @@ def generate_recovery_roadmap(conditions: dict) -> dict:
             "target_bulan_3": "Turun 25-30% dari total. Skor Risiko turun ke Aman/Waspada.",
         },
         "disclaimer": "Roadmap ini panduan umum. Setiap situasi unik. Konsultasi dengan konselor keuangan profesional untuk kasus kompleks.",
+    }
+
+
+# =================================================================
+# 5. FAQ CHATBOT (Phase 1: rule-based, keyword matching)
+# =================================================================
+# Knowledge base untuk chatbot. Phase 2 nanti: RAG over 349K reviews
+# dengan embedding-based semantic search.
+
+FAQ_KB = [
+    {
+        "intent": "apa_itu_galbay",
+        "keywords": ["apa itu galbay", "galbay itu apa", "definisi galbay", "arti galbay", "gagal bayar artinya"],
+        "answer": (
+            "**Galbay** = **Gagal Bayar**. Istilah Gen Z untuk kondisi ketika kamu tidak bisa membayar cicilan tepat waktu. "
+            "Bisa bertahap: telat 1 hari → 7 hari → 30 hari → masuk daftar hitam. "
+            "Tapi bukan akhir dunia — bisa di-recovery dengan rencana yang tepat."
+        ),
+        "suggestions": ["Skor Risiko", "Recovery Roadmap", "DC Kit"],
+        "related_actions": [
+            {"label": "Cek Skor Risiko Kamu", "href": "/dashboard/produk#skor-form"},
+            {"label": "Lihat Recovery Roadmap", "href": "/dashboard/produk#recovery-roadmap"},
+        ],
+    },
+    {
+        "intent": "apa_itu_skor_risiko",
+        "keywords": ["skor risiko", "skor galbay", "skor itu apa", "cara hitung skor", "score risk", "skor 75", "skor saya"],
+        "answer": (
+            "**Skor Risiko Galbay** adalah angka 0-100 yang mengukur kemungkinan kamu gagal bayar. "
+            "Dihitung dari 6 faktor: jenis app yang dipakai, total utang, frekuensi self-reward, "
+            "keterlambatan, pernah ditagih DC, dan feeling kamu. Skor 0-30 = Aman, 31-60 = Waspada, 61+ = Bahaya. "
+            "Saat ini masih **rule-based** — nanti di-swap ke model ML setelah tim modeling selesai."
+        ),
+        "suggestions": ["Cek Skor Kamu", "Simulasi Cicilan"],
+        "related_actions": [
+            {"label": "Hitung Skor Kamu", "href": "/dashboard/produk#skor-form"},
+        ],
+    },
+    {
+        "intent": "pinjol_ilegal",
+        "keywords": ["pinjol ilegal", "pinjol haram", "pinjol bodong", "pinjol tidak terdaftar", "aplikasi pinjol abal", "cek pinjol", "apakah pinjol aman"],
+        "answer": (
+            "**Pinjol ilegal** = aplikasi pinjam online yang **tidak terdaftar di OJK** dan sering kali melakukan: "
+            "(1) akses kontak/galeri tanpa izin, (2) bunga di atas 30%/bulan, (3) DC agresif yang sebar data ke keluarga. "
+            "Cara cek: gunakan **Pinjol Checker** di atas, atau langsung ke website OJK di ojk.go.id → Fintech → Daftar Fintech Terdaftar."
+        ),
+        "suggestions": ["Cek Pinjol", "Lapor Pinjol Ilegal"],
+        "related_actions": [
+            {"label": "Cek Status Pinjol", "href": "/dashboard/produk#pinjol-checker"},
+        ],
+    },
+    {
+        "intent": "snowball_vs_avalanche",
+        "keywords": ["snowball", "avalanche", "strategi bayar utang", "mana yang lebih baik", "bunga tertinggi", "utang terkecil"],
+        "answer": (
+            "**Snowball**: bayar utang **terkecil** dulu (biar cepat lunas 1-2 utang = motivasi psikologis). "
+            "**Avalanche**: bayar utang **bunga tertinggi** dulu (hemat total bunga). "
+            "Rekomendasi: Avalanche kalau kamu disiplin, Snowball kalau butuh quick win motivasi. "
+            "Tools kami bisa hitung keduanya — coba di **Debt Planner**."
+        ),
+        "suggestions": ["Debt Planner", "Bandingkan"],
+        "related_actions": [
+            {"label": "Hitung Strategi Bayar", "href": "/dashboard/produk#debt-planner"},
+        ],
+    },
+    {
+        "intent": "bunga_tinggi_normal",
+        "keywords": ["bunga normal", "bunga wajar", "berapa bunga pinjol", "bunga tinggi", "bunga efektif tahunan", "bunga 10", "bunga kta bank"],
+        "answer": (
+            "Benchmark bunga di Indonesia: "
+            "**KTA bank** 12-18%/tahun = wajar. "
+            "**Paylater legal** 24-36%/tahun = batas atas. "
+            "**Pinjol ilegal** 200-400%+/tahun = predator. "
+            "Gunakan **Simulasi Cicilan** untuk hitung bunga efektif tahunan sebelum deal."
+        ),
+        "suggestions": ["Simulasi Cicilan", "Cek Pinjol"],
+        "related_actions": [
+            {"label": "Hitung Bunga", "href": "/dashboard/produk#simulasi"},
+        ],
+    },
+    {
+        "intent": "lama_lunas",
+        "keywords": ["berapa lama lunas", "lunas berapa bulan", "kapan utang kelar", "timeline lunas", "berapa bulan"],
+        "answer": (
+            "Tergantung total utang + cicilan bulanan. Aturan umum: kalau cicilan bulan = 10% dari total utang → lunas dalam ~12 bulan. "
+            "Kalau cuma bayar minimum 5%/bulan → bisa 24-36 bulan. "
+            "Gunakan **Debt Planner** untuk hitung persisnya, atau **Recovery Roadmap** untuk rencana 90 hari."
+        ),
+        "suggestions": ["Debt Planner", "Recovery Roadmap"],
+        "related_actions": [
+            {"label": "Hitung Timeline", "href": "/dashboard/produk#debt-planner"},
+        ],
+    },
+    {
+        "intent": "dc_agresif",
+        "keywords": ["dc agresif", "dc ngotot", "dc teroris", "dc sebarkan data", "dc ancam", "penagihan kasar", "debt collector", "dc agresif", "agresif", "ngotot", "ancaman", "sebar data", "intimidasi"],
+        "answer": (
+            "**Hak kamu saat menghadapi DC agresif**: "
+            "(1) minta identitas lengkap DC, (2) DC TIDAK BOLEH ancam/sebar data, "
+            "(3) hanya boleh kontak 08.00-20.00, (4) kamu boleh dokumentasi. "
+            "**Lapor**: OJK 157, Polisi 110. "
+            "Gunakan **DC Kit** untuk 5 template chat negosiasi siap pakai."
+        ),
+        "suggestions": ["DC Kit", "Lapor DC"],
+        "related_actions": [
+            {"label": "Lihat DC Kit", "href": "/dashboard/produk#dc-kit"},
+        ],
+    },
+    {
+        "intent": "lapor_dc",
+        "keywords": ["lapor dc", "lapor debt collector", "lapor pinjol ilegal", "aduan", "kominfo", "ojk 157"],
+        "answer": (
+            "Tiga jalur pelaporan: "
+            "**OJK** 157 atau ojk.go.id (pengaduan fintech ilegal/penagihan tak wajar). "
+            "**Kominfo** aduankonten.id (app ilegal di Play Store). "
+            "**Polisi** 110 (jika ada ancaman/kekerasan). "
+            "Siapkan: screenshot chat DC, bukti transfer, nama app + tanggal."
+        ),
+        "suggestions": ["DC Kit", "Cek Pinjol"],
+        "related_actions": [
+            {"label": "Template Lapor", "href": "/dashboard/produk#dc-kit"},
+        ],
+    },
+    {
+        "intent": "template_chat",
+        "keywords": ["template chat", "contoh chat", "chat dc", "pesan untuk dc", "script negosiasi", "whatsapp template"],
+        "answer": (
+            "Ada 5 template siap pakai: "
+            "(1) Tidak Bisa Bayar Hari Ini, (2) Minta Restrukturisasi, (3) Tolak Penagihan Agresif, "
+            "(4) Laporkan DC Ilegal, (5) Konfirmasi Saldo Utang. "
+            "Tinggal copy, edit nama/nominal, kirim via WhatsApp. Lihat di **DC Kit**."
+        ),
+        "suggestions": ["Buka DC Kit"],
+        "related_actions": [
+            {"label": "Lihat Template", "href": "/dashboard/produk#dc-kit"},
+        ],
+    },
+    {
+        "intent": "cara_recovery",
+        "keywords": ["cara recovery", "cara keluar galbay", "gimana kalau sudah galbay", "sudah telat", "sudah gagal bayar", "jalan keluar"],
+        "answer": (
+            "Langkah recovery: "
+            "(1) **Stop pinjam baru** — hapus app pinjol dari HP. "
+            "(2) **Audit semua utang** — catat di spreadsheet. "
+            "(3) **Setel auto-debit** minimum payment 1 hari sebelum jatuh tempo. "
+            "(4) **Pilih strategi** — Snowball (motivasi) atau Avalanche (hemat). "
+            "(5) **Naikkan income** — kerja sampingan, jual aset tak terpakai. "
+            "Gunakan **Recovery Roadmap** untuk rencana 90 hari otomatis."
+        ),
+        "suggestions": ["Recovery Roadmap", "Debt Planner"],
+        "related_actions": [
+            {"label": "Generate Roadmap", "href": "/dashboard/produk#recovery-roadmap"},
+        ],
+    },
+    {
+        "intent": "telat_30_hari",
+        "keywords": ["telat 30", "telat sebulan", "nunggak sebulan", "lewat 30 hari", "kritis", "sudah di blacklist"],
+        "answer": (
+            "Telat 30+ hari = **kritis**. Langkah darurat: "
+            "(1) Cek **SLIK di bank** (gratis, butuh e-KTP) untuk tahu status kredit. "
+            "(2) **Negosiasi restrukturisasi** ke pinjol (mulai dari bunga tertinggi). "
+            "(3) **Hapus app pinjol** untukurangi godaan. "
+            "(4) **Cari konselor** (OJK 157 atau YLBHI). "
+            "Gunakan **Recovery Roadmap** dan pilih kondisi 'telat >30 hari' untuk dapat roadmap krisis."
+        ),
+        "suggestions": ["Recovery Roadmap", "DC Kit"],
+        "related_actions": [
+            {"label": "Generate Roadmap Kritis", "href": "/dashboard/produk#recovery-roadmap"},
+        ],
+    },
+    {
+        "intent": "negosiasi_cicilan",
+        "keywords": ["negosiasi cicilan", "minta keringanan", "restrukturisasi", "bisa nego", "cicilan dipanjang"],
+        "answer": (
+            "Bisa! Berdasarkan **UU No. 4/2023 (P2SK) Pasal 236**, kamu berhak minta restrukturisasi. "
+            "Template: *'Saya ingin mengusulkan perpanjangan tenor dari X menjadi Y bulan, dengan cicilan Rp Z/bulan. "
+            "Saya bersedia bayar tepat waktu sesuai jadwal baru.'* "
+            "Lihat **DC Kit** untuk template lengkap. Biasanya disetujui kalau kamu punya itikad baik."
+        ),
+        "suggestions": ["DC Kit Template", "Recovery Roadmap"],
+        "related_actions": [
+            {"label": "Template Negosiasi", "href": "/dashboard/produk#dc-kit"},
+        ],
+    },
+    {
+        "intent": "aplikasi_aman",
+        "keywords": ["aplikasi ini aman", "data saya disimpan", "privasi", "data tidak aman", "apakah scam", "trusted"],
+        "answer": (
+            "**Ya, aman**. Data kamu **tidak disimpan** — semua skor & simulasi dihitung lokal/server, "
+            "tidak ada tracking, tidak butuh login. "
+            "Source data: 349.200 ulasan publik Google Play Store (bukan data pribadi). "
+            "Disclaimer: ini **demo prototype** dengan rule-based scoring — model ML menyusul."
+        ),
+        "suggestions": ["Tentang Kami", "Privacy"],
+        "related_actions": [],
+    },
+    {
+        "intent": "premium_dapat_apa",
+        "keywords": ["premium dapat apa", "fitur premium", "premium ada apa", "mau premium", "premium worth it"],
+        "answer": (
+            "**Premium** (Rp 49K/bulan) dapat: "
+            "(1) **AI Coach 24/7** (chat untuk tanya & recovery guidance), "
+            "(2) **Nudge pre-checkout** real-time (peringatkan sebelum checkout impulsif), "
+            "(3) **Laporan bulanan** personal, (4) **Save unlimited** debt plans, "
+            "(5) **Priority DC template updates**. "
+            "Klik **Coba Premium** di Pricing section — ada diskon 50% untuk 100 user pertama."
+        ),
+        "suggestions": ["Lihat Pricing", "Coba Premium"],
+        "related_actions": [
+            {"label": "Lihat Pricing", "href": "/dashboard/produk#pricing"},
+        ],
+    },
+    {
+        "intent": "konseling_berapa",
+        "keywords": ["konseling berapa", "harga konseling", "konsultasi psikolog", "sesi berapa", "konseling mahal"],
+        "answer": (
+            "**Konseling** Rp 150K/sesi (60 menit) — 1-on-1 dengan psikolog spesialis financial stress. "
+            "Confidential & aman. Termasuk akses penuh ke semua fitur Premium. "
+            "Klik **Booking Sesi** di Pricing section untuk masuk waitlist."
+        ),
+        "suggestions": ["Lihat Pricing", "Booking Sesi"],
+        "related_actions": [
+            {"label": "Lihat Pricing", "href": "/dashboard/produk#pricing"},
+        ],
+    },
+    {
+        "intent": "diskon_premium",
+        "keywords": ["diskon", "promo", "diskon 50", "berapa diskon", "potongan harga"],
+        "answer": (
+            "**Hanya 100 user pertama** dapat diskon 50% Premium (jadi Rp 24.5K/bulan). "
+            "Setelah lewat 100 user, kembali ke Rp 49K/bulan. "
+            "Klik **Coba Premium** sekarang untuk klaim."
+        ),
+        "suggestions": ["Coba Premium"],
+        "related_actions": [
+            {"label": "Coba Premium", "href": "/dashboard/produk#pricing"},
+        ],
+    },
+    {
+        "intent": "cara_pakai_website",
+        "keywords": ["cara pakai", "gimana pakenya", "mulai dari mana", "langkah pertama", "tutorial"],
+        "answer": (
+            "Mulai dari 4 fitur utama: "
+            "(1) **Cek Pinjol** — ketik nama app, dapat status OJK. "
+            "(2) **Debt Planner** — input utang, bandingkan strategi. "
+            "(3) **DC Kit** — copy template chat. "
+            "(4) **Recovery Roadmap** — masukkan kondisi, dapat roadmap 90 hari. "
+            "Atau coba **Skor Risiko** untuk tahu posisi kamu."
+        ),
+        "suggestions": ["Cek Pinjol", "Skor Risiko"],
+        "related_actions": [
+            {"label": "Mulai", "href": "/dashboard/produk"},
+        ],
+    },
+    {
+        "intent": "data_sumber",
+        "keywords": ["data dari mana", "sumber data", "349 ribu", "ulasan", "google play", "dataset"],
+        "answer": (
+            "Data: **349.200 ulasan publik** dari Google Play Store, di-scrape dari 44 aplikasi fintech Indonesia. "
+            "Dilakukan Q1-Q2 2025. Bukan data pribadi — semua review yang dipakai sudah publik. "
+            "Lihat detail di **Dashboard → Analisis**."
+        ),
+        "suggestions": ["Lihat Dashboard"],
+        "related_actions": [
+            {"label": "Lihat Analisis", "href": "/dashboard/analisis"},
+        ],
+    },
+    {
+        "intent": "emergency_dc",
+        "keywords": ["darurat dc", "dc sekarang", "dc datang", "dc telepon", "dc whatsapp", "bantuan sekarang"],
+        "answer": (
+            "**Darurat DC?** Tetap tenang. Tindakan cepat: "
+            "(1) **Jangan bayar apa-apa** dulu, jangan transfer ke nomor aneh. "
+            "(2) **Screenshot semua chat** DC untuk bukti. "
+            "(3) **Minta identitas DC** (nama, perusahaan, ID). "
+            "(4) **Lapor OJK 157** atau **Polisi 110** jika mengancam. "
+            "Lihat **DC Kit** untuk template chat & kontak darurat."
+        ),
+        "suggestions": ["DC Kit", "Kontak Darurat"],
+        "related_actions": [
+            {"label": "DC Kit", "href": "/dashboard/produk#dc-kit"},
+        ],
+    },
+    {
+        "intent": "konsultan_keuangan",
+        "keywords": ["konsultan", "konselor keuangan", "financial advisor", "tanya ahli", "konsultasi gratis"],
+        "answer": (
+            "Konsultasi gratis: "
+            "**OJK** 157 (informasi & pengaduan). "
+            "**YLBHI** (021) 319 025 35 (bantuan hukum finansial). "
+            "**Peer support** di komunitas seperti @duithape (Twitter/X). "
+            "Atau booking **Konseling** di app kami (Rp 150K/sesi, 60 menit, 1-on-1 psikolog)."
+        ),
+        "suggestions": ["Booking Konseling"],
+        "related_actions": [
+            {"label": "Lihat Konseling", "href": "/dashboard/produk#pricing"},
+        ],
+    },
+    {
+        "intent": "self_reward_aman",
+        "keywords": ["self reward", "belanja self reward", "boleh belanja", "shopping therapy aman", "kapan boleh belanja"],
+        "answer": (
+            "Self-reward boleh, asal: "
+            "(1) **Maks 10% income bulanan** untuk non-esensial. "
+            "(2) **Tunda 24 jam** sebelum checkout (cek apakah masih mau besok). "
+            "(3) **Bayar cash, bukan paylater** — supaya tidak numpuk utang. "
+            "(4) **Pakai Simulasi Cicilan** dulu kalau mau pakai paylater — lihat total bayar."
+        ),
+        "suggestions": ["Simulasi Cicilan", "Skor Risiko"],
+        "related_actions": [
+            {"label": "Hitung Simulasi", "href": "/dashboard/produk#simulasi"},
+        ],
+    },
+    {
+        "intent": "pinjol_atau_paylater",
+        "keywords": ["bedanya pinjol paylater", "mana yang lebih aman", "pinjol atau paylater"],
+        "answer": (
+            "**Paylater** = cicilan 0% (biasanya 1-3 bulan) dari platform e-commerce. "
+            "**Pinjol** = uang tunai yang dipinjam, bunga 8-30%/bulan. "
+            "**Paylater lebih aman** karena limited ke merchant. Tapi kalau telat bayar, dendanya besar. "
+            "Keduanya tetap harus hati-hati — cek legalitas di **Pinjol Checker**."
+        ),
+        "suggestions": ["Cek Pinjol", "Simulasi Cicilan"],
+        "related_actions": [
+            {"label": "Cek Pinjol", "href": "/dashboard/produk#pinjol-checker"},
+        ],
+    },
+    {
+        "intent": "berapa_utang_normal",
+        "keywords": ["berapa utang normal", "utang berapa wajar", "batas utang", "utang ideal"],
+        "answer": (
+            "**Rule of thumb**: total utang ideal **<30% income tahunan**. "
+            "Misal gaji Rp 5 juta/bulan (Rp 60 juta/tahun) → total utang idealnya <Rp 18 juta. "
+            "Lewat dari 3x income = kritis. Cek kondisi kamu di **Recovery Roadmap**."
+        ),
+        "suggestions": ["Recovery Roadmap", "Skor Risiko"],
+        "related_actions": [
+            {"label": "Cek Roadmap", "href": "/dashboard/produk#recovery-roadmap"},
+        ],
+    },
+    {
+        "intent": "ai_atau_rule_based",
+        "keywords": ["pakai ai", "pakai ml", "model ai", "machine learning", "akurasi"],
+        "answer": (
+            "Saat ini scoring masih **rule-based** (berdasarkan bobot dari analisis 349K ulasan). "
+            "Tim modeling sedang develop **model ML asli** yang akan swap in di Phase 2. "
+            "Rule-based sudah cukup akurat untuk demo, hasil konsisten dan deterministic."
+        ),
+        "suggestions": ["Tentang Model", "Skor Risiko"],
+        "related_actions": [
+            {"label": "Cek Skor", "href": "/dashboard/produk#skor-form"},
+        ],
+    },
+    {
+        "intent": "default_fallback",
+        "keywords": [],
+        "answer": (
+            "Maaf, saya belum paham pertanyaan itu. "
+            "Saya bisa bantu topik: **skor risiko**, **pinjol ilegal**, **snowball vs avalanche**, "
+            "**bunga wajar**, **DC agresif**, **cara recovery**, **telat 30 hari**, **negosiasi cicilan**, "
+            "**premium**, **konseling**, **data sumber**, atau **darurat DC**. "
+            "Atau klik salah satu modul di halaman ini."
+        ),
+        "suggestions": ["Skor Risiko", "Cek Pinjol", "DC Kit", "Recovery Roadmap"],
+        "related_actions": [
+            {"label": "Lihat Semua Fitur", "href": "/dashboard/produk"},
+        ],
+    },
+]
+
+
+def _tokenize(text: str) -> list:
+    """Lowercase + remove punctuation + tokenize."""
+    import re
+    text = text.lower().strip()
+    text = re.sub(r"[^a-z0-9\s]", " ", text)
+    return [t for t in text.split() if t]
+
+
+def _match_faq_intent(message: str) -> tuple:
+    """Match user message to FAQ intent via keyword scoring.
+
+    Returns: (best_intent_entry, confidence_score)
+    """
+    if not message or not message.strip():
+        return None, 0.0
+
+    msg_tokens = _tokenize(message)
+    if not msg_tokens:
+        return None, 0.0
+
+    best_intent = None
+    best_score = 0.0
+
+    for entry in FAQ_KB:
+        if entry["intent"] == "default_fallback":
+            continue
+        keywords = entry.get("keywords", [])
+        if not keywords:
+            continue
+
+        score = 0.0
+        matched = []
+        for kw in keywords:
+            kw_tokens = _tokenize(kw)
+            if not kw_tokens:
+                continue
+            # Full phrase match (bonus)
+            if kw.lower() in message.lower():
+                score += 2.0
+                matched.append(kw)
+            # Token-level match
+            elif all(t in msg_tokens for t in kw_tokens):
+                score += 1.0
+                matched.append(kw)
+            # Substring match on individual token
+            elif any(t in msg_tokens and len(t) >= 4 for t in kw_tokens):
+                score += 0.3
+                matched.append(kw)
+
+        # Normalize by keyword count
+        normalized = score / max(len(keywords), 1)
+        if normalized > best_score:
+            best_score = normalized
+            best_intent = entry
+
+    # Threshold: kalau score < 0.3 → fallback
+    if best_score < 0.3 or best_intent is None:
+        return FAQ_KB[-1], 0.0  # default_fallback
+
+    return best_intent, min(best_score, 1.0)
+
+
+def chat_faq_handler(message: str) -> dict:
+    """Handle user message via FAQ keyword matching (Phase 1).
+
+    Args:
+        message: pesan user (string)
+
+    Returns:
+        dict: {valid, intent, confidence, answer, suggestions, related_actions, model_version, disclaimer}
+    """
+    if not message or not message.strip():
+        return {
+            "valid": False,
+            "error": "Pesan kosong. Ketik pertanyaan kamu.",
+            "model_version": "faq-rule-based-v1",
+        }
+
+    intent_entry, confidence = _match_faq_intent(message)
+    return {
+        "valid": True,
+        "intent": intent_entry["intent"],
+        "confidence": round(confidence, 2),
+        "answer": intent_entry["answer"],
+        "suggestions": intent_entry.get("suggestions", []),
+        "related_actions": intent_entry.get("related_actions", []),
+        "model_version": "faq-rule-based-v1",
+        "disclaimer": "Chatbot phase 1: rule-based FAQ. Phase 2 nanti pakai ML/RAG. Untuk kasus spesifik, konsultasi profesional.",
     }

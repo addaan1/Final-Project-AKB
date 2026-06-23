@@ -8,6 +8,7 @@ from app.api import (
     calculate_debt_planner,
     calculate_score,
     calculate_simulation,
+    chat_faq_handler,
     check_pinjol_status,
     generate_recovery_roadmap,
     get_dc_template,
@@ -139,6 +140,7 @@ def api_waitlist():
     Request JSON atau form-encoded:
     {
       "email": "user@example.com",
+      "name": "Nama User",  // optional
       "package": "premium"  // optional
     }
     """
@@ -147,9 +149,14 @@ def api_waitlist():
     else:
         data = {
             "email": request.form.get("email", ""),
+            "name": request.form.get("name", ""),
             "package": request.form.get("package", "general"),
         }
-    result = add_to_waitlist(data.get("email", ""), data.get("package", "general"))
+    result = add_to_waitlist(
+        email=data.get("email", ""),
+        package=data.get("package", "general"),
+        name=data.get("name", ""),
+    )
     return jsonify(result)
 
 
@@ -253,3 +260,34 @@ def api_recovery_roadmap():
 def asset_file(filename: str):
     project_root = Path(current_app.root_path).parent
     return send_from_directory(project_root / "assets", filename)
+
+
+# =================================================================
+# FAQ Chatbot (Phase 1: rule-based, 25 intents)
+# =================================================================
+@main_bp.route("/api/chat", methods=["POST"])
+def api_chat():
+    """Chatbot FAQ (phase 1: rule-based keyword matching).
+
+    Request JSON atau form-encoded:
+    {
+      "message": "apa itu galbay?"
+    }
+
+    Returns:
+    {
+      "valid": true,
+      "intent": "apa_itu_galbay",
+      "confidence": 0.85,
+      "answer": "...",
+      "suggestions": [...],
+      "related_actions": [{"label", "href"}],
+      "model_version": "faq-rule-based-v1"
+    }
+    """
+    if request.is_json:
+        data = request.get_json() or {}
+    else:
+        data = {"message": request.form.get("message", "")}
+    result = chat_faq_handler(data.get("message", ""))
+    return jsonify(result)

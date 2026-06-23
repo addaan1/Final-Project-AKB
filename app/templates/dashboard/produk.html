@@ -38,7 +38,7 @@
         <label for="pinjolName">Nama Aplikasi Pinjol</label>
         <input type="text" id="pinjolName" class="form-input" placeholder="cth: Kredivo, OVO, Pinjol Ilegal A" required list="pinjolSuggestions">
         <datalist id="pinjolSuggestions">
-          <option value="Kredivo"><option value="Akulaku"><option value="OVO"><option value="DANA"><option value="GoPay"><option value="LinkAja"><option value="SeaBank"><option value="Bank Jago"><option value="blu by BCA Digital"><option value="Flip"><option value="KoinWorks"><option value="RupiahCepat"><option value="KreditPintar"><option value="Tunaiku"><option value="AdaKami"><option value="Easycash"><option value="Pinjol Ilegal A">
+          <option value="Kredivo"><option value="Akulaku"><option value="Indodana"><option value="Atome"><option value="Kredito"><option value="OVO"><option value="DANA"><option value="GoPay"><option value="LinkAja"><option value="ShopeePay"><option value="SeaBank"><option value="Bank Jago"><option value="blu by BCA Digital"><option value="Jenius"><option value="Allo Bank"><option value="LINE Bank"><option value="BRImo"><option value="Livin by Mandiri"><option value="BCA Mobile"><option value="Flip"><option value="Bibit"><option value="Ajaib"><option value="Stockbit"><option value="Pluang"><option value="KoinWorks"><option value="Investree"><option value="Amartha"><option value="Modalku"><option value="TaniFund"><option value="DanaCepat"><option value="Cermati"><option value="Lifepal"><option value="Roojai"><option value="Pinjol Ilegal A">
         </datalist>
         <p class="form-hint">Cek nama persis, atau ketik sebagian (misal "blu" akan match dengan "blu by BCA Digital")</p>
       </div>
@@ -67,16 +67,16 @@
       <div class="planner-debts" id="plannerDebts">
         <div class="debt-row">
           <input type="text" class="form-input debt-name" placeholder="Nama utang" value="Kredivo">
-          <input type="number" class="form-input debt-balance" placeholder="Saldo (Rp)" value="2000000">
-          <input type="number" class="form-input debt-bunga" placeholder="Bunga %/bln" value="8" step="0.1">
-          <input type="number" class="form-input debt-min" placeholder="Min bayar" value="200000">
+          <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" class="form-input rupiah-num debt-balance" placeholder="0" value="2.000.000"></div>
+          <input type="number" class="form-input debt-bunga" placeholder="Bunga %/bln" value="8" min="0" step="0.1">
+          <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" class="form-input rupiah-num debt-min" placeholder="0" value="200.000"></div>
           <button type="button" class="debt-remove" title="Hapus">×</button>
         </div>
         <div class="debt-row">
           <input type="text" class="form-input debt-name" placeholder="Nama utang" value="AdaKami">
-          <input type="number" class="form-input debt-balance" placeholder="Saldo (Rp)" value="1000000">
-          <input type="number" class="form-input debt-bunga" placeholder="Bunga %/bln" value="10" step="0.1">
-          <input type="number" class="form-input debt-min" placeholder="Min bayar" value="100000">
+          <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" class="form-input rupiah-num debt-balance" placeholder="0" value="1.000.000"></div>
+          <input type="number" class="form-input debt-bunga" placeholder="Bunga %/bln" value="10" min="0" step="0.1">
+          <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" class="form-input rupiah-num debt-min" placeholder="0" value="100.000"></div>
           <button type="button" class="debt-remove" title="Hapus">×</button>
         </div>
       </div>
@@ -84,8 +84,8 @@
         <button type="button" class="btn-outline" id="addDebtBtn">+ Tambah Utang</button>
       </div>
       <div class="form-group" style="margin-top:20px;">
-        <label for="extraPayment">Extra Payment per Bulan (Rp) &mdash; untuk加速 lunas</label>
-        <input type="number" id="extraPayment" class="form-input" min="0" step="50000" value="200000">
+        <label for="extraPayment">Extra Payment per Bulan (Rp) &mdash; untuk percepat lunas</label>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="extraPayment" class="form-input rupiah-num" placeholder="0" value="200.000"></div>
       </div>
       <button type="button" class="btn-primary btn-large btn-full" id="planDebtBtn">📊 Hitung Strategi Bayar</button>
     </div>
@@ -136,11 +136,11 @@
     <form class="roadmap-form" id="roadmapForm">
       <div class="form-group">
         <label>Total utang saat ini (Rp)</label>
-        <input type="number" id="rmTotalUtang" class="form-input" min="0" step="100000" value="5000000" required>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="rmTotalUtang" class="form-input rupiah-num" placeholder="0" value="5.000.000" required></div>
       </div>
       <div class="form-group">
         <label>Income bulanan (Rp)</label>
-        <input type="number" id="rmIncome" class="form-input" min="1" step="100000" value="3000000" required>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="rmIncome" class="form-input rupiah-num" placeholder="0" value="3.000.000" required></div>
       </div>
       <div class="form-group">
         <label>Sudah pernah ditagih DC?</label>
@@ -151,7 +151,7 @@
       </div>
       <div class="form-group">
         <label>Sudah telat berapa hari?</label>
-        <input type="number" id="rmHariTelat" class="form-input" min="0" step="1" value="15">
+        <input type="number" id="rmHariTelat" class="form-input" min="0" value="15">
       </div>
       <button type="submit" class="btn-primary btn-large btn-full">🗺️ Generate Roadmap Saya</button>
     </form>
@@ -258,7 +258,7 @@
     <div class="simulasi-form">
       <div class="form-group">
         <label for="nominal">Nominal Pinjaman (Rp)</label>
-        <input type="number" id="nominal" class="form-input" min="100000" step="100000" value="2000000">
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="nominal" class="form-input rupiah-num" placeholder="0" value="2.000.000"></div>
       </div>
       <div class="form-group">
         <label for="bunga">Bunga per Bulan (%)</label>
@@ -279,7 +279,7 @@
       </div>
       <div class="form-group">
         <label for="admin">Biaya Admin (Rp)</label>
-        <input type="number" id="admin" class="form-input" min="0" step="10000" value="50000">
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="admin" class="form-input rupiah-num" placeholder="0" value="50.000"></div>
       </div>
     </div>
 
@@ -391,4 +391,40 @@
     </div>
   </div>
 </section>
+
+<!-- ========== PREMIUM MODAL ========== -->
+<div class="premium-modal" id="premiumModal" role="dialog" aria-modal="true" aria-labelledby="premiumTitle">
+  <div class="premium-card">
+    <button type="button" class="premium-close" id="premiumCloseBtn" aria-label="Tutup">&times;</button>
+    <div class="premium-particles" id="premiumParticles"></div>
+    <div class="premium-content" id="premiumContent">
+      <div class="premium-crown">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v2H5v-2z"/></svg>
+      </div>
+      <h2 class="premium-title" id="premiumTitle">Selamat Datang di Premium</h2>
+      <p class="premium-subtitle">Akses penuh ke semua fitur + <strong>AI Coach 24/7</strong> yang siap bantu recovery kapan saja.</p>
+      <div class="premium-countdown">
+        <span class="premium-countdown-pulse"></span>
+        <span>Hanya 100 User Pertama — Diskon 50%</span>
+      </div>
+      <div class="premium-benefits">
+        <div class="premium-benefit"><span class="premium-benefit-icon">🚀</span><span>AI Coach 24/7</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">📊</span><span>Laporan Personal</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">🎯</span><span>Nudge Real-time</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">💎</span><span>Save Unlimited</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">⚡</span><span>Priority Update</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">🛡️</span><span>Data Privat</span></div>
+      </div>
+      <form class="premium-form" id="premiumForm">
+        <input type="text" id="premiumName" placeholder="Nama kamu" required autocomplete="name">
+        <input type="email" id="premiumEmail" placeholder="email@kamu.com" required autocomplete="email">
+        <button type="submit" class="premium-submit">✨ Aktivasi Premium</button>
+      </form>
+      <div class="premium-trust">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>Data kamu tidak disimpan. Aktivasi instan via email.</span>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

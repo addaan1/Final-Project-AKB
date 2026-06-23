@@ -95,15 +95,19 @@ function initDebtPlanner() {
       row.className = 'debt-row';
       row.innerHTML = `
         <input type="text" class="form-input debt-name" placeholder="Nama utang">
-        <input type="number" class="form-input debt-balance" placeholder="Saldo (Rp)">
-        <input type="number" class="form-input debt-bunga" placeholder="Bunga %/bln" step="0.1">
-        <input type="number" class="form-input debt-min" placeholder="Min bayar">
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" class="form-input rupiah-num debt-balance" placeholder="0"></div>
+        <input type="number" class="form-input debt-bunga" placeholder="Bunga %/bln" min="0" step="0.1">
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" class="form-input rupiah-num debt-min" placeholder="0"></div>
         <button type="button" class="debt-remove" title="Hapus">×</button>
       `;
       debtsContainer.appendChild(row);
       attachRemoveHandler(row);
+      attachRupiahFormatter(row);
     });
   }
+
+  document.querySelectorAll('.debt-row').forEach(r => attachRupiahFormatter(r));
+  document.querySelectorAll('.rupiah-num').forEach(el => attachRupiahHandler(el));
 
   document.querySelectorAll('.debt-row').forEach(r => attachRemoveHandler(r));
 
@@ -114,7 +118,7 @@ function initDebtPlanner() {
         alert('Tambah minimal 1 utang.');
         return;
       }
-      const extra = parseFloat(document.getElementById('extraPayment').value) || 0;
+      const extra = parseRupiahInput(document.getElementById('extraPayment').value);
       setLoading(planBtn, true);
       try {
         const resp = await fetch('/api/debt-planner', {
@@ -138,9 +142,9 @@ function collectDebts() {
   const debts = [];
   rows.forEach(r => {
     const name = r.querySelector('.debt-name').value.trim();
-    const balance = parseFloat(r.querySelector('.debt-balance').value) || 0;
+    const balance = parseRupiahInput(r.querySelector('.debt-balance').value);
     const bunga = parseFloat(r.querySelector('.debt-bunga').value) || 0;
-    const min = parseFloat(r.querySelector('.debt-min').value) || 0;
+    const min = parseRupiahInput(r.querySelector('.debt-min').value);
     if (name && balance > 0) {
       debts.push({ name, balance, bunga_pct: bunga, min_payment: min });
     }
@@ -294,8 +298,8 @@ function initRecoveryRoadmap() {
     setLoading(btn, true);
 
     const payload = {
-      total_utang: parseFloat(document.getElementById('rmTotalUtang').value) || 0,
-      income_bulanan: parseFloat(document.getElementById('rmIncome').value) || 0,
+      total_utang: parseRupiahInput(document.getElementById('rmTotalUtang').value),
+      income_bulanan: parseRupiahInput(document.getElementById('rmIncome').value),
       sudah_dc: document.querySelector('input[name=rmSudahDc]:checked')?.value === '1',
       hari_telat: parseInt(document.getElementById('rmHariTelat').value) || 0,
     };
@@ -473,10 +477,10 @@ async function updateSimulasi() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        nominal: parseFloat(document.getElementById('nominal').value) || 0,
+        nominal: parseRupiahInput(document.getElementById('nominal').value),
         bunga_pct: parseFloat(document.getElementById('bunga').value) || 0,
         tenor: parseInt(document.getElementById('tenor').value) || 1,
-        admin: parseFloat(document.getElementById('admin').value) || 0,
+        admin: parseRupiahInput(document.getElementById('admin').value),
       }),
     });
     const result = await resp.json();
@@ -503,36 +507,153 @@ function renderSimulasiResult(result) {
 }
 
 // ============================================================
-// WAITLIST (legacy)
+// WAITLIST (legacy) + PREMIUM MODAL
 // ============================================================
 function initWaitlist() {
   const form = document.getElementById('waitlistForm');
   const success = document.getElementById('waitlistSuccess');
-  if (!form) return;
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('waitlistEmail').value;
-    if (!email) return;
-    const btn = form.querySelector('button[type=submit]');
-    setLoading(btn, true);
-    try {
-      await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, package: 'general' }),
-      });
-      form.style.display = 'none';
-      if (success) success.style.display = 'inline-flex';
-    } catch (err) { console.error(err); alert('Gagal daftar. Coba lagi.'); }
-    finally { setLoading(btn, false); }
-  });
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('waitlistEmail').value;
+      if (!email) return;
+      const btn = form.querySelector('button[type=submit]');
+      setLoading(btn, true);
+      try {
+        await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, package: 'general' }),
+        });
+        form.style.display = 'none';
+        if (success) success.style.display = 'inline-flex';
+      } catch (err) { console.error(err); alert('Gagal daftar. Coba lagi.'); }
+      finally { setLoading(btn, false); }
+    });
+  }
   document.querySelectorAll('[data-waitlist]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const emailInput = document.getElementById('waitlistEmail');
-      if (emailInput) { emailInput.focus(); emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      const pkg = btn.getAttribute('data-waitlist');
+      if (pkg === 'premium') {
+        showPremiumModal();
+      } else {
+        const emailInput = document.getElementById('waitlistEmail');
+        if (emailInput) { emailInput.focus(); emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      }
     });
   });
+
+  // Premium modal wiring
+  initPremiumModal();
+}
+
+// ============================================================
+// PREMIUM MODAL
+// ============================================================
+function showPremiumModal() {
+  const modal = document.getElementById('premiumModal');
+  if (!modal) return;
+  // Spawn particles (idempotent)
+  const particlesEl = document.getElementById('premiumParticles');
+  if (particlesEl && !particlesEl.dataset.spawned) {
+    particlesEl.dataset.spawned = '1';
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'premium-particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.top = (50 + Math.random() * 50) + '%';
+      p.style.animationDelay = (Math.random() * 8) + 's';
+      p.style.animationDuration = (6 + Math.random() * 4) + 's';
+      p.style.width = p.style.height = (4 + Math.random() * 5) + 'px';
+      particlesEl.appendChild(p);
+    }
+  }
+  // Reset to form view (in case previously showed success)
+  const content = document.getElementById('premiumContent');
+  if (content && content.dataset.state === 'success') {
+    location.reload(); // simplest way to reset content
+    return;
+  }
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    const nameInput = document.getElementById('premiumName');
+    if (nameInput) nameInput.focus();
+  }, 300);
+}
+
+function closePremiumModal() {
+  const modal = document.getElementById('premiumModal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function initPremiumModal() {
+  const modal = document.getElementById('premiumModal');
+  if (!modal) return;
+  const closeBtn = document.getElementById('premiumCloseBtn');
+  if (closeBtn) closeBtn.addEventListener('click', closePremiumModal);
+
+  // Backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closePremiumModal();
+  });
+
+  // ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closePremiumModal();
+  });
+
+  // Form submit
+  const form = document.getElementById('premiumForm');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('premiumName').value.trim();
+      const email = document.getElementById('premiumEmail').value.trim();
+      if (!name || !email) return;
+      const submitBtn = form.querySelector('.premium-submit');
+      setLoading(submitBtn, true);
+      try {
+        await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, name, package: 'premium' }),
+        });
+        showPremiumSuccess(name);
+      } catch (err) {
+        console.error('Premium submit error:', err);
+        alert('Gagal aktivasi. Coba lagi.');
+        setLoading(submitBtn, false);
+      }
+    });
+  }
+}
+
+function showPremiumSuccess(name) {
+  const content = document.getElementById('premiumContent');
+  if (!content) return;
+  content.dataset.state = 'success';
+  content.innerHTML = `
+    <div class="premium-success">
+      <div class="premium-success-icon">✓</div>
+      <h3>Selamat, ${escapeHtml(name)}!</h3>
+      <p>Kamu sudah masuk daftar Premium. Cek email kamu dalam 24 jam untuk link aktivasi.</p>
+      <button type="button" class="premium-submit" id="premiumDoneBtn" style="margin-top:20px;">🎉 Tutup</button>
+    </div>
+  `;
+  const doneBtn = document.getElementById('premiumDoneBtn');
+  if (doneBtn) doneBtn.addEventListener('click', closePremiumModal);
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
 }
 
 // ============================================================
@@ -605,4 +726,53 @@ function triggerConfetti() {
   const style = document.createElement('style');
   style.textContent = `@keyframes confetti-fall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }`;
   document.head.appendChild(style);
+})();
+
+// ============================================================
+// RUPIAH FORMATTER — Input dengan separator 5.000.000
+// ============================================================
+function formatRupiahLive(str) {
+  const digits = String(str || '').replace(/[^\d]/g, '');
+  if (!digits) return '';
+  return parseInt(digits, 10).toLocaleString('id-ID');
+}
+
+function parseRupiahInput(str) {
+  const digits = String(str || '').replace(/[^\d]/g, '');
+  return digits ? parseInt(digits, 10) : 0;
+}
+
+function attachRupiahHandler(el) {
+  if (!el || el.dataset.rupiahBound) return;
+  el.dataset.rupiahBound = '1';
+  el.addEventListener('input', (e) => {
+    const cursor = el.selectionStart;
+    const before = el.value.length;
+    el.value = formatRupiahLive(el.value);
+    const after = el.value.length;
+    const newPos = cursor + (after - before);
+    try { el.setSelectionRange(newPos, newPos); } catch (e) {}
+  });
+  el.addEventListener('blur', () => {
+    if (el.value && !el.value.startsWith('Rp')) {
+      const n = parseRupiahInput(el.value);
+      el.value = n ? n.toLocaleString('id-ID') : '';
+    }
+  });
+}
+
+function attachRupiahFormatter(root) {
+  root.querySelectorAll('.rupiah-num').forEach(el => attachRupiahHandler(el));
+}
+
+// Auto-bind semua .rupiah-num di DOM siap
+(function() {
+  function bindAll() {
+    document.querySelectorAll('.rupiah-num').forEach(el => attachRupiahHandler(el));
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindAll);
+  } else {
+    bindAll();
+  }
 })();

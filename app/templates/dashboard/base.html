@@ -64,6 +64,31 @@
 
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" title="Kembali ke atas">&uarr;</button>
 
+  <!-- ========== CHATBOT WIDGET ========== -->
+  <button class="chat-bubble" id="chatBubble" aria-label="Buka chatbot" title="Tanya AI Coach">
+    <span id="chatBubbleIcon">💬</span>
+  </button>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-labelledby="chatTitle" aria-hidden="true">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">🤖</div>
+        <div class="chat-header-text">
+          <h4 id="chatTitle">Galbay AI Coach</h4>
+          <span>Online · Phase 1 (FAQ)</span>
+        </div>
+      </div>
+      <button class="chat-close" id="chatCloseBtn" aria-label="Tutup chat">&times;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-related" id="chatRelated" style="display:none;"></div>
+    <div class="chat-actions" id="chatActions"></div>
+    <form class="chat-input-area" id="chatForm">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Tanya soal galbay, pinjol, recovery..." autocomplete="off" maxlength="300">
+      <button type="submit" class="chat-send" aria-label="Kirim">➤</button>
+    </form>
+  </div>
+  <script defer src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const d = window.GALBAY_DATA || {};

@@ -1,23 +1,154 @@
-{% extends "base.html" %}
-{% block title %}Galbay Predictor — Membaca Psikologi Gagal Bayar{% endblock %}
-{% block content %}
-<section class="hero">
-  <h1>Galbay Predictor</h1>
-  <p class="tagline">Membaca psikologi gagal bayar anak muda dari jejak digital.</p>
-  <a class="btn" href="{{ url_for('main.dashboard') }}">Lihat Dashboard &rarr;</a>
-</section>
-<section class="cards">
-  <div class="card">
-    <h3>Termometer</h3>
-    <p>Deteksi tren "galbay", paylater, pinjol dari Google Trends & media.</p>
-  </div>
-  <div class="card">
-    <h3>Dokter</h3>
-    <p>Diagnosa pola bahasa impulsif & horizon berpikir pendek dari review/komentar.</p>
-  </div>
-  <div class="card">
-    <h3>Obat</h3>
-    <p>Financial behavior coach: peringatan pre-checkout, simulasi cicilan, edukasi.</p>
-  </div>
-</section>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galbay Predictor - Financial Behavior Coach Berbasis Big Data</title>
+  <meta name="description" content="Landing page proyek Galbay Predictor: mining perilaku digital Gen Z untuk membangun Financial Behavior Coach berbasis big data.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/data.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body class="landing">
+  <nav class="topnav">
+    <div class="topnav-brand">GALBAY <span>PREDICTOR</span></div>
+    <div class="topnav-links">
+      <a href="#tentang">Tentang</a>
+      <a href="#sumber">Sumber Data</a>
+      <a href="#metode">Metode</a>
+      <a href="#temuan">Temuan</a>
+      <button class="theme-toggle theme-toggle-inline" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon">&#9788;</span>
+      </button>
+      <a href="{{ url_for('main.dashboard') }}" class="btn-primary" style="padding:9px 20px;">Buka Dashboard</a>
+    </div>
+  </nav>
+
+  <header class="landing-hero">
+    <div class="hero-bg-grid"></div>
+    <span class="hero-tag">Big Data · Perilaku Keuangan Gen Z</span>
+    <h1>Mining Perilaku Digital Gen Z untuk Membangun <span>Financial Behavior Coach</span> Berbasis Big Data</h1>
+    <p class="lead">Memetakan fenomena <strong>galbay (gagal bayar)</strong> pinjol dan paylater di kalangan anak muda melalui data mining 349.200 ulasan aplikasi fintech Google Play Store, lalu menerjemahkannya menjadi peluang bisnis yang layak dalam bentuk Business Model Canvas berbasis bukti.</p>
+    <div class="landing-cta">
+      <a href="{{ url_for('main.dashboard') }}" class="btn-primary">Buka Dashboard Analisis</a>
+      <a href="#metode" class="btn-outline">Pelajari Metode</a>
+    </div>
+
+    <div class="landing-stats">
+      <div class="landing-stat"><div class="stat-value" data-fill="total_reviews">-</div><div class="stat-label">Total ulasan dianalisis</div></div>
+      <div class="landing-stat"><div class="stat-value" data-fill="total_relevant">-</div><div class="stat-label">Ulasan relevan tervalidasi</div></div>
+      <div class="landing-stat"><div class="stat-value" data-fill="n_apps">-</div><div class="stat-label">Aplikasi fintech</div></div>
+      <div class="landing-stat"><div class="stat-value" data-fill="distress_pct">-</div><div class="stat-label">Sinyal distress galbay</div></div>
+    </div>
+
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        <span>Evidence-Based</span>
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <span>349K Data Points</span>
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>No Login Required</span>
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+        <span>Built for Indonesia</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="landing-section" id="tentang">
+    <div class="section-header">
+      <span class="section-tag">Tentang Proyek</span>
+      <h2 class="section-title">Masalah yang Kami <span>Selidiki</span></h2>
+      <p class="section-desc">Gen Z Indonesia mengalami lonjakan kasus gagal bayar pinjol dan paylater akibat lifestyle inflation dan rendahnya literasi keuangan. Belum ada produk yang secara khusus melakukan coaching perilaku finansial dengan pendekatan yang relevan untuk anak muda.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Peluang</h3>
+        <p>Pasar besar Gen Z yang terjebak siklus utang digital, namun belum tersentuh produk financial coaching yang preventif dan berbasis data.</p>
+      </div>
+      <div class="card">
+        <h3>Solusi</h3>
+        <p>Aplikasi Galbay Predictor: skor risiko galbay personal plus coaching perilaku finansial bergaya anak muda dengan gamifikasi dan nudging.</p>
+      </div>
+      <div class="card">
+        <h3>Bukti Data</h3>
+        <p>Dibangun dari analisis ratusan ribu ulasan nyata aplikasi keuangan, bukan asumsi. Setiap blok bisnis didukung temuan data.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section center" id="sumber">
+    <div class="section-header">
+      <span class="section-tag">Sumber Data</span>
+      <h2 class="section-title">Data dari <span>Google Play Store</span></h2>
+      <p class="section-desc">349.200 ulasan dari 44 aplikasi fintech Indonesia &mdash; single source yang paling kaya untuk analisis perilaku pengguna.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Google Play Store</h3>
+        <p><strong>349.200 ulasan</strong> dari 44 aplikasi fintech: paylater, pinjol, e-wallet, bank digital, e-commerce, travel, dan investasi.</p>
+      </div>
+      <div class="card">
+        <h3>11 Kategori Fintech</h3>
+        <p>Mencakup paylater (Kredivo, Akulaku), pinjol (AdaKami, Easycash), e-wallet (OVO, DANA, GoPay), bank digital (SeaBank, Jago), dan lainnya.</p>
+      </div>
+      <div class="card">
+        <h3>Periode 2022 &ndash; 2026</h3>
+        <p>Data historis 4 tahun &mdash; menangkap tren, pola musiman, dan dampak regulasi OJK terhadap perilaku konsumen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section" id="metode">
+    <div class="section-header">
+      <span class="section-tag">Metode</span>
+      <h2 class="section-title">Alur Kerja <span>Data Mining</span></h2>
+      <p class="section-desc">Mengikuti prinsip: Data -> Insight -> Critical Thinking -> Inovasi -> Business Model Canvas -> Kelayakan Bisnis.</p>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-text">Pengumpulan Data</div></div>
+      <div class="flow-arrow">-></div>
+      <div class="flow-step"><div class="flow-text">Pembersihan dan Validasi</div></div>
+      <div class="flow-arrow">-></div>
+      <div class="flow-step"><div class="flow-text">Pelabelan Relevansi</div></div>
+      <div class="flow-arrow">-></div>
+      <div class="flow-step"><div class="flow-text">Modelling Naive Bayes</div></div>
+      <div class="flow-arrow">-></div>
+      <div class="flow-step"><div class="flow-text">Insight dan BMC</div></div>
+    </div>
+    <div class="insight-box" style="margin-top:28px;">
+      <h4>Tools yang Digunakan</h4>
+      <p>Python untuk pengolahan data, model klasifikasi sentimen Multinomial Naive Bayes, matplotlib untuk visualisasi, serta bantuan AI untuk eksplorasi ide dan penyusunan analisis.</p>
+    </div>
+  </section>
+
+  <section class="landing-section center" id="temuan">
+    <div class="section-header">
+      <span class="section-tag">Temuan Utama</span>
+      <h2 class="section-title">Insight Paling <span>Penting</span></h2>
+    </div>
+    <div class="grid-3">
+      <div class="card"><h3 data-fill="distress_pct">-</h3><p>ulasan relevan mengandung sinyal distress galbay seperti penagihan, penyesalan, dan menghindar.</p></div>
+      <div class="card"><h3 data-fill="acc">-</h3><p>akurasi model klasifikasi sentimen dalam membedakan ulasan negatif dan positif.</p></div>
+      <div class="card"><h3>Bunga dan DC</h3><p>keluhan terbesar berkisar pada bunga, biaya, dan praktik penagihan debt collector.</p></div>
+    </div>
+  </section>
+
+  <section class="footer-cta">
+    <h2>Lihat Seluruh Analisis dan Business Model Canvas</h2>
+    <p>Dashboard interaktif berisi visualisasi data, hasil modelling, critical analysis, inovasi bisnis, BMC 9 blok, hingga analisis risiko dan kelayakan.</p>
+    <a href="{{ url_for('main.dashboard') }}" class="btn-primary">Buka Dashboard Analisis</a>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 Galbay Predictor &middot; Tugas UAS Analisis Keputusan Bisnis &middot; Data tidak disimpan &middot; <a href="#" onclick="return false;">Privacy</a> &middot; <a href="#" onclick="return false;">Terms</a></p>
+  </footer>
+</body>
+</html>

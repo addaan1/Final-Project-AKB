@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Dashboard{% endblock %} - Galbay Predictor</title>
+  <meta name="description" content="Dashboard analisis data mining perilaku galbay Gen Z dan Business Model Canvas.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/data.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+  {% if active_page == 'produk' %}
+  <script defer src="{{ url_for('static', filename='js/produk.js') }}"></script>
+  {% endif %}
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <a href="{{ url_for('main.index') }}" class="topbar-brand">GALBAY <span>PREDICTOR</span></a>
+      <div class="topbar-subtitle">Data Mining &rarr; Business Model Canvas</div>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <nav class="topbar-nav" id="topbarNav" aria-label="Section navigation">
+      <a href="{{ url_for('main.ringkasan') }}" class="nav-pill {% if active_page == 'ringkasan' %}active{% endif %}">Ringkasan</a>
+      <a href="{{ url_for('main.analisis') }}" class="nav-pill {% if active_page == 'analisis' %}active{% endif %}">Analisis</a>
+      <a href="{{ url_for('main.solusi') }}" class="nav-pill {% if active_page == 'solusi' %}active{% endif %}">Solusi &amp; BMC</a>
+      <a href="{{ url_for('main.produk') }}" class="nav-pill nav-pill-cta {% if active_page == 'produk' %}active{% endif %}">Coba Produk</a>
+      <a href="{{ url_for('main.kesimpulan') }}" class="nav-pill {% if active_page == 'kesimpulan' %}active{% endif %}">Kesimpulan</a>
+    </nav>
+    <div class="topbar-right">
+      <a href="{{ url_for('main.index') }}" class="btn-back" title="Kembali ke Beranda">&larr; Beranda</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Light/Dark mode">
+        <span class="theme-icon">&#9788;</span>
+      </button>
+      <div class="dropdown">
+        <button class="dropdown-toggle" id="moreBtn" aria-label="More options" aria-expanded="false">&#8943;</button>
+        <div class="dropdown-menu" id="moreMenu">
+          <a href="#" onclick="window.print();return false;">Print / Ekspor PDF</a>
+          <a href="https://github.com/addaan1/Final-Project-AKB" target="_blank" rel="noopener">GitHub Repo</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    {% block content %}{% endblock %}
+
+    <footer class="dashboard-footer">
+      <div class="dashboard-footer-inner">
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="{{ url_for('main.index') }}">Beranda</a>
+          <a href="{{ url_for('main.ringkasan') }}">Ringkasan</a>
+          <a href="{{ url_for('main.analisis') }}">Analisis</a>
+          <a href="{{ url_for('main.solusi') }}">Solusi &amp; BMC</a>
+          <a href="{{ url_for('main.kesimpulan') }}">Kesimpulan</a>
+          <a href="#" onclick="return false;" title="Coming soon">Privacy</a>
+          <a href="#" onclick="return false;" title="Coming soon">Terms</a>
+        </nav>
+        <span class="footer-meta">&copy; 2026 Galbay Predictor &middot; Data tidak disimpan &middot; Prototype UAS</span>
+      </div>
+    </footer>
+  </main>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" title="Kembali ke atas">&uarr;</button>
+
+  <!-- ========== CHATBOT WIDGET ========== -->
+  <button class="chat-bubble" id="chatBubble" aria-label="Buka chatbot" title="Tanya AI Coach">
+    <span id="chatBubbleIcon">💬</span>
+  </button>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-labelledby="chatTitle" aria-hidden="true">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">🤖</div>
+        <div class="chat-header-text">
+          <h4 id="chatTitle">Galbay AI Coach</h4>
+          <span>Online · Phase 1 (FAQ)</span>
+        </div>
+      </div>
+      <button class="chat-close" id="chatCloseBtn" aria-label="Tutup chat">&times;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-related" id="chatRelated" style="display:none;"></div>
+    <div class="chat-actions" id="chatActions"></div>
+    <form class="chat-input-area" id="chatForm">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Tanya soal galbay, pinjol, recovery..." autocomplete="off" maxlength="300">
+      <button type="submit" class="chat-send" aria-label="Kirim">➤</button>
+    </form>
+  </div>
+  <script defer src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const d = window.GALBAY_DATA || {};
+    const mo = d.model || {};
+    const neg = document.getElementById('negWords');
+    const pos = document.getElementById('posWords');
+    if (neg) (mo.top_neg_words || []).forEach((w) => {
+      const s = document.createElement('span'); s.className = 'tag-pill'; s.textContent = w; neg.appendChild(s);
+    });
+    if (pos) (mo.top_pos_words || []).forEach((w) => {
+      const s = document.createElement('span'); s.className = 'tag-pill pos'; s.textContent = w; pos.appendChild(s);
+    });
+  });
+  </script>
+</body>
+</html>

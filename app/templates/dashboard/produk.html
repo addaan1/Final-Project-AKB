@@ -1,0 +1,430 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Coba Produk — Financial Coach & Pinjol Checker{% endblock %}
+
+{% block content %}
+<!-- ========== HERO: Game Changer Highlight ========== -->
+<section class="produk-hero">
+  <div class="produk-hero-inner">
+    <span class="section-tag">Coba Produk Kami</span>
+    <h1 class="page-title">Cek <span>Pinjol Legal</span> atau Ilegal</h1>
+    <p class="page-lead">Satu-satunya <strong>financial behavior coach</strong> berbasis <strong>349K ulasan nyata</strong> pengguna fintech Indonesia. Tools gratis untuk cek pinjol, simulasi cicilan, dan recovery plan &mdash; tanpa login.</p>
+    <div class="hero-cta-group">
+      <a href="#pinjol-checker" class="btn-primary btn-large">🔍 Cek Pinjol</a>
+      <a href="#debt-planner" class="btn-outline btn-large">💰 Debt Planner</a>
+    </div>
+    <div class="privacy-notice">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Data kamu tidak disimpan. Skor dihitung lokal.
+    </div>
+  </div>
+</section>
+
+<!-- ========== FITUR 1: PINJOL BLACKLIST CHECKER (GAME CHANGER) ========== -->
+<section class="page-section" id="pinjol-checker">
+  <div class="page-header">
+    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; Pinjol Blacklist Checker</span>
+    <h1 class="page-title">Pinjol yang Kamu Pakai <span>Legal</span> atau Ilegal?</h1>
+    <p class="page-lead">Cek apakah aplikasi pinjol yang kamu pakai <strong>terdaftar OJK</strong> atau masuk daftar hitam. Data berdasarkan database internal + referensi publik OJK.</p>
+    <div class="demo-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <span>Database demo 24 app legal &middot; Untuk verifikasi final, cek <strong>ojk.go.id</strong></span>
+    </div>
+  </div>
+
+  <div class="pinjol-layout">
+    <form class="pinjol-form" id="pinjolForm">
+      <div class="form-group">
+        <label for="pinjolName">Nama Aplikasi Pinjol</label>
+        <input type="text" id="pinjolName" class="form-input" placeholder="cth: Kredivo, OVO, Pinjol Ilegal A" required list="pinjolSuggestions">
+        <datalist id="pinjolSuggestions">
+          <option value="Kredivo"><option value="Akulaku"><option value="Indodana"><option value="Atome"><option value="Kredito"><option value="OVO"><option value="DANA"><option value="GoPay"><option value="LinkAja"><option value="ShopeePay"><option value="SeaBank"><option value="Bank Jago"><option value="blu by BCA Digital"><option value="Jenius"><option value="Allo Bank"><option value="LINE Bank"><option value="BRImo"><option value="Livin by Mandiri"><option value="BCA Mobile"><option value="Flip"><option value="Bibit"><option value="Ajaib"><option value="Stockbit"><option value="Pluang"><option value="KoinWorks"><option value="Investree"><option value="Amartha"><option value="Modalku"><option value="TaniFund"><option value="DanaCepat"><option value="Cermati"><option value="Lifepal"><option value="Roojai"><option value="Pinjol Ilegal A">
+        </datalist>
+        <p class="form-hint">Cek nama persis, atau ketik sebagian (misal "blu" akan match dengan "blu by BCA Digital")</p>
+      </div>
+      <button type="submit" class="btn-primary btn-large btn-full">🔍 Cek Status Pinjol</button>
+    </form>
+
+    <div class="pinjol-result" id="pinjolResult">
+      <div class="skor-placeholder">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <p>Hasil cek OJK akan muncul di sini. Ketik nama pinjol dan klik tombol.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FITUR 2: DEBT SNOWBALL/AVALANCHE PLANNER ========== -->
+<section class="page-section page-alt" id="debt-planner">
+  <div class="page-header">
+    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; Debt Planner</span>
+    <h1 class="page-title">Bayar <span>Multiple Utang</span> dengan Strategi Tepat</h1>
+    <p class="page-lead">Input semua utang kamu. Sistem hitung <strong>2 strategi</strong>: Snowball (bayar terkecil dulu, motivasi) atau Avalanche (bayar bunga tertinggi dulu, hemat). Lengkap dengan timeline lunas.</p>
+  </div>
+
+  <div class="planner-layout">
+    <div class="planner-form">
+      <div class="planner-debts" id="plannerDebts">
+        <div class="debt-row">
+          <input type="text" class="form-input debt-name" placeholder="Nama utang" value="Kredivo">
+          <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" class="form-input rupiah-num debt-balance" placeholder="0" value="2.000.000"></div>
+          <input type="number" class="form-input debt-bunga" placeholder="Bunga %/bln" value="8" min="0" step="0.1">
+          <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" class="form-input rupiah-num debt-min" placeholder="0" value="200.000"></div>
+          <button type="button" class="debt-remove" title="Hapus">×</button>
+        </div>
+        <div class="debt-row">
+          <input type="text" class="form-input debt-name" placeholder="Nama utang" value="AdaKami">
+          <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" class="form-input rupiah-num debt-balance" placeholder="0" value="1.000.000"></div>
+          <input type="number" class="form-input debt-bunga" placeholder="Bunga %/bln" value="10" min="0" step="0.1">
+          <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" class="form-input rupiah-num debt-min" placeholder="0" value="100.000"></div>
+          <button type="button" class="debt-remove" title="Hapus">×</button>
+        </div>
+      </div>
+      <div class="planner-actions">
+        <button type="button" class="btn-outline" id="addDebtBtn">+ Tambah Utang</button>
+      </div>
+      <div class="form-group" style="margin-top:20px;">
+        <label for="extraPayment">Extra Payment per Bulan (Rp) &mdash; untuk percepat lunas</label>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="extraPayment" class="form-input rupiah-num" placeholder="0" value="200.000"></div>
+      </div>
+      <button type="button" class="btn-primary btn-large btn-full" id="planDebtBtn">📊 Hitung Strategi Bayar</button>
+    </div>
+
+    <div class="planner-result" id="plannerResult">
+      <div class="skor-placeholder">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        <p>Strategi Snowball vs Avalanche akan muncul di sini. Klik tombol di samping.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FITUR 3: DC SURVIVAL KIT ========== -->
+<section class="page-section" id="dc-kit">
+  <div class="page-header">
+    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; DC Survival Kit</span>
+    <h1 class="page-title">Template <span>Chat untuk Debt Collector</span></h1>
+    <p class="page-lead">5 template siap pakai untuk negosiasi dengan debt collector. Berbasis <strong>UU PDP, UU ITE, Permenkominfo</strong>. Copy, edit, kirim via WhatsApp.</p>
+  </div>
+
+  <div class="dc-kit-grid" id="dcKitGrid">
+    <div class="skor-placeholder" style="grid-column:1/-1;">
+      <p>Memuat template...</p>
+    </div>
+  </div>
+
+  <div class="dc-rights-box">
+    <h4>Hak Kamu sebagai Borrower</h4>
+    <ul id="dcRightsList"></ul>
+  </div>
+
+  <div class="dc-contacts-box">
+    <h4>Kontak Darurat</h4>
+    <div class="dc-contacts-grid" id="dcContactsGrid"></div>
+  </div>
+</section>
+
+<!-- ========== FITUR 4: GALBAY RECOVERY ROADMAP ========== -->
+<section class="page-section page-alt" id="recovery-roadmap">
+  <div class="page-header">
+    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; Recovery Roadmap</span>
+    <h1 class="page-title">Roadmap <span>30/60/90 Hari</span> Keluar dari Galbay</h1>
+    <p class="page-lead">Masukkan kondisi kamu saat ini. Sistem generate <strong>roadmap personal</strong> langkah-demi-langkah untuk keluar dari galbay dalam 90 hari, disesuaikan dengan severity.</p>
+  </div>
+
+  <div class="roadmap-layout">
+    <form class="roadmap-form" id="roadmapForm">
+      <div class="form-group">
+        <label>Total utang saat ini (Rp)</label>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="rmTotalUtang" class="form-input rupiah-num" placeholder="0" value="5.000.000" required></div>
+      </div>
+      <div class="form-group">
+        <label>Income bulanan (Rp)</label>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="rmIncome" class="form-input rupiah-num" placeholder="0" value="3.000.000" required></div>
+      </div>
+      <div class="form-group">
+        <label>Sudah pernah ditagih DC?</label>
+        <div class="radio-group">
+          <label class="radio-card"><input type="radio" name="rmSudahDc" value="0"><span>Tidak</span></label>
+          <label class="radio-card"><input type="radio" name="rmSudahDc" value="1" checked><span>Ya</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Sudah telat berapa hari?</label>
+        <input type="number" id="rmHariTelat" class="form-input" min="0" value="15">
+      </div>
+      <button type="submit" class="btn-primary btn-large btn-full">🗺️ Generate Roadmap Saya</button>
+    </form>
+
+    <div class="roadmap-result" id="roadmapResult">
+      <div class="skor-placeholder">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        <p>Roadmap personal akan muncul di sini.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FITUR LAMA: SKOR RISIKO GALBAY (demoted) ========== -->
+<section class="page-section" id="skor-form">
+  <div class="page-header">
+    <span class="section-tag">Fitur Pendukung &middot; Skor Risiko Galbay</span>
+    <h1 class="page-title">Berapa <span>Risiko</span> Galbay Kamu?</h1>
+    <p class="page-lead">Jawab 6 pertanyaan singkat. Sistem kami menghitung skor 0-100 berdasarkan pola perilaku dari 349K ulasan nyata.</p>
+    <div class="demo-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <span><strong>Demo Prototype</strong> &mdash; rule-based. Model ML asli menyusul.</span>
+    </div>
+  </div>
+
+  <div class="skor-layout">
+    <form class="skor-form" id="skorForm">
+      <div class="form-group">
+        <label>1. Aplikasi fintech apa yang sedang kamu pakai? <span class="form-tooltip" data-tip="Pinjol = pinjaman online. Paylater = bayar nanti. E-wallet = dompet digital. Bank digital = bank tanpa kantor.">?</span></label>
+        <p class="form-hint">Bisa pilih lebih dari satu</p>
+        <div class="checkbox-group">
+          <label class="checkbox-card"><input type="checkbox" name="apps" value="pinjol"><span class="checkbox-label"><strong>Pinjol</strong><small>Pinjaman online</small></span></label>
+          <label class="checkbox-card"><input type="checkbox" name="apps" value="paylater"><span class="checkbox-label"><strong>Paylater</strong><small>Bayar nanti</small></span></label>
+          <label class="checkbox-card"><input type="checkbox" name="apps" value="ewallet"><span class="checkbox-label"><strong>E-wallet</strong><small>OVO, DANA, GoPay</small></span></label>
+          <label class="checkbox-card"><input type="checkbox" name="apps" value="bank"><span class="checkbox-label"><strong>Bank Digital</strong><small>SeaBank, Jago, Blu</small></span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>2. Berapa total utang/cicilan aktif kamu saat ini? <span class="form-tooltip" data-tip="Jumlahkan semua utang: pinjol + paylater + kartu kredit.">?</span></label>
+        <div class="radio-group">
+          <label class="radio-card"><input type="radio" name="utang" value="0"><span>Tidak ada</span></label>
+          <label class="radio-card"><input type="radio" name="utang" value="lt5"><span>Rp 1 &ndash; 5 juta</span></label>
+          <label class="radio-card"><input type="radio" name="utang" value="5to20"><span>Rp 5 &ndash; 20 juta</span></label>
+          <label class="radio-card"><input type="radio" name="utang" value="gt20"><span>&gt; Rp 20 juta</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>3. Seberapa sering kamu checkout "self reward" per bulan? <span class="form-tooltip" data-tip="Makanan, fashion, gadget, atau apapun yang dibeli untuk reward setelah stress/kerja keras.">?</span></label>
+        <div class="slider-group">
+          <input type="range" name="selfreward" min="1" max="10" value="3" class="form-slider" id="selfrewardSlider">
+          <div class="slider-value"><span id="selfrewardValue">3</span>x per bulan</div>
+          <div class="slider-label" id="selfrewardLabel">Rendah</div>
+          <div class="slider-ticks">
+            <span>1x (jarang)</span>
+            <span>5x (lumayan)</span>
+            <span>10x (sering)</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>4. Pernah telat bayar tagihan?</label>
+        <div class="radio-group">
+          <label class="radio-card"><input type="radio" name="telat" value="0"><span>Tidak pernah</span></label>
+          <label class="radio-card"><input type="radio" name="telat" value="1"><span>Ya, 1-2 kali</span></label>
+          <label class="radio-card"><input type="radio" name="telat" value="2"><span>Ya, sering</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>5. Pernah dihubungi debt collector?</label>
+        <div class="radio-group">
+          <label class="radio-card"><input type="radio" name="dc" value="0"><span>Tidak</span></label>
+          <label class="radio-card"><input type="radio" name="dc" value="1"><span>Ya</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>6. Bagaimana perasaan kamu saat lihat tagihan?</label>
+        <div class="radio-group">
+          <label class="radio-card"><input type="radio" name="feeling" value="0"><span>Tenang</span></label>
+          <label class="radio-card"><input type="radio" name="feeling" value="1"><span>Waspada</span></label>
+          <label class="radio-card"><input type="radio" name="feeling" value="2"><span>Stress</span></label>
+        </div>
+      </div>
+      <button type="submit" class="btn-primary btn-large btn-full">Hitung Skor Risiko Saya</button>
+    </form>
+
+    <div class="skor-result" id="skorResult">
+      <div class="skor-placeholder">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <p>Hasil skormu akan muncul di sini.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FITUR LAMA: SIMULASI CICILAN (demoted) ========== -->
+<section class="page-section page-alt" id="simulasi">
+  <div class="page-header">
+    <span class="section-tag">Fitur Pendukung &middot; Simulasi Cicilan</span>
+    <h1 class="page-title">Bandingkan <span>Cicilan</span> Sebelum Deal</h1>
+    <p class="page-lead">Masukkan nominal, bunga, tenor. Sistem hitung total bayar, cicilan per bulan, dan <strong>bunga efektif tahunan</strong>.</p>
+  </div>
+
+  <div class="simulasi-layout">
+    <div class="simulasi-form">
+      <div class="form-group">
+        <label for="nominal">Nominal Pinjaman (Rp)</label>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="nominal" class="form-input rupiah-num" placeholder="0" value="2.000.000"></div>
+      </div>
+      <div class="form-group">
+        <label for="bunga">Bunga per Bulan (%)</label>
+        <div class="slider-group">
+          <input type="range" id="bunga" min="0.5" max="30" step="0.5" value="10" class="form-slider">
+          <div class="slider-value"><span id="bungaValue">10</span>%</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tenor">Tenor (bulan)</label>
+        <select id="tenor" class="form-input">
+          <option value="1">1 bulan</option>
+          <option value="3">3 bulan</option>
+          <option value="6" selected>6 bulan</option>
+          <option value="9">9 bulan</option>
+          <option value="12">12 bulan</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="admin">Biaya Admin (Rp)</label>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="admin" class="form-input rupiah-num" placeholder="0" value="50.000"></div>
+      </div>
+    </div>
+
+    <div class="simulasi-result">
+      <div class="result-row">
+        <div class="result-label">Cicilan per Bulan</div>
+        <div class="result-value-big" id="cicilanValue">Rp 388.333</div>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-row">
+        <div class="result-label">Total Bunga</div>
+        <div class="result-value" id="totalBunga">Rp 1.200.000</div>
+      </div>
+      <div class="result-row">
+        <div class="result-label">Total Bayar</div>
+        <div class="result-value" id="totalBayar">Rp 3.250.000</div>
+      </div>
+      <div class="result-row">
+        <div class="result-label">Bunga Efektif Tahunan</div>
+        <div class="result-value" id="bungaEfektif">120% / tahun</div>
+      </div>
+      <div class="result-warning" id="bungaWarning" style="display:none;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span id="bungaWarningText"></span>
+      </div>
+      <div class="result-tip" id="bungaTip"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EDUKASI: 7 SINYAL PSIKOLOGIS ========== -->
+<section class="page-section" id="edukasi">
+  <div class="page-header">
+    <span class="section-tag">Edukasi</span>
+    <h1 class="page-title">7 <span>Sinyal Psikologis</span> Galbay</h1>
+    <p class="page-lead">Dari analisis 349K ulasan, kami mengidentifikasi <strong>7 kategori sinyal</strong> yang konsisten muncul di review pengguna yang mengalami gagal bayar.</p>
+  </div>
+
+  <div class="sinyal-grid">
+    <div class="sinyal-card"><div class="sinyal-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><h3>Distress Langsung</h3><p>Tanda langsung gagal bayar. Kata kunci: <em>galbay, gagal bayar, nunggak</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Tagihan &amp; Penagihan</h3><p>Masalah dengan debt collector. Kata kunci: <em>ditagih, DC, dicerewet</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Bunga &amp; Biaya</h3><p>Keluhan biaya tidak transparan. Kata kunci: <em>bunga tinggi, denda</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h3>Produk Fintech</h3><p>Ketergantungan pinjol/paylater. Kata kunci: <em>pinjol, paylater, cicilan</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div><h3>Psikologi Impulsif</h3><p>Belanja karena FOMO. Kata kunci: <em>self reward, flash sale</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon gray"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div><h3>Psikologi Avoidance</h3><p>Menghindari tagihan. Kata kunci: <em>takut ditagih, kabur</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon red2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Regret &amp; Stress</h3><p>Dampak psikologis. Kata kunci: <em>menyesal, stress, susah tidur</em>.</p></div>
+  </div>
+</section>
+
+<!-- ========== PRICING + WAITLIST ========== -->
+<section class="page-section page-alt" id="pricing">
+  <div class="page-header">
+    <span class="section-tag">Pricing</span>
+    <h1 class="page-title">Pilih <span>Paket</span> yang Cocok</h1>
+    <p class="page-lead">Mulai gratis. Upgrade kapan saja. Tidak ada tagihan tersembunyi.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-name">Gratis</div>
+      <div class="pricing-price"><span class="price-amount">Rp 0</span><span class="price-period">/selamanya</span></div>
+      <ul class="pricing-features">
+        <li>Semua 4 Pinjol Checker</li>
+        <li>Debt Planner (Snowball/Avalanche)</li>
+        <li>DC Survival Kit (5 template)</li>
+        <li>Recovery Roadmap 90 hari</li>
+        <li>Skor Risiko Galbay</li>
+        <li>Simulasi Cicilan</li>
+      </ul>
+      <button class="btn-outline btn-full" data-waitlist="gratis">Mulai Gratis</button>
+    </div>
+    <div class="pricing-card pricing-featured">
+      <div class="pricing-badge">PALING POPULER</div>
+      <div class="pricing-name">Premium</div>
+      <div class="pricing-price"><span class="price-amount">Rp 49K</span><span class="price-period">/bulan</span></div>
+      <ul class="pricing-features">
+        <li>Semua fitur Gratis</li>
+        <li>Coaching chat (AI) 24/7</li>
+        <li>Nudge pre-checkout real-time</li>
+        <li>Laporan bulanan personal</li>
+        <li>Save unlimited debt plans</li>
+        <li>Priority DC template updates</li>
+      </ul>
+      <button class="btn-primary btn-full" data-waitlist="premium">Coba Premium</button>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-name">Konseling</div>
+      <div class="pricing-price"><span class="price-amount">Rp 150K</span><span class="price-period">/sesi</span></div>
+      <ul class="pricing-features">
+        <li>1-on-1 dengan psikolog</li>
+        <li>Spesialis financial stress</li>
+        <li>60 menit per sesi</li>
+        <li>Confidential &amp; aman</li>
+        <li>Termasuk semua fitur Premium</li>
+      </ul>
+      <button class="btn-outline btn-full" data-waitlist="konseling">Booking Sesi</button>
+    </div>
+  </div>
+
+  <div class="pricing-cta">
+    <p>App ini masih dalam tahap pengembangan. <strong>Daftar waitlist</strong> untuk dapat akses lebih awal + diskon 50% untuk 100 user pertama.</p>
+    <form class="waitlist-form" id="waitlistForm">
+      <input type="email" id="waitlistEmail" class="form-input" placeholder="email@kamu.com" required>
+      <button type="submit" class="btn-primary">Daftar Waitlist</button>
+    </form>
+    <div class="waitlist-success" id="waitlistSuccess" style="display:none;">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span>Terima kasih! Kamu sudah terdaftar di waitlist.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PREMIUM MODAL ========== -->
+<div class="premium-modal" id="premiumModal" role="dialog" aria-modal="true" aria-labelledby="premiumTitle">
+  <div class="premium-card">
+    <button type="button" class="premium-close" id="premiumCloseBtn" aria-label="Tutup">&times;</button>
+    <div class="premium-particles" id="premiumParticles"></div>
+    <div class="premium-content" id="premiumContent">
+      <div class="premium-crown">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v2H5v-2z"/></svg>
+      </div>
+      <h2 class="premium-title" id="premiumTitle">Selamat Datang di Premium</h2>
+      <p class="premium-subtitle">Akses penuh ke semua fitur + <strong>AI Coach 24/7</strong> yang siap bantu recovery kapan saja.</p>
+      <div class="premium-countdown">
+        <span class="premium-countdown-pulse"></span>
+        <span>Hanya 100 User Pertama — Diskon 50%</span>
+      </div>
+      <div class="premium-benefits">
+        <div class="premium-benefit"><span class="premium-benefit-icon">🚀</span><span>AI Coach 24/7</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">📊</span><span>Laporan Personal</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">🎯</span><span>Nudge Real-time</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">💎</span><span>Save Unlimited</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">⚡</span><span>Priority Update</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">🛡️</span><span>Data Privat</span></div>
+      </div>
+      <form class="premium-form" id="premiumForm">
+        <input type="text" id="premiumName" placeholder="Nama kamu" required autocomplete="name">
+        <input type="email" id="premiumEmail" placeholder="email@kamu.com" required autocomplete="email">
+        <button type="submit" class="premium-submit">✨ Aktivasi Premium</button>
+      </form>
+      <div class="premium-trust">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>Data kamu tidak disimpan. Aktivasi instan via email.</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

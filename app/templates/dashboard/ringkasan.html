@@ -1,0 +1,108 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Ringkasan Eksekutif{% endblock %}
+
+{% block content %}
+<section class="page-section" id="ringkasan">
+  <div class="page-header">
+    <span class="section-tag">A &middot; Ringkasan Eksekutif</span>
+    <h1 class="page-title">Peluang Bisnis yang <span>Ditemukan dari Data</span></h1>
+    <p class="page-lead">Analisis terhadap <strong><span data-fill="total_reviews">-</span></strong> ulasan aplikasi fintech (<strong><span data-fill="total_relevant">-</span></strong> relevan, dari <span data-fill="n_apps">-</span> aplikasi, periode <span data-fill="date_min">-</span> s/d <span data-fill="date_max">-</span>) menunjukkan sinyal kuat kebutuhan akan pendampingan perilaku finansial bagi anak muda.</p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card kpi-lime">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+      </div>
+      <div class="kpi-body">
+        <div class="kpi-value" data-fill="total_reviews">-</div>
+        <div class="kpi-label">Total Ulasan Dianalisis</div>
+        <div class="kpi-sub">Periode <span data-fill="date_min">-</span> s/d <span data-fill="date_max">-</span></div>
+      </div>
+    </div>
+    <div class="kpi-card kpi-purple">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="kpi-body">
+        <div class="kpi-value" data-fill="distress_pct">-</div>
+        <div class="kpi-label">Sinyal Distress Galbay</div>
+        <div class="kpi-sub"><span data-fill="distress_total">-</span> ulasan mengandung tanda gagal bayar</div>
+      </div>
+    </div>
+    <div class="kpi-card kpi-lime">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="kpi-body">
+        <div class="kpi-value" data-fill="acc">-</div>
+        <div class="kpi-label">Akurasi Model Sentimen</div>
+        <div class="kpi-sub">VADER Lexicon pada 349K ulasan</div>
+      </div>
+    </div>
+    <div class="kpi-card kpi-purple">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <div class="kpi-body">
+        <div class="kpi-value" data-fill="n_apps">-</div>
+        <div class="kpi-label">Aplikasi Fintech Dipantau</div>
+        <div class="kpi-sub"><span data-fill="n_categories">-</span> kategori fintech</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-grid-2">
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">Distribusi Sentimen</div>
+        <div class="chart-subtitle">Prediksi benar vs salah pada data uji</div>
+      </div>
+      <div class="chart-wrap donut-wrap"><canvas id="chartSentimentDist"></canvas></div>
+      <div class="insight-box">
+        <p>Dari 349K ulasan, mayoritas <strong>netral (86.5%)</strong>. Hanya 1.9% negatif, tapi ini setara <strong>6.481 ulasan</strong> yang menandakan masalah nyata gagal bayar.</p>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">Distribusi Rating Ulasan</div>
+        <div class="chart-subtitle">Skor 1-5 bintang dari semua aplikasi</div>
+      </div>
+      <div class="chart-wrap"><canvas id="chartScoreDist2"></canvas></div>
+      <div class="insight-box">
+        <p>Polarisasi tinggi: <strong>67% bintang 5</strong> vs <strong>20% bintang 1</strong>. User cenderung review hanya saat sangat puas atau sangat kecewa.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-grid-3">
+    <div class="info-card">
+      <div class="info-card-icon lime">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Peluang</h3>
+      <p>Pasar besar Gen Z terjebak siklus utang digital namun belum tersentuh produk financial coaching yang preventif dan berbasis data.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon purple">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>Solusi</h3>
+      <p>Aplikasi Galbay Predictor: skor risiko galbay personal plus coaching perilaku finansial bergaya anak muda.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon lime">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <h3>Model Bisnis</h3>
+      <p>Freemium B2C, langganan premium, serta kemitraan B2B dengan fintech dan program literasi keuangan.</p>
+    </div>
+  </div>
+
+  <div class="insight-box insight-large">
+    <h4>Insight Kunci</h4>
+    <p>Mayoritas keluhan negatif berpusat pada <strong>bunga dan biaya</strong> serta <strong>praktik penagihan</strong>, menandakan kebutuhan edukasi dan pendampingan, bukan sekadar penagihan. Ini membuka peluang bagi produk coaching preventif yang berbeda dari pinjol maupun budgeting biasa.</p>
+  </div>
+</section>
+{% endblock %}

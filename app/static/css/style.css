@@ -647,6 +647,7 @@ body {
 }
 .footer-cta h2 { font-size: 34px; margin-bottom: 16px; }
 .footer-cta p { color: var(--text-secondary); max-width: 600px; margin: 0 auto 28px; }
+.footer-cta a.btn-primary { display: inline-flex; }
 
 /* --- Model metric cards --- */
 .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 8px 0 24px; }

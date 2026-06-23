@@ -248,21 +248,45 @@ function chartModel() {
 // 8) Sentimen per kategori
 function chartSentimentCat() {
   const c = (D.cat_stats||[]);
+  if (!c.length) return;
+  // Cap y-axis ke 20% biar bar visible (data all reviews, neg/pos kecil)
+  const maxVal = Math.max(...c.flatMap(x => [x.neg_pct||0, x.pos_pct||0]), 5);
+  const yMax = Math.min(100, Math.max(20, Math.ceil(maxVal * 1.2)));
   make('chartSentimentCat', { type:'bar', data:{
     labels:c.map(x=>x.category), datasets:[
-      { label:'% Negatif', data:c.map(x=>x.neg_pct), backgroundColor:'rgba(248,113,113,0.8)', borderRadius:5 },
-      { label:'% Positif', data:c.map(x=>x.pos_pct), backgroundColor:'rgba(184,255,60,0.8)', borderRadius:5 },
+      { label:'% Negatif', data:c.map(x=>x.neg_pct), backgroundColor:'rgba(248,113,113,0.85)', borderRadius:5 },
+      { label:'% Positif', data:c.map(x=>x.pos_pct), backgroundColor:'rgba(184,255,60,0.85)', borderRadius:5 },
     ]
-  }, options:{ ...chartDefaults, scales:{x:{...grid, ticks:{color:COL.text, font:{size:10}}}, y:{...grid, max:100}} } });
+  }, options:{ ...chartDefaults, scales:{x:{...grid, ticks:{color:COL.text, font:{size:10}}}, y:{...grid, max:yMax, ticks:{color:COL.gray, callback:(v)=>v+'%'}}} } });
 }
 
-// 9) Top aplikasi rasio negatif
+// 9) Top aplikasi jumlah ulasan negatif (absolute count)
 function chartTopApps() {
-  const a = (D.top_neg_apps||[]);
+  const a = (D.top_neg_apps||[]).slice(0, 10);
+  if (!a.length) return;
+  // Hitung absolute count dari n * neg_pct / 100
+  const data = a.map(x => Math.round((x.n || 0) * (x.neg_pct || 0) / 100));
+  const maxV = Math.max(...data, 1);
+  // Gradient color by volume
+  const colors = data.map(v => {
+    const ratio = v / maxV;
+    const r = Math.round(248 - (248-155)*ratio);
+    const g = Math.round(113 + (93-113)*ratio);
+    const b = Math.round(113 + (229-113)*ratio);
+    return `rgba(${r},${g},${b},0.85)`;
+  });
   make('chartTopApps', { type:'bar', data:{
-    labels:a.map(x=>x.app), datasets:[{ label:'% negatif', data:a.map(x=>x.neg_pct),
-      backgroundColor:'rgba(248,113,113,0.8)', borderRadius:5 }]
-  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:{...grid,max:100},y:gridY} } });
+    labels:a.map(x=>x.app), datasets:[{ label:'Jumlah ulasan negatif', data:data,
+      backgroundColor:colors, borderRadius:5 }]
+  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{
+    ...chartDefaults.plugins, legend:{display:false},
+    tooltip:{ ...chartDefaults.plugins.tooltip,
+      callbacks:{ label:(ctx)=>{
+        const app = a[ctx.dataIndex];
+        return ` ${ctx.parsed.x.toLocaleString('id-ID')} ulasan negatif dari ${(app.n||0).toLocaleString('id-ID')} (${(app.neg_pct||0).toFixed(1)}%)`;
+      }}
+    }
+  }, scales:{x:grid,y:gridY} } });
 }
 
 // 10) Donut chart distribusi prediksi model

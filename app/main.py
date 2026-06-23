@@ -36,6 +36,11 @@ def kesimpulan():
     return render_template("dashboard/kesimpulan.html", active_page="kesimpulan")
 
 
+@main_bp.route("/dashboard/produk")
+def produk():
+    return render_template("dashboard/produk.html", active_page="produk")
+
+
 @main_bp.route("/health")
 def health():
     return {"status": "ok", "service": "galbay-predictor"}

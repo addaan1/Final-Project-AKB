@@ -9,6 +9,9 @@
   <script src="{{ url_for('static', filename='js/data.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% if active_page == 'produk' %}
+  <script defer src="{{ url_for('static', filename='js/produk.js') }}"></script>
+  {% endif %}
 </head>
 <body>
   <header class="topbar">
@@ -21,6 +24,7 @@
       <a href="{{ url_for('main.ringkasan') }}" class="nav-pill {% if active_page == 'ringkasan' %}active{% endif %}">Ringkasan</a>
       <a href="{{ url_for('main.analisis') }}" class="nav-pill {% if active_page == 'analisis' %}active{% endif %}">Analisis</a>
       <a href="{{ url_for('main.solusi') }}" class="nav-pill {% if active_page == 'solusi' %}active{% endif %}">Solusi &amp; BMC</a>
+      <a href="{{ url_for('main.produk') }}" class="nav-pill nav-pill-cta {% if active_page == 'produk' %}active{% endif %}">Coba Produk</a>
       <a href="{{ url_for('main.kesimpulan') }}" class="nav-pill {% if active_page == 'kesimpulan' %}active{% endif %}">Kesimpulan</a>
     </nav>
     <div class="topbar-right">

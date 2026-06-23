@@ -3314,9 +3314,9 @@ body[data-package="premium"] .chat-bubble {
   position: fixed;
   bottom: 100px;
   right: 24px;
-  width: 400px;
+  width: 440px;
   max-width: calc(100vw - 32px);
-  height: 620px;
+  height: 680px;
   max-height: calc(100vh - 120px);
   background: var(--bg-card);
   border: 1px solid var(--border-neutral);

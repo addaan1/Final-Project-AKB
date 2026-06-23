@@ -1,0 +1,82 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Kesimpulan dan Referensi{% endblock %}
+
+{% block content %}
+<section class="page-section" id="kesimpulan">
+  <div class="page-header">
+    <span class="section-tag">G &middot; Kesimpulan dan Referensi</span>
+    <h1 class="page-title">Penutup</h1>
+    <p class="page-lead">Data mining terhadap 349K ulasan fintech mengonfirmasi adanya masalah perilaku finansial Gen Z yang nyata dan masif.</p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card kpi-lime">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+      </div>
+      <div class="kpi-body">
+        <div class="kpi-value" data-fill="total_reviews">-</div>
+        <div class="kpi-label">Total Ulasan Dianalisis</div>
+      </div>
+    </div>
+    <div class="kpi-card kpi-purple">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="kpi-body">
+        <div class="kpi-value" data-fill="distress_pct">-</div>
+        <div class="kpi-label">Sinyal Distress Galbay</div>
+      </div>
+    </div>
+    <div class="kpi-card kpi-lime">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="kpi-body">
+        <div class="kpi-value" data-fill="acc">-</div>
+        <div class="kpi-label">Akurasi Model</div>
+      </div>
+    </div>
+    <div class="kpi-card kpi-purple">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <div class="kpi-body">
+        <div class="kpi-value" data-fill="n_apps">-</div>
+        <div class="kpi-label">Aplikasi Fintech</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box insight-large">
+    <h4>Kesimpulan</h4>
+    <p>Data mining terhadap <strong><span data-fill="total_reviews">-</span> ulasan</strong> aplikasi fintech mengonfirmasi adanya masalah perilaku finansial Gen Z yang nyata dan masif. Galbay Predictor menjawabnya dengan pendekatan <strong>coaching preventif berbasis data</strong>, sebuah peluang bisnis yang layak, terdiferensiasi, dan didukung bukti &mdash; bukan sekadar asumsi.</p>
+  </div>
+
+  <div class="info-card" style="margin-top:24px;">
+    <div class="info-card-icon purple">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    </div>
+    <h3>Referensi dan Transparansi AI</h3>
+    <ul class="bmc-list">
+      <li><strong>Sumber data:</strong> 349.200 ulasan Google Play Store dari 44 aplikasi fintech Indonesia (paylater, e-wallet, pinjol, bank digital, e-commerce, travel, investasi).</li>
+      <li><strong>Periode:</strong> <span data-fill="date_min">-</span> s/d <span data-fill="date_max">-</span>.</li>
+      <li><strong>Tools:</strong> Python, VADER Lexicon (NLTK), google-play-scraper, Chart.js, Flask.</li>
+      <li><strong>Bantuan AI:</strong> Untuk eksplorasi ide, penyusunan analisis, dan pembuatan dashboard. <strong>Seluruh angka dihitung dari data nyata</strong>, bukan dikarang AI.</li>
+      <li><strong>Repositori:</strong> <a href="https://github.com/addaan1/Final-Project-AKB" target="_blank" rel="noopener" style="color:var(--accent-lime);">github.com/addaan1/Final-Project-AKB</a></li>
+    </ul>
+  </div>
+
+  <div class="page-nav">
+    <a href="{{ url_for('main.solusi') }}" class="page-nav-btn">
+      <span class="page-nav-dir">&larr; Sebelumnya</span>
+      <span class="page-nav-label">Solusi &amp; BMC</span>
+    </a>
+    <a href="{{ url_for('main.ringkasan') }}" class="page-nav-btn">
+      <span class="page-nav-dir">Awal &rarr;</span>
+      <span class="page-nav-label">Ringkasan</span>
+    </a>
+  </div>
+</section>
+{% endblock %}

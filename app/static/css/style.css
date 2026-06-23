@@ -2234,7 +2234,7 @@ button:disabled { cursor: not-allowed; }
 :root[data-theme="light"] .privacy-notice { background: rgba(13,148,136,0.10); color: #0f766e; }
 
 /* =================================================================
-   FEATURE GATING — soft lock overlay (fixed viewport)
+   FEATURE GATING — soft lock overlay (in-section, not fixed)
    ================================================================= */
 .feature-locked {
   position: relative;
@@ -2255,11 +2255,11 @@ body[data-theme="dark"] .feature-locked::before {
   background: rgba(10, 14, 26, 0.85);
 }
 .feature-locked .lock-overlay {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1500;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2269,7 +2269,7 @@ body[data-theme="dark"] .feature-locked::before {
   text-align: center;
   pointer-events: auto;
   max-width: 480px;
-  width: calc(100% - 32px);
+  width: calc(100% - 64px);
   background: var(--bg-card);
   border: 2px solid rgba(251, 191, 36, 0.5);
   border-radius: 20px;
@@ -2278,8 +2278,6 @@ body[data-theme="dark"] .feature-locked::before {
     0 24px 60px rgba(245, 158, 11, 0.25),
     0 8px 24px rgba(0, 0, 0, 0.2);
   animation: lock-card-fade-in 0.4s ease backwards;
-  max-height: 90vh;
-  overflow-y: auto;
 }
 body[data-theme="dark"] .feature-locked .lock-overlay {
   background: #232938;
@@ -2294,7 +2292,7 @@ body[data-theme="dark"] .feature-locked .lock-overlay {
   to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
-/* Dismiss state */
+/* Dismiss state — user can close lock to see content */
 .feature-locked.is-dismissed::before { display: none; }
 .feature-locked.is-dismissed .lock-overlay { display: none; }
 

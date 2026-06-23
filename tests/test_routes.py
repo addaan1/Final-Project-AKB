@@ -170,6 +170,10 @@ class TestDashboardContent:
         r = auth_client.get("/dashboard/produk")
         assert b'feature-locked' in r.data
         assert b'lock-icon' in r.data
+        # Lock harus in-section (position: absolute), bukan fixed
+        # Cek bahwa tidak ada style position: fixed pada .lock-overlay
+        assert b'position: fixed' not in r.data
+        assert b'lock-fixed' not in r.data
 
     def test_produk_premium_user_no_locks(self, premium_client):
         r = premium_client.get("/dashboard/produk")

@@ -8,6 +8,7 @@ const COL = { lime:'#b8ff3c', pur:'#9b5de5', violet:'#6a0dad', red:'#f87171', or
 document.addEventListener('DOMContentLoaded', () => {
   fillNumbers();
   if (window.Chart) initCharts();
+  renderTopAppsTable();
   initAnimations();
   initNavHighlight();
   initCounters();
@@ -38,20 +39,68 @@ function fillNumbers() {
   });
 }
 
-// ── NAV HIGHLIGHT (berbasis teks) ──
+// ── NAV HIGHLIGHT (topbar pill, auto-detect section) ──
 function initNavHighlight() {
   const sections = document.querySelectorAll('section[id]');
-  const navItems = document.querySelectorAll('.nav-item[data-section]');
-  if (!sections.length || !navItems.length) return;
+  const navPills = document.querySelectorAll('.nav-pill[data-section]');
+  if (!sections.length || !navPills.length) return;
+
+  // Map section ke group nav (topbar 4 menu utama)
+  // ringkasan -> ringkasan
+  // datamining, model, kritis -> analisis
+  // inovasi, bmc, risiko -> bmc
+  // kesimpulan -> kesimpulan
+  const groupMap = {
+    ringkasan: 'ringkasan',
+    datamining: 'analisis',
+    model: 'analisis',
+    kritis: 'analisis',
+    inovasi: 'bmc',
+    bmc: 'bmc',
+    risiko: 'bmc',
+    kesimpulan: 'kesimpulan',
+  };
+
+  function setActive(groupKey) {
+    navPills.forEach(n => n.classList.toggle('active', n.dataset.section === groupKey));
+  }
+
+  // Set initial dari hash
+  const hash = (window.location.hash || '').replace('#', '');
+  if (hash && groupMap[hash]) setActive(groupMap[hash]);
+
+  // Pakai scroll-based detection: section yang paling dominan di viewport
+  let lastVisible = null;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const id = entry.target.id;
-        navItems.forEach(n => n.classList.toggle('active', n.dataset.section === id));
+        lastVisible = entry.target.id;
       }
     });
-  }, { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' });
+    if (lastVisible && groupMap[lastVisible]) {
+      setActive(groupMap[lastVisible]);
+    }
+  }, { threshold: 0.15, rootMargin: '-80px 0px -50% 0px' });
   sections.forEach(s => observer.observe(s));
+
+  // Click handler: set active langsung + hash update
+  navPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const key = pill.dataset.section;
+      if (groupMap[key] || key) {
+        // Tentukan section target dari group
+        let target = key;
+        if (key === 'analisis') target = 'datamining';
+        else if (key === 'bmc') target = 'bmc';
+        setActive(key);
+        // smooth scroll ke section pertama dalam group
+        const el = document.getElementById(target);
+        if (el) {
+          window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+        }
+      }
+    });
+  });
 }
 
 // ── COUNTER ANIMATION ──
@@ -116,12 +165,15 @@ function make(id, cfg){ const el=document.getElementById(id); if(!el) return; ne
 function initCharts() {
   Chart.defaults.color = COL.text;
   chartScoreDist();
+  chartScoreDist2();
   chartCategory();
   chartTimeline();
   chartBehavior();
   chartKeywords();
+  chartWordcloud();
   chartSentimentCat();
   chartTopApps();
+  chartSentimentDist();
   chartModel();
 }
 
@@ -200,4 +252,98 @@ function chartModel() {
     datasets:[{ label:'Skor (%)', data:[mo.accuracy*100, mo.precision*100, mo.recall*100, mo.f1*100].map(v=>+v.toFixed(1)),
       backgroundColor:[COL.lime,COL.pur,COL.blu,COL.grn], borderRadius:6 }]
   }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:{...grid,max:100}} } });
+}
+
+// 9) Score distribution kedua (di section ringkasan)
+function chartScoreDist2() {
+  const s = D.score_dist || {};
+  make('chartScoreDist2', { type:'bar', data:{
+    labels:['1','2','3','4','5'],
+    datasets:[{ label:'Jumlah review', data:[s['1'],s['2'],s['3'],s['4'],s['5']],
+      backgroundColor:[COL.red,COL.org,COL.gray,'#a3e635',COL.lime], borderRadius:6 }]
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:grid} } });
+}
+
+// 10) Donut chart distribusi prediksi model (TP/TN/FP/FN)
+function chartSentimentDist() {
+  const c = (D.model || {}).confusion || {};
+  const tp = c.TP || 0, tn = c.TN || 0, fp = c.FP || 0, fn = c.FN || 0;
+  const correct = tp + tn;
+  const wrong = fp + fn;
+  make('chartSentimentDist', { type:'doughnut', data:{
+    labels:['Prediksi Benar', 'Prediksi Salah'],
+    datasets:[{
+      data:[correct, wrong],
+      backgroundColor:['rgba(184,255,60,0.85)', 'rgba(248,113,113,0.7)'],
+      borderColor:['rgba(184,255,60,1)', 'rgba(248,113,113,1)'],
+      borderWidth:2,
+      hoverOffset:8
+    }]
+  }, options:{
+    responsive:true, maintainAspectRatio:false,
+    cutout:'68%',
+    plugins:{
+      legend:{ position:'bottom', labels:{ color:COL.text, font:{family:'Inter',size:13}, padding:14, boxWidth:14 } },
+      tooltip:{ backgroundColor:'#120038', borderColor:'rgba(155,93,229,0.4)', borderWidth:1, titleColor:'#f0eaff', bodyColor:COL.text, padding:12,
+        callbacks:{ label:(ctx)=>{ const v=ctx.parsed, total=correct+wrong; const pct=total>0?(v/total*100).toFixed(1):0; return ` ${ctx.label}: ${v.toLocaleString('id-ID')} (${pct}%)`; } } }
+    }
+  }});
+}
+
+// 11) Wordcloud bar horizontal — 15 kata kunci paling dominan
+function chartWordcloud() {
+  const k = (D.galbay_keywords || []).slice(0, 15);
+  if (!k.length) return;
+  // Sort ascending agar yang paling banyak di atas
+  const sorted = k.slice().sort((a,b)=>a.count-b.count);
+  const maxCount = Math.max(...sorted.map(x=>x.count));
+  make('chartWordcloud', { type:'bar', data:{
+    labels: sorted.map(x=>x.label),
+    datasets:[{
+      label:'Frekuensi',
+      data: sorted.map(x=>x.count),
+      backgroundColor: sorted.map(x=>{
+        const intensity = x.count / maxCount;
+        const r = Math.round(248 - (248-184)*intensity);
+        const g = Math.round(113 + (255-113)*intensity);
+        const b = Math.round(113 + (60-113)*intensity);
+        return `rgba(${r},${g},${b},0.85)`;
+      }),
+      borderRadius:4
+    }]
+  }, options:{
+    ...chartDefaults, indexAxis:'y',
+    plugins:{...chartDefaults.plugins, legend:{display:false}},
+    scales:{x:grid, y:{...gridY, ticks:{...gridY.ticks, font:{size:12, weight:'500'}}}}
+  }});
+}
+
+// 12) Render top 10 apps table dari data
+function renderTopAppsTable() {
+  const tbody = document.querySelector('#topAppsTable tbody');
+  if (!tbody) return;
+  const apps = (D.top_neg_apps || []).slice(0, 10);
+  if (!apps.length) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--text-muted);">Data belum tersedia</td></tr>';
+    return;
+  }
+  // Cari max ratio untuk bar
+  const maxRatio = Math.max(...apps.map(a=>a.neg_pct||0), 1);
+  tbody.innerHTML = apps.map((a, i) => {
+    const ratio = a.neg_pct || 0;
+    const barW = Math.max(20, Math.round((ratio / maxRatio) * 80));
+    const cls = ratio >= 70 ? 'neg-high' : (ratio >= 40 ? 'neg-med' : 'neg-low');
+    const avgScore = a.avg_score != null ? a.avg_score.toFixed(2) : '-';
+    const total = a.n != null ? a.n.toLocaleString('id-ID') : '-';
+    const neg = a.n != null ? Math.round(a.n * ratio / 100).toLocaleString('id-ID') : '-';
+    return `<tr>
+      <td><span class="rank-badge">${i+1}</span></td>
+      <td style="color:var(--text-primary);font-weight:600;">${a.app || '-'}</td>
+      <td>${a.category || '-'}</td>
+      <td>${total}</td>
+      <td>${neg}</td>
+      <td><span class="ratio-bar" style="width:${barW}px"></span><span class="${cls}">${ratio.toFixed(1)}%</span></td>
+      <td>${avgScore}</td>
+    </tr>`;
+  }).join('');
 }

@@ -11,26 +11,17 @@
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 <body>
-  <aside class="sidebar">
-    <div class="sidebar-logo">
-      <div class="logo-text">GALBAY<br>PREDICTOR</div>
-    </div>
-    <a href="{{ url_for('main.index') }}" class="nav-item"><span class="nav-label">Kembali ke Beranda</span></a>
-    <a href="#ringkasan" class="nav-item active" data-section="ringkasan"><span class="nav-label">A. Ringkasan Eksekutif</span></a>
-    <a href="#datamining" class="nav-item" data-section="datamining"><span class="nav-label">B. Data Mining dan Analisis</span></a>
-    <a href="#model" class="nav-item" data-section="model"><span class="nav-label">Hasil Modelling</span></a>
-    <a href="#kritis" class="nav-item" data-section="kritis"><span class="nav-label">C. Critical Analysis</span></a>
-    <a href="#inovasi" class="nav-item" data-section="inovasi"><span class="nav-label">D. Inovasi Bisnis</span></a>
-    <a href="#bmc" class="nav-item" data-section="bmc"><span class="nav-label">E. Business Model Canvas</span></a>
-    <a href="#risiko" class="nav-item" data-section="risiko"><span class="nav-label">F. Risiko dan Kelayakan</span></a>
-    <a href="#kesimpulan" class="nav-item" data-section="kesimpulan"><span class="nav-label">G. Kesimpulan dan Referensi</span></a>
-  </aside>
-
   <header class="topbar">
     <div class="topbar-left">
-      <span class="topbar-subtitle">Data Mining -> Business Model Canvas</span>
-      <span class="topbar-title">Dashboard Analisis - Galbay Predictor</span>
+      <a href="{{ url_for('main.index') }}" class="topbar-brand">GALBAY <span>PREDICTOR</span></a>
+      <div class="topbar-subtitle">Data Mining &rarr; Business Model Canvas</div>
     </div>
+    <nav class="topbar-nav" aria-label="Section navigation">
+      <a href="#ringkasan" class="nav-pill" data-section="ringkasan">Ringkasan</a>
+      <a href="#datamining" class="nav-pill" data-section="datamining">Analisis</a>
+      <a href="#bmc" class="nav-pill" data-section="bmc">Solusi &amp; BMC</a>
+      <a href="#kesimpulan" class="nav-pill" data-section="kesimpulan">Kesimpulan</a>
+    </nav>
     <div class="topbar-right">
       <span class="badge-tag">Data Asli · <span data-fill="total_relevant">-</span> ulasan relevan</span>
       <a href="#" class="btn-primary" onclick="window.print();return false;">Ekspor / Print</a>
@@ -53,6 +44,42 @@
         <div class="kpi-item"><div class="kpi-value" data-fill="acc">-</div><div class="kpi-label">Akurasi model sentimen</div></div>
         <div class="kpi-divider"></div>
         <div class="kpi-item"><div class="kpi-value" data-fill="n_apps">-</div><div class="kpi-label">Aplikasi fintech dipantau</div></div>
+      </div>
+
+      <div class="kpi-enhanced">
+        <div class="kpi-card-big kpi-card-lime">
+          <div class="kpi-card-label">Total Ulasan</div>
+          <div class="kpi-card-value" data-fill="total_reviews">-</div>
+          <div class="kpi-card-sub">Periode <span data-fill="date_min">-</span> s/d <span data-fill="date_max">-</span></div>
+        </div>
+        <div class="kpi-card-big kpi-card-purple">
+          <div class="kpi-card-label">Distress Signal</div>
+          <div class="kpi-card-value" data-fill="distress_pct">-</div>
+          <div class="kpi-card-sub"><span data-fill="distress_total">-</span> ulasan mengandung sinyal gagal bayar</div>
+        </div>
+        <div class="kpi-card-big kpi-card-lime">
+          <div class="kpi-card-label">Akurasi Model</div>
+          <div class="kpi-card-value" data-fill="acc">-</div>
+          <div class="kpi-card-sub">Multinomial Naive Bayes (from scratch)</div>
+        </div>
+        <div class="kpi-card-big kpi-card-purple">
+          <div class="kpi-card-label">Aplikasi Fintech</div>
+          <div class="kpi-card-value" data-fill="n_apps">-</div>
+          <div class="kpi-card-sub"><span data-fill="n_categories">-</span> kategori dipantau</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:24px;">
+        <div class="chart-card">
+          <div class="chart-title">Distribusi Sentimen Model</div>
+          <div class="chart-subtitle">Prediksi benar vs salah pada data uji</div>
+          <div class="chart-wrap donut-wrap"><canvas id="chartSentimentDist"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Distribusi Rating Ulasan</div>
+          <div class="chart-subtitle">Polarisasi tinggi: dominan bintang 1 dan 5</div>
+          <div class="chart-wrap"><canvas id="chartScoreDist2"></canvas></div>
+        </div>
       </div>
 
       <div class="grid-3">
@@ -91,6 +118,25 @@
           <div class="chart-wrap"><canvas id="chartCategory"></canvas></div>
         </div>
       </div>
+
+      <div class="chart-card" style="margin-top:20px;">
+        <div class="chart-title">Top 10 Aplikasi dengan Ulasan Negatif Terbanyak</div>
+          <div class="chart-subtitle">Diurutkan berdasarkan rasio ulasan negatif (skor 1-2)</div>
+          <div class="table-wrap"><table class="top-apps-table" id="topAppsTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Aplikasi</th>
+                <th>Kategori</th>
+                <th>Total</th>
+                <th>Negatif</th>
+                <th>Rasio</th>
+                <th>Avg Score</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table></div>
+        </div>
 
       <div class="chart-card" style="margin-top:20px;">
         <div class="chart-title">Tren Bulanan Volume Ulasan dan Sinyal Distress Galbay</div>
@@ -166,6 +212,12 @@
           <div class="chart-subtitle">Sinyal kesulitan bayar di teks ulasan</div>
           <div class="chart-wrap" style="height:300px;"><canvas id="chartKeywords"></canvas></div>
         </div>
+      </div>
+
+      <div class="chart-card" style="margin-top:20px;">
+        <div class="chart-title">Wordcloud: 15 Kata Kunci Paling Dominan</div>
+        <div class="chart-subtitle">Visualisasi horizontal bar dari kata kunci yang paling sering muncul di ulasan relevan</div>
+        <div class="chart-wrap wordcloud-bar"><canvas id="chartWordcloud"></canvas></div>
       </div>
 
       <div class="grid-2" style="margin-top:20px;">

@@ -150,13 +150,74 @@ function initDropdown() {
 // ── CHART DEFAULTS ──
 const chartDefaults = {
   responsive: true, maintainAspectRatio: false,
+  animation: { duration: 1200, easing: 'easeOutQuart' },
   plugins: {
-    legend: { labels: { color: COL.text, font: { family: 'Inter', size: 12 }, boxWidth: 12 } },
-    tooltip: { backgroundColor: '#120038', borderColor: 'rgba(155,93,229,0.4)', borderWidth: 1, titleColor: '#f0eaff', bodyColor: COL.text, padding: 12 }
+    legend: {
+      position: 'bottom',
+      labels: {
+        color: COL.text, font: { family: 'Inter', size: 12 },
+        boxWidth: 10, boxHeight: 10, padding: 14, usePointStyle: true,
+      }
+    },
+    tooltip: {
+      backgroundColor: 'rgba(28, 25, 23, 0.95)',
+      borderColor: 'rgba(251, 191, 36, 0.4)',
+      borderWidth: 1,
+      titleColor: '#fbbf24',
+      bodyColor: '#f0eaff',
+      padding: 12,
+      cornerRadius: 8,
+      displayColors: true,
+      boxPadding: 6,
+    }
   }
 };
-const grid = { ticks: { color: COL.gray }, grid: { color: 'rgba(155,93,229,0.1)' } };
+const grid = {
+  ticks: { color: COL.gray, font: { size: 11 } },
+  grid: { color: 'rgba(155,93,229,0.08)' }
+};
 const gridY = { ticks: { color: COL.text, font:{size:11} }, grid: { display:false } };
+
+// ── Custom Chart.js Plugin: percentage labels on bars & pies ──
+const percentLabelPlugin = {
+  id: 'percentLabel',
+  afterDatasetsDraw(chart) {
+    if (!chart.options.plugins?.percentLabel?.enabled) return;
+    const { ctx, data } = chart;
+    const ds = data.datasets[chart.datasetIndex || 0];
+    if (!ds) return;
+    const total = ds.data.reduce((a, b) => a + (typeof b === 'number' ? b : 0), 0);
+    if (!total) return;
+
+    ctx.save();
+    ctx.font = '600 11px Inter, sans-serif';
+    ctx.fillStyle = '#f0eaff';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+
+    const meta = chart.getDatasetMeta(0);
+    meta.data.forEach((bar, i) => {
+      const v = ds.data[i];
+      if (!v || v === 0) return;
+      const pct = ((v / total) * 100);
+      // Skip tiny slices
+      if (pct < 1.5) return;
+
+      if (chart.config.type === 'bar') {
+        const y = bar.y - 4;
+        const x = bar.x;
+        ctx.fillText(`${pct.toFixed(1)}%`, x, y);
+      } else if (chart.config.type === 'doughnut' || chart.config.type === 'pie') {
+        const { x, y } = bar.tooltipPosition();
+        ctx.fillStyle = '#1c1917';
+        ctx.fillText(`${pct.toFixed(0)}%`, x, y + 4);
+      }
+    });
+    ctx.restore();
+  }
+};
+Chart.register(percentLabelPlugin);
+
 function make(id, cfg){ const el=document.getElementById(id); if(!el) return; new Chart(el, cfg); }
 
 // ── CONDITIONAL CHART INIT: hanya render chart yang canvas ada di page ──
@@ -185,7 +246,7 @@ function chartScoreDist() {
     labels:['1 Bintang','2','3','4','5 Bintang'],
     datasets:[{ label:'Jumlah review', data:[s['1'],s['2'],s['3'],s['4'],s['5']],
       backgroundColor:[COL.red,COL.org,COL.gray,'#a3e635',COL.lime], borderRadius:6 }]
-  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:grid} } });
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:grid} } });
 }
 
 // 2) Score distribution kedua (di section ringkasan)
@@ -195,7 +256,7 @@ function chartScoreDist2() {
     labels:['1','2','3','4','5'],
     datasets:[{ label:'Jumlah review', data:[s['1'],s['2'],s['3'],s['4'],s['5']],
       backgroundColor:[COL.red,COL.org,COL.gray,'#a3e635',COL.lime], borderRadius:6 }]
-  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:grid} } });
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:grid} } });
 }
 
 // 3) Jumlah review per kategori
@@ -204,7 +265,7 @@ function chartCategory() {
   make('chartCategory', { type:'bar', data:{
     labels:c.map(x=>x.category), datasets:[{ label:'Review relevan', data:c.map(x=>x.count),
       backgroundColor:'rgba(155,93,229,0.75)', borderRadius:5 }]
-  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
+  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:gridY} } });
 }
 
 // 4) Tren waktu volume & distress
@@ -223,7 +284,7 @@ function chartBehavior() {
   make('chartBehavior', { type:'bar', data:{
     labels:b.map(x=>x.label), datasets:[{ label:'Jumlah review', data:b.map(x=>x.count),
       backgroundColor:'rgba(184,255,60,0.75)', borderRadius:5 }]
-  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
+  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:gridY} } });
 }
 
 // 6) Kata kunci galbay
@@ -232,7 +293,7 @@ function chartKeywords() {
   make('chartKeywords', { type:'bar', data:{
     labels:k.map(x=>x.label), datasets:[{ label:'Frekuensi', data:k.map(x=>x.count),
       backgroundColor:'rgba(249,115,22,0.8)', borderRadius:5 }]
-  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
+  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:gridY} } });
 }
 
 // 7) Metrik evaluasi model
@@ -280,6 +341,7 @@ function chartTopApps() {
       backgroundColor:colors, borderRadius:5 }]
   }, options:{ ...chartDefaults, indexAxis:'y', plugins:{
     ...chartDefaults.plugins, legend:{display:false},
+    percentLabel:{enabled:true},
     tooltip:{ ...chartDefaults.plugins.tooltip,
       callbacks:{ label:(ctx)=>{
         const app = a[ctx.dataIndex];
@@ -309,6 +371,7 @@ function chartSentimentDist() {
     cutout:'68%',
     plugins:{
       legend:{ position:'bottom', labels:{ color:COL.text, font:{family:'Inter',size:13}, padding:14, boxWidth:14 } },
+      percentLabel:{enabled:true},
       tooltip:{ backgroundColor:'#120038', borderColor:'rgba(155,93,229,0.4)', borderWidth:1, titleColor:'#f0eaff', bodyColor:COL.text, padding:12,
         callbacks:{ label:(ctx)=>{ const v=ctx.parsed, total=correct+wrong; const pct=total>0?(v/total*100).toFixed(1):0; return ` ${ctx.label}: ${v.toLocaleString('id-ID')} (${pct}%)`; } } }
     }

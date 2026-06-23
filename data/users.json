@@ -1,0 +1,52 @@
+[
+  {
+    "id": "77a67190-80f4-4951-a9ba-519e38497b3a",
+    "email": "demo@galbay.id",
+    "name": "Demo User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "demo",
+    "password_hash": "scrypt:32768:8:1$Z8zjXipFSjME0JwX$69fc8b6d12461b9d80481f374addf5ea731f4041b435f1cae5b5506af5a9298ec0c7076451c416e8cb76ee9610c9d2f2d8368fc83bbddb8725a58457c24d5772",
+    "created_at": "2026-06-23T22:24:38.363845Z"
+  },
+  {
+    "id": "529adc93-e67c-411f-8660-71e8caabee26",
+    "email": "premium@galbay.id",
+    "name": "Premium Demo",
+    "avatar_url": "",
+    "package": "premium",
+    "source": "demo",
+    "password_hash": "scrypt:32768:8:1$ioWF8pbOXtOkpJRj$d297ad0657fab5a45ab59d4c1fef67cc83cb57aeeea8196d9465f908233421ad9170d429a09a031a9b324d3a3b229052a78dc823b5af456d12476dd2dd0e5439",
+    "created_at": "2026-06-23T22:24:38.484790Z"
+  },
+  {
+    "id": "337e4cb5-77ea-4c1b-bd8b-a1434d641993",
+    "email": "newuser@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$e6Afp3YxhWPu6fD7$88bb17696443f18ea94df5acf3bbc741bc1d745a1b21413b6b149876648316ef67983745551c5b6e07b33a33000218f18d7232d1b255623197d1530f792b7d9d",
+    "created_at": "2026-06-23T22:39:20.156687Z"
+  },
+  {
+    "id": "f0244834-950b-4732-93c4-101e230800da",
+    "email": "dup@test.com",
+    "name": "First",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$oZwG44DZtj1RCMfJ$192871ef9902713d91e2fcd50d27e5853fbf07b8044996c4714f4aefc0d78e3da985cd1a71e284d272e5867bff87be03cd3dfcd3de0ef4d5f95122b2c049e0f5",
+    "created_at": "2026-06-23T22:39:20.283828Z"
+  },
+  {
+    "id": "4543e9be-998b-41ab-9f3a-a7d33f043dac",
+    "email": "newuser-3b8b27da@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$rPQuj2AvTYXrxm92$bd74eac419ff76b0c26d097fe968ae75b7869eb3b7b1af3f8337fa03fdc91ee7aa03613a9135eb8b140c15b0a0fc96a92ec2919ecd545c2cd34ec2b82c92b932",
+    "created_at": "2026-06-23T22:41:47.154780Z"
+  }
+]

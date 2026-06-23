@@ -29,7 +29,7 @@
   <div class="skor-layout">
     <form class="skor-form" id="skorForm">
       <div class="form-group">
-        <label>1. Aplikasi fintech apa yang sedang kamu pakai?</label>
+        <label>1. Aplikasi fintech apa yang sedang kamu pakai? <span class="form-tooltip" data-tip="Pinjol = pinjaman online (OVO, Kredivo, AdaKami, dll). Paylater = bayar nanti. E-wallet = dompet digital. Bank digital = bank tanpa kantor.">?</span></label>
         <p class="form-hint">Bisa pilih lebih dari satu</p>
         <div class="checkbox-group">
           <label class="checkbox-card"><input type="checkbox" name="apps" value="pinjol"><span class="checkbox-label"><strong>Pinjol</strong><small>Pinjaman online</small></span></label>
@@ -40,7 +40,7 @@
       </div>
 
       <div class="form-group">
-        <label>2. Berapa total utang/cicilan aktif kamu saat ini?</label>
+        <label>2. Berapa total utang/cicilan aktif kamu saat ini? <span class="form-tooltip" data-tip="Jumlahkan semua utang: pinjol + paylater + kartu kredit. Jangan lupa yang di-pending approval.">?</span></label>
         <div class="radio-group">
           <label class="radio-card"><input type="radio" name="utang" value="0"><span>Tidak ada</span></label>
           <label class="radio-card"><input type="radio" name="utang" value="lt5"><span>Rp 1 &ndash; 5 juta</span></label>
@@ -50,10 +50,11 @@
       </div>
 
       <div class="form-group">
-        <label>3. Seberapa sering kamu checkout "self reward" ( beli barang buat reward sendiri ) per bulan?</label>
+        <label>3. Seberapa sering kamu checkout "self reward" (beli barang buat reward sendiri) per bulan? <span class="form-tooltip" data-tip="Makanan, fashion, gadget, atau apapun yang dibeli untuk reward setelah stress/kerja keras. Bukan kebutuhan pokok.">?</span></label>
         <div class="slider-group">
           <input type="range" name="selfreward" min="1" max="10" value="3" class="form-slider" id="selfrewardSlider">
           <div class="slider-value"><span id="selfrewardValue">3</span>x per bulan</div>
+          <div class="slider-label" id="selfrewardLabel">Rendah</div>
           <div class="slider-ticks">
             <span>1x (jarang)</span>
             <span>5x (lumayan)</span>
@@ -63,7 +64,7 @@
       </div>
 
       <div class="form-group">
-        <label>4. Pernah telat bayar tagihan?</label>
+        <label>4. Pernah telat bayar tagihan? <span class="form-tooltip" data-tip="Kartu kredit, paylater, atau tagihan bulanan. Sekalipun 1x sudah sinyal risiko.">?</span></label>
         <div class="radio-group">
           <label class="radio-card"><input type="radio" name="telat" value="0"><span>Tidak pernah</span></label>
           <label class="radio-card"><input type="radio" name="telat" value="1"><span>Ya, 1-2 kali</span></label>
@@ -72,7 +73,7 @@
       </div>
 
       <div class="form-group">
-        <label>5. Pernah dihubungi debt collector / DC?</label>
+        <label>5. Pernah dihubungi debt collector / DC? <span class="form-tooltip" data-tip="Telepon, chat, atau kunjungan DC. Ini sinyal bahaya serius &mdash; tandanya utang sudah overdue.">?</span></label>
         <div class="radio-group">
           <label class="radio-card"><input type="radio" name="dc" value="0"><span>Tidak</span></label>
           <label class="radio-card"><input type="radio" name="dc" value="1"><span>Ya</span></label>
@@ -80,7 +81,7 @@
       </div>
 
       <div class="form-group">
-        <label>6. Bagaimana perasaan kamu saat lihat tagihan?</label>
+        <label>6. Bagaimana perasaan kamu saat lihat tagihan? <span class="form-tooltip" data-tip="Stress finansial sering muncul sebagai susah tidur, cemas, atau menghindari buka email. Jangan abaikan.">?</span></label>
         <div class="radio-group">
           <label class="radio-card"><input type="radio" name="feeling" value="0"><span>Tenang</span></label>
           <label class="radio-card"><input type="radio" name="feeling" value="1"><span>Waspada</span></label>

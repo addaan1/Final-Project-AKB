@@ -80,6 +80,9 @@ scrape_*.json
 .cache/
 http_cache/
 
+# ===== Waitlist (runtime data) =====
+data/waitlist.json
+
 # ===== Jupyter =====
 .ipynb_checkpoints/
 *.ipynb_checkpoints

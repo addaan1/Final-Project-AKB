@@ -178,7 +178,27 @@ const grid = {
 };
 const gridY = { ticks: { color: COL.text, font:{size:11} }, grid: { display:false } };
 
-// ── Custom Chart.js Plugin: percentage labels on bars & pies ──
+// ── Format percent konsisten: 0 decimal <10%, 1 decimal >=10% ──
+function fmtPct(v, forceDec) {
+  if (v == null || !isFinite(v)) return '0%';
+  if (forceDec != null) return v.toFixed(forceDec) + '%';
+  return (v < 10 ? v.toFixed(0) : v.toFixed(1)) + '%';
+}
+
+// ── Theme-aware color resolver ──
+function getThemeColors() {
+  const root = document.documentElement;
+  const isDark = root.getAttribute('data-theme') !== 'light';
+  const isPremium = document.body?.getAttribute('data-package') === 'premium';
+  return {
+    text: isDark ? '#f0eaff' : '#1c1917',
+    isDark,
+    isPremium,
+    accent: isPremium ? '#fbbf24' : (isDark ? '#b8ff3c' : '#ea580c'),
+  };
+}
+
+// ── Custom Chart.js Plugin: percentage labels (theme-aware) ──
 const percentLabelPlugin = {
   id: 'percentLabel',
   afterDatasetsDraw(chart) {
@@ -189,28 +209,54 @@ const percentLabelPlugin = {
     const total = ds.data.reduce((a, b) => a + (typeof b === 'number' ? b : 0), 0);
     if (!total) return;
 
+    const theme = getThemeColors();
+    const isHorizontal = chart.options.indexAxis === 'y';
+
     ctx.save();
-    ctx.font = '600 11px Inter, sans-serif';
-    ctx.fillStyle = '#f0eaff';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'bottom';
+    ctx.font = '700 12px Inter, sans-serif';
+    ctx.fillStyle = isHorizontal ? '#ffffff' : theme.accent;
+    ctx.textAlign = isHorizontal ? 'left' : 'center';
+    ctx.textBaseline = isHorizontal ? 'middle' : 'bottom';
 
     const meta = chart.getDatasetMeta(0);
     meta.data.forEach((bar, i) => {
       const v = ds.data[i];
       if (!v || v === 0) return;
-      const pct = ((v / total) * 100);
-      // Skip tiny slices
+      const pct = (v / total) * 100;
       if (pct < 1.5) return;
 
       if (chart.config.type === 'bar') {
-        const y = bar.y - 4;
-        const x = bar.x;
-        ctx.fillText(`${pct.toFixed(1)}%`, x, y);
+        if (isHorizontal) {
+          // Inside or right of horizontal bar
+          const barW = bar.width || 14;
+          const labelText = fmtPct(pct);
+          const tw = ctx.measureText(labelText).width;
+          const xRight = bar.x + 4;
+          const xLeft = bar.x - tw - 4;
+          // Pick side: if right has room, place outside right; else outside left
+          const x = (xRight + tw < chart.width) ? xRight : Math.max(xLeft, 2);
+          if (x === xRight) {
+            ctx.fillStyle = theme.accent;
+            ctx.textAlign = 'left';
+          } else {
+            ctx.fillStyle = theme.text;
+            ctx.textAlign = 'right';
+          }
+          ctx.fillText(labelText, x, bar.y);
+        } else {
+          // Vertical bar: above
+          ctx.fillStyle = theme.accent;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+          ctx.fillText(fmtPct(pct), bar.x, bar.y - 4);
+        }
       } else if (chart.config.type === 'doughnut' || chart.config.type === 'pie') {
         const { x, y } = bar.tooltipPosition();
         ctx.fillStyle = '#1c1917';
-        ctx.fillText(`${pct.toFixed(0)}%`, x, y + 4);
+        ctx.font = '700 13px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(fmtPct(pct), x, y + 4);
       }
     });
     ctx.restore();
@@ -299,11 +345,12 @@ function chartKeywords() {
 // 7) Metrik evaluasi model
 function chartModel() {
   const mo = D.model || {};
+  const data = [mo.accuracy*100, mo.precision*100, mo.recall*100, mo.f1*100].map(v => +v.toFixed(1));
   make('chartModel', { type:'bar', data:{
     labels:['Accuracy','Precision','Recall','F1-Score'],
-    datasets:[{ label:'Skor (%)', data:[mo.accuracy*100, mo.precision*100, mo.recall*100, mo.f1*100].map(v=>+v.toFixed(1)),
+    datasets:[{ label:'Skor (%)', data:data,
       backgroundColor:[COL.lime,COL.pur,COL.blu,COL.grn], borderRadius:6 }]
-  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:{...grid,max:100}} } });
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:{...grid,max:100}} } });
 }
 
 // 8) Sentimen per kategori
@@ -318,7 +365,7 @@ function chartSentimentCat() {
       { label:'% Negatif', data:c.map(x=>x.neg_pct), backgroundColor:'rgba(248,113,113,0.85)', borderRadius:5 },
       { label:'% Positif', data:c.map(x=>x.pos_pct), backgroundColor:'rgba(184,255,60,0.85)', borderRadius:5 },
     ]
-  }, options:{ ...chartDefaults, scales:{x:{...grid, ticks:{color:COL.text, font:{size:10}}}, y:{...grid, max:yMax, ticks:{color:COL.gray, callback:(v)=>v+'%'}}} } });
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, percentLabel:{enabled:true}}, scales:{x:{...grid, ticks:{color:COL.text, font:{size:10}}}, y:{...grid, max:yMax, ticks:{color:COL.gray, callback:(v)=>v+'%'}}} } });
 }
 
 // 9) Top aplikasi jumlah ulasan negatif (absolute count)
@@ -345,7 +392,8 @@ function chartTopApps() {
     tooltip:{ ...chartDefaults.plugins.tooltip,
       callbacks:{ label:(ctx)=>{
         const app = a[ctx.dataIndex];
-        return ` ${ctx.parsed.x.toLocaleString('id-ID')} ulasan negatif dari ${(app.n||0).toLocaleString('id-ID')} (${(app.neg_pct||0).toFixed(1)}%)`;
+        const pct = (app.neg_pct||0).toFixed(1);
+        return ` ${ctx.parsed.x.toLocaleString('id-ID')} ulasan negatif dari ${(app.n||0).toLocaleString('id-ID')} (${pct}%)`;
       }}
     }
   }, scales:{x:grid,y:gridY} } });
@@ -373,7 +421,7 @@ function chartSentimentDist() {
       legend:{ position:'bottom', labels:{ color:COL.text, font:{family:'Inter',size:13}, padding:14, boxWidth:14 } },
       percentLabel:{enabled:true},
       tooltip:{ backgroundColor:'#120038', borderColor:'rgba(155,93,229,0.4)', borderWidth:1, titleColor:'#f0eaff', bodyColor:COL.text, padding:12,
-        callbacks:{ label:(ctx)=>{ const v=ctx.parsed, total=correct+wrong; const pct=total>0?(v/total*100).toFixed(1):0; return ` ${ctx.label}: ${v.toLocaleString('id-ID')} (${pct}%)`; } } }
+        callbacks:{ label:(ctx)=>{ const v=ctx.parsed, total=correct+wrong; const pct=total>0?(v/total*100):0; return ` ${ctx.label}: ${v.toLocaleString('id-ID')} (${pct.toFixed(1)}%)`; } } }
     }
   }});
 }
@@ -400,7 +448,7 @@ function chartWordcloud() {
     }]
   }, options:{
     ...chartDefaults, indexAxis:'y',
-    plugins:{...chartDefaults.plugins, legend:{display:false}},
+    plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}},
     scales:{x:grid, y:{...gridY, ticks:{...gridY.ticks, font:{size:12, weight:'500'}}}}
   }});
 }

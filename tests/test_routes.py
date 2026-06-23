@@ -21,7 +21,10 @@ class TestIndexRoute:
 
     def test_index_has_3d_canvas(self, client):
         r = client.get("/")
-        assert b'landing3d' in r.data
+        # CSS-animated hero with sparkles + coins
+        assert b'hero3d' in r.data
+        assert b'hero-sparkles' in r.data
+        assert b'hero-coins' in r.data
 
 
 class TestDashboardRoutes:

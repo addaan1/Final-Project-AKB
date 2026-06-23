@@ -1,7 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 /* =================================================================
-   DUAL THEME â€” Light (default, trust-first) & Dark (navy refined)
+   DUAL THEME — Light (default, trust-first) & Dark (navy refined)
    ================================================================= */
 :root,
 :root[data-theme="dark"] {
@@ -72,10 +72,10 @@ body {
   overflow-x: hidden;
 }
 
-/* â”€â”€ SIDEBAR (DISABLED â€” pakai topbar nav) â”€â”€ */
+/* —— SIDEBAR (DISABLED — pakai topbar nav) —— */
 .sidebar { display: none !important; }
 
-/* â”€â”€ TOPBAR â”€â”€ */
+/* —— TOPBAR —— */
 .topbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -188,14 +188,14 @@ body {
   transform: translateX(-2px);
 }
 
-/* â”€â”€ MAIN â”€â”€ */
+/* —— MAIN —— */
 .main {
   margin-left: 0;
   margin-top: 68px;
   padding: 0;
 }
 
-/* â”€â”€ HERO â”€â”€ */
+/* —— HERO —— */
 .hero {
   position: relative;
   min-height: 90vh;
@@ -237,7 +237,7 @@ body {
   margin-bottom: 24px;
 }
 
-.hero-tag::before { content: 'âš¡'; }
+.hero-tag::before { content: '→'; }
 
 .hero h1 {
   font-family: 'Space Grotesk', sans-serif;
@@ -308,7 +308,7 @@ body {
 .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 .stat-change { font-size: 11px; color: #4ade80; margin-top: 8px; }
 
-/* â”€â”€ SECTIONS â”€â”€ */
+/* —— SECTIONS —— */
 .section { padding: 80px 48px; }
 .section-alt { background: rgba(15,0,48,0.4); }
 
@@ -349,7 +349,7 @@ body {
 
 .section-desc { font-size: 15px; color: var(--text-secondary); max-width: 600px; line-height: 1.7; }
 
-/* â”€â”€ CARDS â”€â”€ */
+/* —— CARDS —— */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border-purple);
@@ -371,13 +371,13 @@ body {
 .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
 .card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
 
-/* â”€â”€ GRID LAYOUTS â”€â”€ */
+/* —— GRID LAYOUTS —— */
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
 
-/* â”€â”€ CHART CONTAINERS â”€â”€ */
+/* —— CHART CONTAINERS —— */
 .chart-card {
   background: var(--bg-card);
   border: 1px solid var(--border-purple);
@@ -388,7 +388,7 @@ body {
 .chart-subtitle { font-size: 12px; color: var(--text-muted); margin-bottom: 20px; }
 .chart-wrap { position: relative; height: 240px; }
 
-/* â”€â”€ KPI BAR â”€â”€ */
+/* —— KPI BAR —— */
 .kpi-bar {
   background: rgba(7,0,26,0.6);
   border: 1px solid var(--border-purple);
@@ -414,7 +414,7 @@ body {
 .kpi-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 .kpi-divider { width: 1px; height: 60px; background: var(--border-purple); }
 
-/* â”€â”€ DATA SOURCE BADGES â”€â”€ */
+/* —— DATA SOURCE BADGES —— */
 .source-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
 .source-badge {
   padding: 6px 14px;
@@ -430,7 +430,7 @@ body {
 .badge-google { background: rgba(66,133,244,0.1); border: 1px solid rgba(66,133,244,0.3); color: #4285f4; }
 .badge-news { background: rgba(184,255,60,0.1); border: 1px solid rgba(184,255,60,0.3); color: var(--accent-lime); }
 
-/* â”€â”€ INSIGHT BOX â”€â”€ */
+/* —— INSIGHT BOX —— */
 .insight-box {
   background: linear-gradient(135deg, rgba(106,13,173,0.2), rgba(184,255,60,0.05));
   border: 1px solid rgba(184,255,60,0.2);
@@ -442,7 +442,7 @@ body {
 .insight-box h4 { font-size: 13px; color: var(--accent-lime); font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
 .insight-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-/* â”€â”€ BMC GRID â”€â”€ */
+/* —— BMC GRID —— */
 .bmc-container { display: grid; gap: 2px; background: var(--border-purple); border-radius: 20px; overflow: hidden; }
 
 .bmc-row { display: grid; gap: 2px; }
@@ -476,9 +476,9 @@ body {
   display: flex; align-items: flex-start; gap: 6px;
   line-height: 1.4;
 }
-.bmc-list li::before { content: 'â†’'; color: var(--accent-lime); flex-shrink: 0; font-size: 10px; margin-top: 2px; }
+.bmc-list li::before { content: '→'; color: var(--accent-lime); flex-shrink: 0; font-size: 10px; margin-top: 2px; }
 
-/* â”€â”€ RISK TABLE â”€â”€ */
+/* —— RISK TABLE —— */
 .risk-table { width: 100%; border-collapse: collapse; }
 .risk-table th {
   text-align: left;
@@ -513,7 +513,7 @@ body {
 .risk-badge.med { background: rgba(251,191,36,0.15); color: #fbbf24; }
 .risk-badge.low { background: rgba(74,222,128,0.15); color: #4ade80; }
 
-/* â”€â”€ FLOW DIAGRAM â”€â”€ */
+/* —— FLOW DIAGRAM —— */
 .flow-steps {
   display: flex;
   align-items: center;
@@ -554,7 +554,7 @@ body {
   opacity: 0.6;
 }
 
-/* â”€â”€ TIMELINE â”€â”€ */
+/* —— TIMELINE —— */
 .timeline { position: relative; padding-left: 32px; }
 .timeline::before {
   content: '';
@@ -578,7 +578,7 @@ body {
 .timeline-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
 .timeline-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
 
-/* â”€â”€ FOOTER â”€â”€ */
+/* —— FOOTER —— */
 .footer {
   background: rgba(7,0,26,0.9);
   border-top: 1px solid var(--border-purple);
@@ -588,12 +588,12 @@ body {
 .footer p { font-size: 13px; color: var(--text-muted); }
 .footer strong { color: var(--accent-lime); }
 
-/* â”€â”€ SCROLLBAR â”€â”€ */
+/* —— SCROLLBAR —— */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
 ::-webkit-scrollbar-thumb { background: var(--accent-violet); border-radius: 3px; }
 
-/* â”€â”€ ANIMATIONS â”€â”€ */
+/* —— ANIMATIONS —— */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -611,13 +611,13 @@ body {
 .animate-float   { animation: float 4s ease-in-out infinite; }
 .animate-glow    { animation: pulse-glow 3s ease-in-out infinite; }
 
-/* â”€â”€ PROGRESS BAR â”€â”€ */
+/* —— PROGRESS BAR —— */
 .progress-item { margin-bottom: 16px; }
 .progress-label { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px; color: var(--text-secondary); }
 .progress-track { height: 6px; background: rgba(155,93,229,0.2); border-radius: 3px; overflow: hidden; }
 .progress-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--accent-purple), var(--accent-lime)); transition: width 1.5s ease; }
 
-/* â”€â”€ RESPONSIVE â”€â”€ */
+/* —— RESPONSIVE —— */
 @media (max-width: 900px) {
   .hero-visual { display: none; }
   .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
@@ -1386,7 +1386,7 @@ body[data-package="premium"] .topnav-cta:hover {
 }
 
 /* =================================================================
-   PRODUK PAGE â€” Skor Risiko Galbay
+   PRODUK PAGE — Skor Risiko Galbay
    ================================================================= */
 
 /* --- Hero khusus produk --- */
@@ -1834,7 +1834,7 @@ body[data-package="premium"] .topnav-cta:hover {
   padding-top: 12px;
   border-top: 1px solid var(--border-purple);
 }
-.modul-meta span::before { content: 'â€¢ '; color: var(--accent-lime); }
+.modul-meta span::before { content: '• '; color: var(--accent-lime); }
 
 /* --- Testimonial --- */
 .testimoni-grid {
@@ -1961,7 +1961,7 @@ body[data-package="premium"] .topnav-cta:hover {
 }
 .pricing-features li:last-child { border-bottom: none; }
 .pricing-features li::before {
-  content: 'âœ“';
+  content: '→';
   color: var(--accent-lime);
   font-weight: 700;
   margin-right: 8px;
@@ -2012,7 +2012,7 @@ body[data-package="premium"] .topnav-cta:hover {
 }
 
 /* =================================================================
-   PRODUK PAGE â€” Enhancements (gauge SVG, confetti, tooltip, etc)
+   PRODUK PAGE — Enhancements (gauge SVG, confetti, tooltip, etc)
    ================================================================= */
 
 /* --- SVG gauge untuk skor --- */
@@ -2234,12 +2234,12 @@ button:disabled { cursor: not-allowed; }
 :root[data-theme="light"] .privacy-notice { background: rgba(13,148,136,0.10); color: #0f766e; }
 
 /* =================================================================
-   FEATURE GATING â€” soft lock overlay (in-section, opacity dim)
+   FEATURE GATING — soft lock overlay (in-section, opacity dim)
    ================================================================= */
 .feature-locked {
   position: relative;
 }
-/* Dim other children to show "preview only" â€” replaces the inconsistent
+/* Dim other children to show "preview only" — replaces the inconsistent
    full-section blur with a uniform, theme-aware opacity treatment */
 .feature-locked > *:not(.lock-overlay):not(.page-header) {
   opacity: 0.35;
@@ -2253,7 +2253,7 @@ body[data-theme="dark"] .feature-locked > *:not(.lock-overlay):not(.page-header)
   filter: grayscale(0.2) brightness(0.7);
 }
 
-/* Dismiss state â€” restore full opacity */
+/* Dismiss state — restore full opacity */
 .feature-locked.is-dismissed > * {
   opacity: 1 !important;
   filter: none !important;
@@ -2498,7 +2498,7 @@ body[data-theme="dark"] .feature-locked .lock-overlay {
 }
 
 /* =================================================================
-   PREMIUM ATMOSPHERE â€” body[data-package="premium"]
+   PREMIUM ATMOSPHERE — body[data-package="premium"]
    ================================================================= */
 body[data-package="premium"] {
   --accent-lime: #fbbf24;          /* gold */
@@ -2527,12 +2527,14 @@ body[data-package="premium"] .btn-primary {
 body[data-package="premium"] .btn-primary:hover {
   box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
 }
-body[data-package="premium"] .section-tag {
+body[data-package="premium"] .section-tag,
+:root[data-theme="light"] body[data-package="premium"] .section-tag {
   background: linear-gradient(135deg, #fbbf24, #f59e0b);
   color: #1c1917;
   font-weight: 700;
 }
-body[data-package="premium"] .section-tag::before {
+body[data-package="premium"] .section-tag::before,
+:root[data-theme="light"] body[data-package="premium"] .section-tag::before {
   background: #1c1917;
 }
 body[data-package="premium"] .pricing-featured {
@@ -2815,7 +2817,7 @@ body[data-package="premium"] .user-avatar-initial {
 .topbar-brand:hover .topbar-brand-text span { color: var(--text-primary); }
 
 /* =================================================================
-   LANDING HERO â€” clean (no animation, professional)
+   LANDING HERO — clean (no animation, professional)
    ================================================================= */
 .landing-hero-clean {
   position: relative;
@@ -2850,7 +2852,7 @@ body[data-package="premium"] .user-avatar-initial {
 }
 
 /* =================================================================
-   LOGIN PAGE â€” 2-column layout
+   LOGIN PAGE — 2-column layout
    ================================================================= */
 .login-page {
   min-height: 100vh;
@@ -3780,7 +3782,7 @@ body[data-package="premium"] .chat-send {
 }
 
 /* =================================================================
-   PREMIUM MODAL â€” Full-page takeover, orange-gold gradient
+   PREMIUM MODAL — Full-page takeover, orange-gold gradient
    ================================================================= */
 .premium-modal {
   position: fixed;
@@ -4074,7 +4076,7 @@ body[data-package="premium"] .chat-send {
 }
 
 /* =================================================================
-   RUPIAH INPUT â€” formatted numeric input
+   RUPIAH INPUT — formatted numeric input
    ================================================================= */
 .rupiah-input {
   position: relative;
@@ -4109,7 +4111,7 @@ body[data-package="premium"] .chat-send {
 .rupiah-input .form-input:focus { outline: none; }
 
 /* =================================================================
-   TRUST BADGES â€” landing page
+   TRUST BADGES — landing page
    ================================================================= */
 .trust-badges {
   display: flex;
@@ -4377,7 +4379,7 @@ body[data-package="premium"] .chat-send {
 }
 .pricing-features li:last-child { border-bottom: none; }
 .pricing-features li::before {
-  content: 'âœ“';
+  content: '→';
   color: var(--accent-lime);
   font-weight: 700;
   margin-right: 8px;
@@ -4428,7 +4430,7 @@ body[data-package="premium"] .chat-send {
 }
 
 /* =================================================================
-   PRODUK PAGE â€” Enhancements (gauge SVG, confetti, tooltip, etc)
+   PRODUK PAGE — Enhancements (gauge SVG, confetti, tooltip, etc)
    ================================================================= */
 
 /* --- SVG gauge untuk skor --- */
@@ -4650,12 +4652,12 @@ button:disabled { cursor: not-allowed; }
 :root[data-theme="light"] .privacy-notice { background: rgba(13,148,136,0.10); color: #0f766e; }
 
 /* =================================================================
-   FEATURE GATING â€” soft lock overlay (in-section, opacity dim)
+   FEATURE GATING — soft lock overlay (in-section, opacity dim)
    ================================================================= */
 .feature-locked {
   position: relative;
 }
-/* Dim other children to show "preview only" â€” replaces the inconsistent
+/* Dim other children to show "preview only" — replaces the inconsistent
    full-section blur with a uniform, theme-aware opacity treatment */
 .feature-locked > *:not(.lock-overlay):not(.page-header) {
   opacity: 0.35;
@@ -4669,7 +4671,7 @@ body[data-theme="dark"] .feature-locked > *:not(.lock-overlay):not(.page-header)
   filter: grayscale(0.2) brightness(0.7);
 }
 
-/* Dismiss state â€” restore full opacity */
+/* Dismiss state — restore full opacity */
 .feature-locked.is-dismissed > * {
   opacity: 1 !important;
   filter: none !important;
@@ -4914,7 +4916,7 @@ body[data-theme="dark"] .feature-locked .lock-overlay {
 }
 
 /* =================================================================
-   PREMIUM ATMOSPHERE â€” body[data-package="premium"]
+   PREMIUM ATMOSPHERE — body[data-package="premium"]
    ================================================================= */
 body[data-package="premium"] {
   --accent-lime: #fbbf24;          /* gold */
@@ -4943,12 +4945,14 @@ body[data-package="premium"] .btn-primary {
 body[data-package="premium"] .btn-primary:hover {
   box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
 }
-body[data-package="premium"] .section-tag {
+body[data-package="premium"] .section-tag,
+:root[data-theme="light"] body[data-package="premium"] .section-tag {
   background: linear-gradient(135deg, #fbbf24, #f59e0b);
   color: #1c1917;
   font-weight: 700;
 }
-body[data-package="premium"] .section-tag::before {
+body[data-package="premium"] .section-tag::before,
+:root[data-theme="light"] body[data-package="premium"] .section-tag::before {
   background: #1c1917;
 }
 body[data-package="premium"] .pricing-featured {
@@ -5231,7 +5235,7 @@ body[data-package="premium"] .user-avatar-initial {
 .topbar-brand:hover .topbar-brand-text span { color: var(--text-primary); }
 
 /* =================================================================
-   LANDING HERO â€” clean (no animation, professional)
+   LANDING HERO — clean (no animation, professional)
    ================================================================= */
 .landing-hero-clean {
   position: relative;
@@ -5266,7 +5270,7 @@ body[data-package="premium"] .user-avatar-initial {
 }
 
 /* =================================================================
-   LOGIN PAGE â€” 2-column layout
+   LOGIN PAGE — 2-column layout
    ================================================================= */
 .login-page {
   min-height: 100vh;
@@ -5683,7 +5687,7 @@ body[data-package="premium"] .user-avatar-initial {
 }
 
 /* =================================================================
-   PREMIUM MODAL â€” Full-page takeover, orange-gold gradient
+   PREMIUM MODAL — Full-page takeover, orange-gold gradient
    ================================================================= */
 .premium-modal {
   position: fixed;
@@ -5977,7 +5981,7 @@ body[data-package="premium"] .user-avatar-initial {
 }
 
 /* =================================================================
-   RUPIAH INPUT â€” formatted numeric input
+   RUPIAH INPUT — formatted numeric input
    ================================================================= */
 .rupiah-input {
   position: relative;
@@ -6012,7 +6016,7 @@ body[data-package="premium"] .user-avatar-initial {
 .rupiah-input .form-input:focus { outline: none; }
 
 /* =================================================================
-   TRUST BADGES â€” landing page
+   TRUST BADGES — landing page
    ================================================================= */
 .trust-badges {
   display: flex;
@@ -6287,7 +6291,7 @@ body[data-package="premium"] .user-avatar-initial {
 }
 .roadmap-list li:last-child { border-bottom: none; }
 .roadmap-list li::before {
-  content: 'â†’';
+  content: '→';
   position: absolute;
   left: 0;
   color: var(--accent-lime);

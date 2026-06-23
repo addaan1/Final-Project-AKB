@@ -188,5 +188,25 @@
     "source": "register",
     "password_hash": "scrypt:32768:8:1$WldL7g3tl8f9yuOc$6854c0b347ed8e32ac56c7998897d98065869dc1125a7e935d86def661b3f1526527ba7d92d08e035129597a77b8449787816b2341a60ceaf58af4ec1c0bec92",
     "created_at": "2026-06-24T01:19:26.703622Z"
+  },
+  {
+    "id": "46b5b616-9483-4cce-a9b9-36e91efd26c0",
+    "email": "newuser-a0dfee97@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$2CNNM1aZ8CNO3vej$456591ca0e8107e669e1450d67c3ed18d0c23ab637a00a8cb7573d13725b328dec75b2a42e986f8d38363c71303c2142a38f2d96ee7ae64648f4f80ed34a4d84",
+    "created_at": "2026-06-24T01:23:33.065186Z"
+  },
+  {
+    "id": "c5f0cecf-4657-4e67-ab3f-2d29f229c541",
+    "email": "newuser-81530d68@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$3qc6AmtgVxKpAHvf$a05fc43e44135a9ecf5071ada9fb0dfce4af2efbb23f1f08357fc17e00e4b6451a2a13263f1c0723703a345ed910cd07ec1dd2331151ca81d1b439de0386a6f4",
+    "created_at": "2026-06-24T01:34:58.360949Z"
   }
 ]

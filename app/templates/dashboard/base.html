@@ -9,6 +9,7 @@
   <script src="{{ url_for('static', filename='js/data.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
   {% if active_page == 'produk' %}
   <script defer src="{{ url_for('static', filename='js/produk.js') }}"></script>
   {% endif %}
@@ -29,6 +30,9 @@
     </nav>
     <div class="topbar-right">
       <a href="{{ url_for('main.index') }}" class="btn-back" title="Kembali ke Beranda">&larr; Beranda</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Light/Dark mode">
+        <span class="theme-icon">&#9788;</span>
+      </button>
       <div class="dropdown">
         <button class="dropdown-toggle" id="moreBtn" aria-label="More options" aria-expanded="false">&#8943;</button>
         <div class="dropdown-menu" id="moreMenu">
@@ -50,8 +54,10 @@
           <a href="{{ url_for('main.analisis') }}">Analisis</a>
           <a href="{{ url_for('main.solusi') }}">Solusi &amp; BMC</a>
           <a href="{{ url_for('main.kesimpulan') }}">Kesimpulan</a>
+          <a href="#" onclick="return false;" title="Coming soon">Privacy</a>
+          <a href="#" onclick="return false;" title="Coming soon">Terms</a>
         </nav>
-        <span class="footer-meta">Dashboard berbasis data ulasan nyata aplikasi fintech</span>
+        <span class="footer-meta">&copy; 2026 Galbay Predictor &middot; Data tidak disimpan &middot; Prototype UAS</span>
       </div>
     </footer>
   </main>

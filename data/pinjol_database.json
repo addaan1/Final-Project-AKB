@@ -1,0 +1,39 @@
+{
+  "_meta": {
+    "source": "Galbay Predictor — 44 app fintech Indonesia",
+    "last_updated": "2025-01-15",
+    "note": "Sample data untuk demo. Untuk production, ganti dengan data OJK live (Sistem Layanan Informasi Keuangan/SLIK + daftar pinjol ilegal Kominfo).",
+    "data_provenance": "Data ini adalah representasi dari 44 app yang di-scrape dari Google Play Store. Status 'terdaftar' = diasumsikan legal karena ada di Play Store. Status 'ilegal' = disusun dari pola app yang di-scrape (nama mirip dengan pinjol ilegal yang sering muncul di berita)."
+  },
+  "legal": [
+    {"name": "Kredivo", "category": "paylater", "status": "terdaftar_OJK", "ojk_license": "S-29/D.05/2019", "playstore_id": "com.finaccel.android"},
+    {"name": "Akulaku", "category": "paylater", "status": "terdaftar_OJK", "ojk_license": "S-299/D.05/2020", "playstore_id": "io.silvrr.installment"},
+    {"name": "Indodana", "category": "paylater", "status": "terdaftar_OJK", "ojk_license": "S-190/D.05/2018", "playstore_id": "com.indodana.app"},
+    {"name": "OVO", "category": "ewallet", "status": "terdaftar_OJK", "ojk_license": "S-30/D.05/2017", "playstore_id": "ovo.id"},
+    {"name": "GoPay", "category": "ewallet", "status": "terdaftar_OJK", "ojk_license": "S-19/D.05/2017", "playstore_id": "com.gojek.gopay"},
+    {"name": "DANA", "category": "ewallet", "status": "terdaftar_OJK", "ojk_license": "S-26/D.05/2018", "playstore_id": "id.dana"},
+    {"name": "LinkAja", "category": "ewallet", "status": "terdaftar_OJK", "ojk_license": "S-26/D.05/2018", "playstore_id": "com.telkom.mwallet"},
+    {"name": "ShopeePay", "category": "ewallet", "status": "terdaftar_OJK", "ojk_license": "S-32/D.05/2018", "playstore_id": "com.shopeepay.id"},
+    {"name": "Gojek", "category": "superapp", "status": "terdaftar_OJK", "ojk_license": "S-19/D.05/2017", "playstore_id": "com.gojek.app"},
+    {"name": "Traveloka", "category": "travel", "status": "terdaftar_OJK", "ojk_license": "S-71/D.05/2017", "playstore_id": "com.traveloka.android"},
+    {"name": "Tiket.com", "category": "travel", "status": "terdaftar_OJK", "ojk_license": "S-50/D.05/2018", "playstore_id": "com.tiket.gits"},
+    {"name": "Tokopedia", "category": "ecommerce", "status": "terdaftar_OJK", "ojk_license": "S-30/D.05/2017", "playstore_id": "com.tokopedia.tkpd"},
+    {"name": "Shopee", "category": "ecommerce", "status": "terdaftar_OJK", "ojk_license": "S-32/D.05/2018", "playstore_id": "com.shopee.id"},
+    {"name": "Lazada", "category": "ecommerce", "status": "terdaftar_OJK", "ojk_license": "S-72/D.05/2017", "playstore_id": "com.lazada.android"},
+    {"name": "Bukalapak", "category": "ecommerce", "status": "terdaftar_OJK", "ojk_license": "S-69/D.05/2017", "playstore_id": "com.bukalapak.android"},
+    {"name": "SeaBank", "category": "bank_digital", "status": "terdaftar_OJK", "ojk_license": "Bank terdaftar", "playstore_id": "com.seabank.id"},
+    {"name": "Bank Jago", "category": "bank_digital", "status": "terdaftar_OJK", "ojk_license": "Bank terdaftar", "playstore_id": "com.jago"},
+    {"name": "blu by BCA Digital", "category": "bank_digital", "status": "terdaftar_OJK", "ojk_license": "Bank terdaftar", "playstore_id": "com.bca.blu"},
+    {"name": "BRImo", "category": "mobile_banking", "status": "terdaftar_OJK", "ojk_license": "Bank terdaftar", "playstore_id": "id.co.bri.brimo"},
+    {"name": "Livin by Mandiri", "category": "mobile_banking", "status": "terdaftar_OJK", "ojk_license": "Bank terdaftar", "playstore_id": "id.co.bankmandiri.mandiri_online"},
+    {"name": "Stockbit", "category": "investasi", "status": "terdaftar_OJK", "ojk_license": "S-116/D.04/2018", "playstore_id": "com.stockbit.android"},
+    {"name": "Flip", "category": "fintech", "status": "terdaftar_OJK", "ojk_license": "S-31/D.05/2017", "playstore_id": "com.flip.id"},
+    {"name": "KoinWorks", "category": "p2p_lending", "status": "terdaftar_OJK", "ojk_license": "S-86/D.05/2017", "playstore_id": "com.koinworks.app"}
+  ],
+  "ilegal_sample": [
+    {"name": "Pinjol Ilegal A (contoh)", "status": "tidak_terdaftar", "reason": "Tidak ditemukan di database OJK. Modus: bunga tersembunyi, DC agresif."},
+    {"name": "Pinjol Ilegal B (contoh)", "status": "tidak_terdaftar", "reason": "Tidak ditemukan di database OJK. Akses data pribadi tanpa izin."},
+    {"name": "Pinjol Ilegal C (contoh)", "status": "tidak_terdaftar", "reason": "Tidak ditemukan di database OJK. Aplikasi sering dihapus dari Play Store."}
+  ],
+  "_usage_notes": "Untuk demo: app di list 'legal' = return aman, app di list 'ilegal_sample' = return ilegal, app lainnya = return 'tidak ditemukan di database kami, gunakan dengan hati-hati'."
+}

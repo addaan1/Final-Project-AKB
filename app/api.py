@@ -12,6 +12,11 @@ Saat modeling tim sudah selesai, cukup:
 """
 from __future__ import annotations
 
+import json
+import os
+from pathlib import Path
+from datetime import datetime
+
 # =================================================================
 # VERSION
 # =================================================================
@@ -229,11 +234,6 @@ def calculate_simulation(nominal: float, bunga_pct: float, tenor: int, admin: fl
 # =================================================================
 # WAITLIST (demo, simpan ke JSON file)
 # =================================================================
-import json
-import os
-from pathlib import Path
-from datetime import datetime
-
 WAITLIST_FILE = Path("data/waitlist.json")
 
 
@@ -263,3 +263,497 @@ def add_to_waitlist(email: str, package: str = "general") -> dict:
     data.append(entry)
     WAITLIST_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     return {"valid": True, "duplicate": False, "total": len(data)}
+
+
+# =================================================================
+# 1. PINJOL BLACKLIST CHECKER
+# =================================================================
+PINJOL_DB_FILE = Path("data/pinjol_database.json")
+
+
+def _load_pinjol_db() -> dict:
+    """Load pinjol database."""
+    if not PINJOL_DB_FILE.exists():
+        return {"legal": [], "ilegal_sample": []}
+    try:
+        return json.loads(PINJOL_DB_FILE.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {"legal": [], "ilegal_sample": []}
+
+
+def check_pinjol_status(app_name: str) -> dict:
+    """Cek apakah pinjol legal (terdaftar OJK) atau tidak.
+
+    Args:
+        app_name: nama aplikasi pinjol (case-insensitive, partial match)
+
+    Returns:
+        dict dengan: found, status, category, ojk_license, message, recommendations
+    """
+    if not app_name or not app_name.strip():
+        return {"valid": False, "error": "Nama app kosong"}
+
+    db = _load_pinjol_db()
+    name_lower = app_name.lower().strip()
+
+    # Exact match di legal
+    for app in db.get("legal", []):
+        if app["name"].lower() == name_lower:
+            return {
+                "valid": True,
+                "found": True,
+                "status": "legal",
+                "status_label": "TERDAFTAR OJK",
+                "name": app["name"],
+                "category": app.get("category", ""),
+                "ojk_license": app.get("ojk_license", ""),
+                "playstore_id": app.get("playstore_id", ""),
+                "message": f"{app['name']} TERDAFTAR di OJK dan legal beroperasi di Indonesia. Aman untuk digunakan.",
+                "recommendations": [
+                    "Pastikan baca bunga & biaya admin sebelum deal",
+                    "Hindari pinjam lebih dari kemampuan bayar",
+                    "Setel auto-debit untuk bayar tepat waktu",
+                ],
+                "disclaimer": "Status berdasarkan database internal kami. Untuk konfirmasi final, cek langsung di ojk.go.id",
+            }
+
+    # Partial match di legal
+    for app in db.get("legal", []):
+        if name_lower in app["name"].lower() or app["name"].lower() in name_lower:
+            return {
+                "valid": True,
+                "found": True,
+                "status": "legal_partial",
+                "status_label": "MUNGKIN TERDAFTAR",
+                "name": app["name"],
+                "category": app.get("category", ""),
+                "message": f"Mungkin yang Anda maksud: {app['name']} (terdaftar OJK). Periksa kembali nama aplikasi.",
+                "recommendations": [
+                    f"Verifikasi nama lengkap: {app['name']}",
+                    "Buka website OJK untuk konfirmasi",
+                ],
+                "disclaimer": "Pencocokan parsial. Pastikan nama app benar.",
+            }
+
+    # Match di ilegal sample
+    for app in db.get("ilegal_sample", []):
+        if name_lower in app["name"].lower() or app["name"].lower() in name_lower:
+            return {
+                "valid": True,
+                "found": True,
+                "status": "ilegal",
+                "status_label": "TIDAK TERDAFTAR / ILEGAL",
+                "name": app["name"],
+                "message": f"{app['name']} TIDAK TERDAFTAR di database OJK kami. Berisiko tinggi.",
+                "recommendations": [
+                    "JANGAN pinjam dari app ini",
+                    "Laporkan ke OJK di 157 atau ojk.go.id",
+                    "Hapus app dari HP untuk keamanan data",
+                    "Cek alternatif legal di database kami",
+                ],
+                "disclaimer": "Daftar pinjol ilegal di-update berkala. Verifikasi langsung ke OJK.",
+            }
+
+    # Tidak ditemukan di database
+    return {
+        "valid": True,
+        "found": False,
+        "status": "unknown",
+        "status_label": "TIDAK DIKENAL",
+        "name": app_name,
+        "message": f"'{app_name}' tidak ditemukan di database kami. Belum tentu legal/ilegal — perlu dicek manual.",
+        "recommendations": [
+            "Cek langsung di ojk.go.id (Sistem SLIK)",
+            "Hindari app tanpa izin OJK yang jelas",
+            "Waspadai app dengan bunga >30%/bulan",
+            "Baca review Play Store, perhatikan keluhan DC",
+        ],
+        "disclaimer": "Database kami terbatas 24 app legal + 3 contoh ilegal. Untuk pinjol di luar ini, cek langsung ke OJK.",
+    }
+
+
+# =================================================================
+# 2. DEBT SNOWBALL / AVALANCHE PLANNER
+# =================================================================
+def calculate_debt_planner(debts: list, extra_payment: float = 0) -> dict:
+    """Hitung strategi Snowball vs Avalanche untuk bayar multiple utang.
+
+    Args:
+        debts: list of dict dengan keys: name, balance, bunga_pct, min_payment
+        extra_payment: extra payment per bulan (untuk加速 lunas)
+
+    Returns:
+        dict dengan: snowball, avalanche, comparison
+    """
+    if not debts or not isinstance(debts, list):
+        return {"valid": False, "error": "Daftar utang kosong"}
+
+    # Normalize data
+    normalized = []
+    for d in debts:
+        try:
+            normalized.append({
+                "name": str(d.get("name", "Utang")).strip(),
+                "balance": float(d.get("balance", 0)),
+                "bunga_pct": float(d.get("bunga_pct", 0)),
+                "min_payment": float(d.get("min_payment", 0)),
+            })
+        except (ValueError, TypeError):
+            continue
+
+    if not normalized:
+        return {"valid": False, "error": "Format data utang tidak valid"}
+
+    # Hitung total
+    total_debt = sum(d["balance"] for d in normalized)
+    total_min = sum(d["min_payment"] for d in normalized)
+    total_interest_simple = sum(d["balance"] * d["bunga_pct"] / 100 for d in normalized)
+
+    def simulate(strategy: str, debt_list: list) -> dict:
+        """Simulate strategy: 'snowball' (smallest first) atau 'avalanche' (highest rate first)."""
+        # Sort
+        if strategy == "snowball":
+            sorted_debts = sorted(debt_list, key=lambda d: d["balance"])
+        else:  # avalanche
+            sorted_debts = sorted(debt_list, key=lambda d: -d["bunga_pct"])
+
+        debts = [{**d, "remaining": d["balance"], "paid_off_month": None} for d in sorted_debts]
+        monthly_budget = max(total_min, 0) + max(extra_payment, 0)
+        month = 0
+        total_paid_interest = 0
+        history = []
+
+        while any(d["remaining"] > 0 for d in debts) and month < 600:  # max 50 tahun
+            month += 1
+            # Tambah bunga ke semua utang
+            for d in debts:
+                if d["remaining"] > 0:
+                    interest = d["remaining"] * d["bunga_pct"] / 100
+                    d["remaining"] += interest
+                    total_paid_interest += interest
+
+            # Bayar minimum untuk semua
+            for d in debts:
+                if d["remaining"] > 0:
+                    pay = min(d["min_payment"], d["remaining"])
+                    d["remaining"] -= pay
+
+            # Alokasikan sisa budget ke target (snowball: smallest remaining; avalanche: highest rate)
+            available = monthly_budget - sum(min(d["min_payment"], d["remaining"]) if d["remaining"] > 0 else 0 for d in debts)
+            for d in debts:
+                if d["remaining"] <= 0:
+                    if d["paid_off_month"] is None:
+                        d["paid_off_month"] = month - 1
+                    continue
+                # Alokasikan extra ke target (first debt belum lunas)
+                extra_pay = min(available, d["remaining"])
+                d["remaining"] -= extra_pay
+                available -= extra_pay
+                if available <= 0:
+                    break
+
+            # Check paid off
+            for d in debts:
+                if d["remaining"] <= 0 and d["paid_off_month"] is None:
+                    d["paid_off_month"] = month
+
+            # Simpan history (per 6 bulan)
+            if month % 6 == 0 or month == 1:
+                history.append({
+                    "month": month,
+                    "total_remaining": sum(d["remaining"] for d in debts),
+                    "debts_paid": sum(1 for d in debts if d["paid_off_month"] is not None),
+                })
+
+        return {
+            "strategy": strategy,
+            "strategy_label": "Snowball (Bayar Terkecil Dulu)" if strategy == "snowball" else "Avalanche (Bayar Bunga Tertinggi Dulu)",
+            "months_to_debt_free": month,
+            "total_interest_paid": round(total_paid_interest, 0),
+            "order": [d["name"] for d in sorted_debts],
+            "paid_off_schedule": {d["name"]: d["paid_off_month"] for d in debts},
+            "history": history[-10:],  # last 10 checkpoints
+        }
+
+    snowball = simulate("snowball", normalized)
+    avalanche = simulate("avalanche", normalized)
+
+    # Recommendation
+    if avalanche["total_interest_paid"] < snowball["total_interest_paid"]:
+        recommendation = "avalanche"
+        reason = f"Avalanche menghemat Rp {snowball['total_interest_paid'] - avalanche['total_interest_paid']:,.0f} bunga."
+    else:
+        recommendation = "snowball"
+        reason = "Snowball lebih cocok untuk motivasi (bayar terkecil dulu = quick win)."
+
+    return {
+        "valid": True,
+        "debts_input": normalized,
+        "total_debt": round(total_debt, 0),
+        "total_min_payment": round(total_min, 0),
+        "extra_payment": extra_payment,
+        "snowball": snowball,
+        "avalanche": avalanche,
+        "recommendation": recommendation,
+        "reason": reason,
+        "disclaimer": "Simulasi dengan bunga simple (flat). Realita bisa lebih kompleks karena bunga majemuk.",
+    }
+
+
+# =================================================================
+# 3. DC SURVIVAL KIT — Template chat untuk negosiasi debt collector
+# =================================================================
+DC_TEMPLATES = [
+    {
+        "id": "tidak_bisa_hari_ini",
+        "title": "Tidak Bisa Bayar Hari Ini",
+        "scenario": "DC menagih, kamu belum punya uang sama sekali",
+        "tone": "sopan tapi tegas",
+        "message": (
+            "Selamat [pagi/siang/sore] Bapak/Ibu. Saya [nama] dari [pinjol]. "
+            "Saya mengakui punya tanggungan cicilan. Saat ini saya belum bisa memenuhi pembayaran tepat waktu karena [alasan: kehilangan pekerjaan / biaya mendadak / dll]. "
+            "Saya berkomitmen untuk melunasi seluruh tanggungan saya. Mohon waktu [X hari/minggu] untuk menyusun rencana pembayaran. "
+            "Saya bisa dihubungi di [nomor HP] untuk konfirmasi. Terima kasih."
+        ),
+        "hak_kamu": [
+            "DC TIDAK boleh mengancam kekerasan fisik",
+            "DC TIDAK boleh menghubungi keluarga/teman kantor tanpa izin",
+            "DC TIDAK boleh menghubungi di atas jam 20.00 atau sebelum jam 08.00",
+            "DC TIDAK boleh mempublikasikan data pribadi",
+        ],
+        "landasan_hukum": "Permenkominfo No. 6/2016 tentang Penyiaran; UU ITE Pasal 26; UU PDP Pasal 5",
+    },
+    {
+        "id": "restrukturisasi",
+        "title": "Minta Restrukturisasi",
+        "scenario": "Kamu tidak bisa bayar penuh, mau nego perpanjangan tenor",
+        "tone": "negosiatif, kooperatif",
+        "message": (
+            "Selamat [pagi/siang] Bapak/Ibu. Saya [nama] dari [pinjol], No. Pinjaman [XXX]. "
+            "Saat ini saya mengalami kesulitan keuangan dan tidak bisa membayar cicilan penuh. "
+            "Saya ingin mengusulkan restrukturisasi: perpanjangan tenor dari [X bulan] menjadi [Y bulan], "
+            "dengan cicilan Rp [nominal] per bulan. "
+            "Saya bersedia membayar tepat waktu sesuai jadwal baru. Mohon dipertimbangkan. "
+            "Terima kasih, Bapak/Ibu. Saya bisa dihubungi di [nomor HP]."
+        ),
+        "hak_kamu": [
+            "Kamu BERHAK minta restrukturisasi (UU No. 4/2023 tentang P2SK)",
+            "DC TIDAK boleh menolak tanpa alasan",
+            "Dokumentasikan semua komunikasi",
+        ],
+        "landasan_hukum": "UU No. 4/2023 tentang Pengembangan dan Penguatan Sistem Keuangan (P2SK) Pasal 236",
+    },
+    {
+        "id": "tolak_penagihan_agresif",
+        "title": "Tolak Penagihan Agresif",
+        "scenario": "DC meneror, mengancam, atau menyebar data ke keluarga",
+        "tone": "tegas, formal",
+        "message": (
+            "Bapak/Ibu, Saya [nama] dari [pinjol]. "
+            "Saya tidak bisa menerima tindakan penagihan berupa [ancaman / peneroran / penyebaran data ke keluarga]. "
+            "Perbuatan ini melanggar UU ITE Pasal 27 ayat (4) tentang pengancaman dan/atau pencemaran nama baik. "
+            "Saya minta dihentikan. Jika tidak, saya akan: "
+            "(1) melapor ke OJK di 157, "
+            "(2) melapor ke Polisi via aplikasi POLISI 110, "
+            "(3) mengajukan gugatan perdata. "
+            "Bukti komunikasi ini saya simpan. Terima kasih."
+        ),
+        "hak_kamu": [
+            "Kamu BERHAK menolak ancaman, intimidasi, dan kekerasan",
+            "Lapor ke OJK: 157 (hotline) atau ojk.go.id",
+            "Lapor ke Polisi: 110 atau aplikasi POLISI 110",
+            "Screenshot semua bukti untuk proses hukum",
+        ],
+        "landasan_hukum": "UU ITE Pasal 27, 29, 45; KUHP Pasal 369 (pemerasan); UU Perlindungan Konsumen",
+    },
+    {
+        "id": "lapor_dc_ilegal",
+        "title": "Laporkan DC Ilegal",
+        "scenario": "DC dari pinjol ilegal (tidak terdaftar OJK), atau DC yang mengakses data pribadi tanpa izin",
+        "tone": "lapor, formal",
+        "message": (
+            "Kepada Yth. OJK / Kominfo, "
+            "Saya [nama], No. KTP [XXX], ingin melaporkan aplikasi pinjol ilegal bernama [nama app]. "
+            "Aplikasi ini tidak terdaftar di OJK dan DC-nya melakukan: "
+            "[akses kontak tanpa izin / ancaman kekerasan / pencemaran nama baik]. "
+            "Bukti terlampir: screenshot chat DC, tangkapan layar transfer ke rekening DC, dll. "
+            "Mohon untuk ditindaklanjuti. Terima kasih."
+        ),
+        "hak_kamu": [
+            "Lapor OJK: 157 atau ojk.go.id (menu 'Pengaduan Konsumen')",
+            "Lapor Kominfo: aduankonten.id (untuk app ilegal di Play Store)",
+            "Lapor POLISI 110 jika ada ancaman/kekerasan",
+        ],
+        "landasan_hukum": "UU PDP Pasal 5, 13; UU ITE Pasal 27, 29; Permenkominfo 6/2016",
+    },
+    {
+        "id": "konfirmasi_utang",
+        "title": "Konfirmasi Saldo Utang",
+        "scenario": "DC menagih jumlah yang tidak sesuai dengan yang kamu pinjam",
+        "tone": "verifikasi, sopan",
+        "message": (
+            "Selamat [pagi/siang] Bapak/Ibu. Saya [nama] dari [pinjol]. "
+            "Saya ingin konfirmasi saldo utang saya saat ini. "
+            "Berdasarkan catatan saya: pokok pinjaman Rp [X], sudah dibayar Rp [Y], sisa Rp [Z]. "
+            "Namun saya menerima tagihan Rp [nominal lain] dari Bapak/Ibu. "
+            "Mohon diberikan rincian: sisa pokok, total bunga, denda (jika ada), dan tanggal jatuh tempo. "
+            "Saya akan membayar setelah verifikasi. Terima kasih."
+        ),
+        "hak_kamu": [
+            "BERHAK mendapat rincian utang (poin-poin biaya)",
+            "DC TIDAK boleh menambahkan biaya tanpa pemberitahuan tertulis",
+            "Hitung manual: sisa pokok × (1 + bunga% × tenor) — cocokkan dengan tagihan",
+        ],
+        "landasan_hukum": "UU Perlindungan Konsumen Pasal 7 (hak informasi); POJK tentang transparansi fintech",
+    },
+]
+
+
+def get_dc_templates() -> dict:
+    """Return semua DC templates."""
+    return {
+        "valid": True,
+        "templates": DC_TEMPLATES,
+        "general_rights": [
+            "Kamu BERHAK minta identitas lengkap DC (nama, ID, perusahaan)",
+            "DC TIDAK BOLEH menyebar data pribadi ke orang lain",
+            "DC TIDAK BOLEH mengancam kekerasan fisik/verbal",
+            "DC TIDAK BOLEH menghubungi di luar jam kerja (08.00-20.00)",
+            "DC TIDAK BOLEH menagih utang yang tidak kamu kenal",
+            "Seluruh komunikasi harus bisa kamu dokumentasikan",
+        ],
+        "emergency_contacts": [
+            {"name": "Hotline OJK", "number": "157", "web": "ojk.go.id"},
+            {"name": "Hotline Kominfo (app ilegal)", "number": "aduankonten.id"},
+            {"name": "POLISI", "number": "110", "web": "POLISI 110 app"},
+            {"name": "YLBHI (bantuan hukum gratis)", "number": "(021) 319 025 35"},
+        ],
+        "disclaimer": "Template ini bersifat panduan umum. Untuk kasus spesifik, konsultasi dengan pengacara atau LBH.",
+    }
+
+
+def get_dc_template(template_id: str) -> dict:
+    """Return 1 DC template by id."""
+    for t in DC_TEMPLATES:
+        if t["id"] == template_id:
+            return {"valid": True, "template": t}
+    return {"valid": False, "error": f"Template '{template_id}' tidak ditemukan"}
+
+
+# =================================================================
+# 4. GALBAY RECOVERY ROADMAP — 30/60/90 hari
+# =================================================================
+def generate_recovery_roadmap(conditions: dict) -> dict:
+    """Generate roadmap personal keluar dari galbay 30/60/90 hari.
+
+    Args:
+        conditions: dict dengan keys: total_utang, income_bulanan, sudah_dc, hari_telat
+
+    Returns:
+        dict dengan roadmap 30/60/90 hari + rekomendasi mingguan
+    """
+    try:
+        total_utang = float(conditions.get("total_utang", 0))
+        income = float(conditions.get("income_bulanan", 0))
+        sudah_dc = conditions.get("sudah_dc", False)
+        hari_telat = int(conditions.get("hari_telat", 0))
+    except (ValueError, TypeError):
+        return {"valid": False, "error": "Format input tidak valid"}
+
+    if income <= 0:
+        return {"valid": False, "error": "Income harus > 0"}
+    if total_utang < 0:
+        return {"valid": False, "error": "Total utang harus >= 0"}
+
+    debt_to_income = (total_utang / (income * 12)) if income > 0 else 0
+    severity = "kritis" if hari_telat > 30 or debt_to_income > 3 else ("tinggi" if hari_telat > 7 or debt_to_income > 1.5 else "sedang")
+
+    if severity == "kritis":
+        week1_2 = [
+            "HARI 1-3: Kumpulkan semua info utang (pinjol, nominal, bunga, tenor, tgl jatuh tempo) di spreadsheet/notes",
+            "HARI 1-3: Stop pinjam baru. Hapus app pinjol dari HP (mengurangi godaan)",
+            "HARI 4-7: Buka semua email/SMS notifikasi tagihan. Catat tanggal jatuh tempo & total tagihan",
+            "HARI 4-7: Cek skor OJK: ajukan SLIK di bank terdekat (gratis, butuh e-KTP)",
+            "HARI 8-14: Negosiasi restrukturisasi ke pinjol utama (mulai dari bunga tertinggi)",
+            "HARI 8-14: Cek apakah ada aset yang bisa dijual (motor, gadget, barang tak terpakai)",
+            "HARI 8-14: Buka rekening terpisah khusus bayar utang. Setel auto-debit 30% income",
+            "HARI 15-21: Mulai kerja sampingan (ojol, freelance, jualan online) — target Rp 500K-1jt/bln",
+            "HARI 22-28: Bayar minimal semua utang tepat waktu (jangan telat lagi)",
+            "HARI 22-28: Catat progress di spreadsheet: sisa utang, bulan lunas estimasi",
+        ]
+        week3_4 = [
+            "MINGGU 5-6: Tutup utang paling kecil (snowball) — dapat motivasi psikologis",
+            "MINGGU 5-6: Review kerja sampingan, tambah jam kalau bisa",
+            "MINGGU 7-8: Negosiasi ulang ke DC yang agresif (pakai template DC Kit)",
+            "MINGGU 7-8: Kalau punya kartu kredit, pertimbangkan balance transfer ke bunga lebih rendah",
+            "MINGGU 7-8: Cari konselor keuangan (YLBHI, OJK, atau LSM lokal)",
+            "Akhir bulan 2: Target turun 10-15% dari total utang",
+        ]
+        month3 = [
+            "Bulan 3 penuh: 2-3 utang terbayar (yang terkecil). Momentum psikologis besar",
+            "Bulan 3: Negosiasi debt consolidation (gabung beberapa utang jadi 1)",
+            "Bulan 3: Mulai bangun emergency fund kecil (Rp 200K/bln)",
+            "Akhir bulan 3: Total utang turun 25-30%",
+            "Target bulan 3: Skor Risiko Galbay turun ke 'Waspada' (bukan 'Bahaya')",
+        ]
+    elif severity == "tinggi":
+        week1_2 = [
+            "HARI 1-3: Audit semua utang & catat di spreadsheet (nama, nominal, bunga, tenor)",
+            "HARI 1-7: Stop pinjam baru. Evaluasi cash flow bulanan (income vs expense)",
+            "HARI 8-14: Setel auto-debit minimum payment 1 hari sebelum jatuh tempo",
+            "HARI 8-14: Cek apakah ada pengeluaran yang bisa di-cut (streaming, langganan, jajan)",
+            "HARI 15-21: Bayar utang bunga tertinggi lebih besar (Avalanche) atau terkecil (Snowball)",
+            "HARI 22-28: Mulai nabung emergency fund (walaupun kecil, Rp 100-200K/bln)",
+        ]
+        week3_4 = [
+            "MINGGU 5-6: Tutup 1-2 utang terkecil (Snowball) untuk motivasi",
+            "MINGGU 7-8: Review & adjust strategi berdasarkan progress",
+            "Akhir bulan 2: Total utang turun 10-15%",
+        ]
+        month3 = [
+            "Bulan 3: 2-3 utang terbayar",
+            "Bulan 3: Bangun emergency fund 1x pengeluaran bulanan",
+            "Bulan 3: Mulai investasi kecil (reksa dana pasar uang / deposito)",
+            "Target: Skor Risiko turun ke 'Aman'",
+        ]
+    else:  # sedang
+        week1_2 = [
+            "HARI 1-7: Review & catat semua utang",
+            "HARI 8-14: Setel auto-debit tepat waktu",
+            "HARI 15-21: Bayar extra ke utang bunga tertinggi",
+            "HARI 22-28: Mulai nabung emergency fund (target 1x gaji)",
+        ]
+        week3_4 = [
+            "MINGGU 5-6: Tutup 1 utang terkecil (Snowball)",
+            "MINGGU 7-8: Tinjau ulang budget bulanan",
+            "Akhir bulan 2: Total utang turun 5-10%",
+        ]
+        month3 = [
+            "Bulan 3: Pertahankan disiplin bayar tepat waktu",
+            "Bulan 3: Tambah emergency fund + investasi kecil",
+            "Target: Skor Risiko 'Aman'",
+        ]
+
+    return {
+        "valid": True,
+        "severity": severity,
+        "severity_label": {"kritis": "KRITIS", "tinggi": "TINGGI", "sedang": "SEDANG"}[severity],
+        "conditions": {
+            "total_utang": total_utang,
+            "income_bulanan": income,
+            "debt_to_income_ratio": round(debt_to_income, 2),
+            "sudah_dc": sudah_dc,
+            "hari_telat": hari_telat,
+        },
+        "roadmap": {
+            "minggu_1_2": week1_2,
+            "minggu_3_4": week3_4,
+            "bulan_3": month3,
+        },
+        "success_metrics": {
+            "target_bulan_1": "Stop new debt. Tepat waktu bayar minimum.",
+            "target_bulan_2": "Turun 10-15% dari total utang. 1-2 utang terbayar.",
+            "target_bulan_3": "Turun 25-30% dari total. Skor Risiko turun ke Aman/Waspada.",
+        },
+        "disclaimer": "Roadmap ini panduan umum. Setiap situasi unik. Konsultasi dengan konselor keuangan profesional untuk kasus kompleks.",
+    }

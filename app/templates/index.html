@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <script src="{{ url_for('static', filename='js/data.js') }}"></script>
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
 </head>
 <body class="landing">
   <nav class="topnav">
@@ -17,6 +18,9 @@
       <a href="#sumber">Sumber Data</a>
       <a href="#metode">Metode</a>
       <a href="#temuan">Temuan</a>
+      <button class="theme-toggle theme-toggle-inline" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon">&#9788;</span>
+      </button>
       <a href="{{ url_for('main.dashboard') }}" class="btn-primary" style="padding:9px 20px;">Buka Dashboard</a>
     </div>
   </nav>
@@ -36,6 +40,25 @@
       <div class="landing-stat"><div class="stat-value" data-fill="total_relevant">-</div><div class="stat-label">Ulasan relevan tervalidasi</div></div>
       <div class="landing-stat"><div class="stat-value" data-fill="n_apps">-</div><div class="stat-label">Aplikasi fintech</div></div>
       <div class="landing-stat"><div class="stat-value" data-fill="distress_pct">-</div><div class="stat-label">Sinyal distress galbay</div></div>
+    </div>
+
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        <span>Evidence-Based</span>
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <span>349K Data Points</span>
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>No Login Required</span>
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+        <span>Built for Indonesia</span>
+      </div>
     </div>
   </header>
 
@@ -125,7 +148,7 @@
   </section>
 
   <footer class="footer">
-    <p>Galbay Predictor - Tugas Data Mining dan Business Model Canvas · Berbasis data ulasan nyata aplikasi fintech</p>
+    <p>&copy; 2026 Galbay Predictor &middot; Tugas UAS Analisis Keputusan Bisnis &middot; Data tidak disimpan &middot; <a href="#" onclick="return false;">Privacy</a> &middot; <a href="#" onclick="return false;">Terms</a></p>
   </footer>
 </body>
 </html>

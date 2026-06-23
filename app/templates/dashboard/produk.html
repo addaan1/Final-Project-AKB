@@ -1,35 +1,186 @@
 {% extends "dashboard/base.html" %}
 
-{% block title %}Coba Produk — Skor Risiko Galbay{% endblock %}
+{% block title %}Coba Produk — Financial Coach & Pinjol Checker{% endblock %}
 
 {% block content %}
+<!-- ========== HERO: Game Changer Highlight ========== -->
 <section class="produk-hero">
   <div class="produk-hero-inner">
     <span class="section-tag">Coba Produk Kami</span>
-    <h1 class="page-title">Cek <span>Risiko Galbay</span> Kamu Sekarang</h1>
-    <p class="page-lead">Financial behavior coach berbasis data 349K ulasan. Dapatkan <strong>skor risiko personal</strong> dan <strong>simulasi cicilan</strong> untuk mencegah gagal bayar &mdash; gratis, tanpa login.</p>
+    <h1 class="page-title">Cek <span>Pinjol Legal</span> atau Ilegal</h1>
+    <p class="page-lead">Satu-satunya <strong>financial behavior coach</strong> berbasis <strong>349K ulasan nyata</strong> pengguna fintech Indonesia. Tools gratis untuk cek pinjol, simulasi cicilan, dan recovery plan &mdash; tanpa login.</p>
     <div class="hero-cta-group">
-      <a href="#skor-form" class="btn-primary btn-large">Hitung Skor Saya</a>
-      <a href="#simulasi" class="btn-outline btn-large">Coba Simulasi Cicilan</a>
+      <a href="#pinjol-checker" class="btn-primary btn-large">🔍 Cek Pinjol</a>
+      <a href="#debt-planner" class="btn-outline btn-large">💰 Debt Planner</a>
+    </div>
+    <div class="privacy-notice">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Data kamu tidak disimpan. Skor dihitung lokal.
     </div>
   </div>
 </section>
 
-<section class="page-section" id="skor-form">
+<!-- ========== FITUR 1: PINJOL BLACKLIST CHECKER (GAME CHANGER) ========== -->
+<section class="page-section" id="pinjol-checker">
   <div class="page-header">
-    <span class="section-tag">Fitur 1 &middot; Skor Risiko Galbay</span>
-    <h1 class="page-title">Berapa <span>Risiko</span> Galbay Kamu?</h1>
-    <p class="page-lead">Jawab 6 pertanyaan singkat. Sistem kami akan menghitung skor risiko 0-100 berdasarkan pola perilaku pengguna fintech dari 349K ulasan nyata.</p>
+    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; Pinjol Blacklist Checker</span>
+    <h1 class="page-title">Pinjol yang Kamu Pakai <span>Legal</span> atau Ilegal?</h1>
+    <p class="page-lead">Cek apakah aplikasi pinjol yang kamu pakai <strong>terdaftar OJK</strong> atau masuk daftar hitam. Data berdasarkan database internal + referensi publik OJK.</p>
     <div class="demo-badge">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      <span><strong>Demo Prototype</strong> &mdash; Skor berbasis rule-based dari insight data. Model ML asli menyusul.</span>
+      <span>Database demo 24 app legal &middot; Untuk verifikasi final, cek <strong>ojk.go.id</strong></span>
+    </div>
+  </div>
+
+  <div class="pinjol-layout">
+    <form class="pinjol-form" id="pinjolForm">
+      <div class="form-group">
+        <label for="pinjolName">Nama Aplikasi Pinjol</label>
+        <input type="text" id="pinjolName" class="form-input" placeholder="cth: Kredivo, OVO, Pinjol Ilegal A" required list="pinjolSuggestions">
+        <datalist id="pinjolSuggestions">
+          <option value="Kredivo"><option value="Akulaku"><option value="OVO"><option value="DANA"><option value="GoPay"><option value="LinkAja"><option value="SeaBank"><option value="Bank Jago"><option value="blu by BCA Digital"><option value="Flip"><option value="KoinWorks"><option value="RupiahCepat"><option value="KreditPintar"><option value="Tunaiku"><option value="AdaKami"><option value="Easycash"><option value="Pinjol Ilegal A">
+        </datalist>
+        <p class="form-hint">Cek nama persis, atau ketik sebagian (misal "blu" akan match dengan "blu by BCA Digital")</p>
+      </div>
+      <button type="submit" class="btn-primary btn-large btn-full">🔍 Cek Status Pinjol</button>
+    </form>
+
+    <div class="pinjol-result" id="pinjolResult">
+      <div class="skor-placeholder">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <p>Hasil cek OJK akan muncul di sini. Ketik nama pinjol dan klik tombol.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FITUR 2: DEBT SNOWBALL/AVALANCHE PLANNER ========== -->
+<section class="page-section page-alt" id="debt-planner">
+  <div class="page-header">
+    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; Debt Planner</span>
+    <h1 class="page-title">Bayar <span>Multiple Utang</span> dengan Strategi Tepat</h1>
+    <p class="page-lead">Input semua utang kamu. Sistem hitung <strong>2 strategi</strong>: Snowball (bayar terkecil dulu, motivasi) atau Avalanche (bayar bunga tertinggi dulu, hemat). Lengkap dengan timeline lunas.</p>
+  </div>
+
+  <div class="planner-layout">
+    <div class="planner-form">
+      <div class="planner-debts" id="plannerDebts">
+        <div class="debt-row">
+          <input type="text" class="form-input debt-name" placeholder="Nama utang" value="Kredivo">
+          <input type="number" class="form-input debt-balance" placeholder="Saldo (Rp)" value="2000000">
+          <input type="number" class="form-input debt-bunga" placeholder="Bunga %/bln" value="8" step="0.1">
+          <input type="number" class="form-input debt-min" placeholder="Min bayar" value="200000">
+          <button type="button" class="debt-remove" title="Hapus">×</button>
+        </div>
+        <div class="debt-row">
+          <input type="text" class="form-input debt-name" placeholder="Nama utang" value="AdaKami">
+          <input type="number" class="form-input debt-balance" placeholder="Saldo (Rp)" value="1000000">
+          <input type="number" class="form-input debt-bunga" placeholder="Bunga %/bln" value="10" step="0.1">
+          <input type="number" class="form-input debt-min" placeholder="Min bayar" value="100000">
+          <button type="button" class="debt-remove" title="Hapus">×</button>
+        </div>
+      </div>
+      <div class="planner-actions">
+        <button type="button" class="btn-outline" id="addDebtBtn">+ Tambah Utang</button>
+      </div>
+      <div class="form-group" style="margin-top:20px;">
+        <label for="extraPayment">Extra Payment per Bulan (Rp) &mdash; untuk加速 lunas</label>
+        <input type="number" id="extraPayment" class="form-input" min="0" step="50000" value="200000">
+      </div>
+      <button type="button" class="btn-primary btn-large btn-full" id="planDebtBtn">📊 Hitung Strategi Bayar</button>
+    </div>
+
+    <div class="planner-result" id="plannerResult">
+      <div class="skor-placeholder">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        <p>Strategi Snowball vs Avalanche akan muncul di sini. Klik tombol di samping.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FITUR 3: DC SURVIVAL KIT ========== -->
+<section class="page-section" id="dc-kit">
+  <div class="page-header">
+    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; DC Survival Kit</span>
+    <h1 class="page-title">Template <span>Chat untuk Debt Collector</span></h1>
+    <p class="page-lead">5 template siap pakai untuk negosiasi dengan debt collector. Berbasis <strong>UU PDP, UU ITE, Permenkominfo</strong>. Copy, edit, kirim via WhatsApp.</p>
+  </div>
+
+  <div class="dc-kit-grid" id="dcKitGrid">
+    <div class="skor-placeholder" style="grid-column:1/-1;">
+      <p>Memuat template...</p>
+    </div>
+  </div>
+
+  <div class="dc-rights-box">
+    <h4>Hak Kamu sebagai Borrower</h4>
+    <ul id="dcRightsList"></ul>
+  </div>
+
+  <div class="dc-contacts-box">
+    <h4>Kontak Darurat</h4>
+    <div class="dc-contacts-grid" id="dcContactsGrid"></div>
+  </div>
+</section>
+
+<!-- ========== FITUR 4: GALBAY RECOVERY ROADMAP ========== -->
+<section class="page-section page-alt" id="recovery-roadmap">
+  <div class="page-header">
+    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; Recovery Roadmap</span>
+    <h1 class="page-title">Roadmap <span>30/60/90 Hari</span> Keluar dari Galbay</h1>
+    <p class="page-lead">Masukkan kondisi kamu saat ini. Sistem generate <strong>roadmap personal</strong> langkah-demi-langkah untuk keluar dari galbay dalam 90 hari, disesuaikan dengan severity.</p>
+  </div>
+
+  <div class="roadmap-layout">
+    <form class="roadmap-form" id="roadmapForm">
+      <div class="form-group">
+        <label>Total utang saat ini (Rp)</label>
+        <input type="number" id="rmTotalUtang" class="form-input" min="0" step="100000" value="5000000" required>
+      </div>
+      <div class="form-group">
+        <label>Income bulanan (Rp)</label>
+        <input type="number" id="rmIncome" class="form-input" min="1" step="100000" value="3000000" required>
+      </div>
+      <div class="form-group">
+        <label>Sudah pernah ditagih DC?</label>
+        <div class="radio-group">
+          <label class="radio-card"><input type="radio" name="rmSudahDc" value="0"><span>Tidak</span></label>
+          <label class="radio-card"><input type="radio" name="rmSudahDc" value="1" checked><span>Ya</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Sudah telat berapa hari?</label>
+        <input type="number" id="rmHariTelat" class="form-input" min="0" step="1" value="15">
+      </div>
+      <button type="submit" class="btn-primary btn-large btn-full">🗺️ Generate Roadmap Saya</button>
+    </form>
+
+    <div class="roadmap-result" id="roadmapResult">
+      <div class="skor-placeholder">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        <p>Roadmap personal akan muncul di sini.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FITUR LAMA: SKOR RISIKO GALBAY (demoted) ========== -->
+<section class="page-section" id="skor-form">
+  <div class="page-header">
+    <span class="section-tag">Fitur Pendukung &middot; Skor Risiko Galbay</span>
+    <h1 class="page-title">Berapa <span>Risiko</span> Galbay Kamu?</h1>
+    <p class="page-lead">Jawab 6 pertanyaan singkat. Sistem kami menghitung skor 0-100 berdasarkan pola perilaku dari 349K ulasan nyata.</p>
+    <div class="demo-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <span><strong>Demo Prototype</strong> &mdash; rule-based. Model ML asli menyusul.</span>
     </div>
   </div>
 
   <div class="skor-layout">
     <form class="skor-form" id="skorForm">
       <div class="form-group">
-        <label>1. Aplikasi fintech apa yang sedang kamu pakai? <span class="form-tooltip" data-tip="Pinjol = pinjaman online (OVO, Kredivo, AdaKami, dll). Paylater = bayar nanti. E-wallet = dompet digital. Bank digital = bank tanpa kantor.">?</span></label>
+        <label>1. Aplikasi fintech apa yang sedang kamu pakai? <span class="form-tooltip" data-tip="Pinjol = pinjaman online. Paylater = bayar nanti. E-wallet = dompet digital. Bank digital = bank tanpa kantor.">?</span></label>
         <p class="form-hint">Bisa pilih lebih dari satu</p>
         <div class="checkbox-group">
           <label class="checkbox-card"><input type="checkbox" name="apps" value="pinjol"><span class="checkbox-label"><strong>Pinjol</strong><small>Pinjaman online</small></span></label>
@@ -38,9 +189,8 @@
           <label class="checkbox-card"><input type="checkbox" name="apps" value="bank"><span class="checkbox-label"><strong>Bank Digital</strong><small>SeaBank, Jago, Blu</small></span></label>
         </div>
       </div>
-
       <div class="form-group">
-        <label>2. Berapa total utang/cicilan aktif kamu saat ini? <span class="form-tooltip" data-tip="Jumlahkan semua utang: pinjol + paylater + kartu kredit. Jangan lupa yang di-pending approval.">?</span></label>
+        <label>2. Berapa total utang/cicilan aktif kamu saat ini? <span class="form-tooltip" data-tip="Jumlahkan semua utang: pinjol + paylater + kartu kredit.">?</span></label>
         <div class="radio-group">
           <label class="radio-card"><input type="radio" name="utang" value="0"><span>Tidak ada</span></label>
           <label class="radio-card"><input type="radio" name="utang" value="lt5"><span>Rp 1 &ndash; 5 juta</span></label>
@@ -48,9 +198,8 @@
           <label class="radio-card"><input type="radio" name="utang" value="gt20"><span>&gt; Rp 20 juta</span></label>
         </div>
       </div>
-
       <div class="form-group">
-        <label>3. Seberapa sering kamu checkout "self reward" (beli barang buat reward sendiri) per bulan? <span class="form-tooltip" data-tip="Makanan, fashion, gadget, atau apapun yang dibeli untuk reward setelah stress/kerja keras. Bukan kebutuhan pokok.">?</span></label>
+        <label>3. Seberapa sering kamu checkout "self reward" per bulan? <span class="form-tooltip" data-tip="Makanan, fashion, gadget, atau apapun yang dibeli untuk reward setelah stress/kerja keras.">?</span></label>
         <div class="slider-group">
           <input type="range" name="selfreward" min="1" max="10" value="3" class="form-slider" id="selfrewardSlider">
           <div class="slider-value"><span id="selfrewardValue">3</span>x per bulan</div>
@@ -62,50 +211,47 @@
           </div>
         </div>
       </div>
-
       <div class="form-group">
-        <label>4. Pernah telat bayar tagihan? <span class="form-tooltip" data-tip="Kartu kredit, paylater, atau tagihan bulanan. Sekalipun 1x sudah sinyal risiko.">?</span></label>
+        <label>4. Pernah telat bayar tagihan?</label>
         <div class="radio-group">
           <label class="radio-card"><input type="radio" name="telat" value="0"><span>Tidak pernah</span></label>
           <label class="radio-card"><input type="radio" name="telat" value="1"><span>Ya, 1-2 kali</span></label>
           <label class="radio-card"><input type="radio" name="telat" value="2"><span>Ya, sering</span></label>
         </div>
       </div>
-
       <div class="form-group">
-        <label>5. Pernah dihubungi debt collector / DC? <span class="form-tooltip" data-tip="Telepon, chat, atau kunjungan DC. Ini sinyal bahaya serius &mdash; tandanya utang sudah overdue.">?</span></label>
+        <label>5. Pernah dihubungi debt collector?</label>
         <div class="radio-group">
           <label class="radio-card"><input type="radio" name="dc" value="0"><span>Tidak</span></label>
           <label class="radio-card"><input type="radio" name="dc" value="1"><span>Ya</span></label>
         </div>
       </div>
-
       <div class="form-group">
-        <label>6. Bagaimana perasaan kamu saat lihat tagihan? <span class="form-tooltip" data-tip="Stress finansial sering muncul sebagai susah tidur, cemas, atau menghindari buka email. Jangan abaikan.">?</span></label>
+        <label>6. Bagaimana perasaan kamu saat lihat tagihan?</label>
         <div class="radio-group">
           <label class="radio-card"><input type="radio" name="feeling" value="0"><span>Tenang</span></label>
           <label class="radio-card"><input type="radio" name="feeling" value="1"><span>Waspada</span></label>
-          <label class="radio-card"><input type="radio" name="feeling" value="2"><span>Stress / Cemas</span></label>
+          <label class="radio-card"><input type="radio" name="feeling" value="2"><span>Stress</span></label>
         </div>
       </div>
-
       <button type="submit" class="btn-primary btn-large btn-full">Hitung Skor Risiko Saya</button>
     </form>
 
     <div class="skor-result" id="skorResult">
       <div class="skor-placeholder">
         <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <p>Hasil skormu akan muncul di sini setelah kamu submit form.</p>
+        <p>Hasil skormu akan muncul di sini.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ========== FITUR LAMA: SIMULASI CICILAN (demoted) ========== -->
 <section class="page-section page-alt" id="simulasi">
   <div class="page-header">
-    <span class="section-tag">Fitur 2 &middot; Simulasi Cicilan</span>
+    <span class="section-tag">Fitur Pendukung &middot; Simulasi Cicilan</span>
     <h1 class="page-title">Bandingkan <span>Cicilan</span> Sebelum Deal</h1>
-    <p class="page-lead">Masukkan nominal, bunga, dan tenor. Sistem akan hitung total bayar, cicilan per bulan, dan <strong>bunga efektif tahunan</strong> &mdash; bandingkan opsi sebelum commit.</p>
+    <p class="page-lead">Masukkan nominal, bunga, tenor. Sistem hitung total bayar, cicilan per bulan, dan <strong>bunga efektif tahunan</strong>.</p>
   </div>
 
   <div class="simulasi-layout">
@@ -148,7 +294,7 @@
         <div class="result-value" id="totalBunga">Rp 1.200.000</div>
       </div>
       <div class="result-row">
-        <div class="result-label">Total Bayar (pokok + bunga + admin)</div>
+        <div class="result-label">Total Bayar</div>
         <div class="result-value" id="totalBayar">Rp 3.250.000</div>
       </div>
       <div class="result-row">
@@ -164,138 +310,29 @@
   </div>
 </section>
 
+<!-- ========== EDUKASI: 7 SINYAL PSIKOLOGIS ========== -->
 <section class="page-section" id="edukasi">
   <div class="page-header">
-    <span class="section-tag">Fitur 3 &middot; Edukasi</span>
+    <span class="section-tag">Edukasi</span>
     <h1 class="page-title">7 <span>Sinyal Psikologis</span> Galbay</h1>
-    <p class="page-lead">Dari analisis 349K ulasan, kami mengidentifikasi <strong>7 kategori sinyal</strong> yang konsisten muncul di review pengguna yang mengalami gagal bayar. Kenali sebelum terlambat.</p>
+    <p class="page-lead">Dari analisis 349K ulasan, kami mengidentifikasi <strong>7 kategori sinyal</strong> yang konsisten muncul di review pengguna yang mengalami gagal bayar.</p>
   </div>
 
   <div class="sinyal-grid">
-    <div class="sinyal-card">
-      <div class="sinyal-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-      <h3>Distress Langsung</h3>
-      <p>Tanda langsung gagal bayar. Kata kunci: <em>galbay, gagal bayar, nunggak, macet, telat bayar</em>.</p>
-    </div>
-    <div class="sinyal-card">
-      <div class="sinyal-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-      <h3>Tagihan &amp; Penagihan</h3>
-      <p>Masalah dengan debt collector. Kata kunci: <em>ditagih, DC, dicerewet, ditelpon</em>.</p>
-    </div>
-    <div class="sinyal-card">
-      <div class="sinyal-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-      <h3>Bunga &amp; Biaya</h3>
-      <p>Keluhan biaya tidak transparan. Kata kunci: <em>bunga tinggi, denda, biaya admin</em>.</p>
-    </div>
-    <div class="sinyal-card">
-      <div class="sinyal-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-      <h3>Produk Fintech</h3>
-      <p>Ketergantungan pinjol/paylater. Kata kunci: <em>pinjol, paylater, cicilan, kasbon, limit</em>.</p>
-    </div>
-    <div class="sinyal-card">
-      <div class="sinyal-icon pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
-      <h3>Psikologi Impulsif</h3>
-      <p>Belanja karena FOMO. Kata kunci: <em>self reward, checkout dulu, flash sale, gpp cicil</em>.</p>
-    </div>
-    <div class="sinyal-card">
-      <div class="sinyal-icon gray"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div>
-      <h3>Psikologi Avoidance</h3>
-      <p>Menghindari tagihan. Kata kunci: <em>takut ditagih, kabur, ganti nomor, diblokir</em>.</p>
-    </div>
-    <div class="sinyal-card">
-      <div class="sinyal-icon red2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-      <h3>Regret &amp; Stress</h3>
-      <p>Dampak psikologis. Kata kunci: <em>menyesal, insyaf, stress, depresi, susah tidur</em>.</p>
-    </div>
+    <div class="sinyal-card"><div class="sinyal-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><h3>Distress Langsung</h3><p>Tanda langsung gagal bayar. Kata kunci: <em>galbay, gagal bayar, nunggak</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Tagihan &amp; Penagihan</h3><p>Masalah dengan debt collector. Kata kunci: <em>ditagih, DC, dicerewet</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Bunga &amp; Biaya</h3><p>Keluhan biaya tidak transparan. Kata kunci: <em>bunga tinggi, denda</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h3>Produk Fintech</h3><p>Ketergantungan pinjol/paylater. Kata kunci: <em>pinjol, paylater, cicilan</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div><h3>Psikologi Impulsif</h3><p>Belanja karena FOMO. Kata kunci: <em>self reward, flash sale</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon gray"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div><h3>Psikologi Avoidance</h3><p>Menghindari tagihan. Kata kunci: <em>takut ditagih, kabur</em>.</p></div>
+    <div class="sinyal-card"><div class="sinyal-icon red2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Regret &amp; Stress</h3><p>Dampak psikologis. Kata kunci: <em>menyesal, stress, susah tidur</em>.</p></div>
   </div>
 </section>
 
-<section class="page-section page-alt" id="modul">
-  <div class="page-header">
-    <span class="section-tag">Fitur 4 &middot; Modul Coaching</span>
-    <h1 class="page-title">Modul <span>Coaching</span> untuk Recovery</h1>
-    <p class="page-lead">4 modul berbasis data dari pola nyata pengguna yang berhasil keluar dari galbay. Step-by-step, actionable, bukan teori.</p>
-  </div>
-
-  <div class="modul-grid">
-    <div class="modul-card">
-      <div class="modul-num">01</div>
-      <h3>Cara Negosiasi dengan Debt Collector</h3>
-      <p>Template script lengkap, hak-hak kamu sebagai borrower, dan batasan hukum yang DC tidak boleh langgar.</p>
-      <div class="modul-meta"><span>8 menit baca</span><span>12 aksi</span></div>
-    </div>
-    <div class="modul-card">
-      <div class="modul-num">02</div>
-      <h3>Cara Recovery dari Galbay</h3>
-      <p>Step-by-step keluar dari siklus utang. Prioritas bayar, negosiasi restrukturisasi, dan membangun ulang dari nol.</p>
-      <div class="modul-meta"><span>12 menit baca</span><span>20 aksi</span></div>
-    </div>
-    <div class="modul-card">
-      <div class="modul-num">03</div>
-      <h3>Cara Baca Bunga Efektif</h3>
-      <p>Bedah bunga flat vs efektif, contoh kasus pinjol vs KTA bank, jangan ketipu angka kecil.</p>
-      <div class="modul-meta"><span>6 menit baca</span><span>5 kalkulator</span></div>
-    </div>
-    <div class="modul-card">
-      <div class="modul-num">04</div>
-      <h3>Habit Building Keuangan Sehat</h3>
-      <p>30-day challenge: dari impulsif ke intentional. Tracking, reward system, dan komunitas support.</p>
-      <div class="modul-meta"><span>30 hari</span><span>15 habit</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="page-section" id="testimoni">
-  <div class="page-header">
-    <span class="section-tag">Testimonial</span>
-    <h1 class="page-title">Cerita dari <span>User</span> Kami</h1>
-    <p class="page-lead">Simulasi cerita dari user beta tester &mdash; untuk ilustrasi dampak produk.</p>
-    <div class="demo-badge">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      <span>Testimoni ini <strong>simulasi</strong> berdasarkan pola nyata di 349K ulasan, bukan cerita user sungguhan.</span>
-    </div>
-  </div>
-
-  <div class="testimoni-grid">
-    <div class="testimoni-card">
-      <div class="testimoni-quote">&ldquo;</div>
-      <p>Aku dulu galbay 3 pinjol sekaligus. Setelah coba <strong>simulasi cicilan</strong> di Galbay, aku sadar total bunga efektifku 180% per tahun. Itu wake-up call banget. Sekarang udah lunas semua dalam 8 bulan.</p>
-      <div class="testimoni-author">
-        <div class="testimoni-avatar">D</div>
-        <div>
-          <strong>Dewi</strong>
-          <span>23 tahun &middot; Jakarta</span>
-        </div>
-      </div>
-    </div>
-    <div class="testimoni-card">
-      <div class="testimoni-quote">&ldquo;</div>
-      <p>Skor risiko aku 72 (Bahaya). Modul <strong>Cara Negosiasi DC</strong> bantu aku ngomong sama debt collector dengan tegas. 6 bulan kemudian skor turun ke 35. Sekarang udah Waspada, bukan Bahaya lagi.</p>
-      <div class="testimoni-author">
-        <div class="testimoni-avatar">R</div>
-        <div>
-          <strong>Rizki</strong>
-          <span>21 tahun &middot; Bandung</span>
-        </div>
-      </div>
-    </div>
-    <div class="testimoni-card">
-      <div class="testimoni-quote">&ldquo;</div>
-      <p>Nudge pre-checkout benar-benar menyelamatkan dompet. Aku hampir checkout iPhone cicilan 0%, ternyata <strong>bunga efektif 36%</strong>. Simulator ini langsung ngasih tau aku, jadi aku cancel.</p>
-      <div class="testimoni-author">
-        <div class="testimoni-avatar">S</div>
-        <div>
-          <strong>Sasa</strong>
-          <span>25 tahun &middot; Surabaya</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- ========== PRICING + WAITLIST ========== -->
 <section class="page-section page-alt" id="pricing">
   <div class="page-header">
-    <span class="section-tag">Fitur 5 &middot; Pricing</span>
+    <span class="section-tag">Pricing</span>
     <h1 class="page-title">Pilih <span>Paket</span> yang Cocok</h1>
     <p class="page-lead">Mulai gratis. Upgrade kapan saja. Tidak ada tagihan tersembunyi.</p>
   </div>
@@ -305,10 +342,12 @@
       <div class="pricing-name">Gratis</div>
       <div class="pricing-price"><span class="price-amount">Rp 0</span><span class="price-period">/selamanya</span></div>
       <ul class="pricing-features">
+        <li>Semua 4 Pinjol Checker</li>
+        <li>Debt Planner (Snowball/Avalanche)</li>
+        <li>DC Survival Kit (5 template)</li>
+        <li>Recovery Roadmap 90 hari</li>
         <li>Skor Risiko Galbay</li>
         <li>Simulasi Cicilan</li>
-        <li>7 Sinyal Psikologis (edukasi)</li>
-        <li>1 modul coaching gratis</li>
       </ul>
       <button class="btn-outline btn-full" data-waitlist="gratis">Mulai Gratis</button>
     </div>
@@ -319,10 +358,10 @@
       <ul class="pricing-features">
         <li>Semua fitur Gratis</li>
         <li>Coaching chat (AI) 24/7</li>
-        <li>Nudge pre-checkout</li>
+        <li>Nudge pre-checkout real-time</li>
         <li>Laporan bulanan personal</li>
-        <li>Semua modul coaching</li>
-        <li>Komunitas support</li>
+        <li>Save unlimited debt plans</li>
+        <li>Priority DC template updates</li>
       </ul>
       <button class="btn-primary btn-full" data-waitlist="premium">Coba Premium</button>
     </div>

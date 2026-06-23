@@ -3,7 +3,16 @@ from pathlib import Path
 
 from flask import Blueprint, current_app, jsonify, redirect, render_template, request, send_from_directory, url_for
 
-from app.api import add_to_waitlist, calculate_score, calculate_simulation
+from app.api import (
+    add_to_waitlist,
+    calculate_debt_planner,
+    calculate_score,
+    calculate_simulation,
+    check_pinjol_status,
+    generate_recovery_roadmap,
+    get_dc_template,
+    get_dc_templates,
+)
 
 main_bp = Blueprint("main", __name__)
 
@@ -141,6 +150,99 @@ def api_waitlist():
             "package": request.form.get("package", "general"),
         }
     result = add_to_waitlist(data.get("email", ""), data.get("package", "general"))
+    return jsonify(result)
+
+
+# =================================================================
+# Pinjol Blacklist Checker
+# =================================================================
+@main_bp.route("/api/check-pinjol", methods=["POST"])
+def api_check_pinjol():
+    """Cek status OJK pinjol (legal / ilegal / tidak ditemukan).
+
+    Request JSON atau form-encoded:
+    {
+      "app_name": "Kredivo"  // case-insensitive, partial match
+    }
+    """
+    if request.is_json:
+        data = request.get_json() or {}
+    else:
+        data = {"app_name": request.form.get("app_name", "")}
+    result = check_pinjol_status(data.get("app_name", ""))
+    return jsonify(result)
+
+
+# =================================================================
+# Debt Snowball / Avalanche Planner
+# =================================================================
+@main_bp.route("/api/debt-planner", methods=["POST"])
+def api_debt_planner():
+    """Hitung strategi bayar utang Snowball vs Avalanche.
+
+    Request JSON atau form-encoded:
+    {
+      "debts": [
+        {"name": "Kredivo", "balance": 2000000, "bunga_pct": 8, "min_payment": 200000},
+        ...
+      ],
+      "extra_payment": 200000  // optional, default 0
+    }
+    """
+    if request.is_json:
+        data = request.get_json() or {}
+    else:
+        data = {
+            "debts": [],
+            "extra_payment": float(request.form.get("extra_payment", 0)),
+        }
+    result = calculate_debt_planner(
+        debts=data.get("debts", []),
+        extra_payment=data.get("extra_payment", 0),
+    )
+    return jsonify(result)
+
+
+# =================================================================
+# DC Survival Kit
+# =================================================================
+@main_bp.route("/api/dc-templates", methods=["GET"])
+def api_dc_templates():
+    """Return semua template chat untuk negosiasi debt collector."""
+    return jsonify(get_dc_templates())
+
+
+@main_bp.route("/api/dc-templates/<template_id>", methods=["GET"])
+def api_dc_template(template_id: str):
+    """Return 1 DC template by id."""
+    return jsonify(get_dc_template(template_id))
+
+
+# =================================================================
+# Galbay Recovery Roadmap
+# =================================================================
+@main_bp.route("/api/recovery-roadmap", methods=["POST"])
+def api_recovery_roadmap():
+    """Generate roadmap 30/60/90 hari keluar dari galbay.
+
+    Request JSON atau form-encoded:
+    {
+      "total_utang": 5000000,
+      "income_bulanan": 3000000,
+      "sudah_dc": true,  // sudah pernah ditagih DC?
+      "hari_telat": 15    // berapa hari telat
+    }
+    """
+    if request.is_json:
+        data = request.get_json() or {}
+    else:
+        data = {
+            "total_utang": float(request.form.get("total_utang", 0)),
+            "income_bulanan": float(request.form.get("income_bulanan", 0)),
+            "sudah_dc": request.form.get("sudah_dc", "false").lower() == "true",
+            "hari_telat": int(request.form.get("hari_telat", 0)),
+        }
+    result = generate_recovery_roadmap(data)
     return jsonify(result)
 
 

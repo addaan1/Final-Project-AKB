@@ -78,5 +78,15 @@
     "source": "register",
     "password_hash": "scrypt:32768:8:1$He6RFE9rQvdJAZYn$413b7750cb5551aae93e6b2a1a0a67b4e26bb4c763104f5b3ef4d89495078f088438394e317d9a2c89dc27d92b6d0f03496f648a71fd7e52a4581069ab79e041",
     "created_at": "2026-06-23T23:58:38.210018Z"
+  },
+  {
+    "id": "8dc4f555-190f-4c2d-94c6-2dd1b304f94d",
+    "email": "newuser-a377c92f@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$qgomIRLolHXCDAca$d76f375b35b2b1a8a9ee943cfd6f3e17372a67317d038516b0da22991094b42661253e8c7d25455072e39f6071623e91dd559abcc9726e76b056b5ae551a7914",
+    "created_at": "2026-06-24T00:16:28.442030Z"
   }
 ]

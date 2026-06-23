@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSimulasi();
   initWaitlist();
   initSmoothScroll();
+  initLockDismiss();
 });
 
 // ============================================================
@@ -657,7 +658,7 @@ function escapeHtml(s) {
 }
 
 // ============================================================
-// HELPERS
+// SMOOTH SCROLL
 // ============================================================
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -667,6 +668,48 @@ function initSmoothScroll() {
       const target = document.querySelector(href);
       if (target) { e.preventDefault(); const top = target.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({ top, behavior: 'smooth' }); }
     });
+  });
+}
+
+// ============================================================
+// LOCK OVERLAY DISMISS (close button + free feature link)
+// ============================================================
+function initLockDismiss() {
+  document.querySelectorAll('[data-lock-dismiss]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const sectionId = el.dataset.lockDismiss;
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+      // For close button: prevent default & dismiss
+      if (el.classList.contains('lock-close')) {
+        e.preventDefault();
+        section.classList.add('is-dismissed');
+      }
+      // For free link: dismiss + scroll (default anchor scroll will happen)
+      if (el.classList.contains('lock-free-link')) {
+        e.preventDefault();
+        section.classList.add('is-dismissed');
+        const targetHref = el.getAttribute('href');
+        const target = document.querySelector(targetHref);
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+  // Re-show on hash change if user navigates back
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const targetId = href.substring(1);
+      // Re-show all dismissed locks
+      document.querySelectorAll('.feature-locked.is-dismissed').forEach(s => {
+        s.classList.remove('is-dismissed');
+      });
+    }
   });
 }
 

@@ -117,6 +117,30 @@ class TestDashboardContent:
         assert 'Forum Kaskus' not in body, "Forum Kaskus reference should be removed"
         assert 'OJK + Media' not in body, "OJK + Media badge should be removed"
 
+    def test_topnav_uses_solid_cta_class(self, client):
+        """Topnav button harus pakai class .topnav-cta (solid color per theme)."""
+        r = client.get("/")
+        body = r.data.decode('utf-8')
+        assert 'class="topnav-cta"' in body, "Topnav CTA harus pakai class .topnav-cta"
+        assert 'class="btn-primary" style="padding:9px 20px;"' not in body, "Old btn-primary topnav button harus dihapus"
+
+    def test_lock_overlay_has_close_button_and_free_link(self, auth_client):
+        """Lock overlay harus punya close button + 'lihat fitur gratis' link."""
+        r = auth_client.get("/dashboard/produk")
+        body = r.data.decode('utf-8')
+        assert 'lock-close' in body, "Lock overlay harus punya close button (.lock-close)"
+        assert 'lock-free-link' in body, "Lock overlay harus punya 'lihat fitur gratis' link"
+        assert 'data-lock-dismiss' in body, "Close button harus punya data-lock-dismiss attribute"
+
+    def test_hero_8_coins(self, client):
+        """Landing hero harus punya 8 floating coins (4 -> 8)."""
+        r = client.get("/")
+        body = r.data.decode('utf-8')
+        coin_count = body.count('hero-coin-')
+        # 8 classes: hero-coin-1..8 + 1 container class = 9
+        # Actually the container has 'hero-coins' (with s) + 8 individual = 9 total
+        assert coin_count >= 8, f"Expected at least 8 hero-coin elements, found {coin_count}"
+
     def test_solusi_has_bmc(self, auth_client):
         r = auth_client.get("/dashboard/solusi")
         assert b'BMC' in r.data or b'bmc' in r.data.lower()

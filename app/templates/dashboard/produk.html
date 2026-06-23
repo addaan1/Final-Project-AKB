@@ -73,6 +73,7 @@
   </div>
   {% if not (current_user and current_user.is_premium) %}
   <div class="lock-overlay">
+    <button type="button" class="lock-close" aria-label="Tutup overlay" data-lock-dismiss="debt-planner">&times;</button>
     <div class="lock-icon">🔒</div>
     <h3 class="lock-title">Fitur Premium</h3>
     <p class="lock-desc">Debt Planner lengkap dengan save unlimited &amp; export PDF hanya untuk pengguna Premium.</p>
@@ -81,6 +82,8 @@
       <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
       100 user pertama diskon 50%
     </div>
+    <div class="lock-divider"><span>atau</span></div>
+    <a href="#skor-form" class="lock-free-link" data-lock-dismiss="debt-planner">Coba Skor Risiko gratis →</a>
   </div>
   {% endif %}
 
@@ -130,6 +133,7 @@
   </div>
   {% if not (current_user and current_user.is_premium) %}
   <div class="lock-overlay">
+    <button type="button" class="lock-close" aria-label="Tutup overlay" data-lock-dismiss="dc-kit">&times;</button>
     <div class="lock-icon">🔒</div>
     <h3 class="lock-title">Fitur Premium</h3>
     <p class="lock-desc">Semua 5 template chat siap pakai + update prioritas untuk aturan DC terbaru.</p>
@@ -138,6 +142,8 @@
       <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
       100 user pertama diskon 50%
     </div>
+    <div class="lock-divider"><span>atau</span></div>
+    <a href="#pinjol-checker" class="lock-free-link" data-lock-dismiss="dc-kit">Coba Pinjol Checker gratis →</a>
   </div>
   {% endif %}
 
@@ -199,6 +205,7 @@
   </div>
   {% if not (current_user and current_user.is_premium) %}
   <div class="lock-overlay">
+    <button type="button" class="lock-close" aria-label="Tutup overlay" data-lock-dismiss="recovery-roadmap">&times;</button>
     <div class="lock-icon">🔒</div>
     <h3 class="lock-title">Fitur Premium</h3>
     <p class="lock-desc">Roadmap personal 30/60/90 hari dengan severity analysis &amp; save unlimited.</p>
@@ -207,6 +214,8 @@
       <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
       100 user pertama diskon 50%
     </div>
+    <div class="lock-divider"><span>atau</span></div>
+    <a href="#simulasi" class="lock-free-link" data-lock-dismiss="recovery-roadmap">Coba Simulasi Cicilan gratis →</a>
   </div>
   {% endif %}
 </section>

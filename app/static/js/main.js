@@ -204,11 +204,11 @@ const grid = {
 };
 const gridY = { ticks: { color: COL.text, font:{size:11} }, grid: { display:false } };
 
-// ── Format percent konsisten: 0 decimal <10%, 1 decimal >=10% ──
+// ── Format percent konsisten: always 1 decimal ──
 function fmtPct(v, forceDec) {
-  if (v == null || !isFinite(v)) return '0%';
+  if (v == null || !isFinite(v)) return '0.0%';
   if (forceDec != null) return v.toFixed(forceDec) + '%';
-  return (v < 10 ? v.toFixed(0) : v.toFixed(1)) + '%';
+  return v.toFixed(1) + '%';
 }
 
 // ── Theme-aware color resolver ──

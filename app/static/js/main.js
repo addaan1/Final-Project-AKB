@@ -19,10 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ── Isi angka teks dari data (elemen ber-atribut data-fill) ──
 function fillNumbers() {
-  const m = D.meta || {}, mo = D.model || {};
+  const m = D.meta || {}, mo = D.model || {}, sd = D.score_dist || {};
+  const cm = mo.confusion || {};
   const map = {
     total_reviews: (m.total_reviews||0).toLocaleString('id-ID'),
+    total_reviews_fmt: formatNum(m.total_reviews || 0),
     total_relevant: (m.total_relevant||0).toLocaleString('id-ID'),
+    total_relevant_fmt: formatNum(m.total_relevant || 0),
     n_apps: m.n_apps, n_categories: m.n_categories,
     n_news: m.n_news, n_forum: m.n_forum,
     date_min: m.date_min, date_max: m.date_max,
@@ -33,13 +36,36 @@ function fillNumbers() {
     rec: (mo.recall*100).toFixed(1) + '%',
     f1: (mo.f1*100).toFixed(1) + '%',
     vocab: (mo.vocab||0).toLocaleString('id-ID'),
+    vocab_fmt: formatNum(mo.vocab || 0),
     n_train: (mo.n_train||0).toLocaleString('id-ID'),
+    n_train_fmt: formatNum(mo.n_train || 0),
     n_test: (mo.n_test||0).toLocaleString('id-ID'),
+    n_test_fmt: formatNum(mo.n_test || 0),
+    score_5_count: formatNum(sd['5'] || 0),
+    score_1_count: formatNum(sd['1'] || 0),
+    cm_tp: cm.TP || 0,
+    cm_tp_fmt: formatNum(cm.TP || 0),
+    cm_tn: cm.TN || 0,
+    cm_tn_fmt: formatNum(cm.TN || 0),
+    cm_fp: cm.FP || 0,
+    cm_fp_fmt: formatNum(cm.FP || 0),
+    cm_fn: cm.FN || 0,
+    cm_fn_fmt: formatNum(cm.FN || 0),
+    cm_total: (cm.TP||0) + (cm.TN||0) + (cm.FP||0) + (cm.FN||0),
+    cm_total_fmt: formatNum((cm.TP||0) + (cm.TN||0) + (cm.FP||0) + (cm.FN||0)),
+    cm_insight: ((cm.FN||0) > (cm.FP||0))
+      ? `False negative (${formatNum(cm.FN)}) lebih tinggi dari false positive (${formatNum(cm.FP)}) — model cenderung underestimate sentimen negatif.`
+      : `False positive (${formatNum(cm.FP)}) lebih tinggi dari false negative (${formatNum(cm.FN)}) — model cenderung overestimate sentimen negatif.`,
   };
   document.querySelectorAll('[data-fill]').forEach(el => {
     const k = el.dataset.fill;
     if (map[k] !== undefined && map[k] !== null) el.textContent = map[k];
   });
+}
+
+function formatNum(n) {
+  if (n == null || !isFinite(n)) return '0';
+  return Math.round(n).toLocaleString('id-ID');
 }
 
 // ── COUNTER ANIMATION ──
@@ -150,13 +176,120 @@ function initDropdown() {
 // ── CHART DEFAULTS ──
 const chartDefaults = {
   responsive: true, maintainAspectRatio: false,
+  animation: { duration: 1200, easing: 'easeOutQuart' },
   plugins: {
-    legend: { labels: { color: COL.text, font: { family: 'Inter', size: 12 }, boxWidth: 12 } },
-    tooltip: { backgroundColor: '#120038', borderColor: 'rgba(155,93,229,0.4)', borderWidth: 1, titleColor: '#f0eaff', bodyColor: COL.text, padding: 12 }
+    legend: {
+      position: 'bottom',
+      labels: {
+        color: COL.text, font: { family: 'Inter', size: 12 },
+        boxWidth: 10, boxHeight: 10, padding: 14, usePointStyle: true,
+      }
+    },
+    tooltip: {
+      backgroundColor: 'rgba(28, 25, 23, 0.95)',
+      borderColor: 'rgba(251, 191, 36, 0.4)',
+      borderWidth: 1,
+      titleColor: '#fbbf24',
+      bodyColor: '#f0eaff',
+      padding: 12,
+      cornerRadius: 8,
+      displayColors: true,
+      boxPadding: 6,
+    }
   }
 };
-const grid = { ticks: { color: COL.gray }, grid: { color: 'rgba(155,93,229,0.1)' } };
+const grid = {
+  ticks: { color: COL.gray, font: { size: 11 } },
+  grid: { color: 'rgba(155,93,229,0.08)' }
+};
 const gridY = { ticks: { color: COL.text, font:{size:11} }, grid: { display:false } };
+
+// ── Format percent konsisten: always 1 decimal ──
+function fmtPct(v, forceDec) {
+  if (v == null || !isFinite(v)) return '0.0%';
+  if (forceDec != null) return v.toFixed(forceDec) + '%';
+  return v.toFixed(1) + '%';
+}
+
+// ── Theme-aware color resolver ──
+function getThemeColors() {
+  const root = document.documentElement;
+  const isDark = root.getAttribute('data-theme') !== 'light';
+  const isPremium = document.body?.getAttribute('data-package') === 'premium';
+  return {
+    text: isDark ? '#f0eaff' : '#1c1917',
+    isDark,
+    isPremium,
+    accent: isPremium ? '#fbbf24' : (isDark ? '#b8ff3c' : '#ea580c'),
+  };
+}
+
+// ── Custom Chart.js Plugin: percentage labels (theme-aware) ──
+const percentLabelPlugin = {
+  id: 'percentLabel',
+  afterDatasetsDraw(chart) {
+    if (!chart.options.plugins?.percentLabel?.enabled) return;
+    const { ctx, data } = chart;
+    const ds = data.datasets[chart.datasetIndex || 0];
+    if (!ds) return;
+    const total = ds.data.reduce((a, b) => a + (typeof b === 'number' ? b : 0), 0);
+    if (!total) return;
+
+    const theme = getThemeColors();
+    const isHorizontal = chart.options.indexAxis === 'y';
+
+    ctx.save();
+    ctx.font = '700 12px Inter, sans-serif';
+    ctx.fillStyle = isHorizontal ? '#ffffff' : theme.accent;
+    ctx.textAlign = isHorizontal ? 'left' : 'center';
+    ctx.textBaseline = isHorizontal ? 'middle' : 'bottom';
+
+    const meta = chart.getDatasetMeta(0);
+    meta.data.forEach((bar, i) => {
+      const v = ds.data[i];
+      if (!v || v === 0) return;
+      const pct = (v / total) * 100;
+      if (pct < 1.5) return;
+
+      if (chart.config.type === 'bar') {
+        if (isHorizontal) {
+          // Inside or right of horizontal bar
+          const barW = bar.width || 14;
+          const labelText = fmtPct(pct);
+          const tw = ctx.measureText(labelText).width;
+          const xRight = bar.x + 4;
+          const xLeft = bar.x - tw - 4;
+          // Pick side: if right has room, place outside right; else outside left
+          const x = (xRight + tw < chart.width) ? xRight : Math.max(xLeft, 2);
+          if (x === xRight) {
+            ctx.fillStyle = theme.accent;
+            ctx.textAlign = 'left';
+          } else {
+            ctx.fillStyle = theme.text;
+            ctx.textAlign = 'right';
+          }
+          ctx.fillText(labelText, x, bar.y);
+        } else {
+          // Vertical bar: above
+          ctx.fillStyle = theme.accent;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+          ctx.fillText(fmtPct(pct), bar.x, bar.y - 4);
+        }
+      } else if (chart.config.type === 'doughnut' || chart.config.type === 'pie') {
+        const { x, y } = bar.tooltipPosition();
+        ctx.fillStyle = '#1c1917';
+        ctx.font = '700 13px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(fmtPct(pct), x, y + 4);
+      }
+    });
+    ctx.restore();
+  }
+};
+Chart.register(percentLabelPlugin);
+
 function make(id, cfg){ const el=document.getElementById(id); if(!el) return; new Chart(el, cfg); }
 
 // ── CONDITIONAL CHART INIT: hanya render chart yang canvas ada di page ──
@@ -185,7 +318,7 @@ function chartScoreDist() {
     labels:['1 Bintang','2','3','4','5 Bintang'],
     datasets:[{ label:'Jumlah review', data:[s['1'],s['2'],s['3'],s['4'],s['5']],
       backgroundColor:[COL.red,COL.org,COL.gray,'#a3e635',COL.lime], borderRadius:6 }]
-  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:grid} } });
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:grid} } });
 }
 
 // 2) Score distribution kedua (di section ringkasan)
@@ -195,7 +328,7 @@ function chartScoreDist2() {
     labels:['1','2','3','4','5'],
     datasets:[{ label:'Jumlah review', data:[s['1'],s['2'],s['3'],s['4'],s['5']],
       backgroundColor:[COL.red,COL.org,COL.gray,'#a3e635',COL.lime], borderRadius:6 }]
-  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:grid} } });
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:grid} } });
 }
 
 // 3) Jumlah review per kategori
@@ -204,7 +337,7 @@ function chartCategory() {
   make('chartCategory', { type:'bar', data:{
     labels:c.map(x=>x.category), datasets:[{ label:'Review relevan', data:c.map(x=>x.count),
       backgroundColor:'rgba(155,93,229,0.75)', borderRadius:5 }]
-  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
+  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:gridY} } });
 }
 
 // 4) Tren waktu volume & distress
@@ -223,7 +356,7 @@ function chartBehavior() {
   make('chartBehavior', { type:'bar', data:{
     labels:b.map(x=>x.label), datasets:[{ label:'Jumlah review', data:b.map(x=>x.count),
       backgroundColor:'rgba(184,255,60,0.75)', borderRadius:5 }]
-  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
+  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:gridY} } });
 }
 
 // 6) Kata kunci galbay
@@ -232,17 +365,18 @@ function chartKeywords() {
   make('chartKeywords', { type:'bar', data:{
     labels:k.map(x=>x.label), datasets:[{ label:'Frekuensi', data:k.map(x=>x.count),
       backgroundColor:'rgba(249,115,22,0.8)', borderRadius:5 }]
-  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:gridY} } });
+  }, options:{ ...chartDefaults, indexAxis:'y', plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:gridY} } });
 }
 
 // 7) Metrik evaluasi model
 function chartModel() {
   const mo = D.model || {};
+  const data = [mo.accuracy*100, mo.precision*100, mo.recall*100, mo.f1*100].map(v => +v.toFixed(1));
   make('chartModel', { type:'bar', data:{
     labels:['Accuracy','Precision','Recall','F1-Score'],
-    datasets:[{ label:'Skor (%)', data:[mo.accuracy*100, mo.precision*100, mo.recall*100, mo.f1*100].map(v=>+v.toFixed(1)),
+    datasets:[{ label:'Skor (%)', data:data,
       backgroundColor:[COL.lime,COL.pur,COL.blu,COL.grn], borderRadius:6 }]
-  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}}, scales:{x:grid,y:{...grid,max:100}} } });
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:{...grid,max:100}} } });
 }
 
 // 8) Sentimen per kategori
@@ -257,7 +391,7 @@ function chartSentimentCat() {
       { label:'% Negatif', data:c.map(x=>x.neg_pct), backgroundColor:'rgba(248,113,113,0.85)', borderRadius:5 },
       { label:'% Positif', data:c.map(x=>x.pos_pct), backgroundColor:'rgba(184,255,60,0.85)', borderRadius:5 },
     ]
-  }, options:{ ...chartDefaults, scales:{x:{...grid, ticks:{color:COL.text, font:{size:10}}}, y:{...grid, max:yMax, ticks:{color:COL.gray, callback:(v)=>v+'%'}}} } });
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, percentLabel:{enabled:true}}, scales:{x:{...grid, ticks:{color:COL.text, font:{size:10}}}, y:{...grid, max:yMax, ticks:{color:COL.gray, callback:(v)=>v+'%'}}} } });
 }
 
 // 9) Top aplikasi jumlah ulasan negatif (absolute count)
@@ -280,10 +414,12 @@ function chartTopApps() {
       backgroundColor:colors, borderRadius:5 }]
   }, options:{ ...chartDefaults, indexAxis:'y', plugins:{
     ...chartDefaults.plugins, legend:{display:false},
+    percentLabel:{enabled:true},
     tooltip:{ ...chartDefaults.plugins.tooltip,
       callbacks:{ label:(ctx)=>{
         const app = a[ctx.dataIndex];
-        return ` ${ctx.parsed.x.toLocaleString('id-ID')} ulasan negatif dari ${(app.n||0).toLocaleString('id-ID')} (${(app.neg_pct||0).toFixed(1)}%)`;
+        const pct = (app.neg_pct||0).toFixed(1);
+        return ` ${ctx.parsed.x.toLocaleString('id-ID')} ulasan negatif dari ${(app.n||0).toLocaleString('id-ID')} (${pct}%)`;
       }}
     }
   }, scales:{x:grid,y:gridY} } });
@@ -309,8 +445,9 @@ function chartSentimentDist() {
     cutout:'68%',
     plugins:{
       legend:{ position:'bottom', labels:{ color:COL.text, font:{family:'Inter',size:13}, padding:14, boxWidth:14 } },
+      percentLabel:{enabled:true},
       tooltip:{ backgroundColor:'#120038', borderColor:'rgba(155,93,229,0.4)', borderWidth:1, titleColor:'#f0eaff', bodyColor:COL.text, padding:12,
-        callbacks:{ label:(ctx)=>{ const v=ctx.parsed, total=correct+wrong; const pct=total>0?(v/total*100).toFixed(1):0; return ` ${ctx.label}: ${v.toLocaleString('id-ID')} (${pct}%)`; } } }
+        callbacks:{ label:(ctx)=>{ const v=ctx.parsed, total=correct+wrong; const pct=total>0?(v/total*100):0; return ` ${ctx.label}: ${v.toLocaleString('id-ID')} (${pct.toFixed(1)}%)`; } } }
     }
   }});
 }
@@ -337,7 +474,7 @@ function chartWordcloud() {
     }]
   }, options:{
     ...chartDefaults, indexAxis:'y',
-    plugins:{...chartDefaults.plugins, legend:{display:false}},
+    plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}},
     scales:{x:grid, y:{...gridY, ticks:{...gridY.ticks, font:{size:12, weight:'500'}}}}
   }});
 }

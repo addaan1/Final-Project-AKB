@@ -21,43 +21,46 @@
       <button class="theme-toggle theme-toggle-inline" id="themeToggle" aria-label="Toggle theme">
         <span class="theme-icon">&#9788;</span>
       </button>
-      <a href="{{ url_for('main.dashboard') }}" class="btn-primary" style="padding:9px 20px;">Buka Dashboard</a>
+      <a href="{{ url_for('main.login') }}" class="topnav-cta">Login / Dashboard</a>
     </div>
   </nav>
 
-  <header class="landing-hero">
+  <header class="landing-hero landing-hero-clean">
     <div class="hero-bg-grid"></div>
-    <span class="hero-tag">Big Data · Perilaku Keuangan Gen Z</span>
-    <h1>Mining Perilaku Digital Gen Z untuk Membangun <span>Financial Behavior Coach</span> Berbasis Big Data</h1>
-    <p class="lead">Memetakan fenomena <strong>galbay (gagal bayar)</strong> pinjol dan paylater di kalangan anak muda melalui data mining 349.200 ulasan aplikasi fintech Google Play Store, lalu menerjemahkannya menjadi peluang bisnis yang layak dalam bentuk Business Model Canvas berbasis bukti.</p>
-    <div class="landing-cta">
-      <a href="{{ url_for('main.dashboard') }}" class="btn-primary">Buka Dashboard Analisis</a>
-      <a href="#metode" class="btn-outline">Pelajari Metode</a>
-    </div>
 
-    <div class="landing-stats">
-      <div class="landing-stat"><div class="stat-value" data-fill="total_reviews">-</div><div class="stat-label">Total ulasan dianalisis</div></div>
-      <div class="landing-stat"><div class="stat-value" data-fill="total_relevant">-</div><div class="stat-label">Ulasan relevan tervalidasi</div></div>
-      <div class="landing-stat"><div class="stat-value" data-fill="n_apps">-</div><div class="stat-label">Aplikasi fintech</div></div>
-      <div class="landing-stat"><div class="stat-value" data-fill="distress_pct">-</div><div class="stat-label">Sinyal distress galbay</div></div>
-    </div>
+    <div class="landing-hero-content">
+      <span class="hero-tag">Big Data · Perilaku Keuangan Gen Z</span>
+      <h1>Mining Perilaku Digital Gen Z untuk Membangun <span>Financial Behavior Coach</span> Berbasis Big Data</h1>
+      <p class="lead">Memetakan fenomena <strong>galbay (gagal bayar)</strong> pinjol dan paylater di kalangan anak muda melalui data mining 349.200 ulasan aplikasi fintech Google Play Store, lalu menerjemahkannya menjadi peluang bisnis yang layak dalam bentuk Business Model Canvas berbasis bukti.</p>
+      <div class="landing-cta">
+        <a href="{{ url_for('main.login') }}" class="btn-primary">Buka Dashboard Analisis</a>
+        <a href="#metode" class="btn-outline">Pelajari Metode</a>
+      </div>
 
-    <div class="trust-badges">
-      <div class="trust-badge">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-        <span>Evidence-Based</span>
+      <div class="landing-stats">
+        <div class="landing-stat"><div class="stat-value" data-fill="total_reviews">-</div><div class="stat-label">Total ulasan dianalisis</div></div>
+        <div class="landing-stat"><div class="stat-value" data-fill="total_relevant">-</div><div class="stat-label">Ulasan relevan tervalidasi</div></div>
+        <div class="landing-stat"><div class="stat-value" data-fill="n_apps">-</div><div class="stat-label">Aplikasi fintech</div></div>
+        <div class="landing-stat"><div class="stat-value" data-fill="distress_pct">-</div><div class="stat-label">Sinyal distress galbay</div></div>
       </div>
-      <div class="trust-badge">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        <span>349K Data Points</span>
-      </div>
-      <div class="trust-badge">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <span>No Login Required</span>
-      </div>
-      <div class="trust-badge">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
-        <span>Built for Indonesia</span>
+
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          <span>Evidence-Based</span>
+        </div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <span>349K Data Points</span>
+        </div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Secure Login</span>
+        </div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+          <span>Built for Indonesia</span>
+        </div>
       </div>
     </div>
   </header>

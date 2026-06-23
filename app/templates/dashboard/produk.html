@@ -1,8 +1,18 @@
-{% extends "dashboard/base.html" %}
+﻿{% extends "dashboard/base.html" %}
 
 {% block title %}Coba Produk — Financial Coach & Pinjol Checker{% endblock %}
 
 {% block content %}
+{% if current_user and current_user.is_premium %}
+<div class="premium-welcome">
+  <div class="premium-welcome-icon">👑</div>
+  <div class="premium-welcome-text">
+    <h4>Selamat datang di Premium, {{ current_user.name }}!</h4>
+    <p>Semua fitur terbuka. Nikmati AI Coach 24/7, save unlimited debt plans, dan laporan personal.</p>
+  </div>
+</div>
+{% endif %}
+
 <!-- ========== HERO: Game Changer Highlight ========== -->
 <section class="produk-hero">
   <div class="produk-hero-inner">
@@ -10,7 +20,7 @@
     <h1 class="page-title">Cek <span>Pinjol Legal</span> atau Ilegal</h1>
     <p class="page-lead">Satu-satunya <strong>financial behavior coach</strong> berbasis <strong>349K ulasan nyata</strong> pengguna fintech Indonesia. Tools gratis untuk cek pinjol, simulasi cicilan, dan recovery plan &mdash; tanpa login.</p>
     <div class="hero-cta-group">
-      <a href="#pinjol-checker" class="btn-primary btn-large">🔍 Cek Pinjol</a>
+      <a href="#pinjol-checker" class="btn-primary btn-large">🎯 Cek Pinjol</a>
       <a href="#debt-planner" class="btn-outline btn-large">💰 Debt Planner</a>
     </div>
     <div class="privacy-notice">
@@ -23,7 +33,7 @@
 <!-- ========== FITUR 1: PINJOL BLACKLIST CHECKER (GAME CHANGER) ========== -->
 <section class="page-section" id="pinjol-checker">
   <div class="page-header">
-    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; Pinjol Blacklist Checker</span>
+    <span class="section-tag game-changer-tag">🛡️ Fitur Unggulan &middot; Pinjol Blacklist Checker</span>
     <h1 class="page-title">Pinjol yang Kamu Pakai <span>Legal</span> atau Ilegal?</h1>
     <p class="page-lead">Cek apakah aplikasi pinjol yang kamu pakai <strong>terdaftar OJK</strong> atau masuk daftar hitam. Data berdasarkan database internal + referensi publik OJK.</p>
     <div class="demo-badge">
@@ -42,7 +52,7 @@
         </datalist>
         <p class="form-hint">Cek nama persis, atau ketik sebagian (misal "blu" akan match dengan "blu by BCA Digital")</p>
       </div>
-      <button type="submit" class="btn-primary btn-large btn-full">🔍 Cek Status Pinjol</button>
+      <button type="submit" class="btn-primary btn-large btn-full">🎯 Cek Status Pinjol</button>
     </form>
 
     <div class="pinjol-result" id="pinjolResult">
@@ -54,13 +64,28 @@
   </div>
 </section>
 
-<!-- ========== FITUR 2: DEBT SNOWBALL/AVALANCHE PLANNER ========== -->
-<section class="page-section page-alt" id="debt-planner">
+<!-- ========== FITUR 2: DEBT SNOWBALL/AVALANCHE PLANNER (PREMIUM) ========== -->
+<section class="page-section page-alt {% if not (current_user and current_user.is_premium) %}feature-locked{% endif %}" id="debt-planner">
   <div class="page-header">
-    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; Debt Planner</span>
+    <span class="section-tag game-changer-tag">🛡️ Fitur Unggulan &middot; Debt Planner<span class="premium-section-badge">👑 Premium</span></span>
     <h1 class="page-title">Bayar <span>Multiple Utang</span> dengan Strategi Tepat</h1>
     <p class="page-lead">Input semua utang kamu. Sistem hitung <strong>2 strategi</strong>: Snowball (bayar terkecil dulu, motivasi) atau Avalanche (bayar bunga tertinggi dulu, hemat). Lengkap dengan timeline lunas.</p>
   </div>
+  {% if not (current_user and current_user.is_premium) %}
+  <div class="lock-overlay">
+    <button type="button" class="lock-close" aria-label="Tutup overlay" data-lock-dismiss="debt-planner">&times;</button>
+    <div class="lock-icon">🏆</div>
+    <h3 class="lock-title">Fitur Premium</h3>
+    <p class="lock-desc">Debt Planner lengkap dengan save unlimited &amp; export PDF hanya untuk pengguna Premium.</p>
+    <a href="{{ url_for('main.upgrade_to_premium') }}" class="lock-upgrade" onclick="event.preventDefault(); document.getElementById('premiumModal')?.classList.contains('open') || showPremiumModal();">👑 Upgrade Sekarang</a>
+    <div class="lock-meta">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      100 user pertama diskon 50%
+    </div>
+    <div class="lock-divider"><span>atau</span></div>
+    <a href="#skor-form" class="lock-free-link" data-lock-dismiss="debt-planner">Coba Skor Risiko gratis 🎯</a>
+  </div>
+  {% endif %}
 
   <div class="planner-layout">
     <div class="planner-form">
@@ -99,35 +124,10 @@
   </div>
 </section>
 
-<!-- ========== FITUR 3: DC SURVIVAL KIT ========== -->
-<section class="page-section" id="dc-kit">
+<!-- ========== FITUR 4: GALBAY RECOVERY ROADMAP (PREMIUM) ========== -->
+<section class="page-section page-alt {% if not (current_user and current_user.is_premium) %}feature-locked{% endif %}" id="recovery-roadmap">
   <div class="page-header">
-    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; DC Survival Kit</span>
-    <h1 class="page-title">Template <span>Chat untuk Debt Collector</span></h1>
-    <p class="page-lead">5 template siap pakai untuk negosiasi dengan debt collector. Berbasis <strong>UU PDP, UU ITE, Permenkominfo</strong>. Copy, edit, kirim via WhatsApp.</p>
-  </div>
-
-  <div class="dc-kit-grid" id="dcKitGrid">
-    <div class="skor-placeholder" style="grid-column:1/-1;">
-      <p>Memuat template...</p>
-    </div>
-  </div>
-
-  <div class="dc-rights-box">
-    <h4>Hak Kamu sebagai Borrower</h4>
-    <ul id="dcRightsList"></ul>
-  </div>
-
-  <div class="dc-contacts-box">
-    <h4>Kontak Darurat</h4>
-    <div class="dc-contacts-grid" id="dcContactsGrid"></div>
-  </div>
-</section>
-
-<!-- ========== FITUR 4: GALBAY RECOVERY ROADMAP ========== -->
-<section class="page-section page-alt" id="recovery-roadmap">
-  <div class="page-header">
-    <span class="section-tag game-changer-tag">⭐ Fitur Unggulan &middot; Recovery Roadmap</span>
+    <span class="section-tag game-changer-tag">🛡️ Fitur Unggulan &middot; Recovery Roadmap<span class="premium-section-badge">👑 Premium</span></span>
     <h1 class="page-title">Roadmap <span>30/60/90 Hari</span> Keluar dari Galbay</h1>
     <p class="page-lead">Masukkan kondisi kamu saat ini. Sistem generate <strong>roadmap personal</strong> langkah-demi-langkah untuk keluar dari galbay dalam 90 hari, disesuaikan dengan severity.</p>
   </div>
@@ -153,7 +153,7 @@
         <label>Sudah telat berapa hari?</label>
         <input type="number" id="rmHariTelat" class="form-input" min="0" value="15">
       </div>
-      <button type="submit" class="btn-primary btn-large btn-full">🗺️ Generate Roadmap Saya</button>
+      <button type="submit" class="btn-primary btn-large btn-full">🛍️ Generate Roadmap Saya</button>
     </form>
 
     <div class="roadmap-result" id="roadmapResult">
@@ -163,6 +163,21 @@
       </div>
     </div>
   </div>
+  {% if not (current_user and current_user.is_premium) %}
+  <div class="lock-overlay">
+    <button type="button" class="lock-close" aria-label="Tutup overlay" data-lock-dismiss="recovery-roadmap">&times;</button>
+    <div class="lock-icon">🏆</div>
+    <h3 class="lock-title">Fitur Premium</h3>
+    <p class="lock-desc">Roadmap personal 30/60/90 hari dengan severity analysis &amp; save unlimited.</p>
+    <a href="#" class="lock-upgrade" onclick="event.preventDefault(); showPremiumModal();">👑 Upgrade Sekarang</a>
+    <div class="lock-meta">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      100 user pertama diskon 50%
+    </div>
+    <div class="lock-divider"><span>atau</span></div>
+    <a href="#simulasi" class="lock-free-link" data-lock-dismiss="recovery-roadmap">Coba Simulasi Cicilan gratis 🎯</a>
+  </div>
+  {% endif %}
 </section>
 
 <!-- ========== FITUR LAMA: SKOR RISIKO GALBAY (demoted) ========== -->
@@ -329,6 +344,58 @@
   </div>
 </section>
 
+<!-- ========== FREE vs PREMIUM COMPARISON ========== -->
+<section class="page-section" id="comparison">
+  <div class="page-header">
+    <span class="section-tag">Perbandingan</span>
+    <h1 class="page-title">Free <span>vs</span> Premium</h1>
+    <p class="page-lead">Lihat perbedaan fitur antara akun Free dan Premium. Cocokkan dengan kebutuhan kamu.</p>
+  </div>
+
+  <div class="feature-comparison">
+    <div class="feature-comparison-header">
+      <div>Fitur</div>
+      <div>Free</div>
+      <div class="fc-col-premium">👑 Premium</div>
+    </div>
+    <div class="feature-comparison-row">
+      <div class="feature-comparison-name">🎯 Pinjol Checker</div>
+      <div class="fc-cell"><span class="fc-check">✅</span> 50+ app</div>
+      <div class="fc-cell fc-premium"><span class="fc-check">✅</span> 50+ app + alerts</div>
+    </div>
+    <div class="feature-comparison-row">
+      <div class="feature-comparison-name">📊 Skor Risiko Galbay</div>
+      <div class="fc-cell"><span class="fc-check">✅</span> Full</div>
+      <div class="fc-cell fc-premium"><span class="fc-check">✅</span> + Riwayat</div>
+    </div>
+    <div class="feature-comparison-row">
+      <div class="feature-comparison-name">🎮 Simulasi Cicilan</div>
+      <div class="fc-cell"><span class="fc-check">✅</span> Real-time</div>
+      <div class="fc-cell fc-premium"><span class="fc-check">✅</span> + Save &amp; Compare</div>
+    </div>
+    <div class="feature-comparison-row">
+      <div class="feature-comparison-name">💰 Debt Planner (Snowball/Avalanche)</div>
+      <div class="fc-cell"><span class="fc-x">—</span></div>
+      <div class="fc-cell fc-premium"><span class="fc-check">✅</span> Unlimited plans</div>
+    </div>
+    <div class="feature-comparison-row">
+      <div class="feature-comparison-name">🛍️ Recovery Roadmap 30/60/90</div>
+      <div class="fc-cell"><span class="fc-x">—</span></div>
+      <div class="fc-cell fc-premium"><span class="fc-check">✅</span> Personal + save</div>
+    </div>
+    <div class="feature-comparison-row">
+      <div class="feature-comparison-name">🤖 AI Chatbot Coach</div>
+      <div class="fc-cell"><span class="fc-x">—</span></div>
+      <div class="fc-cell fc-premium"><span class="fc-check">✅</span> Unlimited 24/7</div>
+    </div>
+    <div class="feature-comparison-row">
+      <div class="feature-comparison-name">🌞 Laporan Bulanan Personal</div>
+      <div class="fc-cell"><span class="fc-x">—</span></div>
+      <div class="fc-cell fc-premium"><span class="fc-check">✅</span> Export PDF</div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== PRICING + WAITLIST ========== -->
 <section class="page-section page-alt" id="pricing">
   <div class="page-header">
@@ -363,7 +430,11 @@
         <li>Save unlimited debt plans</li>
         <li>Priority DC template updates</li>
       </ul>
-      <button class="btn-primary btn-full" data-waitlist="premium">Coba Premium</button>
+      {% if current_user and current_user.is_premium %}
+      <button class="btn-outline btn-full" disabled>📊 Premium Aktif</button>
+      {% else %}
+      <button class="btn-primary btn-full" data-waitlist="premium">{{ 'Coba Premium' if not current_user else '👑 Upgrade Sekarang' }}</button>
+      {% endif %}
     </div>
     <div class="pricing-card">
       <div class="pricing-name">Konseling</div>
@@ -411,14 +482,14 @@
         <div class="premium-benefit"><span class="premium-benefit-icon">🚀</span><span>AI Coach 24/7</span></div>
         <div class="premium-benefit"><span class="premium-benefit-icon">📊</span><span>Laporan Personal</span></div>
         <div class="premium-benefit"><span class="premium-benefit-icon">🎯</span><span>Nudge Real-time</span></div>
-        <div class="premium-benefit"><span class="premium-benefit-icon">💎</span><span>Save Unlimited</span></div>
-        <div class="premium-benefit"><span class="premium-benefit-icon">⚡</span><span>Priority Update</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">🎯</span><span>Save Unlimited</span></div>
+        <div class="premium-benefit"><span class="premium-benefit-icon">💡</span><span>Priority Update</span></div>
         <div class="premium-benefit"><span class="premium-benefit-icon">🛡️</span><span>Data Privat</span></div>
       </div>
       <form class="premium-form" id="premiumForm">
         <input type="text" id="premiumName" placeholder="Nama kamu" required autocomplete="name">
         <input type="email" id="premiumEmail" placeholder="email@kamu.com" required autocomplete="email">
-        <button type="submit" class="premium-submit">✨ Aktivasi Premium</button>
+        <button type="submit" class="premium-submit">✅ Aktivasi Premium</button>
       </form>
       <div class="premium-trust">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>

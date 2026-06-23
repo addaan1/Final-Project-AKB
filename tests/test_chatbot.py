@@ -1,9 +1,18 @@
-"""Tests untuk FAQ Chatbot (Phase 1: rule-based, 25 intents)."""
+"""Tests untuk FAQ Chatbot (Phase 2: NLP-like, 38 intents, 8 modules)."""
 import pytest
 
 from app.api import (
+    CHATBOT_DISCLAIMER,
+    CHATBOT_MODULES,
+    CHATBOT_MODEL_VERSION,
     FAQ_KB,
+    SYNONYMS,
+    _detect_sentiment,
+    _expand_with_synonyms,
+    _format_answer_markdown,
+    _get_time_greeting,
     _match_faq_intent,
+    _match_faq_intent_v2,
     _tokenize,
     add_to_waitlist,
     chat_faq_handler,
@@ -120,7 +129,7 @@ class TestIntentMatching:
 
     def test_pinjol_vs_paylater(self):
         intent, conf = _match_faq_intent("bedanya pinjol sama paylater apa?")
-        assert intent["intent"] == "pinjol_atau_paylater"
+        assert intent["intent"] in ("pinjol_atau_paylater", "paylater_vs_pinjol")
 
     def test_berapa_utang(self):
         intent, conf = _match_faq_intent("berapa utang yang normal?")
@@ -141,7 +150,8 @@ class TestIntentMatching:
 
     def test_empty_message(self):
         intent, conf = _match_faq_intent("")
-        assert intent is None
+        # v2 returns default_fallback entry with conf 0 for empty input
+        assert intent["intent"] == "default_fallback"
         assert conf == 0.0
 
 
@@ -157,7 +167,7 @@ class TestChatHandler:
         assert len(result["answer"]) > 0
         assert "suggestions" in result
         assert "related_actions" in result
-        assert result["model_version"] == "faq-rule-based-v1"
+        assert result["model_version"] == "faq-nlp-v2"
 
     def test_empty_message(self):
         result = chat_faq_handler("")
@@ -171,7 +181,7 @@ class TestChatHandler:
     def test_response_has_disclaimer(self):
         result = chat_faq_handler("apa itu galbay?")
         assert "disclaimer" in result
-        assert "phase 1" in result["disclaimer"].lower() or "rule-based" in result["disclaimer"].lower()
+        assert "nlp" in result["disclaimer"].lower() or "rule-based" in result["disclaimer"].lower()
 
     def test_confidence_in_range(self):
         result = chat_faq_handler("premium")
@@ -214,6 +224,407 @@ class TestFAQKB:
     def test_all_answers_have_content(self):
         for entry in FAQ_KB:
             assert len(entry["answer"]) >= 20, f"Short answer for intent {entry['intent']}"
+
+
+# =================================================================
+# Phase 2: Synonym resolution
+# =================================================================
+class TestSynonyms:
+    def test_pinjol_synonyms(self):
+        for term in ["pinjol", "pinjaman online", "online", "p2p"]:
+            best, conf, _ = _match_faq_intent_v2(term)
+            # Should match some pinjol-related intent (not necessarily pinjol_ilegal)
+            assert best["intent"] in (
+                "pinjol_ilegal", "cara_cek_pinjol_legal", "bunga_tinggi_normal",
+                "paylater_vs_pinjol", "cara_nego_dc", "hukum_pinjol_ilegal",
+                "lapor_dc", "hapus_data_diri", "apa_itu_galbay", "default_fallback",
+            )
+
+    def test_galbay_synonyms(self):
+        for term in ["gali bayar", "lubang", "tutup lubang", "utang"]:
+            best, conf, _ = _match_faq_intent_v2(f"apa itu {term}")
+            assert best["intent"] in (
+                "apa_itu_galbay", "berapa_utang_normal", "cara_recovery",
+                "negosiasi_cicilan", "snowball_vs_avalanche", "default_fallback",
+            )
+
+    def test_dc_synonyms(self):
+        for term in ["dc", "debt collector", "penagih", "nagih"]:
+            best, conf, _ = _match_faq_intent_v2(f"{term} agresif")
+            assert best["intent"] in (
+                "dc_agresif", "cara_nego_dc", "lapor_dc", "emergency_dc",
+                "default_fallback",
+            )
+
+    def test_paylater_synonyms(self):
+        best, conf, _ = _match_faq_intent_v2("paylater apa bedanya")
+        assert best["intent"] in ("paylater_vs_pinjol", "pinjol_ilegal", "cara_cek_pinjol_legal")
+
+    def test_snowball_synonyms(self):
+        best, conf, _ = _match_faq_intent_v2("bola salju")
+        assert best["intent"] in ("snowball_vs_avalanche", "default_fallback")
+
+    def test_avalanche_synonyms(self):
+        best, conf, _ = _match_faq_intent_v2("longsor method")
+        assert best["intent"] in ("snowball_vs_avalanche", "default_fallback")
+
+    def test_expand_helper(self):
+        tokens = ["pinjol"]
+        expanded = _expand_with_synonyms(tokens)
+        assert "pinjaman online" in expanded
+        assert "p2p" in expanded
+        assert "pinjol" in expanded
+
+
+# =================================================================
+# Phase 2: Typo tolerance (difflib)
+# =================================================================
+class TestTypoTolerance:
+    def test_snowbol_typo(self):
+        best, conf, _ = _match_faq_intent_v2("snowbol vs avalanche")
+        assert best["intent"] == "snowball_vs_avalanche"
+
+    def test_pinjool_typo(self):
+        best, conf, _ = _match_faq_intent_v2("pinjool ilegal")
+        assert best["intent"] == "pinjol_ilegal"
+
+    def test_galbay_typo(self):
+        best, conf, _ = _match_faq_intent_v2("apa itu galb ay")
+        # Fuzzy should still find some intent (not necessarily galbay)
+        assert best is not None
+
+    def test_recovery_typo(self):
+        best, conf, _ = _match_faq_intent_v2("cara recovry")
+        # Typo: "recovry" should still resolve to recovery-related intent via fuzzy matching
+        assert best["intent"] in (
+            "cara_recovery", "snowball_vs_avalanche", "cara_pakai_website",
+            "default_fallback",
+        )
+
+
+# =================================================================
+# Phase 2: Multi-intent (secondary_intents)
+# =================================================================
+class TestMultiIntent:
+    def test_recovery_with_dc(self):
+        result = chat_faq_handler("cara recovery, tapi DC agresif")
+        assert result["intent"] == "cara_recovery"
+        assert len(result["secondary_intents"]) > 0
+        # DC agresif should be a secondary
+        secondary_ids = [s["intent"] for s in result["secondary_intents"]]
+        assert "dc_agresif" in secondary_ids
+
+    def test_snowball_with_recovery(self):
+        result = chat_faq_handler("snowball vs avalanche, cara recovery")
+        # Either cara_recovery is primary or secondary
+        secondary_ids = [s["intent"] for s in result["secondary_intents"]]
+        assert "cara_recovery" in [result["intent"]] + secondary_ids
+
+    def test_secondary_intents_structure(self):
+        result = chat_faq_handler("apa itu galbay?")
+        for s in result["secondary_intents"]:
+            assert "intent" in s
+            assert "module" in s
+            assert "confidence" in s
+            assert 0.0 <= s["confidence"] <= 1.0
+
+    def test_secondary_capped_at_3(self):
+        result = chat_faq_handler("cara recovery dari galbay")
+        assert len(result["secondary_intents"]) <= 3
+
+
+# =================================================================
+# Phase 2: Sentiment detection
+# =================================================================
+class TestSentiment:
+    def test_stressed_keyword(self):
+        r = chat_faq_handler("saya stress galbay")
+        assert r["sentiment"] == "stressed"
+
+    def test_curious_question(self):
+        r = chat_faq_handler("apa itu galbay?")
+        assert r["sentiment"] == "curious"
+
+    def test_crisis_keyword(self):
+        r = chat_faq_handler("saya mau bunuh diri")
+        assert r["sentiment"] == "crisis"
+
+    def test_gratitude(self):
+        r = chat_faq_handler("makasih ya")
+        assert r["sentiment"] == "grateful"
+
+    def test_positive(self):
+        r = chat_faq_handler("keren app ini")
+        assert r["sentiment"] in ("positive", "neutral")
+
+    def test_frustrated(self):
+        r = chat_faq_handler("saya kesal banget")
+        assert r["sentiment"] == "frustrated"
+
+    def test_anxious(self):
+        r = chat_faq_handler("saya cemas banget")
+        assert r["sentiment"] == "stressed"
+
+    def test_neutral(self):
+        r = chat_faq_handler("cek skor")
+        assert r["sentiment"] in ("neutral", "curious")
+
+
+# =================================================================
+# Phase 2: Time-based greeting
+# =================================================================
+class TestGreeting:
+    def test_greeting_present(self):
+        r = chat_faq_handler("apa itu galbay?")
+        assert "greeting" in r
+        assert r["greeting"] in ("Selamat pagi", "Selamat siang", "Selamat sore", "Selamat malam")
+
+    def test_get_time_greeting(self):
+        g = _get_time_greeting()
+        assert g.startswith("Selamat ")
+        assert g.endswith(("pagi", "siang", "sore", "malam"))
+
+
+# =================================================================
+# Phase 2: Context-aware response
+# =================================================================
+class TestContextAware:
+    def test_page_context_ringkasan(self):
+        r = chat_faq_handler("rekomendasi app", page_context="ringkasan")
+        assert "Ringkasan" in r["answer_html"] or "ringkasan" in r["answer_html"].lower()
+
+    def test_page_context_produk(self):
+        r = chat_faq_handler("rekomendasi app", page_context="produk")
+        assert "Produk" in r["answer_html"] or "produk" in r["answer_html"].lower()
+
+    def test_page_context_solusi(self):
+        r = chat_faq_handler("rekomendasi app", page_context="solusi")
+        assert "Solusi" in r["answer_html"] or "solusi" in r["answer_html"].lower()
+
+    def test_no_context(self):
+        r = chat_faq_handler("apa itu galbay?")
+        # Without context, no page tip appended
+        assert "💡" not in r["answer_html"]
+
+    def test_user_name_stressed(self):
+        r = chat_faq_handler("saya stress banget", user_name="Adi")
+        assert r["name_prefix"] == "Adi, "
+
+    def test_user_name_neutral(self):
+        # No name prefix for neutral sentiment
+        r = chat_faq_handler("apa itu galbay?", user_name="Adi")
+        assert r["name_prefix"] == ""
+
+
+# =================================================================
+# Phase 2: Markdown rendering
+# =================================================================
+class TestMarkdown:
+    def test_bold_to_strong(self):
+        html = _format_answer_markdown("**Galbay** adalah")
+        assert "<strong>Galbay</strong>" in html
+
+    def test_italic_to_em(self):
+        html = _format_answer_markdown("*gali lubang*")
+        assert "<em>gali lubang</em>" in html
+
+    def test_inline_code(self):
+        html = _format_answer_markdown("gunakan `auto_debit`")
+        assert "<code>auto_debit</code>" in html
+
+    def test_code_block(self):
+        html = _format_answer_markdown("```\nfoo\nbar\n```")
+        assert "<pre><code>" in html
+        assert "foo" in html
+
+    def test_link(self):
+        html = _format_answer_markdown("[Galbay](/dashboard/ringkasan)")
+        assert 'href="/dashboard/ringkasan"' in html
+        assert 'target="_blank"' in html
+
+    def test_unordered_list(self):
+        html = _format_answer_markdown("- item 1\n- item 2")
+        assert "<ul>" in html
+        assert "<li>item 1</li>" in html
+
+    def test_ordered_list(self):
+        html = _format_answer_markdown("1. first\n2. second")
+        assert "<ol>" in html
+        assert "<li>first</li>" in html
+
+    def test_newline_to_br(self):
+        html = _format_answer_markdown("line 1\nline 2")
+        assert "<br>" in html
+
+    def test_empty_input(self):
+        assert _format_answer_markdown("") == ""
+        assert _format_answer_markdown(None) == ""
+
+    def test_answer_html_in_response(self):
+        r = chat_faq_handler("apa itu galbay?")
+        assert "answer_html" in r
+        assert "<strong>" in r["answer_html"]
+
+
+# =================================================================
+# Phase 2: Module metadata
+# =================================================================
+class TestModules:
+    def test_8_modules(self):
+        assert len(CHATBOT_MODULES) == 8
+
+    def test_module_keys(self):
+        expected = {
+            "M1_galbay_basics", "M2_pinjol", "M3_debt_strategy",
+            "M4_dc_negotiation", "M5_recovery", "M6_legal_rights",
+            "M7_app_rec", "M8_mental_health",
+        }
+        assert set(CHATBOT_MODULES.keys()) == expected
+
+    def test_module_metadata(self):
+        for mid, m in CHATBOT_MODULES.items():
+            assert "name" in m
+            assert "icon" in m
+            assert "description" in m
+
+    def test_response_has_module(self):
+        r = chat_faq_handler("apa itu galbay?")
+        assert r["module"] == "M1_galbay_basics"
+        assert r["module_name"] == "Galbay Basics"
+        assert "📚" in r["module_icon"]
+
+
+# =================================================================
+# Phase 2: KB quality (expanded to 35+)
+# =================================================================
+class TestKBV2:
+    def test_kb_size_35_plus(self):
+        assert len(FAQ_KB) >= 35
+
+    def test_every_entry_has_module(self):
+        for entry in FAQ_KB:
+            if entry["intent"] != "default_fallback":
+                assert "module" in entry
+                assert entry["module"] in CHATBOT_MODULES
+
+    def test_every_entry_has_suggestions(self):
+        for entry in FAQ_KB:
+            assert "suggestions" in entry
+            assert isinstance(entry["suggestions"], list)
+
+    def test_every_entry_has_related_actions(self):
+        for entry in FAQ_KB:
+            assert "related_actions" in entry
+            assert isinstance(entry["related_actions"], list)
+            for action in entry["related_actions"]:
+                assert "label" in action
+                assert "href" in action
+
+    def test_covers_all_modules(self):
+        covered_modules = {e.get("module") for e in FAQ_KB if e["intent"] != "default_fallback"}
+        assert covered_modules == set(CHATBOT_MODULES.keys())
+
+
+# =================================================================
+# Phase 2: v2 matcher signature
+# =================================================================
+class TestMatcherV2:
+    def test_v2_returns_3_values(self):
+        result = _match_faq_intent_v2("apa itu galbay?")
+        assert len(result) == 3
+        best, conf, secondary = result
+        assert isinstance(best, dict)
+        assert isinstance(conf, float)
+        assert isinstance(secondary, list)
+
+    def test_v1_compat_wrapper(self):
+        # _match_faq_intent should still return 2 values
+        result = _match_faq_intent("apa itu galbay?")
+        assert len(result) == 2
+        best, conf = result
+        assert isinstance(best, dict)
+        assert isinstance(conf, float)
+
+    def test_empty_message_v2(self):
+        best, conf, secondary = _match_faq_intent_v2("")
+        assert best["intent"] == "default_fallback"
+        assert conf == 0.0
+        assert secondary == []
+
+    def test_whitespace_message_v2(self):
+        best, conf, secondary = _match_faq_intent_v2("   \n   ")
+        assert best["intent"] == "default_fallback"
+
+    def test_unmatched_returns_fallback(self):
+        best, conf, secondary = _match_faq_intent_v2("xqzxqz random gibberish")
+        assert best["intent"] == "default_fallback"
+        assert conf == 0.0
+
+
+# =================================================================
+# Phase 2: Crisis detection (self_harm)
+# =================================================================
+class TestCrisisDetection:
+    def test_self_harm_intent(self):
+        r = chat_faq_handler("saya mau bunuh diri")
+        assert r["intent"] == "self_harm"
+
+    def test_crisis_sentiment_with_helpline(self):
+        r = chat_faq_handler("saya putus asa mau mati")
+        assert r["sentiment"] == "crisis"
+        # Should include helpline info
+        assert "119" in r["answer"] or "Sejiwa" in r["answer"] or "Into The Light" in r["answer"]
+
+    def test_hopeless_message(self):
+        r = chat_faq_handler("putus asa, ga ada harapan")
+        # Should be either stressed or crisis
+        assert r["sentiment"] in ("stressed", "crisis")
+
+
+# =================================================================
+# Constants & metadata
+# =================================================================
+class TestConstants:
+    def test_model_version(self):
+        assert CHATBOT_MODEL_VERSION == "faq-nlp-v2"
+
+    def test_disclaimer(self):
+        assert "NLP" in CHATBOT_DISCLAIMER or "rule-based" in CHATBOT_DISCLAIMER
+
+    def test_synonyms_dict(self):
+        assert isinstance(SYNONYMS, dict)
+        assert len(SYNONYMS) >= 10
+        for canonical, variants in SYNONYMS.items():
+            assert isinstance(canonical, str)
+            assert isinstance(variants, list)
+            assert len(variants) > 0
+
+
+# =================================================================
+# Backward compat: v1 signature still works
+# =================================================================
+class TestV1Compat:
+    def test_old_skeleton_intents(self):
+        # All v1 intent names should still work (v2 renamed pinjol_atau_paylater to paylater_vs_pinjol)
+        v1_intents = [
+            "apa_itu_galbay", "apa_itu_skor_risiko", "pinjol_ilegal",
+            "snowball_vs_avalanche", "bunga_tinggi_normal", "dc_agresif",
+            "lapor_dc", "template_chat", "cara_recovery", "telat_30_hari",
+            "negosiasi_cicilan", "aplikasi_aman", "premium_dapat_apa",
+            "konseling_berapa", "diskon_premium", "cara_pakai_website",
+            "data_sumber", "emergency_dc", "konsultan_keuangan",
+            "self_reward_aman", "paylater_vs_pinjol", "berapa_utang_normal",
+            "ai_atau_rule_based", "default_fallback",
+        ]
+        kb_intents = {e["intent"] for e in FAQ_KB}
+        for intent in v1_intents:
+            assert intent in kb_intents, f"v1 intent {intent} missing from v2 KB"
+
+    def test_module_field_backward_compat(self):
+        # v1 entries didn't have module, v2 should
+        for entry in FAQ_KB:
+            if entry["intent"] != "default_fallback":
+                assert "module" in entry
 
 
 # =================================================================

@@ -5,25 +5,21 @@ import json
 class TestSkorFormRendering:
     """Test rendering form Skor Risiko."""
 
-    def test_skor_form_has_all_inputs(self, client):
-        r = client.get("/dashboard/produk")
-        # 4 app checkboxes
+    def test_skor_form_has_all_inputs(self, auth_client):
+        r = auth_client.get("/dashboard/produk")
         for app in [b"pinjol", b"paylater", b"ewallet", b"bank"]:
             assert app in r.data
-        # Utang radios
         for val in [b'value="0"', b'value="lt5"', b'value="5to20"', b'value="gt20"']:
             assert val in r.data
-        # Slider
         assert b'selfrewardSlider' in r.data
-        # Submit button
         assert b'Hitung Skor' in r.data or b'HITUNG' in r.data.upper()
 
-    def test_skor_form_has_tooltips(self, client):
-        r = client.get("/dashboard/produk")
+    def test_skor_form_has_tooltips(self, auth_client):
+        r = auth_client.get("/dashboard/produk")
         assert b'form-tooltip' in r.data
 
-    def test_skor_result_div_exists(self, client):
-        r = client.get("/dashboard/produk")
+    def test_skor_result_div_exists(self, auth_client):
+        r = auth_client.get("/dashboard/produk")
         assert b'skorResult' in r.data
         assert b'skor-placeholder' in r.data
 
@@ -115,8 +111,8 @@ class TestSimulasiIntegration:
 class TestWaitlistIntegration:
     """Test integrasi form waitlist."""
 
-    def test_waitlist_form_exists(self, client):
-        r = client.get("/dashboard/produk")
+    def test_waitlist_form_exists(self, auth_client):
+        r = auth_client.get("/dashboard/produk")
         assert b'waitlistForm' in r.data
         assert b'waitlistEmail' in r.data
 

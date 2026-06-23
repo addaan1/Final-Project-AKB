@@ -7,21 +7,13 @@
   <div class="page-header">
     <span class="section-tag">B &middot; Data Mining dan Analisis</span>
     <h1 class="page-title">Dari <span>Data Mentah</span> Menuju Insight</h1>
-    <p class="page-lead">Data dikumpulkan dari <strong>Google Play Store</strong> (349K ulasan dari 44 aplikasi fintech), lalu dibersihkan, divalidasi relevansinya dengan 65+ kata kunci psikologis, dan dianalisis sentimen menggunakan VADER Lexicon.</p>
+    <p class="page-lead">Data dikumpulkan dari <strong>Google Play Store</strong> (<span data-fill="total_reviews_fmt">-</span> ulasan dari <span data-fill="n_apps">-</span> aplikasi fintech), lalu dibersihkan, divalidasi relevansinya dengan 65+ kata kunci psikologis, dan dianalisis sentimen menggunakan Multinomial Naive Bayes (from scratch).</p>
   </div>
 
   <div class="source-badges">
     <span class="source-badge badge-google">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"/></svg>
-      Google Play Reviews
-    </span>
-    <span class="source-badge badge-forum">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17 9V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2v3l3-3h6a2 2 0 0 0 2-2v-1h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2z"/></svg>
-      Forum Kaskus (152)
-    </span>
-    <span class="source-badge badge-news">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m0 2v3h16V6H4m0 5v7h16v-7H4z"/></svg>
-      OJK + Media (163)
+      <span data-fill="total_reviews_fmt">-</span> Ulasan Google Play
     </span>
   </div>
 
@@ -29,17 +21,17 @@
     <div class="chart-card">
       <div class="chart-header">
         <div class="chart-title">Distribusi Rating Ulasan</div>
-        <div class="chart-subtitle">349K ulasan dari 44 aplikasi fintech</div>
+        <div class="chart-subtitle"><span data-fill="total_reviews_fmt">-</span> ulasan dari <span data-fill="n_apps">-</span> aplikasi fintech</div>
       </div>
       <div class="chart-wrap"><canvas id="chartScoreDist"></canvas></div>
       <div class="insight-box">
-        <p>Skor 5 bintang mendominasi (<strong>235.986 ulasan</strong>), tapi skor 1 juga tinggi (<strong>69.931 ulasan</strong>). Polarisasi ini khas ulasan app store.</p>
+        <p>Skor 5 bintang mendominasi (<strong><span data-fill="score_5_count">-</span> ulasan</strong>), tapi skor 1 juga tinggi (<strong><span data-fill="score_1_count">-</span> ulasan</strong>). Polarisasi ini khas ulasan app store.</p>
       </div>
     </div>
     <div class="chart-card">
       <div class="chart-header">
         <div class="chart-title">Ulasan Relevan per Kategori</div>
-        <div class="chart-subtitle">Filter: ulasan mengandung kata kunci galbay</div>
+        <div class="chart-subtitle">Filter: <span data-fill="total_relevant_fmt">-</span> ulasan mengandung kata kunci galbay</div>
       </div>
       <div class="chart-wrap"><canvas id="chartCategory"></canvas></div>
       <div class="insight-box">
@@ -51,7 +43,7 @@
   <div class="chart-card chart-full">
     <div class="chart-header">
       <div class="chart-title">Top 10 Aplikasi dengan Ulasan Negatif Terbanyak</div>
-      <div class="chart-subtitle">Diurutkan berdasarkan rasio sentimen negatif (VADER)</div>
+      <div class="chart-subtitle">Diurutkan berdasarkan rasio sentimen negatif (Multinomial Naive Bayes)</div>
     </div>
     <div class="table-wrap">
       <table class="top-apps-table" id="topAppsTable">
@@ -82,7 +74,7 @@
   <div class="page-header">
     <span class="section-tag">Pemodelan dan Pengujian</span>
     <h1 class="page-title">Hasil <span>Modelling</span> Klasifikasi Sentimen</h1>
-    <p class="page-lead">Model <strong>VADER Lexicon</strong> (NLTK) digunakan untuk klasifikasi sentimen positif vs negatif pada 349K ulasan. VADER cocok untuk teks informal dan bahasa media sosial.</p>
+    <p class="page-lead">Model <strong>Multinomial Naive Bayes</strong> (from scratch, di-train di <span data-fill="n_train_fmt">-</span> ulasan) untuk klasifikasi sentimen positif vs negatif, diuji di <span data-fill="n_test_fmt">-</span> ulasan. Vocab: <span data-fill="vocab_fmt">-</span> kata.</p>
   </div>
 
   <div class="metric-grid">
@@ -96,21 +88,21 @@
     <div class="chart-card">
       <div class="chart-header">
         <div class="chart-title">Metrik Evaluasi Model</div>
-        <div class="chart-subtitle">Performa pada data uji</div>
+        <div class="chart-subtitle">Performa pada <span data-fill="n_test_fmt">-</span> data uji</div>
       </div>
       <div class="chart-wrap"><canvas id="chartModel"></canvas></div>
       <div class="insight-box">
-        <p>Model mencapai <strong>85.7% akurasi</strong> dengan precision 88.8% dan recall 81.6%. Performa baik untuk model berbasis lexicon tanpa training data berlabel.</p>
+        <p>Model mencapai <strong><span data-fill="acc">-</span> akurasi</strong> dengan precision <span data-fill="prec">-</span> dan recall <span data-fill="rec">-</span>. Performa baik untuk model dari-scratch dengan vocabulary <span data-fill="vocab_fmt">-</span> kata.</p>
       </div>
     </div>
     <div class="chart-card">
       <div class="chart-header">
         <div class="chart-title">Confusion Matrix</div>
-        <div class="chart-subtitle">Prediksi vs aktual pada data uji</div>
+        <div class="chart-subtitle">Prediksi vs aktual pada data uji (total = <span data-fill="cm_total_fmt">-</span>)</div>
       </div>
       <img class="model-img" src="{{ url_for('main.asset_file', filename='confusion_matrix.png') }}" alt="Confusion Matrix" onerror="this.style.display='none'">
       <div class="insight-box">
-        <p>False negative (626) lebih tinggi dari false positive (351) — model cenderung <strong>underestimate sentimen negatif</strong>. Perlu fine-tuning untuk teks sarkasme.</p>
+        <p>TP: <strong><span data-fill="cm_tp_fmt">-</span></strong> &middot; TN: <strong><span data-fill="cm_tn_fmt">-</span></strong> &middot; FP: <strong><span data-fill="cm_fp_fmt">-</span></strong> &middot; FN: <strong><span data-fill="cm_fn_fmt">-</span></strong> &mdash; confusion matrix dari model aktual. <span data-fill="cm_insight">-</span></p>
       </div>
     </div>
   </div>
@@ -119,14 +111,14 @@
     <div class="chart-card">
       <div class="chart-header">
         <div class="chart-title">Kata Penanda Sentimen Negatif</div>
-        <div class="chart-subtitle">Kata dengan bobot indikator negatif tertinggi</div>
+        <div class="chart-subtitle">Kata dengan bobot indikator negatif tertinggi (log-likelihood ratio)</div>
       </div>
       <img class="model-img" src="{{ url_for('main.asset_file', filename='top_neg_words.png') }}" alt="Top kata negatif" onerror="this.style.display='none'">
     </div>
     <div class="chart-card">
       <div class="chart-header">
         <div class="chart-title">Kata Kunci Paling Prediktif</div>
-        <div class="chart-subtitle">Hasil dari model VADER</div>
+        <div class="chart-subtitle">Hasil dari model Multinomial Naive Bayes</div>
       </div>
       <p class="tag-label">Penanda <strong>negatif</strong>:</p>
       <div class="tag-list" id="negWords"></div>
@@ -140,7 +132,7 @@
   <div class="page-header">
     <span class="section-tag">C &middot; Critical Analysis</span>
     <h1 class="page-title">Membaca <span>Sebab dan Implikasi</span></h1>
-    <p class="page-lead">Analisis perilaku berdasarkan kategori bermakna dan kata kunci galbay yang muncul di 349K ulasan.</p>
+    <p class="page-lead">Analisis perilaku berdasarkan kategori bermakna dan kata kunci galbay yang muncul di <span data-fill="total_relevant_fmt">-</span> ulasan.</p>
   </div>
 
   <div class="chart-grid-2">
@@ -191,7 +183,7 @@
     <div class="chart-card">
       <div class="chart-header">
         <div class="chart-title">Aplikasi dengan Ulasan Negatif Terbanyak</div>
-        <div class="chart-subtitle">Diurutkan berdasarkan jumlah absolut ulasan negatif (semua 349K ulasan)</div>
+        <div class="chart-subtitle">Diurutkan berdasarkan jumlah absolut ulasan negatif (semua <span data-fill="total_reviews_fmt">-</span> ulasan)</div>
       </div>
       <div class="chart-wrap" style="height:300px;"><canvas id="chartTopApps"></canvas></div>
       <div class="insight-box">
@@ -207,7 +199,7 @@
     </div>
     <div class="insight-box insight-large">
       <h4>Keterbatasan Data dan Asumsi</h4>
-      <p>Data ulasan cenderung bias ke pengguna yang sangat puas atau sangat kecewa. Sentimen diturunkan dari VADER lexicon; teks sarkas bisa salah klasifikasi. Demografi usia tidak tersedia langsung dari ulasan.</p>
+      <p>Data ulasan cenderung bias ke pengguna yang sangat puas atau sangat kecewa. Model dari-scratch (Naive Bayes) masih bisa di-tune untuk akurasi lebih. Demografi usia tidak tersedia langsung dari ulasan.</p>
     </div>
   </div>
 </section>

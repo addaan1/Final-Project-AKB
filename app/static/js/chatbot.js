@@ -1,5 +1,5 @@
 // ============================================================
-// Galbay Predictor - Chatbot Widget (Phase 1: FAQ rule-based)
+// Galbay Predictor - Chatbot Widget v2 (NLP-like, 38 intents)
 // ============================================================
 
 (function() {
@@ -7,15 +7,42 @@
 
   const QUICK_REPLIES = [
     'Apa itu galbay?',
-    'Cek pinjol',
+    'Cek pinjol legal?',
     'Snowball vs Avalanche',
-    'DC agresif',
+    'DC agresif, gimana?',
     'Cara recovery',
   ];
+
+  const CATEGORY_CHIPS = [
+    { label: 'Galbay basics', query: 'apa itu galbay?' },
+    { label: 'Pinjol legal?', query: 'cara cek pinjol legal' },
+    { label: 'Strategi bayar', query: 'snowball vs avalanche' },
+    { label: 'DC agresif', query: 'DC agresif' },
+    { label: 'Recovery', query: 'cara recovery' },
+    { label: 'Hak hukum', query: 'hak borrower' },
+    { label: 'Mental health', query: 'stress finansial' },
+  ];
+
+  const SENTIMENT_EMOJI = {
+    curious: '🤔',
+    stressed: '😟',
+    anxious: '😰',
+    crisis: '🆘',
+    frustrated: '😤',
+    positive: '🙂',
+    grateful: '🙏',
+    neutral: '',
+  };
 
   const ICON_OPEN = '💬';
   const ICON_CLOSE = '✕';
 
+  let sessionLog = [];
+  let voiceRecorder = null;
+
+  // ============================================================
+  // DOM helpers
+  // ============================================================
   function el(tag, attrs, children) {
     const e = document.createElement(tag);
     if (attrs) {
@@ -23,7 +50,7 @@
         if (k === 'class') e.className = attrs[k];
         else if (k === 'html') e.innerHTML = attrs[k];
         else if (k.startsWith('on') && typeof attrs[k] === 'function') {
-          e.addEventListener(k.slice(2), attrs[k]);
+          e.addEventListener(k.slice(2).toLowerCase(), attrs[k]);
         } else e.setAttribute(k, attrs[k]);
       }
     }
@@ -36,51 +63,83 @@
     return e;
   }
 
-  function formatAnswer(text) {
-    // Convert **bold** to <strong> and keep line breaks
-    if (!text) return '';
-    let html = text
-      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.+?)\*/g, '<em>$1</em>');
-    return html;
-  }
-
   function timeNow() {
     const d = new Date();
     return d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
   }
 
-  function addMessage(role, text, meta) {
+  function pageContext() {
+    const path = window.location.pathname || '';
+    if (path.includes('ringkasan')) return 'ringkasan';
+    if (path.includes('analisis')) return 'analisis';
+    if (path.includes('solusi')) return 'solusi';
+    if (path.includes('produk')) return 'produk';
+    if (path.includes('kesimpulan')) return 'kesimpulan';
+    return null;
+  }
+
+  // ============================================================
+  // Message rendering
+  // ============================================================
+  function addMessage(role, text, meta, html) {
     const messages = document.getElementById('chatMessages');
     if (!messages) return;
 
-    const wrapper = el('div');
-    const msg = el('div', { class: 'chat-msg ' + role, html: formatAnswer(text) });
+    const wrapper = el('div', { class: 'chat-msg-wrap ' + role });
+    const msg = el('div', {
+      class: 'chat-msg ' + role,
+      html: html || escapeHtml(text).replace(/\n/g, '<br>'),
+    });
     wrapper.appendChild(msg);
+
     if (meta) {
       const m = el('div', { class: 'chat-msg-meta ' + role, html: meta });
       wrapper.appendChild(m);
     }
+
     messages.appendChild(wrapper);
     messages.scrollTop = messages.scrollHeight;
   }
 
+  function escapeHtml(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
   function addTypingIndicator() {
-    const messages = document.getElementById('chatMessages');
-    if (!messages) return null;
-    const t = el('div', { class: 'chat-typing' });
-    t.appendChild(el('span'));
-    t.appendChild(el('span'));
-    t.appendChild(el('span'));
-    t.id = 'chatTyping';
-    messages.appendChild(t);
-    messages.scrollTop = messages.scrollHeight;
-    return t;
+    const area = document.getElementById('chatTypingArea');
+    if (area) {
+      area.style.display = 'flex';
+      const messages = document.getElementById('chatMessages');
+      if (messages) messages.scrollTop = messages.scrollHeight;
+    }
   }
 
   function removeTypingIndicator() {
-    const t = document.getElementById('chatTyping');
-    if (t) t.remove();
+    const area = document.getElementById('chatTypingArea');
+    if (area) area.style.display = 'none';
+  }
+
+  // ============================================================
+  // Suggestions / Related actions
+  // ============================================================
+  function showSuggestions(suggestions) {
+    const actionsEl = document.getElementById('chatActions');
+    if (!actionsEl) return;
+    actionsEl.innerHTML = '';
+    if (!suggestions || !suggestions.length) return;
+    suggestions.slice(0, 5).forEach(s => {
+      const chip = el('button', { type: 'button', class: 'chat-action-chip' }, s);
+      chip.addEventListener('click', () => {
+        const inp = document.getElementById('chatInput');
+        if (inp) {
+          inp.value = s;
+          sendMessage();
+        }
+      });
+      actionsEl.appendChild(chip);
+    });
   }
 
   function showRelatedActions(actions) {
@@ -92,30 +151,43 @@
       return;
     }
     relatedEl.innerHTML = '';
-    actions.forEach(a => {
+    actions.slice(0, 3).forEach(a => {
       const link = el('a', { href: a.href || '#' });
-      link.appendChild(el('span', null, '→'));
+      if (a.external) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener');
+      }
       link.appendChild(document.createTextNode(a.label));
+      const arrow = el('span', null, '→');
+      link.appendChild(arrow);
       relatedEl.appendChild(link);
     });
     relatedEl.style.display = 'flex';
   }
 
-  function showSuggestions(suggestions) {
-    const actionsEl = document.getElementById('chatActions');
-    if (!actionsEl) return;
-    actionsEl.innerHTML = '';
-    if (!suggestions || !suggestions.length) return;
-    suggestions.slice(0, 6).forEach(s => {
-      const chip = el('button', { type: 'button', class: 'chat-action-chip' }, s);
+  // ============================================================
+  // Categories (chips at top)
+  // ============================================================
+  function renderCategories() {
+    const container = document.getElementById('chatCatChips');
+    if (!container) return;
+    container.innerHTML = '';
+    CATEGORY_CHIPS.forEach(cat => {
+      const chip = el('button', { type: 'button', class: 'chat-cat-chip' }, cat.label);
       chip.addEventListener('click', () => {
-        document.getElementById('chatInput').value = s;
-        sendMessage();
+        const inp = document.getElementById('chatInput');
+        if (inp) {
+          inp.value = cat.query;
+          sendMessage();
+        }
       });
-      actionsEl.appendChild(chip);
+      container.appendChild(chip);
     });
   }
 
+  // ============================================================
+  // Sending messages
+  // ============================================================
   async function sendMessage() {
     const input = document.getElementById('chatInput');
     if (!input) return;
@@ -123,35 +195,182 @@
     if (!text) return;
     input.value = '';
     addMessage('user', text, timeNow());
+    sessionLog.push({ role: 'user', text, time: timeNow() });
+
     showRelatedActions([]);
-    const typingEl = addTypingIndicator();
-    const sendBtn = document.querySelector('.chat-send');
+    showSuggestions([]);
+    addTypingIndicator();
+
+    const sendBtn = document.getElementById('chatSendBtn');
     if (sendBtn) sendBtn.disabled = true;
 
     try {
       const resp = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({
+          message: text,
+          page_context: pageContext(),
+        }),
       });
       const result = await resp.json();
-      if (typingEl) removeTypingIndicator();
+      removeTypingIndicator();
+
       if (result.valid) {
-        const meta = `${result.intent || 'unknown'} · ${(result.confidence || 0).toFixed(0)}%`;
-        addMessage('bot', result.answer, meta);
+        const meta = buildMeta(result);
+        addMessage('bot', '', meta, result.answer_html || escapeHtml(result.answer || ''));
+        sessionLog.push({
+          role: 'bot',
+          text: result.answer,
+          html: result.answer_html,
+          intent: result.intent,
+          sentiment: result.sentiment,
+          time: timeNow(),
+        });
         showSuggestions(result.suggestions || []);
         showRelatedActions(result.related_actions || []);
+
+        // Auto-crisis notice: crisis intent → pulse bubble
+        if (result.sentiment === 'crisis') {
+          const bubble = document.getElementById('chatBubble');
+          if (bubble) bubble.classList.add('has-unread');
+        }
       } else {
         addMessage('bot', result.error || 'Maaf, ada error. Coba lagi ya.', 'error');
       }
     } catch (err) {
-      if (typingEl) removeTypingIndicator();
+      removeTypingIndicator();
       addMessage('bot', 'Koneksi gagal. Cek internet kamu lalu coba lagi.', 'network-error');
     } finally {
       if (sendBtn) sendBtn.disabled = false;
     }
   }
 
+  function buildMeta(result) {
+    const moduleIcon = result.module_icon || '💬';
+    const moduleName = result.module_name || '';
+    const conf = Math.round((result.confidence || 0) * 100);
+    const parts = [
+      `${moduleIcon} ${moduleName}`.trim(),
+      `${conf}% yakin`,
+    ];
+    if (result.secondary_intents && result.secondary_intents.length > 0) {
+      parts.push(`+${result.secondary_intents.length} topik terkait`);
+    }
+    return parts.join(' · ');
+  }
+
+  // ============================================================
+  // Clear / Export
+  // ============================================================
+  function clearChat() {
+    const messages = document.getElementById('chatMessages');
+    if (messages) messages.innerHTML = '';
+    sessionLog = [];
+    showSuggestions(QUICK_REPLIES);
+    showRelatedActions([]);
+    setTimeout(() => {
+      addMessage('bot',
+        'Halo! 👋 Chat sudah di-reset. Saya **Galbay AI Coach** — siap bantu lagi.\n\nMau tanya soal apa?',
+        'reset',
+      );
+    }, 200);
+  }
+
+  function exportChat() {
+    if (sessionLog.length === 0) {
+      const messages = document.getElementById('chatMessages');
+      const data = messages ? messages.innerText : '';
+      if (!data.trim()) {
+        addMessage('bot', 'Belum ada chat untuk di-export. Yuk mulai ngobrol dulu!', 'export-empty');
+        return;
+      }
+    }
+
+    let md = `# Galbay AI Coach - Chat Export\n`;
+    md += `Exported: ${new Date().toLocaleString('id-ID')}\n\n---\n\n`;
+
+    sessionLog.forEach(entry => {
+      const who = entry.role === 'user' ? 'Anda' : 'Galbay Coach';
+      md += `**${who}** (${entry.time}):\n\n${entry.text}\n\n`;
+      if (entry.intent) {
+        md += `*Intent: ${entry.intent} | Sentiment: ${entry.sentiment}*\n\n`;
+      }
+      md += `---\n\n`;
+    });
+
+    md += `\n*Disclaimer: Galbay AI Coach adalah asisten rule-based. Bukan pengganti nasihat profesional.*\n`;
+
+    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `galbay-chat-${Date.now()}.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // ============================================================
+  // Voice input (Web Speech API)
+  // ============================================================
+  function setupVoice() {
+    const voiceBtn = document.getElementById('chatVoiceBtn');
+    if (!voiceBtn) return;
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      voiceBtn.style.display = 'none';
+      return;
+    }
+    voiceBtn.addEventListener('click', () => {
+      if (voiceRecorder) {
+        voiceRecorder.stop();
+        voiceRecorder = null;
+        voiceBtn.classList.remove('recording');
+        return;
+      }
+      voiceRecorder = new SpeechRecognition();
+      voiceRecorder.lang = 'id-ID';
+      voiceRecorder.interimResults = true;
+      voiceRecorder.continuous = false;
+      voiceBtn.classList.add('recording');
+      const input = document.getElementById('chatInput');
+
+      voiceRecorder.onresult = (event) => {
+        let final = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          if (event.results[i].isFinal) {
+            final += event.results[i][0].transcript;
+          }
+        }
+        if (final && input) {
+          input.value = final;
+        }
+      };
+      voiceRecorder.onend = () => {
+        voiceBtn.classList.remove('recording');
+        voiceRecorder = null;
+        if (input && input.value.trim()) {
+          sendMessage();
+        }
+      };
+      voiceRecorder.onerror = () => {
+        voiceBtn.classList.remove('recording');
+        voiceRecorder = null;
+      };
+      try {
+        voiceRecorder.start();
+      } catch (e) {
+        voiceBtn.classList.remove('recording');
+        voiceRecorder = null;
+      }
+    });
+  }
+
+  // ============================================================
+  // Open / Close
+  // ============================================================
   function openChat() {
     const panel = document.getElementById('chatPanel');
     const bubble = document.getElementById('chatBubble');
@@ -181,35 +400,59 @@
     }
   }
 
+  // ============================================================
+  // Welcome message
+  // ============================================================
+  function showWelcome() {
+    if (document.getElementById('chatMessages').children.length > 0) return;
+    const hour = new Date().getHours();
+    let greeting = 'Halo';
+    if (hour < 11) greeting = 'Selamat pagi';
+    else if (hour < 15) greeting = 'Selamat siang';
+    else if (hour < 18) greeting = 'Selamat sore';
+    else greeting = 'Selamat malam';
+
+    addMessage('bot',
+      `${greeting}! 👋 Saya **Galbay AI Coach** — asisten 24/7 untuk masalah galbay, pinjol, dan recovery.\n\nSaya bisa bantu:\n- **Pinjol**: cek legal/ilegal, bunga wajar\n- **DC**: negosiasi, template chat, lapor\n- **Recovery**: keluar dari galbay 30/60/90 hari\n- **Mental**: stress, cemas, butuh curhat\n\nMau tanya apa?`,
+      'welcome',
+    );
+    showSuggestions(QUICK_REPLIES);
+  }
+
+  // ============================================================
+  // Init
+  // ============================================================
   function init() {
     const bubble = document.getElementById('chatBubble');
-    const closeBtn = document.getElementById('chatCloseBtn');
-    const form = document.getElementById('chatForm');
     if (!bubble) return;
+
+    renderCategories();
+    setupVoice();
 
     bubble.addEventListener('click', () => {
       const panel = document.getElementById('chatPanel');
       if (panel && panel.classList.contains('open')) closeChat();
       else openChat();
     });
+
+    const closeBtn = document.getElementById('chatCloseBtn');
     if (closeBtn) closeBtn.addEventListener('click', closeChat);
+
+    const clearBtn = document.getElementById('chatClearBtn');
+    if (clearBtn) clearBtn.addEventListener('click', clearChat);
+
+    const exportBtn = document.getElementById('chatExportBtn');
+    if (exportBtn) exportBtn.addEventListener('click', exportChat);
+
+    const form = document.getElementById('chatForm');
     if (form) form.addEventListener('submit', (e) => { e.preventDefault(); sendMessage(); });
 
-    // ESC close
     document.addEventListener('keydown', (e) => {
       const panel = document.getElementById('chatPanel');
       if (e.key === 'Escape' && panel && panel.classList.contains('open')) closeChat();
     });
 
-    // Initial welcome message
-    setTimeout(() => {
-      if (document.getElementById('chatMessages').children.length === 0) {
-        addMessage('bot',
-          'Halo! 👋 Saya **Galbay AI Coach**. Saya bisa bantu jelasin soal galbay, pinjol, recovery, dll.\n\nMau tanya apa?',
-          'welcome');
-        showSuggestions(QUICK_REPLIES);
-      }
-    }, 500);
+    setTimeout(showWelcome, 500);
   }
 
   if (document.readyState === 'loading') {

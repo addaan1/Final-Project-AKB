@@ -91,6 +91,32 @@ class TestDashboardContent:
         r = auth_client.get("/dashboard/analisis")
         assert b'<canvas' in r.data
 
+    def test_analisis_no_hardcoded_numbers(self, auth_client):
+        """Pastikan tidak ada angka-angka model yang hard-coded (semua via data-fill)."""
+        r = auth_client.get("/dashboard/analisis")
+        body = r.data.decode('utf-8')
+        # Tidak boleh ada angka hard-coded di kalimat insight
+        assert '235.986' not in body, "Score 5 count hard-coded"
+        assert '69.931' not in body, "Score 1 count hard-coded"
+        assert '>626<' not in body and '>351<' not in body, "Confusion matrix numbers hard-coded"
+        # Harus ada data-fill placeholders
+        assert 'data-fill="score_5_count"' in body
+        assert 'data-fill="score_1_count"' in body
+        assert 'data-fill="acc"' in body
+        assert 'data-fill="cm_tp_fmt"' in body
+        assert 'data-fill="cm_fn_fmt"' in body
+        assert 'data-fill="cm_fp_fmt"' in body
+        assert 'data-fill="cm_tn_fmt"' in body
+        assert 'data-fill="n_test_fmt"' in body
+        assert 'data-fill="vocab_fmt"' in body
+
+    def test_analisis_no_forum_or_kaskus(self, auth_client):
+        """Single source (Google Play) — tidak ada referensi Forum Kaskus / OJK+Media."""
+        r = auth_client.get("/dashboard/analisis")
+        body = r.data.decode('utf-8')
+        assert 'Forum Kaskus' not in body, "Forum Kaskus reference should be removed"
+        assert 'OJK + Media' not in body, "OJK + Media badge should be removed"
+
     def test_solusi_has_bmc(self, auth_client):
         r = auth_client.get("/dashboard/solusi")
         assert b'BMC' in r.data or b'bmc' in r.data.lower()

@@ -19,10 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ── Isi angka teks dari data (elemen ber-atribut data-fill) ──
 function fillNumbers() {
-  const m = D.meta || {}, mo = D.model || {};
+  const m = D.meta || {}, mo = D.model || {}, sd = D.score_dist || {};
+  const cm = mo.confusion || {};
   const map = {
     total_reviews: (m.total_reviews||0).toLocaleString('id-ID'),
+    total_reviews_fmt: formatNum(m.total_reviews || 0),
     total_relevant: (m.total_relevant||0).toLocaleString('id-ID'),
+    total_relevant_fmt: formatNum(m.total_relevant || 0),
     n_apps: m.n_apps, n_categories: m.n_categories,
     n_news: m.n_news, n_forum: m.n_forum,
     date_min: m.date_min, date_max: m.date_max,
@@ -33,13 +36,36 @@ function fillNumbers() {
     rec: (mo.recall*100).toFixed(1) + '%',
     f1: (mo.f1*100).toFixed(1) + '%',
     vocab: (mo.vocab||0).toLocaleString('id-ID'),
+    vocab_fmt: formatNum(mo.vocab || 0),
     n_train: (mo.n_train||0).toLocaleString('id-ID'),
+    n_train_fmt: formatNum(mo.n_train || 0),
     n_test: (mo.n_test||0).toLocaleString('id-ID'),
+    n_test_fmt: formatNum(mo.n_test || 0),
+    score_5_count: formatNum(sd['5'] || 0),
+    score_1_count: formatNum(sd['1'] || 0),
+    cm_tp: cm.TP || 0,
+    cm_tp_fmt: formatNum(cm.TP || 0),
+    cm_tn: cm.TN || 0,
+    cm_tn_fmt: formatNum(cm.TN || 0),
+    cm_fp: cm.FP || 0,
+    cm_fp_fmt: formatNum(cm.FP || 0),
+    cm_fn: cm.FN || 0,
+    cm_fn_fmt: formatNum(cm.FN || 0),
+    cm_total: (cm.TP||0) + (cm.TN||0) + (cm.FP||0) + (cm.FN||0),
+    cm_total_fmt: formatNum((cm.TP||0) + (cm.TN||0) + (cm.FP||0) + (cm.FN||0)),
+    cm_insight: ((cm.FN||0) > (cm.FP||0))
+      ? `False negative (${formatNum(cm.FN)}) lebih tinggi dari false positive (${formatNum(cm.FP)}) — model cenderung underestimate sentimen negatif.`
+      : `False positive (${formatNum(cm.FP)}) lebih tinggi dari false negative (${formatNum(cm.FN)}) — model cenderung overestimate sentimen negatif.`,
   };
   document.querySelectorAll('[data-fill]').forEach(el => {
     const k = el.dataset.fill;
     if (map[k] !== undefined && map[k] !== null) el.textContent = map[k];
   });
+}
+
+function formatNum(n) {
+  if (n == null || !isFinite(n)) return '0';
+  return Math.round(n).toLocaleString('id-ID');
 }
 
 // ── COUNTER ANIMATION ──

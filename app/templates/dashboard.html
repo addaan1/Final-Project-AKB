@@ -16,7 +16,8 @@
       <a href="{{ url_for('main.index') }}" class="topbar-brand">GALBAY <span>PREDICTOR</span></a>
       <div class="topbar-subtitle">Data Mining &rarr; Business Model Canvas</div>
     </div>
-    <nav class="topbar-nav" aria-label="Section navigation">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="topbar-nav" id="topbarNav" aria-label="Section navigation">
       <a href="#ringkasan" class="nav-pill" data-section="ringkasan">Ringkasan</a>
       <a href="#datamining" class="nav-pill" data-section="datamining">Analisis</a>
       <a href="#bmc" class="nav-pill" data-section="bmc">Solusi &amp; BMC</a>
@@ -314,7 +315,22 @@
     <footer class="footer">
       <p>Galbay Predictor - Tugas Data Mining dan Business Model Canvas · Dashboard berbasis data ulasan nyata aplikasi fintech</p>
     </footer>
+
+    <footer class="dashboard-footer">
+      <div class="dashboard-footer-inner">
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="{{ url_for('main.index') }}">Beranda</a>
+          <a href="#ringkasan">Ringkasan</a>
+          <a href="#datamining">Analisis</a>
+          <a href="#bmc">Solusi &amp; BMC</a>
+          <a href="#kesimpulan">Kesimpulan</a>
+        </nav>
+        <span class="footer-meta">Dashboard interaktif berbasis data nyata</span>
+      </div>
+    </footer>
   </main>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" title="Kembali ke atas">↑</button>
 
   <script>
   document.addEventListener('DOMContentLoaded', () => {

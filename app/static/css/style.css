@@ -2234,26 +2234,34 @@ button:disabled { cursor: not-allowed; }
 :root[data-theme="light"] .privacy-notice { background: rgba(13,148,136,0.10); color: #0f766e; }
 
 /* =================================================================
-   FEATURE GATING — soft lock overlay (in-section, not fixed)
+   FEATURE GATING — soft lock overlay (in-section, opacity dim)
    ================================================================= */
 .feature-locked {
   position: relative;
+}
+/* Dim other children to show "preview only" — replaces the inconsistent
+   full-section blur with a uniform, theme-aware opacity treatment */
+.feature-locked > *:not(.lock-overlay):not(.page-header) {
+  opacity: 0.35;
+  filter: grayscale(0.4);
   pointer-events: none;
+  user-select: none;
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
-.feature-locked::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 1;
-  pointer-events: none;
-  border-radius: inherit;
+body[data-theme="dark"] .feature-locked > *:not(.lock-overlay):not(.page-header) {
+  opacity: 0.4;
+  filter: grayscale(0.2) brightness(0.7);
 }
-body[data-theme="dark"] .feature-locked::before {
-  background: rgba(10, 14, 26, 0.85);
+
+/* Dismiss state — restore full opacity */
+.feature-locked.is-dismissed > * {
+  opacity: 1 !important;
+  filter: none !important;
+  pointer-events: auto;
+  user-select: auto;
 }
+.feature-locked.is-dismissed .lock-overlay { display: none; }
+
 .feature-locked .lock-overlay {
   position: absolute;
   top: 50%;
@@ -2291,10 +2299,6 @@ body[data-theme="dark"] .feature-locked .lock-overlay {
   from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
   to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
-
-/* Dismiss state — user can close lock to see content */
-.feature-locked.is-dismissed::before { display: none; }
-.feature-locked.is-dismissed .lock-overlay { display: none; }
 
 .feature-locked .lock-close {
   position: absolute;

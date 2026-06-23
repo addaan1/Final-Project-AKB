@@ -175,6 +175,26 @@ class TestDashboardContent:
         assert b'position: fixed' not in r.data
         assert b'lock-fixed' not in r.data
 
+    def test_produk_no_full_section_blur(self, auth_client, app):
+        """Tidak ada lagi full-section blur (::before dengan backdrop-filter blur).
+        Diganti dengan opacity dim yang konsisten di semua section.
+        Cek di style.css file (CSS external, bukan inline)."""
+        from pathlib import Path
+        import re
+        # app.root_path = .../Final-Project-UAS, css = app/static/css/style.css
+        css_path = Path(app.root_path) / "static" / "css" / "style.css"
+        if css_path.exists():
+            css = css_path.read_text(encoding='utf-8')
+            # Find .feature-locked::before section
+            before_match = re.search(r'\.feature-locked::before\s*\{[^}]+\}', css, re.DOTALL)
+            if before_match:
+                # If .feature-locked::before exists, it should NOT have backdrop-filter
+                assert 'backdrop-filter' not in before_match.group(0), \
+                    "::before tidak boleh punya backdrop-filter (full-section blur harus dihapus)"
+            # CSS baru: opacity dim di children
+            assert re.search(r'\.feature-locked > \*:not\(.lock-overlay\):not\(.page-header\)\s*\{[^}]*opacity:\s*0\.\d+', css, re.DOTALL), \
+                "CSS harus punya opacity dim untuk .feature-locked > *:not(.lock-overlay):not(.page-header)"
+
     def test_produk_premium_user_no_locks(self, premium_client):
         r = premium_client.get("/dashboard/produk")
         assert b'feature-locked' not in r.data

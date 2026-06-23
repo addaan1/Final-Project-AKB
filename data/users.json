@@ -118,5 +118,45 @@
     "source": "register",
     "password_hash": "scrypt:32768:8:1$PgFPCsLebK8wm6tb$7fce9cd4e6fb4c800e308f11eac5bee7e6572fc9aef96eb510648d571b6c2f5dc50e71ad10e6b330864ffd1f6f84f7f4eb1aaef916ffc1ac7d8faf770e8237d4",
     "created_at": "2026-06-24T00:27:36.072951Z"
+  },
+  {
+    "id": "cadc32ef-2510-4c42-9335-c7307432c0a6",
+    "email": "newuser-5a0ad423@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$qZFadxxySgmtuFIC$905e5b20ec8b6ebbe2b2fc8cddd67c558023fdd99134a1753e958485803a0e5af1167ac132337577bd0e246fb9341993a3c412ec45929e8b76063446aeff4057",
+    "created_at": "2026-06-24T00:31:22.853196Z"
+  },
+  {
+    "id": "3cead840-4a21-4144-b555-505a3c035f9b",
+    "email": "newuser-0ec7e435@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$jA8bbPoOfcelslDA$3af3f34e900d121e279c5f286706029d76f68b5c8f205b1a8257f1baefb73832c7aec5c954260373e9060ee74d3e884409f69bd5bae17251bb5dd4dae9be1dca",
+    "created_at": "2026-06-24T00:31:49.430051Z"
+  },
+  {
+    "id": "58506f6b-3d5a-45b2-a629-5d00d4eb92cf",
+    "email": "newuser-250c45a9@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$M1RmMAFnoSBY36DU$d55013f6a946854d9d38b9d2ff75cef06d6e3fe542ffaa37edfbd6bad907e9080c294c1a6c40a6e4e28a5a20459dc545cbe708e5e86c8f1dc1287d1fdb7ffa3a",
+    "created_at": "2026-06-24T00:32:26.841066Z"
+  },
+  {
+    "id": "7fb753b6-0c25-4d3a-8b12-4b88ae366ff4",
+    "email": "newuser-ae843869@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$5CgIQ7bhhazcQQHf$b713101cf0d06e3e91a4355a0cdd9963b91b0d73e634588fac18312c5d4e0d84cfd3ef189273c0503de2a0862f4035a3ea95780cc41197483578a88e4fac944c",
+    "created_at": "2026-06-24T00:32:54.673450Z"
   }
 ]

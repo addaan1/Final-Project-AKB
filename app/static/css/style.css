@@ -2813,191 +2813,38 @@ body[data-package="premium"] .user-avatar-initial {
 .topbar-brand:hover .topbar-brand-text span { color: var(--text-primary); }
 
 /* =================================================================
-   ANIMATED LANDING HERO (CSS-only, no Three.js)
+   LANDING HERO — clean (no animation, professional)
    ================================================================= */
-.landing-hero-animated {
+.landing-hero-clean {
   position: relative;
   overflow: hidden;
-  min-height: 720px;
+  min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(ellipse 60% 50% at 20% 20%, rgba(251, 191, 36, 0.10), transparent 60%),
-    radial-gradient(ellipse 50% 50% at 85% 75%, rgba(13, 148, 136, 0.08), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(251, 191, 36, 0.06), transparent 60%),
+    radial-gradient(ellipse 50% 50% at 85% 75%, rgba(13, 148, 136, 0.04), transparent 60%),
     var(--bg-primary);
-}
-:root[data-theme="light"] .landing-hero-animated {
-  background:
-    radial-gradient(ellipse 60% 50% at 20% 20%, rgba(234, 88, 12, 0.08), transparent 60%),
-    radial-gradient(ellipse 50% 50% at 85% 75%, rgba(13, 148, 136, 0.06), transparent 60%),
-    var(--bg-primary);
-}
-.landing-hero-animated .hero-bg-grid { opacity: 0.35; }
-
-/* Central pulsing orb (focal point) */
-.hero-orb {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 220px; height: 220px;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 1;
-  filter: blur(0.5px);
-}
-.hero-orb-core {
-  position: absolute;
-  inset: 40px;
-  background: radial-gradient(circle, #fde68a 0%, #fbbf24 40%, #f59e0b 70%, transparent 80%);
-  border-radius: 50%;
-  animation: hero-orb-pulse 4s ease-in-out infinite;
-  filter: blur(8px);
-}
-.hero-orb-ring {
-  position: absolute;
-  inset: 0;
-  border: 2px solid rgba(251, 191, 36, 0.4);
-  border-radius: 50%;
-  animation: hero-orb-ring-expand 4s ease-out infinite;
-  box-shadow:
-    inset 0 0 30px rgba(251, 191, 36, 0.3),
-    0 0 30px rgba(251, 191, 36, 0.2);
-}
-.hero-orb-ring::before,
-.hero-orb-ring::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(251, 191, 36, 0.3);
-  animation: hero-orb-ring-expand 4s ease-out infinite;
-  animation-delay: 1.5s;
-}
-.hero-orb-ring::after { animation-delay: 3s; }
-@keyframes hero-orb-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.1); opacity: 1; }
-}
-@keyframes hero-orb-ring-expand {
-  0% { transform: scale(0.7); opacity: 0.9; }
-  100% { transform: scale(1.4); opacity: 0; }
-}
-
-/* Sparkle layer */
-.hero-sparkles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-.hero-sparkle {
-  position: absolute;
-  border-radius: 50%;
-  animation: hero-sparkle 5s ease-in-out infinite;
-}
-@keyframes hero-sparkle {
-  0%, 100% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: 0.9; transform: scale(1.2); }
-}
-
-/* Mouse trail layer (3 particle types) */
-.hero-trail {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9998;
-  overflow: hidden;
-}
-.trail-orb {
-  position: absolute;
-  background: radial-gradient(circle, #fbbf24 0%, #f59e0b 30%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(2px);
-  animation: trail-orb-fade 1.1s ease-out forwards;
-}
-@keyframes trail-orb-fade {
-  0% { transform: scale(0.5); opacity: 1; }
-  100% { transform: scale(1.6); opacity: 0; }
-}
-.trail-dust {
-  position: absolute;
-  background: #fef3c7;
-  border-radius: 50%;
-  box-shadow: 0 0 6px #fde68a;
-  transform: translate(-50%, -50%);
-  animation: trail-dust-fade 0.9s ease-out forwards;
-}
-@keyframes trail-dust-fade {
-  0% { transform: translate(-50%, -50%); opacity: 1; }
-  100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))); opacity: 0; }
-}
-.trail-ring {
-  position: absolute;
-  width: 6px; height: 6px;
-  border: 2px solid rgba(251, 191, 36, 0.6);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  animation: trail-ring-expand 0.8s ease-out forwards;
-}
-@keyframes trail-ring-expand {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; border-width: 2px; }
-  100% { transform: translate(-50%, -50%) scale(6); opacity: 0; border-width: 0.5px; }
-}
-
-/* Floating coins */
-.hero-coins {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-}
-.hero-coin {
-  position: absolute;
-  --mx: 0px;
-  --my: 0px;
-  filter: drop-shadow(0 12px 24px rgba(245, 158, 11, 0.25));
-  animation: hero-coin-float 6s ease-in-out infinite;
-  will-change: transform;
-}
-.hero-coin svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.hero-coin-1 { top: 8%; left: 4%; width: 88px; height: 88px; animation-delay: 0s; animation-duration: 7s; }
-.hero-coin-2 { top: 18%; right: 6%; width: 72px; height: 72px; animation-delay: 1s; animation-duration: 8s; }
-.hero-coin-3 { bottom: 12%; left: 8%; width: 80px; height: 80px; animation-delay: 2s; animation-duration: 6s; }
-.hero-coin-4 { bottom: 18%; right: 10%; width: 64px; height: 64px; animation-delay: 1.5s; animation-duration: 9s; }
-.hero-coin-5 { top: 30%; left: 18%; width: 56px; height: 56px; animation-delay: 0.5s; animation-duration: 7.5s; }
-.hero-coin-6 { bottom: 30%; right: 20%; width: 60px; height: 60px; animation-delay: 2.5s; animation-duration: 8.5s; }
-.hero-coin-7 { top: 60%; left: 6%; width: 52px; height: 52px; animation-delay: 1.2s; animation-duration: 6.5s; }
-.hero-coin-8 { top: 50%; right: 4%; width: 56px; height: 56px; animation-delay: 3s; animation-duration: 7.2s; }
-
-@keyframes hero-coin-float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(calc(8px + var(--mx)), calc(-12px + var(--my))) rotate(8deg); }
-  50% { transform: translate(calc(-6px + var(--mx)), calc(-20px + var(--my))) rotate(-6deg); }
-  75% { transform: translate(calc(10px + var(--mx)), calc(-8px + var(--my))) rotate(4deg); }
-}
-
-/* Hero content */
-.landing-hero-content {
-  position: relative;
-  z-index: 5;
-  max-width: 1000px;
-  margin: 0 auto;
   padding: 100px 24px 60px;
 }
-.landing-hero-content > * { pointer-events: auto; }
+:root[data-theme="light"] .landing-hero-clean {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(234, 88, 12, 0.05), transparent 60%),
+    radial-gradient(ellipse 50% 50% at 85% 75%, rgba(13, 148, 136, 0.03), transparent 60%),
+    var(--bg-primary);
+}
+.landing-hero-clean .hero-bg-grid { opacity: 0.25; }
+.landing-hero-clean .landing-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+}
 
 @media (max-width: 768px) {
-  .landing-hero-animated { min-height: 600px; }
-  .hero-coin-1, .hero-coin-3, .hero-coin-5, .hero-coin-7 { width: 48px; height: 48px; }
-  .hero-coin-2, .hero-coin-4, .hero-coin-6, .hero-coin-8 { width: 40px; height: 40px; }
-  .hero-orb { width: 140px; height: 140px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-sparkle, .hero-coin, .hero-orb-core, .hero-orb-ring { animation: none !important; }
+  .landing-hero-clean { min-height: 480px; padding: 80px 20px 40px; }
 }
 
 /* =================================================================

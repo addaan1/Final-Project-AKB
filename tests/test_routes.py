@@ -21,10 +21,14 @@ class TestIndexRoute:
 
     def test_index_has_3d_canvas(self, client):
         r = client.get("/")
-        # CSS-animated hero with sparkles + coins
-        assert b'hero3d' in r.data
-        assert b'hero-sparkles' in r.data
-        assert b'hero-coins' in r.data
+        # Hero harus clean (no animation)
+        assert b'hero-coin' not in r.data
+        assert b'hero-sparkles' not in r.data
+        assert b'hero-orb' not in r.data
+        assert b'hero3d' not in r.data
+        # Should still have hero content
+        assert b'Mining Perilaku Digital' in r.data
+        assert b'Buka Dashboard' in r.data
 
 
 class TestDashboardRoutes:
@@ -132,14 +136,18 @@ class TestDashboardContent:
         assert 'lock-free-link' in body, "Lock overlay harus punya 'lihat fitur gratis' link"
         assert 'data-lock-dismiss' in body, "Close button harus punya data-lock-dismiss attribute"
 
-    def test_hero_8_coins(self, client):
-        """Landing hero harus punya 8 floating coins (4 -> 8)."""
+    def test_hero_clean_no_animation(self, client):
+        """Landing hero clean: no coin SVGs, no orb, no mouse trail, no sparkles."""
         r = client.get("/")
         body = r.data.decode('utf-8')
-        coin_count = body.count('hero-coin-')
-        # 8 classes: hero-coin-1..8 + 1 container class = 9
-        # Actually the container has 'hero-coins' (with s) + 8 individual = 9 total
-        assert coin_count >= 8, f"Expected at least 8 hero-coin elements, found {coin_count}"
+        # Should NOT have any animation elements
+        assert 'hero-coin' not in body, "Landing harus clean tanpa floating coins"
+        assert 'hero-sparkles' not in body, "Landing harus clean tanpa sparkles"
+        assert 'hero-orb' not in body, "Landing harus clean tanpa central orb"
+        assert 'hero3d' not in body, "Landing harus clean tanpa 3D container"
+        assert 'landing-3d.js' not in r.data.decode('utf-8', 'replace'), "landing-3d.js script harus dihapus"
+        # Should still have hero content
+        assert 'Big Data' in body or 'galbay' in body.lower()
 
     def test_solusi_has_bmc(self, auth_client):
         r = auth_client.get("/dashboard/solusi")

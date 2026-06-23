@@ -125,6 +125,25 @@ body {
 }
 .btn-primary:hover { background: #d4ff70; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(184,255,60,0.4); }
 
+.btn-back {
+  padding: 7px 14px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-purple);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-back:hover {
+  color: var(--accent-lime);
+  border-color: var(--accent-lime);
+  background: rgba(184,255,60,0.08);
+  transform: translateX(-2px);
+}
+
 /* ── MAIN ── */
 .main {
   margin-left: 0;
@@ -646,6 +665,7 @@ body {
   .topbar-nav { gap: 4px; overflow-x: auto; padding: 4px 0; }
   .nav-pill { padding: 6px 12px; font-size: 12px; }
   .topbar-right .badge-tag { display: none; }
+  .topbar-right .btn-back { display: none; }
 }
 
 @media (max-width: 1100px) {

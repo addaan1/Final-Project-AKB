@@ -24,7 +24,8 @@
       <a href="#kesimpulan" class="nav-pill" data-section="kesimpulan">Kesimpulan</a>
     </nav>
     <div class="topbar-right">
-      <span class="badge-tag">Data Asli · <span data-fill="total_relevant">-</span> ulasan relevan</span>
+      <a href="{{ url_for('main.index') }}" class="btn-back" title="Kembali ke Beranda">← Beranda</a>
+      <span class="badge-tag">Data Asli · <span data-fill="total_reviews">-</span> ulasan</span>
       <a href="#" class="btn-primary" onclick="window.print();return false;">Ekspor / Print</a>
     </div>
   </header>
@@ -38,7 +39,7 @@
       </div>
 
       <div class="kpi-bar">
-        <div class="kpi-item"><div class="kpi-value" data-fill="total_relevant">-</div><div class="kpi-label">Ulasan relevan dianalisis</div></div>
+        <div class="kpi-item"><div class="kpi-value" data-fill="total_reviews">-</div><div class="kpi-label">Total ulasan dianalisis</div></div>
         <div class="kpi-divider"></div>
         <div class="kpi-item"><div class="kpi-value" data-fill="distress_pct">-</div><div class="kpi-label">Mengandung sinyal distress galbay</div></div>
         <div class="kpi-divider"></div>

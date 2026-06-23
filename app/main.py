@@ -22,8 +22,6 @@ from app.api import (
     chat_faq_handler,
     check_pinjol_status,
     generate_recovery_roadmap,
-    get_dc_template,
-    get_dc_templates,
 )
 from app.auth import (
     create_user,
@@ -334,21 +332,6 @@ def api_debt_planner():
 
 
 # =================================================================
-# DC Survival Kit
-# =================================================================
-@main_bp.route("/api/dc-templates", methods=["GET"])
-def api_dc_templates():
-    """Return semua template chat untuk negosiasi debt collector."""
-    return jsonify(get_dc_templates())
-
-
-@main_bp.route("/api/dc-templates/<template_id>", methods=["GET"])
-def api_dc_template(template_id: str):
-    """Return 1 DC template by id."""
-    return jsonify(get_dc_template(template_id))
-
-
-# =================================================================
 # Galbay Recovery Roadmap
 # =================================================================
 @main_bp.route("/api/recovery-roadmap", methods=["POST"])
@@ -377,14 +360,25 @@ def asset_file(filename: str):
 
 
 # =================================================================
-# FAQ Chatbot (Phase 1: rule-based, 25 intents)
+# FAQ Chatbot (Phase 2: NLP-like, 38 intents, 8 modules)
 # =================================================================
 @main_bp.route("/api/chat", methods=["POST"])
 def api_chat():
-    """Chatbot FAQ (phase 1: rule-based keyword matching)."""
+    """Chatbot FAQ (phase 2: synonym, typo tolerance, sentiment, context-aware)."""
     if request.is_json:
         data = request.get_json() or {}
     else:
-        data = {"message": request.form.get("message", "")}
-    result = chat_faq_handler(data.get("message", ""))
+        data = {
+            "message": request.form.get("message", ""),
+            "page_context": request.form.get("page_context", ""),
+        }
+
+    user = get_current_user()
+    user_name = (user.name if user else None) or session.get("user_name")
+
+    result = chat_faq_handler(
+        message=data.get("message", ""),
+        user_name=user_name,
+        page_context=data.get("page_context") or None,
+    )
     return jsonify(result)

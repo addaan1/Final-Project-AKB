@@ -1,13 +1,12 @@
 // ============================================================
 // Galbay Predictor - Produk Page Logic
-// 4 Game Changers: Pinjol Checker, Debt Planner, DC Kit, Recovery
+// 3 Game Changers: Pinjol Checker, Debt Planner, Recovery Roadmap
 // Skor Risiko + Simulasi Cicilan (legacy)
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
   initPinjolChecker();
   initDebtPlanner();
-  initDCKit();
   initRecoveryRoadmap();
   initSkorForm();
   initSimulasi();
@@ -226,68 +225,7 @@ function renderDebtPlannerResult(result) {
 }
 
 // ============================================================
-// 3. DC SURVIVAL KIT
-// ============================================================
-async function initDCKit() {
-  const grid = document.getElementById('dcKitGrid');
-  const rightsList = document.getElementById('dcRightsList');
-  const contactsGrid = document.getElementById('dcContactsGrid');
-  if (!grid) return;
-
-  try {
-    const resp = await fetch('/api/dc-templates');
-    const result = await resp.json();
-    if (!result.valid) return;
-
-    grid.innerHTML = result.templates.map(t => `
-      <div class="dc-card" data-id="${t.id}">
-        <div class="dc-card-header">
-          <h3>${t.title}</h3>
-          <span class="dc-tone">${t.tone}</span>
-        </div>
-        <p class="dc-scenario">${t.scenario}</p>
-        <div class="dc-message">${t.message}</div>
-        <div class="dc-hak-kamu">
-          <strong>Hak kamu:</strong>
-          <ul>${t.hak_kamu.map(h => `<li>${h}</li>`).join('')}</ul>
-        </div>
-        <div class="dc-hukum"><strong>Dasar hukum:</strong> ${t.landasan_hukum}</div>
-        <button class="btn-outline dc-copy-btn" data-copy="${t.message.replace(/"/g, '&quot;')}">📋 Copy Template</button>
-      </div>
-    `).join('');
-
-    // Attach copy handlers
-    document.querySelectorAll('.dc-copy-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const text = btn.getAttribute('data-copy');
-        navigator.clipboard.writeText(text).then(() => {
-          const orig = btn.textContent;
-          btn.textContent = '✅ Tersalin!';
-          setTimeout(() => { btn.textContent = orig; }, 2000);
-        });
-      });
-    });
-
-    if (rightsList) {
-      rightsList.innerHTML = result.general_rights.map(r => `<li>${r}</li>`).join('');
-    }
-    if (contactsGrid) {
-      contactsGrid.innerHTML = result.emergency_contacts.map(c => `
-        <div class="dc-contact-card">
-          <div class="dc-contact-name">${c.name}</div>
-          <div class="dc-contact-num">${c.number || '-'}</div>
-          ${c.web ? `<a href="https://${c.web}" target="_blank" rel="noopener" class="dc-contact-link">${c.web}</a>` : ''}
-        </div>
-      `).join('');
-    }
-  } catch (err) {
-    console.error('DC Kit load error:', err);
-    grid.innerHTML = '<div class="skor-placeholder"><p>Gagal memuat template.</p></div>';
-  }
-}
-
-// ============================================================
-// 4. RECOVERY ROADMAP
+// 3. RECOVERY ROADMAP
 // ============================================================
 function initRecoveryRoadmap() {
   const form = document.getElementById('roadmapForm');

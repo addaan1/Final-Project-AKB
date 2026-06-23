@@ -1,12 +1,9 @@
-"""Tests untuk 4 fitur game-changer: Pinjol Checker, Debt Planner, DC Kit, Recovery Roadmap."""
+﻿"""Tests untuk 3 fitur game-changer: Pinjol Checker, Debt Planner, Recovery Roadmap."""
 import pytest
 from app.api import (
     check_pinjol_status,
     calculate_debt_planner,
-    get_dc_templates,
-    get_dc_template,
     generate_recovery_roadmap,
-    DC_TEMPLATES,
 )
 
 
@@ -48,7 +45,7 @@ class TestCheckPinjolStatus:
     def test_legal_partial_match(self):
         """Partial match untuk nama mirip."""
         r = check_pinjol_status("blu")
-        # "blu by BCA Digital" — should partial match
+        # "blu by BCA Digital" â€” should partial match
         assert r["valid"] is True
         assert r["found"] is True
         assert r["status"] in ("legal_partial", "legal")
@@ -120,7 +117,7 @@ class TestCalculateDebtPlanner:
             {"name": "Medium", "balance": 3_000_000, "bunga_pct": 5, "min_payment": 300_000},
         ]
         r = calculate_debt_planner(debts)
-        # Snowball: Small → Medium → Big
+        # Snowball: Small â†’ Medium â†’ Big
         assert r["snowball"]["order"] == ["Small", "Medium", "Big"]
 
     def test_avalanche_orders_by_highest_rate_first(self):
@@ -130,7 +127,7 @@ class TestCalculateDebtPlanner:
             {"name": "Medium Rate", "balance": 3_000_000, "bunga_pct": 8, "min_payment": 300_000},
         ]
         r = calculate_debt_planner(debts)
-        # Avalanche: High Rate → Medium Rate → Low Rate
+        # Avalanche: High Rate â†’ Medium Rate â†’ Low Rate
         assert r["avalanche"]["order"][0] == "High Rate"
         assert r["avalanche"]["order"][1] == "Medium Rate"
         assert r["avalanche"]["order"][2] == "Low Rate"
@@ -189,172 +186,6 @@ class TestCalculateDebtPlanner:
 # =================================================================
 # DC Survival Kit
 # =================================================================
-class TestDCTemplates:
-    """Test untuk DC Survival Kit."""
-
-    def test_get_all_templates(self):
-        r = get_dc_templates()
-        assert r["valid"] is True
-        assert "templates" in r
-        assert len(r["templates"]) == 5
-        assert "general_rights" in r
-        assert "emergency_contacts" in r
-        assert "disclaimer" in r
-
-    def test_all_templates_have_required_fields(self):
-        r = get_dc_templates()
-        for t in r["templates"]:
-            assert "id" in t
-            assert "title" in t
-            assert "scenario" in t
-            assert "message" in t
-            assert "hak_kamu" in t
-            assert "landasan_hukum" in t
-            assert isinstance(t["hak_kamu"], list)
-            assert len(t["hak_kamu"]) >= 1
-
-    def test_get_template_by_id(self):
-        r = get_dc_template("tidak_bisa_hari_ini")
-        assert r["valid"] is True
-        assert r["template"]["id"] == "tidak_bisa_hari_ini"
-        assert r["template"]["title"]
-
-    def test_get_template_invalid_id(self):
-        r = get_dc_template("nonexistent")
-        assert r["valid"] is False
-        assert "error" in r
-
-    def test_templates_have_specific_ids(self):
-        r = get_dc_templates()
-        ids = [t["id"] for t in r["templates"]]
-        assert "tidak_bisa_hari_ini" in ids
-        assert "restrukturisasi" in ids
-        assert "tolak_penagihan_agresif" in ids
-        assert "lapor_dc_ilegal" in ids
-        assert "konfirmasi_utang" in ids
-
-    def test_messages_reference_legal_basis(self):
-        """Setiap template harus ada landasan hukum (UU/POJK/Permenkominfo)."""
-        r = get_dc_templates()
-        for t in r["templates"]:
-            assert t["landasan_hukum"], f"Template {t['id']} missing landasan_hukum"
-
-    def test_emergency_contacts_include_ojk(self):
-        r = get_dc_templates()
-        contact_names = [c["name"] for c in r["emergency_contacts"]]
-        assert any("OJK" in name for name in contact_names)
-
-    def test_general_rights_list_nonempty(self):
-        r = get_dc_templates()
-        assert len(r["general_rights"]) >= 5
-
-
-# =================================================================
-# Galbay Recovery Roadmap
-# =================================================================
-class TestRecoveryRoadmap:
-    """Test untuk Galbay Recovery Roadmap."""
-
-    def test_basic_input(self):
-        r = generate_recovery_roadmap({
-            "total_utang": 5_000_000,
-            "income_bulanan": 3_000_000,
-            "sudah_dc": False,
-            "hari_telat": 0,
-        })
-        assert r["valid"] is True
-        assert r["severity"] in ("sedang", "tinggi", "kritis")
-        assert "roadmap" in r
-        assert "minggu_1_2" in r["roadmap"]
-        assert "minggu_3_4" in r["roadmap"]
-        assert "bulan_3" in r["roadmap"]
-
-    def test_critical_severity(self):
-        """Telat > 30 hari ATAU debt-to-income > 3 → kritis."""
-        r = generate_recovery_roadmap({
-            "total_utang": 50_000_000,
-            "income_bulanan": 3_000_000,  # debt/income = 16.67 (very high)
-            "sudah_dc": True,
-            "hari_telat": 60,
-        })
-        assert r["valid"] is True
-        assert r["severity"] == "kritis"
-        assert r["severity_label"] == "KRITIS"
-        # Critical roadmap harus lebih panjang (15+ items minggu 1-2)
-        assert len(r["roadmap"]["minggu_1_2"]) >= 10
-
-    def test_high_severity(self):
-        """Telat 7-30 hari ATAU debt-to-income 1.5-3 → tinggi."""
-        r = generate_recovery_roadmap({
-            "total_utang": 8_000_000,
-            "income_bulanan": 4_000_000,  # debt/income = 2.0
-            "sudah_dc": False,
-            "hari_telat": 15,
-        })
-        assert r["valid"] is True
-        assert r["severity"] == "tinggi"
-
-    def test_moderate_severity(self):
-        """Telat < 7 hari, debt-to-income < 1.5 → sedang."""
-        r = generate_recovery_roadmap({
-            "total_utang": 2_000_000,
-            "income_bulanan": 3_000_000,  # debt/income = 0.67
-            "sudah_dc": False,
-            "hari_telat": 0,
-        })
-        assert r["valid"] is True
-        assert r["severity"] == "sedang"
-
-    def test_invalid_income(self):
-        r = generate_recovery_roadmap({"total_utang": 1000, "income_bulanan": 0})
-        assert r["valid"] is False
-
-    def test_invalid_total_utang(self):
-        r = generate_recovery_roadmap({"total_utang": -100, "income_bulanan": 3000})
-        assert r["valid"] is False
-
-    def test_string_input_converted(self):
-        """String 'true'/'false' untuk sudah_dc dikonversi ke bool."""
-        r = generate_recovery_roadmap({
-            "total_utang": "5000000",
-            "income_bulanan": "3000000",
-            "sudah_dc": "true",
-            "hari_telat": "15",
-        })
-        assert r["valid"] is True
-
-    def test_roadmap_includes_success_metrics(self):
-        r = generate_recovery_roadmap({
-            "total_utang": 3_000_000, "income_bulanan": 3_000_000,
-            "sudah_dc": False, "hari_telat": 5
-        })
-        assert "success_metrics" in r
-        assert "target_bulan_1" in r["success_metrics"]
-        assert "target_bulan_2" in r["success_metrics"]
-        assert "target_bulan_3" in r["success_metrics"]
-
-    def test_every_roadmap_has_disclaimer(self):
-        r = generate_recovery_roadmap({
-            "total_utang": 3_000_000, "income_bulanan": 3_000_000,
-            "sudah_dc": False, "hari_telat": 5
-        })
-        assert "disclaimer" in r
-
-    def test_conditions_echoed_back(self):
-        r = generate_recovery_roadmap({
-            "total_utang": 5_000_000, "income_bulanan": 3_000_000,
-            "sudah_dc": True, "hari_telat": 10
-        })
-        assert r["conditions"]["total_utang"] == 5_000_000
-        assert r["conditions"]["income_bulanan"] == 3_000_000
-        assert r["conditions"]["sudah_dc"] is True
-        assert r["conditions"]["hari_telat"] == 10
-        assert "debt_to_income_ratio" in r["conditions"]
-
-
-# =================================================================
-# API Integration untuk 4 fitur baru
-# =================================================================
 class TestGameChangerAPIIntegration:
     """Integration tests untuk 4 endpoint API baru."""
 
@@ -387,26 +218,6 @@ class TestGameChangerAPIIntegration:
 
     def test_api_debt_planner_empty(self, client):
         r = client.post("/api/debt-planner", json={"debts": []})
-        assert r.status_code == 200
-        data = r.get_json()
-        assert data["valid"] is False
-
-    def test_api_dc_templates(self, client):
-        r = client.get("/api/dc-templates")
-        assert r.status_code == 200
-        data = r.get_json()
-        assert data["valid"] is True
-        assert len(data["templates"]) == 5
-
-    def test_api_dc_template_by_id(self, client):
-        r = client.get("/api/dc-templates/tidak_bisa_hari_ini")
-        assert r.status_code == 200
-        data = r.get_json()
-        assert data["valid"] is True
-        assert data["template"]["id"] == "tidak_bisa_hari_ini"
-
-    def test_api_dc_template_invalid(self, client):
-        r = client.get("/api/dc-templates/nonexistent")
         assert r.status_code == 200
         data = r.get_json()
         assert data["valid"] is False

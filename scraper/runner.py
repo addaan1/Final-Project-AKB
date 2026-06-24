@@ -21,6 +21,7 @@ def get_sources():
         "blogs": ("scraper.blogs:BlogScraper", "Blog posts (Medium + Dailysia)"),
         "youtube": ("scraper.youtube:YouTubeScraper", "YouTube comments (butuh API key)"),
         "appstore": ("scraper.appstore_reviews:AppStoreReviewsScraper", "Apple App Store reviews iOS"),
+        "marketplace": ("scraper.marketplace:MarketplaceScraper", "Shopee + Tokopedia listing publik (paylater/cicilan)"),
     }
 
 
@@ -45,6 +46,8 @@ def main(argv=None):
     parser.add_argument("--max-posts", type=int, default=50, help="Max posts per query untuk Reddit")
     parser.add_argument("--max-tweets", type=int, default=50, help="Max tweets per query untuk Twitter")
     parser.add_argument("--max-articles", type=int, default=30, help="Max articles per query untuk OJK/media")
+    parser.add_argument("--marketplace", choices=["shopee", "tokopedia", "both"], default="both", help="Target marketplace (default both)")
+    parser.add_argument("--marketplace-pages", type=int, default=2, help="Jumlah halaman per query untuk marketplace")
     parser.add_argument("--list", action="store_true", help="Daftar source tersedia")
     parser.add_argument("--all", action="store_true", help="Jalankan semua source")
     args = parser.parse_args(argv)
@@ -102,6 +105,9 @@ def main(argv=None):
             elif src == "youtube":
                 kwargs["max_videos"] = args.max_videos
                 kwargs["max_comments"] = args.max_comments
+            elif src == "marketplace":
+                kwargs["max_pages"] = args.marketplace_pages
+                kwargs["marketplace"] = args.marketplace
             result = scraper.run(**kwargs)
             summary[src] = result
             log.info("Selesai %s: %s", src, result)

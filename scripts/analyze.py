@@ -4,16 +4,23 @@ Galbay Predictor - Modelling & Analysis
 - Sentiment classifier (Multinomial Naive Bayes from scratch)
 - Behavioral (galbay) analysis from matched_categories
 - Trend, category, top-apps insights
-Outputs: /data/site/data.js  + PNG charts in /data/site/assets/
+Outputs: data/processed/site/data.js + PNG charts in data/processed/site/assets/
+Penggunaan:
+    python -m scripts.analyze
 """
-import pandas as pd, numpy as np, re, json, math, os
-from collections import Counter
+import pandas as pd, numpy as np, json, os
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-RAW = '/data/raw/'
-OUT = '/data/site/'
+from config import PROCESSED_DIR
+from scripts.sentiment_model import tokenize, stratified_split, train_naive_bayes, evaluate, top_predictive_words
+from scripts.behavior_analysis import count_categories, flag_distress, keyword_scan, score_severity
+
+# relevant_only/per_app_summary/timeline/all_reviews.csv come from
+# `python -m processing.build_csv` into data/processed/ — NOT data/raw/.
+RAW = str(PROCESSED_DIR) + '/'
+OUT = str(PROCESSED_DIR / 'site') + '/'
 ASSETS = OUT + 'assets/'
 os.makedirs(ASSETS, exist_ok=True)
 np.random.seed(42)
@@ -27,6 +34,15 @@ plt.rcParams.update({
 })
 LIME='#b8ff3c'; PUR='#9b5de5'; RED='#f87171'; ORG='#f97316'; BLU='#3b82f6'; GRN='#4ade80'
 
+def _read_csv_or_empty(path):
+    # validated_news/forum aren't produced by the current pipeline yet
+    # (processing/validate.py only validates in-memory, no CSV output) —
+    # degrade to an empty table instead of crashing the whole analysis.
+    try:
+        return pd.read_csv(path)
+    except (FileNotFoundError, pd.errors.EmptyDataError):
+        return pd.DataFrame()
+
 print('Loading data...')
 rel = pd.read_csv(RAW+'relevant_only.csv')
 pa  = pd.read_csv(RAW+'per_app_summary.csv')
@@ -35,111 +51,49 @@ try:
     nrows_all = sum(1 for _ in open(RAW+'all_reviews.csv', encoding='utf-8')) - 1
 except Exception:
     nrows_all = int(pa['n_reviews'].sum())
-fnews = pd.read_csv(RAW+'validated_news.csv'); fforum = pd.read_csv(RAW+'validated_forum.csv')
+fnews = _read_csv_or_empty(RAW+'validated_news.csv')
+fforum = _read_csv_or_empty(RAW+'validated_forum.csv')
 
 rel['content'] = rel['content'].fillna('').astype(str)
 
-# ================= 1) TEXT PREPROCESS =================
-STOP = set('''yang di ke dari dan atau ini itu untuk dengan pada saya aku kamu dia mereka kami kita
-ada tidak ga gak ngga nggak engga tdk udah sudah belum lagi juga aja saja kok sih deh dong ya yaa
-nya kah pun para per se the a an is are was do does si bang min admin app aplikasi nih tuh gitu gini
-bisa bukan kalo kalau karena biar buat dapat dapet jadi jd klo nya banget bgt kan akan masih mau
-lah loh org orang tp tapi dr dgn utk yg krn pada oleh sd sampai hingga agar supaya kpd kepada
-'''.split())
-
-token_re = re.compile(r"[a-zA-Z]+")
-def tok(t):
-    return [w for w in token_re.findall(t.lower()) if len(w) > 2 and w not in STOP]
-
-# ================= 2) SENTIMENT LABELS =================
+# ================= 1) SENTIMENT LABELS + SPLIT =================
 # negative: score 1-2 ; positive: score 4-5 ; drop neutral (3)
 d = rel[rel['score'] != 3].copy()
 d['label'] = (d['score'] >= 4).astype(int)   # 1=positive, 0=negative
-d['tokens'] = d['content'].apply(tok)
+d['tokens'] = d['content'].apply(tokenize)
 d = d[d['tokens'].map(len) > 0].reset_index(drop=True)
 
-# train/test split
-idx = np.random.permutation(len(d))
-cut = int(len(d)*0.8)
-tr_i, te_i = idx[:cut], idx[cut:]
-train, test = d.iloc[tr_i], d.iloc[te_i]
+# stratified split keeps the pos/neg ratio identical in train & test
+# (a plain random permutation can skew a small/imbalanced test set)
+train, test = stratified_split(d, label_col='label', test_size=0.2, seed=42)
 
-# ================= 3) MULTINOMIAL NAIVE BAYES (from scratch) =================
+# ================= 2) MULTINOMIAL NAIVE BAYES (from scratch) =================
 print('Training Naive Bayes...')
 MIN_DF = 5
-df_counter = Counter()
-for toks in train['tokens']:
-    df_counter.update(set(toks))
-_filtered = [w for w,c in df_counter.items() if c >= MIN_DF]
-vocab = {w:i for i,w in enumerate(_filtered)}
+nb_model = train_naive_bayes(train, label_col='label', min_df=MIN_DF, tokens_col='tokens')
+vocab, loglik = nb_model['vocab'], nb_model['loglik']
 V = len(vocab)
 
-cls_word = {0: np.ones(V), 1: np.ones(V)}  # Laplace smoothing
-cls_tot  = {0: 0.0, 1: 0.0}
-cls_docs = {0: 0, 1: 0}
-for toks, lab in zip(train['tokens'], train['label']):
-    cls_docs[lab]+=1
-    arr = cls_word[lab]
-    for w in toks:
-        j = vocab.get(w)
-        if j is not None:
-            arr[j]+=1; cls_tot[lab]+=1
-logprior = {c: math.log(cls_docs[c]/len(train)) for c in (0,1)}
-loglik = {c: np.log(cls_word[c] / (cls_tot[c] + V)) for c in (0,1)}
-
-def predict(toks):
-    s0, s1 = logprior[0], logprior[1]
-    for w in toks:
-        j = vocab.get(w)
-        if j is not None:
-            s0 += loglik[0][j]; s1 += loglik[1][j]
-    return 1 if s1 >= s0 else 0
-
-preds = test['tokens'].apply(predict).values
-y = test['label'].values
-TP = int(((preds==1)&(y==1)).sum()); TN = int(((preds==0)&(y==0)).sum())
-FP = int(((preds==1)&(y==0)).sum()); FN = int(((preds==0)&(y==1)).sum())
-acc = (TP+TN)/len(y)
-prec = TP/(TP+FP) if TP+FP else 0
-rec = TP/(TP+FN) if TP+FN else 0
-f1 = 2*prec*rec/(prec+rec) if prec+rec else 0
-print(f'Acc={acc:.3f} Prec={prec:.3f} Rec={rec:.3f} F1={f1:.3f}')
+metrics = evaluate(nb_model, test, label_col='label', tokens_col='tokens')
+preds, y = metrics['preds'], test['label'].values
+TP, TN, FP, FN = (metrics['confusion'][k] for k in ('TP', 'TN', 'FP', 'FN'))
+acc, prec, rec, f1 = metrics['accuracy'], metrics['precision'], metrics['recall'], metrics['f1']
+print(f'Acc={acc:.3f} Prec={prec:.3f} Rec={rec:.3f} F1={f1:.3f} (macro F1={metrics["macro_f1"]:.3f})')
 
 # top predictive words (log-likelihood ratio)
-inv = {i:w for w,i in vocab.items()}
-ratio = loglik[0] - loglik[1]   # high => negative indicator
-order = np.argsort(ratio)
-top_neg = [(inv[i], round(float(ratio[i]),2)) for i in order[::-1][:12]]
-top_pos = [(inv[i], round(float(-ratio[i]),2)) for i in order[:12]]
+top_neg, top_pos = top_predictive_words(nb_model, k=12, class_a=0, class_b=1)
 
-# ================= 4) BEHAVIORAL (GALBAY) ANALYSIS =================
+# ================= 3) BEHAVIORAL (GALBAY) ANALYSIS =================
 rel['mc'] = rel['matched_categories_str'].fillna('')
-beh = Counter()
-for s in rel['mc']:
-    for c in [x.strip() for x in s.split(',') if x.strip()]:
-        beh[c]+=1
-BEH_LABEL = {
- 'produk_fintech':'Diskusi Produk Fintech','bunga_dan_biaya':'Keluhan Bunga & Biaya',
- 'tagihan_dan_penagihan':'Tagihan & Penagihan (DC)','psikologi_avoidance':'Psikologi: Menghindar',
- 'distress_langsung':'Distress Finansial Langsung','psikologi_regret_stress':'Psikologi: Penyesalan/Stres',
- 'psikologi_impulsif':'Psikologi: Impulsif'}
-behavior = [{'key':k,'label':BEH_LABEL.get(k,k),'count':int(v)} for k,v in beh.most_common()]
+behavior = count_categories(rel, mc_col='mc')
+rel['distress'] = flag_distress(rel, mc_col='mc')
 
-# galbay distress signal = any of these tags
-DISTRESS = {'distress_langsung','tagihan_dan_penagihan','psikologi_regret_stress','psikologi_avoidance'}
-def is_distress(s):
-    return int(any(t in DISTRESS for t in [x.strip() for x in s.split(',')]))
-rel['distress'] = rel['mc'].apply(is_distress)
+severity = score_severity(rel, mc_col='mc', content_col='content')
+rel['severity'] = severity['severity']
+rel['severity_bucket'] = severity['severity_bucket']
+print('Severity buckets:', rel['severity_bucket'].value_counts().to_dict())
 
-# galbay keyword scan
-KW = {'gagal bayar/galbay':r'galbay|gagal bayar','telat/nunggak':r'telat|nunggak|tunggak',
- 'denda':r'denda|pinalti|penalti','bunga tinggi':r'bunga',
- 'debt collector/DC':r'\bdc\b|debt collector|penagih|nagih',
- 'teror/ancam':r'teror|ancam|sebar data|intimidasi','pinjol ilegal':r'ilegal| legal|ojk',
- 'gali lubang tutup lubang':r'gali lubang|tutup lubang|pinjam.*bayar'}
-content_low = rel['content'].str.lower()
-kw_counts = [{'label':k,'count':int(content_low.str.contains(p,regex=True,na=False).sum())} for k,p in KW.items()]
-kw_counts.sort(key=lambda x:-x['count'])
+kw_counts = keyword_scan(rel, content_col='content')
 
 # ================= 5) CATEGORY & SENTIMENT BREAKDOWN =================
 rel['neg'] = (rel['score']<=2).astype(int)

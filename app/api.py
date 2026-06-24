@@ -1505,15 +1505,17 @@ def chat_faq_handler(
 
 
 # =================================================================
-# TOOLS: DC Chat Simulator
+# TOOLS: DC Chat Simulator (Multi-Turn v2)
 # =================================================================
+# Each scenario is a sequence of turns. User picks an option (A/B/C/D)
+# per turn. DC responds. After last turn, scoring happens based on
+# accumulated criteria.
 DC_SCENARIOS: list[dict] = [
     {
         "id": "agresif_tekan",
         "title": "DC Tekanan Agresif",
         "difficulty": "Mudah",
-        "description": "DC nelpon teriak-teriak, minta bayar hari ini juga.",
-        "dc_message": "Pak/Bu, ini dari [nama pinjol]. Saya sudah tunggu 2 minggu. Bayar SEKARANG juga! Kalau tidak, saya sebar data Anda ke semua kontak. Teman, keluarga, semua tau Anda penipu!",
+        "description": "DC nelpon teriak-teriak, minta bayar hari ini juga. Anda harus tetap tenang dan negosiasi.",
         "tone": "agresif",
         "key_points": [
             "Tetap tenang, jangan emosional",
@@ -1521,29 +1523,56 @@ DC_SCENARIOS: list[dict] = [
             "Minta bukti identitas & tagihan resmi",
             "Tawarkan negosiasi restrukturisasi, bukan penolakan",
         ],
-        "good_responses": [
-            "Pak, saya terima teleponnya. Saya memang punya tanggungan. Tapi sebelum lanjut, bisa kirimkan surat tagihan resmi & nama lengkap Bapak?",
-            "Saya mau selesaikan ini. Tapi saya tidak bisa bayar penuh sekarang. Apakah ada opsi restrukturisasi atau cicilan yang bisa kita bicarakan?",
-            "Saya mengerti situasinya. Saya butuh waktu 7 hari. Bisa kita bikin jadwal pembayaran yang realistis?",
-        ],
-        "bad_responses": [
-            "Saya tidak akan bayar! Lo jangan ganggu keluarga saya!",
-            "OK saya bayar sekarang berapa?",
-            "Lo penipu, saya akan lapor polisi!",
-        ],
         "evaluation_criteria": {
-            "calm": "Apakah Anda tetap tenang & profesional?",
-            "verify": "Apakah Anda minta bukti identitas/tagihan?",
-            "negotiate": "Apakah Anda tawarkan solusi (bukan sekadar tolak/bayar)?",
-            "no_threat": "Apakah Anda tidak mengancam balik?",
+            "calm": "Tetap tenang & profesional",
+            "verify": "Minta bukti identitas/tagihan",
+            "negotiate": "Tawarkan solusi (bukan sekadar tolak/bayar)",
+            "no_threat": "Tidak mengancam balik",
         },
+        "turns": [
+            {
+                "dc_message": "Pak/Bu, ini dari [nAMA PINJOL]. Saya sudah tunggu 2 minggu. Bayar SEKARANG juga! Kalau tidak, saya sebar data Anda ke semua kontak. Teman, keluarga, semua tau Anda penipu!",
+                "options": [
+                    {"label": "A. Teriak balik: 'Lo jangan ganggu keluarga saya! Saya akan lapor polisi!'", "score": 15, "criteria": {"calm": 0, "no_threat": 0, "negotiate": 0, "verify": 0}, "feedback": "Reaktif & emosional. DC jadi makin agresif, kasus makin sulit."},
+                    {"label": "B. Tenang: 'Pak, saya terima teleponnya. Saya memang punya tanggungan. Bisa kirimkan surat tagihan resmi & nama lengkap Bapak?'", "score": 85, "criteria": {"calm": 25, "verify": 25, "negotiate": 10, "no_threat": 25}, "feedback": "Tepat! Tenang, verifikasi identitas dulu sebelum lanjut."},
+                    {"label": "C. Panik: 'OK saya transfer sekarang, jangan sebar! Berapa nomornya?'", "score": 10, "criteria": {"calm": 0, "negotiate": 0, "verify": 0, "no_threat": 15}, "feedback": "Bayar di bawah tekanan = DC belajar intimidasi berhasil. Besok DC akan ancam lagi."},
+                    {"label": "D. Diam & tutup telepon", "score": 25, "criteria": {"calm": 20, "no_threat": 20, "verify": 0, "negotiate": 0}, "feedback": "Menghindari bukan solusi. DC akan nelpon lagi besok dengan ancaman lebih besar."},
+                ]
+            },
+            {
+                "dc_message": "OK Pak, ini nomor saya 0812-3456-7890, nama saya Budi. Tagihan Rp 3.500.000 sudah jatuh tempo 14 hari. Gimana mau bayar berapa?",
+                "options": [
+                    {"label": "A. 'Saya tidak bisa bayar sama sekali.'", "score": 15, "criteria": {"negotiate": 0, "realistic": 0}, "feedback": "Terlalu defensif. DC tidak punya solusi untuk ditawarkan."},
+                    {"label": "B. 'Saya bisa cicil Rp 500.000/bulan selama 7 bulan. Apakah ada keringanan bunga?'", "score": 95, "criteria": {"calm": 15, "negotiate": 25, "realistic": 25, "verify": 15}, "feedback": "Excellent! Angka spesifik, jangka waktu jelas, tawar keringanan."},
+                    {"label": "C. 'Saya sudah bilang ga punya uang, yauda saya mati aja.'", "score": 5, "criteria": {"calm": 0, "negotiate": 0, "realistic": 0}, "feedback": "Self-harm. Kami akan direct ke crisis hotline."},
+                    {"label": "D. 'Saya mau bayar penuh, tapi kasih saya waktu 30 hari.'", "score": 50, "criteria": {"negotiate": 20, "realistic": 10, "verify": 0}, "feedback": "Boleh, tapi tanpa keringanan bunga = Anda rugi. Selalu tawar restrukturisasi."},
+                ]
+            },
+            {
+                "dc_message": "OK Pak, cicilan Rp 500.000/bulan OK. Tapi bunganya tetap flat 10%/tahun. Deal?",
+                "options": [
+                    {"label": "A. 'Deal. Saya bayar mulai tanggal 25 bulan ini.'", "score": 75, "criteria": {"negotiate": 20, "specific": 25, "realistic": 15}, "feedback": "Baik. Komitmen spesifik, tapi tidak push keringanan admin."},
+                    {"label": "B. 'Pak, kalau bisa bunga turun ke 6%/tahun, saya deal. Plus bebas biaya admin?'", "score": 95, "criteria": {"negotiate": 25, "specific": 20, "realistic": 25}, "feedback": "Perfect negotiation! Push untuk keringanan, tidak menyerah di deal pertama."},
+                    {"label": "C. 'Ga deal, saya pikir-pikir dulu.'", "score": 30, "criteria": {"negotiate": 0, "specific": 5}, "feedback": "Menunda = DC akan ancam lagi. Ambil deal dengan keringanan tambahan."},
+                    {"label": "D. 'OK, deal.'", "score": 60, "criteria": {"negotiate": 10, "specific": 20}, "feedback": "OK tapi missed opportunity untuk keringanan."},
+                ]
+            },
+            {
+                "dc_message": "OK deal Pak, bunga 6%, bebas admin, Rp 500.000/bulan mulai 25 bulan ini. Saya akan kirim surat perjanjian via email. Bukti transfer ke rekening resmi PT XYZ di bank BCA ya. Ada pertanyaan?",
+                "options": [
+                    {"label": "A. 'OK Pak, terima kasih. Mohon email konfirmasinya ya.'", "score": 90, "criteria": {"polite": 25, "verify": 20, "specific": 20}, "feedback": "Tepat! Konfirmasi via email untuk dokumentasi. Profesional."},
+                    {"label": "B. 'OK thanks.' (langsung tutup)", "score": 40, "criteria": {"polite": 10, "verify": 5}, "feedback": "Kurang sopan. DC ingat Anda di interaksi berikutnya."},
+                    {"label": "C. 'Pak, tolong juga dicancel tagihan ke kontak-kontak saya. Saya sudah dibayar.'", "score": 70, "criteria": {"polite": 15, "verify": 25, "specific": 15}, "feedback": "Penting! Minta klarifikasi sebar data sudah dihentikan. Bagus."},
+                    {"label": "D. 'OK, saya transfer ke rekening atas nama pribadi ya Pak?'", "score": 10, "criteria": {"verify": 0, "polite": 5}, "feedback": "BAHAYA! Transfer ke rekening pribadi = fraud. Pastikan ke rekening perusahaan resmi."},
+                ]
+            },
+        ],
     },
     {
         "id": "sebar_data",
         "title": "DC Ancam Sebar Data",
         "difficulty": "Sedang",
-        "description": "DC ancam akan sebar foto/kontak Anda ke semua orang.",
-        "dc_message": "Pak, saya sudah kasih waktu 3 hari. Kalau hari ini tidak transfer, saya akan kirim foto selfie + tagihan Anda ke semua kontak WhatsApp. Teman kerja, pacar, ortu, semua akan tau Anda gagal bayar!",
+        "description": "DC ancam akan sebar foto/kontak ke semua orang. Anda punya hak hukum (UU PDP).",
         "tone": "intimidasi",
         "key_points": [
             "Jangan transfer di bawah tekanan (ini ilegal)",
@@ -1551,29 +1580,47 @@ DC_SCENARIOS: list[dict] = [
             "Lapor ke OJK + Kominfo + polisi (cyber crime)",
             "Tegaskan hak atas data pribadi (UU PDP)",
         ],
-        "good_responses": [
-            "Pak, ancaman sebar data pribadi itu melanggar UU PDP No. 27/2022. Saya akan dokumentasikan chat ini dan laporkan ke OJK + Kominfo. Mari kita bicarakan solusi yang legal.",
-            "Saya tidak akan membayar di bawah tekanan ancaman. Saya berhak atas data pribadi saya. Apakah ada solusi restrukturisasi yang bisa kita bicarakan?",
-            "Pak, mohon kirim nama lengkap, perusahaan, dan surat penagihan resmi. Saya akan proses sesuai prosedur yang benar.",
-        ],
-        "bad_responses": [
-            "OK saya transfer sekarang, jangan sebar!",
-            "Saya tidak peduli, sebar saja!",
-            "Saya akan bunuh diri kalau ini diteruskan.",
-        ],
         "evaluation_criteria": {
-            "calm": "Apakah Anda tetap tenang tanpa panik?",
-            "legal": "Apakah Anda tahu hak hukum (UU PDP) & ancam lapor?",
-            "document": "Apakah Anda dokumentasikan ancaman?",
-            "no_payment": "Apakah Anda TIDAK membayar di bawah tekanan?",
+            "calm": "Tetap tenang tanpa panik",
+            "legal": "Tahu hak hukum (UU PDP) & ancam lapor",
+            "document": "Dokumentasikan ancaman",
+            "no_payment": "TIDAK membayar di bawah tekanan",
         },
+        "turns": [
+            {
+                "dc_message": "Pak, saya sudah kasih waktu 3 hari. Kalau hari ini tidak transfer Rp 2.000.000, saya akan kirim foto selfie + tagihan Anda ke semua kontak WhatsApp. Teman kerja, pacar, ortu, semua akan tau!",
+                "options": [
+                    {"label": "A. Panik: 'OK saya transfer sekarang, jangan sebar!'", "score": 10, "criteria": {"calm": 0, "legal": 0, "no_payment": 0}, "feedback": "Tunai di bawah tekanan. DC belajar ancaman = efektif. Akan diulangi."},
+                    {"label": "B. 'Pak, ancam sebar data itu melanggar UU PDP No. 27/2022. Saya akan screenshot chat ini dan laporkan ke OJK + Kominfo + polisi. Mari bicara solusi legal.'", "score": 95, "criteria": {"calm": 25, "legal": 25, "document": 20, "no_threat": 20}, "feedback": "Perfect! Tenang, tahu UU, ancam balik dengan legal. DC gentar."},
+                    {"label": "C. 'Saya tidak peduli, sebar saja.'", "score": 15, "criteria": {"calm": 5, "no_threat": 25, "legal": 0}, "feedback": "Biarin DC sebar = data Anda disebar. Tetap harus laporkan. Tenang tapi tetap report."},
+                    {"label": "D. 'Pak, tolong jangan sebar, saya ada uang, transfer sekarang juga.'", "score": 5, "criteria": {"calm": 0, "legal": 0, "no_payment": 0}, "feedback": "Iniintimidasi berhasil. DC akan jadi makin agresif ke orang lain juga."},
+                ]
+            },
+            {
+                "dc_message": "Pak, tenang, kita sama-sama cari solusi. Saya bisa keringanan 20% kalau Anda bayar 50% hari ini. Deal?",
+                "options": [
+                    {"label": "A. 'Pak, keringanan saya hargai. Saya akan bayar 50% setelah dapat konfirmasi restrukturisasi tertulis. Boleh via email?'", "score": 90, "criteria": {"calm": 25, "negotiate": 20, "verify": 20, "document": 15}, "feedback": "Tepat! Acknowledge keringanan, minta dokumentasi. Aman."},
+                    {"label": "B. 'Deal! Saya transfer 50% sekarang.'", "score": 50, "criteria": {"negotiate": 15, "no_payment": 0}, "feedback": "OK deal, tapi tanpa konfirmasi tertulis = risiko. Minta surat perjanjian dulu."},
+                    {"label": "C. 'Ga deal. Saya lapor OJK sekarang juga.'", "score": 40, "criteria": {"legal": 25, "no_threat": 20}, "feedback": "Lapor OK, tapi menutup pintu negosiasi. Bisa balance: ancam lapor + tetap buka ruang negosiasi."},
+                    {"label": "D. 'Pak, sebelum lanjut, bisa kirim nama lengkap, perusahaan, dan surat penagihan resmi?'", "score": 85, "criteria": {"calm": 20, "verify": 25, "document": 15}, "feedback": "Bagus! Verifikasi dulu sebelum deal. Protect yourself."},
+                ]
+            },
+            {
+                "dc_message": "OK Pak, ini surat restrukturisasi resmi dari PT XYZ. Cicilan Rp 800.000/bulan selama 3 bulan. Apakah deal?",
+                "options": [
+                    {"label": "A. 'Deal. Saya bayar mulai besok. Mohon email konfirmasinya.'", "score": 80, "criteria": {"polite": 15, "specific": 20, "verify": 20}, "feedback": "Bagus! Deal dengan komitmen spesifik + dokumentasi."},
+                    {"label": "B. 'Deal.' (tanpa klarifikasi)", "score": 40, "criteria": {"specific": 5, "verify": 5}, "feedback": "Terlalu singkat. Selalu confirm date & method."},
+                    {"label": "C. 'Pak, apakah tagihan ke kontak saya sudah dicancel? Saya butuh jaminan itu.'", "score": 90, "criteria": {"calm": 20, "verify": 25, "specific": 20}, "feedback": "Penting! Pastikan sebar data dihentikan. Ini hak Anda."},
+                    {"label": "D. 'Deal. Saya transfer hari ini juga.'", "score": 35, "criteria": {"calm": 10, "verify": 5}, "feedback": "Transfer mendadak tanpa konfirmasi = risiko. Selalu minta email confirmation dulu."},
+                ]
+            },
+        ],
     },
     {
         "id": "konsolidasi",
         "title": "DC Mau Tahu Posisi",
         "difficulty": "Mudah",
         "description": "DC nelpon sopan, tanya kemampuan bayar & tawarkan solusi.",
-        "dc_message": "Selamat pagi, saya Adi dari [nama pinjol]. Saya ditugaskan follow up tagihan Anda sebesar Rp 2.500.000 yang sudah jatuh tempo 30 hari. Bisa ceritakan posisi keuangan Anda saat ini?",
         "tone": "profesional",
         "key_points": [
             "Jujur tentang kondisi keuangan",
@@ -1581,29 +1628,47 @@ DC_SCENARIOS: list[dict] = [
             "Minta opsi restrukturisasi (cicilan, penundaan)",
             "Konfirmasi kesepakatan via email/surat",
         ],
-        "good_responses": [
-            "Pak Adi, terima kasih sudah menghubungi dengan sopan. Saat ini saya bisa cicil Rp 300.000/bulan. Apakah ada opsi yang sesuai?",
-            "Posisi saya saat ini, income 4 juta, tanggungan 3. Saya tidak bisa bayar penuh. Bisa kita jadwalkan pembayaran parsial?",
-            "Pak, saya jujur. Saya punya 3 tagihan lain juga. Bisa bantu konsolidasi atau restrukturisasi?",
-        ],
-        "bad_responses": [
-            "Saya tidak mau bayar sama sekali!",
-            "Pokoknya saya tidak bisa, bye!",
-            "Lo ngapain nelpon, saya sibuk!",
-        ],
         "evaluation_criteria": {
-            "honest": "Apakah Anda jujur tentang kemampuan bayar?",
-            "realistic": "Apakah nominal yang Anda tawarkan realistis?",
-            "negotiate": "Apakah Anda minta opsi (restrukturisasi/cicilan)?",
-            "polite": "Apakah Anda tetap sopan & profesional?",
+            "honest": "Jujur tentang kemampuan bayar",
+            "realistic": "Nominal realistis (bukan over/under promise)",
+            "negotiate": "Minta opsi (restrukturisasi/cicilan)",
+            "polite": "Tetap sopan & profesional",
         },
+        "turns": [
+            {
+                "dc_message": "Selamat pagi, saya Adi dari [nama pinjol]. Saya ditugaskan follow up tagihan Anda sebesar Rp 2.500.000 yang sudah jatuh tempo 30 hari. Bisa ceritakan posisi keuangan Anda saat ini?",
+                "options": [
+                    {"label": "A. 'Saya ga mau bayar sama sekali!'", "score": 5, "criteria": {"honest": 0, "polite": 0, "negotiate": 0}, "feedback": "Tidak profesional. DC tidak bisa bantu kalau Anda tidak engage."},
+                    {"label": "B. 'Pak Adi, terima kasih sudah menghubungi. Jujur, income saya 4 juta, tanggungan 3, cicilan lain 1.5 juta. Saya bisa cicil Rp 300.000/bulan.'", "score": 95, "criteria": {"honest": 25, "realistic": 25, "negotiate": 20, "polite": 15}, "feedback": "Excellent! Jujur, spesifik angka, sopan, tawarkan solusi. Profesional."},
+                    {"label": "C. 'Pokoknya saya ga bisa, bye.'", "score": 10, "criteria": {"polite": 0, "negotiate": 0, "honest": 0}, "feedback": "Tutup komunikasi = DC escalate ke atasan / DC kedua."},
+                    {"label": "D. 'Saya mau bayar lunas, kasih saya 90 hari.'", "score": 35, "criteria": {"honest": 5, "realistic": 5, "negotiate": 15}, "feedback": "Over-promise. Kalau ga bisa bayar nanti, trust rusak & DC escalate."},
+                ]
+            },
+            {
+                "dc_message": "OK Pak, cicilan Rp 300.000/bulan. Berapa bulan tenor?",
+                "options": [
+                    {"label": "A. '8 bulan cukup.'", "score": 70, "criteria": {"specific": 20, "realistic": 15, "negotiate": 15}, "feedback": "Bagus, ada angka. Tapi 8 bulan = total 2.4jt dari 2.5jt tagihan, masih kurang."},
+                    {"label": "B. '8 bulan, dan mohon keringanan bunga 50% ya Pak, supaya totalnya ga terlalu besar.'", "score": 95, "criteria": {"specific": 20, "realistic": 20, "negotiate": 25, "polite": 10}, "feedback": "Perfect! Negosiasi bunga + tenor spesifik."},
+                    {"label": "C. 'Berapa pun bisa Pak, yang penting ga ditagih terus.'", "score": 25, "criteria": {"honest": 0, "specific": 0}, "feedback": "Terlalu pasrah. DC jadi curiga Anda ga serius."},
+                    {"label": "D. 'Saya pikir dulu ya Pak.'", "score": 30, "criteria": {"specific": 0, "negotiate": 0}, "feedback": "Menunda = DC akan follow up lagi. Lebih baik commit sekarang."},
+                ]
+            },
+            {
+                "dc_message": "OK deal Pak, 8 bulan Rp 300.000/bulan, bunga flat 6%/tahun. Saya kirim surat perjanjian via email. Ada lagi yang mau ditanyakan?",
+                "options": [
+                    {"label": "A. 'OK Pak terima kasih banyak, sangat membantu.'", "score": 85, "criteria": {"polite": 25, "verify": 15, "specific": 15}, "feedback": "Tepat! Sopan + komitmen. Tutup dengan baik."},
+                    {"label": "B. 'Pak, bisa sekalian konsolidasi dengan 2 pinjol lain saya? Saya ada 3 tagihan total 5jt.'", "score": 90, "criteria": {"polite": 15, "negotiate": 25, "specific": 20}, "feedback": "Excellent! Inisiatif konsolidasi. DC bisa connect dengan tim konsolidasi."},
+                    {"label": "C. 'OK bye.' (langsung tutup)", "score": 35, "criteria": {"polite": 5, "verify": 5}, "feedback": "Kurang sopan, kesan Anda ga respect effort DC."},
+                    {"label": "D. 'OK, saya transfer 5 menit lagi ya.'", "score": 30, "criteria": {"specific": 5, "verify": 5}, "feedback": "Jangan buru-buru. Confirm via email dulu sebelum transfer."},
+                ]
+            },
+        ],
     },
     {
         "id": "emergency_kritis",
         "title": "DC di Masa Kritis",
         "difficulty": "Sulit",
         "description": "Anda benar-benar tidak punya uang. DC minta nominal realistis.",
-        "dc_message": "Pak, saya tahu situasinya sulit. Tapi ini sudah 60 hari. Saya perlu tahu, kalau saya tawarkan keringanan 30%, Anda bisa bayar berapa? Kapan?",
         "tone": "negosiator",
         "key_points": [
             "Bersikap kooperatif, bukan defensif",
@@ -1611,31 +1676,305 @@ DC_SCENARIOS: list[dict] = [
             "Minta keringanan bunga + admin",
             "Konfirmasi tanggal bayar yang PASTI",
         ],
-        "good_responses": [
-            "Pak, kalau dikeringankan 30%, saya bisa bayar Rp 500.000 dalam 14 hari. Apakah itu cukup?",
-            "Saya jujur, maksimal saya bisa Rp 300.000 bulan ini. Bisa kita bikin jadwal bertahap?",
-            "Terima kasih keringanannya. Saya bayar Rp 700.000 akhir bulan. Bisa dibuatkan surat perjanjian?",
-        ],
-        "bad_responses": [
-            "Saya beneran ga punya uang sama sekali.",
-            "Pokoknya saya ga bisa, suka-suka lo deh.",
-            "Saya tidak mau janji, kita lihat nanti aja.",
-        ],
         "evaluation_criteria": {
-            "cooperative": "Apakah Anda kooperatif (bukan defensif)?",
-            "specific": "Apakah Anda kasih angka & tanggal SPESIFIK?",
-            "acknowledge": "Apakah Anda acknowledge keringanan yang ditawarkan?",
-            "realistic": "Apakah Anda tidak over-promise?",
+            "cooperative": "Kooperatif (bukan defensif)",
+            "specific": "Kasih angka & tanggal SPESIFIK",
+            "acknowledge": "Acknowledge keringanan yang ditawarkan",
+            "realistic": "Tidak over-promise",
         },
+        "turns": [
+            {
+                "dc_message": "Pak, saya tahu situasinya sulit. Tapi ini sudah 60 hari. Saya perlu tahu, kalau saya tawarkan keringanan 30%, Anda bisa bayar berapa? Kapan?",
+                "options": [
+                    {"label": "A. 'Saya beneran ga punya uang sama sekali.'", "score": 20, "criteria": {"cooperative": 10, "specific": 0}, "feedback": "Terlalu pesimis. DC tidak bisa bantu tanpa angka."},
+                    {"label": "B. 'Pak, terima kasih keringanannya. Jujur, saya bisa bayar Rp 200.000 tanggal 25 bulan ini. Sisanya bulan depan Rp 200.000. Apakah ini cukup?'", "score": 95, "criteria": {"cooperative": 25, "acknowledge": 20, "specific": 25, "realistic": 20}, "feedback": "Perfect! Acknowledge keringanan + angka spesifik + tanggal jelas. DC setuju."},
+                    {"label": "C. 'Saya tidak mau janji, kita lihat nanti aja.'", "score": 5, "criteria": {"cooperative": 0, "realistic": 0, "specific": 0}, "feedback": "Tidak ada commitment. DC tidak punya alasan untuk keringanan. Eskalasi."},
+                    {"label": "D. 'Saya bisa lunas semua bulan depan.'", "score": 15, "criteria": {"realistic": 0, "cooperative": 5}, "feedback": "Over-promise. Kalau ga bisa, trust rusak parah."},
+                ]
+            },
+            {
+                "dc_message": "OK Pak, Rp 200.000 tanggal 25 ini, Rp 200.000 tanggal 25 bulan depan. Tapi bunga flat 8%/tahun. Deal?",
+                "options": [
+                    {"label": "A. 'Deal Pak. Saya bayar tanggal 25 ini via transfer bank. Mohon email konfirmasinya.'", "score": 90, "criteria": {"acknowledge": 20, "specific": 20, "realistic": 25, "polite": 10}, "feedback": "Sangat baik! Komitmen + tanggal spesifik + minta dokumentasi."},
+                    {"label": "B. 'Pak, bisa bunga 4% aja ya, kan keringanan 30% biasanya termasuk bunga.'", "score": 80, "criteria": {"acknowledge": 15, "negotiate": 20, "specific": 20}, "feedback": "Tawar lagi! Selalu negotiate, ga ada ruginya."},
+                    {"label": "C. 'Deal.' (singkat)", "score": 50, "criteria": {"specific": 15, "realistic": 15}, "feedback": "OK tapi missed opportunity + kurang profesional."},
+                    {"label": "D. 'Pak, tolong juga keringanan biaya admin 50% ya.'", "score": 85, "criteria": {"acknowledge": 15, "negotiate": 25, "specific": 20}, "feedback": "Tepat! Push keringanan lebih jauh. Selalu tawar."},
+                ]
+            },
+            {
+                "dc_message": "OK Pak, deal final: Rp 200.000 x 2x tanggal 25, bunga 4%, tanpa admin. Saya kirim surat perjanjian via email hari ini. Ada pertanyaan?",
+                "options": [
+                    {"label": "A. 'OK Pak, terima kasih banyak. Saya akan bayar tepat waktu.'", "score": 90, "criteria": {"cooperative": 25, "acknowledge": 20, "polite": 20, "specific": 15}, "feedback": "Tepat! Komitmen, sopan, dokumentasi. Profesional."},
+                    {"label": "B. 'Pak, tolong pastikan tagihan ini tidak di-escalate ke atasan kalau saya bayar tepat waktu.'", "score": 85, "criteria": {"cooperative": 20, "specific": 20, "realistic": 15}, "feedback": "Bagus! Penting memastikan tidak ada eskalasi yang tidak perlu."},
+                    {"label": "C. 'OK.' (singkat)", "score": 40, "criteria": {"polite": 5, "specific": 5}, "feedback": "Terlalu singkat. DC tidak yakin Anda serius."},
+                    {"label": "D. 'Pak, kalau saya telat 1-2 hari, tolong kasih tahu sebelum escalate. Saya akan bayar begitu ada.'", "score": 85, "criteria": {"cooperative": 25, "acknowledge": 15, "specific": 20}, "feedback": "Excellent! Komunikasi terbuka. Tanda kematangan finansial."},
+                ]
+            },
+        ],
     },
 ]
 
 
 def evaluate_dc_response(scenario: dict, user_response: str) -> dict:
-    """Evaluate user response ke DC scenario.
+    """Evaluate user response ke DC scenario (LEGACY single-turn scoring).
 
+    Used as fallback for any scenario without 'turns' key.
     Scoring: 0-100 (4 criteria × 25 pts each).
     """
+    if not user_response or len(user_response.strip()) < 5:
+        return {
+            "valid": False,
+            "score": 0,
+            "feedback": ["Respons terlalu pendek. Coba lebih detail & profesional."],
+            "criteria_scores": {},
+            "verdict": "Perlu Perbaikan",
+            "verdict_color": "#ef4444",
+            "verdict_msg": "Respons minimal. Latih dengan role-play atau template.",
+        }
+
+    text = user_response.lower().strip()
+    criteria = scenario.get("evaluation_criteria", {})
+    scores: dict[str, int] = {}
+    feedback_parts: list[str] = []
+
+    # Calm check
+    is_calm = (
+        not any(w in text.upper() * 3 for w in text.split() if len(w) > 3)
+        and not any(p in text for p in ["babi", "anjir banget", "bodoh", "tolol", "bangsat"])
+    )
+    if "calm" in criteria:
+        scores["calm"] = 25 if is_calm else 10
+        if not is_calm:
+            feedback_parts.append("⚠️ Tetap tenang — DC sering provoke emosi. Jangan teriak balik.")
+
+    # Legal/verify
+    has_legal = any(kw in text for kw in [
+        "identitas", "kartu pengenal", "ktp", "kartu nama",
+        "uu pdp", "uu ite", "ojk", "kominfo", "polisi", "polisi cyber",
+        "bukti", "tagihan resmi", "surat",
+    ])
+    if "verify" in criteria or "legal" in criteria:
+        key = "verify" if "verify" in criteria else "legal"
+        scores[key] = 25 if has_legal else 5
+        if not has_legal:
+            feedback_parts.append("📋 Selalu minta bukti identitas & surat tagihan resmi. DC ilegal sering tanpa dokumen.")
+
+    # Negotiate
+    has_negotiate = any(kw in text for kw in [
+        "restrukturisasi", "cicil", "cicilan", "keringanan", "jadwal",
+        "bayar sebagian", "parsial", "分期", "bertahap", "30%", "50%",
+        "restruk", "diskon",
+    ])
+    if "negotiate" in criteria or "cooperative" in criteria:
+        key = "negotiate" if "negotiate" in criteria else "cooperative"
+        scores[key] = 25 if has_negotiate else 8
+        if not has_negotiate:
+            feedback_parts.append("🤝 Tawarkan solusi konkret (restrukturisasi, cicilan, keringanan), bukan sekadar tolak atau iya.")
+
+    # Document
+    has_doc = any(kw in text for kw in [
+        "screenshot", "dokumentasi", "rekam", "bukti chat", "simpan",
+        "record", "saya rekam",
+    ])
+    if "document" in criteria:
+        scores["document"] = 25 if has_doc else 8
+        if not has_doc:
+            feedback_parts.append("📸 Dokumentasikan ancaman (screenshot) untuk bukti pelaporan.")
+
+    # No payment under threat
+    has_no_pay = not any(kw in text for kw in [
+        "ok saya transfer", "ok saya bayar", "siap transfer", "transfer sekarang",
+        "bayar sekarang juga",
+    ])
+    if "no_payment" in criteria:
+        scores["no_payment"] = 25 if has_no_pay else 0
+        if not has_no_pay:
+            feedback_parts.append("🚨 Jangan bayar di bawah ancaman! Itu ilegal. Anda punya hak untuk negosiasi fair.")
+
+    # Honest / specific
+    has_specific = bool(re.search(r"\d+\s*(juta|ribu|rb|jt|k|%)", text)) or any(
+        kw in text for kw in ["bulan ini", "akhir bulan", "tanggal", "minggu", "hari"]
+    )
+    if "honest" in criteria or "specific" in criteria:
+        key = "honest" if "honest" in criteria else "specific"
+        scores[key] = 25 if has_specific else 8
+        if not has_specific:
+            feedback_parts.append("🎯 Kasih angka & tanggal SPESIFIK (misal: 'Rp 300.000 tanggal 25'). Jangan vague.")
+
+    # Polite check
+    has_polite = any(kw in text for kw in [
+        "pak", "bu", "mas", "mba", "terima kasih", "mohon", "maaf",
+        "silakan", "tolong",
+    ])
+    if "polite" in criteria:
+        scores["polite"] = 25 if has_polite else 8
+        if not has_polite:
+            feedback_parts.append("🙏 Tetap sopan. Pakai 'Pak/Bu', 'terima kasih', 'mohon' — DC lebih terbuka jika Anda sopan.")
+
+    # No threat back
+    no_threat_back = not any(kw in text for kw in [
+        "saya akan bunuh", "saya lapor polisi", "saya sebar", "saya hajar",
+    ])
+    if "no_threat" in criteria:
+        scores["no_threat"] = 25 if no_threat_back else 0
+        if not no_threat_back:
+            feedback_parts.append("⚠️ Jangan mengancam balik. Fokus pada solusi, bukan emosional.")
+
+    # Acknowledge
+    has_ack = any(kw in text for kw in [
+        "keringanan", "diskon", "potong", "thank you for", "terima kasih untuk",
+        "saya hargai", "saya appreciate",
+    ])
+    if "acknowledge" in criteria:
+        scores["acknowledge"] = 25 if has_ack else 5
+        if not has_ack:
+            feedback_parts.append("🙏 Acknowledge tawaran keringanan DC ('Terima kasih keringanannya...') — ini menunjukkan kooperatif.")
+
+    # Realistic check
+    over_promise = any(kw in text for kw in [
+        "saya bayar lunas besok", "akan lunas minggu ini", "pokoknya saya bayar semua",
+    ])
+    if "realistic" in criteria:
+        scores["realistic"] = 0 if over_promise else 25
+        if over_promise:
+            feedback_parts.append("⚠️ Jangan over-promise. Lebih baik realistis agar bisa ditepati.")
+
+    total = sum(scores.values())
+    max_possible = len(criteria) * 25
+    if max_possible == 0:
+        max_possible = 100
+    final_score = round((total / max_possible) * 100)
+
+    if final_score >= 80:
+        verdict = "Sangat Baik"
+        verdict_color = "#84cc16"
+        verdict_msg = "Anda menunjukkan respons yang matang & strategis. DC profesional akan merespons positif."
+    elif final_score >= 60:
+        verdict = "Baik"
+        verdict_color = "#84cc16"
+        verdict_msg = "Respons Anda cukup baik. Beberapa area masih bisa diperbaiki."
+    elif final_score >= 40:
+        verdict = "Cukup"
+        verdict_color = "#f59e0b"
+        verdict_msg = "Anda bisa lebih baik lagi. Lihat tips di bawah untuk respons ideal."
+    else:
+        verdict = "Perlu Perbaikan"
+        verdict_color = "#ef4444"
+        verdict_msg = "Respons ini bisa jadi kontraproduktif. Pelajari skenario & coba lagi."
+
+    return {
+        "valid": True,
+        "score": final_score,
+        "verdict": verdict,
+        "verdict_color": verdict_color,
+        "verdict_msg": verdict_msg,
+        "criteria_scores": scores,
+        "feedback": feedback_parts,
+        "matched": "matched" if final_score >= 60 else "not-matched",
+    }
+
+
+def evaluate_dc_multi_turn(scenario: dict, turn_choices: list[dict]) -> dict:
+    """Evaluate multi-turn DC conversation based on user's option choices.
+
+    Args:
+        scenario: dict with 'id', 'turns' (list of turns), 'evaluation_criteria'
+        turn_choices: list of {turn_index, option_index} (one per turn)
+
+    Returns:
+        dict with:
+            - score: 0-100 (average of option scores, weighted by criteria coverage)
+            - verdict: 'Sangat Baik' | 'Baik' | 'Cukup' | 'Perlu Perbaikan'
+            - verdict_color, verdict_msg
+            - criteria_scores: {criterion: 0-25} aggregated
+            - per_turn: list of {turn_idx, option_label, score, feedback}
+            - feedback: list of general tips
+            - matched: 'matched' | 'not-matched'
+            - total_turns, completed_turns
+    """
+    turns = scenario.get("turns", [])
+    criteria_keys = list(scenario.get("evaluation_criteria", {}).keys())
+    if not turns or not criteria_keys:
+        # Fallback to legacy
+        return {"valid": False, "error": "Scenario tidak punya turns"}
+
+    per_turn = []
+    total_score = 0
+    criteria_totals: dict[str, int] = {k: 0 for k in criteria_keys}
+    all_feedback: list[str] = []
+    completed = 0
+
+    for choice in turn_choices:
+        ti = choice.get("turn_index", -1)
+        oi = choice.get("option_index", -1)
+        if ti < 0 or ti >= len(turns):
+            continue
+        turn = turns[ti]
+        opts = turn.get("options", [])
+        if oi < 0 or oi >= len(opts):
+            continue
+        opt = opts[oi]
+        score = opt.get("score", 0)
+        feedback = opt.get("feedback", "")
+        total_score += score
+        completed += 1
+        # Aggregate criteria
+        for k, v in (opt.get("criteria") or {}).items():
+            if k in criteria_totals:
+                criteria_totals[k] += v
+        per_turn.append({
+            "turn_idx": ti,
+            "dc_message": turn.get("dc_message", ""),
+            "option_label": opt.get("label", ""),
+            "score": score,
+            "feedback": feedback,
+        })
+        if feedback:
+            all_feedback.append(f"Turn {ti + 1}: {feedback}")
+
+    if completed == 0:
+        return {"valid": False, "error": "Tidak ada turn yang valid"}
+
+    # Average score (0-100)
+    final_score = round(total_score / completed)
+
+    # Normalize criteria (max = 25 per criterion, assuming up to N turns)
+    # Use total max per criterion = completed * 25
+    for k in criteria_totals:
+        criteria_totals[k] = round(criteria_totals[k] / completed)
+
+    # Verdict
+    if final_score >= 80:
+        verdict, color, msg = "Sangat Baik", "#84cc16", "Anda menunjukkan respons yang matang & strategis. DC profesional akan merespons positif."
+    elif final_score >= 60:
+        verdict, color, msg = "Baik", "#84cc16", "Respons Anda cukup baik. Beberapa area masih bisa diperbaiki."
+    elif final_score >= 40:
+        verdict, color, msg = "Cukup", "#f59e0b", "Anda bisa lebih baik lagi. Lihat tips di bawah untuk respons ideal."
+    else:
+        verdict, color, msg = "Perlu Perbaikan", "#ef4444", "Respons ini bisa jadi kontraproduktif. Pelajari skenario & coba lagi."
+
+    # General feedback (highlight weakest criteria)
+    sorted_criteria = sorted(criteria_totals.items(), key=lambda x: x[1])
+    weak = sorted_criteria[:2] if len(sorted_criteria) >= 2 else sorted_criteria
+    general_feedback = []
+    for k, v in weak:
+        if v < 15:
+            criterion_label = scenario["evaluation_criteria"].get(k, k)
+            general_feedback.append(f"⚠️ {criterion_label}: skor rendah. Latih lagi aspek ini.")
+
+    return {
+        "valid": True,
+        "score": final_score,
+        "verdict": verdict,
+        "verdict_color": color,
+        "verdict_msg": msg,
+        "criteria_scores": criteria_totals,
+        "per_turn": per_turn,
+        "feedback": all_feedback + general_feedback,
+        "matched": "matched" if final_score >= 60 else "not-matched",
+        "total_turns": len(turns),
+        "completed_turns": completed,
+    }
     text = user_response.lower().strip()
     if not text or len(text) < 10:
         return {

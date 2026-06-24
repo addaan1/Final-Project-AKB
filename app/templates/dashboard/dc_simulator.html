@@ -6,9 +6,9 @@
 <!-- ========== HERO ========== -->
 <section class="page-section produk-hero">
   <div class="page-header">
-    <span class="section-tag game-changer-tag">🛡️ Latihan Interaktif &middot; DC Chat Simulator</span>
+    <span class="section-tag game-changer-tag">🛡️ Latihan Interaktif &middot; DC Chat Simulator v2 (Multi-Turn)</span>
     <h1 class="page-title">Berlatih <span>Negosiasi</span> dengan Debt Collector</h1>
-    <p class="page-lead">Pilih skenario DC, ketik respons kamu, dan dapatkan <strong>feedback langsung</strong> apakah responsmu tepat. Tidak ada risiko, tidak ada DC sungguhan. Aman untuk latihan sebelum situasi nyata.</p>
+    <p class="page-lead">Pilih skenario, lalu jalani <strong>percakapan multi-turn</strong> (3-5 ronde). Setiap ronde, DC merespons dan Anda pilih respons terbaik. Sistem kasih <strong>skor akhir</strong> + feedback per turn.</p>
   </div>
 </section>
 
@@ -21,139 +21,193 @@
   </div>
   <div class="dc-scenarios-grid">
     {% for s in [
-      {"id": "agresif_tekan", "title": "DC Tekanan Agresif", "emoji": "😡", "difficulty": "Mudah", "desc": "DC nelpon teriak-teriak, minta bayar hari ini juga."},
-      {"id": "sebar_data", "title": "DC Ancam Sebar Data", "emoji": "🚨", "difficulty": "Sedang", "desc": "DC ancam akan sebar foto/kontak ke semua orang."},
-      {"id": "konsolidasi", "title": "DC Mau Tahu Posisi", "emoji": "🤝", "difficulty": "Mudah", "desc": "DC nelpon sopan, tanya kemampuan & tawarkan solusi."},
-      {"id": "emergency_kritis", "title": "DC di Masa Kritis", "emoji": "🆘", "difficulty": "Sulit", "desc": "Anda benar-benar tidak punya uang. DC minta nominal realistis."}
+      {"id": "agresif_tekan", "title": "DC Tekanan Agresif", "emoji": "😡", "difficulty": "Mudah", "desc": "DC nelpon teriak-teriak, minta bayar hari ini juga. 4 turn negosiasi."},
+      {"id": "sebar_data", "title": "DC Ancam Sebar Data", "emoji": "🚨", "difficulty": "Sedang", "desc": "DC ancam akan sebar foto/kontak ke semua orang. 3 turn negosiasi."},
+      {"id": "konsolidasi", "title": "DC Mau Tahu Posisi", "emoji": "🤝", "difficulty": "Mudah", "desc": "DC nelpon sopan, tanya kemampuan & tawarkan solusi. 3 turn."},
+      {"id": "emergency_kritis", "title": "DC di Masa Kritis", "emoji": "🆘", "difficulty": "Sulit", "desc": "Anda benar-benar tidak punya uang. DC minta nominal realistis. 3 turn."}
     ] %}
     <form method="POST" action="{{ url_for('main.dc_simulator') }}" class="dc-scenario-card">
       <input type="hidden" name="scenario" value="{{ s.id }}">
+      <input type="hidden" name="action" value="start">
       <div class="dc-scenario-emoji">{{ s.emoji }}</div>
       <h3 class="dc-scenario-title">{{ s.title }}</h3>
       <span class="dc-scenario-difficulty difficulty-{{ s.difficulty|lower }}">{{ s.difficulty }}</span>
       <p class="dc-scenario-desc">{{ s.desc }}</p>
-      <button type="submit" class="btn-primary btn-full">Mulai Skenario →</button>
+      <button type="submit" class="btn-primary btn-full">🎮 Mulai Skenario ({{ s.turns|length if s.turns else '3-4' }} turn) →</button>
     </form>
     {% endfor %}
   </div>
 </section>
 
-<!-- ========== SCENARIO INTERFACE ========== -->
-{% else %}
+<!-- ========== MULTI-TURN CHAT INTERFACE ========== -->
+{% elif not result and scenario.turns %}
 <section class="page-section" id="dc-scenario">
   <div class="dc-chat-header">
     <a href="{{ url_for('main.dc_simulator') }}" class="btn-outline btn-small">← Skenario Lain</a>
+    <a href="{{ url_for('main.produk') }}" class="btn-outline btn-small">← Produk</a>
     <h2 class="page-title">{{ scenario.title }}</h2>
     <span class="dc-scenario-difficulty difficulty-{{ scenario.difficulty|lower }}">{{ scenario.difficulty }}</span>
   </div>
 
-  <div class="dc-chat-container">
-    <!-- DC message bubble -->
-    <div class="dc-msg dc-msg-left">
-      <div class="dc-msg-avatar">📞</div>
-      <div class="dc-msg-bubble">
-        <div class="dc-msg-name">Debt Collector ({{ scenario.tone }})</div>
-        <div class="dc-msg-text">{{ scenario.dc_message }}</div>
-      </div>
+  <!-- Progress bar -->
+  <div class="dc-progress-wrap">
+    <div class="dc-progress-info">
+      <span>Turn <strong>{{ current_turn + 1 }}</strong> dari {{ scenario.turns|length }}</span>
+      <span class="dc-progress-tone">Tone: {{ scenario.tone }}</span>
     </div>
+    <div class="dc-progress-bar">
+      <div class="dc-progress-fill" style="width: {{ ((current_turn + 1) / scenario.turns|length * 100)|round }}%"></div>
+    </div>
+  </div>
 
-    <!-- Tips panel -->
-    <details class="dc-tips" open>
-      <summary>💡 Tips: Poin Penting untuk Skenario Ini</summary>
-      <ul>
-        {% for pt in scenario.key_points %}
-        <li>{{ pt }}</li>
-        {% endfor %}
-      </ul>
-    </details>
-
-    <!-- User response form -->
-    {% if not result %}
-    <form method="POST" action="{{ url_for('main.dc_simulator') }}" class="dc-response-form">
-      <input type="hidden" name="scenario" value="{{ scenario.id }}">
-      <label for="responseText" class="form-label">Respons Anda (ketik seperti yang akan Anda katakan):</label>
-      <textarea id="responseText" name="response_text" class="form-textarea" rows="5" required minlength="10" placeholder="Pak/Bu, saya..."></textarea>
-      <div class="dc-form-actions">
-        <button type="submit" class="btn-primary btn-large">📤 Kirim Respons</button>
-      </div>
-    </form>
-    {% endif %}
-
-    <!-- Result feedback -->
-    {% if result %}
-    <div class="dc-result-card" style="border-color: {{ result.verdict_color }};">
-      <div class="dc-result-header">
-        <div class="dc-result-score" style="background: {{ result.verdict_color }};">
-          <span class="dc-result-num">{{ result.score }}</span>
-          <span class="dc-result-out">/100</span>
-        </div>
-        <div class="dc-result-summary">
-          <h3 style="color: {{ result.verdict_color }};">{{ result.verdict }}</h3>
-          <p>{{ result.verdict_msg }}</p>
+  <div class="dc-chat-container">
+    <!-- All previous turns -->
+    {% for choice in turn_choices %}
+      {% set ti = choice.turn_index %}
+      {% set turn = scenario.turns[ti] %}
+      <div class="dc-msg dc-msg-left">
+        <div class="dc-msg-avatar">📞</div>
+        <div class="dc-msg-bubble">
+          <div class="dc-msg-name">Debt Collector (Turn {{ ti + 1 }})</div>
+          <div class="dc-msg-text">{{ turn.dc_message }}</div>
         </div>
       </div>
-
-      <div class="dc-result-section">
-        <h4>Respons Anda:</h4>
-        <blockquote class="dc-user-quote">{{ user_response }}</blockquote>
-      </div>
-
-      {% if result.criteria_scores %}
-      <div class="dc-result-section">
-        <h4>Detail Penilaian:</h4>
-        <div class="dc-criteria-list">
-          {% for k, v in result.criteria_scores.items() %}
-          <div class="dc-criterion">
-            <div class="dc-criterion-name">{{ k|replace('_', ' ')|title }}</div>
-            <div class="dc-criterion-bar">
-              <div class="dc-criterion-fill" style="width: {{ v }}%; background: {% if v >= 20 %}#b8ff3c{% elif v >= 15 %}#84cc16{% elif v >= 10 %}#f59e0b{% else %}#ef4444{% endif %};"></div>
-            </div>
-            <div class="dc-criterion-score">{{ v }}/25</div>
-          </div>
-          {% endfor %}
+      {% set opt = turn.options[choice.option_index] %}
+      <div class="dc-msg dc-msg-right">
+        <div class="dc-msg-avatar dc-msg-avatar-user">👤</div>
+        <div class="dc-msg-bubble dc-msg-bubble-user">
+          <div class="dc-msg-name">Anda</div>
+          <div class="dc-msg-text">{{ opt.label }}</div>
         </div>
       </div>
-      {% endif %}
+    {% endfor %}
 
-      {% if result.feedback %}
-      <div class="dc-result-section">
-        <h4>Feedback Personal:</h4>
-        <ul class="dc-feedback-list">
-          {% for fb in result.feedback %}
-          <li>{{ fb }}</li>
+    <!-- Current turn (DC speaking) -->
+    {% if current_turn < scenario.turns|length %}
+      {% set turn = scenario.turns[current_turn] %}
+      <div class="dc-msg dc-msg-left dc-msg-current">
+        <div class="dc-msg-avatar">📞</div>
+        <div class="dc-msg-bubble">
+          <div class="dc-msg-name">Debt Collector (Turn {{ current_turn + 1 }})</div>
+          <div class="dc-msg-text">{{ turn.dc_message }}</div>
+        </div>
+      </div>
+
+      <!-- Tips panel -->
+      <details class="dc-tips" open>
+        <summary>💡 Poin Penting untuk Skenario Ini</summary>
+        <ul>
+          {% for pt in scenario.key_points %}
+          <li>{{ pt }}</li>
           {% endfor %}
         </ul>
-      </div>
-      {% endif %}
+      </details>
 
-      <div class="dc-result-section">
-        <h4>Contoh Respons Ideal:</h4>
-        <div class="dc-good-responses">
-          {% for g in scenario.good_responses %}
-          <div class="dc-good-msg">✓ {{ g }}</div>
+      <!-- Options A/B/C/D -->
+      <form method="POST" action="{{ url_for('main.dc_simulator') }}" class="dc-response-form">
+        <input type="hidden" name="scenario" value="{{ scenario.id }}">
+        <input type="hidden" name="action" value="choose">
+        {# Replay all previous choices #}
+        {% for choice in turn_choices %}
+          <input type="hidden" name="choice_{{ choice.turn_index }}" value="{{ choice.option_index }}">
+        {% endfor %}
+        <label class="form-label">Pilih respons terbaik untuk turn ini:</label>
+        <div class="dc-options-grid">
+          {% for opt in turn.options %}
+            <button type="submit" name="choice_{{ current_turn }}" value="{{ loop.index0 }}" class="dc-option-card">
+              <div class="dc-option-letter">{{ 'ABCD'[loop.index0] }}</div>
+              <div class="dc-option-text">{{ opt.label }}</div>
+            </button>
           {% endfor %}
         </div>
-      </div>
+      </form>
+    {% endif %}
+  </div>
+</section>
 
-      <div class="dc-result-section">
-        <h4>Respons yang Harus Dihindari:</h4>
-        <div class="dc-bad-responses">
-          {% for b in scenario.bad_responses %}
-          <div class="dc-bad-msg">✗ {{ b }}</div>
-          {% endfor %}
+<!-- ========== FINAL RESULT ========== -->
+{% elif result %}
+<section class="page-section" id="dc-result">
+  <div class="dc-chat-header">
+    <a href="{{ url_for('main.dc_simulator') }}" class="btn-outline btn-small">← Skenario Lain</a>
+    <a href="{{ url_for('main.produk') }}" class="btn-outline btn-small">← Produk</a>
+    <h2 class="page-title">Hasil Skenario: {{ scenario.title }}</h2>
+  </div>
+
+  <div class="dc-result-card" style="border-color: {{ result.verdict_color }};">
+    <div class="dc-result-header">
+      <div class="dc-result-score" style="background: {{ result.verdict_color }};">
+        <span class="dc-result-num">{{ result.score }}</span>
+        <span class="dc-result-out">/100</span>
+      </div>
+      <div class="dc-result-summary">
+        <h3 style="color: {{ result.verdict_color }};">{{ result.verdict }}</h3>
+        <p>{{ result.verdict_msg }}</p>
+        <p class="dc-result-stats">{{ result.completed_turns }} turn selesai &middot; Skor rata-rata: {{ result.score }}/100</p>
+      </div>
+    </div>
+
+    {% if result.criteria_scores %}
+    <div class="dc-result-section">
+      <h4>📊 Detail Penilaian per Kriteria</h4>
+      <div class="dc-criteria-list">
+        {% for k, v in result.criteria_scores.items() %}
+        <div class="dc-criterion">
+          <div class="dc-criterion-name">{{ k|replace('_', ' ')|title }}</div>
+          <div class="dc-criterion-bar">
+            <div class="dc-criterion-fill" style="width: {{ v * 4 }}%; background: {% if v >= 20 %}#84cc16{% elif v >= 15 %}#b8ff3c{% elif v >= 10 %}#f59e0b{% else %}#ef4444{% endif %};"></div>
+          </div>
+          <div class="dc-criterion-score">{{ v }}/25</div>
         </div>
-      </div>
-
-      <div class="dc-result-actions">
-        <a href="{{ url_for('main.dc_simulator') }}" class="btn-primary">Coba Skenario Lain</a>
-        <form method="POST" action="{{ url_for('main.dc_simulator') }}" style="display:inline;">
-          <input type="hidden" name="scenario" value="{{ scenario.id }}">
-          <input type="hidden" name="response_text" value="Coba lagi dengan respons berbeda.">
-          <button type="submit" class="btn-outline">Coba Lagi</button>
-        </form>
+        {% endfor %}
       </div>
     </div>
     {% endif %}
+
+    {% if result.per_turn %}
+    <div class="dc-result-section">
+      <h4>📝 Percakapan Anda ({{ result.per_turn|length }} turn)</h4>
+      <div class="dc-conversation-log">
+        {% for turn in result.per_turn %}
+        <div class="dc-log-turn">
+          <div class="dc-log-dc">
+            <span class="dc-log-label">📞 DC:</span>
+            <span class="dc-log-text">{{ scenario.turns[turn.turn_idx].dc_message }}</span>
+          </div>
+          <div class="dc-log-user">
+            <span class="dc-log-label">👤 Anda:</span>
+            <span class="dc-log-text">{{ turn.option_label }}</span>
+            <span class="dc-log-score" style="background: {% if turn.score >= 80 %}#84cc16{% elif turn.score >= 60 %}#b8ff3c{% elif turn.score >= 40 %}#f59e0b{% else %}#ef4444{% endif %};">+{{ turn.score }}</span>
+          </div>
+          {% if turn.feedback %}
+          <div class="dc-log-feedback">💡 {{ turn.feedback }}</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if result.feedback %}
+    <div class="dc-result-section">
+      <h4>💡 Feedback Personal</h4>
+      <ul class="dc-feedback-list">
+        {% for fb in result.feedback %}
+        <li>{{ fb }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <div class="dc-result-actions">
+      <a href="{{ url_for('main.dc_simulator') }}" class="btn-primary">🔄 Coba Skenario Lain</a>
+      <form method="POST" action="{{ url_for('main.dc_simulator') }}" style="display:inline;">
+        <input type="hidden" name="scenario" value="{{ scenario.id }}">
+        <input type="hidden" name="action" value="start">
+        <button type="submit" class="btn-outline">🔁 Ulangi Skenario Ini</button>
+      </form>
+      <a href="{{ url_for('main.produk') }}" class="btn-outline">← Kembali ke Produk</a>
+    </div>
   </div>
 </section>
 {% endif %}

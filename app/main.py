@@ -228,29 +228,89 @@ def terms():
 # =================================================================
 @main_bp.route("/tools/dc-simulator", methods=["GET", "POST"])
 def dc_simulator():
-    """Interactive DC conversation simulator for practice.
+    """Interactive multi-turn DC conversation simulator (v2).
 
-    User memilih skenario DC, sistem akan simulate chat dari DC dengan
-    tone agresif, intimidasi, dll. User bisa pilih response, sistem
-    kasih feedback apakah response-nya tepat.
+    User memilih skenario DC, lalu multi-turn chat (3-5 turn per skenario).
+    User memilih opsi respons (A/B/C/D), DC merespons, repeat sampai turn terakhir.
+    Sistem scoring berdasarkan akumulasi criteria.
     """
-    from app.api import DC_SCENARIOS, evaluate_dc_response
+    from app.api import DC_SCENARIOS, evaluate_dc_multi_turn, evaluate_dc_response
 
     if request.method == "POST":
         scenario_id = request.form.get("scenario", "")
-        user_response = request.form.get("response_text", "")
+        action = request.form.get("action", "")
         scenario = next((s for s in DC_SCENARIOS if s["id"] == scenario_id), None)
         if not scenario:
             flash("Skenario tidak ditemukan.", "error")
             return redirect(url_for("main.dc_simulator"))
-        result = evaluate_dc_response(scenario, user_response)
-        return render_template(
-            "dashboard/dc_simulator.html",
-            active_page="produk",
-            scenario=scenario,
-            user_response=user_response,
-            result=result,
-        )
+
+        # Check if scenario has multi-turn (new format)
+        if scenario.get("turns"):
+            if action == "choose":
+                # User picked an option for current turn
+                # Parse all previous choices + new one
+                turn_choices = []
+                # Reconstruct from form fields
+                for i in range(len(scenario["turns"])):
+                    opt_idx = request.form.get(f"choice_{i}")
+                    if opt_idx is not None:
+                        try:
+                            turn_choices.append({
+                                "turn_index": i,
+                                "option_index": int(opt_idx),
+                            })
+                        except (ValueError, TypeError):
+                            pass
+
+                if not turn_choices:
+                    flash("Pilih salah satu opsi respons.", "error")
+                    return redirect(url_for("main.dc_simulator"))
+
+                # Determine current turn
+                current_turn = len(turn_choices) - 1
+
+                # If this was the last turn, calculate final result
+                if current_turn >= len(scenario["turns"]) - 1:
+                    result = evaluate_dc_multi_turn(scenario, turn_choices)
+                    return render_template(
+                        "dashboard/dc_simulator.html",
+                        active_page="produk",
+                        scenario=scenario,
+                        result=result,
+                        turn_choices=turn_choices,
+                        current_turn=current_turn,
+                    )
+
+                # Otherwise, show next turn
+                return render_template(
+                    "dashboard/dc_simulator.html",
+                    active_page="produk",
+                    scenario=scenario,
+                    current_turn=current_turn + 1,
+                    turn_choices=turn_choices,
+                )
+            else:
+                # Start scenario
+                return render_template(
+                    "dashboard/dc_simulator.html",
+                    active_page="produk",
+                    scenario=scenario,
+                    current_turn=0,
+                    turn_choices=[],
+                )
+        else:
+            # Legacy single-turn (fallback)
+            user_response = request.form.get("response_text", "")
+            result = evaluate_dc_response(scenario, user_response)
+            return render_template(
+                "dashboard/dc_simulator.html",
+                active_page="produk",
+                scenario=scenario,
+                user_response=user_response,
+                result=result,
+            )
+
+    # GET request
     return render_template(
         "dashboard/dc_simulator.html",
         active_page="produk",

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Kebijakan Privasi — Galbay Predictor{% endblock %}</title>
+  <meta name="description" content="Kebijakan Privasi Galbay Predictor — data apa yang kami kumpulkan, bagaimana kami menggunakannya, dan hak-hak Anda.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body class="public-page">
+  <nav class="topbar public-topbar">
+    <a class="topbar-brand" href="{{ url_for('main.index') }}">
+      <span class="topbar-brand-mark">G</span>
+      <span class="topbar-brand-text">GALBAY <span>PREDICTOR</span></span>
+    </a>
+    <div class="topbar-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Light/Dark mode">
+        <span class="theme-icon">&#9788;</span>
+      </button>
+      <a href="{{ url_for('main.index') }}" class="btn-outline btn-small">← Beranda</a>
+    </div>
+  </nav>
+
+  <main class="public-main">
+<section class="page-section legal-page">
+  <div class="page-header">
+    <span class="section-tag">Kebijakan Privasi</span>
+    <h1 class="page-title">Privasi Anda adalah <span>Prioritas Kami</span></h1>
+    <p class="page-lead">Galbay Predictor dirancang dengan prinsip <strong>privacy-by-design</strong>. Halaman ini menjelaskan data apa yang kami kumpulkan, bagaimana kami menggunakannya, dan hak-hak Anda sebagai pengguna.</p>
+    <p class="page-meta">Terakhir diperbarui: Juni 2026 &middot; Berlaku untuk semua pengguna aplikasi &amp; website</p>
+  </div>
+
+  <div class="legal-toc">
+    <h3>📋 Daftar Isi</h3>
+    <ol>
+      <li><a href="#data-kami">Data Apa yang Kami Kumpulkan</a></li>
+      <li><a href="#data-tidak">Data yang TIDAK Kami Kumpulkan</a></li>
+      <li><a href="#cara-pakai">Bagaimana Kami Menggunakan Data</a></li>
+      <li><a href="#berbagi">Berbagi Data dengan Pihak Ketiga</a></li>
+      <li><a href="#penyimpanan">Penyimpanan &amp; Keamanan Data</a></li>
+      <li><a href="#hak">Hak-Hak Anda sebagai Pengguna</a></li>
+      <li><a href="#cookies">Cookies &amp; Tracking</a></li>
+      <li><a href="#anak">Privasi Anak-Anak</a></li>
+      <li><a href="#perubahan">Perubahan Kebijakan</a></li>
+      <li><a href="#kontak">Hubungi Kami</a></li>
+    </ol>
+  </div>
+
+  <div class="legal-content">
+    <article class="legal-block" id="data-kami">
+      <h2>1. Data Apa yang Kami Kumpulkan</h2>
+      <p>Galbay Predictor hanya mengumpulkan data yang diperlukan untuk menjalankan fitur coaching keuangan. Kami membagi data dalam 3 kategori:</p>
+      <div class="legal-table-wrap">
+        <table class="legal-table">
+          <thead>
+            <tr><th>Kategori</th><th>Contoh</th><th>Tujuan</th><th>Wajib?</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Data Akun</strong></td>
+              <td>Nama, email, foto profil (opsional)</td>
+              <td>Login, personalisasi, notifikasi</td>
+              <td>Ya (untuk akun)</td>
+            </tr>
+            <tr>
+              <td><strong>Data Input Skor</strong></td>
+              <td>Jawaban kuesioner Skor Risiko (jumlah pinjol, frekuensi self-reward, dll)</td>
+              <td>Menghitung Skor Risiko Galbay personal</td>
+              <td>Tidak (kalkulator bisa dipakai tanpa login)</td>
+            </tr>
+            <tr>
+              <td><strong>Data Penggunaan</strong></td>
+              <td>Halaman yang dikunjungi, fitur yang dipakai, preferensi tema</td>
+              <td>Memahami pola penggunaan, meningkatkan UX</td>
+              <td>Tidak</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="legal-block" id="data-tidak">
+      <h2>2. Data yang TIDAK Kami Kumpulkan</h2>
+      <p>Kami secara eksplisit <strong class="text-danger">TIDAK</strong> mengumpulkan:</p>
+      <ul class="legal-list">
+        <li>❌ <strong>Data keuangan pribadi</strong> (nomor rekening, saldo, mutasi bank) &mdash; ini adalah komitmen utama kami</li>
+        <li>❌ <strong>Kontak, SMS, gallery</strong> &mdash; berbeda dari pinjol ilegal, kami tidak minta akses ke data pribadi sensitif</li>
+        <li>❌ <strong>Lokasi real-time</strong> (GPS) &mdash; tidak dipakai untuk profiling</li>
+        <li ❌&gt;<strong>Data biometrik</strong> (sidik jari, face ID) &mdash; login menggunakan OAuth Google atau password saja</li>
+        <li>❌ <strong>Data anak di bawah 18 tahun</strong> &mdash; lihat bagian Privasi Anak-Anak</li>
+      </ul>
+    </article>
+
+    <article class="legal-block" id="cara-pakai">
+      <h2>3. Bagaimana Kami Menggunakan Data</h2>
+      <p>Data yang dikumpulkan hanya digunakan untuk:</p>
+      <ol class="legal-list legal-list-numbered">
+        <li><strong>Menjalankan fitur inti</strong> &mdash; misalnya, jawaban Skor Risiko dihitung untuk menghasilkan skor personal. Kalkulator dapat digunakan tanpa login, hasil tidak disimpan di server.</li>
+        <li><strong>Personalisasi pengalaman</strong> &mdash; menyimpan preferensi tema (light/dark), tampilan dashboard, dan histori coaching.</li>
+        <li><strong>Komunikasi yang relevan</strong> &mdash; notifikasi terkait update produk, hasil coaching, atau reminder yang Anda minta. Kami tidak mengirim spam.</li>
+        <li><strong>Perbaikan produk</strong> &mdash; data agregat (tanpa identifier pribadi) untuk memahami bagaimana fitur digunakan dan apa yang perlu diperbaiki.</li>
+        <li><strong>Kepatuhan hukum</strong> &mdash; jika diwajibkan oleh hukum Indonesia (UU PDP, UU ITE, dll).</li>
+      </ol>
+      <p><strong>Kami TIDAK:</strong> Menjual data Anda, menggunakan data untuk iklan bertarget pihak ketiga, atau melatih AI model atas data personal Anda.</p>
+    </article>
+
+    <article class="legal-block" id="berbagi">
+      <h2>4. Berbagi Data dengan Pihak Ketiga</h2>
+      <p>Kami membagikan data <strong>hanya</strong> kepada:</p>
+      <div class="legal-grid">
+        <div class="legal-card">
+          <h4>🔐 Google OAuth</h4>
+          <p>Untuk login dengan akun Google. Kami hanya menerima nama &amp; email. Google memiliki kebijakan privasi sendiri yang terpisah.</p>
+        </div>
+        <div class="legal-card">
+          <h4>📊 Analytics (opsional)</h4>
+          <p>Data agregat penggunaan (tanpa identifier) untuk memahami traffic. Bisa diopt-out via cookie settings.</p>
+        </div>
+        <div class="legal-card">
+          <h4>🏛 Otoritas Hukum</h4>
+          <p>Jika ada perintah pengadilan atau permintaan resmi dari OJK, Polri, atau Kominfo sesuai hukum Indonesia.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="legal-block" id="penyimpanan">
+      <h2>5. Penyimpanan &amp; Keamanan Data</h2>
+      <ul class="legal-list">
+        <li>🔒 <strong>Enkripsi</strong>: Data transit menggunakan HTTPS/TLS 1.3. Data at-rest dienkripsi di database.</li>
+        <li>🛡 <strong>Password</strong>: Dienkripsi dengan bcrypt + salt. Kami tidak pernah menyimpan password plain-text.</li>
+        <li>📅 <strong>Retensi</strong>: Data akun dihapus 30 hari setelah request hapus akun. Data analytics agregat retensi 24 bulan.</li>
+        <li>🌍 <strong>Lokasi server</strong>: Saat ini di Indonesia. Backup di multiple region.</li>
+        <li>🔄 <strong>Backup</strong>: Harian, disimpan 30 hari, diuji recovery tiap bulan.</li>
+      </ul>
+    </article>
+
+    <article class="legal-block" id="hak">
+      <h2>6. Hak-Hak Anda sebagai Pengguna (UU PDP No. 27/2022)</h2>
+      <div class="legal-rights-grid">
+        <div class="legal-right">
+          <div class="legal-right-num">1</div>
+          <h4>Hak Akses</h4>
+          <p>Anda berhak meminta salinan semua data pribadi yang kami simpan tentang Anda.</p>
+        </div>
+        <div class="legal-right">
+          <div class="legal-right-num">2</div>
+          <h4>Hak Koreksi</h4>
+          <p>Anda berhak memperbaiki data yang tidak akurat atau tidak lengkap.</p>
+        </div>
+        <div class="legal-right">
+          <div class="legal-right-num">3</div>
+          <h4>Hak Hapus</h4>
+          <p>Anda berhak meminta penghapusan data (right to be forgotten).</p>
+        </div>
+        <div class="legal-right">
+          <div class="legal-right-num">4</div>
+          <h4>Hak Portabilitas</h4>
+          <p>Anda berhak menerima data Anda dalam format yang dapat dibaca mesin (JSON/CSV).</p>
+        </div>
+        <div class="legal-right">
+          <div class="legal-right-num">5</div>
+          <h4>Hak Menolak</h4>
+          <p>Anda berhak menolak pemrosesan data untuk tujuan tertentu (mis. marketing).</p>
+        </div>
+        <div class="legal-right">
+          <div class="legal-right-num">6</div>
+          <h4>Hak Withdraw Consent</h4>
+          <p>Anda berhak mencabut persetujuan yang pernah Anda berikan, kapan saja.</p>
+        </div>
+      </div>
+      <p>Untuk menggunakan hak-hak di atas, hubungi kami di <a href="mailto:privacy@galbay.id">privacy@galbay.id</a>. Kami merespons dalam 14 hari kerja.</p>
+    </article>
+
+    <article class="legal-block" id="cookies">
+      <h2>7. Cookies &amp; Tracking</h2>
+      <p>Kami menggunakan cookies terbatas untuk:</p>
+      <ul class="legal-list">
+        <li>🍪 <strong>Session cookie</strong> (wajib) &mdash; untuk menjaga Anda tetap login. Expired saat logout.</li>
+        <li>🎨 <strong>Theme preference</strong> (wajib) &mdash; menyimpan pilihan light/dark mode.</li>
+        <li>📊 <strong>Analytics</strong> (opsional) &mdash; data agregat traffic, bisa di-disable via browser setting.</li>
+      </ul>
+      <p>Kami tidak menggunakan cookies untuk iklan bertarget atau cross-site tracking.</p>
+    </article>
+
+    <article class="legal-block" id="anak">
+      <h2>8. Privasi Anak-Anak</h2>
+      <p>Galbay Predictor dirancang untuk <strong>Gen Z usia 18-30 tahun</strong>. Kami tidak dengan sengaja mengumpulkan data dari anak di bawah 18 tahun. Jika kami mengetahui ada data anak di bawah 18, kami akan menghapusnya segera.</p>
+      <p>Jika Anda orang tua dan khawatir anak Anda menggunakan aplikasi kami, silakan hubungi <a href="mailto:privacy@galbay.id">privacy@galbay.id</a>.</p>
+    </article>
+
+    <article class="legal-block" id="perubahan">
+      <h2>9. Perubahan Kebijakan</h2>
+      <p>Kami dapat memperbarui kebijakan ini dari waktu ke waktu. Perubahan material akan diumumkan melalui:</p>
+      <ul class="legal-list">
+        <li>📧 Email ke pengguna terdaftar (jika perubahan material)</li>
+        <li>🔔 Notifikasi in-app</li>
+        <li>📌 Banner di halaman utama</li>
+      </ul>
+      <p>Versi terbaru selalu tersedia di halaman ini dengan tanggal "Terakhir diperbarui" di atas.</p>
+    </article>
+
+    <article class="legal-block" id="kontak">
+      <h2>10. Hubungi Kami</h2>
+      <p>Untuk pertanyaan, permintaan, atau keluhan terkait privasi:</p>
+      <div class="legal-contact">
+        <p><strong>📧 Email</strong>: <a href="mailto:privacy@galbay.id">privacy@galbay.id</a></p>
+        <p><strong>⏱ Response time</strong>: 14 hari kerja</p>
+        <p><strong>🏢 Alamat</strong>: Jakarta, Indonesia (untuk korespondensi resmi)</p>
+      </div>
+      <p>Anda juga berhak menghubungi <strong>Otoritas Jasa Keuangan (OJK)</strong> di <a href="https://www.ojk.go.id" target="_blank" rel="noopener">ojk.go.id</a> atau <strong>Kementerian Komunikasi &amp; Informatika</strong> untuk pengaduan privasi data.</p>
+    </article>
+  </div>
+</section>
+  </main>
+
+  <footer class="footer public-footer">
+    <p>&copy; 2026 Galbay Predictor &middot; <a href="{{ url_for('main.privacy') }}">Privacy</a> &middot; <a href="{{ url_for('main.terms') }}">Terms</a> &middot; <a href="{{ url_for('main.login') }}">Login</a></p>
+  </footer>
+</body>
+</html>

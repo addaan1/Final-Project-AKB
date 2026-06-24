@@ -25,6 +25,7 @@
   onScroll();
 
   // ---- 2) Scroll reveal via IntersectionObserver ----
+  let io = null;
   if (!prefersReduced && 'IntersectionObserver' in window) {
     const reveal = (entries, obs) => {
       entries.forEach(e => {
@@ -34,18 +35,24 @@
         }
       });
     };
-    const io = new IntersectionObserver(reveal, {
+    io = new IntersectionObserver(reveal, {
       root: null,
       rootMargin: '0px 0px -10% 0px',
-      threshold: 0.12,
+      threshold: 0.05,
     });
-    document.querySelectorAll('.reveal, .reveal-stagger, .reveal-left, .reveal-right')
-      .forEach(el => io.observe(el));
-  } else {
-    // Fallback: show all immediately
-    document.querySelectorAll('.reveal, .reveal-stagger, .reveal-left, .reveal-right')
-      .forEach(el => el.classList.add('visible'));
   }
+
+  function observeAll() {
+    if (io) {
+      document.querySelectorAll('.reveal, .reveal-stagger, .reveal-left, .reveal-right')
+        .forEach(el => io.observe(el));
+    } else {
+      // Fallback: show all immediately
+      document.querySelectorAll('.reveal, .reveal-stagger, .reveal-left, .reveal-right')
+        .forEach(el => el.classList.add('visible'));
+    }
+  }
+  observeAll();
 
   // ---- 3) Chat bubble attention (after 1.5s, once per session) ----
   if (!sessionStorage.getItem('chatAttentionShown')) {
@@ -61,16 +68,39 @@
 
   // ---- 4) Auto-apply .reveal to .page-section + .page-header if not already ----
   // Light-touch: just add reveal class to page-headers (kpi cards, etc already may be styled)
+  let addedNew = false;
   document.querySelectorAll('.page-header').forEach(el => {
     if (!el.classList.contains('reveal') && !el.classList.contains('no-reveal')) {
       el.classList.add('reveal');
+      addedNew = true;
     }
   });
 
   // ---- 5) Auto-stagger KPI bars & source cards in groups ----
-  document.querySelectorAll('.kpi-bar, .source-grid, .pricing-grid, .multi-source-grid').forEach(el => {
+  document.querySelectorAll('.kpi-bar, .source-grid, .pricing-grid, .multi-source-grid, .kpi-grid').forEach(el => {
     if (!el.classList.contains('reveal-stagger')) {
       el.classList.add('reveal-stagger');
+      addedNew = true;
     }
+  });
+
+  // Re-observe any elements that got .reveal/.reveal-stagger AFTER initial setup
+  if (addedNew) {
+    observeAll();
+  }
+
+  // ---- 6) Failsafe: auto-show elements already in initial viewport ----
+  // Avoids race condition where IO hasn't fired yet on first paint
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < vh && r.bottom > 0) {
+          el.classList.add('visible');
+          if (io) io.unobserve(el);
+        }
+      });
+    }, 50);
   });
 })();

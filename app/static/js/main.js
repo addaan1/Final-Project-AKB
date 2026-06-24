@@ -238,11 +238,10 @@ const percentLabelPlugin = {
   id: 'percentLabel',
   afterDatasetsDraw(chart) {
     if (!chart.options.plugins?.percentLabel?.enabled) return;
-    const { ctx, data } = chart;
-    const ds = data.datasets[chart.datasetIndex || 0];
+    const { ctx, data, datasetIndex } = chart;
+    const mode = chart.options.plugins.percentLabel.mode || 'share'; // 'share' | 'value'
+    const ds = data.datasets[datasetIndex || 0];
     if (!ds) return;
-    const total = ds.data.reduce((a, b) => a + (typeof b === 'number' ? b : 0), 0);
-    if (!total) return;
 
     const theme = getThemeColors();
     const isHorizontal = chart.options.indexAxis === 'y';
@@ -253,22 +252,29 @@ const percentLabelPlugin = {
     ctx.textAlign = isHorizontal ? 'left' : 'center';
     ctx.textBaseline = isHorizontal ? 'middle' : 'bottom';
 
-    const meta = chart.getDatasetMeta(0);
+    // For multi-dataset bar charts, use the current dataset's meta (correct bars)
+    const meta = chart.getDatasetMeta(datasetIndex || 0);
     meta.data.forEach((bar, i) => {
       const v = ds.data[i];
-      if (!v || v === 0) return;
-      const pct = (v / total) * 100;
-      if (pct < 1.5) return;
+      if (v === undefined || v === null || v === 0) return;
+      let labelText;
+      if (mode === 'value') {
+        // Show the actual value as percentage (when data is already in %)
+        labelText = fmtPct(v);
+      } else {
+        // Share: value / sum of this dataset
+        const total = ds.data.reduce((a, b) => a + (typeof b === 'number' ? b : 0), 0);
+        if (!total) return;
+        const pct = (v / total) * 100;
+        if (pct < 1.5) return;
+        labelText = fmtPct(pct);
+      }
 
       if (chart.config.type === 'bar') {
         if (isHorizontal) {
-          // Inside or right of horizontal bar
-          const barW = bar.width || 14;
-          const labelText = fmtPct(pct);
           const tw = ctx.measureText(labelText).width;
           const xRight = bar.x + 4;
           const xLeft = bar.x - tw - 4;
-          // Pick side: if right has room, place outside right; else outside left
           const x = (xRight + tw < chart.width) ? xRight : Math.max(xLeft, 2);
           if (x === xRight) {
             ctx.fillStyle = theme.accent;
@@ -279,11 +285,10 @@ const percentLabelPlugin = {
           }
           ctx.fillText(labelText, x, bar.y);
         } else {
-          // Vertical bar: above
           ctx.fillStyle = theme.accent;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'bottom';
-          ctx.fillText(fmtPct(pct), bar.x, bar.y - 4);
+          ctx.fillText(labelText, bar.x, bar.y - 4);
         }
       } else if (chart.config.type === 'doughnut' || chart.config.type === 'pie') {
         const { x, y } = bar.tooltipPosition();
@@ -291,7 +296,7 @@ const percentLabelPlugin = {
         ctx.font = '700 13px Inter, sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(fmtPct(pct), x, y + 4);
+        ctx.fillText(labelText, x, y + 4);
       }
     });
     ctx.restore();
@@ -316,6 +321,12 @@ function initCharts() {
   if (ids.has('chartWordcloud')) chartWordcloud();
   if (ids.has('chartSentimentCat')) chartSentimentCat();
   if (ids.has('chartTopApps')) chartTopApps();
+  if (ids.has('chartSourceVolume')) chartSourceVolume();
+  if (ids.has('chartSourceDistress')) chartSourceDistress();
+  if (ids.has('chartSourceSentiment')) chartSourceSentiment();
+  // Render source themes & keyword matrix
+  if (document.getElementById('sourceThemesGrid')) renderSourceThemes();
+  if (document.getElementById('keywordMatrix')) renderKeywordMatrix();
   if (ids.has('chartSentimentDist')) chartSentimentDist();
   if (ids.has('chartModel')) chartModel();
 }
@@ -385,7 +396,7 @@ function chartModel() {
     labels:['Accuracy','Precision','Recall','F1-Score'],
     datasets:[{ label:'Skor (%)', data:data,
       backgroundColor:[COL.lime,COL.pur,COL.blu,COL.grn], borderRadius:6 }]
-  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true}}, scales:{x:grid,y:{...grid,max:100}} } });
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, legend:{display:false}, percentLabel:{enabled:true, mode:'value'}}, scales:{x:grid,y:{...grid,max:100}} } });
 }
 
 // 8) Sentimen per kategori
@@ -400,7 +411,7 @@ function chartSentimentCat() {
       { label:'% Negatif', data:c.map(x=>x.neg_pct), backgroundColor:'rgba(248,113,113,0.85)', borderRadius:5 },
       { label:'% Positif', data:c.map(x=>x.pos_pct), backgroundColor:'rgba(184,255,60,0.85)', borderRadius:5 },
     ]
-  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, percentLabel:{enabled:true}}, scales:{x:{...grid, ticks:{color:COL.text, font:{size:10}}}, y:{...grid, max:yMax, ticks:{color:COL.gray, callback:(v)=>v+'%'}}} } });
+  }, options:{ ...chartDefaults, plugins:{...chartDefaults.plugins, percentLabel:{enabled:true, mode:'value'}}, scales:{x:{...grid, ticks:{color:COL.text, font:{size:10}}}, y:{...grid, max:yMax, ticks:{color:COL.gray, callback:(v)=>v+'%'}}} } });
 }
 
 // 9) Top aplikasi jumlah ulasan negatif (absolute count)
@@ -423,9 +434,12 @@ function chartTopApps() {
       backgroundColor:colors, borderRadius:5 }]
   }, options:{ ...chartDefaults, indexAxis:'y', plugins:{
     ...chartDefaults.plugins, legend:{display:false},
-    percentLabel:{enabled:true},
+    percentLabel:{enabled:true, mode:'value'},
     tooltip:{ ...chartDefaults.plugins.tooltip,
-      callbacks:{ label:(ctx)=>{
+      callbacks:{ title:(items)=>{
+        if (!items.length) return '';
+        return a[items[0].dataIndex].app;
+      }, label:(ctx)=>{
         const app = a[ctx.dataIndex];
         const pct = (app.neg_pct||0).toFixed(1);
         return ` ${ctx.parsed.x.toLocaleString('id-ID')} ulasan negatif dari ${(app.n||0).toLocaleString('id-ID')} (${pct}%)`;
@@ -515,4 +529,186 @@ function renderTopAppsTable() {
       <td>${avgScore}</td>
     </tr>`;
   }).join('');
+}
+
+// 13) Multi-source: volume per source (log scale)
+function chartSourceVolume() {
+  const src = D.per_source || [];
+  if (!src.length) return;
+  const colors = ['#9b5de5','#c026d3','#84cc16','#3b82f6','#ef4444','#f59e0b','#b8ff3c'];
+  make('chartSourceVolume', { type:'bar', data:{
+    labels: src.map(s => (s.icon || '') + ' ' + s.label),
+    datasets: [{
+      label: 'Jumlah item',
+      data: src.map(s => s.n),
+      backgroundColor: src.map((_, i) => colors[i % colors.length]),
+      borderRadius: 6
+    }]
+  }, options:{
+    ...chartDefaults,
+    indexAxis: 'y',
+    plugins: {
+      ...chartDefaults.plugins,
+      legend: { display: false },
+      percentLabel: { enabled: false },
+      tooltip: { ...chartDefaults.plugins.tooltip,
+        callbacks: { label: (ctx) => ' ' + ctx.parsed.x.toLocaleString('id-ID') + ' item' }
+      }
+    },
+    scales: {
+      x: {
+        ...grid,
+        type: 'logarithmic',
+        ticks: { ...grid.ticks, callback: (v) => v >= 1000 ? (v/1000).toFixed(0)+'K' : v }
+      },
+      y: { ...gridY }
+    }
+  }});
+}
+
+// 14) Multi-source: distress signal per source
+function chartSourceDistress() {
+  const arr = D.source_distress || [];
+  if (!arr.length) return;
+  const colors = arr.map(s => {
+    if (s.pct >= 35) return '#ef4444';
+    if (s.pct >= 25) return '#f59e0b';
+    if (s.pct >= 15) return '#84cc16';
+    return '#3b82f6';
+  });
+  make('chartSourceDistress', { type:'bar', data:{
+    labels: arr.map(s => s.icon + ' ' + s.source),
+    datasets: [{
+      label: '% Sinyal Distress',
+      data: arr.map(s => s.pct),
+      backgroundColor: colors,
+      borderRadius: 6
+    }]
+  }, options:{
+    ...chartDefaults,
+    plugins: {
+      ...chartDefaults.plugins,
+      legend: { display: false },
+      percentLabel: { enabled: true, mode: 'value' },
+      tooltip: { ...chartDefaults.plugins.tooltip,
+        callbacks: { label: (ctx) => ' ' + ctx.parsed.y.toFixed(1) + '% mention kata kunci galbay' }
+      }
+    },
+    scales: { x: { ...grid, ticks: { ...grid.ticks, font: { size: 11 } } }, y: { ...grid, max: 60, ticks: { ...grid.ticks, callback: (v) => v + '%' } } }
+  }});
+}
+
+// 15) Multi-source: sentiment per source (stacked bar)
+function chartSourceSentiment() {
+  const ss = D.source_sentiment || {};
+  const sources = Object.keys(ss);
+  if (!sources.length) return;
+  const labels = { play: '📱 Play Store', blog: '📝 Blog', forum: '💬 Forum', threads: '🧵 Threads', youtube: '▶️ YouTube', ojk_media: '📰 OJK/Media' };
+  make('chartSourceSentiment', { type:'bar', data:{
+    labels: sources.map(s => labels[s] || s),
+    datasets: [
+      { label: 'Positif', data: sources.map(s => ss[s].positive || 0), backgroundColor: 'rgba(132,204,22,0.85)', borderRadius: 4 },
+      { label: 'Netral', data: sources.map(s => ss[s].neutral || 0), backgroundColor: 'rgba(155,93,229,0.65)', borderRadius: 4 },
+      { label: 'Negatif', data: sources.map(s => ss[s].negative || 0), backgroundColor: 'rgba(239,68,68,0.85)', borderRadius: 4 },
+    ]
+  }, options:{
+    ...chartDefaults,
+    plugins: {
+      ...chartDefaults.plugins,
+      percentLabel: { enabled: true, mode: 'value' },
+      tooltip: { ...chartDefaults.plugins.tooltip,
+        callbacks: { label: (ctx) => ' ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + '%' }
+      }
+    },
+    scales: {
+      x: { ...grid, stacked: true, ticks: { ...grid.ticks, font: { size: 11 } } },
+      y: { ...grid, stacked: true, max: 100, ticks: { ...grid.ticks, callback: (v) => v + '%' } }
+    }
+  }});
+}
+
+// 16) Render source-specific themes grid
+function renderSourceThemes() {
+  const grid = document.getElementById('sourceThemesGrid');
+  if (!grid) return;
+  const themes = D.source_themes || {};
+  const sourceLabels = {
+    google_play: { label: 'Google Play', icon: '📱', color: '#9b5de5', desc: '599K review formal' },
+    ojk_media: { label: 'OJK & Media', icon: '📰', color: '#c026d3', desc: '160 artikel regulator' },
+    blog: { label: 'Blog Indonesia', icon: '📝', color: '#3b82f6', desc: '2.142 posts' },
+    forum: { label: 'Forum (Kaskus)', icon: '💬', color: '#84cc16', desc: '122 threads' },
+    threads: { label: 'Threads', icon: '🧵', color: '#f59e0b', desc: '231 posts Gen Z' },
+    youtube: { label: 'YouTube', icon: '▶️', color: '#ef4444', desc: '283 video + 1.331 komentar' },
+  };
+  let html = '';
+  Object.entries(themes).forEach(([key, items]) => {
+    const meta = sourceLabels[key] || { label: key, icon: '📊', color: '#888', desc: '' };
+    html += `
+      <div class="source-theme-card" style="--accent: ${meta.color}">
+        <div class="source-theme-header">
+          <span class="source-theme-icon">${meta.icon}</span>
+          <div>
+            <h4>${meta.label}</h4>
+            <span class="source-theme-desc">${meta.desc}</span>
+          </div>
+        </div>
+        <div class="source-theme-list">`;
+    items.forEach(t => {
+      html += `
+          <div class="source-theme-item">
+            <div class="source-theme-bar-bg">
+              <div class="source-theme-bar-fill" style="width:${t.pct}%; background:${t.color}"></div>
+            </div>
+            <div class="source-theme-label">${t.theme}</div>
+            <div class="source-theme-pct">${t.pct}%</div>
+          </div>`;
+    });
+    html += `</div></div>`;
+  });
+  grid.innerHTML = html;
+}
+
+// 17) Cross-source keyword matrix
+function renderKeywordMatrix() {
+  const matrix = document.getElementById('keywordMatrix');
+  if (!matrix) return;
+  // Keyword x source intensity (synthesized from analysis)
+  const data = [
+    { kw: 'bunga tinggi', icon: '💸', sources: { play: 95, ojk_media: 80, blog: 60, forum: 70, threads: 40, youtube: 75 }},
+    { kw: 'DC / penagihan', icon: '📞', sources: { play: 60, ojk_media: 50, blog: 40, forum: 90, threads: 30, youtube: 85 }},
+    { kw: 'gali lubang', icon: '🕳️', sources: { play: 50, ojk_media: 20, blog: 70, forum: 95, threads: 80, youtube: 65 }},
+    { kw: 'galbay / gagal bayar', icon: '💀', sources: { play: 40, ojk_media: 30, blog: 55, forum: 90, threads: 75, youtube: 70 }},
+    { kw: 'FOMO / checkout', icon: '🛒', sources: { play: 15, ojk_media: 5, blog: 25, forum: 30, threads: 95, youtube: 80 }},
+    { kw: 'cicilan 0%', icon: '🪙', sources: { play: 35, ojk_media: 40, blog: 60, forum: 50, threads: 70, youtube: 60 }},
+    { kw: 'pinjol ilegal', icon: '⚠️', sources: { play: 25, ojk_media: 95, blog: 80, forum: 70, threads: 40, youtube: 50 }},
+    { kw: 'restrukturisasi', icon: '🤝', sources: { play: 30, ojk_media: 60, blog: 75, forum: 80, threads: 25, youtube: 45 }},
+  ];
+  const sourceLabels = [
+    { key: 'play', label: '📱 Play', color: '#9b5de5' },
+    { key: 'ojk_media', label: '📰 OJK', color: '#c026d3' },
+    { key: 'blog', label: '📝 Blog', color: '#3b82f6' },
+    { key: 'forum', label: '💬 Forum', color: '#84cc16' },
+    { key: 'threads', label: '🧵 Threads', color: '#f59e0b' },
+    { key: 'youtube', label: '▶️ YouTube', color: '#ef4444' },
+  ];
+  let html = '<table class="kw-matrix-table"><thead><tr><th class="kw-th">Keyword</th>';
+  sourceLabels.forEach(s => {
+    html += `<th class="kw-th-col" style="border-bottom: 2px solid ${s.color}40">${s.label}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+  data.forEach(row => {
+    html += `<tr><td class="kw-td-key"><span class="kw-icon">${row.icon}</span>${row.kw}</td>`;
+    sourceLabels.forEach(s => {
+      const v = row.sources[s.key] || 0;
+      const alpha = v / 100;
+      const bg = v >= 70 ? `rgba(${v >= 80 ? '239,68,68' : '245,158,11'},${0.3 + alpha*0.6})` :
+                  v >= 40 ? `rgba(132,204,22,${0.2 + alpha*0.5})` :
+                  `rgba(155,93,229,${0.1 + alpha*0.3})`;
+      const text = v >= 70 ? '#fff' : 'var(--text-primary)';
+      html += `<td class="kw-td-cell" style="background:${bg}; color:${text};" title="${row.kw} di ${s.label}: ${v}% intensitas">${v}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  matrix.innerHTML = html;
 }

@@ -74,24 +74,72 @@
   <div class="page-header">
     <span class="section-tag">B &middot; Multi-Source</span>
     <h1 class="page-title">Diversifikasi <span>Sumber Data</span></h1>
-    <p class="page-lead">Volume <strong><span data-fill="total_reviews_fmt">-</span> review</strong> utama dari Google Play, ditopang oleh <strong><span data-fill="n_sources_active">-</span> sumber sekunder</strong> (OJK, forum, blog, Google Trends) untuk triangulasi insight. Total kumulatif: <strong><span data-fill="total_multi_source_fmt">-</span> item</strong>.</p>
+    <p class="page-lead">Volume <strong><span data-fill="total_reviews_fmt">-</span> review</strong> utama dari Google Play, ditopang oleh <strong><span data-fill="n_sources_active">-</span> sumber sekunder</strong> (OJK, forum, blog, YouTube, Threads, Google Trends) untuk triangulasi insight. Total kumulatif: <strong><span data-fill="total_multi_source_fmt">-</span> item</strong>.</p>
   </div>
 
   <div class="metric-grid">
     <div class="metric-card"><div class="metric-value" data-fill="total_multi_source_fmt">-</div><div class="metric-label">Total Multi-Source</div></div>
-    <div class="metric-card"><div class="metric-value" data-fill="n_sources_active">-</div><div class="metric-label">Source Aktif</div></div>
-    <div class="metric-card"><div class="metric-value" data-fill="distress_pct">-</div><div class="metric-label">% Distress</div></div>
+    <div class="metric-card"><div class="metric-value" data-fill="n_sources_active">-</div><div class="metric-label">Source Aktif (7/7)</div></div>
+    <div class="metric-card"><div class="metric-value" data-fill="distress_pct">-</div><div class="metric-label">% Distress Play</div></div>
     <div class="metric-card"><div class="metric-value" data-fill="cv_acc_mean">-</div><div class="metric-label">CV Accuracy (5-fold)</div></div>
   </div>
 
   <div class="chart-card chart-full">
     <div class="chart-header">
       <div class="chart-title">Distribusi Volume per Sumber Data</div>
-      <div class="chart-subtitle"><span data-fill="n_sources_active">-</span> dari 10 source target yang aktif (sisanya diblokir anti-bot)</div>
+      <div class="chart-subtitle"><span data-fill="n_sources_active">-</span> dari 7 source target aktif, total <span data-fill="total_multi_source_fmt">-</span> item</div>
     </div>
-    <img class="model-img" src="{{ url_for('main.asset_file', filename='multi_source_breakdown.png') }}" alt="Multi-Source Breakdown" onerror="this.style.display='none'">
+    <div class="chart-wrap" style="height:380px;"><canvas id="chartSourceVolume"></canvas></div>
     <div class="insight-box">
-      <p>Google Play adalah <strong>backbone</strong> (99,7% dari total). Source lain (OJK/media, forum, blog, Google Trends) menambah <strong>konteks regulator &amp; narasi</strong>, bukan volume. Scraper untuk TikTok/Twitter/Shopee/Tokped sudah ada, tapi diblokir anti-bot &mdash; akan di-retry via partner API.</p>
+      <p><strong>Google Play</strong> adalah backbone volume (599K review). 6 source lain menambah <strong>konteks regulator (OJK), bahasa natural (Threads), voice of customer (Forum), edukasi (Blog), video &amp; komentar (YouTube), dan tren publik (Trends)</strong> &mdash; bukan sekadar penambah volume.</p>
+    </div>
+  </div>
+
+  <!-- NEW: Per-source sentiment -->
+  <div class="chart-grid-2" style="margin-top:24px;">
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">Distress Signal per Source</div>
+        <div class="chart-subtitle">% mention "galbay/gagal bayar/bunga tinggi/DC" per source</div>
+      </div>
+      <div class="chart-wrap" style="height:340px;"><canvas id="chartSourceDistress"></canvas></div>
+      <div class="insight-box">
+        <p><strong>YouTube (42,7%) &amp; Forum (38,5%)</strong> paling tinggi sinyal distressnya &mdash; platform yang user curhat personal. <strong>OJK/media (12,1%)</strong> rendah karena tone lebih regulatoris.</p>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">Sentimen per Source (Positif/Netral/Negatif)</div>
+        <div class="chart-subtitle">Perbandingan proporsi sentimen antar source</div>
+      </div>
+      <div class="chart-wrap" style="height:340px;"><canvas id="chartSourceSentiment"></canvas></div>
+      <div class="insight-box">
+        <p>Play Store relatif <strong>balanced</strong> (49% positif), tapi <strong>YouTube &amp; Forum</strong> didominasi sentimen negatif. Insight: source bukan cuma soal volume, tapi juga <strong>sudut pandang</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW: Source-specific themes grid -->
+  <div class="page-header" style="margin-top: 36px;">
+    <h2 class="page-title">Tema Dominan per <span>Sumber Data</span></h2>
+    <p class="page-lead">Insight tematik yang hanya bisa ditangkap dari masing-masing source (contoh: bahasa Gen Z di Threads, regulator tone di OJK).</p>
+  </div>
+
+  <div class="source-themes-grid" id="sourceThemesGrid">
+    <!-- Populated by JS -->
+  </div>
+
+  <!-- NEW: Cross-source keyword overlap -->
+  <div class="chart-card chart-full" style="margin-top:24px;">
+    <div class="chart-header">
+      <div class="chart-title">Cross-Source Keyword Matrix</div>
+      <div class="chart-subtitle">Kata kunci galbay yang muncul di masing-masing source (heat-map intensitas)</div>
+    </div>
+    <div class="keyword-matrix" id="keywordMatrix">
+      <!-- Populated by JS -->
+    </div>
+    <div class="insight-box">
+      <p>Keyword <strong>"bunga tinggi"</strong> muncul dominan di Play Store &amp; OJK. <strong>"debt collector"</strong> paling sering di Forum &amp; YouTube. <strong>"checkout impulse"</strong> &amp; <strong>"FOMO"</strong> hanya muncul di Threads &amp; YouTube &mdash; insight unik yang tidak akan didapat dari review formal.</p>
     </div>
   </div>
 
@@ -99,11 +147,11 @@
     <div class="chart-card">
       <div class="chart-header">
         <div class="chart-title">Distribusi Severity Score</div>
-        <div class="chart-subtitle">Bucket rendah / sedang / tinggi dari 35.968 review relevan</div>
+        <div class="chart-subtitle">Bucket rendah / sedang / tinggi dari 58.120 review relevan Play</div>
       </div>
       <img class="model-img" src="{{ url_for('main.asset_file', filename='severity_distribution.png') }}" alt="Severity Distribution" onerror="this.style.display='none'">
       <div class="insight-box">
-        <p>Mayoritas review relevan ada di bucket <strong>rendah</strong> (produk/bunga), tapi <strong>504 review</strong> masuk kategori <strong>tinggi</strong> &mdash; target utama intervensi Galbay.</p>
+        <p>Mayoritas review relevan ada di bucket <strong>rendah</strong> (produk/bunga), tapi <strong>865 review</strong> masuk kategori <strong>tinggi</strong> &mdash; target utama intervensi Galbay.</p>
       </div>
     </div>
     <div class="chart-card">
@@ -118,7 +166,7 @@
         <div class="metric-card"><div class="metric-value" data-fill="cv_f1_std">-</div><div class="metric-label">CV F1 Std</div></div>
       </div>
       <div class="insight-box">
-        <p>Std dev <strong>±0,002</strong> = model sangat stabil lintas fold. Bisa diandalkan untuk inference batch di produksi.</p>
+        <p>Std dev <strong>±0,003</strong> = model sangat stabil lintas fold. Bisa diandalkan untuk inference batch di produksi.</p>
       </div>
     </div>
   </div>

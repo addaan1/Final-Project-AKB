@@ -209,6 +209,21 @@ def produk():
 
 
 # =================================================================
+# Public pages: Privacy, Terms
+# =================================================================
+@main_bp.route("/privacy")
+def privacy():
+    """Halaman kebijakan privasi."""
+    return render_template("privacy.html", active_page="privacy")
+
+
+@main_bp.route("/terms")
+def terms():
+    """Halaman syarat dan ketentuan."""
+    return render_template("terms.html", active_page="terms")
+
+
+# =================================================================
 # Tools: DC Chat Simulator (interactive practice)
 # =================================================================
 @main_bp.route("/tools/dc-simulator", methods=["GET", "POST"])

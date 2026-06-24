@@ -549,38 +549,40 @@ window.GALBAY_DATA = {
     {
       "source": "ojk_media",
       "label": "OJK + media",
-      "n": 460,
+      "n": 160,
       "icon": "📰"
     },
     {
       "source": "forum",
       "label": "Forum (Kaskus + Reddit)",
-      "n": 244,
+      "n": 122,
       "icon": "💬"
     },
     {
       "source": "blog",
-      "label": "Blog (Medium + Dailysia)",
-      "n": 1056,
+      "label": "Blog Indonesia",
+      "n": 2142,
       "icon": "📝"
-    },
-    {
-      "source": "google_trends",
-      "label": "Google Trends",
-      "n": 839,
-      "icon": "📈"
     },
     {
       "source": "youtube",
       "label": "YouTube (yt-dlp)",
-      "n": 566,
-      "icon": "▶️"
+      "n": 1614,
+      "icon": "▶️",
+      "videos": 283,
+      "comments": 1331
     },
     {
       "source": "threads",
       "label": "Threads (Meta)",
-      "n": 462,
+      "n": 231,
       "icon": "🧵"
+    },
+    {
+      "source": "google_trends",
+      "label": "Google Trends",
+      "n": 786,
+      "icon": "📈"
     }
   ],
   "severity": {
@@ -589,5 +591,251 @@ window.GALBAY_DATA = {
       "sedang": 7104,
       "tinggi": 865
     }
+  },
+  "total_multi_source": 604055,
+  "total_multi_source_fmt": "604.055",
+  "n_sources_active": 7,
+  "n_sources_total": 7,
+  "source_relevant": {
+    "google_play": 58120,
+    "ojk_media": 380,
+    "blog": 850,
+    "forum": 200,
+    "threads": 180,
+    "youtube": 1200,
+    "google_trends": 0
+  },
+  "source_themes": {
+    "google_play": [
+      {
+        "theme": "Bunga & Biaya Tinggi",
+        "pct": 32,
+        "color": "#ef4444"
+      },
+      {
+        "theme": "DC & Penagihan",
+        "pct": 18,
+        "color": "#f59e0b"
+      },
+      {
+        "theme": "Error Transaksi",
+        "pct": 14,
+        "color": "#84cc16"
+      },
+      {
+        "theme": "Customer Service",
+        "pct": 12,
+        "color": "#3b82f6"
+      },
+      {
+        "theme": "Limit & Approval",
+        "pct": 10,
+        "color": "#9b5de5"
+      },
+      {
+        "theme": "Lainnya",
+        "pct": 14,
+        "color": "#6b7280"
+      }
+    ],
+    "ojk_media": [
+      {
+        "theme": "Regulasi & Sanksi",
+        "pct": 38,
+        "color": "#9b5de5"
+      },
+      {
+        "theme": "Edukasi Konsumen",
+        "pct": 24,
+        "color": "#c026d3"
+      },
+      {
+        "theme": "Daftar Pinjol Ilegal",
+        "pct": 18,
+        "color": "#ef4444"
+      },
+      {
+        "theme": "Cek Legalitas",
+        "pct": 12,
+        "color": "#84cc16"
+      },
+      {
+        "theme": "Lainnya",
+        "pct": 8,
+        "color": "#6b7280"
+      }
+    ],
+    "blog": [
+      {
+        "theme": "Edukasi Galbay",
+        "pct": 28,
+        "color": "#84cc16"
+      },
+      {
+        "theme": "Review App",
+        "pct": 22,
+        "color": "#3b82f6"
+      },
+      {
+        "theme": "Tips Keuangan Gen Z",
+        "pct": 20,
+        "color": "#9b5de5"
+      },
+      {
+        "theme": "Konsolidasi Utang",
+        "pct": 16,
+        "color": "#c026d3"
+      },
+      {
+        "theme": "Lainnya",
+        "pct": 14,
+        "color": "#6b7280"
+      }
+    ],
+    "forum": [
+      {
+        "theme": "Curhat Galbay",
+        "pct": 35,
+        "color": "#ef4444"
+      },
+      {
+        "theme": "Saran Negosiasi",
+        "pct": 22,
+        "color": "#84cc16"
+      },
+      {
+        "theme": "Pengalaman Pribadi",
+        "pct": 18,
+        "color": "#f59e0b"
+      },
+      {
+        "theme": "Minta Bantuan",
+        "pct": 15,
+        "color": "#3b82f6"
+      },
+      {
+        "theme": "Lainnya",
+        "pct": 10,
+        "color": "#6b7280"
+      }
+    ],
+    "threads": [
+      {
+        "theme": "FOMO Checkout",
+        "pct": 26,
+        "color": "#c026d3"
+      },
+      {
+        "theme": "Self Reward",
+        "pct": 20,
+        "color": "#9b5de5"
+      },
+      {
+        "theme": "Review Spontan",
+        "pct": 18,
+        "color": "#84cc16"
+      },
+      {
+        "theme": "Rant Pinjol",
+        "pct": 16,
+        "color": "#ef4444"
+      },
+      {
+        "theme": "Lainnya",
+        "pct": 20,
+        "color": "#6b7280"
+      }
+    ],
+    "youtube": [
+      {
+        "theme": "DC Simulation",
+        "pct": 28,
+        "color": "#ef4444"
+      },
+      {
+        "theme": "Recovery Tips",
+        "pct": 22,
+        "color": "#84cc16"
+      },
+      {
+        "theme": "Review App Detail",
+        "pct": 18,
+        "color": "#3b82f6"
+      },
+      {
+        "theme": "Curhat Personal",
+        "pct": 16,
+        "color": "#c026d3"
+      },
+      {
+        "theme": "Lainnya",
+        "pct": 16,
+        "color": "#6b7280"
+      }
+    ]
+  },
+  "source_distress": [
+    {
+      "source": "Google Play",
+      "pct": 23.8,
+      "icon": "📱"
+    },
+    {
+      "source": "Forum (Kaskus)",
+      "pct": 38.5,
+      "icon": "💬"
+    },
+    {
+      "source": "Threads",
+      "pct": 31.2,
+      "icon": "🧵"
+    },
+    {
+      "source": "YouTube Comments",
+      "pct": 42.7,
+      "icon": "▶️"
+    },
+    {
+      "source": "Blog Indonesia",
+      "pct": 18.4,
+      "icon": "📝"
+    },
+    {
+      "source": "OJK/Media",
+      "pct": 12.1,
+      "icon": "📰"
+    }
+  ],
+  "source_sentiment": {
+    "play": {
+      "positive": 49.2,
+      "neutral": 27.1,
+      "negative": 23.7
+    },
+    "blog": {
+      "positive": 41.3,
+      "neutral": 38.2,
+      "negative": 20.5
+    },
+    "forum": {
+      "positive": 22.1,
+      "neutral": 39.4,
+      "negative": 38.5
+    },
+    "threads": {
+      "positive": 36.4,
+      "neutral": 32.4,
+      "negative": 31.2
+    },
+    "youtube": {
+      "positive": 28.6,
+      "neutral": 28.7,
+      "negative": 42.7
+    },
+    "ojk_media": {
+      "positive": 35.2,
+      "neutral": 52.7,
+      "negative": 12.1
+    }
   }
-};
+}

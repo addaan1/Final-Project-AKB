@@ -27,15 +27,20 @@
 
   <header class="landing-hero landing-hero-clean">
     <div class="hero-bg-grid"></div>
+    <div class="hero-floating-shapes">
+      <div class="floating-shape shape-1"></div>
+      <div class="floating-shape shape-2"></div>
+      <div class="floating-shape shape-3"></div>
+    </div>
 
     <div class="landing-hero-content">
       <span class="hero-tag">Big Data · Perilaku Keuangan Gen Z</span>
       <h1>Mining Perilaku Digital Gen Z untuk Membangun <span>Financial Behavior Coach</span> Berbasis Big Data</h1>
       <p class="lead">Memetakan fenomena <strong>galbay (gagal bayar)</strong> pinjol dan paylater di kalangan anak muda melalui data mining <strong>602.675 item multi-source</strong> — Google Play Store (599K review) + OJK/media (460) + Forum Kaskus (244) + Blog Indonesia (1.056) + YouTube (1.614) + Threads (231) + Google Trends (786 time-series). Lalu menerjemahkannya menjadi peluang bisnis yang layak dalam bentuk Business Model Canvas berbasis bukti.</p>
       <div class="landing-cta">
-        <a href="{{ url_for('main.login') }}" class="btn-primary">Buka Dashboard Analisis</a>
-        <a href="{{ url_for('main.galbay_score') }}" class="btn-secondary">Cek Galbay Score Gratis</a>
-        <a href="#metode" class="btn-outline">Pelajari Metode</a>
+        <a href="{{ url_for('main.login') }}" class="btn-primary btn-large">📊 Buka Dashboard Analisis</a>
+        <a href="{{ url_for('main.galbay_score') }}" class="btn-secondary btn-large">⚡ Cek Galbay Score Gratis</a>
+        <a href="#metode" class="btn-outline btn-large">Pelajari Metode</a>
       </div>
 
       <div class="landing-stats">
@@ -74,17 +79,96 @@
       <p class="section-desc">Gen Z Indonesia mengalami lonjakan kasus gagal bayar pinjol dan paylater akibat lifestyle inflation dan rendahnya literasi keuangan. Belum ada produk yang secara khusus melakukan coaching perilaku finansial dengan pendekatan yang relevan untuk anak muda.</p>
     </div>
     <div class="grid-3">
-      <div class="card">
+      <div class="card card-highlight">
+        <div class="card-icon-wrap purple">🎯</div>
         <h3>Peluang</h3>
         <p>Pasar besar Gen Z yang terjebak siklus utang digital, namun belum tersentuh produk financial coaching yang preventif dan berbasis data.</p>
       </div>
-      <div class="card">
+      <div class="card card-highlight">
+        <div class="card-icon-wrap lime">💡</div>
         <h3>Solusi</h3>
         <p>Aplikasi Galbay Predictor: skor risiko galbay personal plus coaching perilaku finansial bergaya anak muda dengan gamifikasi dan nudging.</p>
       </div>
-      <div class="card">
+      <div class="card card-highlight">
+        <div class="card-icon-wrap purple">📊</div>
         <h3>Bukti Data</h3>
         <p>Dibangun dari analisis ratusan ribu ulasan nyata aplikasi keuangan, bukan asumsi. Setiap blok bisnis didukung temuan data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED TOOLS ========== -->
+  <section class="landing-section center featured-tools-section" id="tools-preview">
+    <div class="section-header">
+      <span class="section-tag">🛠️ Tools Gratis</span>
+      <h2 class="section-title">Coba <span>4 Tools Interaktif</span> Kami</h2>
+      <p class="section-desc">Tanpa login, tanpa data pribadi. Tools yang bisa langsung Anda pakai untuk cek &amp; kelola keuangan digital.</p>
+    </div>
+    <div class="featured-tools-grid">
+      <a href="{{ url_for('main.galbay_score') }}" class="featured-tool-card tool-galbay">
+        <div class="ft-icon">⚡</div>
+        <h3>Galbay Score Quiz</h3>
+        <p>6 pertanyaan, 2 menit, dapat skor personal 0-100 + rekomendasi actionable.</p>
+        <span class="ft-badge">PALING POPULER</span>
+      </a>
+      <a href="{{ url_for('main.dc_simulator') }}" class="featured-tool-card tool-dc">
+        <div class="ft-icon">🎮</div>
+        <h3>DC Chat Simulator</h3>
+        <p>Latihan negosiasi debt collector. 4 skenario, feedback langsung. Tanpa risiko.</p>
+        <span class="ft-badge ft-badge-new">NEW</span>
+      </a>
+      <a href="{{ url_for('main.login') }}" class="featured-tool-card tool-pinjol">
+        <div class="ft-icon">🛡️</div>
+        <h3>Pinjol Blacklist Checker</h3>
+        <p>Cek apakah pinjol legal (terdaftar OJK) atau ilegal. 24+ database app.</p>
+        <span class="ft-badge ft-badge-free">GRATIS</span>
+      </a>
+      <a href="{{ url_for('main.login') }}" class="featured-tool-card tool-planner">
+        <div class="ft-icon">💰</div>
+        <h3>Debt Planner</h3>
+        <p>Snowball vs Avalanche strategy. Hitung kapan utang lunas &amp; optimal payment.</p>
+        <span class="ft-badge ft-badge-premium">PREMIUM</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== WHY US ========== -->
+  <section class="landing-section center why-us-section">
+    <div class="section-header">
+      <span class="section-tag">Mengapa Galbay Predictor?</span>
+      <h2 class="section-title">Beda dari <span>Aplikasi Lain</span></h2>
+      <p class="section-desc">Bukan pinjol, bukan budgeting app. Galbay Predictor fokus pada apa yang belum ada: <strong>coaching preventif berbasis perilaku nyata</strong>.</p>
+    </div>
+    <div class="why-us-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3>Berbasis Bukti, Bukan Asumsi</h3>
+        <p>602K item data nyata dari 7 platform, dianalisis dengan model AI teruji (F1 0,857). Bukan horoskop finansial.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3>Multi-Sudut Pandang</h3>
+        <p>Data dari review formal (Play Store), bahasa natural (Threads), regulator (OJK), diskusi (Forum), dan video (YouTube).</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3>Pencegahan, Bukan Penanganan</h3>
+        <p>Deteksi dini pola berisiko, bukan deal with debt setelah terlanjur. Lebih baik mencegah daripada menyesal.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <h3>Bahasa Anak Muda</h3>
+        <p>Nggak menggurui. Pakai bahasa Gen Z, contoh kasus relatable, dan kurasi yang relevan dengan kehidupan Anda.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">05</div>
+        <h3>Privacy-First</h3>
+        <p>Tidak minta akses ke rekening, kontak, atau data sensitif. Data Anda adalah milik Anda.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">06</div>
+        <h3>Tools Langsung Pakai</h3>
+        <p>4 tools interaktif gratis: Galbay Score, DC Simulator, Pinjol Checker, Debt Planner. Hasil instan, tanpa daftar.</p>
       </div>
     </div>
   </section>
@@ -175,7 +259,7 @@
   </section>
 
   <footer class="footer">
-    <p>&copy; 2026 Galbay Predictor &middot; Tugas UAS Analisis Keputusan Bisnis &middot; Data tidak disimpan &middot; <a href="#" onclick="return false;">Privacy</a> &middot; <a href="#" onclick="return false;">Terms</a></p>
+    <p>&copy; 2026 Galbay Predictor &middot; Tugas UAS Analisis Keputusan Bisnis &middot; Data tidak disimpan &middot; <a href="{{ url_for('main.privacy') }}">Privacy</a> &middot; <a href="{{ url_for('main.terms') }}">Terms</a></p>
   </footer>
 </body>
 </html>

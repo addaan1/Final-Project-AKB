@@ -1430,20 +1430,70 @@ body[data-package="premium"] .topnav-cta:hover {
   margin-top: 16px;
 }
 
-/* --- Nav pill CTA (Produk) --- */
+/* --- Nav pill CTA (Galbay Score) --- */
 .nav-pill-cta {
-  background: rgba(184,255,60,0.08);
-  border-color: rgba(184,255,60,0.3);
+  background: linear-gradient(135deg, #b8ff3c 0%, #84cc16 100%) !important;
+  border-color: #b8ff3c !important;
+  color: #1a0a3a !important;
+  font-weight: 800 !important;
+  box-shadow: 0 0 18px rgba(184,255,60,0.35);
+  animation: navPulse 2.4s ease-in-out infinite;
 }
 .nav-pill-cta:hover {
-  background: rgba(184,255,60,0.18);
-  border-color: rgba(184,255,60,0.5);
+  background: linear-gradient(135deg, #c8ff5c 0%, #95d626 100%) !important;
+  border-color: #c8ff5c !important;
+  box-shadow: 0 0 24px rgba(184,255,60,0.55);
+  transform: translateY(-2px);
 }
 .nav-pill-cta.active {
-  background: var(--accent-lime);
-  color: #07001a !important;
-  border-color: var(--accent-lime);
-  box-shadow: 0 0 16px rgba(184,255,60,0.4);
+  background: linear-gradient(135deg, #b8ff3c 0%, #84cc16 100%) !important;
+  color: #1a0a3a !important;
+  border-color: #b8ff3c !important;
+  box-shadow: 0 0 22px rgba(184,255,60,0.5);
+}
+
+@keyframes navPulse {
+  0%, 100% { box-shadow: 0 0 16px rgba(184,255,60,0.32); }
+  50%      { box-shadow: 0 0 26px rgba(184,255,60,0.55); }
+}
+
+/* --- Nav pill highlight (Produk — secondary CTA) --- */
+.nav-pill-highlight {
+  background: linear-gradient(135deg, rgba(192,38,211,0.12) 0%, rgba(155,93,229,0.18) 100%) !important;
+  border-color: rgba(192,38,211,0.45) !important;
+  color: var(--accent-violet) !important;
+  font-weight: 700 !important;
+  position: relative;
+}
+.nav-pill-highlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(192,38,211,0.22), rgba(155,93,229,0.28));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: -1;
+}
+.nav-pill-highlight:hover {
+  border-color: var(--accent-violet) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+.nav-pill-highlight:hover::before { opacity: 1; }
+.nav-pill-highlight.active {
+  background: linear-gradient(135deg, rgba(192,38,211,0.22) 0%, rgba(155,93,229,0.30) 100%) !important;
+  color: #fff !important;
+  border-color: var(--accent-violet) !important;
+}
+
+:root[data-theme="light"] .nav-pill-highlight {
+  color: #c026d3 !important;
+  background: linear-gradient(135deg, rgba(192,38,211,0.08) 0%, rgba(155,93,229,0.12) 100%) !important;
+}
+:root[data-theme="light"] .nav-pill-highlight.active,
+:root[data-theme="light"] .nav-pill-highlight:hover {
+  color: #fff !important;
 }
 
 /* --- Skor Risiko Layout --- */

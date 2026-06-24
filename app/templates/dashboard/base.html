@@ -28,9 +28,9 @@
       <a href="{{ url_for('main.ringkasan') }}" class="nav-pill {% if active_page == 'ringkasan' %}active{% endif %}">Ringkasan</a>
       <a href="{{ url_for('main.analisis') }}" class="nav-pill {% if active_page == 'analisis' %}active{% endif %}">Analisis</a>
       <a href="{{ url_for('main.solusi') }}" class="nav-pill {% if active_page == 'solusi' %}active{% endif %}">Solusi &amp; BMC</a>
-      <a href="{{ url_for('main.galbay_score') }}" class="nav-pill nav-pill-cta" style="background: linear-gradient(135deg, #b8ff3c, #84cc16); color: #1a0a3a; font-weight: 800;">⚡ Galbay Score</a>
-      <a href="{{ url_for('main.produk') }}" class="nav-pill {% if active_page == 'produk' %}active{% endif %}">Tools</a>
       <a href="{{ url_for('main.kesimpulan') }}" class="nav-pill {% if active_page == 'kesimpulan' %}active{% endif %}">Kesimpulan</a>
+      <a href="{{ url_for('main.produk') }}" class="nav-pill nav-pill-highlight {% if active_page == 'produk' %}active{% endif %}">🚀 Produk</a>
+      <a href="{{ url_for('main.galbay_score') }}" class="nav-pill nav-pill-cta">⚡ Galbay Score</a>
     </nav>
     <div class="topbar-right">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Light/Dark mode">

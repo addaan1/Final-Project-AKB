@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "source": "marketplace",
+    "scraped_at": "2026-06-24T12:47:53.325392+00:00",
+    "scraper": "marketplace",
+    "n_total": 0,
+    "n_shopee": 0,
+    "n_tokopedia": 0,
+    "n_finansial_keyword": 0,
+    "queries": [
+      "paylater",
+      "cicilan 0%",
+      "bunga 0%",
+      "cicilan tanpa kartu kredit",
+      "pinjaman online",
+      "kredit online",
+      "self reward",
+      "checkout bayar nanti",
+      "flash sale",
+      "gadget cicilan"
+    ],
+    "max_pages": 1,
+    "max_per_query": 10,
+    "target": "tokopedia",
+    "per_query": [
+      {
+        "query": "paylater",
+        "shopee": 0,
+        "tokopedia": 0,
+        "total": 0
+      },
+      {
+        "query": "cicilan 0%",
+        "shopee": 0,
+        "tokopedia": 0,
+        "total": 0
+      },
+      {
+        "query": "bunga 0%",
+        "shopee": 0,
+        "tokopedia": 0,
+        "total": 0
+      },
+      {
+        "query": "cicilan tanpa kartu kredit",
+        "shopee": 0,
+        "tokopedia": 0,
+        "total": 0
+      },
+      {
+        "query": "pinjaman online",
+        "shopee": 0,
+        "tokopedia": 0,
+        "total": 0
+      },
+      {
+        "query": "kredit online",
+        "shopee": 0,
+        "tokopedia": 0,
+        "total": 0
+      },
+      {
+        "query": "self reward",
+        "shopee": 0,
+        "tokopedia": 0,
+        "total": 0
+      },
+      {
+        "query": "checkout bayar nanti",
+        "shopee": 0,
+        "tokopedia": 0,
+        "total": 0
+      },
+      {
+        "query": "flash sale",
+        "shopee": 0,
+        "tokopedia": 0,
+        "total": 0
+      },
+      {
+        "query": "gadget cicilan",
+        "shopee": 0,
+        "tokopedia": 0,
+        "total": 0
+      }
+    ]
+  },
+  "items": []
+}

@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "source": "apple_app_store",
+    "scraped_at": "2026-06-24T13:01:13.202802+00:00",
+    "scraper": "appstore_reviews",
+    "n_apps": 15,
+    "n_reviews_total": 0,
+    "country": "id",
+    "count_per_app": 500,
+    "per_app": [
+      {
+        "app_name": "Kredivo",
+        "app_id": "1474527998",
+        "category": "paylater",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "Akulaku",
+        "app_id": "1485443341",
+        "category": "paylater",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "Shopee",
+        "app_id": "959841443",
+        "category": "ecommerce",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "Tokopedia",
+        "app_id": "1001394201",
+        "category": "ecommerce",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "Lazada",
+        "app_id": "785385147",
+        "category": "ecommerce",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "Traveloka",
+        "app_id": "898244530",
+        "category": "travel",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "Gojek",
+        "app_id": "944875099",
+        "category": "ewallet",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "OVO",
+        "app_id": "1276197286",
+        "category": "ewallet",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "DANA",
+        "app_id": "1436496446",
+        "category": "ewallet",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "JULO",
+        "app_id": "1404980061",
+        "category": "pinjol",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "Kredit Pintar",
+        "app_id": "1398423853",
+        "category": "pinjol",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "RupiahCepat",
+        "app_id": "1451294871",
+        "category": "pinjol",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "Bukalapak",
+        "app_id": "1003169137",
+        "category": "ecommerce",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "SeaBank",
+        "app_id": "1599575853",
+        "category": "bank_digital",
+        "n_reviews": 0,
+        "n_relevant": 0
+      },
+      {
+        "app_name": "Bank Jago",
+        "app_id": "1546211820",
+        "category": "bank_digital",
+        "n_reviews": 0,
+        "n_relevant": 0
+      }
+    ]
+  },
+  "reviews": []
+}

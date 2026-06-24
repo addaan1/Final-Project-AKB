@@ -307,7 +307,18 @@ const percentLabelPlugin = {
 };
 Chart.register(percentLabelPlugin);
 
-function make(id, cfg){ const el=document.getElementById(id); if(!el) return; new Chart(el, cfg); }
+function make(id, cfg){
+  const el=document.getElementById(id);
+  if(!el) return;
+  // Set explicit fallback dimensions to prevent 0x0 canvas issues
+  if (!el.hasAttribute('width')) el.setAttribute('width', '400');
+  if (!el.hasAttribute('height')) el.setAttribute('height', '300');
+  const chart = new Chart(el, cfg);
+  // Trigger resize after creation in case parent was 0-sized at init
+  setTimeout(() => { try { chart.resize(); } catch(e) {} }, 100);
+  setTimeout(() => { try { chart.resize(); chart.update('none'); } catch(e) {} }, 500);
+  return chart;
+}
 
 // ── CONDITIONAL CHART INIT: hanya render chart yang canvas ada di page ──
 function initCharts() {

@@ -103,4 +103,52 @@
       });
     }, 50);
   });
+
+  // ---- 7) Chart re-init on scroll-reveal ----
+  // When a chart-wrap becomes visible, re-init or resize any Chart.js inside
+  // Fixes issue where charts lower in page render with 0 dimensions
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    const chartObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('visible');
+        // Find canvas inside the chart-wrap and trigger resize
+        const canvas = e.target.querySelector('canvas');
+        if (canvas && window.Chart) {
+          const chart = window.Chart.getChart && window.Chart.getChart(canvas);
+          if (chart) {
+            // Chart already exists - just resize
+            setTimeout(() => { try { chart.resize(); chart.update('none'); } catch (err) { /* noop */ } }, 50);
+          }
+        }
+        chartObserver.unobserve(e.target);
+      });
+    }, { root: null, rootMargin: '0px 0px -5% 0px', threshold: 0.1 });
+
+    // Observe all chart-wrap containers that haven't been initialized yet
+    document.querySelectorAll('.chart-wrap').forEach(wrap => {
+      if (!wrap.classList.contains('visible') && !wrap.dataset.observed) {
+        wrap.dataset.observed = '1';
+        chartObserver.observe(wrap);
+      }
+    });
+  } else if (window.Chart) {
+    // Reduced motion: just mark all chart-wraps as visible immediately
+    document.querySelectorAll('.chart-wrap:not(.visible)').forEach(wrap => {
+      wrap.classList.add('visible');
+    });
+  }
+  }
+
+  // ---- 8) Failsafe: force chart resize on full page load ----
+  // Resize all charts after 1.5s to catch any edge cases
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if (window.Chart && window.Chart.instances) {
+        Object.values(window.Chart.instances).forEach(ch => {
+          try { ch.resize(); ch.update('none'); } catch (e) { /* noop */ }
+        });
+      }
+    }, 1500);
+  });
 })();

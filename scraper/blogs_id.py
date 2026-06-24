@@ -32,39 +32,69 @@ log = logging.getLogger("scraper.blogs_id")
 
 BLOG_QUERIES: list[str] = [
     "paylater indonesia", "pinjol indonesia", "gagal bayar", "tips bayar paylater",
-    "bahaya pinjol", "financial behavior gen z", "cicilan online", "utang online",
-    "kredit tanpa kartu kredit", "galbay", "debt collector", "cicilan 0%",
-    "self reward", "checkout bayar nanti", "pinjol ilegal", "pinjol legal",
-    "bunga tinggi", "restrukturisasi", "konsolidasi utang", "gali lubang tutup lubang",
-    "tips keuangan gen z", "menabung gen z", "financial freedom", "literasi keuangan",
+    "bahaya pinjol", "cicilan online", "utang online", "galbay",
+    "debt collector", "cicilan 0%", "checkout bayar nanti", "pinjol ilegal",
+    "pinjol legal", "bunga tinggi", "restrukturisasi", "konsolidasi utang",
+    "gali lubang tutup lubang", "tips keuangan gen z", "literasi keuangan",
     "tagihan paylater", "beli sekarang bayar nanti", "kartu kredit online",
     "utang pinjol", "denda telat bayar", "gagal bayar hutang",
+    "kredit pintar", "kredivo", "akulaku", "indodana", "julo", "shopee paylater",
+    "dana paylater", "goPaylater", "uangme", "tunaiku", "kta online",
+    "pinjaman modal", "bank digital", "jago", "jenius", "blu", "seabank",
+    "cicilan tokopedia", "cicilan shopee", "gojek paylater", "grab paylater",
+    "traveloka paylater", "lazada paylater",
 ]
 
 BLOGS: list[dict] = [
     {
         "name": "kumparan",
         "search_url": "https://kumparan.com/search?q={q}",
+        "paged_url": "https://kumparan.com/search?q={q}&page={p}",
     },
     {
         "name": "hipwee",
         "search_url": "https://www.hipwee.com/?s={q}",
+        "paged_url": "https://www.hipwee.com/page/{p}/?s={q}",
     },
     {
         "name": "brilio",
         "search_url": "https://www.brilio.net/search/?keyword={q}",
+        "paged_url": "https://www.brilio.net/search/{p}/?keyword={q}",
     },
     {
         "name": "cnbc",
         "search_url": "https://www.cnbcindonesia.com/search?query={q}",
+        "paged_url": "https://www.cnbcindonesia.com/search?query={q}&page={p}",
     },
     {
         "name": "kompas",
         "search_url": "https://search.kompas.com/search?q={q}",
+        "paged_url": "https://search.kompas.com/search?q={q}&p={p}",
     },
     {
         "name": "detik",
         "search_url": "https://www.detik.com/search/searchall?query={q}",
+        "paged_url": "https://www.detik.com/search/searchall?query={q}&page={p}",
+    },
+    {
+        "name": "idntimes",
+        "search_url": "https://www.idntimes.com/search?q={q}",
+        "paged_url": "https://www.idntimes.com/search?q={q}&page={p}",
+    },
+    {
+        "name": "tempo",
+        "search_url": "https://www.tempo.co/search?q={q}",
+        "paged_url": "https://www.tempo.co/search?q={q}&page={p}",
+    },
+    {
+        "name": "okezone",
+        "search_url": "https://search.okezone.com/search?q={q}",
+        "paged_url": "https://search.okezone.com/search?q={q}&p={p}",
+    },
+    {
+        "name": "merdeka",
+        "search_url": "https://www.merdeka.com/search/?keyword={q}",
+        "paged_url": "https://www.merdeka.com/search/{p}/?keyword={q}",
     },
 ]
 
@@ -93,48 +123,55 @@ class BlogIdScraper(BaseScraper):
             log.warning("Blog fetch error: %s", exc)
         return None
 
-    def _scrape_blog(self, blog: dict, query: str, max_posts: int = 20) -> list[dict]:
-        """Scrape satu blog untuk satu query."""
-        url = blog["search_url"].format(q=quote(query))
-        html = self._fetch(url)
-        if not html:
-            return []
+    def _scrape_blog(self, blog: dict, query: str, max_posts: int = 20, max_pages: int = 3) -> list[dict]:
+        """Scrape satu blog untuk satu query, dengan pagination."""
+        all_posts: list[dict] = []
+        seen_urls: set[str] = set()
+        paged = blog.get("paged_url")
 
-        soup = BeautifulSoup(html, "lxml")
-        posts: list[dict] = []
+        for page in range(1, max_pages + 1):
+            if page == 1 or not paged:
+                url = blog["search_url"].format(q=quote(query))
+            else:
+                url = paged.format(q=quote(query), p=page)
+            html = self._fetch(url)
+            if not html:
+                break
+            soup = BeautifulSoup(html, "lxml")
+            found_in_page = 0
+            for a in soup.find_all("a", href=True):
+                href = a.get("href", "")
+                title = a.get_text(strip=True)
+                if (
+                    blog["name"] in href.lower()
+                    and len(title) > 25
+                    and "/search" not in href
+                    and "/tag/" not in href
+                    and href not in seen_urls
+                ):
+                    if not href.startswith("http"):
+                        href = "https:" + href if href.startswith("//") else f"https://{blog['name']}.com{href}"
+                    seen_urls.add(href)
+                    all_posts.append(
+                        {
+                            "source": "blog_id",
+                            "blog": blog["name"],
+                            "query": query,
+                            "title": title[:200],
+                            "url": href,
+                            "snippet": "",
+                            "scraped_at": time.time(),
+                        }
+                    )
+                    found_in_page += 1
+                    if len(all_posts) >= max_posts:
+                        return all_posts
+            if found_in_page == 0:
+                break
+        return all_posts
 
-        # Generic: find all article-like links with substantial title
-        for a in soup.find_all("a", href=True):
-            href = a.get("href", "")
-            title = a.get_text(strip=True)
-
-            # Filter: same domain, title panjang
-            if (
-                blog["name"] in href.lower()
-                and len(title) > 25
-                and "/search" not in href
-                and title not in [p["title"] for p in posts]
-            ):
-                if not href.startswith("http"):
-                    href = "https:" + href if href.startswith("//") else f"https://{blog['name']}.com{href}"
-                posts.append(
-                    {
-                        "source": "blog_id",
-                        "blog": blog["name"],
-                        "query": query,
-                        "title": title[:200],
-                        "url": href,
-                        "snippet": "",
-                        "scraped_at": time.time(),
-                    }
-                )
-                if len(posts) >= max_posts:
-                    break
-
-        return posts
-
-    def run(self, max_per_query: int = 10) -> dict[str, Any]:
-        """Scrape BLOGS × BLOG_QUERIES."""
+    def run(self, max_per_query: int = 30, max_pages: int = 3) -> dict[str, Any]:
+        """Scrape BLOGS × BLOG_QUERIES × pages."""
         all_posts: list[dict] = []
         per_blog: dict[str, int] = {b["name"]: 0 for b in BLOGS}
         per_query_stats: list[dict] = []
@@ -142,7 +179,7 @@ class BlogIdScraper(BaseScraper):
         for blog in BLOGS:
             for query in tqdm(BLOG_QUERIES, desc=f"{blog['name']} queries"):
                 try:
-                    posts = self._scrape_blog(blog, query, max_per_query)
+                    posts = self._scrape_blog(blog, query, max_per_query, max_pages)
                     all_posts.extend(posts)
                     per_blog[blog["name"]] += len(posts)
                     per_query_stats.append(

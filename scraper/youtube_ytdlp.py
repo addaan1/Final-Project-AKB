@@ -73,6 +73,26 @@ YT_QUERIES: list[str] = [
     "tips keuangan gen z",
     "konsolidasi utang",
     "restrukturisasi kredit",
+    "kredit pintar review",
+    "julo gagal bayar",
+    "kredito review",
+    "uangme review",
+    "tunaiku review",
+    "kta kilat",
+    "pinjaman online ilegal",
+    "pinjol legal OJK",
+    "bunga pinjol tinggi",
+    "tips keluar dari galbay",
+    "cara bayar pinjol",
+    "negosiasi debt collector",
+    "konsolidasi pinjol",
+    "tagihan shopee paylater",
+    "tagihan kredivo",
+    "tagihan akulaku",
+    "bayar paylater telat",
+    "denda pinjol",
+    "live streaming utang",
+    "curhat pinjol",
 ]
 
 
@@ -158,8 +178,8 @@ class YoutubeYtdlpScraper(BaseScraper):
 
     def run(
         self,
-        max_videos_per_query: int = 20,
-        max_comments_per_video: int = 20,
+        max_videos_per_query: int = 30,
+        max_comments_per_video: int = 30,
         fetch_comments: bool = True,
     ) -> dict[str, Any]:
         """Scrape YouTube via yt-dlp."""
@@ -173,7 +193,7 @@ class YoutubeYtdlpScraper(BaseScraper):
                 all_videos.extend(videos)
 
                 if fetch_comments:
-                    for v in videos[:5]:  # only top 5 videos for comments (limit API bloat)
+                    for v in videos[:8]:  # top 8 videos for comments (more coverage)
                         c = self._extract_comments(v, max_comments=max_comments_per_video)
                         all_comments.extend(c)
 

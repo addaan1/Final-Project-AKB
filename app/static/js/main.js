@@ -310,13 +310,39 @@ Chart.register(percentLabelPlugin);
 function make(id, cfg){
   const el=document.getElementById(id);
   if(!el) return;
-  // Set explicit fallback dimensions to prevent 0x0 canvas issues
-  if (!el.hasAttribute('width')) el.setAttribute('width', '400');
-  if (!el.hasAttribute('height')) el.setAttribute('height', '300');
+  // Get the chart-wrap parent for sizing
+  const wrap = el.closest('.chart-wrap');
+  // Use wrap dimensions if available, fallback to 600x340
+  let w = 600, h = 340;
+  if (wrap) {
+    const rect = wrap.getBoundingClientRect();
+    if (rect.width > 0) w = Math.floor(rect.width);
+    if (rect.height > 0) h = Math.floor(rect.height);
+  }
+  // Set explicit canvas dimensions (Chart.js uses these for rendering)
+  el.setAttribute('width', String(w));
+  el.setAttribute('height', String(h));
+  el.style.width = w + 'px';
+  el.style.height = h + 'px';
   const chart = new Chart(el, cfg);
-  // Trigger resize after creation in case parent was 0-sized at init
-  setTimeout(() => { try { chart.resize(); } catch(e) {} }, 100);
-  setTimeout(() => { try { chart.resize(); chart.update('none'); } catch(e) {} }, 500);
+  // Multiple resize attempts to handle async layout
+  [50, 150, 300, 600, 1000, 2000].forEach(delay => {
+    setTimeout(() => {
+      try {
+        if (wrap) {
+          const r = wrap.getBoundingClientRect();
+          if (r.width > 0 && r.height > 0) {
+            el.style.width = r.width + 'px';
+            el.style.height = r.height + 'px';
+            el.setAttribute('width', String(Math.floor(r.width)));
+            el.setAttribute('height', String(Math.floor(r.height)));
+          }
+        }
+        chart.resize();
+        chart.update('none');
+      } catch(e) { /* noop */ }
+    }, delay);
+  });
   return chart;
 }
 

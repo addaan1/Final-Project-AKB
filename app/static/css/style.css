@@ -391,12 +391,13 @@ body {
   border: 1px solid var(--border-purple);
   border-radius: 20px;
   padding: 28px;
+  overflow: visible;
 }
 .chart-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
 .chart-subtitle { font-size: 12px; color: var(--text-muted); margin-bottom: 20px; }
 .chart-wrap { position: relative; height: 240px; width: 100%; }
 .chart-wrap canvas { display: block; max-width: 100%; }
-.chart-wrap[style*="height"] { max-height: none !important; }
+.chart-wrap[style*="height"] { max-height: none !important; min-height: 280px; }
 
 /* —— KPI BAR —— */
 .kpi-bar {
@@ -1041,7 +1042,7 @@ body[data-package="premium"] .topnav-cta:hover {
   }
   .kpi-card-value, .kpi-card-big .kpi-card-value { color: #6a0dad !important; }
   .kpi-card-lime .kpi-card-value { color: #4a7d00 !important; }
-  .chart-wrap { max-height: 320px; }
+  /* .chart-wrap max-height: 320px removed (conflicts with inline height) */
   .ratio-bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   a { color: #000; text-decoration: none; }
   .nav-pill { display: none; }
@@ -1216,7 +1217,6 @@ body[data-package="premium"] .topnav-cta:hover {
   border-radius: 18px;
   padding: 24px;
   transition: border-color 0.2s, box-shadow 0.2s;
-  animation: fadeInUp 0.5s ease backwards;
   font-variant-numeric: tabular-nums;
 }
 .chart-card:hover {

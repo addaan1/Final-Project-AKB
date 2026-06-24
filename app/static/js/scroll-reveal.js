@@ -142,13 +142,31 @@
 
   // ---- 8) Failsafe: force chart resize on full page load ----
   // Resize all charts after 1.5s to catch any edge cases
+  function resizeAllCharts() {
+    if (window.Chart && window.Chart.instances) {
+      Object.values(window.Chart.instances).forEach(ch => {
+        try {
+          ch.resize();
+          ch.update('none');
+        } catch (e) { /* noop */ }
+      });
+    }
+  }
   window.addEventListener('load', () => {
-    setTimeout(() => {
-      if (window.Chart && window.Chart.instances) {
-        Object.values(window.Chart.instances).forEach(ch => {
-          try { ch.resize(); ch.update('none'); } catch (e) { /* noop */ }
-        });
-      }
-    }, 1500);
+    [500, 1000, 2000, 3000].forEach(d => setTimeout(resizeAllCharts, d));
+  });
+  // Also resize on every scroll (debounced) to handle late layout shifts
+  let scrollResizeTimer = null;
+  window.addEventListener('scroll', () => {
+    if (scrollResizeTimer) return;
+    scrollResizeTimer = setTimeout(() => {
+      scrollResizeTimer = null;
+      resizeAllCharts();
+    }, 200);
+  }, { passive: true });
+  // Resize on window resize
+  window.addEventListener('resize', () => {
+    clearTimeout(window._resizeTimer);
+    window._resizeTimer = setTimeout(resizeAllCharts, 100);
   });
 })();

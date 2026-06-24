@@ -1,0 +1,175 @@
+{
+  "meta": {
+    "source": "kaskus_fast",
+    "scraped_at": "2026-06-24T16:11:38.147006+00:00",
+    "scraper": "kaskus_fast",
+    "n_total": 0,
+    "queries": [
+      "paylater",
+      "pinjol",
+      "galbay",
+      "gagal bayar",
+      "utang",
+      "ditagih",
+      "cicilan",
+      "self reward",
+      "FOMO",
+      "checkout",
+      "bunga tinggi",
+      "debt collector",
+      "tagihan",
+      "kartu kredit",
+      "kredit",
+      "pinjaman online",
+      "shopee paylater",
+      "kredivo",
+      "indodana",
+      "limit paylater",
+      "gali lubang",
+      "restrukturisasi",
+      "konsolidasi",
+      "cicil",
+      "beli sekarang bayar nanti",
+      "bunga 0",
+      "pinjam",
+      "tagih",
+      "nagih",
+      "bayar",
+      "lunas",
+      "denda"
+    ],
+    "max_pages": 2,
+    "max_per_query": 40,
+    "per_query": [
+      {
+        "query": "paylater",
+        "n_threads": 0
+      },
+      {
+        "query": "pinjol",
+        "n_threads": 0
+      },
+      {
+        "query": "galbay",
+        "n_threads": 0
+      },
+      {
+        "query": "gagal bayar",
+        "n_threads": 0
+      },
+      {
+        "query": "utang",
+        "n_threads": 0
+      },
+      {
+        "query": "ditagih",
+        "n_threads": 0
+      },
+      {
+        "query": "cicilan",
+        "n_threads": 0
+      },
+      {
+        "query": "self reward",
+        "n_threads": 0
+      },
+      {
+        "query": "FOMO",
+        "n_threads": 0
+      },
+      {
+        "query": "checkout",
+        "n_threads": 0
+      },
+      {
+        "query": "bunga tinggi",
+        "n_threads": 0
+      },
+      {
+        "query": "debt collector",
+        "n_threads": 0
+      },
+      {
+        "query": "tagihan",
+        "n_threads": 0
+      },
+      {
+        "query": "kartu kredit",
+        "n_threads": 0
+      },
+      {
+        "query": "kredit",
+        "n_threads": 0
+      },
+      {
+        "query": "pinjaman online",
+        "n_threads": 0
+      },
+      {
+        "query": "shopee paylater",
+        "n_threads": 0
+      },
+      {
+        "query": "kredivo",
+        "n_threads": 0
+      },
+      {
+        "query": "indodana",
+        "n_threads": 0
+      },
+      {
+        "query": "limit paylater",
+        "n_threads": 0
+      },
+      {
+        "query": "gali lubang",
+        "n_threads": 0
+      },
+      {
+        "query": "restrukturisasi",
+        "n_threads": 0
+      },
+      {
+        "query": "konsolidasi",
+        "n_threads": 0
+      },
+      {
+        "query": "cicil",
+        "n_threads": 0
+      },
+      {
+        "query": "beli sekarang bayar nanti",
+        "n_threads": 0
+      },
+      {
+        "query": "bunga 0",
+        "n_threads": 0
+      },
+      {
+        "query": "pinjam",
+        "n_threads": 0
+      },
+      {
+        "query": "tagih",
+        "n_threads": 0
+      },
+      {
+        "query": "nagih",
+        "n_threads": 0
+      },
+      {
+        "query": "bayar",
+        "n_threads": 0
+      },
+      {
+        "query": "lunas",
+        "n_threads": 0
+      },
+      {
+        "query": "denda",
+        "n_threads": 0
+      }
+    ]
+  },
+  "threads": []
+}

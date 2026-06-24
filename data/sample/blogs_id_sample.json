@@ -1,0 +1,4569 @@
+{
+  "meta": {
+    "source": "blogs_id",
+    "scraped_at": "2026-06-24T18:57:09Z",
+    "scraper": "blogs_fast",
+    "n_total": 2142,
+    "queries": [
+      "paylater indonesia",
+      "pinjol indonesia",
+      "gagal bayar",
+      "tips bayar paylater",
+      "bahaya pinjol",
+      "cicilan online",
+      "utang online",
+      "galbay",
+      "debt collector",
+      "cicilan 0%",
+      "checkout bayar nanti",
+      "pinjol ilegal",
+      "pinjol legal",
+      "bunga tinggi",
+      "restrukturisasi",
+      "konsolidasi utang",
+      "gali lubang tutup lubang",
+      "tips keuangan gen z",
+      "literasi keuangan",
+      "tagihan paylater",
+      "beli sekarang bayar nanti",
+      "kartu kredit online",
+      "utang pinjol",
+      "denda telat bayar",
+      "gagal bayar hutang",
+      "kredit pintar",
+      "kredivo",
+      "akulaku",
+      "indodana",
+      "julo",
+      "shopee paylater",
+      "dana paylater",
+      "goPaylater",
+      "uangme",
+      "tunaiku",
+      "kta online",
+      "pinjaman modal",
+      "bank digital",
+      "jago",
+      "jenius",
+      "blu",
+      "seabank",
+      "cicilan tokopedia",
+      "cicilan shopee",
+      "gojek paylater",
+      "grab paylater",
+      "traveloka paylater",
+      "lazada paylater"
+    ],
+    "blogs": [
+      "detik",
+      "cnbc",
+      "kompas",
+      "idntimes",
+      "tempo",
+      "okezone",
+      "merdeka"
+    ]
+  },
+  "posts": [
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "OJK Soroti FOMO Generasi Muda Berutang demi Tren",
+      "url": "https://www.detik.com/jabar/berita/d-8529793/ojk-soroti-fomo-generasi-muda-berutang-demi-tren",
+      "snippet": "",
+      "scraped_at": 1782327350.8127902
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Checkout Barang Bebas Worry dengan Jadi Member ShopeeVIP",
+      "url": "https://inet.detik.com/cyberlife/d-8369990/checkout-barang-bebas-worry-dengan-jadi-member-shopeevip",
+      "snippet": "",
+      "scraped_at": 1782327350.8127902
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Cara Beli Tiket Timnas Indonesia Vs China: Wajib Pakai Garuda ID",
+      "url": "https://sport.detik.com/sepakbola/liga-indonesia/d-7915256/cara-beli-tiket-timnas-indonesia-vs-china-wajib-pakai-garuda-id",
+      "snippet": "",
+      "scraped_at": 1782327350.8127902
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Serbu! Ada Toyota Calya Seharga Rp 12 Ribu di Sesi Shopee Live Vilmei",
+      "url": "https://inet.detik.com/business/d-7679639/serbu-ada-toyota-calya-seharga-rp-12-ribu-di-sesi-shopee-live-vilmei",
+      "snippet": "",
+      "scraped_at": 1782327350.8127902
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Shopping Time! BRImo Beri Beragam Kemudahan Transaksi untuk Nasabah",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-7106832/shopping-time-brimo-beri-beragam-kemudahan-transaksi-untuk-nasabah",
+      "snippet": "",
+      "scraped_at": 1782327350.8127902
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Paylater Kian Menjamur, Jadi Garapan Raksasa Bisnis Dunia",
+      "url": "https://finance.detik.com/fintech/d-5667468/paylater-kian-menjamur-jadi-garapan-raksasa-bisnis-dunia",
+      "snippet": "",
+      "scraped_at": 1782327350.8127902
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Amannya Kota Dubai, Ponsel Hilang di Taksi Masih Bisa Balik",
+      "url": "https://travel.detik.com/travel-news/d-4807124/amannya-kota-dubai-ponsel-hilang-di-taksi-masih-bisa-balik",
+      "snippet": "",
+      "scraped_at": 1782327350.8127902
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Sounds of Downtown Siap Guncang Surabaya, War Ticket di Livin' Sukha!",
+      "url": "https://www.detik.com/pop/music/d-7961113/sounds-of-downtown-siap-guncang-surabaya-war-ticket-di-livin-sukha",
+      "snippet": "",
+      "scraped_at": 1782327350.916719
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Lindungi Data Pribadi, Ini 5 Cara Tingkatkan Keamanan Transaksi Digital",
+      "url": "https://inet.detik.com/security/d-7657112/lindungi-data-pribadi-ini-5-cara-tingkatkan-keamanan-transaksi-digital",
+      "snippet": "",
+      "scraped_at": 1782327350.916719
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Ingin Liburan di Akhir Tahun? Yuk Simak 5 Cara Atur Uang agar Tetap Aman",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-7645969/ingin-liburan-di-akhir-tahun-yuk-simak-5-cara-atur-uang-agar-tetap-aman",
+      "snippet": "",
+      "scraped_at": 1782327350.916719
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Simak, 4 Langkah Mudah dalam Mengelola Dana Darurat",
+      "url": "https://finance.detik.com/perencanaan-keuangan/d-7636315/simak-4-langkah-mudah-dalam-mengelola-dana-darurat",
+      "snippet": "",
+      "scraped_at": 1782327350.916719
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "4 Tips Bijak Pakai Paylater agar Kestabilan Finansial Terjaga",
+      "url": "https://finance.detik.com/fintech/d-7622580/4-tips-bijak-pakai-paylater-agar-kestabilan-finansial-terjaga",
+      "snippet": "",
+      "scraped_at": 1782327350.916719
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "5 Tips Atur Keuangan Secara Efektif yang Bisa Diterapkan Milenial-Gen Z",
+      "url": "https://finance.detik.com/perencanaan-keuangan/d-7601551/5-tips-atur-keuangan-secara-efektif-yang-bisa-diterapkan-milenial-gen-z",
+      "snippet": "",
+      "scraped_at": 1782327350.916719
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Serunya Liburan ke LEGOLAND Discovery Centre Hong Kong",
+      "url": "https://travel.detik.com/destination/d-7375553/serunya-liburan-ke-legoland-discovery-centre-hong-kong",
+      "snippet": "",
+      "scraped_at": 1782327350.916719
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Pengertian Paylater serta Keuntungan, Risiko, dan Tips Penggunaannya",
+      "url": "https://finance.detik.com/moneter/d-7115719/pengertian-paylater-serta-keuntungan-risiko-dan-tips-penggunaannya",
+      "snippet": "",
+      "scraped_at": 1782327350.916719
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "6 Tips Belanja Produk Fesyen yang Aman & Bijak Pakai Paylater",
+      "url": "https://finance.detik.com/fintech/d-7043300/6-tips-belanja-produk-fesyen-yang-aman-bijak-pakai-paylater",
+      "snippet": "",
+      "scraped_at": 1782327350.916719
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "3 Tips Jitu Pilih Aplikasi Traveling Bagi Si Paling Workaholic",
+      "url": "https://inet.detik.com/cyberlife/d-6962476/3-tips-jitu-pilih-aplikasi-traveling-bagi-si-paling-workaholic",
+      "snippet": "",
+      "scraped_at": 1782327350.916719
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Tips Menghindari Kredit Macet bagi Pengguna Layanan PayLater",
+      "url": "https://inet.detik.com/cyberlife/d-6143889/tips-menghindari-kredit-macet-bagi-pengguna-layanan-paylater",
+      "snippet": "",
+      "scraped_at": 1782327353.3876853
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Nggak Selalu Konsumtif, Ini 4 Manfaat Cicilan Tanpa Jaminan",
+      "url": "https://inet.detik.com/cyberlife/d-6047704/nggak-selalu-konsumtif-ini-4-manfaat-cicilan-tanpa-jaminan",
+      "snippet": "",
+      "scraped_at": 1782327353.3876853
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "5 Tips Menghindari Penipuan Saat Belanja Online",
+      "url": "https://inet.detik.com/cyberlife/d-6046758/5-tips-menghindari-penipuan-saat-belanja-online",
+      "snippet": "",
+      "scraped_at": 1782327353.3876853
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "4 Jenis Pinjaman yang Mampu Bantu Dongkrak Keuangan, Apa Saja?",
+      "url": "https://finance.detik.com/moneter/d-5878440/4-jenis-pinjaman-yang-mampu-bantu-dongkrak-keuangan-apa-saja",
+      "snippet": "",
+      "scraped_at": 1782327353.3876853
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Ngebet Punya PS5 yang Baru Dirilis? Coba 5 Tips Ini Biar Kebeli",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-5344035/ngebet-punya-ps5-yang-baru-dirilis-coba-5-tips-ini-biar-kebeli",
+      "snippet": "",
+      "scraped_at": 1782327353.3876853
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Harga PS5 Rp 7 Jutaan, Ini Tips Biar Kamu Bisa Belinya!",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-5266510/harga-ps5-rp-7-jutaan-ini-tips-biar-kamu-bisa-belinya",
+      "snippet": "",
+      "scraped_at": 1782327353.3876853
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Mau Beli PS5? Simak Nih 5 Tips Siapkan Duitnya",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-5240939/mau-beli-ps5-simak-nih-5-tips-siapkan-duitnya",
+      "snippet": "",
+      "scraped_at": 1782327353.3876853
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Menangkis 'Magis' Penjahat Siber",
+      "url": "https://inet.detik.com/security/d-5220115/menangkis-magis-penjahat-siber",
+      "snippet": "",
+      "scraped_at": 1782327353.3876853
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Dulu Tidur Beralas Kardus, Wanita Ini Kini Belikan Orang Tua Rumah Tanpa Utang",
+      "url": "https://wolipop.detik.com/worklife/d-8544102/dulu-tidur-beralas-kardus-wanita-ini-kini-belikan-orang-tua-rumah-tanpa-utang",
+      "snippet": "",
+      "scraped_at": 1782327350.6458223
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Polisi Ungkap Kerugian Korban Hanania Travel Ditaksir Capai Rp 95,2 M",
+      "url": "https://news.detik.com/berita/d-8537226/polisi-ungkap-kerugian-korban-hanania-travel-ditaksir-capai-rp-95-2-m",
+      "snippet": "",
+      "scraped_at": 1782327350.6458223
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Bos WO Marwah Ditangkap di Bandung: Tipu 58 Pasangan-Raup Rp 2,6 M",
+      "url": "https://www.detik.com/jabar/hukum-dan-kriminal/d-8514390/bos-wo-marwah-ditangkap-di-bandung-tipu-58-pasangan-raup-rp-2-6-m",
+      "snippet": "",
+      "scraped_at": 1782327350.6458223
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Siasat Tipu-tipu Owner WO Marwah: Janjikan Subsidi Gedung dan Kambing Guling",
+      "url": "https://news.detik.com/berita/d-8513918/siasat-tipu-tipu-owner-wo-marwah-janjikan-subsidi-gedung-dan-kambing-guling",
+      "snippet": "",
+      "scraped_at": 1782327350.6458223
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "WO Marwah Tipu 58 Calon Pengantin: Owner Ternyata Residivis Kasus Serupa",
+      "url": "https://news.detik.com/berita/d-8513737/wo-marwah-tipu-58-calon-pengantin-owner-ternyata-residivis-kasus-serupa",
+      "snippet": "",
+      "scraped_at": 1782327350.6458223
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "7 Fakta Baru WO Marwah Tipu 58 Calon Pengantin hingga Raup Rp 2,6 M",
+      "url": "https://news.detik.com/berita/d-8513633/7-fakta-baru-wo-marwah-tipu-58-calon-pengantin-hingga-raup-rp-2-6-m",
+      "snippet": "",
+      "scraped_at": 1782327350.6458223
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Begini Proyek Gali dan Tutup Lubang di Jakarta Tiada Henti",
+      "url": "https://news.detik.com/foto-news/d-5580475/begini-proyek-gali-dan-tutup-lubang-di-jakarta-tiada-henti",
+      "snippet": "",
+      "scraped_at": 1782327350.6458223
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Polisi Ungkap Owner WO Marwah Coba Kabur dan Sembunyi Sebelum Ditangkap",
+      "url": "https://news.detik.com/berita/d-8513421/polisi-ungkap-owner-wo-marwah-coba-kabur-dan-sembunyi-sebelum-ditangkap",
+      "snippet": "",
+      "scraped_at": 1782327350.6458223
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "PDIP soal Ekonomi Indonesia: Utang Dibayar Utang, Gali-Tutup Lubang",
+      "url": "https://news.detik.com/berita/d-8513024/pdip-soal-ekonomi-indonesia-utang-dibayar-utang-gali-tutup-lubang",
+      "snippet": "",
+      "scraped_at": 1782327350.6458223
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Polisi Ungkap Motif Owner WO Marwah Tipu Pengantin: Gali Lubang Tutup Lubang",
+      "url": "https://news.detik.com/berita/d-8512789/polisi-ungkap-motif-owner-wo-marwah-tipu-pengantin-gali-lubang-tutup-lubang",
+      "snippet": "",
+      "scraped_at": 1782327350.6458223
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Jangan Asal Buang! Begini Cara Membuang Tusuk Sate Bekas Idul Adha 2026",
+      "url": "https://www.detik.com/jabar/jabar-gaskeun/d-8510580/jangan-asal-buang-begini-cara-membuang-tusuk-sate-bekas-idul-adha-2026",
+      "snippet": "",
+      "scraped_at": 1782327350.6458223
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Masyarakat RI Kian Bergantung Pinjol dan Paylater untuk Bertahan Hidup",
+      "url": "https://www.detik.com/bali/bisnis/d-8485177/masyarakat-ri-kian-bergantung-pinjol-dan-paylater-untuk-bertahan-hidup",
+      "snippet": "",
+      "scraped_at": 1782327351.8861063
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Warga RI Masuk Fase Gali Lubang Tutup Lubang",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8484998/warga-ri-masuk-fase-gali-lubang-tutup-lubang",
+      "snippet": "",
+      "scraped_at": 1782327351.8861063
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Jangan Coba-coba Makan Utang Untuk Bertahan, Bikin Susah Kaya!",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8484274/jangan-coba-coba-makan-utang-untuk-bertahan-bikin-susah-kaya",
+      "snippet": "",
+      "scraped_at": 1782327351.8861063
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Utang Makin Menggila, Tanda Daya Beli Warga RI Kian Tertekan",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8484228/utang-makin-menggila-tanda-daya-beli-warga-ri-kian-tertekan",
+      "snippet": "",
+      "scraped_at": 1782327351.8861063
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Tak Cukup Makan Tabungan, Warga RI Kini Dilanda Fenomena Makan Utang",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8484031/tak-cukup-makan-tabungan-warga-ri-kini-dilanda-fenomena-makan-utang",
+      "snippet": "",
+      "scraped_at": 1782327351.8861063
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Jerit Warga Bogor Usai Tambang Tutup: Pinjol hingga Nyaris Cerai",
+      "url": "https://www.detik.com/jabar/berita/d-8473662/jerit-warga-bogor-usai-tambang-tutup-pinjol-hingga-nyaris-cerai",
+      "snippet": "",
+      "scraped_at": 1782327351.8861063
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Waspada Pinjol Ilegal! Ini Ciri dan Cara Menghindarinya",
+      "url": "https://www.detik.com/jabar/berita/d-8470154/waspada-pinjol-ilegal-ini-ciri-dan-cara-menghindarinya",
+      "snippet": "",
+      "scraped_at": 1782327351.8861063
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Begini Modus Bos KSP Tunas Harapan Temanggung Tilap Duit Nasabah Rp 9 M",
+      "url": "https://www.detik.com/jateng/hukum-dan-kriminal/d-8444386/begini-modus-bos-ksp-tunas-harapan-temanggung-tilap-duit-nasabah-rp-9-m",
+      "snippet": "",
+      "scraped_at": 1782327351.8861063
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Tunggakan di Bawah Rp 1 Juta Tak Muncul di SLIK, Berisiko Picu KPR Macet?",
+      "url": "https://www.detik.com/properti/berita/d-8444224/tunggakan-di-bawah-rp-1-juta-tak-muncul-di-slik-berisiko-picu-kpr-macet",
+      "snippet": "",
+      "scraped_at": 1782327351.8861063
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "THR ASN Pemprov Jabar Cair Besok, Total Anggaran Capai Rp433 Miliar",
+      "url": "https://www.detik.com/jabar/berita/d-8395467/thr-asn-pemprov-jabar-cair-besok-total-anggaran-capai-rp433-miliar",
+      "snippet": "",
+      "scraped_at": 1782327351.8861063
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Modus Bisnis Material, Pria Surabaya Ngaku Ditipu Miliaran Pakai Cek Kosong",
+      "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8371194/modus-bisnis-material-pria-surabaya-ngaku-ditipu-miliaran-pakai-cek-kosong",
+      "snippet": "",
+      "scraped_at": 1782327353.5811136
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Trik Gali Lubang Tutup Lubang Travel Kendari Bikin 29 Jemaah Umrah Telantar",
+      "url": "https://www.detik.com/sulsel/hukum-dan-kriminal/d-8359022/trik-gali-lubang-tutup-lubang-travel-kendari-bikin-29-jemaah-umrah-telantar",
+      "snippet": "",
+      "scraped_at": 1782327353.5811136
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Jaksa Sebut Kebiasaan Juliet Sales BYD: Gali Lubang Tutup Lubang",
+      "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8322004/jaksa-sebut-kebiasaan-juliet-sales-byd-gali-lubang-tutup-lubang",
+      "snippet": "",
+      "scraped_at": 1782327353.5811136
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Tembok Beton Dijebol Pakai Bor, Duit Rp 1,7 T di Bank Hilang!",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8297622/tembok-beton-dijebol-pakai-bor-duit-rp-1-7-t-di-bank-hilang",
+      "snippet": "",
+      "scraped_at": 1782327353.582111
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Tipu Daya Ayu Puspita Jerat Ratusan Calon Pengantin",
+      "url": "https://news.detik.com/berita/d-8259680/tipu-daya-ayu-puspita-jerat-ratusan-calon-pengantin",
+      "snippet": "",
+      "scraped_at": 1782327353.582111
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Ada Tawaran Paket Honeymoon di Balik Tipu-tipu Bos WO Ayu Puspita",
+      "url": "https://news.detik.com/berita/d-8258422/ada-tawaran-paket-honeymoon-di-balik-tipu-tipu-bos-wo-ayu-puspita",
+      "snippet": "",
+      "scraped_at": 1782327353.582111
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Ayu Puspita WO Penipu Pakai Skema 'Gali Lubang Tutup Lubang'",
+      "url": "https://news.detik.com/berita/d-8257914/ayu-puspita-wo-penipu-pakai-skema-gali-lubang-tutup-lubang",
+      "snippet": "",
+      "scraped_at": 1782327353.582111
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Untung Fantastis Dijanjikan Selebgram Gresik ke Korban Investasi Bodong",
+      "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8254662/untung-fantastis-dijanjikan-selebgram-gresik-ke-korban-investasi-bodong",
+      "snippet": "",
+      "scraped_at": 1782327353.582111
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Daftar Pinjol Legal Terdaftar di OJK 2025",
+      "url": "https://www.detik.com/jatim/bisnis/d-8245356/daftar-pinjol-legal-terdaftar-di-ojk-2025",
+      "snippet": "",
+      "scraped_at": 1782327353.582111
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Modus Senyap Maling Motor hingga Order Ojol untuk Bantu Dorong",
+      "url": "https://www.detik.com/kalimantan/hukum-dan-kriminal/d-8239948/modus-senyap-maling-motor-hingga-order-ojol-untuk-bantu-dorong",
+      "snippet": "",
+      "scraped_at": 1782327353.582111
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Maling Motor di Bantul Nekat Order Driver Ojol buat Bantu Dorong",
+      "url": "https://www.detik.com/jogja/berita/d-8239601/maling-motor-di-bantul-nekat-order-driver-ojol-buat-bantu-dorong",
+      "snippet": "",
+      "scraped_at": 1782327356.168354
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Buruh Semarang Demo di Balai Kota Tuntut Kenaikan UMK 19% dan UMSK 7%",
+      "url": "https://www.detik.com/jateng/berita/d-8226558/buruh-semarang-demo-di-balai-kota-tuntut-kenaikan-umk-19-dan-umsk-7",
+      "snippet": "",
+      "scraped_at": 1782327356.168354
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Mengenal Skema 'Tadpole', Cicilan Besar di Awal yang Rugikan Peminjam",
+      "url": "https://finance.detik.com/moneter/d-8225884/mengenal-skema-tadpole-cicilan-besar-di-awal-yang-rugikan-peminjam",
+      "snippet": "",
+      "scraped_at": 1782327356.168354
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Perang Sudan, Milisi RSF Terima Tawaran Gencatan Senjata",
+      "url": "https://news.detik.com/dw/d-8199280/perang-sudan-milisi-rsf-terima-tawaran-gencatan-senjata",
+      "snippet": "",
+      "scraped_at": 1782327356.168354
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "10 Cara Mencegah Kucing Berak Sembarangan di Halaman Rumah Kita",
+      "url": "https://www.detik.com/jateng/berita/d-8187532/10-cara-mencegah-kucing-berak-sembarangan-di-halaman-rumah-kita",
+      "snippet": "",
+      "scraped_at": 1782327356.168354
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "20 Contoh Soal dan Jawaban TKA SMA 2025 Bahasa Indonesia Wajib, Kerjakan Yuk!",
+      "url": "https://www.detik.com/edu/detikpedia/d-8136166/20-contoh-soal-dan-jawaban-tka-sma-2025-bahasa-indonesia-wajib-kerjakan-yuk",
+      "snippet": "",
+      "scraped_at": 1782327356.168354
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Kado Istimewa Hari Jadi Kuningan, Utang Rp96,7 M Tuntas Lebih Cepat",
+      "url": "https://www.detik.com/jabar/cirebon-raya/d-8091195/kado-istimewa-hari-jadi-kuningan-utang-rp96-7-m-tuntas-lebih-cepat",
+      "snippet": "",
+      "scraped_at": 1782327356.168354
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Tersangka Arisan Bodong di Lamongan Pernah Jadi Korban Kasus Serupa",
+      "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8081678/tersangka-arisan-bodong-di-lamongan-pernah-jadi-korban-kasus-serupa",
+      "snippet": "",
+      "scraped_at": 1782327356.168354
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Masyarakat Harus Melek Keuangan Digital, Bagaimana Caranya?",
+      "url": "https://finance.detik.com/moneter/d-8077149/masyarakat-harus-melek-keuangan-digital-bagaimana-caranya",
+      "snippet": "",
+      "scraped_at": 1782327356.168354
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Menyikapi Fenomena Ajakan Galbay Pinjaman Daring",
+      "url": "https://finance.detik.com/finansial/d-8048635/menyikapi-fenomena-ajakan-galbay-pinjaman-daring",
+      "snippet": "",
+      "scraped_at": 1782327356.168354
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Breakfast Mewah di Trans Luxury Hotel Surabaya Promo Sampai Agustus",
+      "url": "https://www.detik.com/jatim/kuliner/d-8543996/breakfast-mewah-di-trans-luxury-hotel-surabaya-promo-sampai-agustus",
+      "snippet": "",
+      "scraped_at": 1782327350.746194
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "The Pinnacles Desert: Batu-Batu Aneh di Tengah Gurun, Vibenya Seperti Planet Lain",
+      "url": "https://travel.detik.com/international-destination/d-8539879/the-pinnacles-desert-batu-batu-aneh-di-tengah-gurun-vibenya-seperti-planet-lain",
+      "snippet": "",
+      "scraped_at": 1782327350.746194
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "HP Pria di Jakpus Dijambret saat Tunggu Taksi Online, Limit Paylater Dikuras",
+      "url": "https://news.detik.com/berita/d-8538963/hp-pria-di-jakpus-dijambret-saat-tunggu-taksi-online-limit-paylater-dikuras",
+      "snippet": "",
+      "scraped_at": 1782327350.746194
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Puas Nonton Film di Akhir Pekan, Apalagi Ada Diskon",
+      "url": "https://inet.detik.com/mobile-apps/d-8538002/puas-nonton-film-di-akhir-pekan-apalagi-ada-diskon",
+      "snippet": "",
+      "scraped_at": 1782327350.7467427
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Sourdough Makin Naik Kelas, Kini Hadir dalam Bentuk Croissant Flaky",
+      "url": "https://food.detik.com/berita-boga/d-8537169/sourdough-makin-naik-kelas-kini-hadir-dalam-bentuk-croissant-flaky",
+      "snippet": "",
+      "scraped_at": 1782327350.7467427
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Surabaya Kini Punya Beach Club Tertinggi di Indonesia, Ada di Hotel Mewah Baru Ini",
+      "url": "https://travel.detik.com/travel-news/d-8537842/surabaya-kini-punya-beach-club-tertinggi-di-indonesia-ada-di-hotel-mewah-baru-ini",
+      "snippet": "",
+      "scraped_at": 1782327350.7467427
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Minat Belanja dengan Paylater Tumbuh Pesat",
+      "url": "https://finance.detik.com/foto-bisnis/d-7410204/minat-belanja-dengan-paylater-tumbuh-pesat",
+      "snippet": "",
+      "scraped_at": 1782327350.7467427
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Trans Luxury Hotel Surabaya Harga Spesial Rp 999 Ribu, Berlaku Sampai 19 Juni",
+      "url": "https://travel.detik.com/travel-news/d-8534782/trans-luxury-hotel-surabaya-harga-spesial-rp-999-ribu-berlaku-sampai-19-juni",
+      "snippet": "",
+      "scraped_at": 1782327350.7467427
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Sarapan Sultan di Trans Luxury Hotel Surabaya, Promo hingga 19 Juni",
+      "url": "https://www.detik.com/jatim/kuliner/d-8533052/sarapan-sultan-di-trans-luxury-hotel-surabaya-promo-hingga-19-juni",
+      "snippet": "",
+      "scraped_at": 1782327350.7467427
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Liburan Tanpa Keluar Kota? Coba Staycation Mewah di The Trans Luxury Hotel Surabaya",
+      "url": "https://travel.detik.com/travel-news/d-8533661/liburan-tanpa-keluar-kota-coba-staycation-mewah-di-the-trans-luxury-hotel-surabaya",
+      "snippet": "",
+      "scraped_at": 1782327350.7467427
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Bukan Hotel Biasa, Ada Pantai Buatan, Spa, hingga Pusat Hiburan dalam Satu Lokasi",
+      "url": "https://travel.detik.com/travel-news/d-8531961/bukan-hotel-biasa-ada-pantai-buatan-spa-hingga-pusat-hiburan-dalam-satu-lokasi",
+      "snippet": "",
+      "scraped_at": 1782327350.7467427
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Beli Baju Sesuai Tren vs Kualitas, Mana yang Bikin Lebih Hemat?",
+      "url": "https://wolipop.detik.com/sale-and-shop/d-8530921/beli-baju-sesuai-tren-vs-kualitas-mana-yang-bikin-lebih-hemat",
+      "snippet": "",
+      "scraped_at": 1782327352.3979352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Tinggal Sepekan Lagi! Menginap di Trans Luxury Hotel Surabaya Cuma Rp999 Ribu",
+      "url": "https://travel.detik.com/travel-news/d-8531061/tinggal-sepekan-lagi-menginap-di-trans-luxury-hotel-surabaya-cuma-rp999-ribu",
+      "snippet": "",
+      "scraped_at": 1782327352.3979352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Staycation Rp 999 Ribu Trans Luxury Hotel Surabaya, Nikmati Sky Beach yang Viral",
+      "url": "https://travel.detik.com/travel-news/d-8529207/staycation-rp-999-ribu-trans-luxury-hotel-surabaya-nikmati-sky-beach-yang-viral",
+      "snippet": "",
+      "scraped_at": 1782327352.3979352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Movie Marathon di Akhir Pekan Yuk, Mumpung Ada Diskon Nih!",
+      "url": "https://inet.detik.com/mobile-apps/d-8529079/movie-marathon-di-akhir-pekan-yuk-mumpung-ada-diskon-nih",
+      "snippet": "",
+      "scraped_at": 1782327352.3979352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Breakfast Mewah di Trans Luxury Hotel Surabaya, Promo hingga 19 Juni",
+      "url": "https://www.detik.com/jatim/kuliner/d-8528775/breakfast-mewah-di-trans-luxury-hotel-surabaya-promo-hingga-19-juni",
+      "snippet": "",
+      "scraped_at": 1782327352.3989363
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Lebih Baik Punya Banyak Baju, Tas, dan Sepatu atau Sedikit Tapi Berkualitas?",
+      "url": "https://wolipop.detik.com/fashion-news/d-8528045/lebih-baik-punya-banyak-baju-tas-dan-sepatu-atau-sedikit-tapi-berkualitas",
+      "snippet": "",
+      "scraped_at": 1782327352.3989363
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Paylater Makin Luas Digunakan Masyarakat Indonesia",
+      "url": "https://finance.detik.com/foto-bisnis/d-7005700/paylater-makin-luas-digunakan-masyarakat-indonesia",
+      "snippet": "",
+      "scraped_at": 1782327352.3989363
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "5 Rekomendasi Wahana Seru dan Info Tiket Ibarbo Park Terbaru 2026",
+      "url": "https://travel.detik.com/domestic-destination/d-8528004/5-rekomendasi-wahana-seru-dan-info-tiket-ibarbo-park-terbaru-2026",
+      "snippet": "",
+      "scraped_at": 1782327352.3989363
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Promo Staycation Sultan di Trans Luxury Hotel Surabaya Cuma Sampai 19 Juni",
+      "url": "https://www.detik.com/jatim/wisata/d-8524720/promo-staycation-sultan-di-trans-luxury-hotel-surabaya-cuma-sampai-19-juni",
+      "snippet": "",
+      "scraped_at": 1782327352.3989363
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Mau Staycation Premium? Ini Kesempatan Menginap di Trans Luxury Hotel Surabaya",
+      "url": "https://travel.detik.com/travel-news/d-8525125/mau-staycation-premium-ini-kesempatan-menginap-di-trans-luxury-hotel-surabaya",
+      "snippet": "",
+      "scraped_at": 1782327352.3989363
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Nikmati Promo Staycation Mewah Sebelum 20 Juni di Trans Luxury Hotel Surabaya",
+      "url": "https://www.detik.com/jatim/kuliner/d-8524005/nikmati-promo-staycation-mewah-sebelum-20-juni-di-trans-luxury-hotel-surabaya",
+      "snippet": "",
+      "scraped_at": 1782327352.3989363
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Jangan Telat! Tarif Rp900 Ribuan di Trans Luxury Hotel Surabaya hingga 19 Juni",
+      "url": "https://travel.detik.com/travel-news/d-8523869/jangan-telat-tarif-rp900-ribuan-di-trans-luxury-hotel-surabaya-hingga-19-juni",
+      "snippet": "",
+      "scraped_at": 1782327353.6201334
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Staycation Sultan, Cuma Rp 999 Ribu di Trans Luxury Hotel Surabaya",
+      "url": "https://travel.detik.com/travel-news/d-8521148/staycation-sultan-cuma-rp-999-ribu-di-trans-luxury-hotel-surabaya",
+      "snippet": "",
+      "scraped_at": 1782327353.6201334
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Staycation Sultan dengan Harga Teman, Cuma Rp 999 Ribu di Trans Luxury Hotel Surabaya",
+      "url": "https://travel.detik.com/travel-news/d-8520084/staycation-sultan-dengan-harga-teman-cuma-rp-999-ribu-di-trans-luxury-hotel-surabaya",
+      "snippet": "",
+      "scraped_at": 1782327353.6201334
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Nonton Santai Akhir Pekan, Ada Potongan Harga Lho",
+      "url": "https://inet.detik.com/mobile-apps/d-8519481/nonton-santai-akhir-pekan-ada-potongan-harga-lho",
+      "snippet": "",
+      "scraped_at": 1782327353.6201334
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Sensasinya Bikin Seger! Ini Cake Es Krim Buat Ide Suguhan Istimewa",
+      "url": "https://food.detik.com/berita-boga/d-8517605/sensasinya-bikin-seger-ini-cake-es-krim-buat-ide-suguhan-istimewa",
+      "snippet": "",
+      "scraped_at": 1782327353.6201334
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Intip Menu Breakfast 80 Item di The Trans Luxury Hotel Surabaya",
+      "url": "https://www.detik.com/jatim/kuliner/d-8518062/intip-menu-breakfast-80-item-di-the-trans-luxury-hotel-surabaya",
+      "snippet": "",
+      "scraped_at": 1782327353.6201334
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "BNI Suntik Traveloka Rp 6 Triliun untuk Layanan PayLater",
+      "url": "https://finance.detik.com/foto-bisnis/d-4860357/bni-suntik-traveloka-rp-6-triliun-untuk-layanan-paylater",
+      "snippet": "",
+      "scraped_at": 1782327353.6201334
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Menikmati Breakfast Premium di The Trans Luxury Hotel Surabaya",
+      "url": "https://www.detik.com/jatim/kuliner/d-8516334/menikmati-breakfast-premium-di-the-trans-luxury-hotel-surabaya",
+      "snippet": "",
+      "scraped_at": 1782327353.6201334
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Kapan Lagi, Ada Hotel Bintang Lima Tarifnya Rp 900 Ribuan",
+      "url": "https://travel.detik.com/travel-news/d-8516512/kapan-lagi-ada-hotel-bintang-lima-tarifnya-rp-900-ribuan",
+      "snippet": "",
+      "scraped_at": 1782327353.6201334
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Mewah! Menginap di Hotel Bintang 5 Ini Cuma Rp 999 Ribu",
+      "url": "https://travel.detik.com/travel-news/d-8513982/mewah-menginap-di-hotel-bintang-5-ini-cuma-rp-999-ribu",
+      "snippet": "",
+      "scraped_at": 1782327353.6201334
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Siapa Wendy? Ini Sosok di Balik Nama Restoran Wendy's yang Mendunia",
+      "url": "https://food.detik.com/berita-boga/d-8513060/siapa-wendy-ini-sosok-di-balik-nama-restoran-wendys-yang-mendunia",
+      "snippet": "",
+      "scraped_at": 1782327353.6201334
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Trans Luxury Hotel Surabaya Punya Beach Club Tertinggi di Indonesia",
+      "url": "https://www.detik.com/jatim/wisata/d-8513353/trans-luxury-hotel-surabaya-punya-beach-club-tertinggi-di-indonesia",
+      "snippet": "",
+      "scraped_at": 1782327356.2030675
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Menginap di Hotel Mewah Bintang 5 Ini Cuma Rp 999 Ribu, Sudah Termasuk Sarapan",
+      "url": "https://travel.detik.com/travel-news/d-8511837/menginap-di-hotel-mewah-bintang-5-ini-cuma-rp-999-ribu-sudah-termasuk-sarapan",
+      "snippet": "",
+      "scraped_at": 1782327356.2030675
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Jangan Asal Belanja, Ini Baju Basic yang Wajib Ada di Lemari Wanita",
+      "url": "https://wolipop.detik.com/fashion-news/d-8511634/jangan-asal-belanja-ini-baju-basic-yang-wajib-ada-di-lemari-wanita",
+      "snippet": "",
+      "scraped_at": 1782327356.2030675
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Magis, Senja dari 28th Sky Beach Club The Trans Luxury Hotel Surabaya",
+      "url": "https://travel.detik.com/travel-news/d-8511725/magis-senja-dari-28th-sky-beach-club-the-trans-luxury-hotel-surabaya",
+      "snippet": "",
+      "scraped_at": 1782327356.2030675
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Staycation ala Sultan tapi Hemat, Cuma Rp 999 Ribu di Ibu Kota Jawa Timur",
+      "url": "https://travel.detik.com/travel-news/d-8510429/staycation-ala-sultan-tapi-hemat-cuma-rp-999-ribu-di-ibu-kota-jawa-timur",
+      "snippet": "",
+      "scraped_at": 1782327356.2030675
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Libur Panjang Waisak, Saatnya Santai Nonton Film Pakai Diskon",
+      "url": "https://inet.detik.com/mobile-apps/d-8509164/libur-panjang-waisak-saatnya-santai-nonton-film-pakai-diskon",
+      "snippet": "",
+      "scraped_at": 1782327356.2030675
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Staycation Mewah di Jantung Surabaya, Cuma Rp 999 Ribu",
+      "url": "https://travel.detik.com/travel-news/d-8509017/staycation-mewah-di-jantung-surabaya-cuma-rp-999-ribu",
+      "snippet": "",
+      "scraped_at": 1782327356.2030675
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Sarapan Mewah Galette Egg Cakalang Cuma di Trans Luxury Hotel Surabaya",
+      "url": "https://www.detik.com/jatim/bisnis/d-8508472/sarapan-mewah-galette-egg-cakalang-cuma-di-trans-luxury-hotel-surabaya",
+      "snippet": "",
+      "scraped_at": 1782327356.2030675
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Cantiknya Senja dari 28th Sky Beach Club The Trans Luxury Hotel Surabaya",
+      "url": "https://www.detik.com/jatim/wisata/d-8504311/cantiknya-senja-dari-28th-sky-beach-club-the-trans-luxury-hotel-surabaya",
+      "snippet": "",
+      "scraped_at": 1782327356.2030675
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Tak Perlu ke Bali, Trans Luxury Hotel Surabaya Punya Beach Club Estetik",
+      "url": "https://www.detik.com/jatim/wisata/d-8503467/tak-perlu-ke-bali-trans-luxury-hotel-surabaya-punya-beach-club-estetik",
+      "snippet": "",
+      "scraped_at": 1782327356.2030675
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Obligasi Danantara Diserbu Investor, KADIN: Ekonomi RI Diakui Dunia",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8533883/obligasi-danantara-diserbu-investor-kadin-ekonomi-ri-diakui-dunia",
+      "snippet": "",
+      "scraped_at": 1782327350.7263834
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Kelompok IV BP MPR Gelar FGD, Bahas Ketahanan Ekonomi Nasional",
+      "url": "https://news.detik.com/berita/d-8505089/kelompok-iv-bp-mpr-gelar-fgd-bahas-ketahanan-ekonomi-nasional",
+      "snippet": "",
+      "scraped_at": 1782327350.7263834
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Iqbal Tetapkan Direksi-Komisaris Baru PT GNE, Target Lunasi Utang Rp 21 M",
+      "url": "https://www.detik.com/bali/bisnis/d-8465452/iqbal-tetapkan-direksi-komisaris-baru-pt-gne-target-lunasi-utang-rp-21-m",
+      "snippet": "",
+      "scraped_at": 1782327350.7263834
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Waskita Karya Catat Laba Kotor Rp 1,58 T, Naik 12% Sepanjang 2025",
+      "url": "https://news.detik.com/berita/d-8426455/waskita-karya-catat-laba-kotor-rp-1-58-t-naik-12-sepanjang-2025",
+      "snippet": "",
+      "scraped_at": 1782327350.7263834
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Pascamerger, XLSmart Kantongi 73 Juta Pelanggan dan Gaspol 5G di 2026",
+      "url": "https://inet.detik.com/telecommunication/d-8360733/pascamerger-xlsmart-kantongi-73-juta-pelanggan-dan-gaspol-5g-di-2026",
+      "snippet": "",
+      "scraped_at": 1782327350.7263834
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Bamsoet Optimistis Pertumbuhan Ekonomi Indonesia Mampu Lampaui Target",
+      "url": "https://news.detik.com/berita/d-8357359/bamsoet-optimistis-pertumbuhan-ekonomi-indonesia-mampu-lampaui-target",
+      "snippet": "",
+      "scraped_at": 1782327350.7263834
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Polri Fasilitasi Permodalan KUR dan Penyerapan Bulog bagi Petani Jagung",
+      "url": "https://news.detik.com/berita/d-8344162/polri-fasilitasi-permodalan-kur-dan-penyerapan-bulog-bagi-petani-jagung",
+      "snippet": "",
+      "scraped_at": 1782327350.7263834
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Konsolidasi Kekuasaan To Lam, Taruhan Politik Vietnam",
+      "url": "https://news.detik.com/dw/d-8327454/konsolidasi-kekuasaan-to-lam-taruhan-politik-vietnam",
+      "snippet": "",
+      "scraped_at": 1782327350.7263834
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Bupati Batang Hari Kembali Nakhodai PPP Jambi, Ini Pesan Mardiono untuk Kader",
+      "url": "https://www.detik.com/sumbagsel/berita/d-8281716/bupati-batang-hari-kembali-nakhodai-ppp-jambi-ini-pesan-mardiono-untuk-kader",
+      "snippet": "",
+      "scraped_at": 1782327350.7263834
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Genjot Proyek Properti Baru 2026, Pengembang ROCK Percepat Pelunasan Utang",
+      "url": "https://www.detik.com/properti/berita/d-8256406/genjot-proyek-properti-baru-2026-pengembang-rock-percepat-pelunasan-utang",
+      "snippet": "",
+      "scraped_at": 1782327350.7263834
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Netflix Akuisisi Warner Bros: Langkah Besar yang Tuai Pro dan Kontra",
+      "url": "https://inet.detik.com/science/d-8246064/netflix-akuisisi-warner-bros-langkah-besar-yang-tuai-pro-dan-kontra",
+      "snippet": "",
+      "scraped_at": 1782327352.276687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "BI Beberkan Arah Kebijakan 2026, Prabowo Tekankan Pentingnya Kemandirian",
+      "url": "https://finance.detik.com/advertorial-news-block/d-8242713/bi-beberkan-arah-kebijakan-2026-prabowo-tekankan-pentingnya-kemandirian",
+      "snippet": "",
+      "scraped_at": 1782327352.276687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Intip Garasi Wakil Ketua DPR yang Viral Sebut MBG Tak Perlu Ahli Gizi",
+      "url": "https://oto.detik.com/profil/d-8215869/intip-garasi-wakil-ketua-dpr-yang-viral-sebut-mbg-tak-perlu-ahli-gizi",
+      "snippet": "",
+      "scraped_at": 1782327352.276687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Danantara Suntik Garuda Rp 23 T, Sebanyak Rp 14 T buat Citilink",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8209638/danantara-suntik-garuda-rp-23-t-sebanyak-rp-14-t-buat-citilink",
+      "snippet": "",
+      "scraped_at": 1782327352.276687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Bos Danantara Ungkap Alasan Suntik Garuda Rp 23,67 T",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8209196/bos-danantara-ungkap-alasan-suntik-garuda-rp-23-67-t",
+      "snippet": "",
+      "scraped_at": 1782327352.276687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Garuda Disuntik Danantara Rp 23,67 T!",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8208471/garuda-disuntik-danantara-rp-23-67-t",
+      "snippet": "",
+      "scraped_at": 1782327352.276687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Danantara Pangkas Suntikan Modal ke Garuda Jadi Rp 23 T",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8205661/danantara-pangkas-suntikan-modal-ke-garuda-jadi-rp-23-t",
+      "snippet": "",
+      "scraped_at": 1782327352.276687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Waskita Karya Masih Rugi Rp 3,6 Triliun",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8193342/waskita-karya-masih-rugi-rp-3-6-triliun",
+      "snippet": "",
+      "scraped_at": 1782327352.276687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Paramount Niat Caplok Warner Bros Discovery, Ini Dampaknya",
+      "url": "https://www.detik.com/pop/movie/d-8174653/paramount-niat-caplok-warner-bros-discovery-ini-dampaknya",
+      "snippet": "",
+      "scraped_at": 1782327352.276687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Biang Kerok IHSG Tiba-tiba Ambrol",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8160821/biang-kerok-ihsg-tiba-tiba-ambrol",
+      "snippet": "",
+      "scraped_at": 1782327352.276687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "IHSG Anjlok Parah, Ini Pemicunya",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8160744/ihsg-anjlok-parah-ini-pemicunya",
+      "snippet": "",
+      "scraped_at": 1782327353.6167078
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Perusahaan Spyware Pegasus Segera Beralih ke Pemilik AS",
+      "url": "https://inet.detik.com/business/d-8159102/perusahaan-spyware-pegasus-segera-beralih-ke-pemilik-as",
+      "snippet": "",
+      "scraped_at": 1782327353.6167078
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Utang IFG Life Makin Jumbo, Tembus Rp 1,9 Triliun",
+      "url": "https://finance.detik.com/moneter/d-8157623/utang-ifg-life-makin-jumbo-tembus-rp-1-9-triliun",
+      "snippet": "",
+      "scraped_at": 1782327353.6167078
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "IFG Life Rugi Rp 119 M, Utang Membengkak Jadi Rp 1,9 T",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8157001/ifg-life-rugi-rp-119-m-utang-membengkak-jadi-rp-1-9-t",
+      "snippet": "",
+      "scraped_at": 1782327353.6167078
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Survei ISC: Publik Puas Kinerja Kabinet Merah Putih, 12 Menteri Berkinerja Baik",
+      "url": "https://news.detik.com/berita/d-8146995/survei-isc-publik-puas-kinerja-kabinet-merah-putih-12-menteri-berkinerja-baik",
+      "snippet": "",
+      "scraped_at": 1782327353.6167078
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Adhi Karya Lunasi Utang Obligasi Rp 1,28 T",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8114142/adhi-karya-lunasi-utang-obligasi-rp-1-28-t",
+      "snippet": "",
+      "scraped_at": 1782327353.6167078
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Melihat Lebih Dalam Revolusi Kelas Menengah",
+      "url": "https://news.detik.com/kolom/d-8101312/melihat-lebih-dalam-revolusi-kelas-menengah",
+      "snippet": "",
+      "scraped_at": 1782327353.6167078
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Bos ADHI Buka-bukaan soal Nasib Merger BUMN Karya",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8101023/bos-adhi-buka-bukaan-soal-nasib-merger-bumn-karya",
+      "snippet": "",
+      "scraped_at": 1782327353.6167078
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "XLSmart Bukukan Pendapatan Rp 10,50 T di Kuartal II-2025, Tumbuh 22%",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8093124/xlsmart-bukukan-pendapatan-rp-10-50-t-di-kuartal-ii-2025-tumbuh-22",
+      "snippet": "",
+      "scraped_at": 1782327353.6167078
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Kenapa IHSG Turun Hari Ini? Ini Penyebab dan Dampaknya bagi Indonesia",
+      "url": "https://www.detik.com/jogja/bisnis/d-8085626/kenapa-ihsg-turun-hari-ini-ini-penyebab-dan-dampaknya-bagi-indonesia",
+      "snippet": "",
+      "scraped_at": 1782327353.6167078
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Pendapatan XLSmart Naik tapi Beban Operasional Membengkak Pascamerger",
+      "url": "https://inet.detik.com/telecommunication/d-8082949/pendapatan-xlsmart-naik-tapi-beban-operasional-membengkak-pascamerger",
+      "snippet": "",
+      "scraped_at": 1782327356.2288244
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Profil Riyoso, Plt Sekda Pati Viral Cekcok dengan Massa Penolak Kenaikan PBB",
+      "url": "https://www.detik.com/jateng/berita/d-8049791/profil-riyoso-plt-sekda-pati-viral-cekcok-dengan-massa-penolak-kenaikan-pbb",
+      "snippet": "",
+      "scraped_at": 1782327356.2288244
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Emiten Menara Telekomunikasi Raup Pendapatan Rp 4,59 T",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8039188/emiten-menara-telekomunikasi-raup-pendapatan-rp-4-59-t",
+      "snippet": "",
+      "scraped_at": 1782327356.2288244
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Semester I 2025, Pendapatan Usaha Jasa Marga Tumbuh 4,1%",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8032722/semester-i-2025-pendapatan-usaha-jasa-marga-tumbuh-4-1",
+      "snippet": "",
+      "scraped_at": 1782327356.2288244
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Pemakzulan dan Elegi Demokrasi",
+      "url": "https://news.detik.com/kolom/d-8031405/pemakzulan-dan-elegi-demokrasi",
+      "snippet": "",
+      "scraped_at": 1782327356.2288244
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Inovasi Lampri Kakanwil BPN Jateng, Kebut Pengurusan Roya 3 Hari Jadi 5 Menit",
+      "url": "https://www.detik.com/jateng/jawa-tengah-meriah/d-8021675/inovasi-lampri-kakanwil-bpn-jateng-kebut-pengurusan-roya-3-hari-jadi-5-menit",
+      "snippet": "",
+      "scraped_at": 1782327356.2288244
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Bos Danantara Ungkap Besarnya Kontribusi BUMN, tapi Dipandang Sebelah Mata",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-7922756/bos-danantara-ungkap-besarnya-kontribusi-bumn-tapi-dipandang-sebelah-mata",
+      "snippet": "",
+      "scraped_at": 1782327356.2288244
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Daftar Lengkap Utang Jumbo BUMN Karya ke Bank Himbara",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-7902946/daftar-lengkap-utang-jumbo-bumn-karya-ke-bank-himbara",
+      "snippet": "",
+      "scraped_at": 1782327356.2288244
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "HNW Serukan Kader PKS Tak Lelah Bela & Perjuangkan Kemerdekaan Palestina",
+      "url": "https://news.detik.com/berita/d-7898417/hnw-serukan-kader-pks-tak-lelah-bela-perjuangkan-kemerdekaan-palestina",
+      "snippet": "",
+      "scraped_at": 1782327356.2288244
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Gelar RUPST 2025, Utang Waskita Karya Turun Rp 14,7 Triliun pada 2024",
+      "url": "https://finance.detik.com/infrastruktur/d-7892483/gelar-rupst-2025-utang-waskita-karya-turun-rp-14-7-triliun-pada-2024",
+      "snippet": "",
+      "scraped_at": 1782327356.2288244
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Iqbal Beberkan 3 Strategi Pemprov NTB Benahi Tata Kelola Keuangan Daerah",
+      "url": "https://www.detik.com/bali/nusra/d-8539257/iqbal-beberkan-3-strategi-pemprov-ntb-benahi-tata-kelola-keuangan-daerah",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Profesi Bergaji Besar Kini Jadi Ladang Pengangguran",
+      "url": "https://inet.detik.com/business/d-8536772/profesi-bergaji-besar-kini-jadi-ladang-pengangguran",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Raksasa Game PHK 380 Karyawan dan Tutup Dua Studio",
+      "url": "https://inet.detik.com/games-news/d-8532472/raksasa-game-phk-380-karyawan-dan-tutup-dua-studio",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Video: Danantara Nego ke China Bahas Restrukturisasi Utang KCIC",
+      "url": "https://20.detik.com/detikupdate/20251008-251008143/video-danantara-nego-ke-china-bahas-restrukturisasi-utang-kcic",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Rutan di Sidoarjo Punya Sanksi Napi Baca Buku, Komisi XIII DPR Dukung",
+      "url": "https://news.detik.com/berita/d-8531392/rutan-di-sidoarjo-punya-sanksi-napi-baca-buku-komisi-xiii-dpr-dukung",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Negara Ini Dilanda Krisis Utang, Presiden Pecat Perdana Menteri",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8530322/negara-ini-dilanda-krisis-utang-presiden-pecat-perdana-menteri",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Pertamina Pangkas 124 Anak Usaha Lewat Likuidasi hingga Merger",
+      "url": "https://finance.detik.com/energi/d-8529892/pertamina-pangkas-124-anak-usaha-lewat-likuidasi-hingga-merger",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Amazon Kembali PHK 16.000 Karyawan!",
+      "url": "https://finance.detik.com/foto-bisnis/d-8330966/amazon-kembali-phk-16-000-karyawan",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Raup Laba Rp 27 M, PEHA Tebar Dividen 15%",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8528912/raup-laba-rp-27-m-peha-tebar-dividen-15",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Zulhas Buka-bukaan soal Praktik Jual-Beli Titik SPPG, Negara Boros Rp 1 T/Bulan",
+      "url": "https://www.detik.com/jabar/berita/d-8527690/zulhas-buka-bukaan-soal-praktik-jual-beli-titik-sppg-negara-boros-rp-1-t-bulan",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Zulhas: Terjadi Jual Beli Titik SPPG, Target 21.000 Dapur Bengkak Jadi 27.877",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8527546/zulhas-terjadi-jual-beli-titik-sppg-target-21-000-dapur-bengkak-jadi-27-877",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Xbox Mau PHK Besar-besaran Bulan Depan!",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8527061/xbox-mau-phk-besar-besaran-bulan-depan",
+      "snippet": "",
+      "scraped_at": 1782327350.895324
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Efisiensi Anggaran Jadi Catatan Pansus Usai Sahkan LKPJ Bandung 2025",
+      "url": "https://www.detik.com/jabar/berita/d-8526735/efisiensi-anggaran-jadi-catatan-pansus-usai-sahkan-lkpj-bandung-2025",
+      "snippet": "",
+      "scraped_at": 1782327352.8642688
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Komisi XIII DPR Tak Terima Usulan Anggaran Menteri HAM: Harus Detail Pak",
+      "url": "https://news.detik.com/berita/d-8526597/komisi-xiii-dpr-tak-terima-usulan-anggaran-menteri-ham-harus-detail-pak",
+      "snippet": "",
+      "scraped_at": 1782327352.8642688
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Cegah Korupsi, MUI Usul MBG Pakai Dapur Pesantren dan Benahi Pejabat BGN",
+      "url": "https://www.detik.com/hikmah/khazanah/d-8525968/cegah-korupsi-mui-usul-mbg-pakai-dapur-pesantren-dan-benahi-pejabat-bgn",
+      "snippet": "",
+      "scraped_at": 1782327352.8642688
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Video: MU Efisiensi, Kurangi Makan Siang Gratis",
+      "url": "https://20.detik.com/detikupdate/20250225-250225047/video-mu-efisiensi-kurangi-makan-siang-gratis",
+      "snippet": "",
+      "scraped_at": 1782327352.8642688
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Menperin Minta Tambahan Anggaran Rp 1,59 T, buat Apa?",
+      "url": "https://finance.detik.com/industri/d-8525933/menperin-minta-tambahan-anggaran-rp-1-59-t-buat-apa",
+      "snippet": "",
+      "scraped_at": 1782327352.8642688
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "6 Film Besar yang Sudah Mulai Syuting tapi Tak Pernah Selesai",
+      "url": "https://www.detik.com/pop/movie/d-8524404/6-film-besar-yang-sudah-mulai-syuting-tapi-tak-pernah-selesai",
+      "snippet": "",
+      "scraped_at": 1782327352.8642688
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Bosan Jadi Software Engineer di Meta, Pria Ini Pilih Jualan Mie Kaki Lima",
+      "url": "https://food.detik.com/info-kuliner/d-8524445/bosan-jadi-software-engineer-di-meta-pria-ini-pilih-jualan-mie-kaki-lima",
+      "snippet": "",
+      "scraped_at": 1782327352.8642688
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Starbucks Tutup Ratusan Gerai, Termasuk Roastery Ikonik Seattle AS",
+      "url": "https://finance.detik.com/foto-bisnis/d-8136498/starbucks-tutup-ratusan-gerai-termasuk-roastery-ikonik-seattle-as",
+      "snippet": "",
+      "scraped_at": 1782327352.865282
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Dirjen Komdigi Edwin Hidayat Jadi Komisaris Telkom, Ini Kata Pengamat",
+      "url": "https://inet.detik.com/telecommunication/d-8524623/dirjen-komdigi-edwin-hidayat-jadi-komisaris-telkom-ini-kata-pengamat",
+      "snippet": "",
+      "scraped_at": 1782327352.865282
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Merger BUMN Karya Mundur ke Kuartal IV-2026",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8523664/merger-bumn-karya-mundur-ke-kuartal-iv-2026",
+      "snippet": "",
+      "scraped_at": 1782327352.865282
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Danantara Buka Opsi Bentuk Leasing buat Beli 50 Pesawat Boeing Garuda",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8523621/danantara-buka-opsi-bentuk-leasing-buat-beli-50-pesawat-boeing-garuda",
+      "snippet": "",
+      "scraped_at": 1782327352.865282
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Kini Rp 18.000, Berapa Nilai Tukar Rupiah saat Krisis Moneter 1998? Ini Sejarahnya",
+      "url": "https://www.detik.com/edu/detikpedia/d-8522693/kini-rp-18-000-berapa-nilai-tukar-rupiah-saat-krisis-moneter-1998-ini-sejarahnya",
+      "snippet": "",
+      "scraped_at": 1782327352.865282
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Telkom Gelar RUPST, Minta Restu Buyback Saham hingga Rombak Pengurus",
+      "url": "https://inet.detik.com/telecommunication/d-8522439/telkom-gelar-rupst-minta-restu-buyback-saham-hingga-rombak-pengurus",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Bank Genjot Manajemen Risiko & Kualitas Kredit buat Transformasi Bisnis",
+      "url": "https://finance.detik.com/moneter/d-8522234/bank-genjot-manajemen-risiko-kualitas-kredit-buat-transformasi-bisnis",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Como Berharap Bisa Menjamu MU atau Real Madrid di Liga Champions!",
+      "url": "https://sport.detik.com/sepakbola/uefa/d-8521683/como-berharap-bisa-menjamu-mu-atau-real-madrid-di-liga-champions",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Fokus Siapkan Asix Musik, Anang Hermansyah Beri Alasan Restrukturisasi Tim",
+      "url": "https://20.detik.com/e-flash/20220906-220906141/fokus-siapkan-asix-musik-anang-hermansyah-beri-alasan-restrukturisasi-tim",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "RI Berpeluang Lolos dari Tarif Impor AS",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8519784/ri-berpeluang-lolos-dari-tarif-impor-as",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "AS Buka Opsi Kabulkan 18 Permohonan Pengecualian Tarif Impor buat Produk RI",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8519121/as-buka-opsi-kabulkan-18-permohonan-pengecualian-tarif-impor-buat-produk-ri",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Skema Haji 2027 Dirombak: Saudi Hapus Paket D, Persiapan Dimulai Lebih Awal",
+      "url": "https://www.detik.com/hikmah/haji-dan-umrah/d-8519040/skema-haji-2027-dirombak-saudi-hapus-paket-d-persiapan-dimulai-lebih-awal",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Jetstar Asia Mau PHK 500 Karyawan!",
+      "url": "https://finance.detik.com/foto-bisnis/d-7958925/jetstar-asia-mau-phk-500-karyawan",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Manajemen Persis Janji Temui Suporter Usai Bentuk Kerangka Tim",
+      "url": "https://www.detik.com/jateng/sepakbola/d-8516762/manajemen-persis-janji-temui-suporter-usai-bentuk-kerangka-tim",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "PLN Rampingkan Anak Usaha, dari 44 Jadi 23 Perusahaan",
+      "url": "https://finance.detik.com/energi/d-8515978/pln-rampingkan-anak-usaha-dari-44-jadi-23-perusahaan",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Mobil 'TikTok' Meluncur Tahun Ini",
+      "url": "https://oto.detik.com/mobil/d-8514990/mobil-tiktok-meluncur-tahun-ini",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Telkom Awali 2026 dengan Kinerja Solid, Pendapatan Tembus Rp 37,2 T",
+      "url": "https://inet.detik.com/telecommunication/d-8510635/telkom-awali-2026-dengan-kinerja-solid-pendapatan-tembus-rp-37-2-t",
+      "snippet": "",
+      "scraped_at": 1782327353.7643125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Ngeri! AI Diprediksi Picu 370 Ribu PHK di Industri Teknologi Tahun Ini",
+      "url": "https://inet.detik.com/cyberlife/d-8510469/ngeri-ai-diprediksi-picu-370-ribu-phk-di-industri-teknologi-tahun-ini",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Budiono Wirawan Dilantik Jadi Sekda Kota Probolinggo, Ini Prioritasnya",
+      "url": "https://www.detik.com/jatim/berita/d-8510235/budiono-wirawan-dilantik-jadi-sekda-kota-probolinggo-ini-prioritasnya",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "LA Lakers PHK Belasan Karyawan",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8508453/la-lakers-phk-belasan-karyawan",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Erick Thohir Sebut 4 Lessor Garuda Setujui Restrukturisasi Utang",
+      "url": "https://20.detik.com/detikflash/20220125-220125078/erick-thohir-sebut-4-lessor-garuda-setujui-restrukturisasi-utang",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Desakan Menuju Intelligence Economy: Siapkah Sistem Pendidikan Kita?",
+      "url": "https://news.detik.com/kolom/d-8505525/desakan-menuju-intelligence-economy-siapkah-sistem-pendidikan-kita",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Badai PHK Guncang Marvel Studios, Ada Apa Disney?",
+      "url": "https://www.detik.com/pop/movie/d-8505475/badai-phk-guncang-marvel-studios-ada-apa-disney",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Ketika Kampus Islam Menyambut Era AI",
+      "url": "https://www.detik.com/sulsel/berita/d-8505336/ketika-kampus-islam-menyambut-era-ai",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Fokus Layanan Streaming, Disney PHK Ratusan Pekerja",
+      "url": "https://finance.detik.com/foto-bisnis/d-7945889/fokus-layanan-streaming-disney-phk-ratusan-pekerja",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "FPG MPR Nilai Rendahnya Upah Dosen & Guru Honorer Langgar Amanat UUD 1945",
+      "url": "https://news.detik.com/berita/d-8505105/fpg-mpr-nilai-rendahnya-upah-dosen-guru-honorer-langgar-amanat-uud-1945",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Kemendikdasmen Ungkap Sebab Guru Honorer Menumpuk: Rekrutmen ASN Minim",
+      "url": "https://news.detik.com/berita/d-8504696/kemendikdasmen-ungkap-sebab-guru-honorer-menumpuk-rekrutmen-asn-minim",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Pendiri 7-Eleven Jepang Toshifumi Suzuki Meninggal Dunia",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8504028/pendiri-7-eleven-jepang-toshifumi-suzuki-meninggal-dunia",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Menanti Perubahan Persis Solo Usai Terdepak dari Super League",
+      "url": "https://www.detik.com/jateng/sepakbola/d-8503671/menanti-perubahan-persis-solo-usai-terdepak-dari-super-league",
+      "snippet": "",
+      "scraped_at": 1782327356.235345
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Peringati Bulan Bung Karno, Tabanan Gelar Lomba Pramuka hingga Stand Up Comedy",
+      "url": "https://www.detik.com/bali/berita/d-8516902/peringati-bulan-bung-karno-tabanan-gelar-lomba-pramuka-hingga-stand-up-comedy",
+      "snippet": "",
+      "scraped_at": 1782327350.966861
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "OJK Jateng Sebut Korban Penipuan Keuangan Tak Perlu Lapor Polisi, Ini Alasannya",
+      "url": "https://www.detik.com/jateng/bisnis/d-8475116/ojk-jateng-sebut-korban-penipuan-keuangan-tak-perlu-lapor-polisi-ini-alasannya",
+      "snippet": "",
+      "scraped_at": 1782327350.966861
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Kenali Bahaya Pinjol Ilegal Iming-iming Tanpa Jaminan, Waspada Bisa Akses Kontak Ponsel",
+      "url": "https://20.detik.com/detik-pagi/20230609-230609085/kenali-bahaya-pinjol-ilegal-iming-iming-tanpa-jaminan-waspada-bisa-akses-kontak-ponsel",
+      "snippet": "",
+      "scraped_at": 1782327350.966861
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "THR Belum Cair, Boleh Nombok Dulu Pakai Pinjol? Ini Kata Perencana Keuangan",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8383516/thr-belum-cair-boleh-nombok-dulu-pakai-pinjol-ini-kata-perencana-keuangan",
+      "snippet": "",
+      "scraped_at": 1782327350.966861
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Pesan Tegas Kapolri: Jangan Ragu Pecat Anggota Terlibat Narkoba",
+      "url": "https://news.detik.com/berita/d-8369023/pesan-tegas-kapolri-jangan-ragu-pecat-anggota-terlibat-narkoba",
+      "snippet": "",
+      "scraped_at": 1782327350.966861
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Doktor UI Ungkap Alasan Orang Suka Ambil Pinjol dan Investasi Bodong",
+      "url": "https://www.detik.com/edu/detikpedia/d-8354529/doktor-ui-ungkap-alasan-orang-suka-ambil-pinjol-dan-investasi-bodong",
+      "snippet": "",
+      "scraped_at": 1782327350.966861
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Surat Gembala Natal Uskup Ruteng Soroti Bahaya Judol dan Pinjol",
+      "url": "https://www.detik.com/bali/nusra/d-8275621/surat-gembala-natal-uskup-ruteng-soroti-bahaya-judol-dan-pinjol",
+      "snippet": "",
+      "scraped_at": 1782327350.966861
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Pinjaman Daring Jadi Solusi Pembiayaan bagi Masyarakat di Masa Sulit",
+      "url": "https://finance.detik.com/fintech/d-8254744/pinjaman-daring-jadi-solusi-pembiayaan-bagi-masyarakat-di-masa-sulit",
+      "snippet": "",
+      "scraped_at": 1782327350.966861
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Teror Pinjol Ilegal yang Ancam Ratusan Nasabah Dibongkar Bareskrim",
+      "url": "https://news.detik.com/berita/d-8221236/teror-pinjol-ilegal-yang-ancam-ratusan-nasabah-dibongkar-bareskrim",
+      "snippet": "",
+      "scraped_at": 1782327350.966861
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "OJK Ungkap Sederet Kesulitan Berantas Pinjol Ilegal",
+      "url": "https://news.detik.com/berita/d-8220928/ojk-ungkap-sederet-kesulitan-berantas-pinjol-ilegal",
+      "snippet": "",
+      "scraped_at": 1782327353.390687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Judol Jerat Anak-Keluarga Miskin, Sosiolog UGM: Literasi Digital Tidak Cukup",
+      "url": "https://www.detik.com/edu/detikpedia/d-8185951/judol-jerat-anak-keluarga-miskin-sosiolog-ugm-literasi-digital-tidak-cukup",
+      "snippet": "",
+      "scraped_at": 1782327353.390687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Judol Jerat Anak Sekolah, Komisi X DPR: Pendidikan Karakter Harus Jadi Dasar Sisdiknas",
+      "url": "https://www.detik.com/edu/sekolah/d-8184364/judol-jerat-anak-sekolah-komisi-x-dpr-pendidikan-karakter-harus-jadi-dasar-sisdiknas",
+      "snippet": "",
+      "scraped_at": 1782327353.390687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Cak Imin Prihatin Judol Jangkit Anak SD-Tunawisma, Bakal Benahi Aturan",
+      "url": "https://news.detik.com/berita/d-8182298/cak-imin-prihatin-judol-jangkit-anak-sd-tunawisma-bakal-benahi-aturan",
+      "snippet": "",
+      "scraped_at": 1782327353.390687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Peran dan Capaian Industri Pindar dalam Tingkatkan Inklusi Keuangan",
+      "url": "https://finance.detik.com/fintech/d-8158248/peran-dan-capaian-industri-pindar-dalam-tingkatkan-inklusi-keuangan",
+      "snippet": "",
+      "scraped_at": 1782327353.390687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Bank Sulselbar dan BI Sulsel Perkuat Kolaborasi Jaga Rupiah-Lawan Judol",
+      "url": "https://www.detik.com/sulsel/bisnis/d-8130333/bank-sulselbar-dan-bi-sulsel-perkuat-kolaborasi-jaga-rupiah-lawan-judol",
+      "snippet": "",
+      "scraped_at": 1782327353.390687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Begini Cara Perusahaan Pindar Tingkatkan Literasi Keuangan Digital",
+      "url": "https://finance.detik.com/moneter/d-8089246/begini-cara-perusahaan-pindar-tingkatkan-literasi-keuangan-digital",
+      "snippet": "",
+      "scraped_at": 1782327353.390687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Fatwa MUI Diusulkan Jadi Landasan Etik dalam Revisi UU Penyiaran",
+      "url": "https://www.detik.com/hikmah/khazanah/d-8081768/fatwa-mui-diusulkan-jadi-landasan-etik-dalam-revisi-uu-penyiaran",
+      "snippet": "",
+      "scraped_at": 1782327353.390687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Awas! Jangan Terjebak Judol-Utang di Usia Muda, Ini Wejangan OJK",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8073442/awas-jangan-terjebak-judol-utang-di-usia-muda-ini-wejangan-ojk",
+      "snippet": "",
+      "scraped_at": 1782327353.390687
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Pramuka Jadi Ekskul Wajib, Ketua Kwarda Jatim Apresiasi Mendikdasmen",
+      "url": "https://www.detik.com/jatim/berita/d-8065969/pramuka-jadi-ekskul-wajib-ketua-kwarda-jatim-apresiasi-mendikdasmen",
+      "snippet": "",
+      "scraped_at": 1782327355.7128766
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "80 Tahun Indonesia: Mari Merdeka dari Utang",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8045825/80-tahun-indonesia-mari-merdeka-dari-utang",
+      "snippet": "",
+      "scraped_at": 1782327355.7128766
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Perjuangan Wartawan detikcom Beri Literasi Keuangan di Ujung Timur",
+      "url": "https://finance.detik.com/moneter/d-8019459/perjuangan-wartawan-detikcom-beri-literasi-keuangan-di-ujung-timur",
+      "snippet": "",
+      "scraped_at": 1782327355.7128766
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Dukung Pembuatan Film 'Tajir Melintir', Bamsoet Ingatkan Stabilitas Sosial",
+      "url": "https://news.detik.com/berita/d-8018429/dukung-pembuatan-film-tajir-melintir-bamsoet-ingatkan-stabilitas-sosial",
+      "snippet": "",
+      "scraped_at": 1782327355.7128766
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Video: Manajer Katering di Makassar Curi Motor Atasannya gegara Judi Online",
+      "url": "https://20.detik.com/detikupdate/20250513-250513048/video-manajer-katering-di-makassar-curi-motor-atasannya-gegara-judi-online",
+      "snippet": "",
+      "scraped_at": 1782327355.7128766
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Jembatan Tukad Bangkung 'Horor', Pakar Arsitektur Dorong Pemerintah Intervensi",
+      "url": "https://www.detik.com/bali/berita/d-7855872/jembatan-tukad-bangkung-horor-pakar-arsitektur-dorong-pemerintah-intervensi",
+      "snippet": "",
+      "scraped_at": 1782327355.7128766
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "15 Aplikasi yang Bisa Kuras Saldo Rekening, Wajib Waspada!",
+      "url": "https://inet.detik.com/security/d-7745497/15-aplikasi-yang-bisa-kuras-saldo-rekening-wajib-waspada",
+      "snippet": "",
+      "scraped_at": 1782327355.7128766
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Blackstone Picture-Bigbeng Production Garap Drama Komedi 'Bambang Sedunia'",
+      "url": "https://www.detik.com/pop/movie/d-7744826/blackstone-picture-bigbeng-production-garap-drama-komedi-bambang-sedunia",
+      "snippet": "",
+      "scraped_at": 1782327355.7128766
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Sekeluarga Tewas karena Pinjol, Aher: Masyarakat Kurang Literasi Keuangan",
+      "url": "https://news.detik.com/berita/d-7725604/sekeluarga-tewas-karena-pinjol-aher-masyarakat-kurang-literasi-keuangan",
+      "snippet": "",
+      "scraped_at": 1782327355.7128766
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Judol Disebut Lebih Bahaya dari Khamar dan Narkoba, Ini Alasannya",
+      "url": "https://www.detik.com/hikmah/khazanah/d-7695392/judol-disebut-lebih-bahaya-dari-khamar-dan-narkoba-ini-alasannya",
+      "snippet": "",
+      "scraped_at": 1782327355.7128766
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "BRI Ajak Bijak Kelola Keuangan Lewat Web Series 'Pakai Hati Reborn'",
+      "url": "https://finance.detik.com/moneter/d-7689175/bri-ajak-bijak-kelola-keuangan-lewat-web-series-pakai-hati-reborn",
+      "snippet": "",
+      "scraped_at": 1782327356.514584
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "BRI Tawarkan Solusi Perbankan Digital untuk Gaya Hidup Anak Muda",
+      "url": "https://finance.detik.com/moneter/d-7672692/bri-tawarkan-solusi-perbankan-digital-untuk-gaya-hidup-anak-muda",
+      "snippet": "",
+      "scraped_at": 1782327356.514584
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Misbakhun Minta Warga Jauhi Judol: Jangan Harap Uang Bisa Berlipat Ganda",
+      "url": "https://news.detik.com/berita/d-7663939/misbakhun-minta-warga-jauhi-judol-jangan-harap-uang-bisa-berlipat-ganda",
+      "snippet": "",
+      "scraped_at": 1782327356.514584
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Data Memilukan Judi Online di Jakarta: Ribuan Anak, Transaksi Miliaran",
+      "url": "https://news.detik.com/berita/d-7635415/data-memilukan-judi-online-di-jakarta-ribuan-anak-transaksi-miliaran",
+      "snippet": "",
+      "scraped_at": 1782327356.514584
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Emak-emak Curhat ke Menkomdigi: Suami Judol, Harta pun Ludes",
+      "url": "https://inet.detik.com/law-and-policy/d-7634976/emak-emak-curhat-ke-menkomdigi-suami-judol-harta-pun-ludes",
+      "snippet": "",
+      "scraped_at": 1782327356.514584
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Legislator Minta Pemerintah Tegas Berantas Pinjol Ilegal & Judol di RI",
+      "url": "https://news.detik.com/berita/d-7626037/legislator-minta-pemerintah-tegas-berantas-pinjol-ilegal-judol-di-ri",
+      "snippet": "",
+      "scraped_at": 1782327356.514584
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Waka DPR Cucun Apresiasi Polri Tangkap Pegawai Komdigi terkait Judol",
+      "url": "https://news.detik.com/berita/d-7617548/waka-dpr-cucun-apresiasi-polri-tangkap-pegawai-komdigi-terkait-judol",
+      "snippet": "",
+      "scraped_at": 1782327356.514584
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "FOMO dan YOLO Jadi Alasan Anak Muda RI Suka Utang di Paylater",
+      "url": "https://www.detik.com/sulsel/bisnis/d-7575790/fomo-dan-yolo-jadi-alasan-anak-muda-ri-suka-utang-di-paylater",
+      "snippet": "",
+      "scraped_at": 1782327356.514584
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Bupati Ipuk Ajak 3 Pilar Perkuat Kolaborasi Tangani Kerawanan Sosial",
+      "url": "https://www.detik.com/jatim/berita/d-7479316/bupati-ipuk-ajak-3-pilar-perkuat-kolaborasi-tangani-kerawanan-sosial",
+      "snippet": "",
+      "scraped_at": 1782327356.514584
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Gen Z Banyak Terjerat Pinjol dan Judi Online, Ini Alasannya Menurut OJK",
+      "url": "https://www.detik.com/sumut/berita/d-7470325/gen-z-banyak-terjerat-pinjol-dan-judi-online-ini-alasannya-menurut-ojk",
+      "snippet": "",
+      "scraped_at": 1782327356.514584
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Jabar Hari Ini: Akhir Viral Getok BBM SPBU di Sukabumi",
+      "url": "https://www.detik.com/jabar/berita/d-8509868/jabar-hari-ini-akhir-viral-getok-bbm-spbu-di-sukabumi",
+      "snippet": "",
+      "scraped_at": 1782327350.9116912
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Kenapa Bansos PKH BPNT 2026 Tahap II Tak Cair? Ini Penyebabnya",
+      "url": "https://www.detik.com/sumut/berita/d-8495840/kenapa-bansos-pkh-bpnt-2026-tahap-ii-tak-cair-ini-penyebabnya",
+      "snippet": "",
+      "scraped_at": 1782327350.9116912
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Kenapa Tidak Terdaftar di DTSEN? Ini Penyebab Bansos Tidak Cair",
+      "url": "https://www.detik.com/jabar/jabar-gaskeun/d-8471520/kenapa-tidak-terdaftar-di-dtsen-ini-penyebab-bansos-tidak-cair",
+      "snippet": "",
+      "scraped_at": 1782327350.9116912
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Nama Dicoret dari Daftar Penerima Bansos PKH BPNT? Ini Caranya agar Dapat Lagi",
+      "url": "https://www.detik.com/jogja/bisnis/d-8468123/nama-dicoret-dari-daftar-penerima-bansos-pkh-bpnt-ini-caranya-agar-dapat-lagi",
+      "snippet": "",
+      "scraped_at": 1782327350.9116912
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Penyebab Bansos PKH & BPNT 2026 Tak Cair dan Cara Mengatasinya",
+      "url": "https://www.detik.com/jabar/jabar-gaskeun/d-8463200/penyebab-bansos-pkh-bpnt-2026-tak-cair-dan-cara-mengatasinya",
+      "snippet": "",
+      "scraped_at": 1782327350.9116912
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Apakah Bank Buka Hari Ini 1 Januari 2026? Cek Jadwal Operasionalnya di Sini",
+      "url": "https://www.detik.com/jogja/bisnis/d-8287458/apakah-bank-buka-hari-ini-1-januari-2026-cek-jadwal-operasionalnya-di-sini",
+      "snippet": "",
+      "scraped_at": 1782327350.9116912
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Gara-gara Paylater-Pinjol, Ribuan Orang Gagal KPR!",
+      "url": "https://www.detik.com/properti/berita/d-8232323/gara-gara-paylater-pinjol-ribuan-orang-gagal-kpr",
+      "snippet": "",
+      "scraped_at": 1782327350.9116912
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Jarang Buka TikTok, Kaget Tiba-tiba Ditagih Rp 4,6 Juta",
+      "url": "https://inet.detik.com/cyberlife/d-8140254/jarang-buka-tiktok-kaget-tiba-tiba-ditagih-rp-4-6-juta",
+      "snippet": "",
+      "scraped_at": 1782327350.9126894
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Allo Bank Gelar Program Unik, Nasabah Bisa Bawa Pulang iPhone 16 Pro Max",
+      "url": "https://finance.detik.com/moneter/d-8063254/allo-bank-gelar-program-unik-nasabah-bisa-bawa-pulang-iphone-16-pro-max",
+      "snippet": "",
+      "scraped_at": 1782327350.9126894
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "KPR dan SLIK OJK: Apa Hubungannya dan Kenapa Bisa Gagal?",
+      "url": "https://finance.detik.com/moneter/d-8022062/kpr-dan-slik-ojk-apa-hubungannya-dan-kenapa-bisa-gagal",
+      "snippet": "",
+      "scraped_at": 1782327350.9126894
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Ternyata SLIK OJK Bisa Dipakai Lamar Kerja dan Kredit!",
+      "url": "https://finance.detik.com/moneter/d-8014008/ternyata-slik-ojk-bisa-dipakai-lamar-kerja-dan-kredit",
+      "snippet": "",
+      "scraped_at": 1782327353.41034
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "HRD Toko Elektronik di Jambi Tilap Rp 38 Juta untuk Bayar Paylater",
+      "url": "https://www.detik.com/sumbagsel/hukum-dan-kriminal/d-7978413/hrd-toko-elektronik-di-jambi-tilap-rp-38-juta-untuk-bayar-paylater",
+      "snippet": "",
+      "scraped_at": 1782327353.41034
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Keringanan Bayar Tagihan Kartu Kredit Diperpanjang Sampai Akhir 2025",
+      "url": "https://finance.detik.com/moneter/d-7971245/keringanan-bayar-tagihan-kartu-kredit-diperpanjang-sampai-akhir-2025",
+      "snippet": "",
+      "scraped_at": 1782327353.41034
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "5 Penyebab Backpacker Terlilit Utang Usai Liburan",
+      "url": "https://travel.detik.com/travel-news/d-7963586/5-penyebab-backpacker-terlilit-utang-usai-liburan",
+      "snippet": "",
+      "scraped_at": 1782327353.41034
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Jenius Kenalkan Creditbility, Bantu Masyarakat Bangun Reputasi Finansial",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-7789951/jenius-kenalkan-creditbility-bantu-masyarakat-bangun-reputasi-finansial",
+      "snippet": "",
+      "scraped_at": 1782327353.41034
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Transaksi Uang Elektronik Kena PPN 12%, DJP Jelaskan Perhitungannya",
+      "url": "https://www.detik.com/bali/bisnis/d-7697119/transaksi-uang-elektronik-kena-ppn-12-djp-jelaskan-perhitungannya",
+      "snippet": "",
+      "scraped_at": 1782327353.41034
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Heboh Transaksi Uang Elektronik Kena PPN 12%, Hitung-hitungannya Begini",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-7696855/heboh-transaksi-uang-elektronik-kena-ppn-12-hitung-hitungannya-begini",
+      "snippet": "",
+      "scraped_at": 1782327353.41034
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Simak! Jadwal Operasional BCA Selama Libur Nataru",
+      "url": "https://finance.detik.com/moneter/d-7695412/simak-jadwal-operasional-bca-selama-libur-nataru",
+      "snippet": "",
+      "scraped_at": 1782327353.41034
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Cara Mudah Registrasi myBCA untuk Transaksi Lebih Nyaman",
+      "url": "https://finance.detik.com/advertorial-news-block/d-7582182/cara-mudah-registrasi-mybca-untuk-transaksi-lebih-nyaman",
+      "snippet": "",
+      "scraped_at": 1782327353.41034
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Livin' by Mandiri Hadir dengan Wajah Baru, Lebih Mudah-Nyaman Digunakan",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-7577623/livin-by-mandiri-hadir-dengan-wajah-baru-lebih-mudah-nyaman-digunakan",
+      "snippet": "",
+      "scraped_at": 1782327356.0017288
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Caturnusa Sejahtera Finance Bantu Liburan Makin Nyaman",
+      "url": "https://finance.detik.com/finansial/d-7564752/caturnusa-sejahtera-finance-bantu-liburan-makin-nyaman",
+      "snippet": "",
+      "scraped_at": 1782327356.0017288
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Bagaimana Membersihkan Catatan Kredit yang Jelek?",
+      "url": "https://finance.detik.com/moneter/d-7550722/bagaimana-membersihkan-catatan-kredit-yang-jelek",
+      "snippet": "",
+      "scraped_at": 1782327356.0017288
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Bayar Paylater Traveloka Melalui Danamas, Surat Lunas Belum Diterima",
+      "url": "https://news.detik.com/suara-pembaca/d-7501478/bayar-paylater-traveloka-melalui-danamas-surat-lunas-belum-diterima",
+      "snippet": "",
+      "scraped_at": 1782327356.0017288
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Besaran Bunga Shopee PayLater, Denda, dan Biaya Penanganannya",
+      "url": "https://finance.detik.com/fintech/d-7467521/besaran-bunga-shopee-paylater-denda-dan-biaya-penanganannya",
+      "snippet": "",
+      "scraped_at": 1782327356.0017288
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Jadi Ketua Kelompok Pinjaman, Epi Bakal Jadi Agen Bank",
+      "url": "https://finance.detik.com/moneter/d-7312625/jadi-ketua-kelompok-pinjaman-epi-bakal-jadi-agen-bank",
+      "snippet": "",
+      "scraped_at": 1782327356.0017288
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Ini Jadwal Operasi BCA Selama Libur Nataru, Siapkan Uang Tunai Rp 41,1 Triliun",
+      "url": "https://finance.detik.com/moneter/d-7092996/ini-jadwal-operasi-bca-selama-libur-nataru-siapkan-uang-tunai-rp-41-1-triliun",
+      "snippet": "",
+      "scraped_at": 1782327356.0017288
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Hati-hati, Mahasiswa yang Nunggak Pinjol Bakal Sulit Dapat Kerja",
+      "url": "https://www.detik.com/jabar/bisnis/d-7048088/hati-hati-mahasiswa-yang-nunggak-pinjol-bakal-sulit-dapat-kerja",
+      "snippet": "",
+      "scraped_at": 1782327356.0017288
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "OJK Ingatkan Mahasiswa Jangan Nunggak Pinjol, Bisa Susah Dapat Kerja",
+      "url": "https://finance.detik.com/fintech/d-7047659/ojk-ingatkan-mahasiswa-jangan-nunggak-pinjol-bisa-susah-dapat-kerja",
+      "snippet": "",
+      "scraped_at": 1782327356.0017288
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Nunggak Pinjol-Paylater Bikin Sulit, Bisa Cicil Rumah Tanpa Dicek BI Checking?",
+      "url": "https://finance.detik.com/infrastruktur/d-6905913/nunggak-pinjol-paylater-bikin-sulit-bisa-cicil-rumah-tanpa-dicek-bi-checking",
+      "snippet": "",
+      "scraped_at": 1782327357.6559644
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Catatan Kredit di 'BI Checking' Jelek? Begini Cara Bersihkannya",
+      "url": "https://finance.detik.com/moneter/d-6896373/catatan-kredit-di-bi-checking-jelek-begini-cara-bersihkannya",
+      "snippet": "",
+      "scraped_at": 1782327357.6559644
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Begini Cara Cek Skor BI Checking Agar Bisa Lolos Lamar Kerja",
+      "url": "https://finance.detik.com/fintech/d-6895769/begini-cara-cek-skor-bi-checking-agar-bisa-lolos-lamar-kerja",
+      "snippet": "",
+      "scraped_at": 1782327357.6559644
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Jangan Sepelekan Nunggak Paylater, Bisa Susah Dapat Kerja-Ajukan KPR!",
+      "url": "https://finance.detik.com/fintech/d-6894147/jangan-sepelekan-nunggak-paylater-bisa-susah-dapat-kerja-ajukan-kpr",
+      "snippet": "",
+      "scraped_at": 1782327357.6559644
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Paylater yang Bisa Jadi Ancaman Bagi Pelamar Kerja",
+      "url": "https://www.detik.com/jabar/bisnis/d-6893517/paylater-yang-bisa-jadi-ancaman-bagi-pelamar-kerja",
+      "snippet": "",
+      "scraped_at": 1782327357.6559644
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Kemnaker: Tak Ada Aturan BI Checking Jadi Syarat Calon Pekerja!",
+      "url": "https://finance.detik.com/fintech/d-6893761/kemnaker-tak-ada-aturan-bi-checking-jadi-syarat-calon-pekerja",
+      "snippet": "",
+      "scraped_at": 1782327357.6559644
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Jangan Main-main dengan Utang di Paylater, Bisa Bikin Sulit Dapat Kerja!",
+      "url": "https://finance.detik.com/fintech/d-6892962/jangan-main-main-dengan-utang-di-paylater-bisa-bikin-sulit-dapat-kerja",
+      "snippet": "",
+      "scraped_at": 1782327357.6559644
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Dari Belanja Online Hingga Liburan, Makin Untung Pakai Kartu Kredit BRI",
+      "url": "https://finance.detik.com/moneter/d-6866361/dari-belanja-online-hingga-liburan-makin-untung-pakai-kartu-kredit-bri",
+      "snippet": "",
+      "scraped_at": 1782327357.6559644
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Waspada! Ada Modus Penipuan Gesek Tunai PayLater, OJK Pastikan Ilegal",
+      "url": "https://finance.detik.com/moneter/d-6836148/waspada-ada-modus-penipuan-gesek-tunai-paylater-ojk-pastikan-ilegal",
+      "snippet": "",
+      "scraped_at": 1782327357.6559644
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "951 Entitas Pinjol-Investasi Bodong Disetop, Ini 5 Modusnya",
+      "url": "https://finance.detik.com/moneter/d-8505968/951-entitas-pinjol-investasi-bodong-disetop-ini-5-modusnya",
+      "snippet": "",
+      "scraped_at": 1782327350.9398057
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Gaji Belum Stabil, Gaya Hidup Tinggi: Anak Muda Paling Banyak Nunggak Pinjol",
+      "url": "https://finance.detik.com/moneter/d-8480500/gaji-belum-stabil-gaya-hidup-tinggi-anak-muda-paling-banyak-nunggak-pinjol",
+      "snippet": "",
+      "scraped_at": 1782327350.9398057
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Mahfud: Untuk Pinjol Legal Silakan Berkembang, Justru Itu Diharapkan",
+      "url": "https://20.detik.com/detikflash/20211019-211019144/mahfud-untuk-pinjol-legal-silakan-berkembang-justru-itu-diharapkan",
+      "snippet": "",
+      "scraped_at": 1782327350.9398057
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Cara Cek Pinjol yang Terdaftar di OJK dengan Mudah",
+      "url": "https://www.detik.com/jabar/bisnis/d-8468513/cara-cek-pinjol-yang-terdaftar-di-ojk-dengan-mudah",
+      "snippet": "",
+      "scraped_at": 1782327350.9408047
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "951 Pinjol Ilegal Ditutup, Investasi Bodong Diberantas",
+      "url": "https://finance.detik.com/moneter/d-8466494/951-pinjol-ilegal-ditutup-investasi-bodong-diberantas",
+      "snippet": "",
+      "scraped_at": 1782327350.9408047
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Benarkah Utang Pinjol Hangus Setelah 90 Hari? Ini Aturan Aslinya",
+      "url": "https://www.detik.com/sumut/berita/d-8455194/benarkah-utang-pinjol-hangus-setelah-90-hari-ini-aturan-aslinya",
+      "snippet": "",
+      "scraped_at": 1782327350.9408047
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Galbay Pinjol Bukan Solusi, Ini Risiko dan Cara Keluar dari Jeratan Utang",
+      "url": "https://finance.detik.com/fintech/d-8438569/galbay-pinjol-bukan-solusi-ini-risiko-dan-cara-keluar-dari-jeratan-utang",
+      "snippet": "",
+      "scraped_at": 1782327350.9408047
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Waspada Jerat Pinjol Ilegal: Bunga Mencekik & Teror Tanpa Henti!",
+      "url": "https://finance.detik.com/moneter/d-8409528/waspada-jerat-pinjol-ilegal-bunga-mencekik-teror-tanpa-henti",
+      "snippet": "",
+      "scraped_at": 1782327353.4391546
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Waspada Jerat Pinjol Jelang Lebaran, Iming-iming Mudah Cair, tapi Bunga Selangit",
+      "url": "https://finance.detik.com/moneter/d-8408713/waspada-jerat-pinjol-jelang-lebaran-iming-iming-mudah-cair-tapi-bunga-selangit",
+      "snippet": "",
+      "scraped_at": 1782327353.4391546
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Simak Cara Membedakan Pindar dan Pinjol Ilegal",
+      "url": "https://finance.detik.com/moneter/d-8358886/simak-cara-membedakan-pindar-dan-pinjol-ilegal",
+      "snippet": "",
+      "scraped_at": 1782327353.4391546
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Catat! Ini 4 Cara Cek Legalitas Pinjol Sebelum Transaksi",
+      "url": "https://20.detik.com/e-flash/20211017-211017068/catat-ini-4-cara-cek-legalitas-pinjol-sebelum-transaksi",
+      "snippet": "",
+      "scraped_at": 1782327353.4391546
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Jangan Sampai Terjebak! Begini Cara Membedakan Pinjol Legal dan Ilegal",
+      "url": "https://finance.detik.com/moneter/d-8358496/jangan-sampai-terjebak-begini-cara-membedakan-pinjol-legal-dan-ilegal",
+      "snippet": "",
+      "scraped_at": 1782327353.4391546
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Kontribusi Jasa Keuangan ke Pembangunan Diklaim Capai Rp 9.840 Triliun",
+      "url": "https://finance.detik.com/moneter/d-8342877/kontribusi-jasa-keuangan-ke-pembangunan-diklaim-capai-rp-9-840-triliun",
+      "snippet": "",
+      "scraped_at": 1782327353.4391546
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Total Kerugian Aktivitas Scam di NTB Tembus Rp 46 Miliar",
+      "url": "https://www.detik.com/bali/nusra/d-8333150/total-kerugian-aktivitas-scam-di-ntb-tembus-rp-46-miliar",
+      "snippet": "",
+      "scraped_at": 1782327353.4391546
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Alasan Orang Pilih Pindar Dibanding Sumber Pembiayaan Lainnya",
+      "url": "https://finance.detik.com/fintech/d-8331775/alasan-orang-pilih-pindar-dibanding-sumber-pembiayaan-lainnya",
+      "snippet": "",
+      "scraped_at": 1782327353.4391546
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Aturan Baru, OJK Bisa Ajukan Gugatan buat Lindungi Konsumen Rugi",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8315555/aturan-baru-ojk-bisa-ajukan-gugatan-buat-lindungi-konsumen-rugi",
+      "snippet": "",
+      "scraped_at": 1782327353.4391546
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Wajib Tahu! Beda Pinjol Legal dan Ilegal",
+      "url": "https://www.detik.com/sumut/berita/d-8298961/wajib-tahu-beda-pinjol-legal-dan-ilegal",
+      "snippet": "",
+      "scraped_at": 1782327353.4391546
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Pinjol Ilegal Masih Marak: Bedanya dengan Legal & Cara Hindari Jeratan",
+      "url": "https://finance.detik.com/moneter/d-8298890/pinjol-ilegal-masih-marak-bedanya-dengan-legal-cara-hindari-jeratan",
+      "snippet": "",
+      "scraped_at": 1782327353.4391546
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Waspada Scam Telegram: 7 Tanda Penawaran Investasi Bodong & Cara Lapor Cepat",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8297472/waspada-scam-telegram-7-tanda-penawaran-investasi-bodong-cara-lapor-cepat",
+      "snippet": "",
+      "scraped_at": 1782327355.99607
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Jadi Miskin Gara-gara Suami Tidak Terbuka Terlilit Pinjol, Adakah Jalan Keluar?",
+      "url": "https://wolipop.detik.com/tarot-expert/d-8284174/jadi-miskin-gara-gara-suami-tidak-terbuka-terlilit-pinjol-adakah-jalan-keluar",
+      "snippet": "",
+      "scraped_at": 1782327355.99607
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Pengguna Pinjol Jelang Nataru-Ramadan 2026 Diprediksi Naik 3 Kali Lipat",
+      "url": "https://www.detik.com/sumbagsel/berita/d-8268622/pengguna-pinjol-jelang-nataru-ramadan-2026-diprediksi-naik-3-kali-lipat",
+      "snippet": "",
+      "scraped_at": 1782327355.99607
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Pemenuhan Ekuitas Minimum Ancam Keberlangsungan Pindar, Ini Kata Pengamat",
+      "url": "https://finance.detik.com/fintech/d-8268432/pemenuhan-ekuitas-minimum-ancam-keberlangsungan-pindar-ini-kata-pengamat",
+      "snippet": "",
+      "scraped_at": 1782327355.99607
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Ada 18.633 Pengaduan Pinjol Ilegal, Mayoritas Pelapor Usia 16-35 Tahun",
+      "url": "https://finance.detik.com/moneter/d-8255416/ada-18-633-pengaduan-pinjol-ilegal-mayoritas-pelapor-usia-16-35-tahun",
+      "snippet": "",
+      "scraped_at": 1782327355.99607
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "6 Risiko Gagal Bayar Pinjol Menurut Hukum, Apa Saja Dampaknya bagi Nasabah?",
+      "url": "https://www.detik.com/jogja/bisnis/d-8247234/6-risiko-gagal-bayar-pinjol-menurut-hukum-apa-saja-dampaknya-bagi-nasabah",
+      "snippet": "",
+      "scraped_at": 1782327355.9970665
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Agar Liburan Akhir Tahun Aman, Ini Fondasi Keuangan yang Harus Disiapkan",
+      "url": "https://finance.detik.com/perencanaan-keuangan/d-8245636/agar-liburan-akhir-tahun-aman-ini-fondasi-keuangan-yang-harus-disiapkan",
+      "snippet": "",
+      "scraped_at": 1782327355.9970665
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Cak Imin Soroti UMKM Sulit Dapat Modal hingga Terpaksa Pakai Pinjol",
+      "url": "https://news.detik.com/berita/d-8226897/cak-imin-soroti-umkm-sulit-dapat-modal-hingga-terpaksa-pakai-pinjol",
+      "snippet": "",
+      "scraped_at": 1782327355.9970665
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Bareskrim Beberkan Cara Hindari Jebakan Pinjol Ilegal",
+      "url": "https://news.detik.com/berita/d-8220855/bareskrim-beberkan-cara-hindari-jebakan-pinjol-ilegal",
+      "snippet": "",
+      "scraped_at": 1782327357.735937
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Daftar Pinjol-Investasi Ilegal yang Diblokir OJK, Ini Link dan Cara Ceknya!",
+      "url": "https://www.detik.com/sumbagsel/berita/d-8213669/daftar-pinjol-investasi-ilegal-yang-diblokir-ojk-ini-link-dan-cara-ceknya",
+      "snippet": "",
+      "scraped_at": 1782327357.735937
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "AFPI Genjot Promosi Fintech Indonesia di Ajang Hong Kong FinTech Week 2025",
+      "url": "https://news.detik.com/berita/d-8198568/afpi-genjot-promosi-fintech-indonesia-di-ajang-hong-kong-fintech-week-2025",
+      "snippet": "",
+      "scraped_at": 1782327357.735937
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "OJK & AdaKami Dorong Literasi Keuangan Perempuan di FinExpo Surabaya 2025",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8183839/ojk-adakami-dorong-literasi-keuangan-perempuan-di-finexpo-surabaya-2025",
+      "snippet": "",
+      "scraped_at": 1782327357.735937
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Asosiasi Sebut Bunga 0,8% Arahan OJK untuk Bedakan dari Pinjol Ilegal",
+      "url": "https://finance.detik.com/fintech/d-8175968/asosiasi-sebut-bunga-0-8-arahan-ojk-untuk-bedakan-dari-pinjol-ilegal",
+      "snippet": "",
+      "scraped_at": 1782327357.735937
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Begini Strategi Khofifah Cegah Jeratan Pinjol Ilegal di Tengah Warga",
+      "url": "https://www.detik.com/jatim/berita/d-8131171/begini-strategi-khofifah-cegah-jeratan-pinjol-ilegal-di-tengah-warga",
+      "snippet": "",
+      "scraped_at": 1782327357.735937
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Suku Bunga Pindar RI Dinilai Masih Ideal Se-ASEAN, Ini Perbandingannya",
+      "url": "https://finance.detik.com/fintech/d-8114554/suku-bunga-pindar-ri-dinilai-masih-ideal-se-asean-ini-perbandingannya",
+      "snippet": "",
+      "scraped_at": 1782327357.735937
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Doa Niat Puasa Tasua 9 Muharram Sekaligus Qadha Ramadan",
+      "url": "https://www.detik.com/hikmah/doa-dan-hadits/d-8544341/doa-niat-puasa-tasua-9-muharram-sekaligus-qadha-ramadan",
+      "snippet": "",
+      "scraped_at": 1782327350.9473803
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Hukum Puasa Tasua Sekaligus Qadha Ramadhan, Bagaimana Bacaan Niatnya?",
+      "url": "https://www.detik.com/jateng/berita/d-8543705/hukum-puasa-tasua-sekaligus-qadha-ramadhan-bagaimana-bacaan-niatnya",
+      "snippet": "",
+      "scraped_at": 1782327350.9473803
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Bandung Raya Sepekan: Dinamika SPMB Jabar, Bule Terobos Tol Pasteur",
+      "url": "https://www.detik.com/jabar/berita/d-8540229/bandung-raya-sepekan-dinamika-spmb-jabar-bule-terobos-tol-pasteur",
+      "snippet": "",
+      "scraped_at": 1782327350.9473803
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Maling di Bekasi Teman Adik Pemilik Rumah, Tahu Letak Penyimpanan Kunci",
+      "url": "https://news.detik.com/berita/d-8540422/maling-di-bekasi-teman-adik-pemilik-rumah-tahu-letak-penyimpanan-kunci",
+      "snippet": "",
+      "scraped_at": 1782327350.9473803
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Rumah di Bekasi Dibobol Maling, Uang USD hingga iPhone 17 Pro Max Raib",
+      "url": "https://news.detik.com/berita/d-8540360/rumah-di-bekasi-dibobol-maling-uang-usd-hingga-iphone-17-pro-max-raib",
+      "snippet": "",
+      "scraped_at": 1782327350.9473803
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "10 Foto Rumah Bedu yang Dijual Rp 5,5 M, Bukan Untuk Lunasi Utang Pinjol",
+      "url": "https://wolipop.detik.com/foto-home-and-living/d-6974290/10-foto-rumah-bedu-yang-dijual-rp-5-5-m-bukan-untuk-lunasi-utang-pinjol",
+      "snippet": "",
+      "scraped_at": 1782327350.9473803
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Terungkapnya Perampokan Sadis di Riau dari Selfie Korban Berdarah-darah",
+      "url": "https://news.detik.com/berita/d-8539452/terungkapnya-perampokan-sadis-di-riau-dari-selfie-korban-berdarah-darah",
+      "snippet": "",
+      "scraped_at": 1782327350.9473803
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Perampok Sadis di Riau Ternyata Pekerja Honorer SD, Pelaku Terjerat Pinjol",
+      "url": "https://news.detik.com/berita/d-8539019/perampok-sadis-di-riau-ternyata-pekerja-honorer-sd-pelaku-terjerat-pinjol",
+      "snippet": "",
+      "scraped_at": 1782327350.9473803
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Kebiasaan Main Judol Bikin Pria Ini Nekat Mencuri  di Tempat Kerja",
+      "url": "https://www.detik.com/sumut/hukum-dan-kriminal/d-8538577/kebiasaan-main-judol-bikin-pria-ini-nekat-mencuri-di-tempat-kerja",
+      "snippet": "",
+      "scraped_at": 1782327350.9473803
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Karyawan 4 Kali Curi Kain Bahan di Konfeksi Jakbar, Hasilnya Buat Main Judol",
+      "url": "https://news.detik.com/berita/d-8538533/karyawan-4-kali-curi-kain-bahan-di-konfeksi-jakbar-hasilnya-buat-main-judol",
+      "snippet": "",
+      "scraped_at": 1782327350.9473803
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Perampok Sadis Tikam Kasir Perusahaan hingga Kritis di Pelalawan Ditangkap",
+      "url": "https://www.detik.com/sumut/hukum-dan-kriminal/d-8537715/perampok-sadis-tikam-kasir-perusahaan-hingga-kritis-di-pelalawan-ditangkap",
+      "snippet": "",
+      "scraped_at": 1782327353.3926864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Wasiat Terakhir Pria yang Tenggelamkan Diri di Laut: Jaga Diri Nak",
+      "url": "https://www.detik.com/jabar/berita/d-8536577/wasiat-terakhir-pria-yang-tenggelamkan-diri-di-laut-jaga-diri-nak",
+      "snippet": "",
+      "scraped_at": 1782327353.3926864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Diduga Penipuan-Tawarkan Jasa Galbay Pinjol, Operasional 2 Perusahaan Disetop!",
+      "url": "https://finance.detik.com/moneter/d-8536384/diduga-penipuan-tawarkan-jasa-galbay-pinjol-operasional-2-perusahaan-disetop",
+      "snippet": "",
+      "scraped_at": 1782327353.3926864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Pesan Terakhir Pria Tenggelamkan Diri di Laut gegara Utang Judol",
+      "url": "https://www.detik.com/bali/nusra/d-8534894/pesan-terakhir-pria-tenggelamkan-diri-di-laut-gegara-utang-judol",
+      "snippet": "",
+      "scraped_at": 1782327353.3926864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "62 Kata-kata Malam 1 Suro untuk Menyambut Tahun Baru Jawa 1960 Ba'",
+      "url": "https://www.detik.com/jogja/budaya/d-8534462/62-kata-kata-malam-1-suro-untuk-menyambut-tahun-baru-jawa-1960-ba",
+      "snippet": "",
+      "scraped_at": 1782327353.3926864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Miris! Ratusan Pasutri di Gresik Cerai gegara Ekonomi, 80% Kecanduan Judol",
+      "url": "https://www.detik.com/jatim/berita/d-8534272/miris-ratusan-pasutri-di-gresik-cerai-gegara-ekonomi-80-kecanduan-judol",
+      "snippet": "",
+      "scraped_at": 1782327353.3926864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Kisah Sedih Startup Sepeda Online Ofo, Dirangkum dalam Foto",
+      "url": "https://inet.detik.com/fotoinet/d-4368451/kisah-sedih-startup-sepeda-online-ofo-dirangkum-dalam-foto",
+      "snippet": "",
+      "scraped_at": 1782327353.3926864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Pria Lombok Tenggelamkan Diri gegara Judol Tinggalkan Surat: Saya Banyak Beban",
+      "url": "https://www.detik.com/bali/nusra/d-8534030/pria-lombok-tenggelamkan-diri-gegara-judol-tinggalkan-surat-saya-banyak-beban",
+      "snippet": "",
+      "scraped_at": 1782327353.3926864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Tertekan Utang Judol, Pria di Lombok Utara Tenggelamkan Diri ke Laut",
+      "url": "https://www.detik.com/bali/nusra/d-8533954/tertekan-utang-judol-pria-di-lombok-utara-tenggelamkan-diri-ke-laut",
+      "snippet": "",
+      "scraped_at": 1782327353.3926864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Membaca Yasin 3 Kali pada Malam 1 Muharram, Minta Apa Saja?",
+      "url": "https://www.detik.com/hikmah/khazanah/d-8532527/membaca-yasin-3-kali-pada-malam-1-muharram-minta-apa-saja",
+      "snippet": "",
+      "scraped_at": 1782327353.3926864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Ada Sensus Ekonomi 15 Juni Sampai 31 Agustus, Ini Ciri-ciri Petugasnya",
+      "url": "https://news.detik.com/berita/d-8531831/ada-sensus-ekonomi-15-juni-sampai-31-agustus-ini-ciri-ciri-petugasnya",
+      "snippet": "",
+      "scraped_at": 1782327353.3926864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Terjerat Pinjol? Ini 7 Tips Bertahan dan Keluar dari Lilitan Utang",
+      "url": "https://www.detik.com/jabar/berita/d-8531131/terjerat-pinjol-ini-7-tips-bertahan-dan-keluar-dari-lilitan-utang",
+      "snippet": "",
+      "scraped_at": 1782327356.0183067
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Viral Istri Berjuang Hamil hingga Menyusui, Suami Malah Selingkuh dengan LC",
+      "url": "https://wolipop.detik.com/wedding-news/d-8526338/viral-istri-berjuang-hamil-hingga-menyusui-suami-malah-selingkuh-dengan-lc",
+      "snippet": "",
+      "scraped_at": 1782327356.0183067
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Wanita di Medan Didakwa Gelapkan Rp 2 M, Uang untuk Pinjol dan Obati Ortu",
+      "url": "https://www.detik.com/sumut/hukum-dan-kriminal/d-8525371/wanita-di-medan-didakwa-gelapkan-rp-2-m-uang-untuk-pinjol-dan-obati-ortu",
+      "snippet": "",
+      "scraped_at": 1782327356.0183067
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Program Jakarta On The Spot, Kabidhumas Polda Metro Serap Aspirasi Warga Bekasi",
+      "url": "https://news.detik.com/berita/d-8525132/program-jakarta-on-the-spot-kabidhumas-polda-metro-serap-aspirasi-warga-bekasi",
+      "snippet": "",
+      "scraped_at": 1782327356.0183067
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "BI Rate Naik, Siap-siap Cicilan KPR dan Pinjol Ikut Membengkak!",
+      "url": "https://finance.detik.com/moneter/d-8524901/bi-rate-naik-siap-siap-cicilan-kpr-dan-pinjol-ikut-membengkak",
+      "snippet": "",
+      "scraped_at": 1782327356.0183067
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Viral Pria Curhat iPhone 17 Promax Miliknya Dijambret, Paylater Ikut Dikuras",
+      "url": "https://wolipop.detik.com/tech-gadget/d-8522021/viral-pria-curhat-iphone-17-promax-miliknya-dijambret-paylater-ikut-dikuras",
+      "snippet": "",
+      "scraped_at": 1782327356.0183067
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Viral Kisah Gen Z Keluar dari Kartu Keluarga untuk Pulihkan Trauma Masa Kecil",
+      "url": "https://wolipop.detik.com/love/d-8519644/viral-kisah-gen-z-keluar-dari-kartu-keluarga-untuk-pulihkan-trauma-masa-kecil",
+      "snippet": "",
+      "scraped_at": 1782327356.0183067
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Utang Pinjol Warga RI Tembus Rp 102 T!",
+      "url": "https://finance.detik.com/moneter/d-8519556/utang-pinjol-warga-ri-tembus-rp-102-t",
+      "snippet": "",
+      "scraped_at": 1782327356.0183067
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Fakta Sidang Bara Primario, Bunuh-Bakar Ibu demi Bayar Utang dan Judol",
+      "url": "https://www.detik.com/bali/hukum-dan-kriminal/d-8516790/fakta-sidang-bara-primario-bunuh-bakar-ibu-demi-bayar-utang-dan-judol",
+      "snippet": "",
+      "scraped_at": 1782327356.0183067
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Berawal dari Hobi, Usaha Tas Tenun Batik Indari Jadi Langganan Suvenir BUMN",
+      "url": "https://finance.detik.com/solusiukm/d-8511346/berawal-dari-hobi-usaha-tas-tenun-batik-indari-jadi-langganan-suvenir-bumn",
+      "snippet": "",
+      "scraped_at": 1782327356.0183067
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Cara Cek Utang Pribadi Secara Online",
+      "url": "https://finance.detik.com/moneter/d-8510976/cara-cek-utang-pribadi-secara-online",
+      "snippet": "",
+      "scraped_at": 1782327357.7429438
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Tipu Muslihat Hakim YM Terima Suap Rp 1 M Lalu Dipakai Bisnis Umrah-Judol",
+      "url": "https://www.detik.com/sulsel/berita/d-8506685/tipu-muslihat-hakim-ym-terima-suap-rp-1-m-lalu-dipakai-bisnis-umrah-judol",
+      "snippet": "",
+      "scraped_at": 1782327357.7429438
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Mall Rongsok Surga Vintage, dari Peti Mati hingga Pintu Helikopter",
+      "url": "https://travel.detik.com/travel-news/d-8506074/mall-rongsok-surga-vintage-dari-peti-mati-hingga-pintu-helikopter",
+      "snippet": "",
+      "scraped_at": 1782327357.7429438
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Sukuk ST016 Resmi Hadir, Investasi Syariah Mulai Rp 1 Juta di BRImo",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8506265/sukuk-st016-resmi-hadir-investasi-syariah-mulai-rp-1-juta-di-brimo",
+      "snippet": "",
+      "scraped_at": 1782327357.7429438
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Terima Rp 1 M, Hakim YM Pakai Duit Suap untuk Bisnis Umrah-Judi Online",
+      "url": "https://www.detik.com/sulsel/hukum-dan-kriminal/d-8506162/terima-rp-1-m-hakim-ym-pakai-duit-suap-untuk-bisnis-umrah-judi-online",
+      "snippet": "",
+      "scraped_at": 1782327357.7429438
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Niat Puasa Arafah 9 Zulhijah Sekaligus Qadha Ramadan: Arab, Latin, dan Artinya",
+      "url": "https://www.detik.com/jateng/berita/d-8504111/niat-puasa-arafah-9-zulhijah-sekaligus-qadha-ramadan-arab-latin-dan-artinya",
+      "snippet": "",
+      "scraped_at": 1782327357.7429438
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Bacaan Niat Puasa Tarwiyah dan Qadha Ramadhan, Apakah Bisa Digabung?",
+      "url": "https://www.detik.com/sulsel/berita/d-8502888/bacaan-niat-puasa-tarwiyah-dan-qadha-ramadhan-apakah-bisa-digabung",
+      "snippet": "",
+      "scraped_at": 1782327357.7429438
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Niat Puasa Tarwiyah dan Arafah Teks Arab-Latin serta Tata Cara Pelaksanaannya",
+      "url": "https://www.detik.com/sulsel/berita/d-8502014/niat-puasa-tarwiyah-dan-arafah-teks-arab-latin-serta-tata-cara-pelaksanaannya",
+      "snippet": "",
+      "scraped_at": 1782327357.7429438
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Gabung Niat Puasa Dzulhijjah dan Qadha, Sah atau Tidak? Ini Kata Ulama",
+      "url": "https://www.detik.com/jatim/berita/d-8500398/gabung-niat-puasa-dzulhijjah-dan-qadha-sah-atau-tidak-ini-kata-ulama",
+      "snippet": "",
+      "scraped_at": 1782327357.7429438
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Video: Sultan HB X Soroti Fenomena 'Makan Utang' dan Pinjol",
+      "url": "https://20.detik.com/detikupdate/20260522-260522083/video-sultan-hb-x-soroti-fenomena-makan-utang-dan-pinjol",
+      "snippet": "",
+      "scraped_at": 1782327357.7429438
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Pendiri Evergrande yang Galbay Utang Rp 5.000 T Akui Menipu dan Beri Suap",
+      "url": "https://www.detik.com/properti/berita/d-8447195/pendiri-evergrande-yang-galbay-utang-rp-5-000-t-akui-menipu-dan-beri-suap",
+      "snippet": "",
+      "scraped_at": 1782327350.920099
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Kurangi Risiko Galbay, Score Credit Masuk ke Slip Gaji?",
+      "url": "https://20.detik.com/detik-sore/20250617-250617096/kurangi-risiko-galbay-score-credit-masuk-ke-slip-gaji",
+      "snippet": "",
+      "scraped_at": 1782327350.920099
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Di Depan Bos-bos Jepang, Prabowo Pastikan RI Nggak Pernah Gagal Bayar Utang",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8422376/di-depan-bos-bos-jepang-prabowo-pastikan-ri-nggak-pernah-gagal-bayar-utang",
+      "snippet": "",
+      "scraped_at": 1782327350.920099
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Gagal Bayar Dana Syariah Indonesia Disebut Sulit Dideteksi, Kenapa?",
+      "url": "https://finance.detik.com/moneter/d-8327386/gagal-bayar-dana-syariah-indonesia-disebut-sulit-dideteksi-kenapa",
+      "snippet": "",
+      "scraped_at": 1782327350.920099
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Babak Baru Gagal Bayar Dana Syariah Indonesia Rp 2,4 T",
+      "url": "https://finance.detik.com/moneter/d-8309607/babak-baru-gagal-bayar-dana-syariah-indonesia-rp-2-4-t",
+      "snippet": "",
+      "scraped_at": 1782327350.920099
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Dana Syariah Indonesia Minta Rekening Tak Diblokir, PPATK Jawab Begini",
+      "url": "https://finance.detik.com/moneter/d-8309212/dana-syariah-indonesia-minta-rekening-tak-diblokir-ppatk-jawab-begini",
+      "snippet": "",
+      "scraped_at": 1782327350.920099
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "OJK Laporkan Dugaan Fraud Gagal Bayar Dana Syariah Indonesia ke Bareskrim",
+      "url": "https://finance.detik.com/moneter/d-8309033/ojk-laporkan-dugaan-fraud-gagal-bayar-dana-syariah-indonesia-ke-bareskrim",
+      "snippet": "",
+      "scraped_at": 1782327350.920099
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Kasus Gagal Bayar Lender Dana Syariah Indonesia Rp 1,4 T Sudah Didengar Istana",
+      "url": "https://finance.detik.com/moneter/d-8308922/kasus-gagal-bayar-lender-dana-syariah-indonesia-rp-1-4-t-sudah-didengar-istana",
+      "snippet": "",
+      "scraped_at": 1782327350.920099
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "PPATK Blokir 33 Rekening Terkait Dana Syariah Indonesia, Nilainya Cuma Rp 4 M",
+      "url": "https://finance.detik.com/moneter/d-8308858/ppatk-blokir-33-rekening-terkait-dana-syariah-indonesia-nilainya-cuma-rp-4-m",
+      "snippet": "",
+      "scraped_at": 1782327350.920099
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Kabar Terbaru Gagal Bayar Dana Syariah Indonesia Rp 1,4 T",
+      "url": "https://finance.detik.com/moneter/d-8301311/kabar-terbaru-gagal-bayar-dana-syariah-indonesia-rp-1-4-t",
+      "snippet": "",
+      "scraped_at": 1782327353.4126768
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "OJK Sisir Aset Dana Syariah Indonesia, Buntut Skandal Rp 1,4 Triliun",
+      "url": "https://finance.detik.com/moneter/d-8300584/ojk-sisir-aset-dana-syariah-indonesia-buntut-skandal-rp-1-4-triliun",
+      "snippet": "",
+      "scraped_at": 1782327353.4126768
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "PPATK Blokir Rekening Dana Syariah Indonesia",
+      "url": "https://finance.detik.com/moneter/d-8286232/ppatk-blokir-rekening-dana-syariah-indonesia",
+      "snippet": "",
+      "scraped_at": 1782327353.4126768
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Jangan Ikut-ikutan Fenomena 'Galbay' Pinjol Ilegal",
+      "url": "https://20.detik.com/dmentor/20220815-220815068/jangan-ikut-ikutan-fenomena-galbay-pinjol-ilegal",
+      "snippet": "",
+      "scraped_at": 1782327353.4126768
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "OJK Minta PPATK Usut Transaksi Keuangan Pinjol Dana Syariah Indonesia",
+      "url": "https://finance.detik.com/moneter/d-8285431/ojk-minta-ppatk-usut-transaksi-keuangan-pinjol-dana-syariah-indonesia",
+      "snippet": "",
+      "scraped_at": 1782327353.4126768
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Biar Nggak Boncos, Anak Muda Harus Bijak Atur Keuangan",
+      "url": "https://finance.detik.com/perencanaan-keuangan/d-8255252/biar-nggak-boncos-anak-muda-harus-bijak-atur-keuangan",
+      "snippet": "",
+      "scraped_at": 1782327353.4126768
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Dude Harlino Bantu Suarakan Keluhan Lender DSI soal Pengembalian Dana yang Mandek",
+      "url": "https://hot.detik.com/celeb/d-8252641/dude-harlino-bantu-suarakan-keluhan-lender-dsi-soal-pengembalian-dana-yang-mandek",
+      "snippet": "",
+      "scraped_at": 1782327353.4126768
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Cara Melihat Apakah Data Kita Kena Blacklist OJK gegara Gagal Bayar Pinjol",
+      "url": "https://www.detik.com/jogja/bisnis/d-8252269/cara-melihat-apakah-data-kita-kena-blacklist-ojk-gegara-gagal-bayar-pinjol",
+      "snippet": "",
+      "scraped_at": 1782327353.4126768
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Risiko Galbay Pinjol, Berapa Lama Datanya Mulai Tercatat di SLIK OJK?",
+      "url": "https://www.detik.com/jogja/bisnis/d-8250953/risiko-galbay-pinjol-berapa-lama-datanya-mulai-tercatat-di-slik-ojk",
+      "snippet": "",
+      "scraped_at": 1782327353.4126768
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Ditagih Rp 1,13 T, Dana Syariah Indonesia Cuma Sanggup Bayar Rp 3,5 M",
+      "url": "https://finance.detik.com/moneter/d-8244892/ditagih-rp-1-13-t-dana-syariah-indonesia-cuma-sanggup-bayar-rp-3-5-m",
+      "snippet": "",
+      "scraped_at": 1782327353.4126768
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Komisi XI DPR & OJK Bahas Nasib Duit Lender Dana Syariah Indonesia",
+      "url": "https://finance.detik.com/moneter/d-8218365/komisi-xi-dpr-ojk-bahas-nasib-duit-lender-dana-syariah-indonesia",
+      "snippet": "",
+      "scraped_at": 1782327356.1030486
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Paguyuban Lender Temui Dana Syariah, Bahas Penyelesaian Gagal Bayar Rp 1 T",
+      "url": "https://finance.detik.com/moneter/d-8218005/paguyuban-lender-temui-dana-syariah-bahas-penyelesaian-gagal-bayar-rp-1-t",
+      "snippet": "",
+      "scraped_at": 1782327356.1030486
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Hidup Bisa Berantakan Kalau Pinjolmu Sampai Galbay",
+      "url": "https://finance.detik.com/moneter/d-8140262/hidup-bisa-berantakan-kalau-pinjolmu-sampai-galbay",
+      "snippet": "",
+      "scraped_at": 1782327356.1030486
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Hati-hati Tren \"Galbay\" Debitur Pinjol Ilegal",
+      "url": "https://20.detik.com/dmentor/20220814-220815037/hati-hati-tren-galbay-debitur-pinjol-ilegal",
+      "snippet": "",
+      "scraped_at": 1782327356.1030486
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Galbay Pinjol Bisa Bikin Hidup Berantakan!",
+      "url": "https://finance.detik.com/moneter/d-8139396/galbay-pinjol-bisa-bikin-hidup-berantakan",
+      "snippet": "",
+      "scraped_at": 1782327356.1030486
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Fenomena Galbay Ternyata Sudah Ada Sejak 20 Tahun Lalu!",
+      "url": "https://finance.detik.com/moneter/d-8139239/fenomena-galbay-ternyata-sudah-ada-sejak-20-tahun-lalu",
+      "snippet": "",
+      "scraped_at": 1782327356.1030486
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "BNI Pastikan Kredit Kopdes Tak Ganggu NPL",
+      "url": "https://finance.detik.com/moneter/d-8101717/bni-pastikan-kredit-kopdes-tak-ganggu-npl",
+      "snippet": "",
+      "scraped_at": 1782327356.1030486
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Ajakan Galbay Pinjol Makin Marak, OJK-Komdigi Diminta Turun Tangan",
+      "url": "https://www.detik.com/sumbagsel/bisnis/d-8056203/ajakan-galbay-pinjol-makin-marak-ojk-komdigi-diminta-turun-tangan",
+      "snippet": "",
+      "scraped_at": 1782327356.1030486
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Bos OJK Klaim Sektor Keuangan RI Solid di Tengah Global Risk",
+      "url": "https://finance.detik.com/moneter/d-8044315/bos-ojk-klaim-sektor-keuangan-ri-solid-di-tengah-global-risk",
+      "snippet": "",
+      "scraped_at": 1782327356.1030486
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Apa Itu Istilah Rojali dan Rohana di Mall? Ini Penjelasan Fenomenanya",
+      "url": "https://www.detik.com/jogja/bisnis/d-8028563/apa-itu-istilah-rojali-dan-rohana-di-mall-ini-penjelasan-fenomenanya",
+      "snippet": "",
+      "scraped_at": 1782327356.1030486
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Cara Cek SLIK OJK Secara Online, Gratis dan Resmi",
+      "url": "https://finance.detik.com/moneter/d-8020735/cara-cek-slik-ojk-secara-online-gratis-dan-resmi",
+      "snippet": "",
+      "scraped_at": 1782327357.947306
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Cara Minta Surat Keterangan Bersih SLIK dari OJK",
+      "url": "https://finance.detik.com/moneter/d-8012070/cara-minta-surat-keterangan-bersih-slik-dari-ojk",
+      "snippet": "",
+      "scraped_at": 1782327357.947306
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Pinjol Sering Telepon Kontak Darurat, Ini Cara Menghentikannya",
+      "url": "https://finance.detik.com/fintech/d-8004672/pinjol-sering-telepon-kontak-darurat-ini-cara-menghentikannya",
+      "snippet": "",
+      "scraped_at": 1782327357.947306
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "OJK Denda 251 Pelaku Usaha di Pasar Modal Rp 17,4 M",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8001780/ojk-denda-251-pelaku-usaha-di-pasar-modal-rp-17-4-m",
+      "snippet": "",
+      "scraped_at": 1782327357.947306
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Apa yang Terjadi Jika Tidak Bayar Pinjol? Ini Konsekuensinya",
+      "url": "https://finance.detik.com/fintech/d-7999372/apa-yang-terjadi-jika-tidak-bayar-pinjol-ini-konsekuensinya",
+      "snippet": "",
+      "scraped_at": 1782327357.947306
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Bolehkah Utang Pinjol untuk Bayar Cicilan Lain? Cek Risikonya",
+      "url": "https://finance.detik.com/fintech/d-7998678/bolehkah-utang-pinjol-untuk-bayar-cicilan-lain-cek-risikonya",
+      "snippet": "",
+      "scraped_at": 1782327357.947306
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Galbay Utang Pinjol Tak Bisa Dipenjara, tapi...",
+      "url": "https://www.detik.com/kalimantan/hukum-dan-kriminal/d-7997951/galbay-utang-pinjol-tak-bisa-dipenjara-tapi",
+      "snippet": "",
+      "scraped_at": 1782327357.947306
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Cara Nego Ulang Bunga dan Cicilan Pinjol",
+      "url": "https://finance.detik.com/fintech/d-7990830/cara-nego-ulang-bunga-dan-cicilan-pinjol",
+      "snippet": "",
+      "scraped_at": 1782327357.947306
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Tips Atur Gaji Rp 5 Juta biar Nggak Habis di Tengah Bulan",
+      "url": "https://finance.detik.com/perencanaan-keuangan/d-7988669/tips-atur-gaji-rp-5-juta-biar-nggak-habis-di-tengah-bulan",
+      "snippet": "",
+      "scraped_at": 1782327357.947306
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Punya Utang Lebih dari 3 Pinjol? Ini Strategi Prioritas Bayar",
+      "url": "https://finance.detik.com/fintech/d-7986314/punya-utang-lebih-dari-3-pinjol-ini-strategi-prioritas-bayar",
+      "snippet": "",
+      "scraped_at": 1782327357.947306
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Iuran KIP Digelapkan Mahasiswi Unair Juga Dipakai Buat Lunasi Pinjol",
+      "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8537072/iuran-kip-digelapkan-mahasiswi-unair-juga-dipakai-buat-lunasi-pinjol",
+      "snippet": "",
+      "scraped_at": 1782327350.9951005
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Kenaikan BI Rate Bisa Bikin Kelas Menengah Tunda Beli Rumah dan Motor",
+      "url": "https://finance.detik.com/moneter/d-8524943/kenaikan-bi-rate-bisa-bikin-kelas-menengah-tunda-beli-rumah-dan-motor",
+      "snippet": "",
+      "scraped_at": 1782327350.9951005
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Rekening Aktif Pinjol Indonesia Tembus 17 Juta Akun, Jawa Terbanyak",
+      "url": "https://20.detik.com/detikupdate/20230724-230724044/rekening-aktif-pinjol-indonesia-tembus-17-juta-akun-jawa-terbanyak",
+      "snippet": "",
+      "scraped_at": 1782327350.9951005
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Bos LPS: Uang Tumbuh Lebih Cepat dari Literasi Masyarakat",
+      "url": "https://finance.detik.com/moneter/d-8499648/bos-lps-uang-tumbuh-lebih-cepat-dari-literasi-masyarakat",
+      "snippet": "",
+      "scraped_at": 1782327350.9951005
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Ramai Pinjol Ilegal, MUI Haramkan Pinjol Mengandung Riba",
+      "url": "https://finance.detik.com/foto-bisnis/d-5807323/ramai-pinjol-ilegal-mui-haramkan-pinjol-mengandung-riba",
+      "snippet": "",
+      "scraped_at": 1782327350.9951005
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Pemerintah Siapkan Platform biar UMKM Tak Terjerat Pinjol Ilegal",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8498264/pemerintah-siapkan-platform-biar-umkm-tak-terjerat-pinjol-ilegal",
+      "snippet": "",
+      "scraped_at": 1782327350.9951005
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Dolar Menggila, Program 3 Juta Rumah Prabowo Bisa Kena Imbas",
+      "url": "https://www.detik.com/properti/berita/d-8495991/dolar-menggila-program-3-juta-rumah-prabowo-bisa-kena-imbas",
+      "snippet": "",
+      "scraped_at": 1782327350.9951005
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Waspada NIK KTP Bisa Dipakai Pinjol Tanpa Izin, Bagaimana Mengeceknya?",
+      "url": "https://www.detik.com/jatim/berita/d-8478293/waspada-nik-ktp-bisa-dipakai-pinjol-tanpa-izin-bagaimana-mengeceknya",
+      "snippet": "",
+      "scraped_at": 1782327353.4223797
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Jabar Sepekan: Duka di Stasiun Bekasi Timur",
+      "url": "https://www.detik.com/jabar/berita/d-8471512/jabar-sepekan-duka-di-stasiun-bekasi-timur",
+      "snippet": "",
+      "scraped_at": 1782327353.4223797
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Gebrakan Susi Pudjiastuti di BJB : 'Tenggelamkan' Debitur Macet-Incar Pinjol",
+      "url": "https://www.detik.com/jabar/bisnis/d-8471703/gebrakan-susi-pudjiastuti-di-bjb-tenggelamkan-debitur-macet-incar-pinjol",
+      "snippet": "",
+      "scraped_at": 1782327353.4223797
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Kantor Pinjol Ilegal yang Digerebek Polda Jatim Kini Sepi",
+      "url": "https://finance.detik.com/foto-bisnis/d-5778419/kantor-pinjol-ilegal-yang-digerebek-polda-jatim-kini-sepi",
+      "snippet": "",
+      "scraped_at": 1782327353.4223797
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Mengenal Phishing dan 10 Modus Kejahatan Siber yang Marak Terjadi di Indonesia",
+      "url": "https://www.detik.com/sumut/hukum-dan-kriminal/d-8467446/mengenal-phishing-dan-10-modus-kejahatan-siber-yang-marak-terjadi-di-indonesia",
+      "snippet": "",
+      "scraped_at": 1782327353.4223797
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Kiprah Susi Pudjiastuti, Pengusaha Nyentrik yang Kini Jabat Komisaris Utama BJB",
+      "url": "https://www.detik.com/jabar/berita/d-8466348/kiprah-susi-pudjiastuti-pengusaha-nyentrik-yang-kini-jabat-komisaris-utama-bjb",
+      "snippet": "",
+      "scraped_at": 1782327353.4223797
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Indosaku Minta Maaf soal DC Prank Damkar Semarang",
+      "url": "https://www.detik.com/jateng/berita/d-8465905/indosaku-minta-maaf-soal-dc-prank-damkar-semarang",
+      "snippet": "",
+      "scraped_at": 1782327356.0744755
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Heboh DC Prank Damkar di Semarang, Indosaku Minta Maaf dan Pecat Oknum",
+      "url": "https://finance.detik.com/moneter/d-8465761/heboh-dc-prank-damkar-di-semarang-indosaku-minta-maaf-dan-pecat-oknum",
+      "snippet": "",
+      "scraped_at": 1782327356.0744755
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Warga RI Doyan Pakai Paylater, Nilainya Tembus Rp 56 T",
+      "url": "https://finance.detik.com/moneter/d-8465478/warga-ri-doyan-pakai-paylater-nilainya-tembus-rp-56-t",
+      "snippet": "",
+      "scraped_at": 1782327356.0744755
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Operasional Malahayati yang Klaim Selesaikan Masalah Pinjol Disetop",
+      "url": "https://finance.detik.com/moneter/d-8465468/operasional-malahayati-yang-klaim-selesaikan-masalah-pinjol-disetop",
+      "snippet": "",
+      "scraped_at": 1782327356.0744755
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "OJK Panggil Indosaku Usai Heboh DC Pinjol Prank Damkar Semarang",
+      "url": "https://finance.detik.com/moneter/d-8464643/ojk-panggil-indosaku-usai-heboh-dc-pinjol-prank-damkar-semarang",
+      "snippet": "",
+      "scraped_at": 1782327356.0744755
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Jabar Hari Ini: Cinta Segitiga Berdarah di Baleendah Bandung",
+      "url": "https://www.detik.com/jabar/berita/d-8463883/jabar-hari-ini-cinta-segitiga-berdarah-di-baleendah-bandung",
+      "snippet": "",
+      "scraped_at": 1782327356.0744755
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Fakta-fakta Pengakuan DC Pinjol Pelaku Prank Damkar Semarang",
+      "url": "https://www.detik.com/jateng/berita/d-8461399/fakta-fakta-pengakuan-dc-pinjol-pelaku-prank-damkar-semarang",
+      "snippet": "",
+      "scraped_at": 1782327356.0744755
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "DC Prank Damkar Semarang Ngaku Tak Terlibat Laporan Fiktif Ambulans Sleman",
+      "url": "https://www.detik.com/jateng/berita/d-8461320/dc-prank-damkar-semarang-ngaku-tak-terlibat-laporan-fiktif-ambulans-sleman",
+      "snippet": "",
+      "scraped_at": 1782327356.0744755
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "AdaKami Tekankan Pentingnya Kolaborasi Cegah Fraud & Scam Digital",
+      "url": "https://finance.detik.com/fintech/d-8449099/adakami-tekankan-pentingnya-kolaborasi-cegah-fraud-scam-digital",
+      "snippet": "",
+      "scraped_at": 1782327356.0744755
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Mendes Tegaskan Dana Desa Tak Dipotong untuk Kopdes, Hanya...",
+      "url": "https://www.detik.com/bali/bisnis/d-8447922/mendes-tegaskan-dana-desa-tak-dipotong-untuk-kopdes-hanya",
+      "snippet": "",
+      "scraped_at": 1782327356.0744755
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Lebih dari 40 Pinjol Ajukan Keberatan ke PN Jakpus Usai Didenda KPPU",
+      "url": "https://news.detik.com/berita/d-8437767/lebih-dari-40-pinjol-ajukan-keberatan-ke-pn-jakpus-usai-didenda-kppu",
+      "snippet": "",
+      "scraped_at": 1782327357.977934
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Duh! Utang Pinjol Warga RI Tembus Rp 100 Triliun",
+      "url": "https://www.detik.com/jabar/bisnis/d-8433092/duh-utang-pinjol-warga-ri-tembus-rp-100-triliun",
+      "snippet": "",
+      "scraped_at": 1782327357.977934
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Utang Pinjol Warga RI Kian Menggunung, Tembus Rp 100 T",
+      "url": "https://finance.detik.com/moneter/d-8432068/utang-pinjol-warga-ri-kian-menggunung-tembus-rp-100-t",
+      "snippet": "",
+      "scraped_at": 1782327357.977934
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Calon Mahasiswa Tak Dapat KIP Kuliah-Dana Ngepas, Student Loan Jadi Solusi?",
+      "url": "https://www.detik.com/edu/beasiswa/d-8431545/calon-mahasiswa-tak-dapat-kip-kuliah-dana-ngepas-student-loan-jadi-solusi",
+      "snippet": "",
+      "scraped_at": 1782327357.977934
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "OJK Blokir 953 Pinjol Ilegal hingga Maret 2026",
+      "url": "https://finance.detik.com/moneter/d-8431273/ojk-blokir-953-pinjol-ilegal-hingga-maret-2026",
+      "snippet": "",
+      "scraped_at": 1782327357.977934
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Sinopsis Film 'Aku Harus Mati' yang Balihonya Tuai Polemik",
+      "url": "https://www.detik.com/sumut/berita/d-8431054/sinopsis-film-aku-harus-mati-yang-balihonya-tuai-polemik",
+      "snippet": "",
+      "scraped_at": 1782327357.977934
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Utang Pinjol Warga Indonesia Tembus Rp 100 T, Risiko Kredit Macet Meningkat",
+      "url": "https://www.detik.com/kalimantan/bisnis/d-8431148/utang-pinjol-warga-indonesia-tembus-rp-100-t-risiko-kredit-macet-meningkat",
+      "snippet": "",
+      "scraped_at": 1782327357.977934
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Ngeri! Utang Pinjol Warga RI Rp 100 Triliun Per Februari",
+      "url": "https://finance.detik.com/moneter/d-8431075/ngeri-utang-pinjol-warga-ri-rp-100-triliun-per-februari",
+      "snippet": "",
+      "scraped_at": 1782327357.977934
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "KPPU Denda 97 Pinjol Rp 755 M Terkait Bunga, Ekonom Soroti Ini",
+      "url": "https://finance.detik.com/moneter/d-8422934/kppu-denda-97-pinjol-rp-755-m-terkait-bunga-ekonom-soroti-ini",
+      "snippet": "",
+      "scraped_at": 1782327357.977934
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "5 Fakta KDM Soroti Pemadaman Listrik Bergilir",
+      "url": "https://www.detik.com/jabar/bisnis/d-8544209/5-fakta-kdm-soroti-pemadaman-listrik-bergilir",
+      "snippet": "",
+      "scraped_at": 1782327350.9004612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Jabar Hari Ini: Berakhirnya Pelarian Taufik Hidayat",
+      "url": "https://www.detik.com/jabar/berita/d-8544187/jabar-hari-ini-berakhirnya-pelarian-taufik-hidayat",
+      "snippet": "",
+      "scraped_at": 1782327350.9004612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Video: Soal Narasi BPJS Kesehatan Bangkrut dan Gagal Bayar di 2025",
+      "url": "https://20.detik.com/detikupdate/20250211-250211088/video-soal-narasi-bpjs-kesehatan-bangkrut-dan-gagal-bayar-di-2025",
+      "snippet": "",
+      "scraped_at": 1782327350.9004612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "KDM Soroti PLN soal Mati Lampu Bergilir: Industri-UMKM Jadi Korban",
+      "url": "https://www.detik.com/jabar/bisnis/d-8543604/kdm-soroti-pln-soal-mati-lampu-bergilir-industri-umkm-jadi-korban",
+      "snippet": "",
+      "scraped_at": 1782327350.9004612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Duduk Perkara Bos Kresna Life Ditangkap di Maroko Lalu Diekstradisi ke RI",
+      "url": "https://news.detik.com/berita/d-8543047/duduk-perkara-bos-kresna-life-ditangkap-di-maroko-lalu-diekstradisi-ke-ri",
+      "snippet": "",
+      "scraped_at": 1782327350.9004612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Polemik Sekolah Swasta Kerja Sama dengan Pemprov Dipastikan Selesai",
+      "url": "https://www.detik.com/jabar/berita/d-8542417/polemik-sekolah-swasta-kerja-sama-dengan-pemprov-dipastikan-selesai",
+      "snippet": "",
+      "scraped_at": 1782327350.9004612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Penampakan Proyek Rp 1.500 T Malaysia yang Kini Jadi 'Kota Hantu'",
+      "url": "https://www.detik.com/properti/foto-berita/d-6901404/penampakan-proyek-rp-1-500-t-malaysia-yang-kini-jadi-kota-hantu",
+      "snippet": "",
+      "scraped_at": 1782327350.9004612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Polemik Sekolah Swasta Kerja Sama dengan Pemprov Dipastikan Selesai",
+      "url": "https://www.detik.com/jabar/berita/d-8542432/polemik-sekolah-swasta-kerja-sama-dengan-pemprov-dipastikan-selesai",
+      "snippet": "",
+      "scraped_at": 1782327350.9004612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Bos Kresna Life Michael Steven Diekstradisi ke RI, Begini Penampakannya",
+      "url": "https://news.detik.com/berita/d-8541848/bos-kresna-life-michael-steven-diekstradisi-ke-ri-begini-penampakannya",
+      "snippet": "",
+      "scraped_at": 1782327350.9004612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Buron Interpol Bos Kresna Life Michael Steven Ditangkap di Maroko!",
+      "url": "https://news.detik.com/berita/d-8541827/buron-interpol-bos-kresna-life-michael-steven-ditangkap-di-maroko",
+      "snippet": "",
+      "scraped_at": 1782327350.9004612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Deddy Sitorus soal Bestari PSI Mau Kasih Paham: Mau Ajari Jadi Kutu Loncat?",
+      "url": "https://www.detik.com/kalimantan/berita/d-8538008/deddy-sitorus-soal-bestari-psi-mau-kasih-paham-mau-ajari-jadi-kutu-loncat",
+      "snippet": "",
+      "scraped_at": 1782327350.9004612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Bestari PSI Mau Kasih Paham Elite PDIP, Deddy Sitorus: Ajari Jadi Kutu Loncat?",
+      "url": "https://news.detik.com/berita/d-8537912/bestari-psi-mau-kasih-paham-elite-pdip-deddy-sitorus-ajari-jadi-kutu-loncat",
+      "snippet": "",
+      "scraped_at": 1782327353.4583113
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Cerita Jukir Wanita Brebes Nombok 3 Gelas Kopi Saat Gagalkan Pencurian Rp 3,6 M",
+      "url": "https://www.detik.com/jateng/berita/d-8536781/cerita-jukir-wanita-brebes-nombok-3-gelas-kopi-saat-gagalkan-pencurian-rp-3-6-m",
+      "snippet": "",
+      "scraped_at": 1782327353.4583113
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Amerika Serikat Gagal Bayar Hutang? Ini Imbasnya Ke Indonesia",
+      "url": "https://20.detik.com/detik-pagi/20230529-230529081/amerika-serikat-gagal-bayar-hutang-ini-imbasnya-ke-indonesia",
+      "snippet": "",
+      "scraped_at": 1782327353.4583113
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "9 Fakta Korban Tawuran di Sukabumi Tertahan gegara Tagihan di RS",
+      "url": "https://www.detik.com/jabar/hukum-dan-kriminal/d-8536165/9-fakta-korban-tawuran-di-sukabumi-tertahan-gegara-tagihan-di-rs",
+      "snippet": "",
+      "scraped_at": 1782327353.4583113
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Menkop Usul LPS Khusus Koperasi buat Cegah Gagal Bayar",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8536061/menkop-usul-lps-khusus-koperasi-buat-cegah-gagal-bayar",
+      "snippet": "",
+      "scraped_at": 1782327353.4583113
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Rapat Dengan DPR, Menkop Tekankan Poin Penting RUU Perkoperasian",
+      "url": "https://news.detik.com/berita/d-8535796/rapat-dengan-dpr-menkop-tekankan-poin-penting-ruu-perkoperasian",
+      "snippet": "",
+      "scraped_at": 1782327353.4583113
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Penampakan Uang Rp 23 M Milik Tersangka Korupsi Eks Dirut Bank Jambi",
+      "url": "https://www.detik.com/sumbagsel/foto/d-6775060/penampakan-uang-rp-23-m-milik-tersangka-korupsi-eks-dirut-bank-jambi",
+      "snippet": "",
+      "scraped_at": 1782327353.4583113
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Korban Bacok di Sukabumi Tertahan di RS, Biaya Tembus Rp 28 Juta",
+      "url": "https://www.detik.com/jabar/hukum-dan-kriminal/d-8534915/korban-bacok-di-sukabumi-tertahan-di-rs-biaya-tembus-rp-28-juta",
+      "snippet": "",
+      "scraped_at": 1782327353.4583113
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "3 Tersangka Kasus Penggelapan Dana Syariah Indonesia Segera Disidang",
+      "url": "https://news.detik.com/berita/d-8528874/3-tersangka-kasus-penggelapan-dana-syariah-indonesia-segera-disidang",
+      "snippet": "",
+      "scraped_at": 1782327353.4583113
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Mira Hayati Lunasi Denda Rp 1 M di Kasus Skincare, Jaminan SHM Dikembalikan",
+      "url": "https://www.detik.com/sulsel/hukum-dan-kriminal/d-8527298/mira-hayati-lunasi-denda-rp-1-m-di-kasus-skincare-jaminan-shm-dikembalikan",
+      "snippet": "",
+      "scraped_at": 1782327353.4583113
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Fakta-fakta BPJS Tekor Triliunan per Bulan, Terancam Gagal Bayar Tahun Depan",
+      "url": "https://health.detik.com/berita-detikhealth/d-8526917/fakta-fakta-bpjs-tekor-triliunan-per-bulan-terancam-gagal-bayar-tahun-depan",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "BPJS Kesehatan Terancam Gagal Bayar Tahun Depan, Tekor Rp 2 Triliun Tiap Bulan",
+      "url": "https://health.detik.com/berita-detikhealth/d-8525801/bpjs-kesehatan-terancam-gagal-bayar-tahun-depan-tekor-rp-2-triliun-tiap-bulan",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Dirut Ungkap BPJS Kesehatan Defisit Rp 2 T/Bulan, Potensi Gagal Bayar di 2027",
+      "url": "https://news.detik.com/berita/d-8525388/dirut-ungkap-bpjs-kesehatan-defisit-rp-2-t-bulan-potensi-gagal-bayar-di-2027",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Twitter Digugat 6 Perusahaan Perkara Gagal Bayar Tagihan",
+      "url": "https://20.detik.com/detikupdate/20230226-230226093/twitter-digugat-6-perusahaan-perkara-gagal-bayar-tagihan",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "10 Negara yang Pernah Mengalami Krisis Moneter, Indonesia hingga Argentina",
+      "url": "https://www.detik.com/edu/detikpedia/d-8523428/10-negara-yang-pernah-mengalami-krisis-moneter-indonesia-hingga-argentina",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Hampir 300 Sarjana Kedokteran Terancam Gagal Jadi Dokter, Menkes Ungkap Penyebabnya",
+      "url": "https://health.detik.com/berita-detikhealth/d-8523173/hampir-300-sarjana-kedokteran-terancam-gagal-jadi-dokter-menkes-ungkap-penyebabnya",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Ketua F-Golkar MPR Ungkap Obligasi Daerah Bakal Dikawal Lembaga Expert",
+      "url": "https://news.detik.com/berita/d-8523116/ketua-f-golkar-mpr-ungkap-obligasi-daerah-bakal-dikawal-lembaga-expert",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Miris, Warga Sri Lanka Dilarang Sakit Gegara Krisis Obat-obatan",
+      "url": "https://health.detik.com/fotohealth/d-6176532/miris-warga-sri-lanka-dilarang-sakit-gegara-krisis-obat-obatan",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Cara Desa Kaduela Perangi Bank Emok Lewat Sektor Wisata",
+      "url": "https://www.detik.com/jabar/cirebon-raya/d-8517363/cara-desa-kaduela-perangi-bank-emok-lewat-sektor-wisata",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Jabar Hari Ini: Aksi Tipu-tipu Titik Dapur MBG di Cianjur",
+      "url": "https://www.detik.com/jabar/berita/d-8518130/jabar-hari-ini-aksi-tipu-tipu-titik-dapur-mbg-di-cianjur",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Netanyahu Bilang Israel Akan Lenyapkan 'Rezim Teror' Iran",
+      "url": "https://news.detik.com/internasional/d-8516148/netanyahu-bilang-israel-akan-lenyapkan-rezim-teror-iran",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Ulah Bos Hanania Pakai Duit Jemaah Bayar Influencer Promosi Umrah",
+      "url": "https://news.detik.com/berita/d-8515234/ulah-bos-hanania-pakai-duit-jemaah-bayar-influencer-promosi-umrah",
+      "snippet": "",
+      "scraped_at": 1782327356.078802
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Terungkap Jejak Berpindah-pindah Owner WO Marwah yang Kini Tersangka",
+      "url": "https://news.detik.com/berita/d-8512728/terungkap-jejak-berpindah-pindah-owner-wo-marwah-yang-kini-tersangka",
+      "snippet": "",
+      "scraped_at": 1782327358.0021362
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Jejak Kasus Dugaan Penipuan WO di Jaktim hingga Owner Ditangkap",
+      "url": "https://news.detik.com/berita/d-8511759/jejak-kasus-dugaan-penipuan-wo-di-jaktim-hingga-owner-ditangkap",
+      "snippet": "",
+      "scraped_at": 1782327358.0021362
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Jaga Keseimbangan Koperasi Merah Putih: Disiplin Usaha & Misi Koperasi",
+      "url": "https://news.detik.com/kolom/d-8510013/jaga-keseimbangan-koperasi-merah-putih-disiplin-usaha-misi-koperasi",
+      "snippet": "",
+      "scraped_at": 1782327358.0021362
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Cicip 3 Salt Bread Populer di Bekasi, Ada yang Antre 40 Menit!",
+      "url": "https://food.detik.com/tempat-makan/d-8509712/cicip-3-salt-bread-populer-di-bekasi-ada-yang-antre-40-menit",
+      "snippet": "",
+      "scraped_at": 1782327358.0021362
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "5 Tips Simpan Banyak Foto & Video Saat Liburan Tanpa Bikin Memori Penuh",
+      "url": "https://travel.detik.com/travel-news/d-8507968/5-tips-simpan-banyak-foto-video-saat-liburan-tanpa-bikin-memori-penuh",
+      "snippet": "",
+      "scraped_at": 1782327358.0021362
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Potret Warga Sri Lanka Bergelantungan di Kereta Gegara Krisis Ekonomi",
+      "url": "https://finance.detik.com/foto-bisnis/d-6166742/potret-warga-sri-lanka-bergelantungan-di-kereta-gegara-krisis-ekonomi",
+      "snippet": "",
+      "scraped_at": 1782327358.0021362
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Mudah dan Praktis, Simak Cara Bayar QRIS Lewat DANA",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8506019/mudah-dan-praktis-simak-cara-bayar-qris-lewat-dana",
+      "snippet": "",
+      "scraped_at": 1782327358.0021362
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "4 Fakta Gadis-gadis Hendak Dikirim ke China, Ada yang Masih Usia 15 Tahun",
+      "url": "https://www.detik.com/kalimantan/hukum-dan-kriminal/d-8505146/4-fakta-gadis-gadis-hendak-dikirim-ke-china-ada-yang-masih-usia-15-tahun",
+      "snippet": "",
+      "scraped_at": 1782327358.0021362
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Sampah: Masalah atau Komoditas?",
+      "url": "https://news.detik.com/kolom/d-8504756/sampah-masalah-atau-komoditas",
+      "snippet": "",
+      "scraped_at": 1782327358.0021362
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Pinkan Mambo Buka Les Vokal, Biayanya Jadi Perdebatan",
+      "url": "https://www.detik.com/pop/music/d-8541163/pinkan-mambo-buka-les-vokal-biayanya-jadi-perdebatan",
+      "snippet": "",
+      "scraped_at": 1782327350.9772232
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Daftar PTN yang Masih Buka Jalur Mandiri hingga Akhir Juni 2026, Cek!",
+      "url": "https://www.detik.com/edu/seleksi-masuk-pt/d-8535480/daftar-ptn-yang-masih-buka-jalur-mandiri-hingga-akhir-juni-2026-cek",
+      "snippet": "",
+      "scraped_at": 1782327350.9772232
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Penyebab Bansos PKH BPNT 2026 Belum Cair, Apa Saja?",
+      "url": "https://www.detik.com/sumbagsel/berita/d-8530225/penyebab-bansos-pkh-bpnt-2026-belum-cair-apa-saja",
+      "snippet": "",
+      "scraped_at": 1782327350.9772232
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Cara Membersihkan Skor Kredit SLIK OJK agar Bisa KPR Lagi",
+      "url": "https://www.detik.com/properti/tips-dan-panduan/d-8530687/cara-membersihkan-skor-kredit-slik-ojk-agar-bisa-kpr-lagi",
+      "snippet": "",
+      "scraped_at": 1782327350.9772232
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Mau Beli Motor Listrik MBG? Begini Cara Pesannya",
+      "url": "https://oto.detik.com/motor/d-8525994/mau-beli-motor-listrik-mbg-begini-cara-pesannya",
+      "snippet": "",
+      "scraped_at": 1782327350.9772232
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "MUF Gelar Pameran Otomotif Online",
+      "url": "https://oto.detik.com/oto-galeri/d-5094339/muf-gelar-pameran-otomotif-online",
+      "snippet": "",
+      "scraped_at": 1782327350.9772232
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Lazada 6.6 Super WOW Sale: Solusi Belanja Cerdas untuk Pertengahan Tahun",
+      "url": "https://inet.detik.com/cyberlife/d-8519640/lazada-6-6-super-wow-sale-solusi-belanja-cerdas-untuk-pertengahan-tahun",
+      "snippet": "",
+      "scraped_at": 1782327350.9772232
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "In This Economy, Trend Cicilan 6 Bulan di Lazada Makin Meningkat",
+      "url": "https://inet.detik.com/business/d-8518061/in-this-economy-trend-cicilan-6-bulan-di-lazada-makin-meningkat",
+      "snippet": "",
+      "scraped_at": 1782327350.9772232
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Samsung Buka-bukaan Dampak Krisis RAM dan Chipset",
+      "url": "https://inet.detik.com/business/d-8518036/samsung-buka-bukaan-dampak-krisis-ram-dan-chipset",
+      "snippet": "",
+      "scraped_at": 1782327353.4193783
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Kisah Perjuangan Eka dan Warda Bangun Usaha dengan Pinjaman Modal BRI",
+      "url": "https://news.detik.com/berita/d-8511668/kisah-perjuangan-eka-dan-warda-bangun-usaha-dengan-pinjaman-modal-bri",
+      "snippet": "",
+      "scraped_at": 1782327353.4193783
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Ojol hingga Pekerja Informal Makin Mudah Punya Rumah, Ada Kuota Khusus KPR",
+      "url": "https://www.detik.com/properti/berita/d-8500371/ojol-hingga-pekerja-informal-makin-mudah-punya-rumah-ada-kuota-khusus-kpr",
+      "snippet": "",
+      "scraped_at": 1782327353.4193783
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Cara Cek NIK Dipakai Pinjol Ilegal, Jangan Sampai Telat Tahu!",
+      "url": "https://www.detik.com/jatim/berita/d-8499538/cara-cek-nik-dipakai-pinjol-ilegal-jangan-sampai-telat-tahu",
+      "snippet": "",
+      "scraped_at": 1782327353.4193783
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Nubia Neo 5 5G & GT Resmi di RI, Ini Spesifikasi dan Harganya",
+      "url": "https://inet.detik.com/consumer/d-8493014/nubia-neo-5-5g-gt-resmi-di-ri-ini-spesifikasi-dan-harganya",
+      "snippet": "",
+      "scraped_at": 1782327353.4193783
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Aneka Promo Liburan di Hybrid Korea Travel Fair 2026, Cashbacknya Jutaan!",
+      "url": "https://travel.detik.com/travel-news/d-8490557/aneka-promo-liburan-di-hybrid-korea-travel-fair-2026-cashbacknya-jutaan",
+      "snippet": "",
+      "scraped_at": 1782327353.4193783
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Gen Z, Pinjaman Daring, dan Alarm Baru Literasi Keuangan Kita",
+      "url": "https://finance.detik.com/perencanaan-keuangan/d-8490176/gen-z-pinjaman-daring-dan-alarm-baru-literasi-keuangan-kita",
+      "snippet": "",
+      "scraped_at": 1782327353.4193783
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Annyeong! Korea Hybrid Travel Fair Hadir, Tiket ke Korea Mulai Rp 2 Jutaan",
+      "url": "https://travel.detik.com/travel-news/d-8490153/annyeong-korea-hybrid-travel-fair-hadir-tiket-ke-korea-mulai-rp-2-jutaan",
+      "snippet": "",
+      "scraped_at": 1782327353.4193783
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Sederet Tips agar Pengajuan KPR Rumah Disetujui",
+      "url": "https://www.detik.com/jabar/berita/d-8482822/sederet-tips-agar-pengajuan-kpr-rumah-disetujui",
+      "snippet": "",
+      "scraped_at": 1782327356.1536722
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "KPR Ditolak Bank? Ternyata Ini Penyebab yang Paling Sering Terjadi",
+      "url": "https://www.detik.com/properti/tips-dan-panduan/d-8482359/kpr-ditolak-bank-ternyata-ini-penyebab-yang-paling-sering-terjadi",
+      "snippet": "",
+      "scraped_at": 1782327356.1536722
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Apa Itu BI Checking dan Apakah Sama dengan Slik OJK? Ini Cara Cek-Fungsinya",
+      "url": "https://www.detik.com/jogja/bisnis/d-8478177/apa-itu-bi-checking-dan-apakah-sama-dengan-slik-ojk-ini-cara-cek-fungsinya",
+      "snippet": "",
+      "scraped_at": 1782327356.1536722
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Huawei Rilis WiFi Mesh X3 Pro di Indonesia, Router Mewah Wi-Fi 7",
+      "url": "https://inet.detik.com/consumer/d-8469108/huawei-rilis-wifi-mesh-x3-pro-di-indonesia-router-mewah-wi-fi-7",
+      "snippet": "",
+      "scraped_at": 1782327356.1536722
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "OPPO Buka Early Pre-order Find X9 Ultra, Ada Benefit hingga Rp 9 Juta",
+      "url": "https://inet.detik.com/consumer/d-8464008/oppo-buka-early-pre-order-find-x9-ultra-ada-benefit-hingga-rp-9-juta",
+      "snippet": "",
+      "scraped_at": 1782327356.1536722
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Realme C100 Series Segera Rilis di RI, Desain Blooming & Baterai Jumbo",
+      "url": "https://inet.detik.com/consumer/d-8458485/realme-c100-series-segera-rilis-di-ri-desain-blooming-baterai-jumbo",
+      "snippet": "",
+      "scraped_at": 1782327356.1536722
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Jaringan The Doctor Samarkan Transaksi Narkoba Lewat 'Amal' dan 'DP Mobil'",
+      "url": "https://news.detik.com/berita/d-8450224/jaringan-the-doctor-samarkan-transaksi-narkoba-lewat-amal-dan-dp-mobil",
+      "snippet": "",
+      "scraped_at": 1782327358.092739
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Terungkap! Harga Infinix Note 60 Ultra di RI Tembus Rp 11 Juta",
+      "url": "https://inet.detik.com/consumer/d-8448055/terungkap-harga-infinix-note-60-ultra-di-ri-tembus-rp-11-juta",
+      "snippet": "",
+      "scraped_at": 1782327358.092739
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Nunggak Kredit Rp 1 Juta ke Bawah Bisa Ajukan KPR, Ini Penjelasannya",
+      "url": "https://www.detik.com/properti/berita/d-8444541/nunggak-kredit-rp-1-juta-ke-bawah-bisa-ajukan-kpr-ini-penjelasannya",
+      "snippet": "",
+      "scraped_at": 1782327358.092739
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Segini Harga Robot 'Blonde' Pabrikan Chery, Bisa Ngapain Aja?",
+      "url": "https://www.detik.com/jabar/berita/d-8443701/segini-harga-robot-blonde-pabrikan-chery-bisa-ngapain-aja",
+      "snippet": "",
+      "scraped_at": 1782327358.092739
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Robot Manusia Buatan Chery Mulai Dijual, Segini Harganya",
+      "url": "https://oto.detik.com/berita/d-8443619/robot-manusia-buatan-chery-mulai-dijual-segini-harganya",
+      "snippet": "",
+      "scraped_at": 1782327358.092739
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Cara Klaim JHT BPJS Ketenagakerjaan di Lapak Asik Lengkap Syarat-Dokumennya",
+      "url": "https://www.detik.com/jogja/bisnis/d-8435942/cara-klaim-jht-bpjs-ketenagakerjaan-di-lapak-asik-lengkap-syarat-dokumennya",
+      "snippet": "",
+      "scraped_at": 1782327358.092739
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Kantor Pajak Buka Hari Sabtu dan Minggu atau Tidak? Cek Batas Lapor SPT 2026!",
+      "url": "https://www.detik.com/jateng/bisnis/d-8417812/kantor-pajak-buka-hari-sabtu-dan-minggu-atau-tidak-cek-batas-lapor-spt-2026",
+      "snippet": "",
+      "scraped_at": 1782327358.092739
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Gen Z Susah Beli Rumah, Orang Tua Sampai Turun Bayarin Cicilan KPR",
+      "url": "https://www.detik.com/jabar/berita/d-8414678/gen-z-susah-beli-rumah-orang-tua-sampai-turun-bayarin-cicilan-kpr",
+      "snippet": "",
+      "scraped_at": 1782327358.092739
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Galaxy Buds4 Series Tawarkan Desain Nyaman dan Galaxy AI",
+      "url": "https://inet.detik.com/consumer/d-8410997/galaxy-buds4-series-tawarkan-desain-nyaman-dan-galaxy-ai",
+      "snippet": "",
+      "scraped_at": 1782327358.092739
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "10 Side Hustle Kekinian Gen Z dari Rumah, Ubah Hobi Jadi Cuan Tambahan",
+      "url": "https://www.detik.com/jabar/berita/d-8452638/10-side-hustle-kekinian-gen-z-dari-rumah-ubah-hobi-jadi-cuan-tambahan",
+      "snippet": "",
+      "scraped_at": 1782327350.890172
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Tips Menabung Haji untuk Gen Z Lengkap dengan Syarat dan Alur Pendaftaran",
+      "url": "https://www.detik.com/hikmah/haji-dan-umrah/d-8321711/tips-menabung-haji-untuk-gen-z-lengkap-dengan-syarat-dan-alur-pendaftaran",
+      "snippet": "",
+      "scraped_at": 1782327350.890172
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Tips Menabung untuk Liburan Ala Gen Z",
+      "url": "https://www.detik.com/sumut/berita/d-8305451/tips-menabung-untuk-liburan-ala-gen-z",
+      "snippet": "",
+      "scraped_at": 1782327350.890172
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Perhatian Gen Z, Ini Cara Ampuh Menghindari Penipuan Saat Transaksi Digital",
+      "url": "https://inet.detik.com/security/d-8231535/perhatian-gen-z-ini-cara-ampuh-menghindari-penipuan-saat-transaksi-digital",
+      "snippet": "",
+      "scraped_at": 1782327350.890172
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Tips Bikin Perencanaan Keuangan Setelah Gajian, Biar Nggak Cepat Habis!",
+      "url": "https://www.detik.com/jatim/berita/d-8185914/tips-bikin-perencanaan-keuangan-setelah-gajian-biar-nggak-cepat-habis",
+      "snippet": "",
+      "scraped_at": 1782327350.890172
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "MR.D.I.Y. Ajak Generasi Muda Belanja Cerdas dan Kelola Keuangan Sehat",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8184106/mr-d-i-y-ajak-generasi-muda-belanja-cerdas-dan-kelola-keuangan-sehat",
+      "snippet": "",
+      "scraped_at": 1782327350.890172
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "30 Ide Bisnis Rumahan 2025 yang Cocok untuk Ibu Rumah Tangga",
+      "url": "https://www.detik.com/kalimantan/bisnis/d-8094704/30-ide-bisnis-rumahan-2025-yang-cocok-untuk-ibu-rumah-tangga",
+      "snippet": "",
+      "scraped_at": 1782327350.890172
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Gen Z-Milenial Simak! Ini Tips Biar Gaji Kamu Nggak Numpang Lewat",
+      "url": "https://finance.detik.com/perencanaan-keuangan/d-8031657/gen-z-milenial-simak-ini-tips-biar-gaji-kamu-nggak-numpang-lewat",
+      "snippet": "",
+      "scraped_at": 1782327350.890172
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "RM Padang di Jakarta Ini Punya Segmen Umur Pelanggan",
+      "url": "https://food.detik.com/info-kuliner/d-7937181/rm-padang-di-jakarta-ini-punya-segmen-umur-pelanggan",
+      "snippet": "",
+      "scraped_at": 1782327350.890172
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Kisah Alumni LPDP Jadi Peneliti Career Development, Beri Tips Cari Kerja buat Gen Z",
+      "url": "https://www.detik.com/edu/edutainment/d-7926770/kisah-alumni-lpdp-jadi-peneliti-career-development-beri-tips-cari-kerja-buat-gen-z",
+      "snippet": "",
+      "scraped_at": 1782327350.890172
+    }
+  ]
+}

@@ -24,7 +24,7 @@ from datetime import datetime
 # VERSION
 # =================================================================
 MODEL_VERSION = "rule-based-v1"
-DISCLAIMER = "Demo Prototype — Skor berbasis rule-based dari insight data 349K ulasan Google Play. Model ML asli menyusul."
+DISCLAIMER = "Demo Prototype — Skor berbasis rule-based dari insight data 602K multi-source (Play + OJK + Forum + Blog + YouTube + Threads + Trends). Model ML asli menyusul."
 
 
 # =================================================================
@@ -727,7 +727,7 @@ SYNONYMS = {
     "ilegal_act": ["ilegal", "melanggar", "ancam", "intimidasi", "teror", "kekerasan", "sebar data"],
     "negosiasi": ["nego", "negosiasi", "tawar", "keringanan", "restrukturisasi", "restruk"],
     "premium": ["premium", "berbayar", "pro", "upgrade", "paket"],
-    "data": ["data", "informasi", "dataset", "349", "349000", "sumber"],
+    "data": ["data", "informasi", "dataset", "602", "602000", "sumber", "multi source"],
     "recovery": ["recovery", "pemulihan", "keluar", "selesaikan", "lunas", "bebas", "sembuh"],
     "selfreward": ["self reward", "reward", "hadiah", "gift", "traktir", "self care"],
     "konseling": ["konseling", "konsultan", "psikolog", "temen curhat", "curhat", "cerita"],
@@ -1073,7 +1073,7 @@ FAQ_KB = [
         "module": "M7_app_rec",
         "keywords": ["cara", "pakai", "website", "web", "app", "pakai", "penggunaan", "panduan", "tutorial"],
         "patterns": ["cara pakai web", "cara pakai galbay", "tutorial"],
-        "answer": "**Cara pakai Galbay Predictor**:\n\n1. **Ringkasan** → Lihat insight umum dari 349K review Gen Z\n2. **Analisis** → Confusion matrix, sentiment breakdown, app comparison\n3. **Solusi** → 4 modul recovery: Pahami → Hitung → Aksi → Pulih\n4. **Produk** → Skor Risiko, Pinjol Checker, Debt Planner, Recovery Roadmap, Simulasi Cicilan\n5. **Kesimpulan** → Key findings + rekomendasi\n\nCukup **login** (gratis) untuk akses semua fitur. Premium untuk unlimited AI Coach + advanced analytics.",
+        "answer": "**Cara pakai Galbay Predictor**:\n\n1. **Ringkasan** → Lihat insight umum dari 602K data multi-source (Play + OJK + Forum + Blog + YouTube + Threads + Trends)\n2. **Analisis** → Confusion matrix, sentiment breakdown, app comparison, multi-source distribution\n3. **Solusi** → Business Model Canvas dari 9 blok data-driven\n4. **Produk** → Skor Risiko, Pinjol Checker, Debt Planner, Recovery Roadmap, Simulasi Cicilan\n5. **Kesimpulan** → Key findings + rekomendasi\n\nCukup **login** (gratis) untuk akses semua fitur. Premium untuk unlimited AI Coach + advanced analytics.",
         "suggestions": ["Cek skor", "Pinjol Checker", "Recovery Roadmap"],
         "related_actions": [
             {"label": "Mulai", "href": "/dashboard/ringkasan"},
@@ -1082,9 +1082,9 @@ FAQ_KB = [
     {
         "intent": "data_sumber",
         "module": "M7_app_rec",
-        "keywords": ["data", "sumber", "349", "ribu", "ulasan", "review", "dataset", "asal"],
+        "keywords": ["data", "sumber", "602", "ribu", "ulasan", "review", "dataset", "asal", "multi", "source"],
         "patterns": ["data dari mana", "sumber data", "dataset"],
-        "answer": "**Dataset Galbay Predictor**:\n\n- **Sumber**: Google Play Store reviews\n- **Volume**: 349.200 review (44 app finansial Gen Z)\n- **Periode**: 2019-2025\n- **Relevan**: 35.968 review (10.3% — setelah filter keyword galbay/pinjol/dc)\n- **Insight**: distribusi skor, pola galbay, app ranking, sentiment\n\n**Bukan data primer**: ini *analisis sekunder* dari review publik Google Play. Tidak merepresentasikan semua pengguna Indonesia.\n\nLihat detail metodologi di **[Kesimpulan](/dashboard/kesimpulan)**.",
+        "answer": "**Dataset Galbay Predictor (7 source multi-source, 602K total)**:\n\n- **Google Play Store**: 599.000 review (53 app finansial Gen Z, 11 kategori)\n- **OJK + media**: 460 artikel (regulator & narasi pasar)\n- **Forum Kaskus**: 244 threads (komunitas diskusi utang)\n- **Blog Indonesia**: 1.056 posts (Medium, Hipwee, Kumparan, dll)\n- **YouTube (yt-dlp)**: 283 video + 1.331 komentar\n- **Threads (Meta)**: 231 posts (bahasa natural Gen Z)\n- **Google Trends**: 786 records time-series 5 tahun (minat pencarian publik)\n- **Periode**: 2015-2026 (11 tahun)\n- **Relevan**: 58.120 review (9,7% — setelah filter 65+ keyword galbay)\n- **Distress signal**: 13.827 review (23,8% dari relevan) → basis B2C user potensial\n\n**Bukan data primer**: ini *analisis sekunder* dari data publik. Tidak merepresentasikan semua pengguna Indonesia.\n\nLihat detail metodologi di **[Kesimpulan](/dashboard/kesimpulan)**.",
         "suggestions": ["AI atau rule-based?", "Premium dapat apa?", "Cara pakai"],
         "related_actions": [
             {"label": "Lihat Kesimpulan", "href": "/dashboard/kesimpulan"},
@@ -1501,4 +1501,523 @@ def chat_faq_handler(
         "name_prefix": name_prefix,
         "model_version": CHATBOT_MODEL_VERSION,
         "disclaimer": CHATBOT_DISCLAIMER,
+    }
+
+
+# =================================================================
+# TOOLS: DC Chat Simulator
+# =================================================================
+DC_SCENARIOS: list[dict] = [
+    {
+        "id": "agresif_tekan",
+        "title": "DC Tekanan Agresif",
+        "difficulty": "Mudah",
+        "description": "DC nelpon teriak-teriak, minta bayar hari ini juga.",
+        "dc_message": "Pak/Bu, ini dari [nama pinjol]. Saya sudah tunggu 2 minggu. Bayar SEKARANG juga! Kalau tidak, saya sebar data Anda ke semua kontak. Teman, keluarga, semua tau Anda penipu!",
+        "tone": "agresif",
+        "key_points": [
+            "Tetap tenang, jangan emosional",
+            "Akui ada tanggungan tanpa janji bayar",
+            "Minta bukti identitas & tagihan resmi",
+            "Tawarkan negosiasi restrukturisasi, bukan penolakan",
+        ],
+        "good_responses": [
+            "Pak, saya terima teleponnya. Saya memang punya tanggungan. Tapi sebelum lanjut, bisa kirimkan surat tagihan resmi & nama lengkap Bapak?",
+            "Saya mau selesaikan ini. Tapi saya tidak bisa bayar penuh sekarang. Apakah ada opsi restrukturisasi atau cicilan yang bisa kita bicarakan?",
+            "Saya mengerti situasinya. Saya butuh waktu 7 hari. Bisa kita bikin jadwal pembayaran yang realistis?",
+        ],
+        "bad_responses": [
+            "Saya tidak akan bayar! Lo jangan ganggu keluarga saya!",
+            "OK saya bayar sekarang berapa?",
+            "Lo penipu, saya akan lapor polisi!",
+        ],
+        "evaluation_criteria": {
+            "calm": "Apakah Anda tetap tenang & profesional?",
+            "verify": "Apakah Anda minta bukti identitas/tagihan?",
+            "negotiate": "Apakah Anda tawarkan solusi (bukan sekadar tolak/bayar)?",
+            "no_threat": "Apakah Anda tidak mengancam balik?",
+        },
+    },
+    {
+        "id": "sebar_data",
+        "title": "DC Ancam Sebar Data",
+        "difficulty": "Sedang",
+        "description": "DC ancam akan sebar foto/kontak Anda ke semua orang.",
+        "dc_message": "Pak, saya sudah kasih waktu 3 hari. Kalau hari ini tidak transfer, saya akan kirim foto selfie + tagihan Anda ke semua kontak WhatsApp. Teman kerja, pacar, ortu, semua akan tau Anda gagal bayar!",
+        "tone": "intimidasi",
+        "key_points": [
+            "Jangan transfer di bawah tekanan (ini ilegal)",
+            "Dokumentasikan ancaman (screenshot)",
+            "Lapor ke OJK + Kominfo + polisi (cyber crime)",
+            "Tegaskan hak atas data pribadi (UU PDP)",
+        ],
+        "good_responses": [
+            "Pak, ancaman sebar data pribadi itu melanggar UU PDP No. 27/2022. Saya akan dokumentasikan chat ini dan laporkan ke OJK + Kominfo. Mari kita bicarakan solusi yang legal.",
+            "Saya tidak akan membayar di bawah tekanan ancaman. Saya berhak atas data pribadi saya. Apakah ada solusi restrukturisasi yang bisa kita bicarakan?",
+            "Pak, mohon kirim nama lengkap, perusahaan, dan surat penagihan resmi. Saya akan proses sesuai prosedur yang benar.",
+        ],
+        "bad_responses": [
+            "OK saya transfer sekarang, jangan sebar!",
+            "Saya tidak peduli, sebar saja!",
+            "Saya akan bunuh diri kalau ini diteruskan.",
+        ],
+        "evaluation_criteria": {
+            "calm": "Apakah Anda tetap tenang tanpa panik?",
+            "legal": "Apakah Anda tahu hak hukum (UU PDP) & ancam lapor?",
+            "document": "Apakah Anda dokumentasikan ancaman?",
+            "no_payment": "Apakah Anda TIDAK membayar di bawah tekanan?",
+        },
+    },
+    {
+        "id": "konsolidasi",
+        "title": "DC Mau Tahu Posisi",
+        "difficulty": "Mudah",
+        "description": "DC nelpon sopan, tanya kemampuan bayar & tawarkan solusi.",
+        "dc_message": "Selamat pagi, saya Adi dari [nama pinjol]. Saya ditugaskan follow up tagihan Anda sebesar Rp 2.500.000 yang sudah jatuh tempo 30 hari. Bisa ceritakan posisi keuangan Anda saat ini?",
+        "tone": "profesional",
+        "key_points": [
+            "Jujur tentang kondisi keuangan",
+            "Sebutkan nominal yang realistis bisa dibayar",
+            "Minta opsi restrukturisasi (cicilan, penundaan)",
+            "Konfirmasi kesepakatan via email/surat",
+        ],
+        "good_responses": [
+            "Pak Adi, terima kasih sudah menghubungi dengan sopan. Saat ini saya bisa cicil Rp 300.000/bulan. Apakah ada opsi yang sesuai?",
+            "Posisi saya saat ini, income 4 juta, tanggungan 3. Saya tidak bisa bayar penuh. Bisa kita jadwalkan pembayaran parsial?",
+            "Pak, saya jujur. Saya punya 3 tagihan lain juga. Bisa bantu konsolidasi atau restrukturisasi?",
+        ],
+        "bad_responses": [
+            "Saya tidak mau bayar sama sekali!",
+            "Pokoknya saya tidak bisa, bye!",
+            "Lo ngapain nelpon, saya sibuk!",
+        ],
+        "evaluation_criteria": {
+            "honest": "Apakah Anda jujur tentang kemampuan bayar?",
+            "realistic": "Apakah nominal yang Anda tawarkan realistis?",
+            "negotiate": "Apakah Anda minta opsi (restrukturisasi/cicilan)?",
+            "polite": "Apakah Anda tetap sopan & profesional?",
+        },
+    },
+    {
+        "id": "emergency_kritis",
+        "title": "DC di Masa Kritis",
+        "difficulty": "Sulit",
+        "description": "Anda benar-benar tidak punya uang. DC minta nominal realistis.",
+        "dc_message": "Pak, saya tahu situasinya sulit. Tapi ini sudah 60 hari. Saya perlu tahu, kalau saya tawarkan keringanan 30%, Anda bisa bayar berapa? Kapan?",
+        "tone": "negosiator",
+        "key_points": [
+            "Bersikap kooperatif, bukan defensif",
+            "Kasih angka terkecil yang benar-benar mampu",
+            "Minta keringanan bunga + admin",
+            "Konfirmasi tanggal bayar yang PASTI",
+        ],
+        "good_responses": [
+            "Pak, kalau dikeringankan 30%, saya bisa bayar Rp 500.000 dalam 14 hari. Apakah itu cukup?",
+            "Saya jujur, maksimal saya bisa Rp 300.000 bulan ini. Bisa kita bikin jadwal bertahap?",
+            "Terima kasih keringanannya. Saya bayar Rp 700.000 akhir bulan. Bisa dibuatkan surat perjanjian?",
+        ],
+        "bad_responses": [
+            "Saya beneran ga punya uang sama sekali.",
+            "Pokoknya saya ga bisa, suka-suka lo deh.",
+            "Saya tidak mau janji, kita lihat nanti aja.",
+        ],
+        "evaluation_criteria": {
+            "cooperative": "Apakah Anda kooperatif (bukan defensif)?",
+            "specific": "Apakah Anda kasih angka & tanggal SPESIFIK?",
+            "acknowledge": "Apakah Anda acknowledge keringanan yang ditawarkan?",
+            "realistic": "Apakah Anda tidak over-promise?",
+        },
+    },
+]
+
+
+def evaluate_dc_response(scenario: dict, user_response: str) -> dict:
+    """Evaluate user response ke DC scenario.
+
+    Scoring: 0-100 (4 criteria × 25 pts each).
+    """
+    text = user_response.lower().strip()
+    if not text or len(text) < 10:
+        return {
+            "score": 0,
+            "feedback": "Response terlalu pendek. Coba lebih detail & profesional.",
+            "criteria_scores": {
+                "length": 0,
+            },
+            "matched_keywords": [],
+        }
+
+    criteria = scenario.get("evaluation_criteria", {})
+    scores: dict[str, int] = {}
+    feedback_parts: list[str] = []
+
+    # Check calm/cool (no all-caps screaming, no profanity)
+    is_calm = (
+        not any(w in text.upper() * 3 for w in text.split() if len(w) > 3)
+        and not any(p in text for p in ["babi", "anjir banget", "bodoh", "tolol"])
+    )
+    if "calm" in criteria:
+        scores["calm"] = 25 if is_calm else 10
+        if not is_calm:
+            feedback_parts.append("⚠️ Tetap tenang — DC sering provoke emosi. Jangan teriak balik.")
+
+    # Check legal/verify (mention of identity, UU, OJK, Kominfo, etc.)
+    has_legal = any(kw in text for kw in [
+        "identitas", "kartu pengenal", "ktp", "kartu nama",
+        "uu pdp", "uu ite", "ojk", "kominfo", "polisi", "polisi cyber",
+        "bukti", "tagihan resmi", "surat",
+    ])
+    if "verify" in criteria or "legal" in criteria:
+        key = "verify" if "verify" in criteria else "legal"
+        scores[key] = 25 if has_legal else 5
+        if not has_legal:
+            feedback_parts.append("📋 Selalu minta bukti identitas & surat tagihan resmi. DC ilegal sering tanpa dokumen.")
+
+    # Check negotiation (mention of restrukturisasi, cicilan, keringanan, jadwal)
+    has_negotiate = any(kw in text for kw in [
+        "restrukturisasi", "cicil", "cicilan", "keringanan", "jadwal",
+        "bayar sebagian", "parsial", "分期", "bertahap", "30%", "50%",
+        "restruk", "diskon",
+    ])
+    if "negotiate" in criteria or "cooperative" in criteria:
+        key = "negotiate" if "negotiate" in criteria else "cooperative"
+        scores[key] = 25 if has_negotiate else 8
+        if not has_negotiate:
+            feedback_parts.append("🤝 Tawarkan solusi konkret (restrukturisasi, cicilan, keringanan), bukan sekadar tolak atau iya.")
+
+    # Check document (mention of screenshot, dokumentasi, save, rekam)
+    has_doc = any(kw in text for kw in [
+        "screenshot", "dokumentasi", "rekam", "bukti chat", "simpan",
+        "record", "saya rekam",
+    ])
+    if "document" in criteria:
+        scores["document"] = 25 if has_doc else 8
+        if not has_doc:
+            feedback_parts.append("📸 Dokumentasikan ancaman (screenshot) untuk bukti pelaporan.")
+
+    # Check no payment under threat
+    has_no_pay = not any(kw in text for kw in [
+        "ok saya transfer", "ok saya bayar", "siap transfer", "transfer sekarang",
+        "bayar sekarang juga",
+    ])
+    if "no_payment" in criteria:
+        scores["no_payment"] = 25 if has_no_pay else 0
+        if not has_no_pay:
+            feedback_parts.append("🚨 Jangan bayar di bawah ancaman! Itu ilegal. Anda punya hak untuk negosiasi fair.")
+
+    # Check honest / specific (mention of angka/income)
+    has_specific = bool(re.search(r"\d+\s*(juta|ribu|rb|jt|k|%)", text)) or any(
+        kw in text for kw in ["bulan ini", "akhir bulan", "tanggal", "minggu", "hari"]
+    )
+    if "honest" in criteria or "specific" in criteria:
+        key = "honest" if "honest" in criteria else "specific"
+        scores[key] = 25 if has_specific else 8
+        if not has_specific:
+            feedback_parts.append("🎯 Kasih angka & tanggal SPESIFIK (misal: 'Rp 300.000 tanggal 25'). Jangan vague.")
+
+    # Polite check (mention of terima kasih, pak/bu, mohon)
+    has_polite = any(kw in text for kw in [
+        "pak", "bu", "mas", "mba", "terima kasih", "mohon", "maaf",
+        "silakan", "tolong",
+    ])
+    if "polite" in criteria:
+        scores["polite"] = 25 if has_polite else 8
+        if not has_polite:
+            feedback_parts.append("🙏 Tetap sopan. Pakai 'Pak/Bu', 'terima kasih', 'mohon' — DC lebih terbuka jika Anda sopan.")
+
+    # No threat back
+    no_threat_back = not any(kw in text for kw in [
+        "saya akan bunuh", "saya lapor polisi", "saya sebar", "saya hajar",
+    ])
+    if "no_threat" in criteria:
+        scores["no_threat"] = 25 if no_threat_back else 0
+        if not no_threat_back:
+            feedback_parts.append("⚠️ Jangan mengancam balik. Fokus pada solusi, bukan emosional.")
+
+    # Check acknowledge (mentions keringanan / diskon / potong)
+    has_ack = any(kw in text for kw in [
+        "keringanan", "diskon", "potong", "thank you for", "terima kasih untuk",
+        "saya hargai", "saya appreciate",
+    ])
+    if "acknowledge" in criteria:
+        scores["acknowledge"] = 25 if has_ack else 5
+        if not has_ack:
+            feedback_parts.append("🙏 Acknowledge tawaran keringanan DC ('Terima kasih keringanannya...') — ini menunjukkan kooperatif.")
+
+    # realistic check (no over-promise)
+    over_promise = any(kw in text for kw in [
+        "saya bayar lunas besok", "akan lunas minggu ini", "pokoknya saya bayar semua",
+    ])
+    if "realistic" in criteria:
+        scores["realistic"] = 0 if over_promise else 25
+        if over_promise:
+            feedback_parts.append("⚠️ Jangan over-promise. Lebih baik realistis agar bisa ditepati.")
+
+    total = sum(scores.values())
+    max_possible = len(criteria) * 25
+    if max_possible == 0:
+        max_possible = 100
+
+    final_score = round((total / max_possible) * 100)
+
+    if final_score >= 80:
+        verdict = "Sangat Baik"
+        verdict_color = "#b8ff3c"
+        verdict_msg = "Anda menunjukkan respons yang matang & strategis. DC profesional akan merespons positif."
+    elif final_score >= 60:
+        verdict = "Baik"
+        verdict_color = "#84cc16"
+        verdict_msg = "Respons Anda cukup baik. Beberapa area masih bisa diperbaiki."
+    elif final_score >= 40:
+        verdict = "Cukup"
+        verdict_color = "#f59e0b"
+        verdict_msg = "Anda bisa lebih baik lagi. Lihat tips di bawah untuk respons ideal."
+    else:
+        verdict = "Perlu Perbaikan"
+        verdict_color = "#ef4444"
+        verdict_msg = "Respons ini bisa jadi kontraproduktif. Pelajari skenario & coba lagi."
+
+    return {
+        "score": final_score,
+        "verdict": verdict,
+        "verdict_color": verdict_color,
+        "verdict_msg": verdict_msg,
+        "criteria_scores": scores,
+        "feedback": feedback_parts,
+        "matched": "matched" if final_score >= 60 else "not-matched",
+    }
+
+
+# =================================================================
+# TOOLS: Emergency Runway Calculator
+# =================================================================
+def calculate_emergency_runway(
+    cash_on_hand: float = 0,
+    monthly_expenses: float = 0,
+    monthly_income: float = 0,
+    monthly_debt_payment: float = 0,
+) -> dict:
+    """Hitung berapa bulan kamu bisa bertahan kalau income berhenti hari ini.
+
+    Args:
+        cash_on_hand: tabungan + saldo (Rp)
+        monthly_expenses: biaya hidup/bulan (Rp)
+        monthly_income: income bulanan (Rp)
+        monthly_debt_payment: cicilan hutang/bulan (Rp)
+
+    Returns:
+        dict dengan runway_months, status, recommendations
+    """
+    if monthly_expenses <= 0:
+        return {
+            "valid": False,
+            "error": "Biaya hidup bulanan harus > 0",
+        }
+
+    total_burn = monthly_expenses + monthly_debt_payment
+    runway_months = round(cash_on_hand / total_burn, 1) if total_burn > 0 else 0
+    income_coverage = round((monthly_income / total_burn) * 100, 1) if total_burn > 0 else 0
+
+    # Status
+    if runway_months >= 6:
+        status = "AMAN"
+        status_color = "#84cc16"
+        status_msg = "Runway ≥ 6 bulan. Ideal! Pertahankan."
+    elif runway_months >= 3:
+        status = "WASPADA"
+        status_color = "#f59e0b"
+        status_msg = "Runway 3-6 bulan. Mulai tambah dana darurat."
+    elif runway_months >= 1:
+        status = "BAHAYA"
+        status_color = "#ef4444"
+        status_msg = "Runway < 3 bulan. Prioritaskan tambah tabungan."
+    else:
+        status = "KRITIS"
+        status_color = "#7f1d1d"
+        status_msg = "Runway < 1 bulan. SEGERA ambil tindakan."
+
+    # Recommendations
+    recs: list[dict] = []
+    if runway_months < 6:
+        target_cash = total_burn * 6
+        recs.append({
+            "priority": "tinggi" if runway_months < 3 else "sedang",
+            "title": f"Target dana darurat: Rp {target_cash:,.0f}",
+            "action": f"Sisihkan minimal 10% income/bulan ke rekening terpisah (terpisah dari rekening utama).",
+        })
+    if income_coverage < 100:
+        deficit = total_burn - monthly_income
+        recs.append({
+            "priority": "tinggi" if deficit > 0 else "sedang",
+            "title": f"Defisit: Rp {deficit:,.0f}/bulan",
+            "action": "Tambah income (side hustle) atau kurangi pengeluaran non-esensial.",
+        })
+    if monthly_debt_payment > monthly_income * 0.3:
+        recs.append({
+            "priority": "tinggi",
+            "title": "Cicilan terlalu besar (>30% income)",
+            "action": "Restrukturisasi utang, gabungkan (konsolidasi), atau negosiasi bunga lebih rendah.",
+        })
+    if monthly_expenses > 0 and cash_on_hand > 0:
+        months_to_3x = max(0, round((3 * total_burn - cash_on_hand) / max(monthly_income * 0.1, 1), 1))
+        if months_to_3x > 0 and months_to_3x < 36:
+            recs.append({
+                "priority": "sedang",
+                "title": f"Capai 3x runway dalam {months_to_3x} bulan",
+                "action": "Kurangi 1-2 pos pengeluaran non-esensial, alokasikan ke dana darurat.",
+            })
+
+    return {
+        "valid": True,
+        "runway_months": runway_months,
+        "runway_label": f"{runway_months} bulan" if runway_months >= 1 else f"{int(runway_months * 30)} hari",
+        "status": status,
+        "status_color": status_color,
+        "status_msg": status_msg,
+        "total_burn": total_burn,
+        "income_coverage": income_coverage,
+        "recommendations": recs,
+    }
+
+
+# =================================================================
+# TOOLS: 30-Day Personal Action Plan
+# =================================================================
+def generate_30_day_plan(
+    cicilan_aktif: int = 0,
+    checkout_impulse: int = 0,
+    cicilan_0_persen: int = 0,
+    reaksi_tagihan: int = 0,
+    dc_pesan: int = 0,
+    track_pengeluaran: int = 0,
+) -> dict:
+    """Generate 30-day personal action plan berdasarkan Galbay Score answers.
+
+    Returns dict dengan:
+    - score (0-100)
+    - bucket (rendah/sedang/tinggi/kritis)
+    - 30-day plan (week 1-4 actions)
+    """
+    # Same scoring as galbay_score route
+    cicilan_score = max(0, 25 - cicilan_aktif * 5)
+    impulse_score = min(25, checkout_impulse * 5)
+    cicilan0_score = min(21, cicilan_0_persen * 7)
+    tagihan_score = min(25, reaksi_tagihan * 8)
+    dc_score = min(25, dc_pesan * 8)
+    track_score = [0, 8, 16, 25][track_pengeluaran]
+    raw = cicilan_score + impulse_score + cicilan0_score + tagihan_score + dc_score + track_score
+    score = round((raw / 146) * 100)
+
+    if score <= 30:
+        bucket = "rendah"
+        bucket_color = "#84cc16"
+        bucket_msg = "Keuangan sehat. Pertahankan & naikkan level."
+    elif score <= 55:
+        bucket = "sedang"
+        bucket_color = "#f59e0b"
+        bucket_msg = "Ada risiko. Mulai kebiasaan sehat."
+    elif score <= 75:
+        bucket = "tinggi"
+        bucket_color = "#ef4444"
+        bucket_msg = "Risiko tinggi. Butuh perubahan perilaku."
+    else:
+        bucket = "kritis"
+        bucket_color = "#7f1d1d"
+        bucket_msg = "Sangat kritis. Butuh intervensi intensif."
+
+    # Build 30-day plan (4 weeks)
+    plan: list[dict] = []
+
+    # Week 1: Audit & Awareness
+    plan.append({
+        "week": 1,
+        "title": "Audit & Kesadaran",
+        "emoji": "📋",
+        "color": "#9b5de5",
+        "actions": [
+            "Catat SEMUA utang: nominal, bunga, tenor, jatuh tempo (gunakan spreadsheet/notes)",
+            "Hitung total cash on-hand + income bulanan + expenses bulanan",
+            "Download semua app pinjol/paylater, cek tagihan & tanggal jatuh tempo",
+            "Cek skor kredit di SLIK OJK (gratis, 1× setahun)",
+            "Identifikasi 3 'pemicu' belanja impulsif (misal: scroll TikTok malam, FOMO diskon)",
+        ],
+    })
+
+    # Week 2: Stabilize (pay bills on time)
+    if reaksi_tagihan >= 2 or dc_pesan >= 1:
+        plan[0]["actions"].append("⚠️ PRIORITAS: Bayar tagihan yang akan jatuh tempo 7 hari ke depan")
+    plan.append({
+        "week": 2,
+        "title": "Stabilkan Arus Kas",
+        "emoji": "💰",
+        "color": "#3b82f6",
+        "actions": [
+            "Aktifkan auto-debit untuk semua tagihan (cicilan, paylater, listrik, internet)",
+            "Set reminder H-3 sebelum jatuh tempo (pakai Kalender/Notion)",
+            "Mulai pisahkan rekening: 1 untuk bayar tagihan, 1 untuk kebutuhan sehari-hari",
+            "Kurangi 1 pos pengeluaran non-esensial (kopi kekinian, langganan, dll)",
+            "Mulai tracking pengeluaran harian (pakai app seperti Money Lover / Sheet)",
+        ],
+    })
+
+    # Week 3: Negotiate & Restructure
+    if cicilan_aktif >= 2 or dc_pesan >= 1:
+        plan.append({
+            "week": 3,
+            "title": "Negosiasi & Restrukturisasi",
+            "emoji": "🤝",
+            "color": "#c026d3",
+            "actions": [
+                "Hubungi 1-2 creditor untuk negosiasi restrukturisasi (cicilan lebih panjang, bunga lebih rendah)",
+                "Gunakan template chat di menu DC Survival Kit",
+                "Jangan terima panggilan tanpa identitas & surat tagihan resmi",
+                "Konsolidasi utang (gabungkan beberapa utang jadi 1 dengan bunga lebih rendah)",
+                "Stop checkout impulse: terapkan 'tidur dulu 24 jam' sebelum bayar",
+            ],
+        })
+    else:
+        plan.append({
+            "week": 3,
+            "title": "Bangun Dana Darurat",
+            "emoji": "🏦",
+            "color": "#c026d3",
+            "actions": [
+                "Target: 3x pengeluaran bulanan sebagai dana darurat",
+                "Otomatis transfer 10% income ke rekening terpisah tiap gaji",
+                "Jangan sentuh dana darurat kecuali emergency (sakit, PHK, dll)",
+                "Riset reksa dana pasar uang atau deposito untuk dana darurat (bunga > tabungan biasa)",
+            ],
+        })
+
+    # Week 4: Build Habits
+    plan.append({
+        "week": 4,
+        "title": "Bangun Kebiasaan Baru",
+        "emoji": "🚀",
+        "color": "#b8ff3c",
+        "actions": [
+            "Cek progress: total utang turun? Dana darurat naik? Tracking konsisten?",
+            "Uninstall 1-2 app yang paling sering bikin impulse (TikTok, Shopee, Tokped)",
+            "Coba 1 kegiatan gratis untuk ganti 'retail therapy' (jalan, baca, olahraga)",
+            "Review & update plan 30 hari ke depan dengan target baru",
+            "Share ke teman/keluarga: accountability partner untuk habit keuangan",
+        ],
+    })
+
+    # Add bonus: 30-day milestones
+    milestones = [
+        {"day": 1, "icon": "🎯", "text": "Mulai! Catat semua utang hari ini."},
+        {"day": 7, "icon": "📊", "text": "Review: 7 hari tracking pengeluaran. Apa pola terbesarmu?"},
+        {"day": 14, "icon": "💸", "text": "Cek: ada tagihan yang sudah dibayar tepat waktu? Auto-debit aktif?"},
+        {"day": 21, "icon": "🤝", "text": "Negosiasi: sudah hubungi 1 creditor untuk restrukturisasi?"},
+        {"day": 30, "icon": "🏆", "text": "Selamat! Kamu sudah konsisten 30 hari. Hitung ulang Galbay Score."},
+    ]
+
+    return {
+        "score": score,
+        "bucket": bucket,
+        "bucket_color": bucket_color,
+        "bucket_msg": bucket_msg,
+        "plan": plan,
+        "milestones": milestones,
     }

@@ -1,474 +1,322 @@
-// Auto-generated from ALL reviews (349K)
+// Auto-generated from real scraped multi-source data
 window.GALBAY_DATA = {
   "meta": {
-    "total_reviews": 349200,
-    "total_relevant": 35968,
-    "n_apps": 44,
+    "total_reviews": 599218,
+    "total_relevant": 58120,
+    "n_apps": 53,
     "n_categories": 11,
-    "date_min": "2022-05-31",
-    "date_max": "2026-06-21",
+    "date_min": "2015-10-02",
+    "date_max": "2026-06-23",
     "n_news": 79,
-    "n_forum": 152,
-    "distress_total": 35968,
-    "distress_pct": 10.3,
-    "sentiment_positive": 40668,
-    "sentiment_negative": 6481,
-    "sentiment_neutral": 302051
+    "n_forum": 147,
+    "distress_total": 13827,
+    "distress_pct": 23.8,
+    "n_sources_active": 7,
+    "n_sources_total": 10,
+    "total_multi_source": 602627
   },
   "model": {
-    "algo": "VADER Lexicon (NLTK) on All Reviews",
-    "task": "Sentiment Classification (Positive vs Negative)",
-    "vocab": 4471,
-    "n_train": 27272,
-    "n_test": 6818,
-    "accuracy": 0.857,
-    "precision": 0.888,
-    "recall": 0.816,
-    "f1": 0.851,
+    "algo": "Multinomial Naive Bayes (from scratch)",
+    "task": "Klasifikasi Sentimen (Negatif vs Positif)",
+    "vocab": 5862,
+    "n_train": 44236,
+    "n_test": 11059,
+    "accuracy": 0.858,
+    "precision": 0.903,
+    "recall": 0.815,
+    "f1": 0.857,
+    "macro_f1": 0.858,
+    "cv_acc_mean": 0.86,
+    "cv_acc_std": 0.003,
+    "cv_f1_mean": 0.86,
+    "cv_f1_std": 0.003,
     "confusion": {
-      "TP": 34567,
-      "TN": 5508,
-      "FP": 972,
-      "FN": 6100
+      "TP": 4698,
+      "TN": 4791,
+      "FP": 505,
+      "FN": 1065
     },
     "top_neg_words": [
-      "limit",
-      "bunga",
-      "admin",
-      "tagihan",
-      "cicilan",
-      "tenor",
-      "pinjol",
-      "pinjaman online",
-      "nagih",
-      "biaya admin",
-      "penagihan",
-      "angsuran"
+      "kolektor",
+      "sok",
+      "sampah",
+      "ngaco",
+      "lawak",
+      "seolah",
+      "gilaaa",
+      "amit",
+      "model",
+      "ditelponin",
+      "template",
+      "gajelas"
     ],
     "top_pos_words": [
-      "bagus",
-      "membantu",
-      "cepat",
-      "praktis",
-      "recommended",
-      "mantap",
-      "puas",
-      "terbaik",
-      "mudah",
-      "berguna",
-      "oke",
-      "lancar"
+      "gajelas",
+      "template",
+      "ditelponin",
+      "model",
+      "amit",
+      "gilaaa",
+      "seolah",
+      "lawak",
+      "ngaco",
+      "sampah",
+      "sok",
+      "kolektor"
     ]
   },
   "score_dist": {
-    "1": 69931,
-    "2": 10541,
-    "3": 12935,
-    "4": 19807,
-    "5": 235986
+    "1": 23330,
+    "2": 3150,
+    "3": 2823,
+    "4": 2461,
+    "5": 26356
   },
   "behavior": [
     {
-      "label": "Produk Fintech",
-      "count": 20233
+      "key": "produk_fintech",
+      "label": "Diskusi Produk Fintech",
+      "count": 32798
     },
     {
-      "label": "Bunga Dan Biaya",
-      "count": 12781
+      "key": "bunga_dan_biaya",
+      "label": "Keluhan Bunga & Biaya",
+      "count": 19556
     },
     {
-      "label": "Tagihan Dan Penagihan",
-      "count": 5403
+      "key": "tagihan_dan_penagihan",
+      "label": "Tagihan & Penagihan (DC)",
+      "count": 7609
     },
     {
-      "label": "Psikologi Regret Stress",
-      "count": 2091
+      "key": "psikologi_avoidance",
+      "label": "Psikologi: Menghindar",
+      "count": 3538
     },
     {
-      "label": "Distress Langsung",
-      "count": 1514
+      "key": "distress_langsung",
+      "label": "Distress Finansial Langsung",
+      "count": 2397
     },
     {
-      "label": "Psikologi Avoidance",
-      "count": 846
+      "key": "psikologi_regret_stress",
+      "label": "Psikologi: Penyesalan/Stres",
+      "count": 871
     },
     {
-      "label": "Psikologi Impulsif",
-      "count": 143
+      "key": "psikologi_impulsif",
+      "label": "Psikologi: Impulsif",
+      "count": 172
     }
   ],
   "galbay_keywords": [
     {
-      "label": "limit",
-      "count": 12984,
-      "category": "produk_fintech"
+      "label": "bunga tinggi",
+      "count": 13556
     },
     {
-      "label": "bunga",
-      "count": 8567,
-      "category": "bunga_dan_biaya"
+      "label": "telat/nunggak",
+      "count": 3943
     },
     {
-      "label": "admin",
-      "count": 4106,
-      "category": "bunga_dan_biaya"
+      "label": "debt collector/DC",
+      "count": 2743
     },
     {
-      "label": "tagihan",
-      "count": 3026,
-      "category": "tagihan_dan_penagihan"
+      "label": "gali lubang tutup lubang",
+      "count": 2179
     },
     {
-      "label": "cicilan",
-      "count": 2074,
-      "category": "produk_fintech"
+      "label": "teror/ancam",
+      "count": 1530
     },
     {
-      "label": "tenor",
-      "count": 2000,
-      "category": "produk_fintech"
-    },
-    {
-      "label": "pinjol",
-      "count": 1761,
-      "category": "produk_fintech"
-    },
-    {
-      "label": "pinjaman online",
-      "count": 1698,
-      "category": "produk_fintech"
-    },
-    {
-      "label": "nagih",
-      "count": 1541,
-      "category": "tagihan_dan_penagihan"
-    },
-    {
-      "label": "biaya admin",
-      "count": 1419,
-      "category": "bunga_dan_biaya"
-    },
-    {
-      "label": "penagihan",
-      "count": 894,
-      "category": "tagihan_dan_penagihan"
-    },
-    {
-      "label": "angsuran",
-      "count": 893,
-      "category": "produk_fintech"
-    },
-    {
-      "label": "paylater",
-      "count": 798,
-      "category": "produk_fintech"
-    },
-    {
-      "label": "telat bayar",
-      "count": 795,
-      "category": "distress_langsung"
-    },
-    {
-      "label": "cape",
-      "count": 526,
-      "category": "psikologi_regret_stress"
-    },
-    {
-      "label": "takut",
-      "count": 523,
-      "category": "psikologi_regret_stress"
-    },
-    {
-      "label": "dc",
-      "count": 511,
-      "category": "tagihan_dan_penagihan"
+      "label": "pinjol ilegal",
+      "count": 1492
     },
     {
       "label": "denda",
-      "count": 450,
-      "category": "bunga_dan_biaya"
+      "count": 763
     },
     {
-      "label": "bunga tinggi",
-      "count": 357,
-      "category": "bunga_dan_biaya"
-    },
-    {
-      "label": "limit kecil",
-      "count": 332,
-      "category": "produk_fintech"
-    },
-    {
-      "label": "pusing",
-      "count": 316,
-      "category": "psikologi_regret_stress"
-    },
-    {
-      "label": "ribet banget",
-      "count": 295,
-      "category": "bunga_dan_biaya"
-    },
-    {
-      "label": "capek",
-      "count": 282,
-      "category": "psikologi_regret_stress"
-    },
-    {
-      "label": "menyesal",
-      "count": 275,
-      "category": "psikologi_regret_stress"
-    },
-    {
-      "label": "ditelpon",
-      "count": 265,
-      "category": "tagihan_dan_penagihan"
-    },
-    {
-      "label": "nunggak",
-      "count": 244,
-      "category": "distress_langsung"
-    },
-    {
-      "label": "khawatir",
-      "count": 241,
-      "category": "psikologi_regret_stress"
-    },
-    {
-      "label": "ganti nomor",
-      "count": 236,
-      "category": "psikologi_avoidance"
-    },
-    {
-      "label": "diblokir",
-      "count": 199,
-      "category": "psikologi_avoidance"
-    },
-    {
-      "label": "pinjaman dana",
-      "count": 197,
-      "category": "produk_fintech"
+      "label": "gagal bayar/galbay",
+      "count": 432
     }
   ],
   "cat_stats": [
     {
-      "category": "p2p_lending",
-      "n": 3000,
-      "neg_pct": 3.5,
-      "pos_pct": 14.2
-    },
-    {
-      "category": "ecommerce",
-      "n": 12000,
-      "neg_pct": 3.4,
-      "pos_pct": 12.0
-    },
-    {
-      "category": "mobile_banking",
-      "n": 18000,
-      "neg_pct": 3.3,
-      "pos_pct": 9.3
-    },
-    {
-      "category": "travel",
-      "n": 6000,
-      "neg_pct": 3.1,
-      "pos_pct": 17.6
-    },
-    {
-      "category": "investasi",
-      "n": 3000,
-      "neg_pct": 2.6,
-      "pos_pct": 14.3
-    },
-    {
-      "category": "bank_digital",
-      "n": 51000,
-      "neg_pct": 2.5,
-      "pos_pct": 13.5
+      "category": "pinjol",
+      "n": 32640,
+      "neg_pct": 46.3,
+      "pos_pct": 49.2,
+      "avg_score": 3.07,
+      "distress_pct": 22.7
     },
     {
       "category": "ewallet",
-      "n": 48000,
-      "neg_pct": 2.4,
-      "pos_pct": 14.9
+      "n": 4708,
+      "neg_pct": 55.2,
+      "pos_pct": 38.2,
+      "avg_score": 2.68,
+      "distress_pct": 28.4
     },
     {
-      "category": "pinjol",
-      "n": 169200,
-      "neg_pct": 1.4,
-      "pos_pct": 8.9
+      "category": "bank_digital",
+      "n": 4330,
+      "neg_pct": 34.3,
+      "pos_pct": 60.9,
+      "avg_score": 3.52,
+      "distress_pct": 22.2
     },
     {
       "category": "paylater",
-      "n": 9000,
-      "neg_pct": 1.2,
-      "pos_pct": 9.3
+      "n": 4000,
+      "neg_pct": 46.2,
+      "pos_pct": 49.2,
+      "avg_score": 3.08,
+      "distress_pct": 24.6
     },
     {
       "category": "kartu_kredit",
-      "n": 15000,
-      "neg_pct": 0.6,
-      "pos_pct": 31.8
+      "n": 3595,
+      "neg_pct": 21.1,
+      "pos_pct": 75.7,
+      "avg_score": 4.09,
+      "distress_pct": 13.5
+    },
+    {
+      "category": "p2p_lending",
+      "n": 2714,
+      "neg_pct": 38.3,
+      "pos_pct": 58.1,
+      "avg_score": 3.41,
+      "distress_pct": 22.7
+    },
+    {
+      "category": "mobile_banking",
+      "n": 1785,
+      "neg_pct": 68.6,
+      "pos_pct": 23.0,
+      "avg_score": 2.14,
+      "distress_pct": 51.5
+    },
+    {
+      "category": "ecommerce",
+      "n": 1716,
+      "neg_pct": 67.1,
+      "pos_pct": 26.4,
+      "avg_score": 2.22,
+      "distress_pct": 32.3
+    },
+    {
+      "category": "investasi",
+      "n": 1092,
+      "neg_pct": 34.0,
+      "pos_pct": 59.7,
+      "avg_score": 3.51,
+      "distress_pct": 14.4
+    },
+    {
+      "category": "travel",
+      "n": 952,
+      "neg_pct": 70.3,
+      "pos_pct": 22.9,
+      "avg_score": 2.08,
+      "distress_pct": 30.9
     },
     {
       "category": "koperasi",
-      "n": 15000,
-      "neg_pct": 0.3,
-      "pos_pct": 6.3
+      "n": 588,
+      "neg_pct": 38.4,
+      "pos_pct": 57.7,
+      "avg_score": 3.4,
+      "distress_pct": 18.0
     }
   ],
   "top_neg_apps": [
     {
       "app": "OVO",
       "category": "ewallet",
-      "n": 3000,
-      "neg_pct": 4.8,
-      "avg_score": 2.32
+      "n": 1112,
+      "neg_pct": 85.3,
+      "avg_score": 1.56,
+      "distress_pct": 39.9
     },
     {
-      "app": "blu by BCA Digital",
-      "category": "bank_digital",
-      "n": 6000,
-      "neg_pct": 4.8,
-      "avg_score": 3.35
+      "app": "myBCA: BCA Banking Apps",
+      "category": "mobile_banking",
+      "n": 544,
+      "neg_pct": 77.2,
+      "avg_score": 1.84,
+      "distress_pct": 68.4
     },
     {
-      "app": "Gojek - Transportasi & Makanan",
+      "app": "LinkAja / LinkAja Syariah",
       "category": "ewallet",
-      "n": 3000,
-      "neg_pct": 4.4,
-      "avg_score": 3.84
-    },
-    {
-      "app": "Shopee Indonesia",
-      "category": "ecommerce",
-      "n": 3000,
-      "neg_pct": 4.3,
-      "avg_score": 2.88
-    },
-    {
-      "app": "tiket.com Pesawat, Hotel Murah",
-      "category": "travel",
-      "n": 3000,
-      "neg_pct": 4.2,
-      "avg_score": 3.58
-    },
-    {
-      "app": "Tokopedia",
-      "category": "ecommerce",
-      "n": 3000,
-      "neg_pct": 4.1,
-      "avg_score": 3.36
-    },
-    {
-      "app": "RupiahCepat - Pinjaman Dana",
-      "category": "pinjol",
-      "n": 3000,
-      "neg_pct": 3.9,
-      "avg_score": 3.58
-    },
-    {
-      "app": "Home Credit-Pinjaman & Kredit",
-      "category": "pinjol",
-      "n": 15000,
-      "neg_pct": 3.5,
-      "avg_score": 3.15
-    },
-    {
-      "app": "KoinWorks Pendanaan Super App",
-      "category": "p2p_lending",
-      "n": 3000,
-      "neg_pct": 3.5,
-      "avg_score": 2.68
-    },
-    {
-      "app": "Bank Jago/Jago Syariah",
-      "category": "bank_digital",
-      "n": 15000,
-      "neg_pct": 3.4,
-      "avg_score": 3.85
+      "n": 545,
+      "neg_pct": 72.3,
+      "avg_score": 1.99,
+      "distress_pct": 40.6
     },
     {
       "app": "Livin' by Mandiri",
       "category": "mobile_banking",
-      "n": 15000,
-      "neg_pct": 3.4,
-      "avg_score": 3.42
+      "n": 744,
+      "neg_pct": 71.5,
+      "avg_score": 2.02,
+      "distress_pct": 47.7
     },
     {
-      "app": "BRImo",
-      "category": "mobile_banking",
-      "n": 3000,
-      "neg_pct": 2.8,
-      "avg_score": 3.91
+      "app": "tiket.com Pesawat, Hotel Murah",
+      "category": "travel",
+      "n": 463,
+      "neg_pct": 71.1,
+      "avg_score": 2.02,
+      "distress_pct": 23.8
+    },
+    {
+      "app": "Gojek - Transportasi & Makanan",
+      "category": "ewallet",
+      "n": 212,
+      "neg_pct": 69.8,
+      "avg_score": 2.03,
+      "distress_pct": 49.1
+    },
+    {
+      "app": "Traveloka: Hotel & Pesawat",
+      "category": "travel",
+      "n": 489,
+      "neg_pct": 69.5,
+      "avg_score": 2.14,
+      "distress_pct": 37.6
+    },
+    {
+      "app": "Tokopedia",
+      "category": "ecommerce",
+      "n": 354,
+      "neg_pct": 68.9,
+      "avg_score": 2.14,
+      "distress_pct": 33.9
     },
     {
       "app": "Bukalapak",
       "category": "ecommerce",
-      "n": 3000,
-      "neg_pct": 2.8,
-      "avg_score": 2.53
+      "n": 890,
+      "neg_pct": 68.1,
+      "avg_score": 2.2,
+      "distress_pct": 32.1
     },
     {
-      "app": "Sakuku",
-      "category": "ewallet",
-      "n": 3000,
-      "neg_pct": 2.8,
-      "avg_score": 3.26
-    },
-    {
-      "app": "Stockbit - Investasi Saham",
-      "category": "investasi",
-      "n": 3000,
-      "neg_pct": 2.6,
-      "avg_score": 4.52
-    },
-    {
-      "app": "Flip: Transfer & Cashback",
-      "category": "ewallet",
-      "n": 15000,
-      "neg_pct": 2.4,
-      "avg_score": 3.85
-    },
-    {
-      "app": "JULO: Pinjaman & Kredit Online",
-      "category": "pinjol",
-      "n": 15000,
-      "neg_pct": 2.3,
-      "avg_score": 2.91
-    },
-    {
-      "app": "Lazada | Bebas Pengiriman",
+      "app": "Lazada 7.7 Sale",
       "category": "ecommerce",
-      "n": 3000,
-      "neg_pct": 2.2,
-      "avg_score": 3.2
-    },
-    {
-      "app": "neobank dari BNC Digital",
-      "category": "bank_digital",
-      "n": 15000,
-      "neg_pct": 2.2,
-      "avg_score": 3.87
-    },
-    {
-      "app": "AdaKami-Pinjaman Uang Digital",
-      "category": "pinjol",
-      "n": 15000,
-      "neg_pct": 2.1,
-      "avg_score": 3.8
+      "n": 204,
+      "neg_pct": 66.2,
+      "avg_score": 2.22,
+      "distress_pct": 35.3
     }
   ],
   "timeline": {
     "labels": [
-      "2022-05",
-      "2022-06",
-      "2022-07",
-      "2022-08",
-      "2022-09",
-      "2022-10",
-      "2022-11",
-      "2022-12",
       "2023-01",
       "2023-02",
       "2023-03",
@@ -513,56 +361,48 @@ window.GALBAY_DATA = {
       "2026-06"
     ],
     "total": [
-      1,
-      1035,
-      467,
-      250,
-      267,
-      286,
-      255,
-      220,
-      206,
-      167,
-      141,
-      144,
-      132,
-      179,
-      113,
-      79,
-      121,
-      188,
-      118,
-      68,
-      57,
-      54,
+      53,
       47,
-      61,
-      78,
-      772,
-      1312,
-      1597,
-      2319,
-      2286,
-      2314,
-      2533,
-      3873,
-      3441,
-      4153,
-      3453,
-      3330,
-      4819,
-      6069,
-      6459,
-      8929,
-      8478,
-      8901,
-      12982,
-      21218,
-      15433,
-      19479,
-      29641,
-      72754,
-      97921
+      46,
+      18,
+      21,
+      23,
+      13,
+      14,
+      15,
+      12,
+      63,
+      86,
+      80,
+      71,
+      59,
+      62,
+      94,
+      308,
+      207,
+      241,
+      397,
+      434,
+      389,
+      438,
+      665,
+      497,
+      644,
+      526,
+      541,
+      625,
+      942,
+      981,
+      1397,
+      1219,
+      1286,
+      1872,
+      2545,
+      2524,
+      3879,
+      7172,
+      13320,
+      13207
     ],
     "pinjol": [
       0,
@@ -584,135 +424,170 @@ window.GALBAY_DATA = {
       0,
       0,
       0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      538,
-      1188,
-      1192,
-      1018,
-      1344,
-      2009,
-      1606,
-      1750,
-      1484,
-      1543,
-      1737,
-      2502,
-      2818,
-      5204,
-      3934,
-      3932,
-      7583,
-      15495,
-      9707,
-      8338,
-      18658,
-      34721,
-      40899
+      117,
+      262,
+      286,
+      233,
+      253,
+      499,
+      337,
+      417,
+      312,
+      346,
+      350,
+      481,
+      456,
+      683,
+      535,
+      569,
+      1179,
+      1787,
+      1445,
+      2464,
+      4344,
+      7449,
+      7836
     ],
     "distress": [
-      0,
-      41,
-      30,
-      19,
-      17,
-      13,
-      17,
       10,
+      9,
       11,
-      11,
-      12,
-      10,
-      11,
-      10,
-      7,
-      5,
-      5,
-      5,
-      5,
-      5,
-      3,
-      4,
       6,
-      4,
+      9,
       8,
-      62,
-      86,
-      181,
-      341,
-      377,
-      326,
-      355,
-      624,
-      472,
-      599,
-      477,
-      498,
-      587,
-      902,
-      947,
-      1265,
-      1029,
-      1119,
-      1536,
-      1920,
-      1689,
-      1842,
-      3528,
-      6931,
-      8006
+      5,
+      4,
+      5,
+      6,
+      17,
+      25,
+      18,
+      29,
+      17,
+      20,
+      40,
+      68,
+      38,
+      77,
+      89,
+      107,
+      82,
+      109,
+      148,
+      130,
+      163,
+      124,
+      148,
+      205,
+      222,
+      242,
+      318,
+      335,
+      347,
+      462,
+      672,
+      709,
+      1096,
+      1865,
+      2869,
+      2634
     ]
   },
   "category_counts": [
     {
       "category": "pinjol",
-      "count": 21802
+      "count": 32640
+    },
+    {
+      "category": "ewallet",
+      "count": 4708
     },
     {
       "category": "bank_digital",
       "count": 4330
     },
     {
+      "category": "paylater",
+      "count": 4000
+    },
+    {
       "category": "kartu_kredit",
       "count": 3595
     },
     {
-      "category": "ewallet",
-      "count": 2658
-    },
-    {
-      "category": "paylater",
-      "count": 1161
+      "category": "p2p_lending",
+      "count": 2714
     },
     {
       "category": "mobile_banking",
-      "count": 812
+      "count": 1785
+    },
+    {
+      "category": "ecommerce",
+      "count": 1716
+    },
+    {
+      "category": "investasi",
+      "count": 1092
+    },
+    {
+      "category": "travel",
+      "count": 952
     },
     {
       "category": "koperasi",
       "count": 588
-    },
-    {
-      "category": "ecommerce",
-      "count": 452
-    },
-    {
-      "category": "travel",
-      "count": 260
-    },
-    {
-      "category": "p2p_lending",
-      "count": 255
-    },
-    {
-      "category": "investasi",
-      "count": 55
     }
-  ]
+  ],
+  "per_source": [
+    {
+      "source": "google_play",
+      "label": "Google Play reviews",
+      "n": 599000,
+      "icon": "📱"
+    },
+    {
+      "source": "ojk_media",
+      "label": "OJK + media",
+      "n": 460,
+      "icon": "📰"
+    },
+    {
+      "source": "forum",
+      "label": "Forum (Kaskus + Reddit)",
+      "n": 244,
+      "icon": "💬"
+    },
+    {
+      "source": "blog",
+      "label": "Blog (Medium + Dailysia)",
+      "n": 1056,
+      "icon": "📝"
+    },
+    {
+      "source": "google_trends",
+      "label": "Google Trends",
+      "n": 839,
+      "icon": "📈"
+    },
+    {
+      "source": "youtube",
+      "label": "YouTube (yt-dlp)",
+      "n": 566,
+      "icon": "▶️"
+    },
+    {
+      "source": "threads",
+      "label": "Threads (Meta)",
+      "n": 462,
+      "icon": "🧵"
+    }
+  ],
+  "severity": {
+    "buckets": {
+      "rendah": 50151,
+      "sedang": 7104,
+      "tinggi": 865
+    }
+  }
 };

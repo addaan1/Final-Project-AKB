@@ -1,0 +1,340 @@
+{
+  "meta": {
+    "source": "reddit_old",
+    "scraped_at": "2026-06-24T16:48:13.508128+00:00",
+    "scraper": "reddit_old",
+    "n_posts": 0,
+    "n_total": 0,
+    "queries": [
+      "paylater",
+      "pinjol",
+      "galbay",
+      "gagal bayar",
+      "utang",
+      "ditagih",
+      "cicilan",
+      "self reward",
+      "FOMO",
+      "checkout",
+      "bunga tinggi",
+      "debt collector",
+      "tagihan",
+      "kartu kredit",
+      "kredit",
+      "pinjaman online",
+      "shopee paylater",
+      "kredivo",
+      "indodana",
+      "akulaku"
+    ],
+    "subreddits": [
+      "indonesia",
+      "finansial",
+      "personalfinance"
+    ],
+    "max_pages_per_query": 1,
+    "per_query": [
+      {
+        "subreddit": "indonesia",
+        "query": "paylater",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "pinjol",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "galbay",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "gagal bayar",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "utang",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "ditagih",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "cicilan",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "self reward",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "FOMO",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "checkout",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "bunga tinggi",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "debt collector",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "tagihan",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "kartu kredit",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "kredit",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "pinjaman online",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "shopee paylater",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "kredivo",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "indodana",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "indonesia",
+        "query": "akulaku",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "paylater",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "pinjol",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "galbay",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "gagal bayar",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "utang",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "ditagih",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "cicilan",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "self reward",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "FOMO",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "checkout",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "bunga tinggi",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "debt collector",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "tagihan",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "kartu kredit",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "kredit",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "pinjaman online",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "shopee paylater",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "kredivo",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "indodana",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "finansial",
+        "query": "akulaku",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "paylater",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "pinjol",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "galbay",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "gagal bayar",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "utang",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "ditagih",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "cicilan",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "self reward",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "FOMO",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "checkout",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "bunga tinggi",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "debt collector",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "tagihan",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "kartu kredit",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "kredit",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "pinjaman online",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "shopee paylater",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "kredivo",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "indodana",
+        "n_posts": 0
+      },
+      {
+        "subreddit": "personalfinance",
+        "query": "akulaku",
+        "n_posts": 0
+      }
+    ]
+  },
+  "posts": []
+}

@@ -36,6 +36,27 @@ APP_IDS: dict[str, dict] = {
     "KoinWorks": {"app_id": "com.koinworks.app", "category": "p2p_lending"},
     "BRImo": {"app_id": "id.co.bri.brimo", "category": "mobile_banking"},
     "Stockbit": {"app_id": "com.stockbit.android", "category": "investasi"},
+    # === Round 7 additions: 20 app baru (investasi, kartu kredit, P2P, mobile_banking) ===
+    "Ajaib": {"app_id": "ajaib.co.id.revamp.android", "category": "investasi"},
+    "Bibit": {"app_id": "com.bibit.id", "category": "investasi"},
+    "Bareksa": {"app_id": "id.bareksa.app", "category": "investasi"},
+    "IPOT": {"app_id": "com.indopremier.app.ipot", "category": "investasi"},
+    "Pluang": {"app_id": "com.pluang.android", "category": "investasi"},
+    "Jenius": {"app_id": "com.btpn.digital", "category": "kartu_kredit"},
+    "Digibank": {"app_id": "com.dbs.id.digibank", "category": "mobile_banking"},
+    "BCA Mobile": {"app_id": "com.bca.mybca", "category": "mobile_banking"},
+    "BNI Mobile": {"app_id": "id.bni.apps", "category": "mobile_banking"},
+    "CIMB Niaga": {"app_id": "id.co.cimb.android", "category": "mobile_banking"},
+    "PermataMobileX": {"app_id": "com.bii.mobile.android", "category": "mobile_banking"},
+    "Danamon": {"app_id": "mobile.com.danamon", "category": "mobile_banking"},
+    "Investree": {"app_id": "com.investree.app", "category": "p2p_lending"},
+    "Amartha": {"app_id": "com.amartha.app", "category": "p2p_lending"},
+    "Akseleran": {"app_id": "id.akseleran.app", "category": "p2p_lending"},
+    "Finmas": {"app_id": "id.web.finmas", "category": "pinjol"},
+    "PinjamUang": {"app_id": "id.pinjaman.uang.online", "category": "pinjol"},
+    "CashKerjo": {"app_id": "com.cashkerjo", "category": "pinjol"},
+    "Maupinjam": {"app_id": "id.maupinjaman.app", "category": "pinjol"},
+    "PinjamanGo": {"app_id": "com.pinjamango.app", "category": "pinjol"},
 }
 
 GALBAY_KEYWORDS: dict[str, tuple[str, ...]] = {

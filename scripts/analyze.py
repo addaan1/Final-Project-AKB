@@ -112,14 +112,15 @@ def _count_raw_json(pattern: str) -> int:
 
 raw_play = _count_raw_json("play_reviews_*.json") - _count_raw_json("play_reviews_all.json")
 raw_news = _count_raw_json("news_*.json") + _count_raw_json("ojk_*.json") + _count_raw_json("media_*.json")
-raw_forum = _count_raw_json("forum_*.json") + _count_raw_json("kaskus_*.json") + _count_raw_json("reddit_*.json")
-raw_blog = _count_raw_json("blogs_*.json")
+raw_forum = _count_raw_json("forum_*.json") + _count_raw_json("kaskus_*.json") + _count_raw_json("reddit_*.json") + _count_raw_json("reddit_old*.json") + _count_raw_json("kaskus_fast*.json")
+raw_blog = _count_raw_json("blogs_*.json") + _count_raw_json("blogs_id*.json")
 raw_trends = _count_raw_json("google_trends_*.json")
 raw_tiktok = _count_raw_json("tiktok_*.json")
-raw_youtube = _count_raw_json("youtube_*.json")
+raw_youtube = _count_raw_json("youtube_*.json") + _count_raw_json("youtube_ytdlp*.json")
 raw_twitter = _count_raw_json("twitter_*.json")
 raw_marketplace = _count_raw_json("marketplace_*.json")
 raw_appstore = _count_raw_json("appstore_*.json")
+raw_threads = _count_raw_json("threads_*.json") + _count_raw_json("threads_pw*.json")
 
 rel["content"] = rel["content"].fillna("").astype(str)
 
@@ -228,10 +229,11 @@ per_source = [
     {"source": "blog", "label": "Blog (Medium + Dailysia)", "n": raw_blog, "icon": "📝"},
     {"source": "google_trends", "label": "Google Trends", "n": raw_trends, "icon": "📈"},
     {"source": "tiktok", "label": "TikTok", "n": raw_tiktok, "icon": "🎵"},
-    {"source": "youtube", "label": "YouTube", "n": raw_youtube, "icon": "▶️"},
+    {"source": "youtube", "label": "YouTube (yt-dlp)", "n": raw_youtube, "icon": "▶️"},
     {"source": "twitter", "label": "Twitter/X", "n": raw_twitter, "icon": "🐦"},
     {"source": "marketplace", "label": "Marketplace (Shopee+Tokped)", "n": raw_marketplace, "icon": "🛒"},
     {"source": "appstore", "label": "App Store (iOS)", "n": raw_appstore, "icon": "🍎"},
+    {"source": "threads", "label": "Threads (Meta)", "n": raw_threads, "icon": "🧵"},
 ]
 per_source = [s for s in per_source if s["n"] > 0]
 total_multi = sum(s["n"] for s in per_source)

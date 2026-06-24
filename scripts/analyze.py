@@ -4,7 +4,7 @@ Galbay Predictor - Modelling & Analysis
 - Sentiment classifier (Multinomial Naive Bayes from scratch)
 - Behavioral (galbay) analysis from matched_categories
 - Trend, category, top-apps insights
-Outputs: data/processed/site/data.js + PNG charts in data/processed/site/assets/
+Outputs: data/site/data.js + PNG charts in data/site/assets/
 Penggunaan:
     python -m scripts.analyze
 """
@@ -13,14 +13,16 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-from config import PROCESSED_DIR
+from config import DATA_DIR, PROCESSED_DIR
 from scripts.sentiment_model import tokenize, stratified_split, train_naive_bayes, evaluate, top_predictive_words
 from scripts.behavior_analysis import count_categories, flag_distress, keyword_scan, score_severity
 
 # relevant_only/per_app_summary/timeline/all_reviews.csv come from
 # `python -m processing.build_csv` into data/processed/ — NOT data/raw/.
 RAW = str(PROCESSED_DIR) + '/'
-OUT = str(PROCESSED_DIR / 'site') + '/'
+# data/site/ (not data/processed/site/) so this small, git-tracked output
+# doesn't sit inside the directory DVC tracks as one big blob.
+OUT = str(DATA_DIR / 'site') + '/'
 ASSETS = OUT + 'assets/'
 os.makedirs(ASSETS, exist_ok=True)
 np.random.seed(42)

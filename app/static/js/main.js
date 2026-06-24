@@ -238,6 +238,8 @@ const percentLabelPlugin = {
   id: 'percentLabel',
   afterDatasetsDraw(chart) {
     if (!chart.options.plugins?.percentLabel?.enabled) return;
+    // Skip if chart has custom absolute-count data (not %)
+    if (chart.options.plugins.percentLabel.enabled === false) return;
     const { ctx, data, datasetIndex } = chart;
     const mode = chart.options.plugins.percentLabel.mode || 'share'; // 'share' | 'value'
     const ds = data.datasets[datasetIndex || 0];
@@ -259,7 +261,8 @@ const percentLabelPlugin = {
       if (v === undefined || v === null || v === 0) return;
       let labelText;
       if (mode === 'value') {
-        // Show the actual value as percentage (when data is already in %)
+        // Only label with % if value looks like a percentage (0-100)
+        if (v < 0 || v > 100) return; // skip absolute counts
         labelText = fmtPct(v);
       } else {
         // Share: value / sum of this dataset
@@ -434,7 +437,7 @@ function chartTopApps() {
       backgroundColor:colors, borderRadius:5 }]
   }, options:{ ...chartDefaults, indexAxis:'y', plugins:{
     ...chartDefaults.plugins, legend:{display:false},
-    percentLabel:{enabled:true, mode:'value'},
+    percentLabel:{enabled:false},
     tooltip:{ ...chartDefaults.plugins.tooltip,
       callbacks:{ title:(items)=>{
         if (!items.length) return '';
@@ -444,7 +447,8 @@ function chartTopApps() {
         const pct = (app.neg_pct||0).toFixed(1);
         return ` ${ctx.parsed.x.toLocaleString('id-ID')} ulasan negatif dari ${(app.n||0).toLocaleString('id-ID')} (${pct}%)`;
       }}
-    }
+    },
+    datalabels:{enabled:false}
   }, scales:{x:grid,y:gridY} } });
 }
 

@@ -168,9 +168,23 @@
     s = out.join('\n');
     // Step 9: collapse multiple spaces (preserve line breaks)
     s = s.replace(/[^\S\n]{2,}/g, ' ');
-    // Step 10: convert remaining newlines to <br> (preserves user-intended breaks)
-    s = s.replace(/\n/g, '<br>');
-    return s;
+
+    // Step 10: Convert remaining newlines to <br> inside paragraphs
+    // Split into paragraphs (blocks separated by blank lines or list boundaries)
+    // Wrap each non-list paragraph in <p>
+    const finalParts = [];
+    const segs = s.split(/\n\n/);
+    for (const seg of segs) {
+      if (!seg.trim()) continue;
+      if (/^<(ul|ol|pre)/.test(seg.trim())) {
+        finalParts.push(seg.replace(/\n/g, ''));
+      } else {
+        // Single newline -> space, double newlines already split
+        const para = seg.replace(/\n/g, ' ').trim();
+        finalParts.push('<p>' + para + '</p>');
+      }
+    }
+    return finalParts.join('');
   }
 
   function addTypingIndicator() {

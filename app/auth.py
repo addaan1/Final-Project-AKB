@@ -38,6 +38,14 @@ class User:
     source: str = "demo"  # 'demo' | 'google' | 'register'
     password_hash: str = ""
     created_at: str = field(default_factory=lambda: datetime.now().isoformat() + "Z")
+    # Round 13: usage tracking for free tier limits
+    usage: dict = field(default_factory=lambda: {
+        "chat_count": 0,
+        "chat_reset_date": "",
+        "dc_attempts": 0,
+        "dc_reset_date": "",
+        "saved_items": [],
+    })
 
     def to_dict(self) -> dict:
         return {
@@ -48,6 +56,7 @@ class User:
             "package": self.package,
             "source": self.source,
             "created_at": self.created_at,
+            "usage": self.usage,
         }
 
     @property
@@ -152,6 +161,19 @@ def update_user_package(user_id: str, new_package: str) -> Optional[User]:
     for i, u in enumerate(users):
         if u.get("id") == user_id:
             u["package"] = new_package
+            users[i] = u
+            _save_users(users)
+            return _user_from_dict(u)
+    return None
+
+
+def update_user_data(user_id: str, data_updates: dict) -> Optional[User]:
+    """Update arbitrary user fields (e.g. usage tracking)."""
+    users = _load_users()
+    for i, u in enumerate(users):
+        if u.get("id") == user_id:
+            for k, v in data_updates.items():
+                u[k] = v
             users[i] = u
             _save_users(users)
             return _user_from_dict(u)

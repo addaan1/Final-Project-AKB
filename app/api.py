@@ -18,7 +18,7 @@ import os
 import re
 import difflib
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, date
 
 # =================================================================
 # VERSION
@@ -1992,12 +1992,128 @@ DC_SCENARIOS: list[dict] = [
                     {"label": "A. 'OK Pak, terima kasih banyak. Saya akan bayar tepat waktu.'", "score": 90, "criteria": {"cooperative": 25, "acknowledge": 20, "polite": 20, "specific": 15}, "feedback": "Tepat! Komitmen, sopan, dokumentasi. Profesional."},
                     {"label": "B. 'Pak, tolong pastikan tagihan ini tidak di-escalate ke atasan kalau saya bayar tepat waktu.'", "score": 85, "criteria": {"cooperative": 20, "specific": 20, "realistic": 15}, "feedback": "Bagus! Penting memastikan tidak ada eskalasi yang tidak perlu."},
                     {"label": "C. 'OK.' (singkat)", "score": 40, "criteria": {"polite": 5, "specific": 5}, "feedback": "Terlalu singkat. DC tidak yakin Anda serius."},
-                    {"label": "D. 'Pak, kalau saya telat 1-2 hari, tolong kasih tahu sebelum escalate. Saya akan bayar begitu ada.'", "score": 85, "criteria": {"cooperative": 25, "acknowledge": 15, "specific": 20}, "feedback": "Excellent! Komunikasi terbuka. Tanda kematangan finansial."},
+                    {"label": "D. 'Pak, kalau saya telat 1-2 hari, tolong kasih tahu sebelum escalate. Saya akan bayar begitu ada.'", "score": 85,                 "criteria": {"cooperative": 25, "acknowledge": 15, "specific": 20}, "feedback": "Excellent! Komunikasi terbuka. Tanda kematangan finansial."},
                 ]
             },
         ],
     },
 ]
+
+
+# =================================================================
+# ROUND 13: USAGE LIMITS (Free tier rate limiting)
+# =================================================================
+# Free tier limits:
+#   - 10 chat messages per day
+#   - 1 DC scenario attempt per day
+#   - 3 saved history items max
+# Premium tier: unlimited
+
+CHAT_DAILY_LIMIT = 10
+DC_DAILY_LIMIT = 1
+SAVED_ITEMS_LIMIT = 3
+
+
+def _today_iso() -> str:
+    return date.today().isoformat()
+
+
+def get_user_usage(user) -> dict:
+    """Get current usage, resetting daily counters if needed.
+
+    Args:
+        user: User dataclass instance (or None for anonymous)
+
+    Returns:
+        dict with: chat_count, chat_limit, chat_remaining, chat_reset_date,
+                   dc_attempts, dc_limit, dc_remaining, dc_reset_date,
+                   saved_items, saved_limit, is_premium
+    """
+    if user is None:
+        # Anonymous user — full limits
+        return {
+            "chat_count": 0,
+            "chat_limit": CHAT_DAILY_LIMIT,
+            "chat_remaining": CHAT_DAILY_LIMIT,
+            "chat_reset_date": _today_iso(),
+            "dc_attempts": 0,
+            "dc_limit": DC_DAILY_LIMIT,
+            "dc_remaining": DC_DAILY_LIMIT,
+            "dc_reset_date": _today_iso(),
+            "saved_items": [],
+            "saved_limit": SAVED_ITEMS_LIMIT,
+            "is_premium": False,
+        }
+    usage = user.usage
+    today = _today_iso()
+    # Reset chat if new day
+    if usage.get("chat_reset_date") != today:
+        usage["chat_count"] = 0
+        usage["chat_reset_date"] = today
+    # Reset DC if new day
+    if usage.get("dc_reset_date") != today:
+        usage["dc_attempts"] = 0
+        usage["dc_reset_date"] = today
+    is_prem = user.is_premium
+    chat_limit = 10**9 if is_prem else CHAT_DAILY_LIMIT
+    dc_limit = 10**9 if is_prem else DC_DAILY_LIMIT
+    saved_limit = 10**9 if is_prem else SAVED_ITEMS_LIMIT
+    chat_count = usage.get("chat_count", 0)
+    dc_attempts = usage.get("dc_attempts", 0)
+    saved_items = usage.get("saved_items", [])
+    return {
+        "chat_count": chat_count,
+        "chat_limit": chat_limit,
+        "chat_remaining": max(0, chat_limit - chat_count),
+        "chat_reset_date": today,
+        "dc_attempts": dc_attempts,
+        "dc_limit": dc_limit,
+        "dc_remaining": max(0, dc_limit - dc_attempts),
+        "dc_reset_date": today,
+        "saved_items": saved_items,
+        "saved_limit": saved_limit,
+        "is_premium": is_prem,
+    }
+
+
+def check_chat_limit(user) -> dict:
+    """Check if user can send a chat message. Increments counter if allowed.
+
+    Returns:
+        dict with: allowed (bool), usage (dict), error (str or None)
+    """
+    usage = get_user_usage(user)
+    if usage["is_premium"] or usage["chat_remaining"] > 0:
+        if user is not None and not usage["is_premium"]:
+            user.usage["chat_count"] = user.usage.get("chat_count", 0) + 1
+        return {
+            "allowed": True,
+            "usage": get_user_usage(user),  # re-read after increment
+            "error": None,
+        }
+    return {
+        "allowed": False,
+        "usage": usage,
+        "error": f"Limit harian tercapai ({CHAT_DAILY_LIMIT} chat). Upgrade ke Premium untuk unlimited.",
+    }
+
+
+def check_dc_limit(user) -> dict:
+    """Check if user can attempt a DC scenario. Increments counter if allowed."""
+    usage = get_user_usage(user)
+    if usage["is_premium"] or usage["dc_remaining"] > 0:
+        if user is not None and not usage["is_premium"]:
+            user.usage["dc_attempts"] = user.usage.get("dc_attempts", 0) + 1
+        return {
+            "allowed": True,
+            "usage": get_user_usage(user),
+            "error": None,
+        }
+    return {
+        "allowed": False,
+        "usage": usage,
+        "error": f"Limit harian tercapai ({DC_DAILY_LIMIT} DC scenario). Premium unlimited.",
+    }
 
 
 def evaluate_dc_response(scenario: dict, user_response: str) -> dict:

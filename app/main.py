@@ -233,8 +233,10 @@ def dc_simulator():
     User memilih skenario DC, lalu multi-turn chat (3-5 turn per skenario).
     User memilih opsi respons (A/B/C/D), DC merespons, repeat sampai turn terakhir.
     Sistem scoring berdasarkan akumulasi criteria.
+
+    Round 13: Free tier rate limit (1 DC attempt/day). Premium unlimited.
     """
-    from app.api import DC_SCENARIOS, evaluate_dc_multi_turn, evaluate_dc_response
+    from app.api import DC_SCENARIOS, evaluate_dc_multi_turn, evaluate_dc_response, check_dc_limit, get_user_usage
 
     if request.method == "POST":
         scenario_id = request.form.get("scenario", "")
@@ -243,6 +245,24 @@ def dc_simulator():
         if not scenario:
             flash("Skenario tidak ditemukan.", "error")
             return redirect(url_for("main.dc_simulator"))
+
+        # Check DC rate limit when STARTING a scenario
+        if action == "start" or not action:
+            user = get_current_user()
+            if user is not None and not user.is_premium:
+                limit_check = check_dc_limit(user)
+                if not limit_check["allowed"]:
+                    return render_template(
+                        "dashboard/dc_simulator.html",
+                        active_page="produk",
+                        scenario=None,
+                        result=None,
+                        usage=limit_check["usage"],
+                        limit_error=limit_check["error"],
+                    )
+                if user.id:
+                    from app.auth import update_user_data
+                    update_user_data(user.id, {"usage": user.usage})
 
         # Check if scenario has multi-turn (new format)
         if scenario.get("turns"):
@@ -682,7 +702,10 @@ def asset_file(filename: str):
 # =================================================================
 @main_bp.route("/api/chat", methods=["POST"])
 def api_chat():
-    """Chatbot FAQ (phase 2: synonym, typo tolerance, sentiment, context-aware)."""
+    """Chatbot FAQ (phase 2: synonym, typo tolerance, sentiment, context-aware).
+
+    Round 13: Free tier rate limit (10 chat/day). Premium unlimited.
+    """
     if request.is_json:
         data = request.get_json() or {}
     else:
@@ -694,9 +717,43 @@ def api_chat():
     user = get_current_user()
     user_name = (user.name if user else None) or session.get("user_name")
 
+    # Check rate limit (Free tier)
+    if user is not None and not user.is_premium:
+        from app.api import check_chat_limit
+        limit_check = check_chat_limit(user)
+        if not limit_check["allowed"]:
+            return jsonify({
+                "valid": False,
+                "error": limit_check["error"],
+                "usage": limit_check["usage"],
+                "model_version": "rate-limited",
+                "upgrade_url": "/dashboard/produk",
+            }), 429
+        # Persist updated usage
+        if user.id:
+            from app.auth import update_user_data
+            update_user_data(user.id, {"usage": user.usage})
+        usage = limit_check["usage"]
+    else:
+        from app.api import get_user_usage
+        usage = get_user_usage(user)
+
     result = chat_faq_handler(
         message=data.get("message", ""),
         user_name=user_name,
         page_context=data.get("page_context") or None,
     )
+    result["usage"] = usage
     return jsonify(result)
+
+
+# =================================================================
+# Usage API (Round 13)
+# =================================================================
+@main_bp.route("/api/usage", methods=["GET"])
+def api_usage():
+    """Get current user usage (rate limit tracking)."""
+    from app.api import get_user_usage
+    user = get_current_user()
+    usage = get_user_usage(user)
+    return jsonify(usage)

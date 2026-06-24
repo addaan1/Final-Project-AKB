@@ -8842,3 +8842,67 @@ h1, h2, h3 {
   .dc-chat-header h2 { font-size: 1.3rem; }
 }
 
+/* ============================================================
+   ROUND 13d: USAGE BANNER & LIMIT ERRORS
+   ============================================================ */
+.usage-banner {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.usage-stats {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.usage-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: rgba(155,93,229,0.15);
+  color: var(--accent-violet);
+  border: 1px solid rgba(155,93,229,0.3);
+}
+.usage-pill-premium {
+  background: linear-gradient(135deg, #b8ff3c, #84cc16);
+  color: #1a0a3a;
+  border: none;
+}
+.usage-stat {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.usage-stat strong {
+  color: var(--accent-lime);
+  font-weight: 800;
+}
+
+.limit-error {
+  background: rgba(239,68,68,0.08);
+  border: 2px solid rgba(239,68,68,0.35);
+  border-radius: 14px;
+  padding: 28px 32px;
+  text-align: center;
+  margin: 24px 0;
+}
+.limit-error h3 {
+  color: #ef4444;
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+}
+.limit-error p {
+  color: var(--text-secondary);
+  margin: 0 0 18px 0;
+  line-height: 1.5;
+}
+

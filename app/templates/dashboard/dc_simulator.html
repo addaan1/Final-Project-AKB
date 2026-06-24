@@ -19,6 +19,25 @@
     <h2 class="page-title">Pilih <span>Skenario</span> untuk Mulai</h2>
     <p class="page-lead">4 skenario dengan tingkat kesulitan berbeda. Mulai dari yang mudah dulu.</p>
   </div>
+
+  {% if usage %}
+  <div class="usage-banner">
+    <div class="usage-stats">
+      <span class="usage-pill {% if usage.is_premium %}usage-pill-premium{% endif %}">
+        {% if usage.is_premium %}👑 Premium{% else %}🆓 Free{% endif %}
+      </span>
+      <span class="usage-stat">DC hari ini: <strong>{{ usage.dc_count }}/{{ usage.dc_limit if usage.dc_limit < 1000 else '∞' }}</strong></span>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if limit_error %}
+  <div class="limit-error">
+    <h3>🚫 {{ limit_error }}</h3>
+    <p>Free tier: 1 DC scenario per day. Upgrade ke Premium untuk unlimited.</p>
+    <a href="{{ url_for('main.produk') }}" class="btn-primary">👑 Upgrade ke Premium</a>
+  </div>
+  {% endif %}
   <div class="dc-scenarios-grid">
     {% for s in [
       {"id": "agresif_tekan", "title": "DC Tekanan Agresif", "emoji": "😡", "difficulty": "Mudah", "desc": "DC nelpon teriak-teriak, minta bayar hari ini juga. 4 turn negosiasi."},

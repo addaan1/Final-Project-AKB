@@ -1,5 +1,12 @@
 """Sentiment analysis using VADER (NLTK).
 
+VADER's bundled lexicon is English-only and scores Indonesian text as
+almost universally neutral. We extend it in-place with an Indonesian
+lexicon, negators, and intensity boosters (see `processing/id_lexicon.py`),
+and normalize slang/negation via `processing/preprocess.py::clean_text()`
+before scoring — so VADER (NLTK) stays the algorithm, but it actually
+understands the Indonesian reviews it's scoring.
+
 Sentiment outputs are written under data/processed/advanced/ so the main
 processed folder remains focused on the curated analysis package.
 
@@ -17,11 +24,25 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from tqdm import tqdm
 
 from config import PROCESSED_DIR, RAW_DIR
+from processing.id_lexicon import (
+    ID_BOOSTER_DECREMENT,
+    ID_BOOSTER_INCREMENT,
+    ID_NEGATIONS,
+    ID_SENTIMENT_LEXICON,
+)
+from processing.preprocess import clean_text
 
 log = logging.getLogger("processing.sentiment")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 
 sia = SentimentIntensityAnalyzer()
+sia.lexicon.update(ID_SENTIMENT_LEXICON)
+# NEGATE/BOOSTER_DICT live on the VaderConstants instance (nltk>=3.9), not as
+# module-level globals — mutate them in place so sia's own negation/booster
+# logic (which reads self.NEGATE / self.BOOSTER_DICT) picks them up.
+sia.constants.NEGATE.update(ID_NEGATIONS)
+sia.constants.BOOSTER_DICT.update({w: sia.constants.B_INCR for w in ID_BOOSTER_INCREMENT})
+sia.constants.BOOSTER_DICT.update({w: sia.constants.B_DECR for w in ID_BOOSTER_DECREMENT})
 
 
 def analyze_sentiment(texts: list[str]) -> list[dict]:
@@ -39,7 +60,7 @@ def analyze_sentiment(texts: list[str]) -> list[dict]:
                 }
             )
             continue
-        scores = sia.polarity_scores(text)
+        scores = sia.polarity_scores(clean_text(text))
         compound = scores["compound"]
         if compound >= 0.05:
             label = "positive"

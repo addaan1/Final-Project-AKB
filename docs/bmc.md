@@ -1,9 +1,9 @@
 # Business Model Canvas — Galbay Predictor
 
-> Setiap blok di bawah ini disusun berdasarkan data aktual dari 5 sumber (Play Store, OJK/media, Forum, Blog, Google Trends) yang totalnya **350.123 item** (`data/site/data.js`). Angka-angka yang dikutip dapat diverifikasi ulang lewat `data/site/data.js` atau `python -m scripts.analyze`.
+> Setiap blok di bawah ini disusun berdasarkan data aktual dari **7 sumber** (Play Store, OJK/media, Forum, Blog, Google Trends, YouTube, Threads) yang totalnya **602.675 item** (`data/site/data.js`). Angka-angka yang dikutip dapat diverifikasi ulang lewat `data/site/data.js` atau `python -m scripts.analyze`.
 
 **Ringkasan eksekutif (1 paragraf):**
-Galbay Predictor adalah *financial behavior coach* untuk Gen Z Indonesia yang membaca **psikologi gagal bayar** dari jejak digital. Berbeda dengan termometer tren (Google Trends/sentimen rata-rata), Galbay membaca **dokter**: NLP pada review/komentar untuk mendeteksi pola impulsif, horizon pendek, takut/avoidance, dan regret loop — lalu memberikan intervensi dini (peringatan pre-checkout, simulasi cicilan, edukasi non-menggurui). **Dataset**: 349.201 review Play Store (44 app, 11 kategori) + 35.968 review relevan (10,30%) + 8.340 sinyal distress (23,2% dari relevan). **Model**: Multinomial Naive Bayes from-scratch, F1=0,841, **5-fold CV=0,848±0,002** (sangat stabil).
+Galbay Predictor adalah *financial behavior coach* untuk Gen Z Indonesia yang membaca **psikologi gagal bayar** dari jejak digital. Berbeda dengan termometer tren (Google Trends/sentimen rata-rata), Galbay membaca **dokter**: NLP pada review/komentar untuk mendeteksi pola impulsif, horizon pendek, takut/avoidance, dan regret loop — lalu memberikan intervensi dini (peringatan pre-checkout, simulasi cicilan, edukasi non-menggurui). **Dataset**: 599.000 review Play Store (53 app, 11 kategori) + 58.120 review relevan (9,7%) + 13.827 sinyal distress (23,8% dari relevan) + 1.056 blog posts + 1.614 YouTube (videos+comments) + 462 Threads. **Model**: Multinomial Naive Bayes from-scratch, **F1=0,857** (naik dari 0,841 setelah 250K data tambahan), **5-fold CV=0,860±0,003** (sangat stabil).
 
 ---
 
@@ -11,8 +11,8 @@ Galbay Predictor adalah *financial behavior coach* untuk Gen Z Indonesia yang me
 
 | Segmen | Profil | Ukuran pasar (estimasi) | Bukti data |
 |---|---|---|---|
-| **B2C Gen Z 18–27** | Mahasiswa/early worker, pengguna aktif paylater, galbay-prone | ~25 juta Gen Z (BPS); ~35% pakai paylater (~8,75jt); 23,2% dari review relevan menunjukkan distress → ~2 juta potensial B2C | 8.340 review distress dari 35.968 relevan = **23,2% distress rate** |
-| **B2B Kampus** | Kemahasiswaan yang peduli retensi & wellbeing mahasiswa | ~4.500 PTN/PTS di Indonesia, ~50 punya kemahasiswaan aktif = ~2.250 target | Korelasi: `distress_pct=23,2%` di 44 app → mahasiswa dengan pinjol aktif = risiko drop-out |
+| **B2C Gen Z 18–27** | Mahasiswa/early worker, pengguna aktif paylater, galbay-prone | ~25 juta Gen Z (BPS); ~35% pakai paylater (~8,75jt); 23,8% dari review relevan menunjukkan distress → ~2 juta potensial B2C | 13.827 review distress dari 58.120 relevan = **23,8% distress rate** |
+| **B2B Kampus** | Kemahasiswaan yang peduli retensi & wellbeing mahasiswa | ~4.500 PTN/PTS di Indonesia, ~50 punya kemahasiswaan aktif = ~2.250 target | Korelasi: `distress_pct=23,8%` di 53 app → mahasiswa dengan pinjol aktif = risiko drop-out |
 | **B2B Fintech Legal** | Risk team fintech yang butuh filter borrower rapuh | 100+ fintech terdaftar OJK; ~50 fintech lending aktif | NPL rate proxy: 5 dari 10 top-neg-apps adalah pinjol (neg_pct >50%) |
 | **B2B HR Korporat** | Benefit division, employee wellness | ~5.000 perusahaan multinasional/besar di Indonesia | "Stress finansial → produktivitas turun" (well-established literature) |
 | **B2C Koperasi/Komunitas** | Edukasi anggota, modul keuangan keluarga | ~120.000 koperasi aktif di Indonesia | Skala kecil, mission-aligned |
@@ -80,15 +80,16 @@ Galbay Predictor adalah *financial behavior coach* untuk Gen Z Indonesia yang me
 
 | Resource | Detail | Bukti |
 |---|---|---|
-| **Dataset perilaku 350K** | 349.201 review Play + 582 OJK/media + 244 forum + 53 trends + 44 blog = **350.123 item** | `data/raw/` + `data/site/data.js::meta.total_multi_source` |
-| **11 kategori fintech** | paylater, ecommerce, ewallet, pinjol, bank_digital, mobile_banking, p2p_lending, investasi, kartu_kredit, koperasi, travel | `data/site/data.js::meta.n_categories=11` |
-| **Multinomial NB from-scratch** | F1=0,841, CV=0,848±0,002, vocab=4.446 (filtering min_df=5) | `scripts/sentiment_model.py` + `data/site/data.js::model` |
-| **VADER ID lexicon 50+ kata** | Galbay/fintech domain (galbay, nunggak, dc, ilegal, dll) + multi-source slang (anjir, bangsat, capek, mantul) | `processing/id_lexicon.py` |
-| **Behavioral severity scoring** | 0-100 score + bucket rendah/sedang/tinggi (31.028 / 4.436 / 504) | `scripts/behavior_analysis.py::score_severity` |
+| **Dataset perilaku 602K** | 599.000 review Play + 1.056 blog + 786 trends + 1.614 YouTube + 462 Threads + 460 OJK/media + 244 forum = **602.675 item** dari 7 source aktif | `data/raw/` + `data/site/data.js::meta.total_multi_source` |
+| **11 kategori fintech × 53 app** | paylater, ecommerce, ewallet, pinjol, bank_digital, mobile_banking, p2p_lending, investasi, kartu_kredit, koperasi, travel | `data/site/data.js::meta.n_categories=11`, `n_apps=53` |
+| **Multinomial NB from-scratch** | **F1=0,857** (naik dari 0,841), **CV=0,860±0,003**, vocab=4.446+ (filtering min_df=5) | `scripts/sentiment_model.py` + `data/site/data.js::model` |
+| **VADER ID lexicon 70+ kata** | Galbay/fintech domain (galbay, nunggak, dc, ilegal, dll) + multi-source slang (anjir, bangsat, capek, mantul, fomo, checkout) | `processing/id_lexicon.py` |
+| **Behavioral severity scoring** | 0-100 score + bucket rendah/sedang/tinggi (**50.151 / 7.104 / 865**) | `scripts/behavior_analysis.py::score_severity` |
 | **AI Coach (38 intents, 8 modul)** | M1 Galbay Basics, M2 Pinjol, M3 Debt Strategy, M4 DC Negotiation, M5 Recovery, M6 Legal, M7 App, M8 Mental Health | `app/api.py::CHATBOT_MODULES` |
 | **3 game-changer** | Pinjol Blacklist (50+ DB), Debt Planner, Recovery Roadmap | `app/api.py` |
 | **Pinjol database** | 50+ legal + 15 ilegal sample | `data/pinjol_database.json` |
-| **Tech stack** | Flask 3, Python 3.12, scikit-learn, NLTK VADER, Playwright, DVC, Authlib, pytrends | `requirements.txt` (21 packages) |
+| **7 source scraping pipeline** | 11 scraper files (play, ojk, forum, blogs, blogs_id, trends, youtube_ytdlp, threads_pw, marketplace, tiktok, twitter) | `scraper/` |
+| **Tech stack** | Flask 3, Python 3.12, scikit-learn, NLTK VADER, Playwright, yt-dlp, DVC, Authlib, pytrends | `requirements.txt` (22 packages) |
 | **Brand & UI** | Vibrant purple theme (#9b5de5), dark mode #0f0625, glassmorphism chatbot, premium gold | `app/static/css/style.css` |
 | **Tests 308 passing** | API, auth, chatbot, routes, produk, simulasi, dll | `tests/` |
 | **Tim** | 3 founder (Scraping, Fullstack, Modeling) + on-demand freelance | `docs/business_plan.md::Tim & RACI` |
@@ -184,4 +185,12 @@ Galbay Predictor adalah *financial behavior coach* untuk Gen Z Indonesia yang me
 
 ---
 
-**Versi dokumen**: 1.0 (Regenerasi multi-source) · **Tanggal**: 2026-06-24 · **Branch**: `feat/multi-source-700k`
+**Versi dokumen**: 2.0 (Round 8 — 7 source multi-source) · **Tanggal**: 2026-06-24 · **Branch**: `feat/multi-source-700k`
+
+**Update v2.0:**
+- Total dataset: 350K → **602.675** (+252K, 7 source aktif dari 5)
+- Play Store: 24 → **53 app** (+20 app baru: Ajaib, Bibit, Pluang, Jenius, BCA/BNI/CIMB Mobile, Investree, Amartha, dll)
+- Severity: 504 → **865 tinggi** (+361)
+- Distress signal: 8.340 → **13.827** (+5.487)
+- NB F1: 0,841 → **0,857** (naik karena lebih banyak data training)
+- Tambah 5 source: Blog ID (+1.056), YouTube yt-dlp (+1.614), Threads Playwright (+462), Trends 5y (+786)

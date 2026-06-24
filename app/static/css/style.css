@@ -8906,3 +8906,109 @@ h1, h2, h3 {
   line-height: 1.5;
 }
 
+/* ============================================================
+   ROUND 13e: TOP FEATURES GRID
+   ============================================================ */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--bg-card2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.feature-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-violet);
+}
+.feature-item.feature-neg {
+  border-left: 3px solid #ef4444;
+}
+.feature-item.feature-pos {
+  border-left: 3px solid #84cc16;
+}
+.feature-word {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.feature-weight {
+  font-size: 1.1rem;
+  font-weight: 800;
+  font-family: 'SF Mono', monospace;
+}
+.feature-item.feature-neg .feature-weight { color: #ef4444; }
+.feature-item.feature-pos .feature-weight { color: #84cc16; }
+.feature-dir {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   ROUND 13e: SWOT GRID
+   ============================================================ */
+.swot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+.swot-cell {
+  background: var(--gradient-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.swot-cell:hover {
+  transform: translateY(-2px);
+}
+.swot-cell h3 {
+  font-size: 1.1rem;
+  margin: 0 0 12px 0;
+  font-weight: 800;
+}
+.swot-cell ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.swot-cell li {
+  padding: 5px 0 5px 20px;
+  position: relative;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+.swot-cell li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent-violet);
+  font-weight: 800;
+}
+.swot-strengths { border-left: 4px solid #84cc16; }
+.swot-strengths h3 { color: #84cc16; }
+.swot-weaknesses { border-left: 4px solid #f59e0b; }
+.swot-weaknesses h3 { color: #f59e0b; }
+.swot-opportunities { border-left: 4px solid #9b5de5; }
+.swot-opportunities h3 { color: #c026d3; }
+.swot-threats { border-left: 4px solid #ef4444; }
+.swot-threats h3 { color: #ef4444; }
+
+@media (max-width: 768px) {
+  .swot-grid { grid-template-columns: 1fr; }
+}
+

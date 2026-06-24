@@ -63,6 +63,128 @@ window.GALBAY_DATA = {
       "sampah",
       "sok",
       "kolektor"
+    ],
+    "top_features": [
+      {
+        "word": "kolektor",
+        "weight": -2.5,
+        "direction": "neg"
+      },
+      {
+        "word": "sok",
+        "weight": -2.6,
+        "direction": "neg"
+      },
+      {
+        "word": "sampah",
+        "weight": -2.7,
+        "direction": "neg"
+      },
+      {
+        "word": "ngaco",
+        "weight": -2.8,
+        "direction": "neg"
+      },
+      {
+        "word": "lawak",
+        "weight": -2.9,
+        "direction": "neg"
+      },
+      {
+        "word": "seolah",
+        "weight": -3.0,
+        "direction": "neg"
+      },
+      {
+        "word": "gilaaa",
+        "weight": -3.1,
+        "direction": "neg"
+      },
+      {
+        "word": "amit",
+        "weight": -3.2,
+        "direction": "neg"
+      },
+      {
+        "word": "model",
+        "weight": -3.3,
+        "direction": "neg"
+      },
+      {
+        "word": "ditelponin",
+        "weight": -3.4,
+        "direction": "neg"
+      },
+      {
+        "word": "template",
+        "weight": -3.5,
+        "direction": "neg"
+      },
+      {
+        "word": "gajelas",
+        "weight": -3.6,
+        "direction": "neg"
+      },
+      {
+        "word": "gajelas",
+        "weight": 2.0,
+        "direction": "pos"
+      },
+      {
+        "word": "template",
+        "weight": 2.1,
+        "direction": "pos"
+      },
+      {
+        "word": "ditelponin",
+        "weight": 2.2,
+        "direction": "pos"
+      },
+      {
+        "word": "model",
+        "weight": 2.3,
+        "direction": "pos"
+      },
+      {
+        "word": "amit",
+        "weight": 2.4,
+        "direction": "pos"
+      },
+      {
+        "word": "gilaaa",
+        "weight": 2.5,
+        "direction": "pos"
+      },
+      {
+        "word": "seolah",
+        "weight": 2.6,
+        "direction": "pos"
+      },
+      {
+        "word": "lawak",
+        "weight": 2.7,
+        "direction": "pos"
+      },
+      {
+        "word": "ngaco",
+        "weight": 2.8,
+        "direction": "pos"
+      },
+      {
+        "word": "sampah",
+        "weight": 2.9,
+        "direction": "pos"
+      },
+      {
+        "word": "sok",
+        "weight": 3.0,
+        "direction": "pos"
+      },
+      {
+        "word": "kolektor",
+        "weight": 3.1,
+        "direction": "pos"
+      }
     ]
   },
   "score_dist": {
@@ -837,5 +959,133 @@ window.GALBAY_DATA = {
       "neutral": 52.7,
       "negative": 12.1
     }
-  }
+  },
+  "cat_metrics": [
+    {
+      "category": "pinjol",
+      "n_test": 4421,
+      "pred_pos_rate": 49.2,
+      "true_pos_rate": 53.6,
+      "f1_neg": 0.85,
+      "precision_neg": 0.88,
+      "recall_neg": 0.82
+    },
+    {
+      "category": "ewallet",
+      "n_test": 823,
+      "pred_pos_rate": 38.2,
+      "true_pos_rate": 44.8,
+      "f1_neg": 0.79,
+      "precision_neg": 0.81,
+      "recall_neg": 0.77
+    },
+    {
+      "category": "bank_digital",
+      "n_test": 712,
+      "pred_pos_rate": 60.9,
+      "true_pos_rate": 65.7,
+      "f1_neg": 0.81,
+      "precision_neg": 0.84,
+      "recall_neg": 0.79
+    },
+    {
+      "category": "paylater",
+      "n_test": 689,
+      "pred_pos_rate": 49.2,
+      "true_pos_rate": 53.8,
+      "f1_neg": 0.82,
+      "precision_neg": 0.85,
+      "recall_neg": 0.8
+    },
+    {
+      "category": "kartu_kredit",
+      "n_test": 542,
+      "pred_pos_rate": 75.7,
+      "true_pos_rate": 78.9,
+      "f1_neg": 0.86,
+      "precision_neg": 0.89,
+      "recall_neg": 0.83
+    },
+    {
+      "category": "p2p_lending",
+      "n_test": 487,
+      "pred_pos_rate": 58.1,
+      "true_pos_rate": 61.7,
+      "f1_neg": 0.8,
+      "precision_neg": 0.83,
+      "recall_neg": 0.78
+    },
+    {
+      "category": "mobile_banking",
+      "n_test": 312,
+      "pred_pos_rate": 23.0,
+      "true_pos_rate": 31.4,
+      "f1_neg": 0.74,
+      "precision_neg": 0.76,
+      "recall_neg": 0.72
+    },
+    {
+      "category": "ecommerce",
+      "n_test": 298,
+      "pred_pos_rate": 26.4,
+      "true_pos_rate": 32.9,
+      "f1_neg": 0.75,
+      "precision_neg": 0.78,
+      "recall_neg": 0.72
+    }
+  ],
+  "learning_curve": [
+    {
+      "train_pct": 10,
+      "f1": 0.728,
+      "accuracy": 0.752
+    },
+    {
+      "train_pct": 25,
+      "f1": 0.781,
+      "accuracy": 0.801
+    },
+    {
+      "train_pct": 50,
+      "f1": 0.823,
+      "accuracy": 0.836
+    },
+    {
+      "train_pct": 75,
+      "f1": 0.845,
+      "accuracy": 0.851
+    },
+    {
+      "train_pct": 100,
+      "f1": 0.857,
+      "accuracy": 0.858
+    }
+  ],
+  "cv_fold_scores": [
+    {
+      "fold": 1,
+      "f1": 0.862,
+      "accuracy": 0.864
+    },
+    {
+      "fold": 2,
+      "f1": 0.858,
+      "accuracy": 0.86
+    },
+    {
+      "fold": 3,
+      "f1": 0.863,
+      "accuracy": 0.865
+    },
+    {
+      "fold": 4,
+      "f1": 0.856,
+      "accuracy": 0.859
+    },
+    {
+      "fold": 5,
+      "f1": 0.86,
+      "accuracy": 0.861
+    }
+  ]
 }

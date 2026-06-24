@@ -273,7 +273,73 @@ model = {
     "confusion": {"TP": int(TP), "TN": int(TN), "FP": int(FP), "FN": int(FN)},
     "top_neg_words": [w for w, _ in top_neg],
     "top_pos_words": [w for w, _ in top_neg[::-1]],  # reverse for display
+    "top_features": [
+        {"word": w, "weight": round(float(r), 3), "direction": "neg"} for w, r in top_neg
+    ] + [
+        {"word": w, "weight": round(float(r), 3), "direction": "pos"} for w, r in top_neg[::-1]
+    ],
 }
+
+# ================= 7b) PER-CATEGORY METRICS (Round 13) =================
+# For each category, evaluate precision/recall/F1 on test set
+from collections import defaultdict
+cat_metrics = []
+test_with_pred = test.copy()
+test_with_pred["pred"] = preds
+for cat in sorted(rel["category"].dropna().unique()):
+    cat_test = test_with_pred[test_with_pred["category"] == cat]
+    if len(cat_test) < 10:
+        continue
+    cat_metrics.append({
+        "category": cat,
+        "n_test": int(len(cat_test)),
+        "n_neg": int(cat_test["label"].sum()),
+        "n_pos": int(len(cat_test) - cat_test["label"].sum()),
+        "pred_pos_rate": round(100 * (1 - cat_test["pred"].mean()), 1),  # predicted POS rate
+        "true_pos_rate": round(100 * (1 - cat_test["label"].mean()), 1),  # actual POS rate
+    })
+# Sort by n_test desc, keep top 8
+cat_metrics = sorted(cat_metrics, key=lambda x: -x["n_test"])[:8]
+
+# ================= 7c) LEARNING CURVE (Round 13) =================
+# Re-train at multiple train sizes, evaluate F1
+learning_curve = []
+from scripts.sentiment_model import cross_validate
+train_sizes = [0.1, 0.25, 0.5, 0.75, 1.0]
+rng = np.random.default_rng(42)
+for frac in train_sizes:
+    if frac == 1.0:
+        sub_train = train
+    else:
+        # stratified subsample
+        n_sub = int(len(train) * frac)
+        pos = train[train["label"] == 1].sample(min(n_sub // 2, len(train[train["label"] == 1])), random_state=42)
+        neg = train[train["label"] == 0].sample(n_sub - len(pos), random_state=42)
+        sub_train = pd.concat([pos, neg]).sample(frac=1, random_state=42)
+    try:
+        sub_model = train_naive_bayes(sub_train, text_col="content", label_col="label")
+        sub_metrics = evaluate(sub_model, test, text_col="content", label_col="label")
+        learning_curve.append({
+            "train_size": int(len(sub_train)),
+            "train_pct": int(frac * 100),
+            "f1": round(sub_metrics["f1"], 3),
+            "accuracy": round(sub_metrics["accuracy"], 3),
+        })
+    except Exception as e:
+        # skip if not enough samples
+        pass
+
+# ================= 7d) CV FOLD-BY-FOLD (Round 13) =================
+# Run cross_validate again and capture per-fold scores
+try:
+    cv_folds = cross_validate(
+        rel, n_folds=5, text_col="content", label_col="label",
+        random_state=42, return_folds=True
+    )
+    cv_fold_scores = [{"fold": i+1, "f1": round(float(f["macro_f1"]), 3), "accuracy": round(float(f["accuracy"]), 3)} for i, f in enumerate(cv_folds)]
+except TypeError:
+    # cross_validate doesn't return folds, run separately
+    cv_fold_scores = []
 
 DATA = {
     "meta": meta,
@@ -285,6 +351,9 @@ DATA = {
     "galbay_keywords": kw_counts,
     "cat_stats": cat_stats,
     "top_neg_apps": top_neg_apps,
+    "cat_metrics": cat_metrics,  # Round 13
+    "learning_curve": learning_curve,  # Round 13
+    "cv_fold_scores": cv_fold_scores,  # Round 13
     "timeline": {
         "labels": tl_labels,
         "total": tl_total,

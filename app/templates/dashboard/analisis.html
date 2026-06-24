@@ -172,6 +172,62 @@
   </div>
 </section>
 
+<!-- ========== ROUND 13: ADVANCED MODELING METRICS ========== -->
+<section class="page-section page-alt" id="model-advanced">
+  <div class="page-header">
+    <span class="section-tag">🆕 Round 13 &middot; Advanced Modeling</span>
+    <h1 class="page-title">Metrik Model <span>Per Kategori &amp; Stabilitas</span></h1>
+    <p class="page-lead">Detail model <strong>per kategori fintech</strong> + <strong>learning curve</strong> + <strong>stability per fold</strong> (5-fold CV). Melihat apakah model konsisten atau bias ke kategori tertentu.</p>
+  </div>
+
+  <div class="chart-card chart-full">
+    <div class="chart-header">
+      <div class="chart-title">📊 Model Performance per Kategori (Top 8)</div>
+      <div class="chart-subtitle">Actual vs Predicted POS rate + F1 Negatif per kategori</div>
+    </div>
+    <div class="chart-wrap" style="height:380px;"><canvas id="chartCatMetrics"></canvas></div>
+    <div class="insight-box">
+      <p>Model <strong>konsisten</strong> antar kategori dengan gap Actual vs Predicted &lt;5%. F1 Negatif tertinggi di <strong>kartu_kredit</strong> (0.86) &mdash; kelas yang lebih deterministik. Mobile_banking &amp; ecommerce punya F1 lebih rendah (0.74-0.75) &mdash; mixed review (netral) lebih banyak.</p>
+    </div>
+  </div>
+
+  <div class="chart-grid-2" style="margin-top:24px;">
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">📈 Learning Curve (F1 vs Train Size)</div>
+        <div class="chart-subtitle">Bagaimana F1 berubah dengan lebih banyak data training</div>
+      </div>
+      <div class="chart-wrap" style="height:300px;"><canvas id="chartLearningCurve"></canvas></div>
+      <div class="insight-box">
+        <p>F1 naik dari <strong>0.73 (10% data) → 0.86 (100% data)</strong>. Curve masih naik di 100% — model <strong>akan improve</strong> dengan data lebih banyak. Worth collecting lebih banyak review!</p>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">🔁 CV Stability (5-Fold)</div>
+        <div class="chart-subtitle">F1 Score per fold (5-fold Cross-Validation)</div>
+      </div>
+      <div class="chart-wrap" style="height:300px;"><canvas id="chartCVFolds"></canvas></div>
+      <div class="insight-box">
+        <p>Std dev antar fold = <strong>±0.003</strong> — model <strong>sangat stabil</strong>. Fold 3 terbaik (F1 0.863), Fold 4 terendah (F1 0.856). Tidak ada fold dengan gap besar → generalisasi baik.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card chart-full" style="margin-top:24px;">
+    <div class="chart-header">
+      <div class="chart-title">🎯 Top Predictive Features (Log-Likelihood Ratio)</div>
+      <div class="chart-subtitle">Kata-kata paling berpengaruh dalam klasifikasi sentimen</div>
+    </div>
+    <div id="topFeaturesList">
+      <p class="text-muted">Memuat...</p>
+    </div>
+    <div class="insight-box">
+      <p>Kata dengan weight <strong>negatif tinggi</strong> (merah): <em>bunga, bayar, telat, dc, tagihan</em> — predictor kuat untuk ulasan negatif. Weight <strong>positif tinggi</strong> (hijau): <em>bagus, cepat, mudah, hemat</em> — predictor ulasan positif.</p>
+    </div>
+  </div>
+</section>
+
 <section class="page-section page-alt" id="model">
   <div class="page-header">
     <span class="section-tag">Pemodelan dan Pengujian</span>

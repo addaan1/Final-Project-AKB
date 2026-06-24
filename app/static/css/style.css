@@ -3656,8 +3656,10 @@ body[data-package="premium"] .chat-header {
   position: relative;
 }
 .chat-msg br { line-height: 1.4; }
-.chat-msg p { margin: 0 0 4px 0; line-height: 1.5; }
+.chat-msg p { margin: 0 0 2px 0; line-height: 1.45; }
 .chat-msg p:last-child { margin-bottom: 0; }
+.chat-msg strong { display: inline; line-height: 1.45; }
+.chat-msg br + br { display: block; content: ''; margin: 0; }
 @keyframes chat-msg-in {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }

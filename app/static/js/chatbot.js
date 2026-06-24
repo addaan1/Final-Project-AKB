@@ -10,17 +10,22 @@
     'Cek pinjol legal?',
     'Snowball vs Avalanche',
     'DC agresif, gimana?',
-    'Cara recovery',
+    'Cara recovery 30 hari',
+    'Bunga wajar berapa?',
+    'Bunga tahunan vs harian',
+    'Pinjol aman untuk mahasiswa?',
   ];
 
   const CATEGORY_CHIPS = [
-    { label: 'Galbay basics', query: 'apa itu galbay?' },
-    { label: 'Pinjol legal?', query: 'cara cek pinjol legal' },
-    { label: 'Strategi bayar', query: 'snowball vs avalanche' },
-    { label: 'DC agresif', query: 'DC agresif' },
-    { label: 'Recovery', query: 'cara recovery' },
-    { label: 'Hak hukum', query: 'hak borrower' },
-    { label: 'Mental health', query: 'stress finansial' },
+    { label: '📚 Galbay basics', query: 'apa itu galbay?', icon: '📚' },
+    { label: '⚖️ Pinjol legal?', query: 'cara cek pinjol legal', icon: '⚖️' },
+    { label: '💰 Strategi bayar', query: 'snowball vs avalanche', icon: '💰' },
+    { label: '🤝 DC agresif', query: 'DC agresif', icon: '🤝' },
+    { label: '🛤️ Recovery', query: 'cara recovery', icon: '🛤️' },
+    { label: '📜 Hak hukum', query: 'hak borrower', icon: '📜' },
+    { label: '💚 Mental health', query: 'stress finansial', icon: '💚' },
+    { label: '🎮 DC Simulator', query: 'latihan dc', icon: '🎮' },
+    { label: '📊 Cek Skor', query: 'cek skor', icon: '📊' },
   ];
 
   const SENTIMENT_EMOJI = {

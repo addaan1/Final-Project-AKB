@@ -56,6 +56,15 @@ function fillNumbers() {
     cm_insight: ((cm.FN||0) > (cm.FP||0))
       ? `False negative (${formatNum(cm.FN)}) lebih tinggi dari false positive (${formatNum(cm.FP)}) — model cenderung underestimate sentimen negatif.`
       : `False positive (${formatNum(cm.FP)}) lebih tinggi dari false negative (${formatNum(cm.FN)}) — model cenderung overestimate sentimen negatif.`,
+    n_sources_active: m.n_sources_active || 0,
+    n_sources_total: m.n_sources_total || 0,
+    total_multi_source: (m.total_multi_source||0).toLocaleString('id-ID'),
+    total_multi_source_fmt: formatNum(m.total_multi_source || 0),
+    cv_acc_mean: mo.cv_acc_mean != null ? (mo.cv_acc_mean*100).toFixed(1) + '%' : '-',
+    cv_acc_std: mo.cv_acc_std != null ? '±' + (mo.cv_acc_std*100).toFixed(1) + '%' : '-',
+    cv_f1_mean: mo.cv_f1_mean != null ? (mo.cv_f1_mean*100).toFixed(1) + '%' : '-',
+    cv_f1_std: mo.cv_f1_std != null ? '±' + (mo.cv_f1_std*100).toFixed(1) + '%' : '-',
+    macro_f1: (mo.macro_f1*100).toFixed(1) + '%',
   };
   document.querySelectorAll('[data-fill]').forEach(el => {
     const k = el.dataset.fill;

@@ -147,6 +147,9 @@ revenue stabil + B2C volume + data licensing margin tinggi.
 
 ## 12. Tautan
 
+- **Business Model Canvas (9 blok, data-driven):** [`docs/bmc.md`](bmc.md)
 - Detail keuangan: `docs/financial_plan.md`
 - Strategi data & etika: `docs/data_strategy.md`
+- Metodologi modelling: `docs/analysis_methodology.md`
 - Skema dataset: `data/README.md`
+- Output dashboard: `data/site/data.js` (auto-generated, 10,5KB)

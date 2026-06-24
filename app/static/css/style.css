@@ -1430,7 +1430,69 @@ body[data-package="premium"] .topnav-cta:hover {
   margin-top: 16px;
 }
 
-/* --- Nav pill CTA (Galbay Score) --- */
+/* ============================================================
+   CHATBOT MARKDOWN STYLES
+   (rendered via renderMarkdown() in chatbot.js)
+   ============================================================ */
+.chat-msg code {
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 0.88em;
+  background: rgba(155,93,229,0.14);
+  color: #c026d3;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(155,93,229,0.22);
+}
+.chat-msg .md-link {
+  color: var(--accent-violet);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent-violet);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.chat-msg .md-link:hover {
+  color: var(--accent-lime);
+  border-bottom-color: var(--accent-lime);
+  background: rgba(184,255,60,0.08);
+}
+.chat-msg .ext-link-icon {
+  font-size: 0.75em;
+  margin-left: 2px;
+  opacity: 0.7;
+}
+.chat-msg .md-list {
+  margin: 6px 0 6px 0;
+  padding-left: 22px;
+  list-style-position: outside;
+}
+.chat-msg ul.md-list { list-style-type: disc; }
+.chat-msg ol.md-list { list-style-type: decimal; }
+.chat-msg .md-list li {
+  margin: 3px 0;
+  line-height: 1.55;
+  padding-left: 4px;
+}
+.chat-msg .md-list li::marker {
+  color: var(--accent-violet);
+  font-weight: 700;
+}
+.chat-msg strong {
+  color: var(--accent-lime);
+  font-weight: 700;
+  background: linear-gradient(180deg, transparent 60%, rgba(184,255,60,0.18) 60%);
+  padding: 0 2px;
+}
+:root[data-theme="light"] .chat-msg code {
+  background: rgba(192,38,211,0.08);
+  color: #c026d3;
+  border-color: rgba(192,38,211,0.18);
+}
+:root[data-theme="light"] .chat-msg strong {
+  color: #9b5de5;
+  background: linear-gradient(180deg, transparent 60%, rgba(155,93,229,0.16) 60%);
+}
+
+
 .nav-pill-cta {
   background: linear-gradient(135deg, #b8ff3c 0%, #84cc16 100%) !important;
   border-color: #b8ff3c !important;

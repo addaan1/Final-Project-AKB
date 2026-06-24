@@ -86,9 +86,10 @@
     if (!messages) return;
 
     const wrapper = el('div', { class: 'chat-msg-wrap ' + role });
+    const rendered = html || (role === 'bot' ? renderMarkdown(text) : escapeHtml(text).replace(/\n/g, '<br>'));
     const msg = el('div', {
       class: 'chat-msg ' + role,
-      html: html || escapeHtml(text).replace(/\n/g, '<br>'),
+      html: rendered,
     });
     wrapper.appendChild(msg);
 
@@ -105,6 +106,71 @@
     const d = document.createElement('div');
     d.textContent = s;
     return d.innerHTML;
+  }
+
+  // ============================================================
+  // Mini markdown renderer (XSS-safe)
+  // Handles: **bold**, *italic*, `code`, - list, 1. ordered, [text](url)
+  // Plus: collapse excessive whitespace, normalize line breaks
+  // ============================================================
+  function renderMarkdown(text) {
+    if (!text) return '';
+    // Step 1: escape HTML first (XSS-safe foundation)
+    let s = escapeHtml(text);
+    // Step 2: collapse 3+ newlines into 2 (max one blank line)
+    s = s.replace(/\n{3,}/g, '\n\n');
+    // Step 3: extract code spans `xxx` (placeholder to avoid inner ** processing)
+    const codeStore = [];
+    s = s.replace(/`([^`\n]+)`/g, function(m, c) {
+      codeStore.push(c);
+      return '\x00CODE' + (codeStore.length - 1) + '\x00';
+    });
+    // Step 4: extract markdown links [text](url) before doing other formatting
+    s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function(m, label, url) {
+      const isExternal = /^https?:\/\//.test(url);
+      const safeUrl = url.replace(/"/g, '&quot;');
+      const target = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+      const ext = isExternal ? ' <span class="ext-link-icon" aria-hidden="true">↗</span>' : '';
+      return '<a href="' + safeUrl + '"' + target + ' class="md-link">' + label + ext + '</a>';
+    });
+    // Step 5: bold **xxx** (non-greedy, no newlines inside)
+    s = s.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+    // Step 6: italic *xxx* (avoid matching already-bolded)
+    s = s.replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>');
+    // Step 7: restore code spans
+    s = s.replace(/\x00CODE(\d+)\x00/g, function(m, i) {
+      return '<code>' + codeStore[+i] + '</code>';
+    });
+    // Step 8: list items - convert "- " and "* " at line start to <li>
+    const lines = s.split('\n');
+    const out = [];
+    let inUl = false, inOl = false;
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const olMatch = line.match(/^(\d+)\.\s+(.+)$/);
+      const ulMatch = line.match(/^[-*]\s+(.+)$/);
+      if (olMatch) {
+        if (inUl) { out.push('</ul>'); inUl = false; }
+        if (!inOl) { out.push('<ol class="md-list">'); inOl = true; }
+        out.push('<li>' + olMatch[2] + '</li>');
+      } else if (ulMatch) {
+        if (inOl) { out.push('</ol>'); inOl = false; }
+        if (!inUl) { out.push('<ul class="md-list">'); inUl = true; }
+        out.push('<li>' + ulMatch[1] + '</li>');
+      } else {
+        if (inUl) { out.push('</ul>'); inUl = false; }
+        if (inOl) { out.push('</ol>'); inOl = false; }
+        out.push(line);
+      }
+    }
+    if (inUl) out.push('</ul>');
+    if (inOl) out.push('</ol>');
+    s = out.join('\n');
+    // Step 9: collapse multiple spaces (preserve line breaks)
+    s = s.replace(/[^\S\n]{2,}/g, ' ');
+    // Step 10: convert remaining newlines to <br> (preserves user-intended breaks)
+    s = s.replace(/\n/g, '<br>');
+    return s;
   }
 
   function addTypingIndicator() {

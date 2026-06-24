@@ -7,7 +7,7 @@
   <div class="page-header">
     <span class="section-tag">G &middot; Kesimpulan dan Referensi</span>
     <h1 class="page-title">Penutup</h1>
-    <p class="page-lead">Data mining terhadap 349K ulasan fintech mengonfirmasi adanya masalah perilaku finansial Gen Z yang nyata dan masif.</p>
+    <p class="page-lead">Data mining terhadap 602K data multi-source (Play + OJK + Forum + Blog + YouTube + Threads + Trends) mengonfirmasi adanya masalah perilaku finansial Gen Z yang nyata dan masif.</p>
   </div>
 
   <div class="kpi-grid">
@@ -60,7 +60,17 @@
     </div>
     <h3>Referensi dan Transparansi AI</h3>
     <ul class="bmc-list">
-      <li><strong>Sumber data:</strong> 349.200 ulasan Google Play Store dari 44 aplikasi fintech Indonesia (paylater, e-wallet, pinjol, bank digital, e-commerce, travel, investasi).</li>
+      <li><strong>Sumber data (7 source aktif, 602K total):</strong>
+        <ul>
+          <li>Google Play Store: 599K review dari 53 app (paylater, e-wallet, pinjol, bank digital, e-commerce, travel, investasi, P2P, mobile_banking, kartu_kredit, koperasi)</li>
+          <li>OJK + media: 460 artikel (siaran pers regulator &amp; liputan Kompas/Detik/CNBC)</li>
+          <li>Forum Kaskus: 244 threads</li>
+          <li>Blog Indonesia: 1.056 posts (Medium, Hipwee, Kumparan, Brilio, CNBC, Kompas, Detik)</li>
+          <li>YouTube (yt-dlp): 283 video + 1.331 komentar</li>
+          <li>Threads (Meta): 231 posts</li>
+          <li>Google Trends: 786 records time-series 5 tahun</li>
+        </ul>
+      </li>
       <li><strong>Periode:</strong> <span data-fill="date_min">-</span> s/d <span data-fill="date_max">-</span>.</li>
       <li><strong>Tools:</strong> Python, VADER Lexicon (NLTK), google-play-scraper, Chart.js, Flask.</li>
       <li><strong>Bantuan AI:</strong> Untuk eksplorasi ide, penyusunan analisis, dan pembuatan dashboard. <strong>Seluruh angka dihitung dari data nyata</strong>, bukan dikarang AI.</li>

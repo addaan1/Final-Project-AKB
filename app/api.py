@@ -24,7 +24,7 @@ from datetime import datetime
 # VERSION
 # =================================================================
 MODEL_VERSION = "rule-based-v1"
-DISCLAIMER = "Demo Prototype — Skor berbasis rule-based dari insight data 349K ulasan Google Play. Model ML asli menyusul."
+DISCLAIMER = "Demo Prototype — Skor berbasis rule-based dari insight data 602K multi-source (Play + OJK + Forum + Blog + YouTube + Threads + Trends). Model ML asli menyusul."
 
 
 # =================================================================
@@ -727,7 +727,7 @@ SYNONYMS = {
     "ilegal_act": ["ilegal", "melanggar", "ancam", "intimidasi", "teror", "kekerasan", "sebar data"],
     "negosiasi": ["nego", "negosiasi", "tawar", "keringanan", "restrukturisasi", "restruk"],
     "premium": ["premium", "berbayar", "pro", "upgrade", "paket"],
-    "data": ["data", "informasi", "dataset", "349", "349000", "sumber"],
+    "data": ["data", "informasi", "dataset", "602", "602000", "sumber", "multi source"],
     "recovery": ["recovery", "pemulihan", "keluar", "selesaikan", "lunas", "bebas", "sembuh"],
     "selfreward": ["self reward", "reward", "hadiah", "gift", "traktir", "self care"],
     "konseling": ["konseling", "konsultan", "psikolog", "temen curhat", "curhat", "cerita"],
@@ -1073,7 +1073,7 @@ FAQ_KB = [
         "module": "M7_app_rec",
         "keywords": ["cara", "pakai", "website", "web", "app", "pakai", "penggunaan", "panduan", "tutorial"],
         "patterns": ["cara pakai web", "cara pakai galbay", "tutorial"],
-        "answer": "**Cara pakai Galbay Predictor**:\n\n1. **Ringkasan** → Lihat insight umum dari 349K review Gen Z\n2. **Analisis** → Confusion matrix, sentiment breakdown, app comparison\n3. **Solusi** → 4 modul recovery: Pahami → Hitung → Aksi → Pulih\n4. **Produk** → Skor Risiko, Pinjol Checker, Debt Planner, Recovery Roadmap, Simulasi Cicilan\n5. **Kesimpulan** → Key findings + rekomendasi\n\nCukup **login** (gratis) untuk akses semua fitur. Premium untuk unlimited AI Coach + advanced analytics.",
+        "answer": "**Cara pakai Galbay Predictor**:\n\n1. **Ringkasan** → Lihat insight umum dari 602K data multi-source (Play + OJK + Forum + Blog + YouTube + Threads + Trends)\n2. **Analisis** → Confusion matrix, sentiment breakdown, app comparison, multi-source distribution\n3. **Solusi** → Business Model Canvas dari 9 blok data-driven\n4. **Produk** → Skor Risiko, Pinjol Checker, Debt Planner, Recovery Roadmap, Simulasi Cicilan\n5. **Kesimpulan** → Key findings + rekomendasi\n\nCukup **login** (gratis) untuk akses semua fitur. Premium untuk unlimited AI Coach + advanced analytics.",
         "suggestions": ["Cek skor", "Pinjol Checker", "Recovery Roadmap"],
         "related_actions": [
             {"label": "Mulai", "href": "/dashboard/ringkasan"},
@@ -1082,9 +1082,9 @@ FAQ_KB = [
     {
         "intent": "data_sumber",
         "module": "M7_app_rec",
-        "keywords": ["data", "sumber", "349", "ribu", "ulasan", "review", "dataset", "asal"],
+        "keywords": ["data", "sumber", "602", "ribu", "ulasan", "review", "dataset", "asal", "multi", "source"],
         "patterns": ["data dari mana", "sumber data", "dataset"],
-        "answer": "**Dataset Galbay Predictor**:\n\n- **Sumber**: Google Play Store reviews\n- **Volume**: 349.200 review (44 app finansial Gen Z)\n- **Periode**: 2019-2025\n- **Relevan**: 35.968 review (10.3% — setelah filter keyword galbay/pinjol/dc)\n- **Insight**: distribusi skor, pola galbay, app ranking, sentiment\n\n**Bukan data primer**: ini *analisis sekunder* dari review publik Google Play. Tidak merepresentasikan semua pengguna Indonesia.\n\nLihat detail metodologi di **[Kesimpulan](/dashboard/kesimpulan)**.",
+        "answer": "**Dataset Galbay Predictor (7 source multi-source, 602K total)**:\n\n- **Google Play Store**: 599.000 review (53 app finansial Gen Z, 11 kategori)\n- **OJK + media**: 460 artikel (regulator & narasi pasar)\n- **Forum Kaskus**: 244 threads (komunitas diskusi utang)\n- **Blog Indonesia**: 1.056 posts (Medium, Hipwee, Kumparan, dll)\n- **YouTube (yt-dlp)**: 283 video + 1.331 komentar\n- **Threads (Meta)**: 231 posts (bahasa natural Gen Z)\n- **Google Trends**: 786 records time-series 5 tahun (minat pencarian publik)\n- **Periode**: 2015-2026 (11 tahun)\n- **Relevan**: 58.120 review (9,7% — setelah filter 65+ keyword galbay)\n- **Distress signal**: 13.827 review (23,8% dari relevan) → basis B2C user potensial\n\n**Bukan data primer**: ini *analisis sekunder* dari data publik. Tidak merepresentasikan semua pengguna Indonesia.\n\nLihat detail metodologi di **[Kesimpulan](/dashboard/kesimpulan)**.",
         "suggestions": ["AI atau rule-based?", "Premium dapat apa?", "Cara pakai"],
         "related_actions": [
             {"label": "Lihat Kesimpulan", "href": "/dashboard/kesimpulan"},

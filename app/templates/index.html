@@ -31,14 +31,16 @@
     <div class="landing-hero-content">
       <span class="hero-tag">Big Data · Perilaku Keuangan Gen Z</span>
       <h1>Mining Perilaku Digital Gen Z untuk Membangun <span>Financial Behavior Coach</span> Berbasis Big Data</h1>
-      <p class="lead">Memetakan fenomena <strong>galbay (gagal bayar)</strong> pinjol dan paylater di kalangan anak muda melalui data mining 349.200 ulasan aplikasi fintech Google Play Store, lalu menerjemahkannya menjadi peluang bisnis yang layak dalam bentuk Business Model Canvas berbasis bukti.</p>
+      <p class="lead">Memetakan fenomena <strong>galbay (gagal bayar)</strong> pinjol dan paylater di kalangan anak muda melalui data mining <strong>602.675 item multi-source</strong> — Google Play Store (599K review) + OJK/media (460) + Forum Kaskus (244) + Blog Indonesia (1.056) + YouTube (1.614) + Threads (231) + Google Trends (786 time-series). Lalu menerjemahkannya menjadi peluang bisnis yang layak dalam bentuk Business Model Canvas berbasis bukti.</p>
       <div class="landing-cta">
         <a href="{{ url_for('main.login') }}" class="btn-primary">Buka Dashboard Analisis</a>
+        <a href="{{ url_for('main.galbay_score') }}" class="btn-secondary">Cek Galbay Score Gratis</a>
         <a href="#metode" class="btn-outline">Pelajari Metode</a>
       </div>
 
       <div class="landing-stats">
-        <div class="landing-stat"><div class="stat-value" data-fill="total_reviews">-</div><div class="stat-label">Total ulasan dianalisis</div></div>
+        <div class="landing-stat"><div class="stat-value" data-fill="total_multi_source_fmt">-</div><div class="stat-label">Total data multi-source</div></div>
+        <div class="landing-stat"><div class="stat-value" data-fill="n_sources_active">-</div><div class="stat-label">Source aktif</div></div>
         <div class="landing-stat"><div class="stat-value" data-fill="total_relevant">-</div><div class="stat-label">Ulasan relevan tervalidasi</div></div>
         <div class="landing-stat"><div class="stat-value" data-fill="n_apps">-</div><div class="stat-label">Aplikasi fintech</div></div>
         <div class="landing-stat"><div class="stat-value" data-fill="distress_pct">-</div><div class="stat-label">Sinyal distress galbay</div></div>
@@ -51,7 +53,7 @@
         </div>
         <div class="trust-badge">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          <span>349K Data Points</span>
+          <span>602K Data Multi-Source</span>
         </div>
         <div class="trust-badge">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -90,21 +92,43 @@
   <section class="landing-section center" id="sumber">
     <div class="section-header">
       <span class="section-tag">Sumber Data</span>
-      <h2 class="section-title">Data dari <span>Google Play Store</span></h2>
-      <p class="section-desc">349.200 ulasan dari 44 aplikasi fintech Indonesia &mdash; single source yang paling kaya untuk analisis perilaku pengguna.</p>
+      <h2 class="section-title">7 Sumber Data, <span>602K Item</span></h2>
+      <p class="section-desc">Triangulasi dari 7 platform digital untuk menangkap fenomena galbay dari berbagai sudut &mdash; bukan hanya review app store.</p>
     </div>
-    <div class="grid-3">
-      <div class="card">
+    <div class="grid-3 source-grid">
+      <div class="card source-card source-play">
         <h3>Google Play Store</h3>
-        <p><strong>349.200 ulasan</strong> dari 44 aplikasi fintech: paylater, pinjol, e-wallet, bank digital, e-commerce, travel, dan investasi.</p>
+        <p><strong>599.000 review</strong> dari 53 aplikasi fintech Indonesia (paylater, pinjol, e-wallet, bank digital, e-commerce, travel, investasi, P2P, mobile banking, kartu kredit, koperasi).</p>
       </div>
-      <div class="card">
-        <h3>11 Kategori Fintech</h3>
-        <p>Mencakup paylater (Kredivo, Akulaku), pinjol (AdaKami, Easycash), e-wallet (OVO, DANA, GoPay), bank digital (SeaBank, Jago), dan lainnya.</p>
+      <div class="card source-card source-ojk">
+        <h3>OJK &amp; Media</h3>
+        <p><strong>460 artikel</strong> dari OJK (siaran pers, info terkini) dan media nasional (Kompas, Detik, CNBC Indonesia) &mdash; sinyal regulator &amp; narasi pasar.</p>
       </div>
-      <div class="card">
-        <h3>Periode 2022 &ndash; 2026</h3>
-        <p>Data historis 4 tahun &mdash; menangkap tren, pola musiman, dan dampak regulasi OJK terhadap perilaku konsumen.</p>
+      <div class="card source-card source-forum">
+        <h3>Forum Kaskus</h3>
+        <p><strong>244 threads</strong> diskusi utang, galbay, pinjol, restrukturisasi dari komunitas Kaskus &mdash; voice of customer tanpa filter.</p>
+      </div>
+      <div class="card source-card source-blog">
+        <h3>Blog Indonesia</h3>
+        <p><strong>1.056 posts</strong> dari Medium, Hipwee, Kumparan, Brilio, CNBC, Kompas, Detik &mdash; perspektif editorial &amp; edukasi.</p>
+      </div>
+      <div class="card source-card source-youtube">
+        <h3>YouTube (yt-dlp)</h3>
+        <p><strong>283 video + 1.331 komentar</strong> &mdash; video edukasi, review, dan diskusi galbay dari kreator lokal. Tanpa API key.</p>
+      </div>
+      <div class="card source-card source-threads">
+        <h3>Threads (Meta)</h3>
+        <p><strong>231 posts</strong> dari kreator Gen Z &mdash; bahasa natural, slang, FOMO, self-reward yang lebih segar dari review app store.</p>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top: 32px;">
+      <div class="card source-card source-trends">
+        <h3>Google Trends</h3>
+        <p><strong>786 records time-series 5 tahun</strong> untuk 20 grup keyword (galbay, paylater, pinjol, debt collector, dll) &mdash; tren minat pencarian publik.</p>
+      </div>
+      <div class="card source-card source-comparison">
+        <h3>Perbandingan &amp; Insight</h3>
+        <p>Play Store dominan (99,4%) untuk volume review formal, tapi <strong>6 source lain</strong> menambah konteks penting: bahasa natural, video, opini publik, narasi regulator.</p>
       </div>
     </div>
   </section>

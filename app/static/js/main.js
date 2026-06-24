@@ -1,5 +1,5 @@
 // ============================================================
-// Galbay Predictor - Dashboard logic (data asli 349K + VADER)
+// Galbay Predictor - Dashboard logic (data asli 602K multi-source + VADER ID)
 // Data di-load dari data.js (window.GALBAY_DATA)
 // Conditional chart init: hanya render chart yang canvas-nya ada di page
 // ============================================================

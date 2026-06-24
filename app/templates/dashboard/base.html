@@ -21,14 +21,15 @@
         <span class="topbar-brand-mark">G</span>
         <span class="topbar-brand-text">GALBAY <span>PREDICTOR</span></span>
       </a>
-      <div class="topbar-subtitle">Financial Behavior Coach &middot; 349K Data</div>
+      <div class="topbar-subtitle">Financial Behavior Coach &middot; 602K Data Multi-Source</div>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
     <nav class="topbar-nav" id="topbarNav" aria-label="Section navigation">
       <a href="{{ url_for('main.ringkasan') }}" class="nav-pill {% if active_page == 'ringkasan' %}active{% endif %}">Ringkasan</a>
       <a href="{{ url_for('main.analisis') }}" class="nav-pill {% if active_page == 'analisis' %}active{% endif %}">Analisis</a>
       <a href="{{ url_for('main.solusi') }}" class="nav-pill {% if active_page == 'solusi' %}active{% endif %}">Solusi &amp; BMC</a>
-      <a href="{{ url_for('main.produk') }}" class="nav-pill nav-pill-cta {% if active_page == 'produk' %}active{% endif %}">Coba Produk</a>
+      <a href="{{ url_for('main.galbay_score') }}" class="nav-pill nav-pill-cta" style="background: linear-gradient(135deg, #b8ff3c, #84cc16); color: #1a0a3a; font-weight: 800;">⚡ Galbay Score</a>
+      <a href="{{ url_for('main.produk') }}" class="nav-pill {% if active_page == 'produk' %}active{% endif %}">Tools</a>
       <a href="{{ url_for('main.kesimpulan') }}" class="nav-pill {% if active_page == 'kesimpulan' %}active{% endif %}">Kesimpulan</a>
     </nav>
     <div class="topbar-right">
@@ -93,6 +94,7 @@
 
   <main class="main">
     {% block content %}{% endblock %}
+    {% block extra_js %}{% endblock %}
 
     <footer class="dashboard-footer">
       <div class="dashboard-footer-inner">
@@ -176,7 +178,7 @@
     </form>
 
     <div class="chat-footer">
-      <span>Powered by 349K ulasan · AI mungkin membuat kesalahan</span>
+      <span>Powered by 602K data multi-source (Play + OJK + Forum + Blog + YouTube + Threads + Trends) · AI mungkin membuat kesalahan</span>
     </div>
   </div>
   <script defer src="{{ url_for('static', filename='js/chatbot.js') }}"></script>

@@ -1,27 +1,36 @@
 # Perencanaan Keuangan — Galbay Predictor
 
-**Status:** Kerangka berbasis data. Angka placeholder akan diisi & divalidasi
-dari hasil scraping (volume review, demografi TikTok) + riset pasar.
+**Status:** Diperbarui dengan data aktual (Round 6 multi-source). Angka-angka di
+bawah sudah **divalidasi** dari hasil scraping 350.123 item (Play Store +
+5 source lain). Bukan placeholder.
 
-> Catatan dosen: bisnis harus **benar-benar menghasilkan income**. Angka di
-> bawah disusun agar realistis dan margin-sehat, bukan vanity metric.
+> Catatan dosen: bisnis harus **benar-benar menghasilkan income**. Semua
+> angka dasar-asumsi sudah disitasi dari data aktual di `data/site/data.js`.
+
+**Ringkasan eksekutif:**
+- Total review relevan: 35.968 (10,30% dari 349.201 review Google Play)
+- Sinyal distress: 8.340 review (23,2% dari review relevan) — **ini basis pemakai potensial**
+- Severity tinggi (intervensi prioritas): 504 review
+- Model NB from-scratch: F1=0,841, CV 5-fold=0,848±0,002 (stabil)
 
 ---
 
-## 1. Asumsi utama (akan diperbarui dari data)
+## 1. Asumsi utama (divalidasi data aktual)
 
-| Variabel | Asumsi awal | Sumber validasi |
-|---|---|---|
-| Total addressable Gen Z 18–27 ID | ~25 juta | BPS |
-| Penetrasi paylater Gen Z | ~35% | survey/riset OJK |
-| % Gen Z stres tagihan | ~20% dari user paylater | data review (proxy) |
-| Conversion B2C free→pro | 3% | benchmark fintech app |
-| Churn B2C bulanan | 8% | benchmark SaaS consumer |
-| CAC B2C (organic TikTok-led) | Rp 5rb | content engine low cost |
-| ARPU B2C pro | Rp 29rb/bln | pricing pilot |
-| CAC B2B kampus | Rp 2jt | sales effort |
-| ACV kampus | Rp 20jt/thn | lisensi + workshop |
-| Gross margin | 78% | SaaS digital |
+| Variabel | Asumsi awal | **Validasi data aktual** | Sumber |
+|---|---|---|---|
+| Total addressable Gen Z 18–27 ID | ~25 juta | (asumsi BPS, tidak berubah) | BPS |
+| Penetrasi paylater Gen Z | ~35% | 8.750.000 user (kalkulasi BPS × 35%) | proxy BPS |
+| % Gen Z stres tagihan | ~20% dari user paylater | **23,2%** dari review relevan menunjukkan distress | `data/site/data.js::meta.distress_pct` |
+| Conversion B2C free→pro | 3% | 8.340 distress × 3% = **~250 B2C user** thn-1 | kalkulasi |
+| Churn B2C bulanan | 8% | (benchmark SaaS, tidak berubah) | benchmark |
+| CAC B2C (organic TikTok-led) | Rp 5rb | (content engine low cost) | asumsi |
+| ARPU B2C pro | Rp 29rb/bln | pricing pilot | asumsi |
+| CAC B2B kampus | Rp 2jt | sales effort | asumsi |
+| ACV kampus | Rp 20jt/thn | lisensi + workshop | asumsi |
+| Gross margin | 78% | SaaS digital | benchmark |
+| **Potensi market (B2C) thn-1** | 250 user | 8.340 × 3% | `data/site/data.js::meta.distress_total` |
+| **Potensi market (B2C) thn-3** | 50.000 user | 8.750.000 × 0,6% (realistic funnel) | kalkulasi |
 
 ## 2. Unit economics
 

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Syarat dan Ketentuan — Galbay Predictor{% endblock %}</title>
+  <meta name="description" content="Syarat dan Ketentuan penggunaan Galbay Predictor.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body class="public-page">
+  <nav class="topbar public-topbar">
+    <a class="topbar-brand" href="{{ url_for('main.index') }}">
+      <span class="topbar-brand-mark">G</span>
+      <span class="topbar-brand-text">GALBAY <span>PREDICTOR</span></span>
+    </a>
+    <div class="topbar-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Light/Dark mode">
+        <span class="theme-icon">&#9788;</span>
+      </button>
+      <a href="{{ url_for('main.index') }}" class="btn-outline btn-small">← Beranda</a>
+    </div>
+  </nav>
+
+  <main class="public-main">
+<section class="page-section legal-page">
+  <div class="page-header">
+    <span class="section-tag">Syarat &amp; Ketentuan</span>
+    <h1 class="page-title">Ketentuan <span>Penggunaan Layanan</span></h1>
+    <p class="page-lead">Dengan menggunakan Galbay Predictor, Anda menyetujui syarat dan ketentuan berikut. Mohon baca dengan cermat &mdash; dokumen ini adalah perjanjian hukum antara Anda dan kami.</p>
+    <p class="page-meta">Terakhir diperbarui: Juni 2026</p>
+  </div>
+
+  <div class="legal-toc">
+    <h3>📋 Daftar Isi</h3>
+    <ol>
+      <li><a href="#penerimaan">Penerimaan Ketentuan</a></li>
+      <li><a href="#layanan">Deskripsi Layanan</a></li>
+      <li><a href="#penggunaan">Penggunaan yang Diperbolehkan</a></li>
+      <li><a href="#larangan">Penggunaan yang Dilarang</a></li>
+      <li><a href="#akun">Akun Pengguna</a></li>
+      <li><a href="#konten">Konten Pengguna</a></li>
+      <li><a href="#ip">Hak Kekayaan Intelektual</a></li>
+      <li><a href="#pembayaran">Pembayaran &amp; Langganan</a></li>
+      <li><a href="#disclaimer">Disclaimer</a></li>
+      <li><a href="#tanggung-jawab">Batasan Tanggung Jawab</a></li>
+      <li><a href="#penyelesaian">Penyelesaian Sengketa</a></li>
+      <li><a href="#perubahan">Perubahan Ketentuan</a></li>
+    </ol>
+  </div>
+
+  <div class="legal-content">
+    <article class="legal-block" id="penerimaan">
+      <h2>1. Penerimaan Ketentuan</h2>
+      <p>Dengan mengakses atau menggunakan Galbay Predictor (aplikasi mobile, website, atau layanan terkait), Anda dianggap telah membaca, memahami, dan menyetujui seluruh isi Syarat &amp; Ketentuan ini. Jika Anda tidak setuju, mohon untuk tidak menggunakan layanan kami.</p>
+    </article>
+
+    <article class="legal-block" id="layanan">
+      <h2>2. Deskripsi Layanan</h2>
+      <p>Galbay Predictor adalah <strong>financial behavior coach</strong> berbasis big data yang menyediakan:</p>
+      <ul class="legal-list">
+        <li>📊 <strong>Skor Risiko Galbay</strong> &mdash; kalkulasi personal berdasarkan pola penggunaan fintech Anda</li>
+        <li>🤖 <strong>AI Coach 24/7</strong> &mdash; chatbot untuk tanya jawab seputar galbay, pinjol, recovery</li>
+        <li>🛠 <strong>Tools finansial</strong> &mdash; Pinjol Checker, Debt Planner, Emergency Runway, DC Chat Simulator, 30-Day Action Plan</li>
+        <li>📚 <strong>Edukasi</strong> &mdash; modul, artikel, dan konten tentang literasi keuangan</li>
+        <li>📈 <strong>Dashboard analytics</strong> &mdash; visualisasi data multi-source untuk insight</li>
+      </ul>
+      <p><strong>Layanan ini BUKAN</strong>:</p>
+      <ul class="legal-list">
+        <li>❌ Pinjaman online (pinjol) &mdash; kami tidak menyediakan kredit</li>
+        <li>❌ Konsultan keuangan bersertifikat &mdash; kami adalah alat bantu, bukan pengganti penasihat profesional</li>
+        <li>❌ Psikolog atau konselor medis &mdash; untuk kondisi mental, hubungi profesional</li>
+        <li>❌ Lembaga hukum &mdash; untuk masalah hukum, hubungi pengacara</li>
+      </ul>
+    </article>
+
+    <article class="legal-block" id="penggunaan">
+      <h2>3. Penggunaan yang Diperbolehkan</h2>
+      <p>Anda boleh menggunakan Galbay Predictor untuk:</p>
+      <ul class="legal-list">
+        <li>✅ Mengevaluasi pola keuangan digital Anda sendiri</li>
+        <li>✅ Belajar tentang galbay, recovery, dan literasi keuangan</li>
+        <li>✅ Menggunakan tools seperti Pinjol Checker, Debt Planner, dll</li>
+        <li>✅ Berkomunikasi dengan AI Coach untuk pertanyaan terkait topik</li>
+        <li>✅ Berbagi konten kami (dengan credit) untuk edukasi orang lain</li>
+      </ul>
+    </article>
+
+    <article class="legal-block" id="larangan">
+      <h2>4. Penggunaan yang Dilarang</h2>
+      <p>Anda <strong>TIDAK BOLEH</strong> menggunakan layanan kami untuk:</p>
+      <ul class="legal-list">
+        <li>🚫 Menipu orang lain dengan mengatasnamakan Galbay Predictor</li>
+        <li>🚫 Melakukan reverse engineering, dekompilasi, atau破解 sistem</li>
+        <li>🚫 Mengirim konten spam, virus, malware, atau kode berbahaya</li>
+        <li>🚫 Menggunakan AI Coach untuk men-generate konten ilegal (pinjol ilegal, pencucian uang, dll)</li>
+        <li>🚫 Mengumpulkan data pengguna lain (scraping)</li>
+        <li>🚫 Menggunakan layanan untuk aktivitas yang melanggar hukum Indonesia</li>
+        <li>🚫 Menyalahgunakan akun orang lain atau memberikan akses ke pihak ketiga</li>
+      </ul>
+      <p>Pelanggaran dapat menyebabkan <strong>penonaktifan akun permanen</strong> dan tindakan hukum sesuai UU ITE.</p>
+    </article>
+
+    <article class="legal-block" id="akun">
+      <h2>5. Akun Pengguna</h2>
+      <p>Untuk menggunakan fitur lengkap, Anda perlu membuat akun. Dengan membuat akun, Anda setuju untuk:</p>
+      <ul class="legal-list">
+        <li>📌 Memberikan informasi yang akurat dan terkini</li>
+        <li>📌 Menjaga keamanan password Anda</li>
+        <li>📌 Tidak membagikan akun ke orang lain</li>
+        <li>📌 Menginformasikan kami jika ada aktivitas mencurigakan di akun Anda</li>
+      </ul>
+      <p>Kami berhak menonaktifkan akun yang melanggar ketentuan atau tidak aktif selama lebih dari 24 bulan.</p>
+    </article>
+
+    <article class="legal-block" id="konten">
+      <h2>6. Konten Pengguna</h2>
+      <p>Jika Anda mengirim konten (review, komentar, feedback), Anda:</p>
+      <ul class="legal-list">
+        <li>✍️ Tetap memiliki hak atas konten Anda</li>
+        <li>✍️ Memberikan kami lisensi non-eksklusif untuk menggunakan, memodifikasi, dan menampilkan konten tersebut di platform kami</li>
+        <li>✍️ Menjamin konten tidak melanggar hak pihak ketiga atau hukum yang berlaku</li>
+      </ul>
+      <p>Kami berhak menghapus konten yang melanggar ketentuan, tanpa pemberitahuan sebelumnya.</p>
+    </article>
+
+    <article class="legal-block" id="ip">
+      <h2>7. Hak Kekayaan Intelektual</h2>
+      <p>Seluruh konten Galbay Predictor (logo, teks, grafik, software, model AI, data) adalah milik kami atau pemberi lisensi kami, dilindungi oleh UU Hak Cipta Indonesia.</p>
+      <p>Anda boleh menggunakan konten kami untuk keperluan pribadi, dengan syarat:</p>
+      <ul class="legal-list">
+        <li>📎 Memberikan atribusi (credit) kepada Galbay Predictor</li>
+        <li>📎 Tidak menggunakan untuk tujuan komersial tanpa izin tertulis</li>
+        <li>📎 Tidak memodifikasi dan mengklaim sebagai karya Anda</li>
+      </ul>
+    </article>
+
+    <article class="legal-block" id="pembayaran">
+      <h2>8. Pembayaran &amp; Langganan</h2>
+      <p>Galbay Predictor menyediakan tier gratis dan premium:</p>
+      <div class="legal-pricing-grid">
+        <div class="legal-pricing">
+          <h4>🆓 Gratis</h4>
+          <p>Fitur dasar: Skor Risiko, Pinjol Checker, AI Coach terbatas</p>
+        </div>
+        <div class="legal-pricing legal-pricing-featured">
+          <h4>👑 Premium</h4>
+          <p>Fitur lengkap: AI Coach unlimited, Debt Planner save, Priority Updates, dll</p>
+        </div>
+        <div class="legal-pricing">
+          <h4>🧑‍⚕️ Konseling</h4>
+          <p>1-on-1 dengan psikolog spesialis financial stress</p>
+        </div>
+      </div>
+      <p><strong>Kebijakan pembayaran:</strong></p>
+      <ul class="legal-list">
+        <li>💳 Pembayaran di muka untuk periode langganan</li>
+        <li>↩️ <strong>Garansi 7 hari uang kembali</strong> untuk langganan pertama</li>
+        <li>⏸️ Anda bisa cancel kapan saja, akses premium tetap sampai akhir periode bayar</li>
+        <li>💰 Refund di luar garansi 7 hari akan dipertimbangkan case-by-case</li>
+      </ul>
+    </article>
+
+    <article class="legal-block" id="disclaimer">
+      <h2>9. Disclaimer</h2>
+      <div class="legal-disclaimer">
+        <p><strong>⚠️ PENTING — Baca sebelum menggunakan:</strong></p>
+        <ul class="legal-list">
+          <li>Skor Risiko dan rekomendasi kami <strong>BUKAN</strong> nasihat keuangan profesional. Konsultasikan dengan penasihat keuangan bersertifikat untuk keputusan finansial penting.</li>
+          <li>Informasi tentang pinjol legal/ilegal berdasarkan database publik (OJK) per Juni 2026. Status dapat berubah. Selalu verifikasi langsung ke <a href="https://www.ojk.go.id" target="_blank" rel="noopener">SILO OJK</a>.</li>
+          <li>DC Chat Simulator adalah alat latihan, bukan skrip yang harus diikuti buta. Setiap situasi DC berbeda.</li>
+          <li>AI Coach menggunakan model bahasa (LLM) yang dapat menghasilkan informasi yang tidak akurat. Untuk kasus serius, hubungi profesional.</li>
+          <li>Modul recovery &amp; edukasi berdasarkan data dan praktik terbaik, namun keberhasilan tergantung kondisi individual.</li>
+          <li>Kami tidak bertanggung jawab atas kerugian finansial yang timbul dari penggunaan informasi dari layanan kami.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="legal-block" id="tanggung-jawab">
+      <h2>10. Batasan Tanggung Jawab</h2>
+      <p>Sejauh diizinkan oleh hukum yang berlaku:</p>
+      <ul class="legal-list">
+        <li>🛡 Layanan disediakan "sebagaimana adanya" (as is) tanpa garansi</li>
+        <li>🛡 Kami tidak menjamin layanan akan selalu tersedia, bebas error, atau aman dari gangguan</li>
+        <li>🛡 Tanggung jawab kami terbatas pada nilai yang Anda bayarkan untuk layanan dalam 12 bulan terakhir</li>
+        <li>🛡 Kami tidak bertanggung jawab atas kerugian tidak langsung, insidental, atau konsekuensial</li>
+      </ul>
+    </article>
+
+    <article class="legal-block" id="penyelesaian">
+      <h2>11. Penyelesaian Sengketa</h2>
+      <p>Jika terjadi sengketa, kami akan berusaha menyelesaikannya secara musyawarah. Jika tidak tercapai:</p>
+      <ul class="legal-list">
+        <li>📜 Hukum yang berlaku: <strong>Hukum Republik Indonesia</strong></li>
+        <li>🏛 Forum penyelesaian: <strong>Pengadilan Negeri Jakarta Pusat</strong></li>
+        <li>💬 Sebelum litigasi, kami sarankan mediasi melalui <strong>Badan Arbitrase Nasional Indonesia (BANI)</strong></li>
+        <li>📧 Hubungi <a href="mailto:legal@galbay.id">legal@galbay.id</a> untuk negosiasi terlebih dahulu</li>
+      </ul>
+    </article>
+
+    <article class="legal-block" id="perubahan">
+      <h2>12. Perubahan Ketentuan</h2>
+      <p>Kami dapat memperbarui Syarat &amp; Ketentuan ini sewaktu-waktu. Perubahan material akan diumumkan minimal 14 hari sebelum berlaku melalui:</p>
+      <ul class="legal-list">
+        <li>📧 Email ke pengguna terdaftar</li>
+        <li>🔔 Notifikasi in-app</li>
+        <li>📌 Banner di website</li>
+      </ul>
+      <p>Dengan terus menggunakan layanan setelah perubahan berlaku, Anda dianggap menyetujui perubahan tersebut.</p>
+    </article>
+  </div>
+
+  <div class="legal-cta">
+    <h3>Pertanyaan tentang Ketentuan Ini?</h3>
+    <p>Hubungi tim legal kami di <a href="mailto:legal@galbay.id">legal@galbay.id</a> &middot; Atau kembali ke <a href="{{ url_for('main.index') }}">Halaman Utama</a></p>
+  </div>
+</section>
+  </main>
+
+  <footer class="footer public-footer">
+    <p>&copy; 2026 Galbay Predictor &middot; <a href="{{ url_for('main.privacy') }}">Privacy</a> &middot; <a href="{{ url_for('main.terms') }}">Terms</a> &middot; <a href="{{ url_for('main.login') }}">Login</a></p>
+  </footer>
+</body>
+</html>

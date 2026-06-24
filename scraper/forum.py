@@ -27,8 +27,22 @@ REDDIT_QUERIES: list[str] = [
     "utang",
     "ditagih",
     "cicilan",
+    "self reward",
+    "FOMO",
+    "checkout",
+    "gagal bayar",
+    "bunga tinggi",
+    "debt collector",
+    "tagihan",
+    "limit",
+    "kartu kredit",
+    "kredit",
+    "pinjaman online",
+    "shopee paylater",
+    "kredivo",
+    "indodana",
 ]
-REDDIT_SUBREDDITS: list[str] = ["indonesia", "finansial"]
+REDDIT_SUBREDDITS: list[str] = ["indonesia", "finansial", "personalfinance", "indofinance"]
 
 KASKUS_QUERIES: list[str] = [
     "paylater",
@@ -38,6 +52,19 @@ KASKUS_QUERIES: list[str] = [
     "utang",
     "ditagih",
     "cicilan",
+    "self reward",
+    "FOMO",
+    "checkout",
+    "bunga tinggi",
+    "debt collector",
+    "tagihan",
+    "limit",
+    "kartu kredit",
+    "kredit",
+    "pinjaman online",
+    "shopee paylater",
+    "kredivo",
+    "indodana",
 ]
 
 
@@ -210,7 +237,7 @@ class ForumScraper(BaseScraper):
 
         return threads
 
-    def run(self, max_threads: int = 20, max_posts: int = 20) -> dict[str, Any]:
+    def run(self, max_threads: int = 50, max_posts: int = 30) -> dict[str, Any]:
         """Jalankan scraping Reddit + Kaskus via Playwright."""
         all_reddit = []
         reddit_accessible = True

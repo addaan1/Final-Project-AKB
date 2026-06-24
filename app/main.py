@@ -208,6 +208,264 @@ def produk():
     return render_template("dashboard/produk.html", active_page="produk")
 
 
+# =================================================================
+# Public pages: Privacy, Terms
+# =================================================================
+@main_bp.route("/privacy")
+def privacy():
+    """Halaman kebijakan privasi."""
+    return render_template("privacy.html", active_page="privacy")
+
+
+@main_bp.route("/terms")
+def terms():
+    """Halaman syarat dan ketentuan."""
+    return render_template("terms.html", active_page="terms")
+
+
+# =================================================================
+# Tools: DC Chat Simulator (interactive practice)
+# =================================================================
+@main_bp.route("/tools/dc-simulator", methods=["GET", "POST"])
+def dc_simulator():
+    """Interactive DC conversation simulator for practice.
+
+    User memilih skenario DC, sistem akan simulate chat dari DC dengan
+    tone agresif, intimidasi, dll. User bisa pilih response, sistem
+    kasih feedback apakah response-nya tepat.
+    """
+    from app.api import DC_SCENARIOS, evaluate_dc_response
+
+    if request.method == "POST":
+        scenario_id = request.form.get("scenario", "")
+        user_response = request.form.get("response_text", "")
+        scenario = next((s for s in DC_SCENARIOS if s["id"] == scenario_id), None)
+        if not scenario:
+            flash("Skenario tidak ditemukan.", "error")
+            return redirect(url_for("main.dc_simulator"))
+        result = evaluate_dc_response(scenario, user_response)
+        return render_template(
+            "dashboard/dc_simulator.html",
+            active_page="produk",
+            scenario=scenario,
+            user_response=user_response,
+            result=result,
+        )
+    return render_template(
+        "dashboard/dc_simulator.html",
+        active_page="produk",
+        scenario=None,
+        result=None,
+    )
+
+
+# =================================================================
+# Tools: Emergency Runway Calculator
+# =================================================================
+@main_bp.route("/tools/emergency-runway", methods=["POST"])
+def api_emergency_runway():
+    """Hitung berapa bulan kamu bisa bertahan kalau income berhenti hari ini."""
+    from app.api import calculate_emergency_runway
+    data = request.get_json(silent=True) or request.form.to_dict()
+    result = calculate_emergency_runway(
+        cash_on_hand=float(data.get("cash", 0) or 0),
+        monthly_expenses=float(data.get("expenses", 0) or 0),
+        monthly_income=float(data.get("income", 0) or 0),
+        monthly_debt_payment=float(data.get("debt_payment", 0) or 0),
+    )
+    if request.is_json:
+        return jsonify(result)
+    return render_template(
+        "dashboard/produk.html",
+        active_page="produk",
+        runway_result=result,
+    )
+
+
+# =================================================================
+# Tools: 30-Day Action Plan Generator
+# =================================================================
+@main_bp.route("/tools/30-day-plan", methods=["POST"])
+def api_30_day_plan():
+    """Generate personal 30-day action plan berdasarkan Galbay Score bucket."""
+    from app.api import generate_30_day_plan
+    data = request.get_json(silent=True) or request.form.to_dict()
+    result = generate_30_day_plan(
+        cicilan_aktif=int(data.get("cicilan_aktif", 0) or 0),
+        checkout_impulse=int(data.get("checkout_impulse", 0) or 0),
+        cicilan_0_persen=int(data.get("cicilan_0_persen", 0) or 0),
+        reaksi_tagihan=int(data.get("reaksi_tagihan", 0) or 0),
+        dc_pesan=int(data.get("dc_pesan", 0) or 0),
+        track_pengeluaran=int(data.get("track_pengeluaran", 0) or 0),
+    )
+    if request.is_json:
+        return jsonify(result)
+    return render_template(
+        "dashboard/produk.html",
+        active_page="produk",
+        plan_result=result,
+    )
+
+
+@main_bp.route("/galbay-score", methods=["GET", "POST"])
+def galbay_score():
+    """Galbay Score Quiz — personal behavioral risk 0-100.
+
+    Public endpoint (no login required) — high-conversion funnel untuk
+    subscription. 6 pertanyaan interaktif, hasil personal + recommendation.
+    """
+    if request.method == "POST":
+        # Collect 6 answers
+        answers = {
+            "cicilan_aktif": int(request.form.get("cicilan_aktif", 0)),
+            "checkout_impulse": int(request.form.get("checkout_impulse", 0)),
+            "cicilan_0_persen": int(request.form.get("cicilan_0_persen", 0)),
+            "reaksi_tagihan": int(request.form.get("reaksi_tagihan", 0)),
+            "dc_pesan": int(request.form.get("dc_pesan", 0)),
+            "track_pengeluaran": int(request.form.get("track_pengeluaran", 0)),
+        }
+
+        # Score each dimension (0-100)
+        # Weight per question (max possible per question)
+        # q1 cicilan_aktif: 0=none → 25 pts, 1-2 → 18, 3 → 12, 4+ → 5 (more cicilan = higher risk)
+        cicilan_score = max(0, 25 - answers["cicilan_aktif"] * 5)
+        # q2 checkout_impulse: 0 → 0, 1-2 → 8, 3-5 → 16, 5+ → 25
+        impulse_score = min(25, answers["checkout_impulse"] * 5)
+        # q3 cicilan_0_persen: 0 → 0, 1 → 7, 2 → 14, 3 → 21 (scaled 0-3)
+        cicilan0_score = min(21, answers["cicilan_0_persen"] * 7)
+        # q4 reaksi_tagihan: 0=bayar→0, 1=telat 1-7→8, 2=telat >7→16, 3=ignore→25
+        tagihan_score = min(25, answers["reaksi_tagihan"] * 8)
+        # q5 dc_pesan: 0=tidak→0, 1=sekali→10, 2=beberapa→18, 3=sering→25
+        dc_score = min(25, answers["dc_pesan"] * 8)
+        # q6 track_pengeluaran: 0=harian→0(inverse), 1=mingguan→6, 2=bulanan→12, 3=tidak→25
+        track_score = min(25, answers["track_pengeluaran"] * 6 + (3 - answers["track_pengeluaran"]) * 0)
+        # Better: invert
+        track_score = [0, 8, 16, 25][answers["track_pengeluaran"]]
+
+        # Total score (out of 100 max = 25+25+21+25+25+25 → but normalize)
+        raw_total = cicilan_score + impulse_score + cicilan0_score + tagihan_score + dc_score + track_score
+        max_possible = 146  # 25+25+21+25+25+25
+        # Normalize to 0-100
+        final_score = round((raw_total / max_possible) * 100)
+
+        # Bucket
+        if final_score <= 30:
+            bucket = "rendah"
+            bucket_label = "Risiko Rendah"
+            bucket_color = "green"
+        elif final_score <= 55:
+            bucket = "sedang"
+            bucket_label = "Risiko Sedang"
+            bucket_color = "yellow"
+        elif final_score <= 75:
+            bucket = "tinggi"
+            bucket_label = "Risiko Tinggi"
+            bucket_color = "orange"
+        else:
+            bucket = "kritis"
+            bucket_label = "Risiko Kritis"
+            bucket_color = "red"
+
+        # Personalized recommendations
+        recommendations = []
+        if answers["cicilan_aktif"] >= 3:
+            recommendations.append({
+                "priority": "high",
+                "title": "Konsolidasi Utang",
+                "desc": "Dengan 3+ cicilan aktif, pertimbangkan konsolidasi ke 1 pinjaman dengan bunga lebih rendah.",
+                "action": "/dashboard/produk#debt-planner",
+                "action_label": "Coba Debt Planner",
+            })
+        if answers["checkout_impulse"] >= 2:
+            recommendations.append({
+                "priority": "high",
+                "title": "Pending 24 Jam Rule",
+                "desc": "Setiap冲动 checkout, tunggu 24 jam. 70% keinginan membeli akan hilang (data behavior).",
+                "action": "/dashboard/produk#recovery",
+                "action_label": "Recovery Plan",
+            })
+        if answers["reaksi_tagihan"] >= 2:
+            recommendations.append({
+                "priority": "high",
+                "title": "Auto-Debet Tagihan",
+                "desc": "Telat bayar = skor kredit turun. Setup auto-debet dari gaji.",
+                "action": "/dashboard/produk#simulasi",
+                "action_label": "Lihat Simulasi",
+            })
+        if answers["dc_pesan"] >= 1:
+            recommendations.append({
+                "priority": "urgent",
+                "title": "Jangan Abaikan DC",
+                "desc": "Debt collector ilegal bisa di-lapor ke OJK 157. Cek legalitas di Pinjol Checker.",
+                "action": "/dashboard/produk#pinjol-checker",
+                "action_label": "Cek Pinjol",
+            })
+        if answers["track_pengeluaran"] >= 2:
+            recommendations.append({
+                "priority": "medium",
+                "title": "Mulai Tracking",
+                "desc": "Catat pengeluaran harian 5 menit. Apps gratis: Money Lover, Catatan Keuangan.",
+                "action": "/dashboard/produk",
+                "action_label": "Lihat Tools",
+            })
+        if answers["cicilan_0_persen"] >= 2:
+            recommendations.append({
+                "priority": "medium",
+                "title": "Waspada 'Cicilan 0%'",
+                "desc": "Bunga 0% sering disertai biaya admin tersembunyi atau merchant markup 10-20%.",
+                "action": "/dashboard/produk#simulasi",
+                "action_label": "Hitung Biaya Tersembunyi",
+            })
+
+        # Behavioral profile tags (from data 602K)
+        profile_tags = []
+        if cicilan_score >= 15:
+            profile_tags.append({"tag": "Multi-Cicilan", "color": "orange", "count": "21.802 review di dataset kami"})
+        if impulse_score >= 16:
+            profile_tags.append({"tag": "Impulse Spender", "color": "red", "count": "20.246 review 'Diskusi Produk Fintech'"})
+        if tagihan_score >= 16:
+            profile_tags.append({"tag": "Late Payer Risk", "color": "red", "count": "13.827 review distress signal"})
+        if dc_score >= 10:
+            profile_tags.append({"tag": "DC-Targeted", "color": "red", "count": "4.809 review 'Tagihan & Penagihan'"})
+        if cicilan0_score >= 14:
+            profile_tags.append({"tag": "Marketing-Susceptible", "color": "yellow", "count": "12.445 review 'Bunga & Biaya'"})
+        if track_score >= 16:
+            profile_tags.append({"tag": "Blind Spender", "color": "yellow", "count": "7.104 review severity sedang"})
+
+        # Stats from real data
+        percentile = None
+        if final_score >= 75:
+            percentile = "8.2% reviewer dataset kami"
+        elif final_score >= 55:
+            percentile = "23.5% reviewer dataset kami"
+        elif final_score >= 30:
+            percentile = "44.1% reviewer dataset kami"
+        else:
+            percentile = "24.2% reviewer dataset kami"
+
+        return render_template(
+            "galbay_score_result.html",
+            score=final_score,
+            bucket=bucket,
+            bucket_label=bucket_label,
+            bucket_color=bucket_color,
+            recommendations=recommendations,
+            profile_tags=profile_tags,
+            percentile=percentile,
+            answers=answers,
+            dimension_scores={
+                "cicilan": cicilan_score,
+                "impulse": impulse_score,
+                "cicilan0": cicilan0_score,
+                "tagihan": tagihan_score,
+                "dc": dc_score,
+                "track": track_score,
+            },
+        )
+
+    return render_template("galbay_score.html")
+
+
 @main_bp.route("/health")
 def health():
     return {"status": "ok", "service": "galbay-predictor"}

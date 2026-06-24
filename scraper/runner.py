@@ -21,6 +21,13 @@ def get_sources():
         "blogs": ("scraper.blogs:BlogScraper", "Blog posts (Medium + Dailysia)"),
         "youtube": ("scraper.youtube:YouTubeScraper", "YouTube comments (butuh API key)"),
         "appstore": ("scraper.appstore_reviews:AppStoreReviewsScraper", "Apple App Store reviews iOS"),
+        "marketplace": ("scraper.marketplace:MarketplaceScraper", "Shopee + Tokopedia listing publik (paylater/cicilan)"),
+        "kaskus_fast": ("scraper.kaskus_fast:KaskusFastScraper", "Kaskus threads (requests+BS4, fast, no Playwright)"),
+        "reddit_old": ("scraper.reddit_old:RedditOldScraper", "Reddit posts + comments via old.reddit.com JSON (no auth)"),
+        "threads": ("scraper.threads:ThreadsScraper", "Threads (Meta) public posts via HTML scrape"),
+        "blogs_id": ("scraper.blogs_id:BlogIdScraper", "Blog Indonesia (kumparan, hipwee, brilio, cnbc, kompas, detik)"),
+        "youtube_ytdlp": ("scraper.youtube_ytdlp:YoutubeYtdlpScraper", "YouTube via yt-dlp (no API key, videos + comments)"),
+        "threads_pw": ("scraper.threads_pw:ThreadsPlaywrightScraper", "Threads (Meta) via Playwright"),
     }
 
 
@@ -45,6 +52,12 @@ def main(argv=None):
     parser.add_argument("--max-posts", type=int, default=50, help="Max posts per query untuk Reddit")
     parser.add_argument("--max-tweets", type=int, default=50, help="Max tweets per query untuk Twitter")
     parser.add_argument("--max-articles", type=int, default=30, help="Max articles per query untuk OJK/media")
+    parser.add_argument("--marketplace", choices=["shopee", "tokopedia", "both"], default="both", help="Target marketplace (default both)")
+    parser.add_argument("--marketplace-pages", type=int, default=2, help="Jumlah halaman per query untuk marketplace")
+    parser.add_argument("--reddit-pages", type=int, default=1, help="Max pages per query untuk Reddit old.json")
+    parser.add_argument("--no-comments", action="store_true", help="Skip comment fetch (Reddit/YouTube)")
+    parser.add_argument("--yt-videos", type=int, default=20, help="Max videos per query YouTube")
+    parser.add_argument("--yt-comments", type=int, default=20, help="Max comments per video YouTube")
     parser.add_argument("--list", action="store_true", help="Daftar source tersedia")
     parser.add_argument("--all", action="store_true", help="Jalankan semua source")
     args = parser.parse_args(argv)
@@ -102,6 +115,16 @@ def main(argv=None):
             elif src == "youtube":
                 kwargs["max_videos"] = args.max_videos
                 kwargs["max_comments"] = args.max_comments
+            elif src == "marketplace":
+                kwargs["max_pages"] = args.marketplace_pages
+                kwargs["marketplace"] = args.marketplace
+            elif src == "reddit_old":
+                kwargs["max_pages_per_query"] = args.reddit_pages
+                kwargs["fetch_comments"] = not args.no_comments
+            elif src == "youtube_ytdlp":
+                kwargs["max_videos_per_query"] = args.yt_videos
+                kwargs["max_comments_per_video"] = args.yt_comments
+                kwargs["fetch_comments"] = not args.no_comments
             result = scraper.run(**kwargs)
             summary[src] = result
             log.info("Selesai %s: %s", src, result)

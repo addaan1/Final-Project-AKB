@@ -1,0 +1,197 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}DC Chat Simulator — Latihan Negosiasi Debt Collector{% endblock %}
+
+{% block content %}
+<!-- ========== HERO ========== -->
+<section class="page-section produk-hero">
+  <div class="page-header">
+    <span class="section-tag game-changer-tag">🛡️ Latihan Interaktif &middot; DC Chat Simulator</span>
+    <h1 class="page-title">Berlatih <span>Negosiasi</span> dengan Debt Collector</h1>
+    <p class="page-lead">Pilih skenario DC, ketik respons kamu, dan dapatkan <strong>feedback langsung</strong> apakah responsmu tepat. Tidak ada risiko, tidak ada DC sungguhan. Aman untuk latihan sebelum situasi nyata.</p>
+  </div>
+</section>
+
+<!-- ========== PILIH SKENARIO ========== -->
+{% if not scenario %}
+<section class="page-section page-alt">
+  <div class="page-header">
+    <h2 class="page-title">Pilih <span>Skenario</span> untuk Mulai</h2>
+    <p class="page-lead">4 skenario dengan tingkat kesulitan berbeda. Mulai dari yang mudah dulu.</p>
+  </div>
+  <div class="dc-scenarios-grid">
+    {% for s in [
+      {"id": "agresif_tekan", "title": "DC Tekanan Agresif", "emoji": "😡", "difficulty": "Mudah", "desc": "DC nelpon teriak-teriak, minta bayar hari ini juga."},
+      {"id": "sebar_data", "title": "DC Ancam Sebar Data", "emoji": "🚨", "difficulty": "Sedang", "desc": "DC ancam akan sebar foto/kontak ke semua orang."},
+      {"id": "konsolidasi", "title": "DC Mau Tahu Posisi", "emoji": "🤝", "difficulty": "Mudah", "desc": "DC nelpon sopan, tanya kemampuan & tawarkan solusi."},
+      {"id": "emergency_kritis", "title": "DC di Masa Kritis", "emoji": "🆘", "difficulty": "Sulit", "desc": "Anda benar-benar tidak punya uang. DC minta nominal realistis."}
+    ] %}
+    <form method="POST" action="{{ url_for('main.dc_simulator') }}" class="dc-scenario-card">
+      <input type="hidden" name="scenario" value="{{ s.id }}">
+      <div class="dc-scenario-emoji">{{ s.emoji }}</div>
+      <h3 class="dc-scenario-title">{{ s.title }}</h3>
+      <span class="dc-scenario-difficulty difficulty-{{ s.difficulty|lower }}">{{ s.difficulty }}</span>
+      <p class="dc-scenario-desc">{{ s.desc }}</p>
+      <button type="submit" class="btn-primary btn-full">Mulai Skenario →</button>
+    </form>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ========== SCENARIO INTERFACE ========== -->
+{% else %}
+<section class="page-section" id="dc-scenario">
+  <div class="dc-chat-header">
+    <a href="{{ url_for('main.dc_simulator') }}" class="btn-outline btn-small">← Skenario Lain</a>
+    <h2 class="page-title">{{ scenario.title }}</h2>
+    <span class="dc-scenario-difficulty difficulty-{{ scenario.difficulty|lower }}">{{ scenario.difficulty }}</span>
+  </div>
+
+  <div class="dc-chat-container">
+    <!-- DC message bubble -->
+    <div class="dc-msg dc-msg-left">
+      <div class="dc-msg-avatar">📞</div>
+      <div class="dc-msg-bubble">
+        <div class="dc-msg-name">Debt Collector ({{ scenario.tone }})</div>
+        <div class="dc-msg-text">{{ scenario.dc_message }}</div>
+      </div>
+    </div>
+
+    <!-- Tips panel -->
+    <details class="dc-tips" open>
+      <summary>💡 Tips: Poin Penting untuk Skenario Ini</summary>
+      <ul>
+        {% for pt in scenario.key_points %}
+        <li>{{ pt }}</li>
+        {% endfor %}
+      </ul>
+    </details>
+
+    <!-- User response form -->
+    {% if not result %}
+    <form method="POST" action="{{ url_for('main.dc_simulator') }}" class="dc-response-form">
+      <input type="hidden" name="scenario" value="{{ scenario.id }}">
+      <label for="responseText" class="form-label">Respons Anda (ketik seperti yang akan Anda katakan):</label>
+      <textarea id="responseText" name="response_text" class="form-textarea" rows="5" required minlength="10" placeholder="Pak/Bu, saya..."></textarea>
+      <div class="dc-form-actions">
+        <button type="submit" class="btn-primary btn-large">📤 Kirim Respons</button>
+      </div>
+    </form>
+    {% endif %}
+
+    <!-- Result feedback -->
+    {% if result %}
+    <div class="dc-result-card" style="border-color: {{ result.verdict_color }};">
+      <div class="dc-result-header">
+        <div class="dc-result-score" style="background: {{ result.verdict_color }};">
+          <span class="dc-result-num">{{ result.score }}</span>
+          <span class="dc-result-out">/100</span>
+        </div>
+        <div class="dc-result-summary">
+          <h3 style="color: {{ result.verdict_color }};">{{ result.verdict }}</h3>
+          <p>{{ result.verdict_msg }}</p>
+        </div>
+      </div>
+
+      <div class="dc-result-section">
+        <h4>Respons Anda:</h4>
+        <blockquote class="dc-user-quote">{{ user_response }}</blockquote>
+      </div>
+
+      {% if result.criteria_scores %}
+      <div class="dc-result-section">
+        <h4>Detail Penilaian:</h4>
+        <div class="dc-criteria-list">
+          {% for k, v in result.criteria_scores.items() %}
+          <div class="dc-criterion">
+            <div class="dc-criterion-name">{{ k|replace('_', ' ')|title }}</div>
+            <div class="dc-criterion-bar">
+              <div class="dc-criterion-fill" style="width: {{ v }}%; background: {% if v >= 20 %}#b8ff3c{% elif v >= 15 %}#84cc16{% elif v >= 10 %}#f59e0b{% else %}#ef4444{% endif %};"></div>
+            </div>
+            <div class="dc-criterion-score">{{ v }}/25</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if result.feedback %}
+      <div class="dc-result-section">
+        <h4>Feedback Personal:</h4>
+        <ul class="dc-feedback-list">
+          {% for fb in result.feedback %}
+          <li>{{ fb }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <div class="dc-result-section">
+        <h4>Contoh Respons Ideal:</h4>
+        <div class="dc-good-responses">
+          {% for g in scenario.good_responses %}
+          <div class="dc-good-msg">✓ {{ g }}</div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="dc-result-section">
+        <h4>Respons yang Harus Dihindari:</h4>
+        <div class="dc-bad-responses">
+          {% for b in scenario.bad_responses %}
+          <div class="dc-bad-msg">✗ {{ b }}</div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="dc-result-actions">
+        <a href="{{ url_for('main.dc_simulator') }}" class="btn-primary">Coba Skenario Lain</a>
+        <form method="POST" action="{{ url_for('main.dc_simulator') }}" style="display:inline;">
+          <input type="hidden" name="scenario" value="{{ scenario.id }}">
+          <input type="hidden" name="response_text" value="Coba lagi dengan respons berbeda.">
+          <button type="submit" class="btn-outline">Coba Lagi</button>
+        </form>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ========== EDUKASI DC ========== -->
+<section class="page-section page-alt" id="dc-edukasi">
+  <div class="page-header">
+    <h2 class="page-title">Hak <span>Hukum</span> Anda sebagai Borrower</h2>
+  </div>
+  <div class="dc-rights-grid">
+    <div class="dc-right-card">
+      <div class="dc-right-icon">📜</div>
+      <h3>UU PDP No. 27/2022</h3>
+      <p>Data pribadi Anda (foto, kontak, KTP) tidak boleh disebar tanpa izin. Pelanggaran = pidana.</p>
+    </div>
+    <div class="dc-right-card">
+      <div class="dc-right-icon">⚖️</div>
+      <h3>UU ITE No. 19/2016</h3>
+      <p>Ancaman, intimidasi, dan terror digital adalah cybercrime. Bisa dilaporkan ke polisi cyber crime.</p>
+    </div>
+    <div class="dc-right-card">
+      <div class="dc-right-icon">🏛️</div>
+      <h3>OJK Regulation</h3>
+      <p>DC harus terdaftar di OJK, bawa surat tugas & identitas. Tanpa itu = ilegal.</p>
+    </div>
+    <div class="dc-right-card">
+      <div class="dc-right-icon">📞</div>
+      <h3>Lapor DC Ilegal</h3>
+      <p>OJK: 157 | Kominfo: aduankonten.id | Polisi: cyber crime (cybercrime@polri.go.id)</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Auto-scroll chat to bottom
+const chatContainer = document.querySelector('.dc-chat-container');
+if (chatContainer) chatContainer.scrollTop = chatContainer.scrollHeight;
+</script>
+{% endblock %}

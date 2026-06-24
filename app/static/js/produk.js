@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initWaitlist();
   initSmoothScroll();
   initLockDismiss();
+  initRunwayCalculator();
 });
 
 // ============================================================
@@ -596,7 +597,95 @@ function escapeHtml(s) {
 }
 
 // ============================================================
-// SMOOTH SCROLL
+// 5. EMERGENCY RUNWAY CALCULATOR (NEW in Round 10)
+// ============================================================
+function initRunwayCalculator() {
+  const form = document.getElementById('runwayForm');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const cash = parseRupiah(document.getElementById('rwCash').value);
+    const expenses = parseRupiah(document.getElementById('rwExpenses').value);
+    const income = parseRupiah(document.getElementById('rwIncome').value);
+    const debt = parseRupiah(document.getElementById('rwDebt').value);
+
+    if (expenses <= 0) {
+      alert('Pengeluaran bulanan harus > 0');
+      return;
+    }
+
+    try {
+      const r = await fetch('/tools/emergency-runway', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cash, expenses, income, debt_payment: debt }),
+      });
+      const result = await r.json();
+      renderRunwayResult(result);
+    } catch (err) {
+      console.error('Runway calc error:', err);
+      alert('Gagal hitung. Coba lagi.');
+    }
+  });
+}
+
+function renderRunwayResult(result) {
+  const card = document.getElementById('runwayResult');
+  if (!result.valid) {
+    card.innerHTML = '<p style="color:#ef4444;">' + (result.error || 'Error') + '</p>';
+    card.style.display = 'block';
+    return;
+  }
+  const fmtIDR = (n) => n.toLocaleString('id-ID');
+  let recsHtml = '';
+  if (result.recommendations && result.recommendations.length) {
+    recsHtml = '<div class="runway-recs">';
+    result.recommendations.forEach((r) => {
+      recsHtml += `
+        <div class="runway-rec">
+          <span class="runway-rec-priority priority-${r.priority}">${r.priority}</span>
+          <div class="runway-rec-content">
+            <div class="runway-rec-title">${r.title}</div>
+            <div class="runway-rec-action">${r.action}</div>
+          </div>
+        </div>`;
+    });
+    recsHtml += '</div>';
+  }
+  card.style.setProperty('--status-color', result.status_color);
+  card.innerHTML = `
+    <div class="runway-num">${result.runway_months}</div>
+    <div class="runway-label">${result.runway_label} runway</div>
+    <div class="runway-status">${result.status}</div>
+    <p class="runway-msg">${result.status_msg}</p>
+    <div style="display:flex; gap:20px; justify-content:center; margin-bottom:24px; flex-wrap:wrap;">
+      <div style="text-align:center;">
+        <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Total Burn/Bulan</div>
+        <div style="font-size:1.4rem; font-weight:800; color:var(--accent-violet);">Rp ${fmtIDR(result.total_burn)}</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Income Coverage</div>
+        <div style="font-size:1.4rem; font-weight:800; color:${result.income_coverage >= 100 ? '#84cc16' : '#f59e0b'};">${result.income_coverage}%</div>
+      </div>
+    </div>
+    ${recsHtml}
+    <div style="margin-top:24px; text-align:center;">
+      <a href="{{ url_for('main.galbay_score') if url_for else '#' }" class="btn-primary">⚡ Cek Galbay Score Lengkap</a>
+    </div>
+  `;
+  card.style.display = 'block';
+  // Smooth scroll to result
+  setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+}
+
+function parseRupiah(str) {
+  if (!str) return 0;
+  return parseInt(String(str).replace(/[^\d]/g, ''), 10) || 0;
+}
+
+// ============================================================
+// 5. SMOOTH SCROLL
 // ============================================================
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(link => {

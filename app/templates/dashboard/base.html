@@ -10,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/scroll-reveal.js') }}"></script>
   {% if active_page == 'produk' %}
   <script defer src="{{ url_for('static', filename='js/produk.js') }}"></script>
   {% endif %}
@@ -21,15 +22,16 @@
         <span class="topbar-brand-mark">G</span>
         <span class="topbar-brand-text">GALBAY <span>PREDICTOR</span></span>
       </a>
-      <div class="topbar-subtitle">Financial Behavior Coach &middot; 349K Data</div>
+      <div class="topbar-subtitle">Financial Behavior Coach &middot; 602K Data Multi-Source</div>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
     <nav class="topbar-nav" id="topbarNav" aria-label="Section navigation">
       <a href="{{ url_for('main.ringkasan') }}" class="nav-pill {% if active_page == 'ringkasan' %}active{% endif %}">Ringkasan</a>
       <a href="{{ url_for('main.analisis') }}" class="nav-pill {% if active_page == 'analisis' %}active{% endif %}">Analisis</a>
       <a href="{{ url_for('main.solusi') }}" class="nav-pill {% if active_page == 'solusi' %}active{% endif %}">Solusi &amp; BMC</a>
-      <a href="{{ url_for('main.produk') }}" class="nav-pill nav-pill-cta {% if active_page == 'produk' %}active{% endif %}">Coba Produk</a>
       <a href="{{ url_for('main.kesimpulan') }}" class="nav-pill {% if active_page == 'kesimpulan' %}active{% endif %}">Kesimpulan</a>
+      <a href="{{ url_for('main.produk') }}" class="nav-pill nav-pill-highlight {% if active_page == 'produk' %}active{% endif %}">🚀 Produk</a>
+      <a href="{{ url_for('main.galbay_score') }}" class="nav-pill nav-pill-cta">⚡ Galbay Score</a>
     </nav>
     <div class="topbar-right">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Light/Dark mode">
@@ -93,6 +95,7 @@
 
   <main class="main">
     {% block content %}{% endblock %}
+    {% block extra_js %}{% endblock %}
 
     <footer class="dashboard-footer">
       <div class="dashboard-footer-inner">
@@ -102,8 +105,8 @@
           <a href="{{ url_for('main.analisis') }}">Analisis</a>
           <a href="{{ url_for('main.solusi') }}">Solusi &amp; BMC</a>
           <a href="{{ url_for('main.kesimpulan') }}">Kesimpulan</a>
-          <a href="#" onclick="return false;" title="Coming soon">Privacy</a>
-          <a href="#" onclick="return false;" title="Coming soon">Terms</a>
+          <a href="{{ url_for('main.privacy') }}">Privacy</a>
+          <a href="{{ url_for('main.terms') }}">Terms</a>
         </nav>
         <span class="footer-meta">&copy; 2026 Galbay Predictor &middot; Data tidak disimpan &middot; Prototype UAS</span>
       </div>
@@ -176,7 +179,7 @@
     </form>
 
     <div class="chat-footer">
-      <span>Powered by 349K ulasan · AI mungkin membuat kesalahan</span>
+      <span>Powered by 602K data multi-source (Play + OJK + Forum + Blog + YouTube + Threads + Trends) · AI mungkin membuat kesalahan</span>
     </div>
   </div>
   <script defer src="{{ url_for('static', filename='js/chatbot.js') }}"></script>

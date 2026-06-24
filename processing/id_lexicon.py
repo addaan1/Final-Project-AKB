@@ -48,6 +48,15 @@ ID_SENTIMENT_LEXICON: dict[str, float] = {
     "ditolak": -1.5, "ditipu": -2.5, "sebar": -1.0, "blacklist": -1.8,
     "slik": -0.8, "lancar": 2.0, "cair": 1.6, "approve": 1.8, "disetujui": 1.8,
     "acc": 1.5, "restrukturisasi": 1.0,
+    # --- multi-source slang (TikTok/Forum/News) ---
+    "anjir": -1.0, "bangsat": -2.5, "tolol": -2.5, "gila": -1.0,
+    "cape": -1.5, "capek": -1.5, "bete": -1.5, "kesel": -1.5,
+    "mantul": 2.2, "goks": 1.8, "kece": 1.8, "sadis": 1.5,
+    "promo": 1.0, "diskon": 1.0, "cashback": 1.2, "gratis": 1.2,
+    "grtung": 1.0, "untung": 1.5, "rugi": -2.0, "tertipu": -2.5,
+    "bego": -2.3, "bacot": -1.5, "bacod": -1.5, "goblog": -2.3,
+    "kere": -1.0, "bokek": -1.5, "mikir": -0.5, "fomo": -0.8,
+    "checkout": -0.5, "keranjang": -0.3,
 }
 
 ID_NEGATIONS: set[str] = {"tidak", "bukan", "tanpa", "jangan", "belum", "tak"}

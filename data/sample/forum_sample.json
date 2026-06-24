@@ -1,11 +1,11 @@
 {
   "meta": {
     "source": "forum",
-    "scraped_at": "2026-06-21T18:17:11.258607+00:00",
+    "scraped_at": "2026-06-24T13:26:04.368325+00:00",
     "scraper": "forum",
     "n_reddit": 0,
-    "n_kaskus": 66,
-    "n_total": 66,
+    "n_kaskus": 122,
+    "n_total": 122,
     "reddit_queries": [
       "paylater",
       "pinjol",
@@ -34,462 +34,854 @@
       "query": "paylater",
       "title": "Beli iPhone 17 Malang Bisa Kredit Cicilan Paylater Shopee Meteor Cell",
       "url": "https://www.kaskus.co.id/thread/68f20e1c2341c451950c3604/beli-iphone-17-malang-bisa-kredit-cicilan-paylater-shopee--meteor-cell?ref=threadlist-1011&med=thread_list",
-      "scraped_at": 1782065760.51013
+      "scraped_at": 1782307487.5800085
     },
     {
       "source": "kaskus",
       "query": "paylater",
       "title": "Beli iPhone 17 Malang Bisa Cicilan Paylater Shopee Tokopedia MeteorCell",
       "url": "https://www.kaskus.co.id/thread/68ef4d34665e6afea80b75cb/beli-iphone-17-malang-bisa-cicilan-paylater-shopee-tokopedia-meteorcell?ref=threadlist-1011&med=thread_list",
-      "scraped_at": 1782065760.5151167
+      "scraped_at": 1782307487.5864427
     },
     {
       "source": "kaskus",
       "query": "paylater",
       "title": "Kecanduan Paylater? 5 Tanda Kamu Harus Stop",
       "url": "https://www.kaskus.co.id/thread/684978608b86ce8cdd06cccd/kecanduan-paylater-5-tanda-kamu-harus-stop?ref=threadlist-67&med=thread_list",
-      "scraped_at": 1782065760.5201166
+      "scraped_at": 1782307487.591438
     },
     {
       "source": "kaskus",
       "query": "paylater",
       "title": "GESTUN CC DAN PAYLATER",
       "url": "https://www.kaskus.co.id/thread/6811bf815ca45c15de0b38cf/gestun-cc-dan-paylater?ref=threadlist-2579&med=thread_list",
-      "scraped_at": 1782065760.5321147
+      "scraped_at": 1782307487.6024427
     },
     {
       "source": "kaskus",
       "query": "paylater",
       "title": "GESTUN CC DAN PAYLATER",
       "url": "https://www.kaskus.co.id/thread/6811becd9ecc524063097bf0/gestun-cc-dan-paylater?ref=threadlist-1506&med=thread_list",
-      "scraped_at": 1782065760.5371366
+      "scraped_at": 1782307487.6074378
     },
     {
       "source": "kaskus",
       "query": "paylater",
       "title": "GESTUN CC DAN PAYLATER",
       "url": "https://www.kaskus.co.id/thread/6811bd462ea2d148b707d0e4/gestun-cc-dan-paylater?ref=threadlist-2175&med=thread_list",
-      "scraped_at": 1782065760.5411208
+      "scraped_at": 1782307487.6124377
     },
     {
       "source": "kaskus",
       "query": "paylater",
       "title": "Gestun Kartu Kredit Dan Paylater, Kalisari Jakarta Timur",
       "url": "https://www.kaskus.co.id/thread/681060848462cdc01a0b0e70/gestun-kartu-kredit-dan-paylater-kalisari-jakarta-timur?ref=threadlist-2579&med=thread_list",
-      "scraped_at": 1782065760.5451205
+      "scraped_at": 1782307487.6174376
     },
     {
       "source": "kaskus",
       "query": "paylater",
       "title": "Perbedaan Paylater dan Kartu Kredit! Mana yang Lebih Cocok Untuk Agan Sista?",
       "url": "https://www.kaskus.co.id/thread/66e987c533e0f45432010094/perbedaan-paylater-dan-kartu-kredit-mana-yang-lebih-cocok-untuk-agan-sista?ref=threadlist-21&med=thread_list",
-      "scraped_at": 1782065760.5551982
+      "scraped_at": 1782307487.629582
     },
     {
       "source": "kaskus",
       "query": "paylater",
       "title": "modus pengembalian paylater",
       "url": "https://www.kaskus.co.id/thread/67d0349be8d85eb0ab0cd2e7/modus-pengembalian-paylater?ref=threadlist-188&med=thread_list",
-      "scraped_at": 1782065760.564186
+      "scraped_at": 1782307487.6435812
     },
     {
       "source": "kaskus",
       "query": "paylater",
       "title": "Paylater Makin Laris, Nilainya Melonjak 46% per Januari 2025",
       "url": "https://www.kaskus.co.id/thread/67c7aa20fcf262b2eb00182f/paylater-makin-laris-nilainya-melonjak-46-per-januari-2025?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065760.568187
+      "scraped_at": 1782307487.6505816
     },
     {
       "source": "kaskus",
       "query": "paylater",
       "title": "Jasa Gestun Pencairan Limit Paylater",
       "url": "https://www.kaskus.co.id/thread/67c36beb182416f8cf042867/jasa-gestun-pencairan-limit-paylater?ref=threadlist-1549&med=thread_list",
-      "scraped_at": 1782065760.5731864
+      "scraped_at": 1782307487.660581
+    },
+    {
+      "source": "kaskus",
+      "query": "paylater",
+      "title": "Utang Masyarakat Indonesia di PayLater Capai Rp30,36 Triliun",
+      "url": "https://www.kaskus.co.id/thread/678b15b9f8ec4ee5b9012e42/utang-masyarakat-indonesia-di-paylater-capai-rp3036-triliun?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307487.6725833
+    },
+    {
+      "source": "kaskus",
+      "query": "paylater",
+      "title": "( GESTUN ONLINE ) Pencairan Limit Paylater Dan Kartu Kredit",
+      "url": "https://www.kaskus.co.id/thread/6767a2dc3790731c24009837/gestun-online--pencairan-limit-paylater-dan-kartu-kredit?ref=threadlist-2175&med=thread_list",
+      "scraped_at": 1782307487.6785977
+    },
+    {
+      "source": "kaskus",
+      "query": "paylater",
+      "title": "(GESTUN ONLINE)PENCAIRAN LIMIT PAYLATER & KARTU KREDIT",
+      "url": "https://www.kaskus.co.id/thread/67679f99ce668c99fe0b6abe/gestun-onlinepencairan-limit-paylater-amp-kartu-kredit?ref=threadlist-1506&med=thread_list",
+      "scraped_at": 1782307487.6918757
+    },
+    {
+      "source": "kaskus",
+      "query": "paylater",
+      "title": "Kenalan Sama Fitur Paylater di myBCA, Yuk!",
+      "url": "https://www.kaskus.co.id/thread/6566af92b1ae1b28927fcf43/kenalan-sama-fitur-paylater-di-mybca-yuk?ref=threadlist-620&med=thread_list",
+      "scraped_at": 1782307487.703426
+    },
+    {
+      "source": "kaskus",
+      "query": "paylater",
+      "title": "Risiko Gagal Bayar Bayangi Lonjakan Utang Paylater",
+      "url": "https://www.kaskus.co.id/thread/66e12ee0d8f11d076c002bf9/risiko-gagal-bayar-bayangi-lonjakan-utang-paylater?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307487.7224424
+    },
+    {
+      "source": "kaskus",
+      "query": "paylater",
+      "title": "Gestun/pencairan limit paylater, CC ,dll bs COD",
+      "url": "https://www.kaskus.co.id/thread/660bf49f814c25bce30101ea/gestun-pencairan-limit-paylater-cc-dll-bs-cod?ref=threadlist-1051&med=thread_list",
+      "scraped_at": 1782307487.726425
+    },
+    {
+      "source": "kaskus",
+      "query": "paylater",
+      "title": "Bos OJK Dikejar-kejar Tagihan Paylater, Pentingnya Bijak Mengelola Keuangan!",
+      "url": "https://www.kaskus.co.id/thread/65c40733e70c4f4d95401864/bos-ojk-dikejar-kejar-tagihan-paylater-pentingnya-bijak-mengelola-keuangan?ref=threadlist-620&med=thread_list",
+      "scraped_at": 1782307487.734426
+    },
+    {
+      "source": "kaskus",
+      "query": "paylater",
+      "title": "Membangun Skor Kredit Termudah dari PayLater",
+      "url": "https://www.kaskus.co.id/thread/6567fc3c9f821d0c9a0e16cb/membangun-skor-kredit-termudah-dari-paylater?ref=threadlist-620&med=thread_list",
+      "scraped_at": 1782307487.7469676
+    },
+    {
+      "source": "kaskus",
+      "query": "paylater",
+      "title": "Daripada Pinjem Dulu Seratus, Mending Pake Paylater BCA",
+      "url": "https://www.kaskus.co.id/thread/656d58da920fa64ebd12a4d4/daripada-pinjem-dulu-seratus-mending-pake-paylater-bca?ref=threadlist-21&med=thread_list",
+      "scraped_at": 1782307487.7569668
     },
     {
       "source": "kaskus",
       "query": "pinjol",
       "title": "Hati2 Terjerat Pinjol Illegal Hati2 Yah",
       "url": "https://www.kaskus.co.id/thread/6932e5a75e1def90710b666f/hati2-terjerat-pinjol-illegal-hati2-yah?ref=threadlist-21&med=thread_list",
-      "scraped_at": 1782065771.782095
+      "scraped_at": 1782307502.3102238
     },
     {
       "source": "kaskus",
       "query": "pinjol",
       "title": "Terlilit utang pinjol, Gen Z banyak YOLO?",
       "url": "https://www.kaskus.co.id/thread/69425062f9129f4793081687/terlilit-utang-pinjol-gen-z-banyak-yolo?ref=threadlist-467&med=thread_list",
-      "scraped_at": 1782065771.7870948
+      "scraped_at": 1782307502.32122
     },
     {
       "source": "kaskus",
       "query": "pinjol",
       "title": "Kemenag Luncurkan Pinjaman Lunak lewat Masjid untuk Cegah Pinjol",
       "url": "https://www.kaskus.co.id/thread/68dc15913ca39f53ad0911ca/kemenag-luncurkan-pinjaman-lunak-lewat-masjid-untuk-cegah-pinjol?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065771.7910948
+      "scraped_at": 1782307502.330243
     },
     {
       "source": "kaskus",
       "query": "pinjol",
       "title": "Mirna Terjerat Pinjol Demi DP Mobil Imbas Gengsi, Cicilan dari 3 Juta Jadi 60 Juta",
       "url": "https://www.kaskus.co.id/thread/68cfe789bfe7a4b7ee0e97b4/mirna-terjerat-pinjol-demi-dp-mobil-imbas-gengsi-cicilan-dari-3-juta-jadi-60-juta?ref=threadlist-733&med=thread_list",
-      "scraped_at": 1782065771.800457
+      "scraped_at": 1782307502.3463275
     },
     {
       "source": "kaskus",
       "query": "pinjol",
       "title": "Kaos Pinjol Seperti Mantan – Kaos Kata Kata Lucu Viral Unik Warna Cerah Sablon Awet",
       "url": "https://www.kaskus.co.id/thread/68b7f70881222093b30ab7c5/kaos-pinjol-seperti-mantan--kaos-kata-kata-lucu-viral-unik-warna-cerah-sablon-awet?ref=threadlist-2417&med=thread_list",
-      "scraped_at": 1782065771.8104568
+      "scraped_at": 1782307502.3602667
     },
     {
       "source": "kaskus",
       "query": "pinjol",
       "title": "OJK Ubah Istilah Pinjol Jadi Pindar: Biar Kesannya Lebih Positif",
       "url": "https://www.kaskus.co.id/thread/689dca37cbdbe3746006e7fb/ojk-ubah-istilah-pinjol-jadi-pindar-biar-kesannya-lebih-positif?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065771.8204918
+      "scraped_at": 1782307502.3742216
     },
     {
       "source": "kaskus",
       "query": "pinjol",
       "title": "Kredit Pinjol Ilegas Lebih Dominasi Daripada Legal?",
       "url": "https://www.kaskus.co.id/thread/689a9edbe03014b155051111/kredit-pinjol-ilegas-lebih-dominasi-daripada-legal?ref=threadlist-21&med=thread_list",
-      "scraped_at": 1782065771.8294568
+      "scraped_at": 1782307502.3872197
     },
     {
       "source": "kaskus",
       "query": "pinjol",
       "title": "Pinjol Ilegal Masih Marak di 2025, Waspadai Bahayanya!",
       "url": "https://www.kaskus.co.id/thread/6833ee82702559fa5000c97d/pinjol-ilegal-masih-marak-di-2025-waspadai-bahayanya?ref=threadlist-594&med=thread_list",
-      "scraped_at": 1782065771.8334575
+      "scraped_at": 1782307502.3972237
     },
     {
       "source": "kaskus",
       "query": "pinjol",
       "title": "Bahaya Pinjol",
       "url": "https://www.kaskus.co.id/thread/6854d60b67c01a579b098382/bahaya-pinjol?ref=threadlist-21&med=thread_list",
-      "scraped_at": 1782065771.8374562
+      "scraped_at": 1782307502.403766
+    },
+    {
+      "source": "kaskus",
+      "query": "pinjol",
+      "title": "demi cinta gw rela pinjol 😭😭💸💸",
+      "url": "https://www.kaskus.co.id/thread/67a330f0b521871a4c0f5883/demi-cinta-gw-rela-pinjol?ref=threadlist-734&med=thread_list",
+      "scraped_at": 1782307502.41177
+    },
+    {
+      "source": "kaskus",
+      "query": "pinjol",
+      "title": "Terlilit Pinjol, Chairunnisa Haq Penipu WO di Surabaya Resmi Jadi Tersangka",
+      "url": "https://www.kaskus.co.id/thread/684a420e440ee6452c03198c/terlilit-pinjol-chairunnisa-haq-penipu-wo-di-surabaya-resmi-jadi-tersangka?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307502.4227657
+    },
+    {
+      "source": "kaskus",
+      "query": "pinjol",
+      "title": "Di Balik Layar Judol dan Pinjol: Ternyata Pemerintah Jadi Impostor-nya",
+      "url": "https://www.kaskus.co.id/thread/682f92e263dbb7c6cb002867/di-balik-layar-judol-dan-pinjol-ternyata-pemerintah-jadi-impostor-nya?ref=threadlist-21&med=thread_list",
+      "scraped_at": 1782307502.4397666
+    },
+    {
+      "source": "kaskus",
+      "query": "pinjol",
+      "title": "Gak Semua Pinjol Itu Legal, Gan! Ini Cara Bedain & Ngadepinnya!",
+      "url": "https://www.kaskus.co.id/thread/682bd6afa86357d07706e2ba/gak-semua-pinjol-itu-legal-gan-ini-cara-bedain-amp-ngadepinnya?ref=threadlist-594&med=thread_list",
+      "scraped_at": 1782307502.456772
+    },
+    {
+      "source": "kaskus",
+      "query": "pinjol",
+      "title": "Hati-Hati! Ini Risiko Hukum Jika Menggunakan Aplikasi Pinjol Ilegal",
+      "url": "https://www.kaskus.co.id/thread/682bcf041fd7680b5608acdc/hati-hati-ini-risiko-hukum-jika-menggunakan-aplikasi-pinjol-ilegal?ref=threadlist-594&med=thread_list",
+      "scraped_at": 1782307502.464783
+    },
+    {
+      "source": "kaskus",
+      "query": "pinjol",
+      "title": "Hati-Hati! Ini Risiko Hukum Jika Pakai Nama Orang Lain di Pinjol",
+      "url": "https://www.kaskus.co.id/thread/682bcdff80054a075b0a7aee/hati-hati-ini-risiko-hukum-jika-pakai-nama-orang-lain-di-pinjol?ref=threadlist-594&med=thread_list",
+      "scraped_at": 1782307502.4697666
+    },
+    {
+      "source": "kaskus",
+      "query": "pinjol",
+      "title": "Hukum Pinjol dan DC Lapangan: Apa Batasan dan Hak Kita?",
+      "url": "https://www.kaskus.co.id/thread/682bb91656c7fcae140295db/hukum-pinjol-dan-dc-lapangan-apa-batasan-dan-hak-kita?ref=threadlist-594&med=thread_list",
+      "scraped_at": 1782307502.4767897
+    },
+    {
+      "source": "kaskus",
+      "query": "pinjol",
+      "title": "Utang Pinjol orang indo Capai Rp75 Triliun, Pertumbuhan Mulai Melambat",
+      "url": "https://www.kaskus.co.id/thread/6761360c34bb6bcb2e0555d2/utang-pinjol-orang-indo-capai-rp75-triliun-pertumbuhan-mulai-melambat?ref=threadlist-733&med=thread_list",
+      "scraped_at": 1782307502.484785
+    },
+    {
+      "source": "kaskus",
+      "query": "pinjol",
+      "title": "Kredit Macet Pinjol di Pensiunan, Kok Bisa?",
+      "url": "https://www.kaskus.co.id/thread/67e4a1c0bb49e98206070283/kredit-macet-pinjol-di-pensiunan-kok-bisa?ref=threadlist-854&med=thread_list",
+      "scraped_at": 1782307502.4928129
+    },
+    {
+      "source": "kaskus",
+      "query": "pinjol",
+      "title": "[ask]Pinjol",
+      "url": "https://www.kaskus.co.id/thread/6412ed0696c26d58d81508d5/askpinjol?ref=threadlist-59&med=thread_list",
+      "scraped_at": 1782307502.5083957
+    },
+    {
+      "source": "kaskus",
+      "query": "pinjol",
+      "title": "Sell\nKaos Pinjol Seperti Mantan – Kaos Kata Kata Lucu Viral Unik Warna Cerah Sablon Awet",
+      "url": "https://www.kaskus.co.id/thread/68b7f70881222093b30ab7c5/kaos-pinjol-seperti-mantan--kaos-kata-kata-lucu-viral-unik-warna-cerah-sablon-awet?ref=search_thread&med=thread_list",
+      "scraped_at": 1782307502.5153239
     },
     {
       "source": "kaskus",
       "query": "galbay",
       "title": "Pengalaman Galbay Kredivo #SharingtoCaring",
       "url": "https://www.kaskus.co.id/thread/665ed0b179b86154f808515a/pengalaman-galbay-kredivo-sharingtocaring?ref=threadlist-1623&med=thread_list",
-      "scraped_at": 1782065783.0638163
+      "scraped_at": 1782307514.434068
     },
     {
       "source": "kaskus",
       "query": "galbay",
       "title": "5 Tips agar di acc pinjol dengan data busuk alias banyak galbay 2021",
       "url": "https://www.kaskus.co.id/thread/6045a9697dd93a752b636c20/5-tips-agar-di-acc-pinjol-dengan-data-busuk-alias-banyak-galbay-2021?ref=threadlist-620&med=thread_list",
-      "scraped_at": 1782065783.0748653
+      "scraped_at": 1782307514.4500697
     },
     {
       "source": "kaskus",
       "query": "galbay",
       "title": "Waspada Penipuan Online Terbaru yang Menawarkan Jasa Galbay Pinjol Tanpa Identitasmu",
       "url": "https://www.kaskus.co.id/thread/6350b75a8202257001388c1d/waspada-penipuan-online-terbaru-yang-menawarkan-jasa-galbay-pinjol-tanpa-identitasmu?ref=threadlist-1197&med=thread_list",
-      "scraped_at": 1782065783.0839903
+      "scraped_at": 1782307514.4629629
     },
     {
       "source": "kaskus",
       "query": "galbay",
       "title": "galbay flexycash jenius",
       "url": "https://www.kaskus.co.id/thread/629484cfdc2a084d335f8b8f/galbay-flexycash-jenius?ref=threadlist-975&med=thread_list",
-      "scraped_at": 1782065783.0919182
+      "scraped_at": 1782307514.4766133
     },
     {
       "source": "kaskus",
       "query": "galbay",
       "title": "Cukup 50Rb Galbay PINJOL BERES, ngapain harus bunuh diri",
       "url": "https://www.kaskus.co.id/thread/62773c4fb3a93c5c5b54c372/cukup-50rb-galbay-pinjol-beres-ngapain-harus-bunuh-diri?ref=threadlist-732&med=thread_list",
-      "scraped_at": 1782065783.0959842
+      "scraped_at": 1782307514.4862633
     },
     {
       "source": "kaskus",
       "query": "galbay",
       "title": "Mantap Angkatan Covid Banyak Nganggur | Semua Jadi Pasukan Galbay YES!",
       "url": "https://www.kaskus.co.id/thread/620ca0b964ec627832302520/mantap-angkatan-covid-banyak-nganggur--semua-jadi-pasukan-galbay-yes?ref=threadlist-21&med=thread_list",
-      "scraped_at": 1782065783.0999339
+      "scraped_at": 1782307514.4932616
     },
     {
       "source": "kaskus",
       "query": "gagal bayar",
       "title": "Gagal Bayar Dana Syariah Indonesia Capai Rp1,3 T, Ini Penjelasan DH & Langkah OJK",
       "url": "https://www.kaskus.co.id/thread/6954aff0ae614c27b005135a/gagal-bayar-dana-syariah-indonesia-capai-rp13-t-ini-penjelasan-dh-amp-langkah-ojk?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065794.8631005
+      "scraped_at": 1782307526.0225272
     },
     {
       "source": "kaskus",
       "query": "gagal bayar",
       "title": "Gagal Bayar Open BO, Pria di Malang Tikam PSK Enam Kali hingga Tewas",
       "url": "https://www.kaskus.co.id/thread/695482a5a48a24d9f40b3805/gagal-bayar-open-bo-pria-di-malang-tikam-psk-enam-kali-hingga-tewas?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065794.868234
+      "scraped_at": 1782307526.0295305
     },
     {
       "source": "kaskus",
       "query": "gagal bayar",
       "title": "Netizen Ramaikan Gagal Bayar Dana Syariah Indonesia, Petinggi OJK Benarkan Itu",
       "url": "https://www.kaskus.co.id/thread/68eb5848fe3573775f04d923/netizen-ramaikan-gagal-bayar-dana-syariah-indonesia-petinggi-ojk-benarkan-itu?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065794.876102
+      "scraped_at": 1782307526.0395863
     },
     {
       "source": "kaskus",
       "query": "gagal bayar",
       "title": "Gagal Bayar Open BO, Pria di Malang Tikam PSK Enam Kali hingga Tewas",
       "url": "https://www.kaskus.co.id/thread/6954829821c204e96901e608/gagal-bayar-open-bo-pria-di-malang-tikam-psk-enam-kali-hingga-tewas?ref=threadlist-733&med=thread_list",
-      "scraped_at": 1782065794.8851018
+      "scraped_at": 1782307526.0583606
     },
     {
       "source": "kaskus",
       "query": "gagal bayar",
       "title": "Mahfud Khawatir China Minta Natuna Utara Jika RI Gagal Bayar Utang Kereta Cepat",
       "url": "https://www.kaskus.co.id/thread/68ef8a4eafdda02ca10977a0/mahfud-khawatir-china-minta-natuna-utara-jika-ri-gagal-bayar-utang-kereta-cepat?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065794.894236
+      "scraped_at": 1782307526.0683568
     },
     {
       "source": "kaskus",
       "query": "gagal bayar",
       "title": "Gagal bayar pajak pembelian properti, Wakil PM Inggris mundur",
       "url": "https://www.kaskus.co.id/thread/68bbb177437bdd54780c3fa4/gagal-bayar-pajak-pembelian-properti-wakil-pm-inggris-mundur?ref=threadlist-250&med=thread_list",
-      "scraped_at": 1782065794.9032369
+      "scraped_at": 1782307526.081357
     },
     {
       "source": "kaskus",
       "query": "gagal bayar",
       "title": "WIKA Umumkan Gagal Bayar Surat Utang Bernilai Jumbo",
       "url": "https://www.kaskus.co.id/thread/68ab0e09e83aa4883d00beb5/wika-umumkan-gagal-bayar-surat-utang-bernilai-jumbo?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065794.9118552
+      "scraped_at": 1782307526.0943558
     },
     {
       "source": "kaskus",
       "query": "gagal bayar",
       "title": "CELIOS: Kopdes Berisiko Gagal Bayar Rp85,96 T dalam 6 Tahun",
       "url": "https://www.kaskus.co.id/thread/687d06febbf08e66ac023bfd/celios-kopdes-berisiko-gagal-bayar-rp8596-t-dalam-6-tahun?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065794.9158273
+      "scraped_at": 1782307526.1013558
     },
     {
       "source": "kaskus",
       "query": "gagal bayar",
       "title": "Pefindo Tegaskan Kembali Rating Gagal Bayar WIKA",
       "url": "https://www.kaskus.co.id/thread/687471ad44c25d8f9f080d56/pefindo-tegaskan-kembali-rating-gagal-bayar-wika?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065794.9208272
+      "scraped_at": 1782307526.108355
     },
     {
       "source": "kaskus",
       "query": "gagal bayar",
       "title": "Risiko Gagal Bayar Mengintai Imbas PHK di Mana-mana",
       "url": "https://www.kaskus.co.id/thread/682b5b88485fae8415052670/risiko-gagal-bayar-mengintai-imbas-phk-di-mana-mana?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065794.9248273
+      "scraped_at": 1782307526.115784
+    },
+    {
+      "source": "kaskus",
+      "query": "gagal bayar",
+      "title": "Wijaya Karya (WIKA) Gagal Bayar Utang, Pefindo Kembali Turunkan Rating",
+      "url": "https://www.kaskus.co.id/thread/67ffb36dda694ec8f60d3418/wijaya-karya-wika-gagal-bayar-utang-pefindo-kembali-turunkan-rating?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307526.11979
+    },
+    {
+      "source": "kaskus",
+      "query": "gagal bayar",
+      "title": "Resmi, Indonesia Diumumkan Gagal Bayar KF-21 di Juni, Korsel: Pengaruhi Bisnis Kami!",
+      "url": "https://www.kaskus.co.id/thread/64a55348572b42154d67ebd7/resmi-indonesia-diumumkan-gagal-bayar-kf-21-di-juni-korsel-pengaruhi-bisnis-kami?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307526.1257937
+    },
+    {
+      "source": "kaskus",
+      "query": "gagal bayar",
+      "title": "Risiko Gagal Bayar Bayangi Lonjakan Utang Paylater",
+      "url": "https://www.kaskus.co.id/thread/66e12ee0d8f11d076c002bf9/risiko-gagal-bayar-bayangi-lonjakan-utang-paylater?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307526.135794
+    },
+    {
+      "source": "kaskus",
+      "query": "gagal bayar",
+      "title": "Kredit Macet Pinjol Tinggi, Waspada Gagal Bayar",
+      "url": "https://www.kaskus.co.id/thread/66b35a23bb1aba6e290bb1a1/kredit-macet-pinjol-tinggi-waspada-gagalbayar?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307526.1408875
+    },
+    {
+      "source": "kaskus",
+      "query": "gagal bayar",
+      "title": "Sudah Gagal Malah Disuruh Bayar, Pernah Ngalamin Beberapa Hal Ini, Gan?",
+      "url": "https://www.kaskus.co.id/thread/65ec2ec22e7f9d67470fe8da/sudah-gagal-malah-disuruh-bayar-pernah-ngalamin-beberapa-hal-ini-gan?ref=threadlist-59&med=thread_list",
+      "scraped_at": 1782307526.1478868
+    },
+    {
+      "source": "kaskus",
+      "query": "gagal bayar",
+      "title": "Waskita Karya (WSKT) Sudah Dalam Keadaan Gagal Bayar (Default)",
+      "url": "https://www.kaskus.co.id/thread/656fc1c2191f91223359e0d3/waskita-karya-wskt-sudah-dalam-keadaan-gagal-bayar-default?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307526.1578867
+    },
+    {
+      "source": "kaskus",
+      "query": "gagal bayar",
+      "title": "Siapa yang bayar ongkir jika paket COD J&T di shopee gagal diterima pembeli?",
+      "url": "https://www.kaskus.co.id/thread/5e6e635882d495430d696a81/siapa-yang-bayar-ongkir-jika-paket-cod-jampt-di-shopee-gagal-diterima-pembeli?ref=threadlist-21&med=thread_list",
+      "scraped_at": 1782307526.1717849
+    },
+    {
+      "source": "kaskus",
+      "query": "gagal bayar",
+      "title": "Utang Menggunung dan Gagal Bayar, Erick Thohir Sebut Waskita Karya Terancam Pailit",
+      "url": "https://www.kaskus.co.id/thread/64d237d96f420b6145274059/utang-menggunung-dan-gagal-bayar-erick-thohir-sebut-waskita-karya-terancam-pailit?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307526.178785
+    },
+    {
+      "source": "kaskus",
+      "query": "gagal bayar",
+      "title": "AS Gagal Bayar Utang Rp480.000 T, RI Patut Was-was Gak ?",
+      "url": "https://www.kaskus.co.id/thread/6450e3507b01d82f2f6ebb22/as-gagal-bayar-utang-rp480000-t-ri-patut-was-was-gak?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307526.1887848
+    },
+    {
+      "source": "kaskus",
+      "query": "gagal bayar",
+      "title": "Gagal Bayar Utang, Pangeran Arab Saudi Harus Bayar Rp611 M kepada Credit Suisse",
+      "url": "https://www.kaskus.co.id/thread/643040763f6089297d496452/gagal-bayar-utang-pangeran-arab-saudi-harus-bayar-rp611-m-kepada-credit-suisse?ref=threadlist-250&med=thread_list",
+      "scraped_at": 1782307526.199784
+    },
+    {
+      "source": "kaskus",
+      "query": "utang",
+      "title": "Cari Utang di China, Purbaya Pulang-pulang Dapat Gelar Profesor",
+      "url": "https://www.kaskus.co.id/thread/6a3b52b016535fe89202446b/cari-utang-di-china-purbaya-pulang-pulang-dapat-gelar-profesor?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307538.019298
+    },
+    {
+      "source": "kaskus",
+      "query": "utang",
+      "title": "Purbaya Mau Kurangi Utang Pemerintah Rp9.920 T, Tiru Cara SBY",
+      "url": "https://www.kaskus.co.id/thread/6a3944c30a4e4fd44a097240/purbaya-mau-kurangi-utang-pemerintah-rp9920-t-tiru-cara-sby?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307538.0292902
+    },
+    {
+      "source": "kaskus",
+      "query": "utang",
+      "title": "Butuh Uang Bayar Utang, Kuli Panggul Nekat Gadaikan Motor Teman",
+      "url": "https://www.kaskus.co.id/thread/6a38a5d36c043271420d935a/butuh-uang-bayar-utang-kuli-panggul-nekat-gadaikan-motor-teman?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307538.0502985
     },
     {
       "source": "kaskus",
       "query": "utang",
       "title": "Yayasan Binaan Luhut Panjaitan Digugat Sita Paksa Gara-Gara Utang Rp3 Miliar!",
       "url": "https://www.kaskus.co.id/thread/6a2f145c45bdf3a96404b43f/yayasan-binaan-luhut-panjaitan-digugat-sita-paksa-gara-gara-utang-rp3-miliar?ref=threadlist-732&med=thread_list",
-      "scraped_at": 1782065807.4803112
+      "scraped_at": 1782307538.0702577
     },
     {
       "source": "kaskus",
       "query": "utang",
       "title": "Bawa Nama Tokoh Besar, Kenapa Yayasan Del Ogah Bayar Utang Proyek Rp3 Miliar?",
       "url": "https://www.kaskus.co.id/thread/6a2f11e2f79e4be16d0645d0/bawa-nama-tokoh-besar-kenapa-yayasan-del-ogah-bayar-utang-proyek-rp3-miliar?ref=threadlist-732&med=thread_list",
-      "scraped_at": 1782065807.4912946
+      "scraped_at": 1782307538.0912738
     },
     {
       "source": "kaskus",
       "query": "utang",
       "title": "Kepala KSP Dudung: SK Titik MBG Diduga Jadi Jaminan Utang Bank",
       "url": "https://www.kaskus.co.id/thread/6a2a138c0fc6efad190e79c6/kepala-ksp-dudung-sk-titik-mbg-diduga-jadi-jaminan-utang-bank?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065807.5072997
+      "scraped_at": 1782307538.1122537
     },
     {
       "source": "kaskus",
       "query": "utang",
       "title": "Kalau utang kartu kredit Rp100 juta, menurut kalian masih mungkin selesai?",
       "url": "https://www.kaskus.co.id/thread/6a2780590af2a4d64b0bdf14/kalau-utang-kartu-kredit-rp100-juta-menurut-kalian-masih-mungkin-selesai?ref=threadlist-733&med=thread_list",
-      "scraped_at": 1782065807.5202994
+      "scraped_at": 1782307538.1272547
     },
     {
       "source": "kaskus",
       "query": "utang",
       "title": "Purbaya Mau Ekonomi Tumbuh Tinggi Tanpa Banyak Utang, Begini Caranya",
       "url": "https://www.kaskus.co.id/thread/6a1652774b59ae84cd09b015/purbaya-mau-ekonomi-tumbuh-tinggi-tanpa-banyak-utang-begini-caranya?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065807.5258315
+      "scraped_at": 1782307538.1363382
     },
     {
       "source": "kaskus",
       "query": "utang",
       "title": "Puluhan Negara Antre Utang ke Bank Dunia Saat RI Menolak Mentah-mentah",
       "url": "https://www.kaskus.co.id/thread/6a13f8ebc9aec9fe9d0e41c1/puluhan-negara-antre-utang-ke-bank-dunia-saat-ri-menolak-mentah-mentah?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065807.5348127
+      "scraped_at": 1782307538.1473494
     },
     {
       "source": "kaskus",
       "query": "utang",
       "title": "Tak Cukup Makan Tabungan, Warga RI Kini Dilanda Fenomena Makan Utang",
       "url": "https://www.kaskus.co.id/thread/6a017458b8ab36fadb0e3a4b/tak-cukup-makan-tabungan-warga-ri-kini-dilanda-fenomena-makan-utang?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065807.546814
+      "scraped_at": 1782307538.157858
     },
     {
       "source": "kaskus",
       "query": "utang",
       "title": "Menkeu Purbaya Izinkan China Rilis Surat Utang di RI, Ini Bocorannya!",
       "url": "https://www.kaskus.co.id/thread/69e84af1aea924f8c00ba956/menkeu-purbaya-izinkan-china-rilis-surat-utang-di-ri-ini-bocorannya?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065807.552815
+      "scraped_at": 1782307538.1648605
     },
     {
       "source": "kaskus",
       "query": "utang",
       "title": "Surat Utang RI Ramai Dijual Saat Rupiah Tergelincir ke Rp17.300",
       "url": "https://www.kaskus.co.id/thread/69e9c57b08f0109f5a0477e1/surat-utang-ri-ramai-dijual-saat-rupiah-tergelincir-ke-rp17300?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065807.5578141
+      "scraped_at": 1782307538.171861
     },
     {
       "source": "kaskus",
       "query": "utang",
       "title": "ISEAI: Ekonomi Tumbuh 5,1% Dinilai Tak Cukup Menahan Laju Utang",
       "url": "https://www.kaskus.co.id/thread/69e7166da249756f91083b12/iseai-ekonomi-tumbuh-51-dinilai-tak-cukup-menahan-laju-utang?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065807.5658405
+      "scraped_at": 1782307538.1788597
+    },
+    {
+      "source": "kaskus",
+      "query": "utang",
+      "title": "Bantuan Utang IMF Ditolak Purbaya : Indonesia Tidak Butuh",
+      "url": "https://www.kaskus.co.id/thread/69e194a92e338a452f059748/bantuan-utang-imf-ditolak-purbaya--indonesia-tidak-butuh?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307538.1858602
+    },
+    {
+      "source": "kaskus",
+      "query": "utang",
+      "title": "Danantara Sesumbar Selesaikan Utang Whoosh Dua Bulan",
+      "url": "https://www.kaskus.co.id/thread/69d506e347d7d4a58a0f528c/danantara-sesumbar-selesaikan-utang-whoosh-dua-bulan?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307538.198864
+    },
+    {
+      "source": "kaskus",
+      "query": "utang",
+      "title": "Yield Surat Utang RI Termasuk Tertinggi di Asia",
+      "url": "https://www.kaskus.co.id/thread/69c21679a94b605b4e007926/yield-surat-utang-ri-termasuk-tertinggi-di-asia?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307538.219379
+    },
+    {
+      "source": "kaskus",
+      "query": "utang",
+      "title": "Danantara Terbitkan Surat Utang Rp7 Triliun, Imbal Hasil 2%",
+      "url": "https://www.kaskus.co.id/thread/69b8df349d529501cf098d98/danantara-terbitkan-surat-utang-rp7-triliun-imbal-hasil-2?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307538.2333806
+    },
+    {
+      "source": "kaskus",
+      "query": "utang",
+      "title": "Abu Janda Ngamuk Feri Bahas Utang Indonesia ke Palestina, Berkata Kasar Lalu Diusir",
+      "url": "https://www.kaskus.co.id/thread/69b0feccd08a63cf700b7485/abu-janda-ngamuk-feri-bahas-utang-indonesia-ke-palestina-berkata-kasar-lalu-diusir?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307538.2403846
+    },
+    {
+      "source": "kaskus",
+      "query": "utang",
+      "title": "Momen Prabowo Tanya Airlangga Utang Pemerintah: Terendah di Dunia Ya?",
+      "url": "https://www.kaskus.co.id/thread/69b4d62ea7314c42270ed238/momen-prabowo-tanya-airlangga-utang-pemerintah-terendah-di-dunia-ya?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307538.2559123
     },
     {
       "source": "kaskus",
       "query": "ditagih",
       "title": "Pedagang Ayam di Labusel Ngamuk di Kantor Pajak, Tak Terima Ditagih Rp768 Juta",
       "url": "https://www.kaskus.co.id/thread/69b54f245f7dbf22060a7852/pedagang-ayam-di-labusel-ngamuk-di-kantor-pajak-tak-terima-ditagih-rp768-juta?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065818.7528937
+      "scraped_at": 1782307549.8767717
     },
     {
       "source": "kaskus",
       "query": "ditagih",
       "title": "Viral! Ditagih Utang Saat Berduka, Keluarga Ini Ngamuk & Ancam Penagih",
       "url": "https://www.kaskus.co.id/thread/696c8998f2165bafed0a1f60/viral-ditagih-utang-saat-berduka-keluarga-ini-ngamuk-amp-ancam-penagih?ref=threadlist-733&med=thread_list",
-      "scraped_at": 1782065818.7629058
+      "scraped_at": 1782307549.888772
     },
     {
       "source": "kaskus",
       "query": "ditagih",
       "title": "Ditagih Bayar Pajak, Ustaz Abdul Somad: Neraka Jahanam Tempat Kalian",
       "url": "https://www.kaskus.co.id/thread/68afbe87fdeb9ed662092c4e/ditagih-bayar-pajak-ustaz-abdul-somad-neraka-jahanam-tempat-kalian?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065818.769003
+      "scraped_at": 1782307549.894776
     },
     {
       "source": "kaskus",
       "query": "ditagih",
       "title": "Ditagih Royalti, Pengusaha Hotel: Lagu di TV Kamar Juga Dihitung",
       "url": "https://www.kaskus.co.id/thread/689ea60a5105adc00e01bd2e/ditagih-royalti-pengusaha-hotel-lagu-di-tv-kamar-juga-dihitung?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065818.7808948
+      "scraped_at": 1782307549.908772
     },
     {
       "source": "kaskus",
       "query": "ditagih",
       "title": "Pakai Suara Burung dan Jangkrik, Hotel di Tangsel Ditagih Royalti",
       "url": "https://www.kaskus.co.id/thread/689e9690ada510f320075040/pakai-suara-burung-dan-jangkrik-hotel-di-tangsel-ditagih-royalti?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065818.7918937
+      "scraped_at": 1782307549.9177728
     },
     {
       "source": "kaskus",
       "query": "ditagih",
       "title": "Viral, Tukang Jahit di Pekalongan Ditagih Pajak Rp2,8 Miliar",
       "url": "https://www.kaskus.co.id/thread/6896bf6457be0a4390099449/viral-tukang-jahit-di-pekalongan-ditagih-pajak-rp28-miliar?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065818.8028948
+      "scraped_at": 1782307549.93355
     },
     {
       "source": "kaskus",
       "query": "ditagih",
       "title": "Tersentak! Prabowo Ditagih MBG oleh Siswa saat Perjalanan Solo-Klaten",
       "url": "https://www.kaskus.co.id/thread/6881c7f1be2bde3ee900bcc9/tersentak-prabowo-ditagih-mbg-oleh-siswa-saat-perjalanan-solo-klaten?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065818.8090405
+      "scraped_at": 1782307549.9395487
     },
     {
       "source": "kaskus",
       "query": "ditagih",
       "title": "Investor Keluhkan Nabung Saham Ditagih Rp 1,8 Miliar, Ini Respons Ajaib Sekuritas",
       "url": "https://www.kaskus.co.id/thread/68627c2ca80943b35b097109/investor-keluhkan-nabung-saham-ditagih-rp-18-miliar-ini-respons-ajaib-sekuritas?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065818.8129907
+      "scraped_at": 1782307549.9445555
     },
     {
       "source": "kaskus",
       "query": "ditagih",
       "title": "Utangnya Ditagih, Ibu Rumah Tangga di Sukabumi Hajar Sang Penagih Hingga Tewas",
       "url": "https://www.kaskus.co.id/thread/655aa2a4fb4b854ee259e463/utangnya-ditagih-ibu-rumah-tangga-di-sukabumi-hajar-sang-penagih-hingga-tewas?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065818.8249383
+      "scraped_at": 1782307549.9545944
+    },
+    {
+      "source": "kaskus",
+      "query": "ditagih",
+      "title": "(Dasar preman) Ditagih biaya kampanye, ketua tim pemenangan Jokowi pukul timses",
+      "url": "https://www.kaskus.co.id/thread/53ad7e5fbecb17ec788b45cb/dasar-preman-ditagih-biaya-kampanye-ketua-tim-pemenangan-jokowi-pukul-timses?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307549.964599
+    },
+    {
+      "source": "kaskus",
+      "query": "ditagih",
+      "title": "Kronologi Wirda Mansur Ditagih Utang, Dua Tahun Tak Ada Kejelasan",
+      "url": "https://www.kaskus.co.id/thread/67b59a829484ac90610f9104/kronologi-wirda-mansur-ditagih-utang-dua-tahun-tak-ada-kejelasan?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307549.968577
+    },
+    {
+      "source": "kaskus",
+      "query": "ditagih",
+      "title": "Sadis, Ditagih Hutang! Ibu Ini Hajar Rentenir Gunakan Gas LPG 3kg",
+      "url": "https://www.kaskus.co.id/thread/5e4d12b1c9518b6a3c04730b/sadis-ditagih-hutang-ibu-ini-hajar-rentenir-gunakan-gas-lpg-3kg?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307549.9790936
+    },
+    {
+      "source": "kaskus",
+      "query": "ditagih",
+      "title": "Pusing Mbah Pramono Pengepul Susu Boyolali Ditagih Pajak Ratusan Juta",
+      "url": "https://www.kaskus.co.id/thread/6731baa2a025e7ccd50fec26/pusing-mbah-pramono-pengepul-susu-boyolali-ditagih-pajak-ratusan-juta?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307549.9880934
+    },
+    {
+      "source": "kaskus",
+      "query": "ditagih",
+      "title": "Pramono Pasrah Usaha Susu Sapi Miliknya Tutup karena Ditagih Pajak Rp670 Juta, Capek",
+      "url": "https://www.kaskus.co.id/thread/672800c7aa0920d6e408cabf/pramono-pasrah-usaha-susu-sapi-miliknya-tutup-karena-ditagih-pajak-rp670-juta-capek?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307549.99949
+    },
+    {
+      "source": "kaskus",
+      "query": "ditagih",
+      "title": "Pramono Pasrah Usaha Susu Sapi Miliknya Tutup karena Ditagih Pajak Rp670 Juta",
+      "url": "https://www.kaskus.co.id/thread/6725a6eb046a5ad0be07da28/pramono-pasrah-usaha-susu-sapi-miliknya-tutup-karena-ditagih-pajak-rp670-juta?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307550.0100892
+    },
+    {
+      "source": "kaskus",
+      "query": "ditagih",
+      "title": "Janji Bangun Disneyland di Cikarang Ditagih Pramono, Ridwan Kamil: Itu Imajinasi",
+      "url": "https://www.kaskus.co.id/thread/671ece07d84e7c13b1036e17/janji-bangun-disneyland-di-cikarang-ditagih-pramono-ridwan-kamil-itu-imajinasi?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307550.0190866
+    },
+    {
+      "source": "kaskus",
+      "query": "ditagih",
+      "title": "Siswa SMA Jalan Jual Risol Demi SPP, Teman Ngutang Rp1 Juta, Ditagih Malah Diblokir",
+      "url": "https://www.kaskus.co.id/thread/671db523d2e95160f9075b0a/siswa-sma-jalan-jual-risol-demi-spp-teman-ngutang-rp1-juta-ditagih-malah-diblokir?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307550.0300853
     },
     {
       "source": "kaskus",
       "query": "cicilan",
       "title": "Prabowo: Cicilan KPR Buruh akan Bisa Diperpanjang hingga 40 Tahun",
       "url": "https://www.kaskus.co.id/thread/69fd41c8aa0586726c08ff3c/prabowo-cicilan-kpr-buruh-akan-bisa-diperpanjang-hingga-40-tahun?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065830.0304763
+      "scraped_at": 1782307563.074626
     },
     {
       "source": "kaskus",
       "query": "cicilan",
       "title": "Gak Kuat Bayar Cicilan? Jangan Serahkan dulu Kendaraan nya.",
       "url": "https://www.kaskus.co.id/thread/69a4537a2d5605753c004901/gak-kuat-bayar-cicilan-jangan-serahkan-dulu-kendaraan-nya?ref=threadlist-188&med=thread_list",
-      "scraped_at": 1782065830.0393956
+      "scraped_at": 1782307563.087937
     },
     {
       "source": "kaskus",
       "query": "cicilan",
       "title": "🏡 Rumah Subsidi Pesona Kahuripan Bogor | KPR FLPP Cicilan Ringan",
       "url": "https://www.kaskus.co.id/thread/6986a740c3171cce2f0dd9d9/rumah-subsidi-pesona-kahuripan-bogor--kpr-flpp-cicilan-ringan?ref=threadlist-2077&med=thread_list",
-      "scraped_at": 1782065830.0465577
+      "scraped_at": 1782307563.0949416
     },
     {
       "source": "kaskus",
       "query": "cicilan",
       "title": "Jual Apartemen Emerald Bintaro SIAP HUNI Cicilan 2 Jutaan / Bulan Free Cash Back",
       "url": "https://www.kaskus.co.id/thread/696f217f310485aaf50c2914/jual-apartemen-emerald-bintaro-siap-huni-cicilan-2-jutaan---bulan-free-cash-back?ref=threadlist-2694&med=thread_list",
-      "scraped_at": 1782065830.0553985
+      "scraped_at": 1782307563.099942
     },
     {
       "source": "kaskus",
       "query": "cicilan",
       "title": "Jual Apartemen Emerald Bintaro Cicilan 2 Juta-an Ready Stock – 1BR / 2BR",
       "url": "https://www.kaskus.co.id/thread/696bbe5a5a515b16ac04e123/jual-apartemen-emerald-bintaro-cicilan-2-juta-an-ready-stock--1br---2br?ref=threadlist-2694&med=thread_list",
-      "scraped_at": 1782065830.070478
+      "scraped_at": 1782307563.1122136
     },
     {
       "source": "kaskus",
       "query": "cicilan",
       "title": "Indonesia katanya tumbuh, tapi kenapa makin banyak orang hidup dari cicilan?",
       "url": "https://www.kaskus.co.id/thread/6944f845e8a37f63a8004f69/indonesia-katanya-tumbuh-tapi-kenapa-makin-banyak-orang-hidup-dari-cicilan?ref=threadlist-21&med=thread_list",
-      "scraped_at": 1782065830.0803952
+      "scraped_at": 1782307563.1262126
     },
     {
       "source": "kaskus",
       "query": "cicilan",
       "title": "Spesial Kredit Cicilan iPhone 17 di Resmi Bunga 0 Rupiah di Malang Meteor Cell",
       "url": "https://www.kaskus.co.id/thread/69269d603202818f68001a7f/spesial-kredit-cicilan-iphone-17-di-resmi-bunga-0-rupiah-di-malang-meteor-cell?ref=threadlist-1011&med=thread_list",
-      "scraped_at": 1782065830.0923948
+      "scraped_at": 1782307563.1382134
     },
     {
       "source": "kaskus",
       "query": "cicilan",
       "title": "Promo Cicilan Samsung S25 FE",
       "url": "https://www.kaskus.co.id/thread/690d937cd8c2c7761005729b/promo-cicilan-samsung-s25-fe?ref=threadlist-1011&med=thread_list",
-      "scraped_at": 1782065830.0973957
+      "scraped_at": 1782307563.1442134
     },
     {
       "source": "kaskus",
       "query": "cicilan",
       "title": "Beli iPhone 17 Malang Bisa Kredit Cicilan Paylater Shopee Meteor Cell",
       "url": "https://www.kaskus.co.id/thread/68f20e1c2341c451950c3604/beli-iphone-17-malang-bisa-kredit-cicilan-paylater-shopee--meteor-cell?ref=threadlist-1011&med=thread_list",
-      "scraped_at": 1782065830.1035328
+      "scraped_at": 1782307563.149213
     },
     {
       "source": "kaskus",
       "query": "cicilan",
       "title": "Beli iPhone 17 Malang Bisa Cicilan Paylater Shopee Tokopedia MeteorCell",
       "url": "https://www.kaskus.co.id/thread/68ef4d34665e6afea80b75cb/beli-iphone-17-malang-bisa-cicilan-paylater-shopee-tokopedia-meteorcell?ref=threadlist-1011&med=thread_list",
-      "scraped_at": 1782065830.1086733
+      "scraped_at": 1782307563.1542132
     },
     {
       "source": "kaskus",
       "query": "cicilan",
       "title": "Suku Bunga Sentral: Cicilan KPR & BBM Naik-Turun Gila! 😱💸",
       "url": "https://www.kaskus.co.id/thread/68de2561f74a9d39220c2eb0/suku-bunga-sentral-cicilan-kpr-amp-bbm-naik-turun-gila?ref=threadlist-10&med=thread_list",
-      "scraped_at": 1782065830.1342466
+      "scraped_at": 1782307563.161213
+    },
+    {
+      "source": "kaskus",
+      "query": "cicilan",
+      "title": "WASPADA TERHADAP EMAS CICILAN",
+      "url": "https://www.kaskus.co.id/thread/530aef20a2cb17e7168b4796/waspada-terhadap-emas-cicilan?ref=threadlist-467&med=thread_list",
+      "scraped_at": 1782307563.174218
+    },
+    {
+      "source": "kaskus",
+      "query": "cicilan",
+      "title": "Rumah dijual Bangil Pasuruan Tipe 45 - DP 0% Cicilan Ringan Nol Jalan Raya",
+      "url": "https://www.kaskus.co.id/thread/68d67ba94a26088d330addbd/rumah-dijual-bangil-pasuruan-tipe-45---dp-0-cicilan-ringan-nol-jalan-raya?ref=threadlist-1908&med=thread_list",
+      "scraped_at": 1782307563.1822197
+    },
+    {
+      "source": "kaskus",
+      "query": "cicilan",
+      "title": "Mirna Terjerat Pinjol Demi DP Mobil Imbas Gengsi, Cicilan dari 3 Juta Jadi 60 Juta",
+      "url": "https://www.kaskus.co.id/thread/68cfe789bfe7a4b7ee0e97b4/mirna-terjerat-pinjol-demi-dp-mobil-imbas-gengsi-cicilan-dari-3-juta-jadi-60-juta?ref=threadlist-733&med=thread_list",
+      "scraped_at": 1782307563.1877224
+    },
+    {
+      "source": "kaskus",
+      "query": "cicilan",
+      "title": "Warga RI Sulit Bayar Cicilan, Kredit Macet Hantui Penjualan Mobil",
+      "url": "https://www.kaskus.co.id/thread/689168df799127d5f600cd05/warga-ri-sulit-bayar-cicilan-kredit-macet-hantui-penjualan-mobil?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307563.1987271
+    },
+    {
+      "source": "kaskus",
+      "query": "cicilan",
+      "title": "cicilan nanti dulu",
+      "url": "https://www.kaskus.co.id/thread/6860aa1006ceb1933e03bdf8/cicilan-nanti-dulu?ref=threadlist-1271&med=thread_list",
+      "scraped_at": 1782307563.203727
+    },
+    {
+      "source": "kaskus",
+      "query": "cicilan",
+      "title": "Anak Muda Sekarang Rela Gajinya Habis Buat Cicilan MacBook, Tapi Gaptek Pakai macOS!",
+      "url": "https://www.kaskus.co.id/thread/67f0f3ab51693f856207824a/anak-muda-sekarang-rela-gajinya-habis-buat-cicilan-macbook-tapi-gaptek-pakai-macos?ref=threadlist-568&med=thread_list",
+      "scraped_at": 1782307563.2107272
+    },
+    {
+      "source": "kaskus",
+      "query": "cicilan",
+      "title": "Ternyata Masjid Al Jabbar Dibangun Pakai Hutang, DM Kini Ketempuhan Bayar Cicilan",
+      "url": "https://www.kaskus.co.id/thread/679b282737fdec52c7078d1e/ternyata-masjid-al-jabbar-dibangun-pakai-hutang-dm-kini-ketempuhan-bayar-cicilan?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307563.221727
+    },
+    {
+      "source": "kaskus",
+      "query": "cicilan",
+      "title": "Harga Motor Bebek Ini Rp 80 Jutaan, Cicilan per Bulannya Berapa Ya?",
+      "url": "https://www.kaskus.co.id/thread/679adbac97d0cc88d800f40f/harga-motor-bebek-ini-rp-80-jutaan-cicilan-per-bulannya-berapa-ya?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307563.2327557
+    },
+    {
+      "source": "kaskus",
+      "query": "cicilan",
+      "title": "Pemerintah Siapkan Rumah Gratis, Cicilan Ditanggung Negara",
+      "url": "https://www.kaskus.co.id/thread/679003396ccb9fee2303ea90/pemerintah-siapkan-rumah-gratis-cicilan-ditanggung-negara?ref=threadlist-10&med=thread_list",
+      "scraped_at": 1782307563.2447398
     }
   ]
 }

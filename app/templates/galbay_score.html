@@ -1,0 +1,270 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Galbay Score Quiz - Personal Risk Assessment{% endblock %}
+{% block extra_js %}<script defer src="{{ url_for('static', filename='js/quiz.js') }}"></script>{% endblock %}
+
+{% block content %}
+<section class="page-section galbay-quiz" id="galbay-quiz">
+  <div class="page-header">
+    <span class="section-tag">Galbay Score &middot; Free Tool</span>
+    <h1 class="page-title">Cek <span>Galbay Score</span> Personal Kamu</h1>
+    <p class="page-lead">6 pertanyaan interaktif. Sistem kami menghitung skor risiko <strong>0-100</strong> berdasarkan pola perilaku yang ditemukan di <strong>602K data multi-source</strong>. Gratis, tanpa login, hasil instant.</p>
+  </div>
+
+  <form method="POST" action="{{ url_for('main.galbay_score') }}" class="quiz-form" id="quizForm">
+    <div class="quiz-progress">
+      <div class="quiz-progress-bar" id="quizBar"></div>
+      <span class="quiz-progress-text" id="quizProgress">0 / 6</span>
+    </div>
+
+    <!-- Q1: Cicilan aktif -->
+    <div class="quiz-step" data-step="1">
+      <div class="quiz-q-num">01</div>
+      <h2 class="quiz-question">Berapa cicilan aktif yang sedang kamu bayar saat ini?</h2>
+      <p class="quiz-hint">Termasuk paylater (Shopee/GoPay), KTA, kartu kredit, pinjaman online.</p>
+      <div class="quiz-options">
+        <label class="quiz-option">
+          <input type="radio" name="cicilan_aktif" value="0" required>
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">0</div>
+            <div class="quiz-option-label">Tidak ada cicilan aktif</div>
+            <div class="quiz-option-meta">Best case</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="cicilan_aktif" value="1">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">1</div>
+            <div class="quiz-option-label">1 cicilan aktif</div>
+            <div class="quiz-option-meta">Manageable</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="cicilan_aktif" value="2">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">2</div>
+            <div class="quiz-option-label">2 cicilan aktif</div>
+            <div class="quiz-option-meta">Waspada</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="cicilan_aktif" value="3">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">3+</div>
+            <div class="quiz-option-label">3 atau lebih</div>
+            <div class="quiz-option-meta">High risk</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q2: Impulse checkout -->
+    <div class="quiz-step" data-step="2">
+      <div class="quiz-q-num">02</div>
+      <h2 class="quiz-question">Dalam 30 hari terakhir, berapa kali kamu checkout barang yang sebenarnya tidak kamu rencanakan sebelumnya?</h2>
+      <p class="quiz-hint">Checkout mendadak karena flash sale, FOMO, atau self-reward.</p>
+      <div class="quiz-options">
+        <label class="quiz-option">
+          <input type="radio" name="checkout_impulse" value="0" required>
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">0</div>
+            <div class="quiz-option-label">Tidak pernah</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="checkout_impulse" value="1">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">1-2x</div>
+            <div class="quiz-option-label">1-2 kali</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="checkout_impulse" value="2">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">3-5x</div>
+            <div class="quiz-option-label">3-5 kali</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="checkout_impulse" value="3">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">5+</div>
+            <div class="quiz-option-label">Lebih dari 5 kali</div>
+            <div class="quiz-option-meta">Pattern serius</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q3: Cicilan 0% -->
+    <div class="quiz-step" data-step="3">
+      <div class="quiz-q-num">03</div>
+      <h2 class="quiz-question">Seberapa sering kamu tergiur promosi "cicilan 0%" atau "bunga 0%" untuk beli barang?</h2>
+      <p class="quiz-hint">Misal: "Beli sekarang bayar nanti", "0% installment".</p>
+      <div class="quiz-options">
+        <label class="quiz-option">
+          <input type="radio" name="cicilan_0_persen" value="0" required>
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">🚫</div>
+            <div class="quiz-option-label">Tidak pernah tertarik</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="cicilan_0_persen" value="1">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">🤔</div>
+            <div class="quiz-option-label">Jarang (1-2x setahun)</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="cicilan_0_persen" value="2">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">🛍️</div>
+            <div class="quiz-option-label">Sering (beberapa kali sebulan)</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="cicilan_0_persen" value="3">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">💳</div>
+            <div class="quiz-option-label">Sangat sering, hampir setiap promo</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q4: Reaksi tagihan -->
+    <div class="quiz-step" data-step="4">
+      <div class="quiz-q-num">04</div>
+      <h2 class="quiz-question">Kalau tagihan paylater / kartu kredit datang, reaksi pertama kamu apa?</h2>
+      <div class="quiz-options">
+        <label class="quiz-option">
+          <input type="radio" name="reaksi_tagihan" value="0" required>
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">💪</div>
+            <div class="quiz-option-label">Bayar langsung penuh</div>
+            <div class="quiz-option-meta">Ideal</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="reaksi_tagihan" value="1">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">⏰</div>
+            <div class="quiz-option-label">Telat 1-7 hari, baru bayar</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="reaksi_tagihan" value="2">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">😰</div>
+            <div class="quiz-option-label">Telat >7 hari, bayar minimum</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="reaksi_tagihan" value="3">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">😱</div>
+            <div class="quiz-option-label">Ignore / skip bulan ini</div>
+            <div class="quiz-option-meta">Red flag</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q5: DC -->
+    <div class="quiz-step" data-step="5">
+      <div class="quiz-q-num">05</div>
+      <h2 class="quiz-question">Pernah dapat pesan / telepon dari debt collector (DC)?</h2>
+      <div class="quiz-options">
+        <label class="quiz-option">
+          <input type="radio" name="dc_pesan" value="0" required>
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">✅</div>
+            <div class="quiz-option-label">Tidak pernah</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="dc_pesan" value="1">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">1️⃣</div>
+            <div class="quiz-option-label">Sekali, sudah selesai</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="dc_pesan" value="2">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">📞</div>
+            <div class="quiz-option-label">Beberapa kali dalam 6 bulan terakhir</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="dc_pesan" value="3">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">⚠️</div>
+            <div class="quiz-option-label">Sering, hampir setiap minggu</div>
+            <div class="quiz-option-meta">Sangat serius</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Q6: Tracking -->
+    <div class="quiz-step" data-step="6">
+      <div class="quiz-q-num">06</div>
+      <h2 class="quiz-question">Seberapa sering kamu mencatat / tracking pengeluaran?</h2>
+      <div class="quiz-options">
+        <label class="quiz-option">
+          <input type="radio" name="track_pengeluaran" value="0" required>
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">📊</div>
+            <div class="quiz-option-label">Setiap hari</div>
+            <div class="quiz-option-meta">Best practice</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="track_pengeluaran" value="1">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">📅</div>
+            <div class="quiz-option-label">Setiap minggu</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="track_pengeluaran" value="2">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">🗓️</div>
+            <div class="quiz-option-label">Tiap bulan (kalau ingat)</div>
+          </div>
+        </label>
+        <label class="quiz-option">
+          <input type="radio" name="track_pengeluaran" value="3">
+          <div class="quiz-option-content">
+            <div class="quiz-option-emoji">❓</div>
+            <div class="quiz-option-label">Tidak pernah / malas</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="quiz-nav">
+      <button type="button" class="btn-outline quiz-prev" id="quizPrev" disabled>← Sebelumnya</button>
+      <button type="button" class="btn-primary quiz-next" id="quizNext">Lanjut →</button>
+      <button type="submit" class="btn-primary quiz-submit" id="quizSubmit" style="display:none;">Lihat Hasil Galbay Score</button>
+    </div>
+  </form>
+
+  <div class="quiz-faq">
+    <h3>Pertanyaan yang sering ditanya</h3>
+    <details>
+      <summary>Apakah data saya aman?</summary>
+      <p>100% anonim. Tidak ada nama, email, atau identitas yang diminta. Hasil langsung di-generate di browser kamu. Tidak ada server-side storage.</p>
+    </details>
+    <details>
+      <summary>Bagaimana scoring dihitung?</summary>
+      <p>6 dimensi perilaku (cicilan aktif, impulse, marketing susceptibility, telat bayar, DC exposure, tracking habit). Weight berdasarkan 13.827 distress signal dari 602K data multi-source kami.</p>
+    </details>
+    <details>
+      <summary>Bedanya sama skor kredit bank?</summary>
+      <p>Skor kredit bank (SLIK OJK) melihat <strong>historis</strong> pembayaran. Galbay Score melihat <strong>pola perilaku</strong> sekarang — prediktif, bukan retrospektif.</p>
+    </details>
+  </div>
+</section>
+{% endblock %}

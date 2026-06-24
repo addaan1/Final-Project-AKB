@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "source": "threads",
+    "scraped_at": "2026-06-24T16:51:10.936334+00:00",
+    "scraper": "threads",
+    "n_total": 0,
+    "queries": [
+      "galbay",
+      "gagal bayar",
+      "paylater",
+      "pinjol",
+      "utang",
+      "cicilan",
+      "self reward",
+      "FOMO",
+      "checkout",
+      "bunga tinggi",
+      "debt collector",
+      "tagihan",
+      "kartu kredit",
+      "kredit",
+      "pinjaman online",
+      "kredivo",
+      "indodana",
+      "akulaku",
+      "julo",
+      "koinworks",
+      "amartha",
+      "gali lubang",
+      "restrukturisasi",
+      "konsolidasi"
+    ],
+    "per_query": [
+      {
+        "query": "galbay",
+        "n_posts": 0
+      },
+      {
+        "query": "gagal bayar",
+        "n_posts": 0
+      },
+      {
+        "query": "paylater",
+        "n_posts": 0
+      },
+      {
+        "query": "pinjol",
+        "n_posts": 0
+      },
+      {
+        "query": "utang",
+        "n_posts": 0
+      },
+      {
+        "query": "cicilan",
+        "n_posts": 0
+      },
+      {
+        "query": "self reward",
+        "n_posts": 0
+      },
+      {
+        "query": "FOMO",
+        "n_posts": 0
+      },
+      {
+        "query": "checkout",
+        "n_posts": 0
+      },
+      {
+        "query": "bunga tinggi",
+        "n_posts": 0
+      },
+      {
+        "query": "debt collector",
+        "n_posts": 0
+      },
+      {
+        "query": "tagihan",
+        "n_posts": 0
+      },
+      {
+        "query": "kartu kredit",
+        "n_posts": 0
+      },
+      {
+        "query": "kredit",
+        "n_posts": 0
+      },
+      {
+        "query": "pinjaman online",
+        "n_posts": 0
+      },
+      {
+        "query": "kredivo",
+        "n_posts": 0
+      },
+      {
+        "query": "indodana",
+        "n_posts": 0
+      },
+      {
+        "query": "akulaku",
+        "n_posts": 0
+      },
+      {
+        "query": "julo",
+        "n_posts": 0
+      },
+      {
+        "query": "koinworks",
+        "n_posts": 0
+      },
+      {
+        "query": "amartha",
+        "n_posts": 0
+      },
+      {
+        "query": "gali lubang",
+        "n_posts": 0
+      },
+      {
+        "query": "restrukturisasi",
+        "n_posts": 0
+      },
+      {
+        "query": "konsolidasi",
+        "n_posts": 0
+      }
+    ]
+  },
+  "posts": []
+}

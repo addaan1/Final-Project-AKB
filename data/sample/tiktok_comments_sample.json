@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "source": "tiktok",
+    "scraped_at": "2026-06-24T13:18:20.394612+00:00",
+    "scraper": "tiktok",
+    "n_comments": 0,
+    "hashtags": [
+      "galbay",
+      "gagalbayar",
+      "paylater",
+      "pinjol",
+      "gagalbayar",
+      "pinjamanonline",
+      "selfreward",
+      "fomo",
+      "checkout",
+      "bayarnanti",
+      "ditagih",
+      "utang"
+    ],
+    "max_videos_per_hashtag": 10,
+    "max_comments_per_video": 20,
+    "per_hashtag": [
+      {
+        "hashtag": "galbay",
+        "n_comments": 0
+      },
+      {
+        "hashtag": "gagalbayar",
+        "n_comments": 0
+      },
+      {
+        "hashtag": "paylater",
+        "n_comments": 0
+      },
+      {
+        "hashtag": "pinjol",
+        "n_comments": 0
+      },
+      {
+        "hashtag": "gagalbayar",
+        "n_comments": 0
+      },
+      {
+        "hashtag": "pinjamanonline",
+        "n_comments": 0
+      },
+      {
+        "hashtag": "selfreward",
+        "n_comments": 0
+      },
+      {
+        "hashtag": "fomo",
+        "n_comments": 0
+      },
+      {
+        "hashtag": "checkout",
+        "n_comments": 0
+      },
+      {
+        "hashtag": "bayarnanti",
+        "n_comments": 0
+      },
+      {
+        "hashtag": "ditagih",
+        "n_comments": 0
+      },
+      {
+        "hashtag": "utang",
+        "n_comments": 0
+      }
+    ]
+  },
+  "comments": []
+}

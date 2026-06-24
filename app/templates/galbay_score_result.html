@@ -1,0 +1,156 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Hasil Galbay Score - {{ score }}/100{% endblock %}
+
+{% block content %}
+<section class="page-section galbay-result" id="galbay-result">
+  <div class="page-header">
+    <span class="section-tag result-tag result-tag-{{ bucket_color }}">{{ bucket_label }}</span>
+    <h1 class="page-title">Galbay Score Kamu: <span class="score-display score-{{ bucket_color }}">{{ score }}</span><span class="score-suffix">/100</span></h1>
+    <p class="page-lead">Skor ini dipersonalisasi dari 6 dimensi perilaku kamu. Persentil: <strong>{{ percentile }}</strong> dari 602K dataset.</p>
+  </div>
+
+  <!-- Score gauge visualization -->
+  <div class="score-gauge-wrap">
+    <div class="score-gauge" style="--score: {{ score }}">
+      <div class="score-arc score-arc-{{ bucket_color }}"></div>
+      <div class="score-value-big">
+        <span class="score-num">{{ score }}</span>
+        <span class="score-max">/100</span>
+      </div>
+      <div class="score-bucket-label">{{ bucket_label }}</div>
+    </div>
+  </div>
+
+  <!-- Behavioral profile tags -->
+  {% if profile_tags %}
+  <div class="chart-card chart-full">
+    <div class="chart-header">
+      <div class="chart-title">Behavioral Profile Kamu</div>
+      <div class="chart-subtitle">Pattern yang terdeteksi dari jawaban kamu (cross-reference dengan 602K dataset)</div>
+    </div>
+    <div class="profile-tags">
+      {% for tag in profile_tags %}
+      <div class="profile-tag profile-tag-{{ tag.color }}">
+        <div class="profile-tag-name">{{ tag.tag }}</div>
+        <div class="profile-tag-count">{{ tag.count }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Dimensional breakdown -->
+  <div class="chart-card chart-full">
+    <div class="chart-header">
+      <div class="chart-title">6 Dimensi Skor Kamu</div>
+      <div class="chart-subtitle">Tiap dimensi 0-25 (lebih tinggi = lebih berisiko)</div>
+    </div>
+    <div class="dim-bars">
+      <div class="dim-bar">
+        <div class="dim-label">Cicilan Aktif</div>
+        <div class="dim-track"><div class="dim-fill dim-fill-blue" style="width: {{ (dimension_scores.cicilan / 25 * 100) | round }}%"></div></div>
+        <div class="dim-score">{{ dimension_scores.cicilan }} / 25</div>
+      </div>
+      <div class="dim-bar">
+        <div class="dim-label">Impulse Checkout</div>
+        <div class="dim-track"><div class="dim-fill dim-fill-pur" style="width: {{ (dimension_scores.impulse / 25 * 100) | round }}%"></div></div>
+        <div class="dim-score">{{ dimension_scores.impulse }} / 25</div>
+      </div>
+      <div class="dim-bar">
+        <div class="dim-label">Marketing Susceptibility</div>
+        <div class="dim-track"><div class="dim-fill dim-fill-pnk" style="width: {{ (dimension_scores.cicilan0 / 21 * 100) | round }}%"></div></div>
+        <div class="dim-score">{{ dimension_scores.cicilan0 }} / 21</div>
+      </div>
+      <div class="dim-bar">
+        <div class="dim-label">Late Payer Risk</div>
+        <div class="dim-track"><div class="dim-fill dim-fill-org" style="width: {{ (dimension_scores.tagihan / 25 * 100) | round }}%"></div></div>
+        <div class="dim-score">{{ dimension_scores.tagihan }} / 25</div>
+      </div>
+      <div class="dim-bar">
+        <div class="dim-label">DC Exposure</div>
+        <div class="dim-track"><div class="dim-fill dim-fill-red" style="width: {{ (dimension_scores.dc / 25 * 100) | round }}%"></div></div>
+        <div class="dim-score">{{ dimension_scores.dc }} / 25</div>
+      </div>
+      <div class="dim-bar">
+        <div class="dim-label">Blind Spender</div>
+        <div class="dim-track"><div class="dim-fill dim-fill-ylw" style="width: {{ (dimension_scores.track / 25 * 100) | round }}%"></div></div>
+        <div class="dim-score">{{ dimension_scores.track }} / 25</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Personalized Recommendations -->
+  {% if recommendations %}
+  <div class="chart-card chart-full">
+    <div class="chart-header">
+      <div class="chart-title">Rekomendasi Personal Untuk Kamu</div>
+      <div class="chart-subtitle">Berdasarkan jawaban kamu + pola di 602K data</div>
+    </div>
+    <div class="recs-grid">
+      {% for rec in recommendations %}
+      <div class="rec-card rec-{{ rec.priority }}">
+        <div class="rec-priority-badge">{{ rec.priority | upper }}</div>
+        <h4 class="rec-title">{{ rec.title }}</h4>
+        <p class="rec-desc">{{ rec.desc }}</p>
+        <a href="{{ rec.action }}" class="rec-action">{{ rec.action_label }} →</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% else %}
+  <div class="chart-card chart-full">
+    <div class="insight-box insight-box-success">
+      <h4>🎉 Skor kamu sangat baik!</h4>
+      <p>Berdasarkan jawaban kamu, tidak ada rekomendasi urgent. Pertahankan kebiasaan finansial kamu dan tetap lakukan tracking berkala.</p>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Cross-reference with dataset -->
+  <div class="chart-card chart-full">
+    <div class="chart-header">
+      <div class="chart-title">Cross-Reference dengan 602K Dataset</div>
+      <div class="chart-subtitle">Pattern kamu ada di profil mana dari dataset kami</div>
+    </div>
+    <div class="xref-grid">
+      <div class="xref-stat">
+        <div class="xref-num">{{ score }}</div>
+        <div class="xref-label">Skor kamu</div>
+      </div>
+      <div class="xref-stat">
+        <div class="xref-num">23,8%</div>
+        <div class="xref-label">Reviewer dengan distress signal</div>
+      </div>
+      <div class="xref-stat">
+        <div class="xref-num">865</div>
+        <div class="xref-label">Review severity tinggi</div>
+      </div>
+      <div class="xref-stat">
+        <div class="xref-num">4.809</div>
+        <div class="xref-label">Review 'Tagihan & DC'</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA to subscribe -->
+  <div class="cta-upgrade-card">
+    <h2>Mau Rekomendasi yang Lebih Dalam?</h2>
+    <p>Hasil di atas gratis. Dengan <strong>Premium</strong>, kamu dapat:</p>
+    <ul>
+      <li>Personal AI Coach (unlimited chat, 38 intents)</li>
+      <li>Recovery Roadmap 30/60/90 hari custom untuk skormu</li>
+      <li>Simulasi cicilan multi-platform</li>
+      <li>Save hasil & tracking progress over time</li>
+      <li>Pinjol Blacklist advanced (50+ legal + 15 ilegal)</li>
+    </ul>
+    <a href="{{ url_for('main.upgrade_to_premium') if current_user.is_authenticated else url_for('main.login') }}" class="btn-primary btn-large">Upgrade Premium - Rp 29rb/bln</a>
+    <p class="cta-small">Gratis 7 hari, cancel kapan saja.</p>
+  </div>
+
+  <!-- Retake -->
+  <div class="retake-section">
+    <a href="{{ url_for('main.galbay_score') }}" class="btn-outline">← Ambil Ulang Kuis</a>
+    <a href="/dashboard/produk" class="btn-outline">Lihat Semua Tools →</a>
+  </div>
+</section>
+{% endblock %}

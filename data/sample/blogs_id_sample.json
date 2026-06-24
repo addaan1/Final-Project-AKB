@@ -1,0 +1,4710 @@
+{
+  "meta": {
+    "source": "blogs_id",
+    "scraped_at": "2026-06-24T17:55:42.627982+00:00",
+    "scraper": "blogs_id",
+    "n_total": 506,
+    "per_blog": {
+      "kumparan": 0,
+      "hipwee": 262,
+      "brilio": 0,
+      "cnbc": 60,
+      "kompas": 298,
+      "detik": 288
+    },
+    "queries": [
+      "paylater indonesia",
+      "pinjol indonesia",
+      "gagal bayar",
+      "tips bayar paylater",
+      "bahaya pinjol",
+      "financial behavior gen z",
+      "cicilan online",
+      "utang online",
+      "kredit tanpa kartu kredit",
+      "galbay",
+      "debt collector",
+      "cicilan 0%",
+      "self reward",
+      "checkout bayar nanti",
+      "pinjol ilegal",
+      "pinjol legal",
+      "bunga tinggi",
+      "restrukturisasi",
+      "konsolidasi utang",
+      "gali lubang tutup lubang",
+      "tips keuangan gen z",
+      "menabung gen z",
+      "financial freedom",
+      "literasi keuangan",
+      "tagihan paylater",
+      "beli sekarang bayar nanti",
+      "kartu kredit online",
+      "utang pinjol",
+      "denda telat bayar",
+      "gagal bayar hutang"
+    ],
+    "blogs": [
+      "kumparan",
+      "hipwee",
+      "brilio",
+      "cnbc",
+      "kompas",
+      "detik"
+    ],
+    "per_query": [
+      {
+        "blog": "kumparan",
+        "query": "paylater indonesia",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "pinjol indonesia",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "gagal bayar",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "tips bayar paylater",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "bahaya pinjol",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "financial behavior gen z",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "cicilan online",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "utang online",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "kredit tanpa kartu kredit",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "galbay",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "debt collector",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "cicilan 0%",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "self reward",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "checkout bayar nanti",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "pinjol ilegal",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "pinjol legal",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "bunga tinggi",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "restrukturisasi",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "konsolidasi utang",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "gali lubang tutup lubang",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "tips keuangan gen z",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "menabung gen z",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "financial freedom",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "literasi keuangan",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "tagihan paylater",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "beli sekarang bayar nanti",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "kartu kredit online",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "utang pinjol",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "denda telat bayar",
+        "n_posts": 0
+      },
+      {
+        "blog": "kumparan",
+        "query": "gagal bayar hutang",
+        "n_posts": 0
+      }
+    ]
+  },
+  "posts": [
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "paylater indonesia",
+      "title": "Bedanya Paylater dan Kartu Kredit, dari Syarat dan Pengajuan Hingga Bunganya. Wajib Tahu!",
+      "url": "https://www.hipwee.com/sukses/perbedaan-paylater-kartu-kredit/",
+      "snippet": "",
+      "scraped_at": 1782323226.8165295
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "paylater indonesia",
+      "title": "Kolaborasi Kredivo dan AirAsia Hadirkan Opsi Pembayaran Paylater untuk Tiket Pesawat dengan Bunga 0 Persen",
+      "url": "https://www.hipwee.com/travel/kolaborasi-kredivo-dan-airasia-hadirkan-opsi-pembayaran-paylater/",
+      "snippet": "",
+      "scraped_at": 1782323226.8165295
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "paylater indonesia",
+      "title": "5 Rekomendasi Bus Jakarta-Jogja Terbaik untuk Perjalanan yang Nyaman",
+      "url": "https://www.hipwee.com/travel/5-rekomendasi-bus-jakarta-jogja-terbaik-untuk-perjalanan-yang-nyaman/",
+      "snippet": "",
+      "scraped_at": 1782323226.8165295
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "paylater indonesia",
+      "title": "Tips Realistis Merdeka Finansial di Usia 20-an: Gen Z Bisa Nggak Sih?",
+      "url": "https://www.hipwee.com/motivasi/tips-realistis-merdeka-finansial-gen-z-usia-20an/",
+      "snippet": "",
+      "scraped_at": 1782323226.8165295
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "paylater indonesia",
+      "title": "12 Aplikasi yang Wajib Dimiliki Saat Traveling",
+      "url": "https://www.hipwee.com/travel/mau-bepergian-13-aplikasi-ini-wajib-ada-di-ponsel-pintarmu/",
+      "snippet": "",
+      "scraped_at": 1782323226.8165295
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "paylater indonesia",
+      "title": "Cara Daftar PayPal untuk Pribadi dan Bisnis. Lengkap dan Mudah!",
+      "url": "https://www.hipwee.com/tips/cara-daftar-paypal/",
+      "snippet": "",
+      "scraped_at": 1782323226.8165295
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "paylater indonesia",
+      "title": "Maraknya Krisis Utang di Kalangan Generasi Z, Kok bisa?",
+      "url": "https://www.hipwee.com/narasi/maraknya-krisis-utang-di-kalangan-generasi-z-kok-bisa/",
+      "snippet": "",
+      "scraped_at": 1782323226.8165295
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "paylater indonesia",
+      "title": "6 Kesalahan Mengatur Keuangan yang Wajib Dihindari Biar Tetap Cuan Meski Hobi Jajan",
+      "url": "https://www.hipwee.com/list/ketahui-6-kesalahan-mengatur-keuangan-yang-sering-terjadi-saat-hobi-jajan-tak-terkendali/",
+      "snippet": "",
+      "scraped_at": 1782323226.8165295
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "paylater indonesia",
+      "title": "Terapkan Ini Agar Tetap Cuan Meski Kamu Sering Jajan, Cek Yuk ~",
+      "url": "https://www.hipwee.com/narasi/terapkan-ini-agar-tetap-cuan-meski-kamu-sering-jajan-cek-yuk/",
+      "snippet": "",
+      "scraped_at": 1782323226.8165295
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "paylater indonesia",
+      "title": "Hindari 5 Hal Ini Jika Kamu Pengen Tetap Cuan Meski Hobi Jajan!",
+      "url": "https://www.hipwee.com/list/hindari-5-hal-ini-jika-kamu-pengen-tetap-cuan-meski-hobi-jajan/",
+      "snippet": "",
+      "scraped_at": 1782323226.8165295
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "pinjol indonesia",
+      "title": "Viral Challenge yang Bikin Pinjol Ilegal dan Penipu Senang. Hati-hati Kalau Share Data Pribadi!",
+      "url": "https://www.hipwee.com/hiburan/challenge-data-pribadi/",
+      "snippet": "",
+      "scraped_at": 1782323232.8988955
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "pinjol indonesia",
+      "title": "Kebiasaan-kebiasaan yang Bikin Data Pribadimu Bocor. Hati-Hati!",
+      "url": "https://www.hipwee.com/hiburan/kasus-kebocoran-data/",
+      "snippet": "",
+      "scraped_at": 1782323232.8988955
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "pinjol indonesia",
+      "title": "4 Fakta Kominfo Ancam Blokir WhatsApp, Instagram hingga Google",
+      "url": "https://www.hipwee.com/feature/fakta-kominfo-ancam-blokir-whatsapp-instagram-google/",
+      "snippet": "",
+      "scraped_at": 1782323232.8988955
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "pinjol indonesia",
+      "title": "Sederet Ilmu yang Harus Dikuasai di Tahun 2025 Versi Warganet. Nyicil Pelan-pelan Dulu~",
+      "url": "https://www.hipwee.com/hiburan/ilmu-tahun-2025/",
+      "snippet": "",
+      "scraped_at": 1782323232.8988955
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "pinjol indonesia",
+      "title": "Marak Dugaan Jual Beli Foto Selfie KTP, Kominfo dan Polisi Turun Tangan Menindaklanjuti",
+      "url": "https://www.hipwee.com/feature/jual-beli-selfie-ktp/",
+      "snippet": "",
+      "scraped_at": 1782323232.8988955
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "pinjol indonesia",
+      "title": "GM Irene Kalahkan Dewa Kipas, Deddy Corbuzier Tetap Jadi Pemenangnya. Pecahkan Rekor Penonton!",
+      "url": "https://www.hipwee.com/showbiz/pertandingan-dewa-kipas-vs-gm-irene/",
+      "snippet": "",
+      "scraped_at": 1782323232.8988955
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "pinjol indonesia",
+      "title": "Wanita Difitnah, Dibilang Rela ‘Digilir’ Untuk Bayar Utang Online. Kok Fintech Makin Ngawur Gini?",
+      "url": "https://www.hipwee.com/feature/digilir-untuk-bayar-utang-online/",
+      "snippet": "",
+      "scraped_at": 1782323232.8988955
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "pinjol indonesia",
+      "title": "6 Fakta Penting di Balik Kemudahan Layanan Pinjaman Online. Pelajari Dulu, Jangan Mudah Tergiur",
+      "url": "https://www.hipwee.com/feature/6-fakta-penting-di-balik-kemudahan-layanan-pinjaman-online-pelajari-dulu-jangan-mudah-tergiur/",
+      "snippet": "",
+      "scraped_at": 1782323232.8988955
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar",
+      "title": "Kisah Sukses Walt Disney. Sempat Jadi Supir Ambulans Hingga Alami Kegagalan Berkali-kali",
+      "url": "https://www.hipwee.com/sukses/kisah-sukses-walt-disney/",
+      "snippet": "",
+      "scraped_at": 1782323239.545657
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar",
+      "title": "5 Penyebab Umum Kegagalan Bisnis: Nomor 4 Sering Terjadi!",
+      "url": "https://www.hipwee.com/list/5-penyebab-umum-kegagalan-bisnis-nomor-4-sering-terjadi/",
+      "snippet": "",
+      "scraped_at": 1782323239.545657
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar",
+      "title": "Cerita Kelakuan Orang Kaya yang Bikin Gagal Paham. Kok Bisa, ya?",
+      "url": "https://www.hipwee.com/hiburan/kelakuan-orang-kaya-2/",
+      "snippet": "",
+      "scraped_at": 1782323239.545657
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar",
+      "title": "Desy Ratnasari Ungkap Alasan Menjanda 18 Tahun: Tak Ingin Ulangi Kegagalan Masa Lalu",
+      "url": "https://www.hipwee.com/showbiz/desy-ratnasari-ungkap-alasan-menjanda-18-tahun/",
+      "snippet": "",
+      "scraped_at": 1782323239.545657
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar",
+      "title": "Rizal Djibran Akan Menikah Bulan Depan. Usai 10 Kali Gagal Lamaran",
+      "url": "https://www.hipwee.com/showbiz/rizal-djibran-akan-menikah/",
+      "snippet": "",
+      "scraped_at": 1782323239.545657
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar",
+      "title": "#CatatanAkhirTahun – Tak Sanggup Bayar Setiap Detik yang Terbuang",
+      "url": "https://www.hipwee.com/narasi/catatanakhirtahun-tak-sanggup-bayar-setiap-detik-yang-terbuang/",
+      "snippet": "",
+      "scraped_at": 1782323239.545657
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar",
+      "title": "#MudaBerkarya – Untukmu Mahasiswa Salah Jurusan, Janganlah Merasa Gagal dan Lakukan 7 Hal Ini Sebelum Terlambat",
+      "url": "https://www.hipwee.com/list/mudaberkarya-untukmu-mahasiswa-salah-jurusan-janganlah-merasa-gagal-dan-lakukan-7-hal-ini-sebelum-terlambat/",
+      "snippet": "",
+      "scraped_at": 1782323239.545657
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar",
+      "title": "Kenangan, Memanglah Susah untuk Dilupakan, Begitupun dengan Pantai di Lampung yang Membuat Kamu Gagal Move On!",
+      "url": "https://www.hipwee.com/list/kenangan-memanglah-susah-untuk-dilupakan-begitupun-dengan-pantai-di-lampung/",
+      "snippet": "",
+      "scraped_at": 1782323239.545657
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar",
+      "title": "#BeraniWujudkanMimpi-Gagal Menjadi Mahasiswa Kedoteran Tetapi Justru Bisa S2 di Kampus Impian",
+      "url": "https://www.hipwee.com/narasi/beraniwujudkanmimpi-gagal-menjadi-mahasiswa-kedoteran-tetapi-justru-bisa-s2-di-kampus-impian/",
+      "snippet": "",
+      "scraped_at": 1782323239.545657
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar",
+      "title": "Untuk Kamu yang Baru Saja Gagal, Jangan Buruk Sangka Dulu, 5 Hal Positif Ini Bisa Kamu Ambil Hikmahnya",
+      "url": "https://www.hipwee.com/list/untuk-kamu-yang-baru-saja-gagal-jangan-buruk-sangka-dulu-5-hal-positif-ini-bisa-kamu-ambil-hikmahnya/",
+      "snippet": "",
+      "scraped_at": 1782323239.545657
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips bayar paylater",
+      "title": "Yuk Bangun Kesehatan Keluarga di Tahun 2022 Tanpa Hutang. Simak Tips Berikut!",
+      "url": "https://www.hipwee.com/narasi/yuk-bangun-kesehatan-keluarga-di-tahun-2022-tanpa-hutang/",
+      "snippet": "",
+      "scraped_at": 1782323246.5263543
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips bayar paylater",
+      "title": "Tips Bijak Pakai Paylater. Belanja Tetap Aman dan Nggak Kebobolan di Akhir Bulan",
+      "url": "https://www.hipwee.com/list/tergiur-paylater-5-tips-ini-bikin-kamu-bijak-pakai-paylater/",
+      "snippet": "",
+      "scraped_at": 1782323246.5263543
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips bayar paylater",
+      "title": "6 Tips Menabung yang Tak Lekang Oleh Waktu",
+      "url": "https://www.hipwee.com/list/6-tips-menabung-yang-tak-lekang-oleh-waktu/",
+      "snippet": "",
+      "scraped_at": 1782323246.5263543
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips bayar paylater",
+      "title": "Tips Liburan ke Luar Negeri Meski Gaji Cuma 2 Jutaan. Sobat Misqueen Juga Harus Liburan!",
+      "url": "https://www.hipwee.com/travel/gaji-dikit-tetep-liburan/",
+      "snippet": "",
+      "scraped_at": 1782323246.5263543
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bahaya pinjol",
+      "title": "7 Cara Ampuh Pulihkan Keuangan Pasca Lebaran 2026, Kondisi Tahun Ini Lebih Berat dari Biasanya",
+      "url": "https://www.hipwee.com/tips/trik-pulihkan-kembali-isi-dompet-pasca-lebaran/",
+      "snippet": "",
+      "scraped_at": 1782323252.7901933
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bahaya pinjol",
+      "title": "5 Hal yang Seharusnya Tidak Dijadikan Konten, Jangan Asal Upload!",
+      "url": "https://www.hipwee.com/list/tips-membuat-konten/",
+      "snippet": "",
+      "scraped_at": 1782323252.7901933
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bahaya pinjol",
+      "title": "Awas! Fenomena Peretasan Data Pribadi Kian Marak",
+      "url": "https://www.hipwee.com/narasi/awas-fenomena-peretasan-data-pribadi-kian-marak/",
+      "snippet": "",
+      "scraped_at": 1782323252.7901933
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bahaya pinjol",
+      "title": "Berdasarkan Cara Menggunakan Media Sosial, Begini Kategori Seseorang dalam Menjaga Privasi",
+      "url": "https://www.hipwee.com/feature/privasi-di-medsos/",
+      "snippet": "",
+      "scraped_at": 1782323252.7901933
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "financial behavior gen z",
+      "title": "Apa Itu Generasi Sandwich?",
+      "url": "https://www.hipwee.com/list/apa-itu-generasi-sandwich/",
+      "snippet": "",
+      "scraped_at": 1782323258.9247377
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "financial behavior gen z",
+      "title": "Roti Sandwich Sih Enak, Tapi Generasi Sandwich? Jangan Sampai Deh!!!",
+      "url": "https://www.hipwee.com/opini/roti-sandwich-sih-enak-tapi-generasi-sandwich-jangan-sampai-deh/",
+      "snippet": "",
+      "scraped_at": 1782323258.9247377
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan online",
+      "title": "Gak Lama, Apply Kartu Kredit Bank Mega Secara Online, Proses Approval Cuma 5 Menit",
+      "url": "https://www.hipwee.com/feature/apply-kartu-kredit-bank-mega/",
+      "snippet": "",
+      "scraped_at": 1782323265.3776624
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan online",
+      "title": "Investasi Emas Hanya Dengan Cicilan 5 Ribu Per Hari, Pasti Berani!",
+      "url": "https://www.hipwee.com/sukses/hanya-dengan-5-ribu-per-hari-cicilan-emas-bisa-kamu-jalani-investasi-selagi-muda-pasti-berani/",
+      "snippet": "",
+      "scraped_at": 1782323265.3776624
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan online",
+      "title": "6 Langkah Cerdas Kredit Laptop bagi Mahasiswa. Cicilan Aman, Uang Jajan Nggak Ludes di Jalan",
+      "url": "https://www.hipwee.com/tips/kredit-laptop/",
+      "snippet": "",
+      "scraped_at": 1782323265.3776624
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan online",
+      "title": "Tips Belanja Online Buat Sobat Misqueen. Biar Ngenes yang Penting Tetap Belanja!",
+      "url": "https://www.hipwee.com/tips/tips-belanja-online-buat-sobat-misqueen/",
+      "snippet": "",
+      "scraped_at": 1782323265.3776624
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan online",
+      "title": "Bahaya Melakukan Pinjaman Online Ilegal",
+      "url": "https://www.hipwee.com/narasi/bahaya-melakukan-pinjaman-online-ilegal/",
+      "snippet": "",
+      "scraped_at": 1782323265.3776624
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan online",
+      "title": "Dukung Peningkatan Belanja Online di Masa PPKM, PermataBank Perkenalkan PermataShoppingCard",
+      "url": "https://www.hipwee.com/feature/dukung-peningkatan-belanja-online-di-masa-ppkm-permatabank-perkenalkan-permatashoppingcard/",
+      "snippet": "",
+      "scraped_at": 1782323265.3776624
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan online",
+      "title": "Berbagi Pengalaman 5 Tahun Jadi Penumpang Ojek Online. Banyak Cerita Seru di Dalamnya!",
+      "url": "https://www.hipwee.com/list/sepenggal-kisah-yang-terkumpul-bersama-pengemudi-ojek-daring/",
+      "snippet": "",
+      "scraped_at": 1782323265.3776624
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan online",
+      "title": "Kredivo Hadirkan Program Cicilan Bunga 0% Saat Harbolnas",
+      "url": "https://www.hipwee.com/feature/cicilan-bunga-0-kredivo/",
+      "snippet": "",
+      "scraped_at": 1782323265.3776624
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan online",
+      "title": "Ospek Online Unesa Viral Usai Senior Membentak-bentaki Maba. Ternyata Mental ‘Sok Senior’ Susah Dihilangkan",
+      "url": "https://www.hipwee.com/feature/viral-ospek-unesa/",
+      "snippet": "",
+      "scraped_at": 1782323265.3776624
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan online",
+      "title": "Erajaya Gelar Festival Belanja Gadget Online eraspacetival. Smartphone Mulai dari Rp1 Jutaan, Cuma Sampai 8 Agustus!",
+      "url": "https://www.hipwee.com/feature/erajaya-gelar-festival-belanja-gadget-online/",
+      "snippet": "",
+      "scraped_at": 1782323265.3776624
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "utang online",
+      "title": "Kisah Sukses Kim Su Kyung; Berawal dari Bayar Warisan Utang 23 Miliar hingga Jadi CEO Muda",
+      "url": "https://www.hipwee.com/sukses/kim-su-kyung-ceo/",
+      "snippet": "",
+      "scraped_at": 1782323271.9839652
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "utang online",
+      "title": "Curhatan Danilla Riyadi yang Kesal Ditagih Pinjol, Padahal Nggak Punya Utang",
+      "url": "https://www.hipwee.com/showbiz/curhatan-danilla-riyadi-yang-kesal-ditagih-pinjol-padahal-nggak-punya-utang/",
+      "snippet": "",
+      "scraped_at": 1782323271.9839652
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "utang online",
+      "title": "11 Peringatan Anti Ngutang ini Bikin Siapapun yang Mau Ngutang Jadi Mikir",
+      "url": "https://www.hipwee.com/hiburan/peringatan-anti-ngutang/",
+      "snippet": "",
+      "scraped_at": 1782323271.9839652
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "utang online",
+      "title": "Dari Ada Apa dengan Cinta? (AADC) Sampai Love for Sale Dihadirkan Spesial dalam Program Nostalgia Film Terbaik Bioskop Online",
+      "url": "https://www.hipwee.com/event/nostalgia-film-terbaik-bioskop-online/",
+      "snippet": "",
+      "scraped_at": 1782323271.9839652
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "utang online",
+      "title": "Dilema Warganet Soal Fitur Baru WhatsApp yang Bisa Sembunyikan Status ‘Online’",
+      "url": "https://www.hipwee.com/hiburan/fitur-baru-whatsapp-2/",
+      "snippet": "",
+      "scraped_at": 1782323271.9839652
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "utang online",
+      "title": "Menyiasati Teman yang Hobi Berutang Demi Menghindari Putusnya Pertemanan",
+      "url": "https://www.hipwee.com/list/menyiasati-teman-yang-hobi-berutang-demi-menghindari-putusnya-pertemanan/",
+      "snippet": "",
+      "scraped_at": 1782323271.9839652
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "utang online",
+      "title": "Ngerinya Jeratan Pinjol. Utang Membengkak, Kadang Nyawa yang Jadi Jaminan",
+      "url": "https://www.hipwee.com/feature/jeratan-pinjaman-online/",
+      "snippet": "",
+      "scraped_at": 1782323271.9839652
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Ingin Glowing di 2026? Ini Klinik Kecantikan Terbaik dengan Promo Kartu Kredit DBS",
+      "url": "https://www.hipwee.com/feature/ingin-glowing-di-2026-ini-klinik-kecantikan-terbaik-dengan-promo-kartu-kredit-dbs/",
+      "snippet": "",
+      "scraped_at": 1782323278.5066679
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kredit tanpa kartu kredit",
+      "title": "6 Cara Menghemat Uang Pribadi, Tanpa Sadar Pundi-Pundi Uang Tersimpan Rapi",
+      "url": "https://www.hipwee.com/sukses/cara-hemat-sederhana/",
+      "snippet": "",
+      "scraped_at": 1782323278.5066679
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kredit tanpa kartu kredit",
+      "title": "10 Keuntungan Menggunakan Kartu Kredit yang Perlu Kamu Ketahui",
+      "url": "https://www.hipwee.com/list/10-keuntungan-menggunakan-kartu-kredit-yang-perlu-kamu-ketahui/",
+      "snippet": "",
+      "scraped_at": 1782323278.5066679
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kredit tanpa kartu kredit",
+      "title": "5 Aplikasi PPOB yang Bikin Kamu Bisa Bayar Apapun Tanpa Ribet",
+      "url": "https://www.hipwee.com/list/aplikasi-ppob/",
+      "snippet": "",
+      "scraped_at": 1782323278.5066679
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Tanpa Ribet, Kini Top-Up Kartu Brizzi Bisa Lewat Aplikasi Traveloka",
+      "url": "https://www.hipwee.com/feature/top-up-kartu-brizzi-di-aplikasi-traveloka/",
+      "snippet": "",
+      "scraped_at": 1782323278.5066679
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Yuk, Intip Serunya Belanja di Supermarket Canggih Tanpa Kasir Milik Amazon. Bayarnya Lewat Aplikasi Android, Loh!",
+      "url": "https://www.hipwee.com/list/yuk-intip-serunya-belanja-di-supermarket-canggih-tanpa-kasir-milik-amazon-bayarnya-lewat-aplikasi-android-loh/",
+      "snippet": "",
+      "scraped_at": 1782323278.5066679
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kredit tanpa kartu kredit",
+      "title": "7 Tutorial Belanja Harbolnas Secara Cantik dan Elegan tanpa Bikin Kere Kemudian",
+      "url": "https://www.hipwee.com/tips/habis-kalap-belanja-di-momen-harbolnas-pastikan-kamu-lakukan-7-trik-ini-agar-nggak-menyesal-kemudian/",
+      "snippet": "",
+      "scraped_at": 1782323278.5066679
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Lika-Liku Kredit Pendidikan di Indonesia",
+      "url": "https://www.hipwee.com/opini/lika-liku-kredit-pendidikan-di-indonesia/",
+      "snippet": "",
+      "scraped_at": 1782323278.5066679
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "galbay",
+      "title": "Cara Ngawur Fintech Saat Tagih Utang, dari Berlaku Kasar Sampai Suruh Nasabah Menari Telanjang",
+      "url": "https://www.hipwee.com/feature/cara-ngawur-fintech-saat-tagih-utang-dari-berlaku-kasar-sampai-suruh-nasabah-menari-telanjang/",
+      "snippet": "",
+      "scraped_at": 1782323285.0057244
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "debt collector",
+      "title": "Hai Keluarga Muda, Ini Lho Jurus Jitu Biar Tak Dikejar-kejar Debt Collector",
+      "url": "https://www.hipwee.com/opini/hai-keluarga-muda-ini-lho-jurus-jitu-biar-tak-dikejar-kejar-debt-collector/",
+      "snippet": "",
+      "scraped_at": 1782323291.3915884
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "debt collector",
+      "title": "Nostalgia Keributan yang Sering Terjadi Karena Uang Kas Kelas Zaman Sekolah. Ada yang Ingat?",
+      "url": "https://www.hipwee.com/hiburan/uang-kas-zaman-sekolah/",
+      "snippet": "",
+      "scraped_at": 1782323291.3915884
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "debt collector",
+      "title": "10 Lika-Liku Kehidupan Ngekos yang Bikin Kamu Setegar Batu Karang!",
+      "url": "https://www.hipwee.com/list/untukmu-anak-kos-10-pengalaman-ini-akan-membuatmu-semakin-tegar/",
+      "snippet": "",
+      "scraped_at": 1782323291.3915884
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "debt collector",
+      "title": "Trik Sukses Beli Rumah Impian dari Lelang Bank. Lebih Murah Asal Paham Risikonya",
+      "url": "https://www.hipwee.com/sukses/membeli-rumah-lelang-bank/",
+      "snippet": "",
+      "scraped_at": 1782323291.3915884
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "debt collector",
+      "title": "Pertaruhan The Series: Serial Action Indonesia yang Nggak Kalah Ciamik",
+      "url": "https://www.hipwee.com/narasi/pertaruhan-the-series-serial-action-indonesia-yang-gak-kalah-ciamik/",
+      "snippet": "",
+      "scraped_at": 1782323291.3915884
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "debt collector",
+      "title": "Selain RX-King, ini Image Sepeda Motor Lainnya yang Juga Dipercaya Banyak Orang",
+      "url": "https://www.hipwee.com/hiburan/image-sepeda-motor/",
+      "snippet": "",
+      "scraped_at": 1782323291.3915884
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "debt collector",
+      "title": "10 Seleb yang Terlilit Utang Sampai Miliaran, Meski Sulit Mereka Bisa Temukan Jalan Keluar",
+      "url": "https://www.hipwee.com/showbiz/seleb-indonesia-terlilit-utang/",
+      "snippet": "",
+      "scraped_at": 1782323291.3915884
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "debt collector",
+      "title": "Sering Dikira Makan Gaji Buta, Padahal Beberapa Hal Ini Dialami Guru Saat Pembelajaran Jarak Jauh",
+      "url": "https://www.hipwee.com/list/beberapa-hal-ini-dialami-guru-saat-pembelajaran-jarak-jauh/",
+      "snippet": "",
+      "scraped_at": 1782323291.3915884
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan 0%",
+      "title": "Panduan Mulai Cicilan Pertama Buat Anak Muda. Selain Gaji, Ada Hal Lain yang Harus Dipertimbangkan!",
+      "url": "https://www.hipwee.com/sukses/cicilan-pertama-anak-muda/",
+      "snippet": "",
+      "scraped_at": 1782323298.5938072
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan 0%",
+      "title": "Bersama Bukalapak, MAXI Organizer Helat INDOTREX 2019 di Balai Kartini. Diskon Sampai 60%!",
+      "url": "https://www.hipwee.com/event/indotrex-2019/",
+      "snippet": "",
+      "scraped_at": 1782323298.5938072
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan 0%",
+      "title": "Lagi Galau Pilih Kartu Kredit Bank Mega? Cek Jenis, Minimal Penghasilan, dan Keuntungannya Yuk!",
+      "url": "https://www.hipwee.com/tips/lagi-galau-pilih-kartu-kredit-bank-mega-cek-jenis-minimal-penghasilan-dan-keuntungannya-yuk/",
+      "snippet": "",
+      "scraped_at": 1782323298.5938072
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan 0%",
+      "title": "Authorized Apple Store, Solusi Belanja Produk Apple Indonesia yang Asli, Bergaransi, dan Banyak Promo!",
+      "url": "https://www.hipwee.com/feature/authorized-apple-store-solusi-belanja-produk-apple-indonesia-yang-asli-bergaransi-dan-banyak-promo/",
+      "snippet": "",
+      "scraped_at": 1782323298.5938072
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan 0%",
+      "title": "Kamu Termasuk Smart Buyer Nggak Sih? Cek Cirinya Berikut",
+      "url": "https://www.hipwee.com/feature/apakah-kamu-termasuk-smart-buyer/",
+      "snippet": "",
+      "scraped_at": 1782323298.5938072
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan 0%",
+      "title": "Erajaya Active Lifestyle Hadirkan Action Camera Insta360 untuk Dukung Minat Pembuatan Konten",
+      "url": "https://www.hipwee.com/feature/erajaya-active-lifestyle-hadirkan-action-camera-insta360/",
+      "snippet": "",
+      "scraped_at": 1782323298.5938072
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "cicilan 0%",
+      "title": "Erafone Hadirkan Promo Menarik pada Gelaran MotoGP Mandalika 2022",
+      "url": "https://www.hipwee.com/feature/promo-erafone-selama-motogp-mandalika-2022/",
+      "snippet": "",
+      "scraped_at": 1782323298.5938072
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "self reward",
+      "title": "Jebakan di Balik Self Reward. Hati-Hati ‘Hadiahi Diri Sendiri’ tapi Berujung Jadi Pemborosan",
+      "url": "https://www.hipwee.com/sukses/self-reward-berlebihan/",
+      "snippet": "",
+      "scraped_at": 1782323304.8269644
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "self reward",
+      "title": "Menyayangi Diri Sendiri: Mengungkap Manfaat Self Reward untuk Meningkatkan Kesejahteraan Mental",
+      "url": "https://www.hipwee.com/narasi/menyayangi-diri-sendiri-mengungkap-manfaat-self-reward-untuk-meningkatkan-kesejahteraan-mental/",
+      "snippet": "",
+      "scraped_at": 1782323304.8269644
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "self reward",
+      "title": "Self Reward vs Impulsive Buying, Mana yang Menggambarkan Dirimu?",
+      "url": "https://www.hipwee.com/list/self-reward-vs-impulsive-buying-mana-yang-menggambarkan-dirimu/",
+      "snippet": "",
+      "scraped_at": 1782323304.8269644
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "self reward",
+      "title": "Self Reward, Sebuah Penghargaan untuk Jiwa yang Penat",
+      "url": "https://www.hipwee.com/narasi/self-reward-sebuah-penghargaan-untuk-jiwa-yang-penat/",
+      "snippet": "",
+      "scraped_at": 1782323304.8269644
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "self reward",
+      "title": "Pentingnya Self Reward untuk Diri Sendiri. Biar Makin Semangat Buat Kerja!",
+      "url": "https://www.hipwee.com/list/pentingnya-self-reward-untuk-diri-sendiri/",
+      "snippet": "",
+      "scraped_at": 1782323304.8269644
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "self reward",
+      "title": "Cara Ampuh Bercuan Meskipun Sering Jajan yang Berkedok Self-Reward",
+      "url": "https://www.hipwee.com/narasi/cara-ampuh-bercuan-meskipun-sering-jajan-yang-berkedok-self-reward/",
+      "snippet": "",
+      "scraped_at": 1782323304.8269644
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "self reward",
+      "title": "Self-Reward: Teruntuk Diri Sendiri Kamu Hanya Perlu Rehat Sejenak dan Beri Kesempatan Pada Hati Serta Pikiran Agar Refresh Kembali",
+      "url": "https://www.hipwee.com/narasi/self-reward-teruntuk-diri-sendiri-kamu-hanya-perlu-rehat-sejenak-dan-beri-kesempatan-pada-hati-serta-pikiran-agar-refresh-kembali/",
+      "snippet": "",
+      "scraped_at": 1782323304.8269644
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "self reward",
+      "title": "Stop Impulsive Buying Berkedok Self-Reward, Beli Seperlunya Saja!",
+      "url": "https://www.hipwee.com/list/stop-impulsive-buying-berkedok-self-reward-beli-seperlunya-saja/",
+      "snippet": "",
+      "scraped_at": 1782323304.8269644
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "self reward",
+      "title": "6 Reward Sederhana yang Bisa Kamu Hadiahkan Sama Diri Sendiri. Self Love Itu Penting!",
+      "url": "https://www.hipwee.com/hubungan/hadiah-untuk-diri-sendiri/",
+      "snippet": "",
+      "scraped_at": 1782323304.8269644
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "self reward",
+      "title": "Bersembunyi di Balik Kata Self Healing, Self Healing Kini Menjadi Alasan untuk Hal yang Kurang Positif!",
+      "url": "https://www.hipwee.com/narasi/bersembunyi-di-balik-kata-self-healing-self-healing-kini-menjadi-alasan-untuk-hal-yang-kurang-positif/",
+      "snippet": "",
+      "scraped_at": 1782323304.8269644
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "checkout bayar nanti",
+      "title": "50+ Kata-Kata Motivasi Semangat Kerja Paling Realistis dan Lucu",
+      "url": "https://www.hipwee.com/motivasi/kata-kata-motivasi-semangat-kerja/",
+      "snippet": "",
+      "scraped_at": 1782323311.11458
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "checkout bayar nanti",
+      "title": "Andai Saja Tahu dari Dulu, Begini Cara Ibu Milenial Berburu Promo. Ssst, Bocoran Nih!",
+      "url": "https://www.hipwee.com/tips/trik-dapat-promo-ibu-ibu/",
+      "snippet": "",
+      "scraped_at": 1782323311.11458
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "checkout bayar nanti",
+      "title": "Rayakan Ulang Tahun Ke-10, Blibli Hadirkan Banyak Kejutan Mulai Tanggal 15 hingga 27 Juli 2021",
+      "url": "https://www.hipwee.com/feature/rayakan-ulang-tahun-ke-10-blibli-hadirkan-banyak-kejutan-mulai-tanggal-15-hingga-27-juli-2021/",
+      "snippet": "",
+      "scraped_at": 1782323311.11458
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "checkout bayar nanti",
+      "title": "BRI Persembahkan ‘KPR BRI Virtual Expo 2021’ untuk Milenial yang Ingin Mulai Punya Rumah",
+      "url": "https://www.hipwee.com/feature/bri-persembahkan-kpr-bri-virtual-expo-2021-untuk-milenial-yang-ingin-mulai-punya-rumah/",
+      "snippet": "",
+      "scraped_at": 1782323311.11458
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "checkout bayar nanti",
+      "title": "5 Alasan Kenapa Rasanya Jadi Lebih Boros Saat Physical Distancing Gini. Padahal di Rumah Terus lo",
+      "url": "https://www.hipwee.com/feature/boros-saat-physical-distancing/",
+      "snippet": "",
+      "scraped_at": 1782323311.11458
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "checkout bayar nanti",
+      "title": "Nggak Selamanya Belanja Onlineshop Menyenangkan. Ternyata Ada Dampak Negatifnya Juga Lho!",
+      "url": "https://www.hipwee.com/list/dampak-negatif-belanja-onlineshop/",
+      "snippet": "",
+      "scraped_at": 1782323311.11458
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "pinjol ilegal",
+      "title": "Pinjol Ilegal Salah Sasaran Ngegas ke Jenderal Polisi. Warganet: Antara Berani dan Konyol Beda Tipis",
+      "url": "https://www.hipwee.com/hiburan/pinjol-salah-sasaran/",
+      "snippet": "",
+      "scraped_at": 1782323317.2484515
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "pinjol ilegal",
+      "title": "Beberapa Trik agar Tanggal Tua Tidak Pening karena Masalah Finansial",
+      "url": "https://www.hipwee.com/list/agar-tanggal-tua-tidak-ketar-ketir-karena-masalah-finansial-yang/",
+      "snippet": "",
+      "scraped_at": 1782323317.2484515
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bunga tinggi",
+      "title": "Jangan Berharap Hubungan Jangka Panjang dari 6 Tipe Cowok Ini. Ekspektasimu Tak Perlu Tinggi-Tinggi",
+      "url": "https://www.hipwee.com/hubungan/tipe-cowok-yang-susah-diajak-serius/",
+      "snippet": "",
+      "scraped_at": 1782323330.6863754
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bunga tinggi",
+      "title": "Hati-hati, Ekspektasi Tinggi Terhadap Pasangan yang Berujung Kandasnya Hubungan",
+      "url": "https://www.hipwee.com/narasi/hati-hati-ekspektasi-tinggi-terhadap-pasangan-yang-berujung-kandasnya-hubungan/",
+      "snippet": "",
+      "scraped_at": 1782323330.6863754
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bunga tinggi",
+      "title": "Rasanya Jalin Hubungan dengan Cewek yang Karirnya Lebih Tinggi, Dari Bangga Sampai Resah Sekali",
+      "url": "https://www.hipwee.com/hubungan/rasanya-jalin-hubungan-dengan-cewek-yang-karirnya-lebih-tinggi-dari-bangga-sampai-resah-sekali/",
+      "snippet": "",
+      "scraped_at": 1782323330.6863754
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bunga tinggi",
+      "title": "Dear Cowok yang Standar Ceweknya Ketinggian. Sadarlah Hubungan Nggak Melulu Soal Tampilan!",
+      "url": "https://www.hipwee.com/hiburan/cowok/dear-cowok-yang-standar-ceweknya-ketinggian-sadarlah-hubungan-nggak-melulu-soal-tampilan/",
+      "snippet": "",
+      "scraped_at": 1782323330.6863754
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bunga tinggi",
+      "title": "Kalau Pernah Mengalami 9 Drama Ini, Selamat! Hubungan Kalian Pasti Levelnya Udah Tinggi",
+      "url": "https://www.hipwee.com/hubungan/kalau-udah-lama-pacaran-9-drama-dalam-hubungan-ini-pasti-pernah-kalian-rasakan/",
+      "snippet": "",
+      "scraped_at": 1782323330.6863754
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bunga tinggi",
+      "title": "Bermimpilah Setinggi Langit. Namun, Jangan Biarkan Mimpi Hanya Menjadi Bunga Tidur",
+      "url": "https://www.hipwee.com/narasi/bermimpilah-setinggi-langit-namun-jangan-biarkan-mimpi-hanya-menjadi-bunga-tidur/",
+      "snippet": "",
+      "scraped_at": 1782323330.6863754
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bunga tinggi",
+      "title": "Hubungan Harus Dijalani Dengan Komitmen yang Tinggi, Bukan Sekadar Mengumbar Janji",
+      "url": "https://www.hipwee.com/hubungan/tanpa-perlu-mengumbar-janji-toh-komitmen-dalam-hubungan-itu-cuma-butuh-bukti/",
+      "snippet": "",
+      "scraped_at": 1782323330.6863754
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bunga tinggi",
+      "title": "10 Drama Thailand Romantis Rating Tinggi yang Plotnya Bagus",
+      "url": "https://www.hipwee.com/hiburan/drama-thailand-romantis/",
+      "snippet": "",
+      "scraped_at": 1782323330.6863754
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bunga tinggi",
+      "title": "15 Rekomendasi Film Netflix Indonesia Terbaik, Terbaru & Rating Tinggi yang Wajib Ditonton!",
+      "url": "https://www.hipwee.com/hiburan/film-netflix-indonesia-terbaik/",
+      "snippet": "",
+      "scraped_at": 1782323330.6863754
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "bunga tinggi",
+      "title": "9 Tanda Kamu Terjebak dalam Hubungan Toxic Relationship: Sadar Nggak, Nih?",
+      "url": "https://www.hipwee.com/hubungan/tanda-kamu-terjebak-dalam-hubungan-toxic-relationship/",
+      "snippet": "",
+      "scraped_at": 1782323330.6863754
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "restrukturisasi",
+      "title": "Restrukturisasi Organisasi Konteks Transformasi Teknologi",
+      "url": "https://www.hipwee.com/narasi/restrukturisasi-organisasi-konteks-transformasi-teknologi/",
+      "snippet": "",
+      "scraped_at": 1782323336.8155608
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "restrukturisasi",
+      "title": "9 Jawaban Resign atau Berhenti Kerja Saat Interview",
+      "url": "https://www.hipwee.com/sukses/9-jawaban-aman-saat-ditanya-kenapa-resign-dari-pekerjaan-lama-saat-interview-kerja/",
+      "snippet": "",
+      "scraped_at": 1782323336.8155608
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "restrukturisasi",
+      "title": "Ternyata, Nggak Cuma Rindu yang Berat, Hidup Pun Sama. Tenang! Ada Aku, Kok",
+      "url": "https://www.hipwee.com/narasi/ternyata-nggak-cuma-rindu-yang-berat-hidup-pun-sama-tenang-ya-ada-aku-kok/",
+      "snippet": "",
+      "scraped_at": 1782323336.8155608
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "restrukturisasi",
+      "title": "6 Skill Analitis yang Dibutuhkan Agar Karirmu Panjang dan Sukses",
+      "url": "https://www.hipwee.com/list/6-skill-analitis-yang-dibutuhkan-agar-karirmu-panjang-dan-sukses/",
+      "snippet": "",
+      "scraped_at": 1782323336.8155608
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "restrukturisasi",
+      "title": "Menkominfo: Kebijakan Gas dan Rem Terbukti Berhasil Memicu Pertumbuhan Ekonomi Q2 2021",
+      "url": "https://www.hipwee.com/feature/kebijakan-gas-dan-rem-memicu-pertumbuhan-ekonomi-q2-2021/",
+      "snippet": "",
+      "scraped_at": 1782323336.8155608
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "restrukturisasi",
+      "title": "Resesi Ekonomi Indonesia, Dampak dari Pandemi Covid-19",
+      "url": "https://www.hipwee.com/list/resesi-ekonomi-indonesia-dampak-dari-pandemi-covid-19/",
+      "snippet": "",
+      "scraped_at": 1782323336.8155608
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "restrukturisasi",
+      "title": "Meneropong Pertumbuhan Perbankan Syariah dengan Membidik Nasabah Melalui Sistem dan Produknya",
+      "url": "https://www.hipwee.com/narasi/meneropong-pertumbuhan-perbankan-syariah-dengan-membidik-nasabah-melalui-sistem-dan-produknya/",
+      "snippet": "",
+      "scraped_at": 1782323336.8155608
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "restrukturisasi",
+      "title": "Cloud Accounting System : Solusi Krisis Ekonomi UMKM di Indonesia pada Masa Pandemi",
+      "url": "https://www.hipwee.com/narasi/cloud-accounting-system-solusi-krisis-ekonomi-umkm-di-indonesia-pada-masa-pandemi/",
+      "snippet": "",
+      "scraped_at": 1782323336.8155608
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "restrukturisasi",
+      "title": "8 Tips Mengatur Keuangan di saat Pandemi Covid-19. Biar Tetap Aman Meski Pendapatan Berkurang :)",
+      "url": "https://www.hipwee.com/list/8-tips-mengatur-keuangan-di-saat-pandemi-covid-19-tetap-aman-meski-pendapatan-berkurang/",
+      "snippet": "",
+      "scraped_at": 1782323336.8155608
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "restrukturisasi",
+      "title": "5 Cara Mudah Mengatur Keuangan agar Survive Selama Masa Pandemi Corona. Yok Bisa Yok!",
+      "url": "https://www.hipwee.com/list/5-cara-atur-keuangan-agar-survive-selama-masa-pandemi-corona/",
+      "snippet": "",
+      "scraped_at": 1782323336.8155608
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "konsolidasi utang",
+      "title": "Harapan Masyarakat Kota Pekanbaru Terkait Pemilihan Wali Kota",
+      "url": "https://www.hipwee.com/opini/harapan-masyarakat-kota-pekanbaru-terkait-pemilihan-wali-kota/",
+      "snippet": "",
+      "scraped_at": 1782323343.5536458
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gali lubang tutup lubang",
+      "title": "8 Prinsip Hidup yang Biasa Diterapkan Orang Tionghoa",
+      "url": "https://www.hipwee.com/sukses/8-prinsip-hidup-yang-biasa-diterapkan-orang-tionghoa-nggak-heran-bisa-cepat-kaya/",
+      "snippet": "",
+      "scraped_at": 1782323350.7515347
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gali lubang tutup lubang",
+      "title": "Review Buku Terima Kasih, Papa!: Ungkapan Cinta dari Anak Perempuan yang Tak Sempat Tersampaikan",
+      "url": "https://www.hipwee.com/hiburan/review-buku-terima-kasih-papa/",
+      "snippet": "",
+      "scraped_at": 1782323350.7515347
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gali lubang tutup lubang",
+      "title": "5 Tips Biar Hidup Nggak Sekedar Buat Nunggu Gajian",
+      "url": "https://www.hipwee.com/list/5-tips-biar-hidup-nggak-sekedar-buat-nunggu-gajian/",
+      "snippet": "",
+      "scraped_at": 1782323350.7515347
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gali lubang tutup lubang",
+      "title": "Gelandangan Sumbang Recehan Senilai 43 Juta Sebelum Meninggal. Bukti Sedekah Tak Harus Nunggu Kaya",
+      "url": "https://www.hipwee.com/motivasi/gelandangan-sumbang-43-juta/",
+      "snippet": "",
+      "scraped_at": 1782323350.7515347
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gali lubang tutup lubang",
+      "title": "Biar Hidupmu Naik Kelas, Jadikan 17 Agustus Ini Sebagai Momenmu untuk #MerdekaDari 7 Hal Ini",
+      "url": "https://www.hipwee.com/motivasi/17-agustus-merdeka-dari/",
+      "snippet": "",
+      "scraped_at": 1782323350.7515347
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gali lubang tutup lubang",
+      "title": "Hai 30 Tahunku dan Aku yang Masih Gini-Gini Aja",
+      "url": "https://www.hipwee.com/list/hai-30-tahunku-dan-aku-yang-masih-gini-gini-aja/",
+      "snippet": "",
+      "scraped_at": 1782323350.7515347
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gali lubang tutup lubang",
+      "title": "Habis First Travel, Kini Ada Penipuan Wedding Organizer Pakai Modus Sama. Tega Banget Sih!",
+      "url": "https://www.hipwee.com/feature/habis-first-travel-kini-ada-penipuan-wedding-organizer-pakai-modus-sama-tega-banget-sih/",
+      "snippet": "",
+      "scraped_at": 1782323350.7515347
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gali lubang tutup lubang",
+      "title": "Belajar dari Kisah Ibu yang Digugat Anak Kandung Sebesar 1,8 M, Inilah Bahaya Riba yang Sesungguhnya",
+      "url": "https://www.hipwee.com/sukses/belajar-dari-kisah-ibu-yang-digugat-anak-kandung-sebesar-18-m-inilah-bahaya-riba-yang-sesungguhnya/",
+      "snippet": "",
+      "scraped_at": 1782323350.7515347
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips keuangan gen z",
+      "title": "8 Tips Mengatur Keuangan Ala Adele. Pelit ke Diri Sendiri dan Nggak Gengsi Beli Barang Bekas",
+      "url": "https://www.hipwee.com/tips/tips-mengatur-keuangan/",
+      "snippet": "",
+      "scraped_at": 1782323357.1742053
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips keuangan gen z",
+      "title": "Tips Generasi Geprek Kelola Keuangan",
+      "url": "https://www.hipwee.com/list/tips-generasi-geprek-kelola-keuangan/",
+      "snippet": "",
+      "scraped_at": 1782323357.1742053
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips keuangan gen z",
+      "title": "Tips Manajemen Keuangan untuk Generasi Geprek dari Felicia Putri!",
+      "url": "https://www.hipwee.com/narasi/tips-manajemen-keuangan-untuk-generasi-geprek-dari-felicia-putri/",
+      "snippet": "",
+      "scraped_at": 1782323357.1742053
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips keuangan gen z",
+      "title": "6 Tips Kelola Keuangan untuk Teman-teman Generasi Sandwich. Tetap Bisa Nabung!",
+      "url": "https://www.hipwee.com/list/atur-prioritas-6-tips-mengelola-uang-untuk-generasi-sandwich/",
+      "snippet": "",
+      "scraped_at": 1782323357.1742053
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips keuangan gen z",
+      "title": "7 Tips Keuangan Buat Kamu Karyawan Kelas Menengah Supaya Masa Tuamu Nggak Ngenes-ngenes Amat",
+      "url": "https://www.hipwee.com/tips/7-tips-keuangan-buat-kamu-karyawan-kelas-menengah-supaya-masa-tuamu-nggak-ngenes-ngenes-amat/",
+      "snippet": "",
+      "scraped_at": 1782323357.1742053
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips keuangan gen z",
+      "title": "Penting, 6 Tips Menghadapi Kurs Rupiah yang Melemah buat Kamu sebagai WNI!",
+      "url": "https://www.hipwee.com/tips/tips-menghadapi-kurs-rupiah-yang-melemah/",
+      "snippet": "",
+      "scraped_at": 1782323357.1742053
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips keuangan gen z",
+      "title": "Tips Cerdas untuk Menghindari Pelanggaran Hak Kekayaan Intelektual di Dunia Digital",
+      "url": "https://www.hipwee.com/teknologi/tips-cerdas-untuk-menghindari-pelanggaran-hak-kekayaan-intelektual-di-dunia-digital/",
+      "snippet": "",
+      "scraped_at": 1782323357.1742053
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips keuangan gen z",
+      "title": "11 Tips Realistis Mewujudkan Resolusi Hidup di Tahun Baru yang Konsisten agar Tak Berakhir Sekadar Wacana",
+      "url": "https://www.hipwee.com/tips/tips-realistis-mewujudkan-resolusi-hidup-di-tahun-baru/",
+      "snippet": "",
+      "scraped_at": 1782323357.1742053
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips keuangan gen z",
+      "title": "13 Tips Hubungan Beda Usia yang Romantis dan Bantu Cinta Langgeng Selamanya!",
+      "url": "https://www.hipwee.com/tips/tips-hubungan-beda-usia-bantu-cinta-langgeng/",
+      "snippet": "",
+      "scraped_at": 1782323357.1742053
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tips keuangan gen z",
+      "title": "Penting!50 Pertanyaan Sebelum Menikah Soal Keuangan yang Wajib Dibahas Calon Suami Istri",
+      "url": "https://www.hipwee.com/wedding/pertanyaan-sebelum-menikah-soal-keuangan/",
+      "snippet": "",
+      "scraped_at": 1782323357.1742053
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "menabung gen z",
+      "title": "#BeraniWujudkanMimpi-5 Tips Menabung Bagi Generasi Milenial untuk Membeli Rumah Impian",
+      "url": "https://www.hipwee.com/list/beraniwujudkanmimpi-5-tips-menabung-bagi-generasi-milenial/",
+      "snippet": "",
+      "scraped_at": 1782323363.731685
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "menabung gen z",
+      "title": "Ayo Generasi Muda, Mulailah Paham dan Menerapkan Rutinitas Menabung!",
+      "url": "https://www.hipwee.com/narasi/ayo-generasi-muda-mulailah-paham-dan-menerapkan-rutinitas-menabung/",
+      "snippet": "",
+      "scraped_at": 1782323363.731685
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "menabung gen z",
+      "title": "Pasti Kamu Pengen Banget kan Nonton Konser Idola? Ini 5 Jurus Menabung yang Bisa Kamu Lakukan",
+      "url": "https://www.hipwee.com/list/pasti-kamu-pengen-banget-kan-nonton-konser-idola-ini-5-jurus-menabung-yang-bisa-kamu-lakukan/",
+      "snippet": "",
+      "scraped_at": 1782323363.731685
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "menabung gen z",
+      "title": "6 Cara Pintar Menabung untuk Millennials. Jangan Gengsi Mulu yang Digedein!",
+      "url": "https://www.hipwee.com/list/cara-pintar-milenial-menerapkan-pola-pikir-menabung/",
+      "snippet": "",
+      "scraped_at": 1782323363.731685
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "menabung gen z",
+      "title": "Generasi Millennial Terancam Nggak Punya Rumah. Tren Menabung Juga Berubah",
+      "url": "https://www.hipwee.com/feature/generasi-millennial-terancam-nggak-punya-rumah-tren-menabung-juga-berubah/",
+      "snippet": "",
+      "scraped_at": 1782323363.731685
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "menabung gen z",
+      "title": "Penting Banget, Simak 6 Tips Memilih Agen Umroh dan Haji Biar Nggak Kena Tipu!",
+      "url": "https://www.hipwee.com/tips/tips-memilih-agen-umroh-dan-haji/",
+      "snippet": "",
+      "scraped_at": 1782323363.731685
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "menabung gen z",
+      "title": "Tips Menabung Efektif untuk Anak hingga Ibu Rumah Tangga",
+      "url": "https://www.hipwee.com/sukses/tips-menabung/",
+      "snippet": "",
+      "scraped_at": 1782323363.731685
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "menabung gen z",
+      "title": "Mengenal Kalender Saku, Cara Budgeting ala Korea Buat Nabung & Tahan Diri dari Godaan Belanja",
+      "url": "https://www.hipwee.com/sukses/kalender-saku-korea/",
+      "snippet": "",
+      "scraped_at": 1782323363.731685
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "menabung gen z",
+      "title": "6 Jawaban Ngena untuk Hadapi Sindiran, Sudah Lama Pacaran tapi Belum Disahkan",
+      "url": "https://www.hipwee.com/hubungan/6-jurus-bertahan-dari-sindiran-sudah-lama-pacaran-tapi-belum-juga-disahkan/",
+      "snippet": "",
+      "scraped_at": 1782323363.731685
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "financial freedom",
+      "title": "5 Tahapan Sederhana yang Harus Dilakukan Milenial agar Bisa Mencapai Financial Freedom",
+      "url": "https://www.hipwee.com/list/5-tahapan-sederhana-yang-harus-dilakukan-milenial-agar-bisa-mencapai-financial-freedom/",
+      "snippet": "",
+      "scraped_at": 1782323369.861376
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "financial freedom",
+      "title": "Membangun Mindset Financial Freedom yang Akan Menentukan Nasibmu Kelak",
+      "url": "https://www.hipwee.com/opini/membangun-mindset-financial-freedom-yang-akan-menentukan-nasibmu-kelak/",
+      "snippet": "",
+      "scraped_at": 1782323369.861376
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "financial freedom",
+      "title": "NYALA OCBC NISP Jalankan Program Financial Fitness Classes, Bahas 1001 Topik Terkait Masalah Finansial",
+      "url": "https://www.hipwee.com/feature/nyala-ocbc-nisp-jalankan-program-financial-fitness-classes-bahas-1001-topik-terkait-masalah-finansial/",
+      "snippet": "",
+      "scraped_at": 1782323369.861376
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "financial freedom",
+      "title": "Menggali Potensi Diri: Passion vs. Uang",
+      "url": "https://www.hipwee.com/narasi/menggali-potensi-diri-passion-vs-uang/",
+      "snippet": "",
+      "scraped_at": 1782323369.861376
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "financial freedom",
+      "title": "Kata Suami, Belanja Itu Begini Loh..",
+      "url": "https://www.hipwee.com/narasi/dilema-usia-25/",
+      "snippet": "",
+      "scraped_at": 1782323369.861376
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "financial freedom",
+      "title": "Tetap Cuan Meski Sering Jajan dengan 6 Cara Ini. Dijamin Dompet Anti Boncos!",
+      "url": "https://www.hipwee.com/list/tetap-cuan-meski-sering-jajan-dengan-6-cara-ini-dijamin-dompet-anti-boncos/",
+      "snippet": "",
+      "scraped_at": 1782323369.861376
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "financial freedom",
+      "title": "Perluas Literasi Keuangan Digital, Kredivo Gelar “Generasi Djempolan” di Cirebon",
+      "url": "https://www.hipwee.com/feature/kredivo-gelar-generasi-djempolan-di-cirebon/",
+      "snippet": "",
+      "scraped_at": 1782323369.861376
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "financial freedom",
+      "title": "AIESEC Sukses Kenalkan Pentingnya Perencanaan Keuangan dan Investasi  Melalui Impact Circle",
+      "url": "https://www.hipwee.com/event/aiesec-sukses-kenalkan-pentingnya-perencanaan-keuangan-dan-investasi-melalui-impact-circle/",
+      "snippet": "",
+      "scraped_at": 1782323369.861376
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "financial freedom",
+      "title": "Milenial Wajib Tahu! Ini 5 Manfaat Investasi Bagi Masa Depan Kamu",
+      "url": "https://www.hipwee.com/list/ini-5-manfaat-investasi-bagi-masa-depan-kamu/",
+      "snippet": "",
+      "scraped_at": 1782323369.861376
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "literasi keuangan",
+      "title": "Resmi Hadir, Finante.id Akan Bantu Jawab Persoalan Literasi Keuangan",
+      "url": "https://www.hipwee.com/sukses/finante-id-akan-bantu-jawab-persoalan-literasi-keuangan/",
+      "snippet": "",
+      "scraped_at": 1782323376.2254388
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "literasi keuangan",
+      "title": "Sasar Ribuan Siswa TK hingga SMA, PermataBank Gelar Edukasi Literasi Keuangan ‘CERITA’",
+      "url": "https://www.hipwee.com/feature/sasar-ribuan-siswa-tk-hingga-sma-permatabank-gelar-edukasi-literasi-keuangan-cerita/",
+      "snippet": "",
+      "scraped_at": 1782323376.2254388
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "literasi keuangan",
+      "title": "Terus Giatkan Literasi Keuangan Sejak Dini, PermataBank Luncurkan Buku Kumpulan Cerpen “Kecil-kecil Pandai Menabung”",
+      "url": "https://www.hipwee.com/feature/terus-giatkan-literasi-keuangan-sejak-dini-permatabank-luncurkan-buku-kumpulan-cerpen-kecil-kecil-pandai-menabung/",
+      "snippet": "",
+      "scraped_at": 1782323376.2254388
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "literasi keuangan",
+      "title": "Allianz Indonesia Berikan Literasi Keuangan untuk Masyarakat Lewat Rangkaian Program Global Money Week 2020",
+      "url": "https://www.hipwee.com/feature/allianz-indonesia-berikan-literasi-keuangan-untuk-masyarakat-lewat-rangkaian-program-global-money-week-2020/",
+      "snippet": "",
+      "scraped_at": 1782323376.2254388
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "literasi keuangan",
+      "title": "Tema “Malin Kondang” Jadi Kampanye Literasi Keuangan 2019 FWD Life. Cara Baru Nikmati Asuransi yang Beda",
+      "url": "https://www.hipwee.com/feature/tema-malin-kondang-jadi-kampanye-literasi-keuangan-2019-fwd-life-cara-baru-nikmati-asuransi-yang-beda/",
+      "snippet": "",
+      "scraped_at": 1782323376.2254388
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "literasi keuangan",
+      "title": "CEO BotxCoin Indra Kesuma Bicara Serba-Serbi Investasi dalam Webinar Literasi Digital Kemkominfo",
+      "url": "https://www.hipwee.com/feature/ceo-botxcoin-indra-kesuma-bicara-serba-serbi-investasi-dalam-webinar-literasi-digital-kemkominfo/",
+      "snippet": "",
+      "scraped_at": 1782323376.2254388
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "literasi keuangan",
+      "title": "Berpartisipasi dalam Bulan Inklusi Keuangan OJK 2020, LinkAja Berikan Beragam Promo Menarik",
+      "url": "https://www.hipwee.com/feature/linkaja-berpartisipasi-dalam-bulan-inklusi-keuangan-ojk-2020/",
+      "snippet": "",
+      "scraped_at": 1782323376.2254388
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "literasi keuangan",
+      "title": "Bank OCBC NISP Luncurkan Gerakan #Save20 by Nyala, Ajak Generasi Muda Kelola Keuangan Mulai dengan Rp20 Ribu",
+      "url": "https://www.hipwee.com/feature/gerakan-save20-by-nyala-dari-bank-ocbc-nisp/",
+      "snippet": "",
+      "scraped_at": 1782323376.2254388
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tagihan paylater",
+      "title": "5 Plus Minus Pakai Fitur Paylater. Si Doyan Kalap Belanja Wajib Paham nih Biar Nggak Nyesel!",
+      "url": "https://www.hipwee.com/sukses/plus-minus-paylater/",
+      "snippet": "",
+      "scraped_at": 1782323383.1953015
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tagihan paylater",
+      "title": "Godaan Paylater, Awal coba-coba Ternyata Membuat Candu Juga",
+      "url": "https://www.hipwee.com/narasi/godaan-paylater-membuat-candu/",
+      "snippet": "",
+      "scraped_at": 1782323383.1953015
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tagihan paylater",
+      "title": "#CatatanAkhirTahun – Say Good Bye to PayLater! Yuk Perhatikan Lagi Prioritasmu!",
+      "url": "https://www.hipwee.com/narasi/catatanakhirtahun-say-good-bye-to-paylater-yuk-perhatikan-lagi-prioritasmu/",
+      "snippet": "",
+      "scraped_at": 1782323383.1953015
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "tagihan paylater",
+      "title": "Bulan Puasa Kok Malah Lebih Boros? Kenali Penyebabnya dan Cara Mencegah Biar Nggak Bangkrut",
+      "url": "https://www.hipwee.com/sukses/bulan-puasa-boros/",
+      "snippet": "",
+      "scraped_at": 1782323383.1953015
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "beli sekarang bayar nanti",
+      "title": "6 Metode Pembayaran di Taipei yang Paling Sering Digunakan Turis",
+      "url": "https://www.hipwee.com/travel/6-metode-pembayaran-di-taipei-yang-paling-sering-digunakan-turis/",
+      "snippet": "",
+      "scraped_at": 1782323390.4402158
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "beli sekarang bayar nanti",
+      "title": "Contoh Kata-Kata untuk Menagih Hutang yang Sopan, Biar si Peminjam Mau Bayar!",
+      "url": "https://www.hipwee.com/tips/contoh-kata-kata-untuk-menagih-hutang-yang-sopan-biar-si-peminjam-mau-bayar/",
+      "snippet": "",
+      "scraped_at": 1782323390.4402158
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "beli sekarang bayar nanti",
+      "title": "Tips Membeli Gadget Bekas Agar Bisa Dapat yang Berkualitas",
+      "url": "https://www.hipwee.com/tips/cara-cerdas-beli-gadget-bekas/",
+      "snippet": "",
+      "scraped_at": 1782323390.4402158
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "beli sekarang bayar nanti",
+      "title": "Tips Membeli Motor Bekas agar Kamu Nggak Tertipu",
+      "url": "https://www.hipwee.com/tips/penting-tips-tips-membeli-motor-bekas-supaya-kamu-nggak-tertipu/",
+      "snippet": "",
+      "scraped_at": 1782323390.4402158
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "beli sekarang bayar nanti",
+      "title": "Beli Barang Secara Tunai atau Kredit? Mari Kita Cek Dulu 5 Pertimbangan Penting ini~",
+      "url": "https://www.hipwee.com/sukses/beli-barang-tunai-kredit/",
+      "snippet": "",
+      "scraped_at": 1782323390.4402158
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "beli sekarang bayar nanti",
+      "title": "6 Metode Pembayaran Paling Canggih. Bisa Bayar Pakai Senyum Segala lo~",
+      "url": "https://www.hipwee.com/sukses/metode-pembayaran-paling-canggih/",
+      "snippet": "",
+      "scraped_at": 1782323390.4402158
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "beli sekarang bayar nanti",
+      "title": "6 Tips Beli Laptop Bekas Tanpa Takut Kena Tipu. Riset Harga dan Cek Spesifikasi itu Harus!",
+      "url": "https://www.hipwee.com/tips/laptop-bekas/",
+      "snippet": "",
+      "scraped_at": 1782323390.4402158
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "beli sekarang bayar nanti",
+      "title": "Tanyakan 8 Hal ini Sebelum Fix Beli Rumah Bekas. Bakal Ditinggali Lama, Jelas Butuh Kepastian",
+      "url": "https://www.hipwee.com/tips/pertanyaan-saat-beli-rumah-bekas/",
+      "snippet": "",
+      "scraped_at": 1782323390.4402158
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "beli sekarang bayar nanti",
+      "title": "Trik Menabung untuk Beli Kambing dalam Waktu 12 Bulan. Demi Cita-Cita Kurban di Tahun Depan",
+      "url": "https://www.hipwee.com/tips/menabung-hewan-kurban/",
+      "snippet": "",
+      "scraped_at": 1782323390.4402158
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kartu kredit online",
+      "title": "Marak Kasus Viral COD Belanja Online, ini Tips Belanja dengan Bayar di Tempat. Yuk, Pahami Dulu!",
+      "url": "https://www.hipwee.com/tips/cara-cod-online/",
+      "snippet": "",
+      "scraped_at": 1782323396.7210212
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kartu kredit online",
+      "title": "Apa itu Black Card? Kartu Eksklusif Miliarder Terpilih!",
+      "url": "https://www.hipwee.com/sukses/black-card-adalah/",
+      "snippet": "",
+      "scraped_at": 1782323396.7210212
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kartu kredit online",
+      "title": "9+ Toko Buku Online Terpercaya, Beragam Jenis & Murah",
+      "url": "https://www.hipwee.com/tips/rekomendasi-toko-buku-online/",
+      "snippet": "",
+      "scraped_at": 1782323396.7210212
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "kartu kredit online",
+      "title": "Berinovasi untuk Kemudahan Pengguna, BNI dan JD.ID Berkolaborasi Luncurkan Kartu Kredit E-Commerce",
+      "url": "https://www.hipwee.com/feature/bni-dan-jd-id-luncurkan-kartu-kredit-bni-jd-id/",
+      "snippet": "",
+      "scraped_at": 1782323396.7210212
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "utang pinjol",
+      "title": "Surat Cinta untuk Teman yang Berutang Uang Kepadaku, Semoga Hatimu Tergerak untuk Segera Membayarnya",
+      "url": "https://www.hipwee.com/narasi/surat-cinta-untuk-teman-yang-berutang-uang-kepadaku-semoga-hatimu-tergerak-untuk-segera-membayarnya/",
+      "snippet": "",
+      "scraped_at": 1782323403.3677266
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "utang pinjol",
+      "title": "Kesal Nomornya Diburu Puluhan Pinjol, Nafa Urbach Ancam Lapor Polisi: Kalian Sangat Mengganggu!",
+      "url": "https://www.hipwee.com/showbiz/nafa-urbach-diburu-pinjol/",
+      "snippet": "",
+      "scraped_at": 1782323403.3677266
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "utang pinjol",
+      "title": "Gen Z Wajib Tahu! 5 Aturan Ini Bisa Bantu Kamu Tetap Cuan Meskipun Boros Jajan",
+      "url": "https://www.hipwee.com/list/gen-z/",
+      "snippet": "",
+      "scraped_at": 1782323403.3677266
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "denda telat bayar",
+      "title": "Tips dan Cara Bayar Tagihan Listrik PLN, Supaya Tidak Kena Denda",
+      "url": "https://www.hipwee.com/tips/cara-bayar-listrik-pln-supaya-tidak-kena-denda/",
+      "snippet": "",
+      "scraped_at": 1782323410.1446538
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "denda telat bayar",
+      "title": "Besaran Denda Bagi Kamu yang Telat Lapor Pajak Tahunan",
+      "url": "https://www.hipwee.com/feature/denda-telat-lapor-pajak/",
+      "snippet": "",
+      "scraped_at": 1782323410.1446538
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "denda telat bayar",
+      "title": "Telat Gajian Bukan Kiamat! Gunakan 8 Siasat Cerdas Ini Biar Kamu Tetap Bisa Bertahan Hidup",
+      "url": "https://www.hipwee.com/hiburan/cowok/8-hal-yang-harus-kamu-lakukan-saat-telat-gajian-biar-sejahtera-dan-nggak-hanya-meratapi-nasib/",
+      "snippet": "",
+      "scraped_at": 1782323410.1446538
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "denda telat bayar",
+      "title": "50+ Caption Hari Buruh Internasional yang Memantik Rasa Semangat Serikat Pekerja",
+      "url": "https://www.hipwee.com/motivasi/caption-hari-buruh-internasional/",
+      "snippet": "",
+      "scraped_at": 1782323410.1446538
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "denda telat bayar",
+      "title": "5 Kalimat untuk Menolak Permintaan Teman yang Ingin Berutang",
+      "url": "https://www.hipwee.com/tips/5-kalimat-yang-bisa-kamu-gunakan-untuk-menolak-permintaan-teman-yang-ingin-berhutang/",
+      "snippet": "",
+      "scraped_at": 1782323410.1446538
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "denda telat bayar",
+      "title": "Cara Menabung Emas di Pegadaian yang Praktis dan Menguntungkan. Bisa Pakai ATM untuk Setoran",
+      "url": "https://www.hipwee.com/sukses/cara-menabung-emas-di-pegadaian/",
+      "snippet": "",
+      "scraped_at": 1782323410.1446538
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "denda telat bayar",
+      "title": "Putrinya Diguyur Air Hingga Dijambak, Jevier Justin Pilih Mengampuni Pengasuh dan Tak Perpanjang Masalah",
+      "url": "https://www.hipwee.com/showbiz/anak-jevier-justin-dianiaya-pengasuh/",
+      "snippet": "",
+      "scraped_at": 1782323410.1446538
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "denda telat bayar",
+      "title": "Kabar Anggaran Pakaian Dinas DPRD Tangerang Pakai Bahan Louis Vuitton, Pantas Warganet pada Marah~",
+      "url": "https://www.hipwee.com/hiburan/pakaian-dinas-dprd-tangerang/",
+      "snippet": "",
+      "scraped_at": 1782323410.1446538
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "denda telat bayar",
+      "title": "5 Vending Machine Nyeleneh yang Pernah Ada. Mulai dari Payung sampai Sandal Jepit!",
+      "url": "https://www.hipwee.com/list/5-produk-vending-machine-unik/",
+      "snippet": "",
+      "scraped_at": 1782323410.1446538
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar hutang",
+      "title": "8 Ragam Rasa Saat Orang Nggak Enakan Menagih Hutang. Antara Geregetan tapi Sungkan",
+      "url": "https://www.hipwee.com/motivasi/giliran-ditagih-malah-menghindar-inilah-8-ragam-rasa-saat-orang-nggak-enakan-mau-nagih-hutang/",
+      "snippet": "",
+      "scraped_at": 1782323416.7666311
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar hutang",
+      "title": "Suami Bejat Gadaikan Istri 250 Juta Cuma Buat Judi. Gagal Tebus Istri, Ia Malah Salah Bunuh Orang",
+      "url": "https://www.hipwee.com/feature/gadaikan-istri/",
+      "snippet": "",
+      "scraped_at": 1782323416.7666311
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar hutang",
+      "title": "Kelak Kalau Kamu Terlilit Hutang, Bayar dan Selesaikan Pakai Cara 'Bodoh' Tapi Manjur Ini",
+      "url": "https://www.hipwee.com/list/kelak-kalau-kamu-terlilit-hutang-bayar-dan-selesaikan-pakai-cara-bodoh-tapi-manjur-ini/",
+      "snippet": "",
+      "scraped_at": 1782323416.7666311
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar hutang",
+      "title": "Dari Nenggak Micin Sampai Bakar Ijazah, Ini Lho 10 Kelakuan Kids Zaman Now yang Bikin Gagal Paham!",
+      "url": "https://www.hipwee.com/hiburan/dari-nenggak-micin-sampai-bakar-ijazah-ini-lho-10-kelakuan-kids-zaman-now-yang-bikin-gagal-paham/",
+      "snippet": "",
+      "scraped_at": 1782323416.7666311
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar hutang",
+      "title": "Nggak Bisa Bayar Ganti Rugi, Cowok Ganteng Ini Rela Dilelang dengan Status ‘In Stock’ di Toko Online",
+      "url": "https://www.hipwee.com/hiburan/nggak-bisa-bayar-ganti-rugi-cowok-ganteng-ini-rela-dilelang-dengan-status-in-stock-di-toko-online/",
+      "snippet": "",
+      "scraped_at": 1782323416.7666311
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar hutang",
+      "title": "6 Tips Hemat yang Katanya Bikin Untung Tapi Malah Nguras Banyak Uang. Mungkin Kamu Nggak Sadar",
+      "url": "https://www.hipwee.com/tips/tips-hemat-yang-keliru/",
+      "snippet": "",
+      "scraped_at": 1782323416.7666311
+    },
+    {
+      "source": "blog_id",
+      "blog": "hipwee",
+      "query": "gagal bayar hutang",
+      "title": "Usahamu Tak Pernah Sia-sia Walaupun Hasilnya Tak Sesuai Keinginanmu",
+      "url": "https://www.hipwee.com/narasi/usahamu-tak-pernah-sia-sia-walaupun-hasilnya-tak-sesuai-keinginanmu/",
+      "snippet": "",
+      "scraped_at": 1782323416.7666311
+    },
+    {
+      "source": "blog_id",
+      "blog": "cnbc",
+      "query": "paylater indonesia",
+      "title": "Addas a preferredsource on Google",
+      "url": "https://www.cnbcindonesia.com/outboundlinks?url=https://www.google.com/preferences/source?q=https://www.cnbcindonesia.com",
+      "snippet": "",
+      "scraped_at": 1782323599.0749168
+    },
+    {
+      "source": "blog_id",
+      "blog": "cnbc",
+      "query": "paylater indonesia",
+      "title": "CNBC Indonesia My Investment",
+      "url": "https://www.cnbcindonesia.com/cnbc-myinvestment",
+      "snippet": "",
+      "scraped_at": 1782323599.0749168
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "paylater indonesia",
+      "title": "Kehidupan sehat dan sejahtera",
+      "url": "https://lestari.kompas.com/tujuan/kehidupan-sehat-dan-sejahtera",
+      "snippet": "",
+      "scraped_at": 1782323642.3402216
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "paylater indonesia",
+      "title": "Air bersih dan sanitasi layak",
+      "url": "https://lestari.kompas.com/tujuan/air-bersih-dan-sanitasi-layak",
+      "snippet": "",
+      "scraped_at": 1782323642.3402216
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "paylater indonesia",
+      "title": "Energi Bersih dan Terjangkau",
+      "url": "https://lestari.kompas.com/tujuan/energi-bersih-dan-terjangkau",
+      "snippet": "",
+      "scraped_at": 1782323642.3402216
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "paylater indonesia",
+      "title": "Penanganan Perubahan Iklim",
+      "url": "https://lestari.kompas.com/tujuan/penanganan-perubahan-iklim",
+      "snippet": "",
+      "scraped_at": 1782323642.3402216
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "paylater indonesia",
+      "title": "Pekerjaan Layak dan Pertumbuhan ekonomi",
+      "url": "https://lestari.kompas.com/tujuan/pekerjaan-layak-dan-pertumbuhan-ekonomi",
+      "snippet": "",
+      "scraped_at": 1782323642.3402216
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "paylater indonesia",
+      "title": "Industri, Inovasi & Infrastruktur",
+      "url": "https://lestari.kompas.com/tujuan/industri-inovasi-dan-infrastruktur",
+      "snippet": "",
+      "scraped_at": 1782323642.3402216
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "paylater indonesia",
+      "title": "Kota & Pemukiman yang Berkelanjutan",
+      "url": "https://lestari.kompas.com/tujuan/kota-dan-pemukiman-yang-berkelanjutan",
+      "snippet": "",
+      "scraped_at": 1782323642.3402216
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "paylater indonesia",
+      "title": "Konsumsi & Produksi yang bertanggungjawab",
+      "url": "https://lestari.kompas.com/tujuan/konsumsi-dan-produksi-yang-bertanggungjawab",
+      "snippet": "",
+      "scraped_at": 1782323642.3402216
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "paylater indonesia",
+      "title": "Korban Jambret di Benhil Rugi Rp 19 Juta, Termasuk Limit Paylater yang Dikuras PelakuNews19 Juni 2026Video penjambretan HP viral di Benhil, Jakarta Pusat. Korban rugi Rp 19 juta akibat Paylater dikura",
+      "url": "https://megapolitan.kompas.com/read/2026/06/19/21471461/korban-jambret-di-benhil-rugi-rp-19-juta-termasuk-limit-paylater-yang",
+      "snippet": "",
+      "scraped_at": 1782323642.3402216
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "paylater indonesia",
+      "title": "Indonesia First Vs Sell IndonesiaNews23 Juni 2026Kebijakan \"Indonesia First\" mengubah banyak hal. Tidak mengherankan apabila muncul berbagai resistensi.",
+      "url": "https://nasional.kompas.com/read/2026/06/23/08250091/indonesia-first-vs-sell-indonesia",
+      "snippet": "",
+      "scraped_at": 1782323642.3402216
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "pinjol indonesia",
+      "title": "Survei: Gen Milenial Paling Banyak Gunakan Pinjol Dibandingkan Generasi LainTren18 Juni 2026Survei APJII mengungkapkan Gen Milenial menjadi generasi yang paling banyak menggunakan pinjol dibandingkan ",
+      "url": "https://www.kompas.com/tren/read/2026/06/18/140000965/survei--gen-milenial-paling-banyak-gunakan-pinjol-dibandingkan-generasi",
+      "snippet": "",
+      "scraped_at": 1782323644.013641
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "pinjol indonesia",
+      "title": "Baznas Kaji Zakat Bantu Korban Pinjol Ilegal dan \"Human Trafficking\"Cahaya21 Juni 2026Baznas RI mengkaji ulang asnaf riqab agar dana zakat dapat membantu korban human trafficking hingga korban pinjol ",
+      "url": "https://cahaya.kompas.com/aktual/26F21213753090/baznas-kaji-zakat-bantu-korban-pinjol-ilegal-dan-human-trafficking",
+      "snippet": "",
+      "scraped_at": 1782323644.013641
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "gagal bayar",
+      "title": "Bagaimana BPJS Kesehatan Menghadapi Ancaman Gagal Bayar?News10 Juni 2026Ancaman gagal bayar menghantui BPJS Kesehatan jika tidak ada perbaikan hingga Juli 2027, mengingat defisit Rp 2 triliun yang dih",
+      "url": "https://nasional.kompas.com/read/2026/06/10/08233171/bagaimana-bpjs-kesehatan-menghadapi-ancaman-gagal-bayar",
+      "snippet": "",
+      "scraped_at": 1782323645.6566575
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "gagal bayar",
+      "title": "Defisit JKN: Memastikan Tidak Terjadi Gagal Bayar KlaimNews14 Juni 2026Defisit JKN sudah dapat dihitung. Maka yang kita perlukan bukan kepanikan, bukan saling tuding, dan bukan pura-pura kaget.",
+      "url": "https://nasional.kompas.com/read/2026/06/14/12300041/defisit-jkn--memastikan-tidak-terjadi-gagal-bayar-klaim",
+      "snippet": "",
+      "scraped_at": 1782323645.6566575
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "tips bayar paylater",
+      "title": "Prabowo: Hati-hati! Saya Tahu Siapa yang Bayar-bayar DemoNews24 Juni 2026Presiden RI Prabowo Subianto memperingatkan pihak-pihak yang mendanai demonstrasi karena Prabowo mengaku sudah tahu identitas s",
+      "url": "https://nasional.kompas.com/read/2026/06/24/12015271/prabowo-hati-hati-saya-tahu-siapa-yang-bayar-bayar-demo",
+      "snippet": "",
+      "scraped_at": 1782323647.330956
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "bahaya pinjol",
+      "title": "Bahaya Ikutan Pasca-Kenaikan BI RateMoney10 Juni 2026Kenaikan suku bunga terjadi ketika sektor pembiayaan menunjukkan tanda-tanda perlambatan.",
+      "url": "https://money.kompas.com/read/2026/06/10/062500326/bahaya-ikutan-pasca-kenaikan-bi-rate",
+      "snippet": "",
+      "scraped_at": 1782323649.1124587
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "financial behavior gen z",
+      "title": "Gambang Kromong Tetap Bergema di Tangan Gen ZNews8 Juni 2026Di tengah gempuran musik modern, generasi Z di Jakarta dengan gigih melestarikan gambang kromong. Mereka berinovasi, menjaga warisan Betawi ",
+      "url": "https://megapolitan.kompas.com/read/2026/06/08/05275501/gambang-kromong-tetap-bergema-di-tangan-gen-z",
+      "snippet": "",
+      "scraped_at": 1782323650.7569368
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "financial behavior gen z",
+      "title": "Jeritan Para Gen Z dari Antrean Job Fair...News5 Juni 2026Di balik ramainya Jakarta Job Fair 2026, tersimpan kisah pencari kerja yang mengirim ratusan lamaran tanpa jawaban.",
+      "url": "https://megapolitan.kompas.com/read/2026/06/05/10161181/jeritan-para-gen-z-dari-antrean-job-fair",
+      "snippet": "",
+      "scraped_at": 1782323650.7569368
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "cicilan online",
+      "title": "Apa Kabar Program Cicilan KPR 40 Tahun?Properti15 Juni 2026Bagaimana update terbaru program cicilan KPR 40 tahun yang diwacanakan Presiden Prabowo?",
+      "url": "https://www.kompas.com/properti/read/2026/06/15/085651521/apa-kabar-program-cicilan-kpr-40-tahun",
+      "snippet": "",
+      "scraped_at": 1782323652.3078613
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "cicilan online",
+      "title": "Apa Kabar Wacana Cicilan KPR 40 Tahun?Properti10 Juni 2026Wacana pemberian tenor atau jangka waktu Kredit Pemilikan Rumah (KPR) hingga 40 tahun masih terus dimatangkan pemerintah.",
+      "url": "https://www.kompas.com/properti/read/2026/06/10/094130021/apa-kabar-wacana-cicilan-kpr-40-tahun",
+      "snippet": "",
+      "scraped_at": 1782323652.3078613
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "utang online",
+      "title": "Guru ASN di Baubau Curhat Tak Digaji 6 Tahun, Terpaksa Utang hingga Jualan OnlineRegional23 Juni 2026Hasrianti, seorang guru ASN di Baubau mengaku tidak menerima gaji selama 6 tahun. Ia terpaksa utang",
+      "url": "https://regional.kompas.com/read/2026/06/23/153415578/guru-asn-di-baubau-curhat-tak-digaji-6-tahun-terpaksa-utang-hingga-jualan",
+      "snippet": "",
+      "scraped_at": 1782323653.8742957
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "utang online",
+      "title": "Berburu UtangMoney7 Juni 2026Pemerintah tidak sekadar melakukan diplomasi ekonomi, tetapi memastikan kebutuhan pembiayaan APBN tetap terpenuhi di tengah pasar global semakin kuat.",
+      "url": "https://money.kompas.com/read/2026/06/07/144500926/berburu-utang",
+      "snippet": "",
+      "scraped_at": 1782323653.8742957
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "kredit tanpa kartu kredit",
+      "title": "BI Perpanjang Relaksasi Kartu Kredit hingga Akhir 2026Money19 Juni 2026BI kembali memperpanjang kebijakan relaksasi kartu kredit yang seharusnya berakhir pada 30 Juni 2026 menjadi berlaku hingga 31 De",
+      "url": "https://money.kompas.com/read/2026/06/19/093016126/bi-perpanjang-relaksasi-kartu-kredit-hingga-akhir-2026",
+      "snippet": "",
+      "scraped_at": 1782323655.548727
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "kredit tanpa kartu kredit",
+      "title": "MNC Bank (BABP) Masuk Ekosistem Ritel Lewat Kartu Kredit MODENA PayMoney15 Juni 2026MNC Bank meluncurkan MODENA Pay di tengah pertumbuhan transaksi kartu kredit yang masih berlanjut pada awal 2026.",
+      "url": "https://money.kompas.com/read/2026/06/15/160030626/mnc-bank-babp-masuk-ekosistem-ritel-lewat-kartu-kredit-modena-pay",
+      "snippet": "",
+      "scraped_at": 1782323655.548727
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "galbay",
+      "title": "Fraksi Gerindra Bela Gibran soal Pengakuan Mahasiswa UBK Terima Rp 20 JutaNews24 Juni 2026",
+      "url": "https://nasional.kompas.com/read/2026/06/24/17371481/fraksi-gerindra-bela-gibran-soal-pengakuan-mahasiswa-ubk-terima-rp-20-juta",
+      "snippet": "",
+      "scraped_at": 1782323657.0977366
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "galbay",
+      "title": "Francesco Bagnaia Resmi Tinggalkan DucatiOtomotif24 Juni 2026",
+      "url": "https://otomotif.kompas.com/read/2026/06/24/174449315/francesco-bagnaia-resmi-tinggalkan-ducati",
+      "snippet": "",
+      "scraped_at": 1782323657.0977366
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "debt collector",
+      "title": "Kronologi Keluarga Asal Temanggung Dicegat Debt Collector di SemarangRegional29 Mei 2026“Menggebrak mobil, memukul HP saya dan memaksa kunci mobil yang kami tahan,” bebernya perihal perlakuan kasar.",
+      "url": "https://regional.kompas.com/read/2026/05/29/072848478/kronologi-keluarga-asal-temanggung-dicegat-debt-collector-di-semarang",
+      "snippet": "",
+      "scraped_at": 1782323658.7628105
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "debt collector",
+      "title": "Kronologi Dua Anggota Brimob Banten Dikeroyok 11 Debt CollectorRegional4 Juni 2026Dua anggota Brimob Polda Banten jadi korban pengeroyokan 11 debt collector di Serang. Kasus berawal dari penarikan mob",
+      "url": "https://regional.kompas.com/read/2026/06/04/134318078/kronologi-dua-anggota-brimob-banten-dikeroyok-11-debt-collector",
+      "snippet": "",
+      "scraped_at": 1782323658.7628105
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "self reward",
+      "title": "Perbedaan Karoseri Truk: Self Loader dan TowingOtomotif9 Juni 2026Punya visual dan tugas yang sama sebagai alat pengangkut kendaraan, truk towing dan self loader ternyata punya peran yang berbeda.",
+      "url": "https://otomotif.kompas.com/read/2026/06/09/094200615/perbedaan-karoseri-truk--self-loader-dan-towing",
+      "snippet": "",
+      "scraped_at": 1782323662.0700874
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "checkout bayar nanti",
+      "title": "Kronologi Satu Keluarga Tewas dalam Tenda di Temanggung, Dipanggil Checkout Tak Ada JawabanRegional28 Mei 2026Satu keluarga ditemukan tewas dalam tenda camping di Temanggung setelah tak merespons saat",
+      "url": "https://regional.kompas.com/read/2026/05/28/134933078/kronologi-satu-keluarga-tewas-dalam-tenda-di-temanggung-dipanggil-checkout",
+      "snippet": "",
+      "scraped_at": 1782323663.7275052
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "pinjol ilegal",
+      "title": "Perangi Jeratan Pinjol Ilegal dan Judi Online, Jateng Perkuat Literasi Keuangan hingga DesaRegional18 Juni 2026Jateng perkuat literasi dan inklusi keuangan lewat TPAKD untuk lindungi masyarakat dari p",
+      "url": "https://regional.kompas.com/read/2026/06/18/201826978/perangi-jeratan-pinjol-ilegal-dan-judi-online-jateng-perkuat-literasi",
+      "snippet": "",
+      "scraped_at": 1782323665.3765326
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "pinjol legal",
+      "title": "Banyak Pedagang Belum Bisa Bedakan Rokok Legal dan IlegalMoney8 Juni 2026BPOM menyebut banyak pedagang ritel belum mampu membedakan rokok legal dan ilegal. Temuan itu muncul dari pengawasan di daerah.",
+      "url": "https://money.kompas.com/read/2026/06/08/073749826/banyak-pedagang-belum-bisa-bedakan-rokok-legal-dan-ilegal",
+      "snippet": "",
+      "scraped_at": 1782323666.9122243
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "pinjol legal",
+      "title": "Jangan Sampai Tertipu, Dokter Beberkan Cara Membedakan Jamu Legal dan IlegalLifestyle17 Juni 2026Sebelum membeli atau mengonsumsi jamu, dokter mengingatkan masyarakat untuk selalu memeriksa nomor BPOM",
+      "url": "https://lifestyle.kompas.com/read/2026/06/17/193300520/jangan-sampai-tertipu-dokter-beberkan-cara-membedakan-jamu-legal-dan",
+      "snippet": "",
+      "scraped_at": 1782323666.9122243
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "bunga tinggi",
+      "title": "Ketika Bunga Tinggi Tak Lagi Meyakinkan PasarMoney10 Juni 2026Akar masalah yang tak akan tuntas dengan menaikkan BI Rate: kebijakan moneter yang diperketat, sementara kebijakan fiskal terus berekspans",
+      "url": "https://money.kompas.com/read/2026/06/10/073500526/ketika-bunga-tinggi-tak-lagi-meyakinkan-pasar",
+      "snippet": "",
+      "scraped_at": 1782323668.4447808
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "bunga tinggi",
+      "title": "Inflasi AS Masih Tinggi, Warsh Sulit Buka Ruang Pemangkasan Suku BungaMoney17 Juni 2026Kevin Warsh akan memimpin rapat pertama The Fed saat pasar menunggu arah suku bunga AS di tengah inflasi tinggi.",
+      "url": "https://money.kompas.com/read/2026/06/17/184629226/inflasi-as-masih-tinggi-warsh-sulit-buka-ruang-pemangkasan-suku-bunga",
+      "snippet": "",
+      "scraped_at": 1782323668.4447808
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "restrukturisasi",
+      "title": "RUPST Telkom Rombak Dewan Komisaris, Pengamat: Bisa Dorong Restrukturisasi dan Transformasi Digital Makin CepatMoney9 Juni 2026Telkom mengangkat Edwin Hidayat Abdullah sebagai Komisaris dan Anthony Le",
+      "url": "https://money.kompas.com/read/2026/06/09/122900326/rupst-telkom-rombak-dewan-komisaris-pengamat-bisa-dorong-restrukturisasi-dan",
+      "snippet": "",
+      "scraped_at": 1782323670.0469701
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "konsolidasi utang",
+      "title": "IFG Rancang Konsolidasi Asuransi BUMN, OJK Kawal ProsesnyaMoney6 Juni 2026IFG telah menyampaikan rencana konsolidasi BUMN asuransi dan penjaminan. OJK memastikan prosesnya berjalan terukur.",
+      "url": "https://money.kompas.com/read/2026/06/06/151500526/ifg-rancang-konsolidasi-asuransi-bumn-ojk-kawal-prosesnya",
+      "snippet": "",
+      "scraped_at": 1782323671.5573583
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "gali lubang tutup lubang",
+      "title": "Polisi: Hanania Travel Bermasalah Sejak 2023, Gali Lubang Tutup LubangNews18 Juni 2026Polisi mengungkapkan persoalan keuangan Hanania Travel sudah muncul sejak 2023. Masalah itu disikapi dengan cara \"",
+      "url": "https://nasional.kompas.com/read/2026/06/18/15321861/polisi-hanania-travel-bermasalah-sejak-2023-gali-lubang-tutup-lubang",
+      "snippet": "",
+      "scraped_at": 1782323673.2918286
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "gali lubang tutup lubang",
+      "title": "Skema Gali Lubang Tutup Lubang ala Hanania Travel yang Terungkap di DPRNews18 Juni 2026Dengan skema tersebut, Hanania Travel memberangkatkan calon jemaah umrah lama dengan uang dari calon jemaah yang ",
+      "url": "https://nasional.kompas.com/read/2026/06/18/18564711/skema-gali-lubang-tutup-lubang-ala-hanania-travel-yang-terungkap-di-dpr",
+      "snippet": "",
+      "scraped_at": 1782323673.2918286
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "tips keuangan gen z",
+      "title": "Komunitas Esports Jadi Target Literasi Keuangan untuk Gen ZMoney18 Juni 2026Tingkat inklusi keuangan generasi muda di Indonesia terus meningkat.",
+      "url": "https://money.kompas.com/read/2026/06/18/205349526/komunitas-esports-jadi-target-literasi-keuangan-untuk-gen-z",
+      "snippet": "",
+      "scraped_at": 1782323675.2079084
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "financial freedom",
+      "title": "Kasus Debt Collector di Serang, OJK Panggil Toyota Astra Financial ServicesMoney10 Juni 2026OJK panggil PT Toyota Astra Financial Services (TAFS) terkait dugaan pelanggaran penagihan kredit di Serang.",
+      "url": "https://money.kompas.com/read/2026/06/10/072000126/kasus-debt-collector-di-serang-ojk-panggil-toyota-astra-financial-services",
+      "snippet": "",
+      "scraped_at": 1782323678.2433949
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "financial freedom",
+      "title": "Harga Emas Turun saat Rupiah Melemah, Jadi Momen Tepat untuk Beli? Ini Kata Financial PlannerTren9 Juni 2026Di tengah rupiah yang terpuruk dan harga emas yang turun, apakah sekarang menjadi waktu yang",
+      "url": "https://www.kompas.com/tren/read/2026/06/09/063500165/harga-emas-turun-saat-rupiah-melemah-jadi-momen-tepat-untuk-beli-ini-kata",
+      "snippet": "",
+      "scraped_at": 1782323678.2433949
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "literasi keuangan",
+      "title": "Akses Keuangan Meluas, Literasi Pelajar Masih TertinggalMoney15 Juni 2026Inklusi keuangan pelajar naik pesat, tetapi kemampuan mengelola keuangan belum tumbuh secepat akses layanan keuangan.",
+      "url": "https://money.kompas.com/read/2026/06/15/152156626/akses-keuangan-meluas-literasi-pelajar-masih-tertinggal",
+      "snippet": "",
+      "scraped_at": 1782323679.956384
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "literasi keuangan",
+      "title": "Mahasiswa Rentan FOMO dan Impulsif, Literasi Keuangan Kian PentingMoney24 Juni 2026Kemampuan mengelola keuangan menjadi salah satu keterampilan penting yang perlu dimiliki generasi muda, khususnya mah",
+      "url": "https://money.kompas.com/read/2026/06/24/200852026/mahasiswa-rentan-fomo-dan-impulsif-literasi-keuangan-kian-penting",
+      "snippet": "",
+      "scraped_at": 1782323679.956384
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "tagihan paylater",
+      "title": "PLN Ungkap Penyebab Tagihan Listrik Sejumlah Pelanggan MelonjakMoney2 Juni 2026PLN menegaskan tarif listrik tidak naik meski sebagian pelanggan mengeluhkan tagihan melonjak di media sosial.",
+      "url": "https://money.kompas.com/read/2026/06/02/154301726/pln-ungkap-penyebab-tagihan-listrik-sejumlah-pelanggan-melonjak",
+      "snippet": "",
+      "scraped_at": 1782323681.4932384
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "tagihan paylater",
+      "title": "Cara Cek Tagihan dan Riwayat Pemakaian Listrik Lewat HpTren15 Juni 2026Kaget tagihan listrik mahal? Pelanggan dapat mengecek riwayat pemakaian listrik lewat aplikasi di Hp.",
+      "url": "https://www.kompas.com/tren/read/2026/06/15/170000565/-cara-cek-tagihan-dan-riwayat-pemakaian-listrik-lewat-hp",
+      "snippet": "",
+      "scraped_at": 1782323681.4932384
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "beli sekarang bayar nanti",
+      "title": "Barcelona Disebut Tak Mau Bayar Klausul Opsi Beli Marcus RashfordBola11 Juni 2026Marcus Rashford disebut mulai mendapatkan kejelasan terkait masa depannya di Barcelona.",
+      "url": "https://bola.kompas.com/read/2026/06/11/16031048/barcelona-disebut-tak-mau-bayar-klausul-opsi-beli-marcus-rashford",
+      "snippet": "",
+      "scraped_at": 1782323683.8807554
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "beli sekarang bayar nanti",
+      "title": "Kasus Beli Pertalite 25 Liter Pakai Jeriken Tak Didenda, Terdakwa Hanya Bayar Biaya Perkara Rp 5.000Regional15 Juni 2026Kasus jual beli pertalite 25 liter pakai jeriken di Medan berujung tak didenda, ",
+      "url": "https://medan.kompas.com/read/2026/06/15/211223078/kasus-beli-pertalite-25-liter-pakai-jeriken-tak-didenda-terdakwa-hanya-bayar",
+      "snippet": "",
+      "scraped_at": 1782323683.8807554
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "utang pinjol",
+      "title": "OJK Dalami Modus Jasa Penyelesaian Utang Pinjol yang Catut Nama RegulatorMoney25 Mei 2026OJK mendalami entitas yang menawarkan jasa penyelesaian utang pinjol dan meminta biaya kepada masyarakat.",
+      "url": "https://money.kompas.com/read/2026/05/25/063100026/ojk-dalami-modus-jasa-penyelesaian-utang-pinjol-yang-catut-nama-regulator",
+      "snippet": "",
+      "scraped_at": 1782323687.1537654
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "utang pinjol",
+      "title": "Mahasiswi di Majalengka Kaget Punya Utang Pinjol Rp 28 Juta, Ternyata Ulah PacarnyaRegional5 Juni 2026Seorang mahasiswi baru mengetahui memiliki utang pinjol Rp 28 juta saat mengecek tagihan. Polisi m",
+      "url": "https://bandung.kompas.com/read/2026/06/05/113852378/mahasiswi-di-majalengka-kaget-punya-utang-pinjol-rp-28-juta-ternyata-ulah",
+      "snippet": "",
+      "scraped_at": 1782323687.1537654
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "denda telat bayar",
+      "title": "Paspor Dicap Sembarangan Saat Wisata, Siap-siap Bayar DendaTravel4 Juni 2026Tindakan yang dianggap merusak dokumen perjalanan tersebut bisa berujung pada penggantian paspor baru dan denda hingga Rp 50",
+      "url": "https://travel.kompas.com/read/2026/06/04/100000627/paspor-dicap-sembarangan-saat-wisata-siap-siap-bayar-denda",
+      "snippet": "",
+      "scraped_at": 1782323688.8453732
+    },
+    {
+      "source": "blog_id",
+      "blog": "kompas",
+      "query": "denda telat bayar",
+      "title": "Pemkab Kudus Bebaskan Denda PBB Sampai Agustus 2026, Cukup Bayar Pokok PajakRegional4 Juni 2026Pemkab Kudus menghapus denda tunggakan PBB hingga 31 Agustus 2026. Warga cukup melunasi pokok pajak tanpa",
+      "url": "https://regional.kompas.com/read/2026/06/04/192800578/pemkab-kudus-bebaskan-denda-pbb-sampai-agustus-2026-cukup-bayar-pokok-pajak",
+      "snippet": "",
+      "scraped_at": 1782323688.8453732
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Breakfast Mewah di Trans Luxury Hotel Surabaya Promo Sampai Agustus",
+      "url": "https://www.detik.com/jatim/kuliner/d-8543996/breakfast-mewah-di-trans-luxury-hotel-surabaya-promo-sampai-agustus",
+      "snippet": "",
+      "scraped_at": 1782323692.1386366
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "The Pinnacles Desert: Batu-Batu Aneh di Tengah Gurun, Vibenya Seperti Planet Lain",
+      "url": "https://travel.detik.com/international-destination/d-8539879/the-pinnacles-desert-batu-batu-aneh-di-tengah-gurun-vibenya-seperti-planet-lain",
+      "snippet": "",
+      "scraped_at": 1782323692.1386366
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "HP Pria di Jakpus Dijambret saat Tunggu Taksi Online, Limit Paylater Dikuras",
+      "url": "https://news.detik.com/berita/d-8538963/hp-pria-di-jakpus-dijambret-saat-tunggu-taksi-online-limit-paylater-dikuras",
+      "snippet": "",
+      "scraped_at": 1782323692.1386366
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Puas Nonton Film di Akhir Pekan, Apalagi Ada Diskon",
+      "url": "https://inet.detik.com/mobile-apps/d-8538002/puas-nonton-film-di-akhir-pekan-apalagi-ada-diskon",
+      "snippet": "",
+      "scraped_at": 1782323692.1386366
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Sourdough Makin Naik Kelas, Kini Hadir dalam Bentuk Croissant Flaky",
+      "url": "https://food.detik.com/berita-boga/d-8537169/sourdough-makin-naik-kelas-kini-hadir-dalam-bentuk-croissant-flaky",
+      "snippet": "",
+      "scraped_at": 1782323692.1386366
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Surabaya Kini Punya Beach Club Tertinggi di Indonesia, Ada di Hotel Mewah Baru Ini",
+      "url": "https://travel.detik.com/travel-news/d-8537842/surabaya-kini-punya-beach-club-tertinggi-di-indonesia-ada-di-hotel-mewah-baru-ini",
+      "snippet": "",
+      "scraped_at": 1782323692.1386366
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Minat Belanja dengan Paylater Tumbuh Pesat",
+      "url": "https://finance.detik.com/foto-bisnis/d-7410204/minat-belanja-dengan-paylater-tumbuh-pesat",
+      "snippet": "",
+      "scraped_at": 1782323692.1386366
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Trans Luxury Hotel Surabaya Harga Spesial Rp 999 Ribu, Berlaku Sampai 19 Juni",
+      "url": "https://travel.detik.com/travel-news/d-8534782/trans-luxury-hotel-surabaya-harga-spesial-rp-999-ribu-berlaku-sampai-19-juni",
+      "snippet": "",
+      "scraped_at": 1782323692.1386366
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Sarapan Sultan di Trans Luxury Hotel Surabaya, Promo hingga 19 Juni",
+      "url": "https://www.detik.com/jatim/kuliner/d-8533052/sarapan-sultan-di-trans-luxury-hotel-surabaya-promo-hingga-19-juni",
+      "snippet": "",
+      "scraped_at": 1782323692.1386366
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "paylater indonesia",
+      "title": "Liburan Tanpa Keluar Kota? Coba Staycation Mewah di The Trans Luxury Hotel Surabaya",
+      "url": "https://travel.detik.com/travel-news/d-8533661/liburan-tanpa-keluar-kota-coba-staycation-mewah-di-the-trans-luxury-hotel-surabaya",
+      "snippet": "",
+      "scraped_at": 1782323692.1386366
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Iuran KIP Digelapkan Mahasiswi Unair Juga Dipakai Buat Lunasi Pinjol",
+      "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8537072/iuran-kip-digelapkan-mahasiswi-unair-juga-dipakai-buat-lunasi-pinjol",
+      "snippet": "",
+      "scraped_at": 1782323693.8200376
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Diduga Penipuan-Tawarkan Jasa Galbay Pinjol, Operasional 2 Perusahaan Disetop!",
+      "url": "https://finance.detik.com/moneter/d-8536384/diduga-penipuan-tawarkan-jasa-galbay-pinjol-operasional-2-perusahaan-disetop",
+      "snippet": "",
+      "scraped_at": 1782323693.8200376
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Kenaikan BI Rate Bisa Bikin Kelas Menengah Tunda Beli Rumah dan Motor",
+      "url": "https://finance.detik.com/moneter/d-8524943/kenaikan-bi-rate-bisa-bikin-kelas-menengah-tunda-beli-rumah-dan-motor",
+      "snippet": "",
+      "scraped_at": 1782323693.8200376
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Rekening Aktif Pinjol Indonesia Tembus 17 Juta Akun, Jawa Terbanyak",
+      "url": "https://20.detik.com/detikupdate/20230724-230724044/rekening-aktif-pinjol-indonesia-tembus-17-juta-akun-jawa-terbanyak",
+      "snippet": "",
+      "scraped_at": 1782323693.8200376
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "BI Rate Naik, Siap-siap Cicilan KPR dan Pinjol Ikut Membengkak!",
+      "url": "https://finance.detik.com/moneter/d-8524901/bi-rate-naik-siap-siap-cicilan-kpr-dan-pinjol-ikut-membengkak",
+      "snippet": "",
+      "scraped_at": 1782323693.8200376
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "951 Entitas Pinjol-Investasi Bodong Disetop, Ini 5 Modusnya",
+      "url": "https://finance.detik.com/moneter/d-8505968/951-entitas-pinjol-investasi-bodong-disetop-ini-5-modusnya",
+      "snippet": "",
+      "scraped_at": 1782323693.8200376
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Bos LPS: Uang Tumbuh Lebih Cepat dari Literasi Masyarakat",
+      "url": "https://finance.detik.com/moneter/d-8499648/bos-lps-uang-tumbuh-lebih-cepat-dari-literasi-masyarakat",
+      "snippet": "",
+      "scraped_at": 1782323693.8200376
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Ramai Pinjol Ilegal, MUI Haramkan Pinjol Mengandung Riba",
+      "url": "https://finance.detik.com/foto-bisnis/d-5807323/ramai-pinjol-ilegal-mui-haramkan-pinjol-mengandung-riba",
+      "snippet": "",
+      "scraped_at": 1782323693.8200376
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Pemerintah Siapkan Platform biar UMKM Tak Terjerat Pinjol Ilegal",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8498264/pemerintah-siapkan-platform-biar-umkm-tak-terjerat-pinjol-ilegal",
+      "snippet": "",
+      "scraped_at": 1782323693.8200376
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol indonesia",
+      "title": "Dolar Menggila, Program 3 Juta Rumah Prabowo Bisa Kena Imbas",
+      "url": "https://www.detik.com/properti/berita/d-8495991/dolar-menggila-program-3-juta-rumah-prabowo-bisa-kena-imbas",
+      "snippet": "",
+      "scraped_at": 1782323693.8200376
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "5 Fakta KDM Soroti Pemadaman Listrik Bergilir",
+      "url": "https://www.detik.com/jabar/bisnis/d-8544209/5-fakta-kdm-soroti-pemadaman-listrik-bergilir",
+      "snippet": "",
+      "scraped_at": 1782323695.614125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Dulu Tidur Beralas Kardus, Wanita Ini Kini Belikan Orang Tua Rumah Tanpa Utang",
+      "url": "https://wolipop.detik.com/worklife/d-8544102/dulu-tidur-beralas-kardus-wanita-ini-kini-belikan-orang-tua-rumah-tanpa-utang",
+      "snippet": "",
+      "scraped_at": 1782323695.614125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Jabar Hari Ini: Berakhirnya Pelarian Taufik Hidayat",
+      "url": "https://www.detik.com/jabar/berita/d-8544187/jabar-hari-ini-berakhirnya-pelarian-taufik-hidayat",
+      "snippet": "",
+      "scraped_at": 1782323695.614125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Video: Soal Narasi BPJS Kesehatan Bangkrut dan Gagal Bayar di 2025",
+      "url": "https://20.detik.com/detikupdate/20250211-250211088/video-soal-narasi-bpjs-kesehatan-bangkrut-dan-gagal-bayar-di-2025",
+      "snippet": "",
+      "scraped_at": 1782323695.614125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "KDM Soroti PLN soal Mati Lampu Bergilir: Industri-UMKM Jadi Korban",
+      "url": "https://www.detik.com/jabar/bisnis/d-8543604/kdm-soroti-pln-soal-mati-lampu-bergilir-industri-umkm-jadi-korban",
+      "snippet": "",
+      "scraped_at": 1782323695.614125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Duduk Perkara Bos Kresna Life Ditangkap di Maroko Lalu Diekstradisi ke RI",
+      "url": "https://news.detik.com/berita/d-8543047/duduk-perkara-bos-kresna-life-ditangkap-di-maroko-lalu-diekstradisi-ke-ri",
+      "snippet": "",
+      "scraped_at": 1782323695.614125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Polemik Sekolah Swasta Kerja Sama dengan Pemprov Dipastikan Selesai",
+      "url": "https://www.detik.com/jabar/berita/d-8542417/polemik-sekolah-swasta-kerja-sama-dengan-pemprov-dipastikan-selesai",
+      "snippet": "",
+      "scraped_at": 1782323695.614125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Penampakan Proyek Rp 1.500 T Malaysia yang Kini Jadi 'Kota Hantu'",
+      "url": "https://www.detik.com/properti/foto-berita/d-6901404/penampakan-proyek-rp-1-500-t-malaysia-yang-kini-jadi-kota-hantu",
+      "snippet": "",
+      "scraped_at": 1782323695.614125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Bos Kresna Life Michael Steven Diekstradisi ke RI, Begini Penampakannya",
+      "url": "https://news.detik.com/berita/d-8541848/bos-kresna-life-michael-steven-diekstradisi-ke-ri-begini-penampakannya",
+      "snippet": "",
+      "scraped_at": 1782323695.614125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar",
+      "title": "Buron Interpol Bos Kresna Life Michael Steven Ditangkap di Maroko!",
+      "url": "https://news.detik.com/berita/d-8541827/buron-interpol-bos-kresna-life-michael-steven-ditangkap-di-maroko",
+      "snippet": "",
+      "scraped_at": 1782323695.614125
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Sounds of Downtown Siap Guncang Surabaya, War Ticket di Livin' Sukha!",
+      "url": "https://www.detik.com/pop/music/d-7961113/sounds-of-downtown-siap-guncang-surabaya-war-ticket-di-livin-sukha",
+      "snippet": "",
+      "scraped_at": 1782323697.3721619
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Lindungi Data Pribadi, Ini 5 Cara Tingkatkan Keamanan Transaksi Digital",
+      "url": "https://inet.detik.com/security/d-7657112/lindungi-data-pribadi-ini-5-cara-tingkatkan-keamanan-transaksi-digital",
+      "snippet": "",
+      "scraped_at": 1782323697.3721619
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Ingin Liburan di Akhir Tahun? Yuk Simak 5 Cara Atur Uang agar Tetap Aman",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-7645969/ingin-liburan-di-akhir-tahun-yuk-simak-5-cara-atur-uang-agar-tetap-aman",
+      "snippet": "",
+      "scraped_at": 1782323697.3721619
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Simak, 4 Langkah Mudah dalam Mengelola Dana Darurat",
+      "url": "https://finance.detik.com/perencanaan-keuangan/d-7636315/simak-4-langkah-mudah-dalam-mengelola-dana-darurat",
+      "snippet": "",
+      "scraped_at": 1782323697.3721619
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "4 Tips Bijak Pakai Paylater agar Kestabilan Finansial Terjaga",
+      "url": "https://finance.detik.com/fintech/d-7622580/4-tips-bijak-pakai-paylater-agar-kestabilan-finansial-terjaga",
+      "snippet": "",
+      "scraped_at": 1782323697.3721619
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "5 Tips Atur Keuangan Secara Efektif yang Bisa Diterapkan Milenial-Gen Z",
+      "url": "https://finance.detik.com/perencanaan-keuangan/d-7601551/5-tips-atur-keuangan-secara-efektif-yang-bisa-diterapkan-milenial-gen-z",
+      "snippet": "",
+      "scraped_at": 1782323697.3721619
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Serunya Liburan ke LEGOLAND Discovery Centre Hong Kong",
+      "url": "https://travel.detik.com/destination/d-7375553/serunya-liburan-ke-legoland-discovery-centre-hong-kong",
+      "snippet": "",
+      "scraped_at": 1782323697.3721619
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "Pengertian Paylater serta Keuntungan, Risiko, dan Tips Penggunaannya",
+      "url": "https://finance.detik.com/moneter/d-7115719/pengertian-paylater-serta-keuntungan-risiko-dan-tips-penggunaannya",
+      "snippet": "",
+      "scraped_at": 1782323697.3721619
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "6 Tips Belanja Produk Fesyen yang Aman & Bijak Pakai Paylater",
+      "url": "https://finance.detik.com/fintech/d-7043300/6-tips-belanja-produk-fesyen-yang-aman-bijak-pakai-paylater",
+      "snippet": "",
+      "scraped_at": 1782323697.3721619
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips bayar paylater",
+      "title": "3 Tips Jitu Pilih Aplikasi Traveling Bagi Si Paling Workaholic",
+      "url": "https://inet.detik.com/cyberlife/d-6962476/3-tips-jitu-pilih-aplikasi-traveling-bagi-si-paling-workaholic",
+      "snippet": "",
+      "scraped_at": 1782323697.3721619
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Peringati Bulan Bung Karno, Tabanan Gelar Lomba Pramuka hingga Stand Up Comedy",
+      "url": "https://www.detik.com/bali/berita/d-8516902/peringati-bulan-bung-karno-tabanan-gelar-lomba-pramuka-hingga-stand-up-comedy",
+      "snippet": "",
+      "scraped_at": 1782323699.0602548
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "OJK Jateng Sebut Korban Penipuan Keuangan Tak Perlu Lapor Polisi, Ini Alasannya",
+      "url": "https://www.detik.com/jateng/bisnis/d-8475116/ojk-jateng-sebut-korban-penipuan-keuangan-tak-perlu-lapor-polisi-ini-alasannya",
+      "snippet": "",
+      "scraped_at": 1782323699.0602548
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Waspada Pinjol Ilegal! Ini Ciri dan Cara Menghindarinya",
+      "url": "https://www.detik.com/jabar/berita/d-8470154/waspada-pinjol-ilegal-ini-ciri-dan-cara-menghindarinya",
+      "snippet": "",
+      "scraped_at": 1782323699.0602548
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Kenali Bahaya Pinjol Ilegal Iming-iming Tanpa Jaminan, Waspada Bisa Akses Kontak Ponsel",
+      "url": "https://20.detik.com/detik-pagi/20230609-230609085/kenali-bahaya-pinjol-ilegal-iming-iming-tanpa-jaminan-waspada-bisa-akses-kontak-ponsel",
+      "snippet": "",
+      "scraped_at": 1782323699.0602548
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "THR Belum Cair, Boleh Nombok Dulu Pakai Pinjol? Ini Kata Perencana Keuangan",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8383516/thr-belum-cair-boleh-nombok-dulu-pakai-pinjol-ini-kata-perencana-keuangan",
+      "snippet": "",
+      "scraped_at": 1782323699.0602548
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Pesan Tegas Kapolri: Jangan Ragu Pecat Anggota Terlibat Narkoba",
+      "url": "https://news.detik.com/berita/d-8369023/pesan-tegas-kapolri-jangan-ragu-pecat-anggota-terlibat-narkoba",
+      "snippet": "",
+      "scraped_at": 1782323699.0602548
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Doktor UI Ungkap Alasan Orang Suka Ambil Pinjol dan Investasi Bodong",
+      "url": "https://www.detik.com/edu/detikpedia/d-8354529/doktor-ui-ungkap-alasan-orang-suka-ambil-pinjol-dan-investasi-bodong",
+      "snippet": "",
+      "scraped_at": 1782323699.0602548
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Surat Gembala Natal Uskup Ruteng Soroti Bahaya Judol dan Pinjol",
+      "url": "https://www.detik.com/bali/nusra/d-8275621/surat-gembala-natal-uskup-ruteng-soroti-bahaya-judol-dan-pinjol",
+      "snippet": "",
+      "scraped_at": 1782323699.0602548
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Pinjaman Daring Jadi Solusi Pembiayaan bagi Masyarakat di Masa Sulit",
+      "url": "https://finance.detik.com/fintech/d-8254744/pinjaman-daring-jadi-solusi-pembiayaan-bagi-masyarakat-di-masa-sulit",
+      "snippet": "",
+      "scraped_at": 1782323699.0602548
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bahaya pinjol",
+      "title": "Daftar Pinjol Legal Terdaftar di OJK 2025",
+      "url": "https://www.detik.com/jatim/bisnis/d-8245356/daftar-pinjol-legal-terdaftar-di-ojk-2025",
+      "snippet": "",
+      "scraped_at": 1782323699.0602548
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "financial behavior gen z",
+      "title": "Anak Muda RI Sulit Atur Duit, Apa Penyebabnya?",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-5634795/anak-muda-ri-sulit-atur-duit-apa-penyebabnya",
+      "snippet": "",
+      "scraped_at": 1782323700.537205
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Pinkan Mambo Buka Les Vokal, Biayanya Jadi Perdebatan",
+      "url": "https://www.detik.com/pop/music/d-8541163/pinkan-mambo-buka-les-vokal-biayanya-jadi-perdebatan",
+      "snippet": "",
+      "scraped_at": 1782323702.261856
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Daftar PTN yang Masih Buka Jalur Mandiri hingga Akhir Juni 2026, Cek!",
+      "url": "https://www.detik.com/edu/seleksi-masuk-pt/d-8535480/daftar-ptn-yang-masih-buka-jalur-mandiri-hingga-akhir-juni-2026-cek",
+      "snippet": "",
+      "scraped_at": 1782323702.261856
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Penyebab Bansos PKH BPNT 2026 Belum Cair, Apa Saja?",
+      "url": "https://www.detik.com/sumbagsel/berita/d-8530225/penyebab-bansos-pkh-bpnt-2026-belum-cair-apa-saja",
+      "snippet": "",
+      "scraped_at": 1782323702.261856
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Cara Membersihkan Skor Kredit SLIK OJK agar Bisa KPR Lagi",
+      "url": "https://www.detik.com/properti/tips-dan-panduan/d-8530687/cara-membersihkan-skor-kredit-slik-ojk-agar-bisa-kpr-lagi",
+      "snippet": "",
+      "scraped_at": 1782323702.261856
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Viral Istri Berjuang Hamil hingga Menyusui, Suami Malah Selingkuh dengan LC",
+      "url": "https://wolipop.detik.com/wedding-news/d-8526338/viral-istri-berjuang-hamil-hingga-menyusui-suami-malah-selingkuh-dengan-lc",
+      "snippet": "",
+      "scraped_at": 1782323702.261856
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Mau Beli Motor Listrik MBG? Begini Cara Pesannya",
+      "url": "https://oto.detik.com/motor/d-8525994/mau-beli-motor-listrik-mbg-begini-cara-pesannya",
+      "snippet": "",
+      "scraped_at": 1782323702.261856
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "MUF Gelar Pameran Otomotif Online",
+      "url": "https://oto.detik.com/oto-galeri/d-5094339/muf-gelar-pameran-otomotif-online",
+      "snippet": "",
+      "scraped_at": 1782323702.261856
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan online",
+      "title": "Lazada 6.6 Super WOW Sale: Solusi Belanja Cerdas untuk Pertengahan Tahun",
+      "url": "https://inet.detik.com/cyberlife/d-8519640/lazada-6-6-super-wow-sale-solusi-belanja-cerdas-untuk-pertengahan-tahun",
+      "snippet": "",
+      "scraped_at": 1782323702.261856
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Doa Niat Puasa Tasua 9 Muharram Sekaligus Qadha Ramadan",
+      "url": "https://www.detik.com/hikmah/doa-dan-hadits/d-8544341/doa-niat-puasa-tasua-9-muharram-sekaligus-qadha-ramadan",
+      "snippet": "",
+      "scraped_at": 1782323703.9236026
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Hukum Puasa Tasua Sekaligus Qadha Ramadhan, Bagaimana Bacaan Niatnya?",
+      "url": "https://www.detik.com/jateng/berita/d-8543705/hukum-puasa-tasua-sekaligus-qadha-ramadhan-bagaimana-bacaan-niatnya",
+      "snippet": "",
+      "scraped_at": 1782323703.9236026
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Bandung Raya Sepekan: Dinamika SPMB Jabar, Bule Terobos Tol Pasteur",
+      "url": "https://www.detik.com/jabar/berita/d-8540229/bandung-raya-sepekan-dinamika-spmb-jabar-bule-terobos-tol-pasteur",
+      "snippet": "",
+      "scraped_at": 1782323703.9236026
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Maling di Bekasi Teman Adik Pemilik Rumah, Tahu Letak Penyimpanan Kunci",
+      "url": "https://news.detik.com/berita/d-8540422/maling-di-bekasi-teman-adik-pemilik-rumah-tahu-letak-penyimpanan-kunci",
+      "snippet": "",
+      "scraped_at": 1782323703.9236026
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Rumah di Bekasi Dibobol Maling, Uang USD hingga iPhone 17 Pro Max Raib",
+      "url": "https://news.detik.com/berita/d-8540360/rumah-di-bekasi-dibobol-maling-uang-usd-hingga-iphone-17-pro-max-raib",
+      "snippet": "",
+      "scraped_at": 1782323703.9236026
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "10 Foto Rumah Bedu yang Dijual Rp 5,5 M, Bukan Untuk Lunasi Utang Pinjol",
+      "url": "https://wolipop.detik.com/foto-home-and-living/d-6974290/10-foto-rumah-bedu-yang-dijual-rp-5-5-m-bukan-untuk-lunasi-utang-pinjol",
+      "snippet": "",
+      "scraped_at": 1782323703.9236026
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Terungkapnya Perampokan Sadis di Riau dari Selfie Korban Berdarah-darah",
+      "url": "https://news.detik.com/berita/d-8539452/terungkapnya-perampokan-sadis-di-riau-dari-selfie-korban-berdarah-darah",
+      "snippet": "",
+      "scraped_at": 1782323703.9236026
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Perampok Sadis di Riau Ternyata Pekerja Honorer SD, Pelaku Terjerat Pinjol",
+      "url": "https://news.detik.com/berita/d-8539019/perampok-sadis-di-riau-ternyata-pekerja-honorer-sd-pelaku-terjerat-pinjol",
+      "snippet": "",
+      "scraped_at": 1782323703.9236026
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang online",
+      "title": "Kebiasaan Main Judol Bikin Pria Ini Nekat Mencuri  di Tempat Kerja",
+      "url": "https://www.detik.com/sumut/hukum-dan-kriminal/d-8538577/kebiasaan-main-judol-bikin-pria-ini-nekat-mencuri-di-tempat-kerja",
+      "snippet": "",
+      "scraped_at": 1782323703.9236026
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Staycation di Hotel Ini Hadirkan Pantai, Rooftop, dan City Lights Memukau",
+      "url": "https://travel.detik.com/travel-news/d-8544545/staycation-di-hotel-ini-hadirkan-pantai-rooftop-dan-city-lights-memukau",
+      "snippet": "",
+      "scraped_at": 1782323705.6749542
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Jadwal Piala Dunia 23 Juni 2026, Ada Argentina dan Prancis",
+      "url": "https://www.detik.com/sulsel/berita/d-8542620/jadwal-piala-dunia-23-juni-2026-ada-argentina-dan-prancis",
+      "snippet": "",
+      "scraped_at": 1782323705.6749542
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Link Live Streaming Selandia Baru Vs Mesir di Piala Dunia 2026 Pagi Ini",
+      "url": "https://www.detik.com/sulsel/sepakbola/d-8541528/link-live-streaming-selandia-baru-vs-mesir-di-piala-dunia-2026-pagi-ini",
+      "snippet": "",
+      "scraped_at": 1782323705.6749542
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Staycation Mewah Makin Hemat! Diskon 20% di Trans Hotel Jakarta",
+      "url": "https://travel.detik.com/travel-news/d-8541436/staycation-mewah-makin-hemat-diskon-20-di-trans-hotel-jakarta",
+      "snippet": "",
+      "scraped_at": 1782323705.6749542
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Stop Tunda Liburan! Staycation di Trans Luxury Hotel Surabaya Diskon 40%",
+      "url": "https://www.detik.com/jatim/wisata/d-8540846/stop-tunda-liburan-staycation-di-trans-luxury-hotel-surabaya-diskon-40",
+      "snippet": "",
+      "scraped_at": 1782323705.6749542
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Kabar Baik Buat K-Popers, Weverse Jelly Kini Bisa Dibeli Lewat Allo Bank",
+      "url": "https://www.detik.com/pop/korean-wave/d-8539633/kabar-baik-buat-k-popers-weverse-jelly-kini-bisa-dibeli-lewat-allo-bank",
+      "snippet": "",
+      "scraped_at": 1782323705.6749542
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Kampanye Pembiayaan Online Tanpa Kartu Kredit",
+      "url": "https://foto.detik.com/readfoto/2019/07/23/180351/4636406/464/1/kampanye-pembiayaan-online-tanpa-kartu-kredit",
+      "snippet": "",
+      "scraped_at": 1782323705.6749542
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kredit tanpa kartu kredit",
+      "title": "Hari Terakhir! Promo Kamar Mewah Trans Luxury Hotel Surabaya Rp 999 Ribu",
+      "url": "https://www.detik.com/jatim/wisata/d-8537217/hari-terakhir-promo-kamar-mewah-trans-luxury-hotel-surabaya-rp-999-ribu",
+      "snippet": "",
+      "scraped_at": 1782323705.6749542
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Pendiri Evergrande yang Galbay Utang Rp 5.000 T Akui Menipu dan Beri Suap",
+      "url": "https://www.detik.com/properti/berita/d-8447195/pendiri-evergrande-yang-galbay-utang-rp-5-000-t-akui-menipu-dan-beri-suap",
+      "snippet": "",
+      "scraped_at": 1782323707.3778121
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Galbay Pinjol Bukan Solusi, Ini Risiko dan Cara Keluar dari Jeratan Utang",
+      "url": "https://finance.detik.com/fintech/d-8438569/galbay-pinjol-bukan-solusi-ini-risiko-dan-cara-keluar-dari-jeratan-utang",
+      "snippet": "",
+      "scraped_at": 1782323707.3778121
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Kurangi Risiko Galbay, Score Credit Masuk ke Slip Gaji?",
+      "url": "https://20.detik.com/detik-sore/20250617-250617096/kurangi-risiko-galbay-score-credit-masuk-ke-slip-gaji",
+      "snippet": "",
+      "scraped_at": 1782323707.3778121
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Di Depan Bos-bos Jepang, Prabowo Pastikan RI Nggak Pernah Gagal Bayar Utang",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8422376/di-depan-bos-bos-jepang-prabowo-pastikan-ri-nggak-pernah-gagal-bayar-utang",
+      "snippet": "",
+      "scraped_at": 1782323707.3778121
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Gagal Bayar Dana Syariah Indonesia Disebut Sulit Dideteksi, Kenapa?",
+      "url": "https://finance.detik.com/moneter/d-8327386/gagal-bayar-dana-syariah-indonesia-disebut-sulit-dideteksi-kenapa",
+      "snippet": "",
+      "scraped_at": 1782323707.3778121
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Babak Baru Gagal Bayar Dana Syariah Indonesia Rp 2,4 T",
+      "url": "https://finance.detik.com/moneter/d-8309607/babak-baru-gagal-bayar-dana-syariah-indonesia-rp-2-4-t",
+      "snippet": "",
+      "scraped_at": 1782323707.3778121
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Dana Syariah Indonesia Minta Rekening Tak Diblokir, PPATK Jawab Begini",
+      "url": "https://finance.detik.com/moneter/d-8309212/dana-syariah-indonesia-minta-rekening-tak-diblokir-ppatk-jawab-begini",
+      "snippet": "",
+      "scraped_at": 1782323707.3778121
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "OJK Laporkan Dugaan Fraud Gagal Bayar Dana Syariah Indonesia ke Bareskrim",
+      "url": "https://finance.detik.com/moneter/d-8309033/ojk-laporkan-dugaan-fraud-gagal-bayar-dana-syariah-indonesia-ke-bareskrim",
+      "snippet": "",
+      "scraped_at": 1782323707.3778121
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "galbay",
+      "title": "Kasus Gagal Bayar Lender Dana Syariah Indonesia Rp 1,4 T Sudah Didengar Istana",
+      "url": "https://finance.detik.com/moneter/d-8308922/kasus-gagal-bayar-lender-dana-syariah-indonesia-rp-1-4-t-sudah-didengar-istana",
+      "snippet": "",
+      "scraped_at": 1782323707.3778121
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "debt collector",
+      "title": "Viral Rombongan Matel Tarik Mobil Bakul Bakso di Mijen Semarang",
+      "url": "https://www.detik.com/jateng/berita/d-8544760/viral-rombongan-matel-tarik-mobil-bakul-bakso-di-mijen-semarang",
+      "snippet": "",
+      "scraped_at": 1782323709.121352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "debt collector",
+      "title": "Siasat Licik Taufik Hidayat Sembunyikan Penyiksaan",
+      "url": "https://www.detik.com/jabar/hukum-dan-kriminal/d-8544211/siasat-licik-taufik-hidayat-sembunyikan-penyiksaan",
+      "snippet": "",
+      "scraped_at": 1782323709.121352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "debt collector",
+      "title": "Taufik Hidayat Penyekap Wanita Selama 3 Tahun Ditangkap!",
+      "url": "https://news.detik.com/berita/d-8544375/taufik-hidayat-penyekap-wanita-selama-3-tahun-ditangkap",
+      "snippet": "",
+      "scraped_at": 1782323709.121352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "debt collector",
+      "title": "Video: Debt Collector Patahkan Jari Wanita Tagih Utang Setiap Hari Rp 50 Ribu",
+      "url": "https://20.detik.com/detik-pagi/20260106-260106061/video-debt-collector-patahkan-jari-wanita-tagih-utang-setiap-hari-rp-50-ribu",
+      "snippet": "",
+      "scraped_at": 1782323709.121352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "debt collector",
+      "title": "Buru Taufik Hidayat, Polisi Dalami Dugaan Keterlibatan Pihak Lain",
+      "url": "https://www.detik.com/jabar/hukum-dan-kriminal/d-8544145/buru-taufik-hidayat-polisi-dalami-dugaan-keterlibatan-pihak-lain",
+      "snippet": "",
+      "scraped_at": 1782323709.121352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "debt collector",
+      "title": "6 Fakta Terkini Penyekapan Wanita Bandung: Pelaku Juga Siksa Eks Istri",
+      "url": "https://www.detik.com/jabar/berita/d-8543733/6-fakta-terkini-penyekapan-wanita-bandung-pelaku-juga-siksa-eks-istri",
+      "snippet": "",
+      "scraped_at": 1782323709.121352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "debt collector",
+      "title": "Buru Taufik Hidayat, Polda Jabar Bentuk Tim Khusus",
+      "url": "https://www.detik.com/jabar/berita/d-8543646/buru-taufik-hidayat-polda-jabar-bentuk-tim-khusus",
+      "snippet": "",
+      "scraped_at": 1782323709.121352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "debt collector",
+      "title": "Luluh Lantak! Potret Warung Makan Dibakar di Kalibata, Buntut Ricuh 'Matel'",
+      "url": "https://food.detik.com/foto-kuliner/d-8255766/luluh-lantak-potret-warung-makan-dibakar-di-kalibata-buntut-ricuh-matel",
+      "snippet": "",
+      "scraped_at": 1782323709.121352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "debt collector",
+      "title": "Taufik Hidayat Penyekap Wanita Bandung Kerja Debt Collector",
+      "url": "https://news.detik.com/berita/d-8543640/taufik-hidayat-penyekap-wanita-bandung-kerja-debt-collector",
+      "snippet": "",
+      "scraped_at": 1782323709.121352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "debt collector",
+      "title": "Warga Sering Dengar Suara Benturan dari Kamar Wanita Bandung Disekap",
+      "url": "https://www.detik.com/jabar/berita/d-8543528/warga-sering-dengar-suara-benturan-dari-kamar-wanita-bandung-disekap",
+      "snippet": "",
+      "scraped_at": 1782323709.121352
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan 0%",
+      "title": "BRI Consumer Expo 2026 Makassar Tawarkan Promo KPR hingga Travel Fair",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8541593/bri-consumer-expo-2026-makassar-tawarkan-promo-kpr-hingga-travel-fair",
+      "snippet": "",
+      "scraped_at": 1782323710.7935827
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan 0%",
+      "title": "Kunjungi BRI Consumer Expo 2026 Makassar, Ada Promo KPR-Travel Fair",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8538171/kunjungi-bri-consumer-expo-2026-makassar-ada-promo-kpr-travel-fair",
+      "snippet": "",
+      "scraped_at": 1782323710.7935827
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan 0%",
+      "title": "Oppo Buka Preorder Reno16 Series, Bonus Mencapai Rp 5,1 Juta",
+      "url": "https://inet.detik.com/consumer/d-8537551/oppo-buka-preorder-reno16-series-bonus-mencapai-rp-5-1-juta",
+      "snippet": "",
+      "scraped_at": 1782323710.7935827
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan 0%",
+      "title": "Mandiri Jogja Marathon 2026 Siap Diramaikan 10.200 Pelari dari 17 Negara",
+      "url": "https://sport.detik.com/sportstyle/d-8537075/mandiri-jogja-marathon-2026-siap-diramaikan-10-200-pelari-dari-17-negara",
+      "snippet": "",
+      "scraped_at": 1782323710.7935827
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan 0%",
+      "title": "LIF Core Smart Ring Diluncurkan, Pantau Gula Darah Tanpa Jarum Berbasis AI",
+      "url": "https://health.detik.com/berita-detikhealth/d-8535787/lif-core-smart-ring-diluncurkan-pantau-gula-darah-tanpa-jarum-berbasis-ai",
+      "snippet": "",
+      "scraped_at": 1782323710.7935827
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan 0%",
+      "title": "Hampir Tiga Tahun, Rumah Indent Belum Selesai",
+      "url": "https://news.detik.com/suara-pembaca/d-8534853/hampir-tiga-tahun-rumah-indent-belum-selesai",
+      "snippet": "",
+      "scraped_at": 1782323710.7935827
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan 0%",
+      "title": "In This Economy, Trend Cicilan 6 Bulan di Lazada Makin Meningkat",
+      "url": "https://inet.detik.com/business/d-8518061/in-this-economy-trend-cicilan-6-bulan-di-lazada-makin-meningkat",
+      "snippet": "",
+      "scraped_at": 1782323710.7935827
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "cicilan 0%",
+      "title": "HP dan Tablet Banyak Dicari Saat Libur Sekolah, Lazada Janji Harga Murah",
+      "url": "https://inet.detik.com/business/d-8517783/hp-dan-tablet-banyak-dicari-saat-libur-sekolah-lazada-janji-harga-murah",
+      "snippet": "",
+      "scraped_at": 1782323710.7935827
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "self reward",
+      "title": "Rp 7.000 Sehari Bisa Jadi Sarjana Kedengarannya Nggak Masuk Akal, tapi...",
+      "url": "https://www.detik.com/edu/perguruan-tinggi/d-8544030/rp-7-000-sehari-bisa-jadi-sarjana-kedengarannya-nggak-masuk-akal-tapi",
+      "snippet": "",
+      "scraped_at": 1782323712.5091164
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "self reward",
+      "title": "Video: #TanyadetikFinance Bahaya Lipstick Effect di Balik Kondisi Ekonomi Mandek, Apaan Tuh?",
+      "url": "https://20.detik.com/detikupdate/20260603-260603106/video-tanyadetikfinance-bahaya-lipstick-effect-di-balik-kondisi-ekonomi-mandek-apaan-tuh",
+      "snippet": "",
+      "scraped_at": 1782323712.5091164
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "self reward",
+      "title": "Ada Banyak Promo-Konser Eksklusif di Indonesia Women Fest 2026 bersama BRI",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8510260/ada-banyak-promo-konser-eksklusif-di-indonesia-women-fest-2026-bersama-bri",
+      "snippet": "",
+      "scraped_at": 1782323712.5091164
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "self reward",
+      "title": "Impulsive Buying Berkedok Self-Reward? Yuk Mulai Pakai Skala Prioritas",
+      "url": "https://20.detik.com/detik-pagi/20230525-230525085/impulsive-buying-berkedok-self-reward-yuk-mulai-pakai-skala-prioritas",
+      "snippet": "",
+      "scraped_at": 1782323712.5091164
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "self reward",
+      "title": "Penampilan Komika Kiky Saputri Hibur Pengunjung JFF 2026",
+      "url": "https://www.detik.com/jogja/berita/d-8501497/penampilan-komika-kiky-saputri-hibur-pengunjung-jff-2026",
+      "snippet": "",
+      "scraped_at": 1782323712.5091164
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "self reward",
+      "title": "Gaji Cuma Numpang Lewat? Belajar Cara Budgeting dan Investasi untuk Pemula",
+      "url": "https://wolipop.detik.com/money-hacks/d-8487566/gaji-cuma-numpang-lewat-belajar-cara-budgeting-dan-investasi-untuk-pemula",
+      "snippet": "",
+      "scraped_at": 1782323712.5091164
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "self reward",
+      "title": "7 Brisket Smokey Paling Juara di Jaksel Buat Self Reward Awal Bulan",
+      "url": "https://food.detik.com/tempat-makan/d-8480378/7-brisket-smokey-paling-juara-di-jaksel-buat-self-reward-awal-bulan",
+      "snippet": "",
+      "scraped_at": 1782323712.5091164
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "self reward",
+      "title": "Hasil UTBK SNBT 2026 Kapan Diumumkan? Cek Tanggal dan Cara Unduh Sertifnya!",
+      "url": "https://www.detik.com/jateng/berita/d-8472082/hasil-utbk-snbt-2026-kapan-diumumkan-cek-tanggal-dan-cara-unduh-sertifnya",
+      "snippet": "",
+      "scraped_at": 1782323712.5091164
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "self reward",
+      "title": "Tips Memulai Investasi yang Cocok untuk Gen Z",
+      "url": "https://www.detik.com/jabar/bisnis/d-8471254/tips-memulai-investasi-yang-cocok-untuk-gen-z",
+      "snippet": "",
+      "scraped_at": 1782323712.5091164
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "self reward",
+      "title": "Pas Gajian, Pas buat Liburan! Nikmati Promo Spesial Trans Studio Theme Park Bali",
+      "url": "https://travel.detik.com/travel-news/d-8463326/pas-gajian-pas-buat-liburan-nikmati-promo-spesial-trans-studio-theme-park-bali",
+      "snippet": "",
+      "scraped_at": 1782323712.5091164
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "OJK Soroti FOMO Generasi Muda Berutang demi Tren",
+      "url": "https://www.detik.com/jabar/berita/d-8529793/ojk-soroti-fomo-generasi-muda-berutang-demi-tren",
+      "snippet": "",
+      "scraped_at": 1782323714.2080593
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Checkout Barang Bebas Worry dengan Jadi Member ShopeeVIP",
+      "url": "https://inet.detik.com/cyberlife/d-8369990/checkout-barang-bebas-worry-dengan-jadi-member-shopeevip",
+      "snippet": "",
+      "scraped_at": 1782323714.2080593
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Cara Beli Tiket Timnas Indonesia Vs China: Wajib Pakai Garuda ID",
+      "url": "https://sport.detik.com/sepakbola/liga-indonesia/d-7915256/cara-beli-tiket-timnas-indonesia-vs-china-wajib-pakai-garuda-id",
+      "snippet": "",
+      "scraped_at": 1782323714.2080593
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Serbu! Ada Toyota Calya Seharga Rp 12 Ribu di Sesi Shopee Live Vilmei",
+      "url": "https://inet.detik.com/business/d-7679639/serbu-ada-toyota-calya-seharga-rp-12-ribu-di-sesi-shopee-live-vilmei",
+      "snippet": "",
+      "scraped_at": 1782323714.2080593
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Shopping Time! BRImo Beri Beragam Kemudahan Transaksi untuk Nasabah",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-7106832/shopping-time-brimo-beri-beragam-kemudahan-transaksi-untuk-nasabah",
+      "snippet": "",
+      "scraped_at": 1782323714.2080593
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Paylater Kian Menjamur, Jadi Garapan Raksasa Bisnis Dunia",
+      "url": "https://finance.detik.com/fintech/d-5667468/paylater-kian-menjamur-jadi-garapan-raksasa-bisnis-dunia",
+      "snippet": "",
+      "scraped_at": 1782323714.2080593
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "checkout bayar nanti",
+      "title": "Amannya Kota Dubai, Ponsel Hilang di Taksi Masih Bisa Balik",
+      "url": "https://travel.detik.com/travel-news/d-4807124/amannya-kota-dubai-ponsel-hilang-di-taksi-masih-bisa-balik",
+      "snippet": "",
+      "scraped_at": 1782323714.2080593
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol ilegal",
+      "title": "Komitmen Propam Tegakkan Disiplin Internal Lewat Gaktiblin di Sejumlah Daerah",
+      "url": "https://news.detik.com/berita/d-8517408/komitmen-propam-tegakkan-disiplin-internal-lewat-gaktiblin-di-sejumlah-daerah",
+      "snippet": "",
+      "scraped_at": 1782323715.9291968
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol ilegal",
+      "title": "Menkominfo Ungkap Ada Kaitan Antara Pebisnis Judol dan Pinjol Ilegal",
+      "url": "https://20.detik.com/detikupdate/20240911-240911128/menkominfo-ungkap-ada-kaitan-antara-pebisnis-judol-dan-pinjol-ilegal",
+      "snippet": "",
+      "scraped_at": 1782323715.9291968
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol ilegal",
+      "title": "Cara Cek NIK Dipakai Pinjol Ilegal, Jangan Sampai Telat Tahu!",
+      "url": "https://www.detik.com/jatim/berita/d-8499538/cara-cek-nik-dipakai-pinjol-ilegal-jangan-sampai-telat-tahu",
+      "snippet": "",
+      "scraped_at": 1782323715.9291968
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol ilegal",
+      "title": "Diskusi Membangun Budaya Keuangan yang Sehat",
+      "url": "https://finance.detik.com/foto-bisnis/d-7309164/diskusi-membangun-budaya-keuangan-yang-sehat",
+      "snippet": "",
+      "scraped_at": 1782323715.9291968
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol ilegal",
+      "title": "Modus Tersangka Palsukan-Terbitkan SIM Card Ilegal yang Diungkap Polda Jatim",
+      "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8486744/modus-tersangka-palsukan-terbitkan-sim-card-ilegal-yang-diungkap-polda-jatim",
+      "snippet": "",
+      "scraped_at": 1782323715.9291968
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Gaji Belum Stabil, Gaya Hidup Tinggi: Anak Muda Paling Banyak Nunggak Pinjol",
+      "url": "https://finance.detik.com/moneter/d-8480500/gaji-belum-stabil-gaya-hidup-tinggi-anak-muda-paling-banyak-nunggak-pinjol",
+      "snippet": "",
+      "scraped_at": 1782323717.6393592
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Mahfud: Untuk Pinjol Legal Silakan Berkembang, Justru Itu Diharapkan",
+      "url": "https://20.detik.com/detikflash/20211019-211019144/mahfud-untuk-pinjol-legal-silakan-berkembang-justru-itu-diharapkan",
+      "snippet": "",
+      "scraped_at": 1782323717.6393592
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Jerit Warga Bogor Usai Tambang Tutup: Pinjol hingga Nyaris Cerai",
+      "url": "https://www.detik.com/jabar/berita/d-8473662/jerit-warga-bogor-usai-tambang-tutup-pinjol-hingga-nyaris-cerai",
+      "snippet": "",
+      "scraped_at": 1782323717.6393592
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Cara Cek Pinjol yang Terdaftar di OJK dengan Mudah",
+      "url": "https://www.detik.com/jabar/bisnis/d-8468513/cara-cek-pinjol-yang-terdaftar-di-ojk-dengan-mudah",
+      "snippet": "",
+      "scraped_at": 1782323717.6393592
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "951 Pinjol Ilegal Ditutup, Investasi Bodong Diberantas",
+      "url": "https://finance.detik.com/moneter/d-8466494/951-pinjol-ilegal-ditutup-investasi-bodong-diberantas",
+      "snippet": "",
+      "scraped_at": 1782323717.6393592
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "pinjol legal",
+      "title": "Benarkah Utang Pinjol Hangus Setelah 90 Hari? Ini Aturan Aslinya",
+      "url": "https://www.detik.com/sumut/berita/d-8455194/benarkah-utang-pinjol-hangus-setelah-90-hari-ini-aturan-aslinya",
+      "snippet": "",
+      "scraped_at": 1782323717.6393592
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bunga tinggi",
+      "title": "Saham SpaceX Anjlok, Elon Musk Kehilangan Status Triliuner",
+      "url": "https://www.detik.com/sumut/berita/d-8546103/saham-spacex-anjlok-elon-musk-kehilangan-status-triliuner",
+      "snippet": "",
+      "scraped_at": 1782323719.3325102
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bunga tinggi",
+      "title": "Elon Musk Kehilangan Status Triliuner Usai Saham SpaceX Merosot",
+      "url": "https://www.detik.com/jabar/bisnis/d-8544852/elon-musk-kehilangan-status-triliuner-usai-saham-spacex-merosot",
+      "snippet": "",
+      "scraped_at": 1782323719.3325102
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bunga tinggi",
+      "title": "Bunga Kredit Ultra Mikro Bakal Turun Jadi 8%, Paling Lambat Berlaku 17 Agustus",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8545191/bunga-kredit-ultra-mikro-bakal-turun-jadi-8-paling-lambat-berlaku-17-agustus",
+      "snippet": "",
+      "scraped_at": 1782323719.3325102
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bunga tinggi",
+      "title": "Saat Jokowi Ungkap Banyak Masyarakat Bawah Terjerat Bunga Tinggi Pinjol",
+      "url": "https://20.detik.com/detikflash/20211011-211011047/saat-jokowi-ungkap-banyak-masyarakat-bawah-terjerat-bunga-tinggi-pinjol",
+      "snippet": "",
+      "scraped_at": 1782323719.3325102
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bunga tinggi",
+      "title": "Heboh Bau Misterius di Depok, Ternyata Bunga Bangkai di Rumah Mangkrak",
+      "url": "https://www.detik.com/properti/berita/d-8545109/heboh-bau-misterius-di-depok-ternyata-bunga-bangkai-di-rumah-mangkrak",
+      "snippet": "",
+      "scraped_at": 1782323719.3325102
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bunga tinggi",
+      "title": "Perjalanan Kasus 6 Anggota Ormas Bunuh Pria di Siantar gegara Harga Tato",
+      "url": "https://www.detik.com/sumut/berita/d-8544933/perjalanan-kasus-6-anggota-ormas-bunuh-pria-di-siantar-gegara-harga-tato",
+      "snippet": "",
+      "scraped_at": 1782323719.3325102
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bunga tinggi",
+      "title": "Polri Ziarah ke Makam Hoegeng Jelang Hari Bhayangkara Ke-80",
+      "url": "https://news.detik.com/berita/d-8544808/polri-ziarah-ke-makam-hoegeng-jelang-hari-bhayangkara-ke-80",
+      "snippet": "",
+      "scraped_at": 1782323719.3325102
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bunga tinggi",
+      "title": "Potret Bunga Bangkai yang Mekar di Kebun Raya Cibodas",
+      "url": "https://travel.detik.com/fototravel/d-7785763/potret-bunga-bangkai-yang-mekar-di-kebun-raya-cibodas",
+      "snippet": "",
+      "scraped_at": 1782323719.3325102
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bunga tinggi",
+      "title": "Elon Musk Tak Lagi Triliuner, Saham SpaceX Ambles 30%",
+      "url": "https://inet.detik.com/cyberlife/d-8544684/elon-musk-tak-lagi-triliuner-saham-spacex-ambles-30",
+      "snippet": "",
+      "scraped_at": 1782323719.3325102
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "bunga tinggi",
+      "title": "Ini Kopi Abyssinia dari Ethiopia, Awal Mula Arabika yang Mendunia",
+      "url": "https://food.detik.com/info-kuliner/d-8543690/ini-kopi-abyssinia-dari-ethiopia-awal-mula-arabika-yang-mendunia",
+      "snippet": "",
+      "scraped_at": 1782323719.3325102
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Iqbal Beberkan 3 Strategi Pemprov NTB Benahi Tata Kelola Keuangan Daerah",
+      "url": "https://www.detik.com/bali/nusra/d-8539257/iqbal-beberkan-3-strategi-pemprov-ntb-benahi-tata-kelola-keuangan-daerah",
+      "snippet": "",
+      "scraped_at": 1782323721.054124
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Profesi Bergaji Besar Kini Jadi Ladang Pengangguran",
+      "url": "https://inet.detik.com/business/d-8536772/profesi-bergaji-besar-kini-jadi-ladang-pengangguran",
+      "snippet": "",
+      "scraped_at": 1782323721.054124
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Raksasa Game PHK 380 Karyawan dan Tutup Dua Studio",
+      "url": "https://inet.detik.com/games-news/d-8532472/raksasa-game-phk-380-karyawan-dan-tutup-dua-studio",
+      "snippet": "",
+      "scraped_at": 1782323721.054124
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Video: Danantara Nego ke China Bahas Restrukturisasi Utang KCIC",
+      "url": "https://20.detik.com/detikupdate/20251008-251008143/video-danantara-nego-ke-china-bahas-restrukturisasi-utang-kcic",
+      "snippet": "",
+      "scraped_at": 1782323721.054124
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Rutan di Sidoarjo Punya Sanksi Napi Baca Buku, Komisi XIII DPR Dukung",
+      "url": "https://news.detik.com/berita/d-8531392/rutan-di-sidoarjo-punya-sanksi-napi-baca-buku-komisi-xiii-dpr-dukung",
+      "snippet": "",
+      "scraped_at": 1782323721.054124
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Negara Ini Dilanda Krisis Utang, Presiden Pecat Perdana Menteri",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8530322/negara-ini-dilanda-krisis-utang-presiden-pecat-perdana-menteri",
+      "snippet": "",
+      "scraped_at": 1782323721.054124
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Pertamina Pangkas 124 Anak Usaha Lewat Likuidasi hingga Merger",
+      "url": "https://finance.detik.com/energi/d-8529892/pertamina-pangkas-124-anak-usaha-lewat-likuidasi-hingga-merger",
+      "snippet": "",
+      "scraped_at": 1782323721.054124
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Amazon Kembali PHK 16.000 Karyawan!",
+      "url": "https://finance.detik.com/foto-bisnis/d-8330966/amazon-kembali-phk-16-000-karyawan",
+      "snippet": "",
+      "scraped_at": 1782323721.054124
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Raup Laba Rp 27 M, PEHA Tebar Dividen 15%",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8528912/raup-laba-rp-27-m-peha-tebar-dividen-15",
+      "snippet": "",
+      "scraped_at": 1782323721.054124
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "restrukturisasi",
+      "title": "Zulhas Buka-bukaan soal Praktik Jual-Beli Titik SPPG, Negara Boros Rp 1 T/Bulan",
+      "url": "https://www.detik.com/jabar/berita/d-8527690/zulhas-buka-bukaan-soal-praktik-jual-beli-titik-sppg-negara-boros-rp-1-t-bulan",
+      "snippet": "",
+      "scraped_at": 1782323721.054124
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Obligasi Danantara Diserbu Investor, KADIN: Ekonomi RI Diakui Dunia",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8533883/obligasi-danantara-diserbu-investor-kadin-ekonomi-ri-diakui-dunia",
+      "snippet": "",
+      "scraped_at": 1782323722.7357864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Kelompok IV BP MPR Gelar FGD, Bahas Ketahanan Ekonomi Nasional",
+      "url": "https://news.detik.com/berita/d-8505089/kelompok-iv-bp-mpr-gelar-fgd-bahas-ketahanan-ekonomi-nasional",
+      "snippet": "",
+      "scraped_at": 1782323722.7357864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Iqbal Tetapkan Direksi-Komisaris Baru PT GNE, Target Lunasi Utang Rp 21 M",
+      "url": "https://www.detik.com/bali/bisnis/d-8465452/iqbal-tetapkan-direksi-komisaris-baru-pt-gne-target-lunasi-utang-rp-21-m",
+      "snippet": "",
+      "scraped_at": 1782323722.7357864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Waskita Karya Catat Laba Kotor Rp 1,58 T, Naik 12% Sepanjang 2025",
+      "url": "https://news.detik.com/berita/d-8426455/waskita-karya-catat-laba-kotor-rp-1-58-t-naik-12-sepanjang-2025",
+      "snippet": "",
+      "scraped_at": 1782323722.7357864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Pascamerger, XLSmart Kantongi 73 Juta Pelanggan dan Gaspol 5G di 2026",
+      "url": "https://inet.detik.com/telecommunication/d-8360733/pascamerger-xlsmart-kantongi-73-juta-pelanggan-dan-gaspol-5g-di-2026",
+      "snippet": "",
+      "scraped_at": 1782323722.7357864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Bamsoet Optimistis Pertumbuhan Ekonomi Indonesia Mampu Lampaui Target",
+      "url": "https://news.detik.com/berita/d-8357359/bamsoet-optimistis-pertumbuhan-ekonomi-indonesia-mampu-lampaui-target",
+      "snippet": "",
+      "scraped_at": 1782323722.7357864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Polri Fasilitasi Permodalan KUR dan Penyerapan Bulog bagi Petani Jagung",
+      "url": "https://news.detik.com/berita/d-8344162/polri-fasilitasi-permodalan-kur-dan-penyerapan-bulog-bagi-petani-jagung",
+      "snippet": "",
+      "scraped_at": 1782323722.7357864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Konsolidasi Kekuasaan To Lam, Taruhan Politik Vietnam",
+      "url": "https://news.detik.com/dw/d-8327454/konsolidasi-kekuasaan-to-lam-taruhan-politik-vietnam",
+      "snippet": "",
+      "scraped_at": 1782323722.7357864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Bupati Batang Hari Kembali Nakhodai PPP Jambi, Ini Pesan Mardiono untuk Kader",
+      "url": "https://www.detik.com/sumbagsel/berita/d-8281716/bupati-batang-hari-kembali-nakhodai-ppp-jambi-ini-pesan-mardiono-untuk-kader",
+      "snippet": "",
+      "scraped_at": 1782323722.7357864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "konsolidasi utang",
+      "title": "Genjot Proyek Properti Baru 2026, Pengembang ROCK Percepat Pelunasan Utang",
+      "url": "https://www.detik.com/properti/berita/d-8256406/genjot-proyek-properti-baru-2026-pengembang-rock-percepat-pelunasan-utang",
+      "snippet": "",
+      "scraped_at": 1782323722.7357864
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Polisi Ungkap Kerugian Korban Hanania Travel Ditaksir Capai Rp 95,2 M",
+      "url": "https://news.detik.com/berita/d-8537226/polisi-ungkap-kerugian-korban-hanania-travel-ditaksir-capai-rp-95-2-m",
+      "snippet": "",
+      "scraped_at": 1782323724.4406302
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Bos WO Marwah Ditangkap di Bandung: Tipu 58 Pasangan-Raup Rp 2,6 M",
+      "url": "https://www.detik.com/jabar/hukum-dan-kriminal/d-8514390/bos-wo-marwah-ditangkap-di-bandung-tipu-58-pasangan-raup-rp-2-6-m",
+      "snippet": "",
+      "scraped_at": 1782323724.4406302
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Siasat Tipu-tipu Owner WO Marwah: Janjikan Subsidi Gedung dan Kambing Guling",
+      "url": "https://news.detik.com/berita/d-8513918/siasat-tipu-tipu-owner-wo-marwah-janjikan-subsidi-gedung-dan-kambing-guling",
+      "snippet": "",
+      "scraped_at": 1782323724.4406302
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "WO Marwah Tipu 58 Calon Pengantin: Owner Ternyata Residivis Kasus Serupa",
+      "url": "https://news.detik.com/berita/d-8513737/wo-marwah-tipu-58-calon-pengantin-owner-ternyata-residivis-kasus-serupa",
+      "snippet": "",
+      "scraped_at": 1782323724.4406302
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "7 Fakta Baru WO Marwah Tipu 58 Calon Pengantin hingga Raup Rp 2,6 M",
+      "url": "https://news.detik.com/berita/d-8513633/7-fakta-baru-wo-marwah-tipu-58-calon-pengantin-hingga-raup-rp-2-6-m",
+      "snippet": "",
+      "scraped_at": 1782323724.4406302
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Begini Proyek Gali dan Tutup Lubang di Jakarta Tiada Henti",
+      "url": "https://news.detik.com/foto-news/d-5580475/begini-proyek-gali-dan-tutup-lubang-di-jakarta-tiada-henti",
+      "snippet": "",
+      "scraped_at": 1782323724.4406302
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Polisi Ungkap Owner WO Marwah Coba Kabur dan Sembunyi Sebelum Ditangkap",
+      "url": "https://news.detik.com/berita/d-8513421/polisi-ungkap-owner-wo-marwah-coba-kabur-dan-sembunyi-sebelum-ditangkap",
+      "snippet": "",
+      "scraped_at": 1782323724.4406302
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "PDIP soal Ekonomi Indonesia: Utang Dibayar Utang, Gali-Tutup Lubang",
+      "url": "https://news.detik.com/berita/d-8513024/pdip-soal-ekonomi-indonesia-utang-dibayar-utang-gali-tutup-lubang",
+      "snippet": "",
+      "scraped_at": 1782323724.4406302
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gali lubang tutup lubang",
+      "title": "Polisi Ungkap Motif Owner WO Marwah Tipu Pengantin: Gali Lubang Tutup Lubang",
+      "url": "https://news.detik.com/berita/d-8512789/polisi-ungkap-motif-owner-wo-marwah-tipu-pengantin-gali-lubang-tutup-lubang",
+      "snippet": "",
+      "scraped_at": 1782323724.4406302
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "10 Side Hustle Kekinian Gen Z dari Rumah, Ubah Hobi Jadi Cuan Tambahan",
+      "url": "https://www.detik.com/jabar/berita/d-8452638/10-side-hustle-kekinian-gen-z-dari-rumah-ubah-hobi-jadi-cuan-tambahan",
+      "snippet": "",
+      "scraped_at": 1782323726.164028
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Tips Menabung Haji untuk Gen Z Lengkap dengan Syarat dan Alur Pendaftaran",
+      "url": "https://www.detik.com/hikmah/haji-dan-umrah/d-8321711/tips-menabung-haji-untuk-gen-z-lengkap-dengan-syarat-dan-alur-pendaftaran",
+      "snippet": "",
+      "scraped_at": 1782323726.164028
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Tips Menabung untuk Liburan Ala Gen Z",
+      "url": "https://www.detik.com/sumut/berita/d-8305451/tips-menabung-untuk-liburan-ala-gen-z",
+      "snippet": "",
+      "scraped_at": 1782323726.164028
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Perhatian Gen Z, Ini Cara Ampuh Menghindari Penipuan Saat Transaksi Digital",
+      "url": "https://inet.detik.com/security/d-8231535/perhatian-gen-z-ini-cara-ampuh-menghindari-penipuan-saat-transaksi-digital",
+      "snippet": "",
+      "scraped_at": 1782323726.164028
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Tips Bikin Perencanaan Keuangan Setelah Gajian, Biar Nggak Cepat Habis!",
+      "url": "https://www.detik.com/jatim/berita/d-8185914/tips-bikin-perencanaan-keuangan-setelah-gajian-biar-nggak-cepat-habis",
+      "snippet": "",
+      "scraped_at": 1782323726.164028
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "MR.D.I.Y. Ajak Generasi Muda Belanja Cerdas dan Kelola Keuangan Sehat",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8184106/mr-d-i-y-ajak-generasi-muda-belanja-cerdas-dan-kelola-keuangan-sehat",
+      "snippet": "",
+      "scraped_at": 1782323726.164028
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "30 Ide Bisnis Rumahan 2025 yang Cocok untuk Ibu Rumah Tangga",
+      "url": "https://www.detik.com/kalimantan/bisnis/d-8094704/30-ide-bisnis-rumahan-2025-yang-cocok-untuk-ibu-rumah-tangga",
+      "snippet": "",
+      "scraped_at": 1782323726.164028
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Gen Z-Milenial Simak! Ini Tips Biar Gaji Kamu Nggak Numpang Lewat",
+      "url": "https://finance.detik.com/perencanaan-keuangan/d-8031657/gen-z-milenial-simak-ini-tips-biar-gaji-kamu-nggak-numpang-lewat",
+      "snippet": "",
+      "scraped_at": 1782323726.164028
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "RM Padang di Jakarta Ini Punya Segmen Umur Pelanggan",
+      "url": "https://food.detik.com/info-kuliner/d-7937181/rm-padang-di-jakarta-ini-punya-segmen-umur-pelanggan",
+      "snippet": "",
+      "scraped_at": 1782323726.164028
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tips keuangan gen z",
+      "title": "Kisah Alumni LPDP Jadi Peneliti Career Development, Beri Tips Cari Kerja buat Gen Z",
+      "url": "https://www.detik.com/edu/edutainment/d-7926770/kisah-alumni-lpdp-jadi-peneliti-career-development-beri-tips-cari-kerja-buat-gen-z",
+      "snippet": "",
+      "scraped_at": 1782323726.164028
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "menabung gen z",
+      "title": "69% Gen Z Anggap Pesta Pernikahan Zaman Sekarang Cuma 'Settingan'!",
+      "url": "https://wolipop.detik.com/wedding-news/d-8539460/69-gen-z-anggap-pesta-pernikahan-zaman-sekarang-cuma-settingan",
+      "snippet": "",
+      "scraped_at": 1782323727.8288076
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "menabung gen z",
+      "title": "Cerita Gen Z Cari Cuan di Jogja Financial Festival 2026",
+      "url": "https://www.detik.com/jogja/berita/d-8501669/cerita-gen-z-cari-cuan-di-jogja-financial-festival-2026",
+      "snippet": "",
+      "scraped_at": 1782323727.8288076
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "menabung gen z",
+      "title": "Tips Menabung untuk Gen Z: Cara Simpan Uang di Tengah Gaya Hidup Nongkrong",
+      "url": "https://www.detik.com/sumut/berita/d-8479962/tips-menabung-untuk-gen-z-cara-simpan-uang-di-tengah-gaya-hidup-nongkrong",
+      "snippet": "",
+      "scraped_at": 1782323727.8288076
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "menabung gen z",
+      "title": "Sosialisasi Keuangan Haji, HNW Puji Penurunan Biaya-Dorong Haji Usia Muda",
+      "url": "https://news.detik.com/berita/d-8452146/sosialisasi-keuangan-haji-hnw-puji-penurunan-biaya-dorong-haji-usia-muda",
+      "snippet": "",
+      "scraped_at": 1782323727.8288076
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "menabung gen z",
+      "title": "Gen Z di China Pilih Tinggal di Kota Mati, Ternyata Ini Alasannya",
+      "url": "https://www.detik.com/properti/berita/d-8382701/gen-z-di-china-pilih-tinggal-di-kota-mati-ternyata-ini-alasannya",
+      "snippet": "",
+      "scraped_at": 1782323727.8288076
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "menabung gen z",
+      "title": "Jangan Nekat! Ini 5 Tanda Kamu Belum Siap Beli Rumah",
+      "url": "https://www.detik.com/properti/kepemilikan-rumah/d-8374251/jangan-nekat-ini-5-tanda-kamu-belum-siap-beli-rumah",
+      "snippet": "",
+      "scraped_at": 1782323727.8288076
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "menabung gen z",
+      "title": "Tren Baru: Gen Z Pilih Beli Rumah di Bodetabek, Dekat KRL dan LRT",
+      "url": "https://www.detik.com/properti/berita/d-8373368/tren-baru-gen-z-pilih-beli-rumah-di-bodetabek-dekat-krl-dan-lrt",
+      "snippet": "",
+      "scraped_at": 1782323727.8288076
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "menabung gen z",
+      "title": "Kisah Andri, Gen Z Indramayu Raup Rp 700 Ribu Sehari dari Jual Gorengan",
+      "url": "https://www.detik.com/jabar/cirebon-raya/d-8369863/kisah-andri-gen-z-indramayu-raup-rp-700-ribu-sehari-dari-jual-gorengan",
+      "snippet": "",
+      "scraped_at": 1782323727.8288076
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "menabung gen z",
+      "title": "Ramai-ramai Nabung Emas, Gen Z dan Milenial Sudah Melek Finansial?",
+      "url": "https://www.detik.com/sumut/bisnis/d-8324965/ramai-ramai-nabung-emas-gen-z-dan-milenial-sudah-melek-finansial",
+      "snippet": "",
+      "scraped_at": 1782323727.8288076
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "financial freedom",
+      "title": "Tanda Orang Pura-pura Kaya, 4 Ciri Ini Sering Tak Disadari",
+      "url": "https://wolipop.detik.com/money-hacks/d-8512316/tanda-orang-pura-pura-kaya-4-ciri-ini-sering-tak-disadari",
+      "snippet": "",
+      "scraped_at": 1782323729.5390093
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "financial freedom",
+      "title": "Video: Pelajaran Besar Menuju Financial Freedom dari Kasus DADA",
+      "url": "https://20.detik.com/detik-sore/20251126-251126114/video-pelajaran-besar-menuju-financial-freedom-dari-kasus-dada",
+      "snippet": "",
+      "scraped_at": 1782323729.5390093
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "financial freedom",
+      "title": "Sosok Clara Shinta, Alumni USU yang Viral karena Dugaan Perselingkuhan Suami",
+      "url": "https://www.detik.com/sumut/berita/d-8424610/sosok-clara-shinta-alumni-usu-yang-viral-karena-dugaan-perselingkuhan-suami",
+      "snippet": "",
+      "scraped_at": 1782323729.5390093
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "financial freedom",
+      "title": "Jangan Kalap Dapat THR: Ini Tips Biar Nggak Menguap Begitu Saja",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8401111/jangan-kalap-dapat-thr-ini-tips-biar-nggak-menguap-begitu-saja",
+      "snippet": "",
+      "scraped_at": 1782323729.5390093
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "financial freedom",
+      "title": "Apakah Emas Digital Aman untuk Investasi? Ini Kelebihan dan Kekurangannya",
+      "url": "https://www.detik.com/jateng/bisnis/d-8346185/apakah-emas-digital-aman-untuk-investasi-ini-kelebihan-dan-kekurangannya",
+      "snippet": "",
+      "scraped_at": 1782323729.5390093
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "financial freedom",
+      "title": "Mengenal Frugal Living: Gaya Hidup Hemat agar Finansial Lebih Sehat",
+      "url": "https://www.detik.com/jabar/berita/d-8334052/mengenal-frugal-living-gaya-hidup-hemat-agar-finansial-lebih-sehat",
+      "snippet": "",
+      "scraped_at": 1782323729.5390093
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "financial freedom",
+      "title": "Isi Pidato Lengkap Prabowo di WEF 2026 Davos, Bicara MBG hingga Danantara",
+      "url": "https://news.detik.com/berita/d-8321431/isi-pidato-lengkap-prabowo-di-wef-2026-davos-bicara-mbg-hingga-danantara",
+      "snippet": "",
+      "scraped_at": 1782323729.5390093
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "financial freedom",
+      "title": "Sempat Diisukan Berkantor di Warung Kelontong, Saham DADA Ngamuk",
+      "url": "https://finance.detik.com/bursa-dan-valas/d-8295700/sempat-diisukan-berkantor-di-warung-kelontong-saham-dada-ngamuk",
+      "snippet": "",
+      "scraped_at": 1782323729.5390093
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "literasi keuangan",
+      "title": "Dorong Kolaborasi Hijau, Pegadaian Dukung Program 2.000 Pohon di Kaltim",
+      "url": "https://news.detik.com/berita/d-8545636/dorong-kolaborasi-hijau-pegadaian-dukung-program-2-000-pohon-di-kaltim",
+      "snippet": "",
+      "scraped_at": 1782323731.2888763
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "literasi keuangan",
+      "title": "Bank Mandiri Hadirkan Mandiri Bakti Kesehatan-Digitalisasi Manuskrip Kuno di Jogja",
+      "url": "https://www.detik.com/jogja/jogja-kerta/d-8545085/bank-mandiri-hadirkan-mandiri-bakti-kesehatan-digitalisasi-manuskrip-kuno-di-jogja",
+      "snippet": "",
+      "scraped_at": 1782323731.2888763
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "literasi keuangan",
+      "title": "Lampaui Garis Finis, Bank Mandiri Hadirkan Dampak Lebih Luas di MJM 2026",
+      "url": "https://sport.detik.com/sportstyle/d-8542644/lampaui-garis-finis-bank-mandiri-hadirkan-dampak-lebih-luas-di-mjm-2026",
+      "snippet": "",
+      "scraped_at": 1782323731.2888763
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "literasi keuangan",
+      "title": "Video: Sultan HB X Soroti Fenomena 'Makan Utang' dan Pinjol",
+      "url": "https://20.detik.com/detikupdate/20260522-260522083/video-sultan-hb-x-soroti-fenomena-makan-utang-dan-pinjol",
+      "snippet": "",
+      "scraped_at": 1782323731.2888763
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "literasi keuangan",
+      "title": "Penyaluran KUR Bank BPD Bali Capai Rp 960,51 Miliar hingga Mei 2026",
+      "url": "https://www.detik.com/bali/bisnis/d-8541703/penyaluran-kur-bank-bpd-bali-capai-rp-960-51-miliar-hingga-mei-2026",
+      "snippet": "",
+      "scraped_at": 1782323731.2898598
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "literasi keuangan",
+      "title": "Jatuh Bangun DoAr Dimsum: Sempat Tutup Dua Kios, Kini Jadi Langganan DPR",
+      "url": "https://finance.detik.com/solusiukm/d-8541329/jatuh-bangun-doar-dimsum-sempat-tutup-dua-kios-kini-jadi-langganan-dpr",
+      "snippet": "",
+      "scraped_at": 1782323731.2898598
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "literasi keuangan",
+      "title": "Masyarakat RI Ternyata Masih Sulit buat Akses Keuangan",
+      "url": "https://finance.detik.com/moneter/d-8541263/masyarakat-ri-ternyata-masih-sulit-buat-akses-keuangan",
+      "snippet": "",
+      "scraped_at": 1782323731.2898598
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "literasi keuangan",
+      "title": "OJK dan BPS Gandeng LPS Perluas Cakupan Survei Literasi Keuangan Nasional",
+      "url": "https://finance.detik.com/foto-bisnis/d-8348748/ojk-dan-bps-gandeng-lps-perluas-cakupan-survei-literasi-keuangan-nasional",
+      "snippet": "",
+      "scraped_at": 1782323731.2898598
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "literasi keuangan",
+      "title": "Gubernur NTB Temui Ribuan Buruh Sawit di Malaysia, Siapkan Skema KUR PMI",
+      "url": "https://www.detik.com/bali/nusra/d-8539306/gubernur-ntb-temui-ribuan-buruh-sawit-di-malaysia-siapkan-skema-kur-pmi",
+      "snippet": "",
+      "scraped_at": 1782323731.2898598
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "literasi keuangan",
+      "title": "Lewat Implementasi Green Zakat, BSI Ajak Masyarakat Ubah Sampah Jadi Emas",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8539052/lewat-implementasi-green-zakat-bsi-ajak-masyarakat-ubah-sampah-jadi-emas",
+      "snippet": "",
+      "scraped_at": 1782323731.2898598
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Jabar Hari Ini: Akhir Viral Getok BBM SPBU di Sukabumi",
+      "url": "https://www.detik.com/jabar/berita/d-8509868/jabar-hari-ini-akhir-viral-getok-bbm-spbu-di-sukabumi",
+      "snippet": "",
+      "scraped_at": 1782323732.9806085
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Kenapa Bansos PKH BPNT 2026 Tahap II Tak Cair? Ini Penyebabnya",
+      "url": "https://www.detik.com/sumut/berita/d-8495840/kenapa-bansos-pkh-bpnt-2026-tahap-ii-tak-cair-ini-penyebabnya",
+      "snippet": "",
+      "scraped_at": 1782323732.9806085
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Kenapa Tidak Terdaftar di DTSEN? Ini Penyebab Bansos Tidak Cair",
+      "url": "https://www.detik.com/jabar/jabar-gaskeun/d-8471520/kenapa-tidak-terdaftar-di-dtsen-ini-penyebab-bansos-tidak-cair",
+      "snippet": "",
+      "scraped_at": 1782323732.9806085
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Nama Dicoret dari Daftar Penerima Bansos PKH BPNT? Ini Caranya agar Dapat Lagi",
+      "url": "https://www.detik.com/jogja/bisnis/d-8468123/nama-dicoret-dari-daftar-penerima-bansos-pkh-bpnt-ini-caranya-agar-dapat-lagi",
+      "snippet": "",
+      "scraped_at": 1782323732.9806085
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Penyebab Bansos PKH & BPNT 2026 Tak Cair dan Cara Mengatasinya",
+      "url": "https://www.detik.com/jabar/jabar-gaskeun/d-8463200/penyebab-bansos-pkh-bpnt-2026-tak-cair-dan-cara-mengatasinya",
+      "snippet": "",
+      "scraped_at": 1782323732.9806085
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Apakah Bank Buka Hari Ini 1 Januari 2026? Cek Jadwal Operasionalnya di Sini",
+      "url": "https://www.detik.com/jogja/bisnis/d-8287458/apakah-bank-buka-hari-ini-1-januari-2026-cek-jadwal-operasionalnya-di-sini",
+      "snippet": "",
+      "scraped_at": 1782323732.9806085
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Gara-gara Paylater-Pinjol, Ribuan Orang Gagal KPR!",
+      "url": "https://www.detik.com/properti/berita/d-8232323/gara-gara-paylater-pinjol-ribuan-orang-gagal-kpr",
+      "snippet": "",
+      "scraped_at": 1782323732.9806085
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Jarang Buka TikTok, Kaget Tiba-tiba Ditagih Rp 4,6 Juta",
+      "url": "https://inet.detik.com/cyberlife/d-8140254/jarang-buka-tiktok-kaget-tiba-tiba-ditagih-rp-4-6-juta",
+      "snippet": "",
+      "scraped_at": 1782323732.9806085
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "Allo Bank Gelar Program Unik, Nasabah Bisa Bawa Pulang iPhone 16 Pro Max",
+      "url": "https://finance.detik.com/moneter/d-8063254/allo-bank-gelar-program-unik-nasabah-bisa-bawa-pulang-iphone-16-pro-max",
+      "snippet": "",
+      "scraped_at": 1782323732.9806085
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "tagihan paylater",
+      "title": "KPR dan SLIK OJK: Apa Hubungannya dan Kenapa Bisa Gagal?",
+      "url": "https://finance.detik.com/moneter/d-8022062/kpr-dan-slik-ojk-apa-hubungannya-dan-kenapa-bisa-gagal",
+      "snippet": "",
+      "scraped_at": 1782323732.9806085
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "beli sekarang bayar nanti",
+      "title": "Movie Marathon di Akhir Pekan Yuk, Mumpung Ada Diskon Nih!",
+      "url": "https://inet.detik.com/mobile-apps/d-8529079/movie-marathon-di-akhir-pekan-yuk-mumpung-ada-diskon-nih",
+      "snippet": "",
+      "scraped_at": 1782323734.706039
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "beli sekarang bayar nanti",
+      "title": "Nonton Santai Akhir Pekan, Ada Potongan Harga Lho",
+      "url": "https://inet.detik.com/mobile-apps/d-8519481/nonton-santai-akhir-pekan-ada-potongan-harga-lho",
+      "snippet": "",
+      "scraped_at": 1782323734.706039
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "beli sekarang bayar nanti",
+      "title": "Sederet Masalah Makan Bergizi Gratis di Jabar",
+      "url": "https://www.detik.com/jabar/berita/d-8518213/sederet-masalah-makan-bergizi-gratis-di-jabar",
+      "snippet": "",
+      "scraped_at": 1782323734.706039
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "beli sekarang bayar nanti",
+      "title": "Jabar Hari Ini: Aksi Tipu-tipu Titik Dapur MBG di Cianjur",
+      "url": "https://www.detik.com/jabar/berita/d-8518130/jabar-hari-ini-aksi-tipu-tipu-titik-dapur-mbg-di-cianjur",
+      "snippet": "",
+      "scraped_at": 1782323734.706039
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "beli sekarang bayar nanti",
+      "title": "Ortu Korban Santri Dibakar Teman di Lombok Tengah Jual Sapi demi Biaya Obat",
+      "url": "https://www.detik.com/bali/hukum-dan-kriminal/d-8518360/ortu-korban-santri-dibakar-teman-di-lombok-tengah-jual-sapi-demi-biaya-obat",
+      "snippet": "",
+      "scraped_at": 1782323734.706039
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "beli sekarang bayar nanti",
+      "title": "Pemilik Biro Haji di Solo Dipolisikan Usai Tipu Rekan Rp 104 Juta",
+      "url": "https://www.detik.com/jateng/berita/d-8515304/pemilik-biro-haji-di-solo-dipolisikan-usai-tipu-rekan-rp-104-juta",
+      "snippet": "",
+      "scraped_at": 1782323734.706039
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "beli sekarang bayar nanti",
+      "title": "Libur Panjang Waisak, Saatnya Santai Nonton Film Pakai Diskon",
+      "url": "https://inet.detik.com/mobile-apps/d-8509164/libur-panjang-waisak-saatnya-santai-nonton-film-pakai-diskon",
+      "snippet": "",
+      "scraped_at": 1782323734.706039
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "beli sekarang bayar nanti",
+      "title": "OJK Mau Batasi PayLater, Tak Bisa Lagi Dipakai di Banyak Aplikasi",
+      "url": "https://finance.detik.com/moneter/d-8499629/ojk-mau-batasi-paylater-tak-bisa-lagi-dipakai-di-banyak-aplikasi",
+      "snippet": "",
+      "scraped_at": 1782323734.706039
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "beli sekarang bayar nanti",
+      "title": "Akhir Pekan Tiba, Saatnya Santai Nonton Film Dengan Diskon",
+      "url": "https://inet.detik.com/mobile-apps/d-8499467/akhir-pekan-tiba-saatnya-santai-nonton-film-dengan-diskon",
+      "snippet": "",
+      "scraped_at": 1782323734.706039
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kartu kredit online",
+      "title": "Mau Kuliah di Unpad? Bisa Ikut Mata Kuliahnya Dulu, Nih!",
+      "url": "https://www.detik.com/edu/perguruan-tinggi/d-8531915/mau-kuliah-di-unpad-bisa-ikut-mata-kuliahnya-dulu-nih",
+      "snippet": "",
+      "scraped_at": 1782323736.4739537
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kartu kredit online",
+      "title": "Jadwal Piala Dunia 2026 17 Juni: Empat Laga Panas di Fase Grup",
+      "url": "https://www.detik.com/sulsel/berita/d-8534249/jadwal-piala-dunia-2026-17-juni-empat-laga-panas-di-fase-grup",
+      "snippet": "",
+      "scraped_at": 1782323736.4739537
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kartu kredit online",
+      "title": "Cara Menonton Piala Dunia 2026 Online di HP, Cek Panduannya!",
+      "url": "https://www.detik.com/sulsel/sepakbola/d-8533693/cara-menonton-piala-dunia-2026-online-di-hp-cek-panduannya",
+      "snippet": "",
+      "scraped_at": 1782323736.4739537
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kartu kredit online",
+      "title": "Jadwal Piala Dunia 2026 Hari Ini 16 Juni, Ada Iran Vs Selandia Baru",
+      "url": "https://www.detik.com/sulsel/sepakbola/d-8533714/jadwal-piala-dunia-2026-hari-ini-16-juni-ada-iran-vs-selandia-baru",
+      "snippet": "",
+      "scraped_at": 1782323736.4739537
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kartu kredit online",
+      "title": "Belanja Online Kini Bisa Lewat Kartu Kredit Digital",
+      "url": "https://finance.detik.com/foto-bisnis/d-5727192/belanja-online-kini-bisa-lewat-kartu-kredit-digital",
+      "snippet": "",
+      "scraped_at": 1782323736.4739537
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kartu kredit online",
+      "title": "Cara Menonton Piala Dunia 2026 Online, Bisa Lewat HP dan Smart TV",
+      "url": "https://www.detik.com/jabar/jabar-gaskeun/d-8528873/cara-menonton-piala-dunia-2026-online-bisa-lewat-hp-dan-smart-tv",
+      "snippet": "",
+      "scraped_at": 1782323736.4739537
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "kartu kredit online",
+      "title": "Tatapan Tajam Nur Terapis Spa ke Eks Pelanggannya Tonny Saat Sidang",
+      "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8527030/tatapan-tajam-nur-terapis-spa-ke-eks-pelanggannya-tonny-saat-sidang",
+      "snippet": "",
+      "scraped_at": 1782323736.4739537
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang pinjol",
+      "title": "Video: Admin Bank BUMN Korupsi hingga Rp 3,5 M untuk Tutupi Utang Pinjol",
+      "url": "https://20.detik.com/detikupdate/20241126-241126080/video-admin-bank-bumn-korupsi-hingga-rp-3-5-m-untuk-tutupi-utang-pinjol",
+      "snippet": "",
+      "scraped_at": 1782323738.2353494
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang pinjol",
+      "title": "Terjerat Pinjol? Ini 7 Tips Bertahan dan Keluar dari Lilitan Utang",
+      "url": "https://www.detik.com/jabar/berita/d-8531131/terjerat-pinjol-ini-7-tips-bertahan-dan-keluar-dari-lilitan-utang",
+      "snippet": "",
+      "scraped_at": 1782323738.2353494
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang pinjol",
+      "title": "Wanita di Medan Didakwa Gelapkan Rp 2 M, Uang untuk Pinjol dan Obati Ortu",
+      "url": "https://www.detik.com/sumut/hukum-dan-kriminal/d-8525371/wanita-di-medan-didakwa-gelapkan-rp-2-m-uang-untuk-pinjol-dan-obati-ortu",
+      "snippet": "",
+      "scraped_at": 1782323738.2353494
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "utang pinjol",
+      "title": "Viral Pria Curhat iPhone 17 Promax Miliknya Dijambret, Paylater Ikut Dikuras",
+      "url": "https://wolipop.detik.com/tech-gadget/d-8522021/viral-pria-curhat-iphone-17-promax-miliknya-dijambret-paylater-ikut-dikuras",
+      "snippet": "",
+      "scraped_at": 1782323738.2353494
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "denda telat bayar",
+      "title": "7 Provinsi Gelar Pemutihan Pajak Kendaraan Bulan Juni 2026",
+      "url": "https://oto.detik.com/berita/d-8531453/7-provinsi-gelar-pemutihan-pajak-kendaraan-bulan-juni-2026",
+      "snippet": "",
+      "scraped_at": 1782323739.9529612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "denda telat bayar",
+      "title": "6 Provinsi Ini Gelar Pemutihan Pajak Kendaraan Juni: Denda dan Tunggakan Dihapus",
+      "url": "https://oto.detik.com/berita/d-8515584/6-provinsi-ini-gelar-pemutihan-pajak-kendaraan-juni-denda-dan-tunggakan-dihapus",
+      "snippet": "",
+      "scraped_at": 1782323739.9529612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "denda telat bayar",
+      "title": "5 Provinsi Gelar Pemutihan Pajak Kendaraan, Jangan sampai Terlewat!",
+      "url": "https://oto.detik.com/berita/d-8510497/5-provinsi-gelar-pemutihan-pajak-kendaraan-jangan-sampai-terlewat",
+      "snippet": "",
+      "scraped_at": 1782323739.9529612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "denda telat bayar",
+      "title": "Pemutihan Pajak Kendaraan Masih Ada: Bebas Denda-Tunggakan, Bayar Pajak Tahun Berjalan",
+      "url": "https://oto.detik.com/berita/d-8500924/pemutihan-pajak-kendaraan-masih-ada-bebas-denda-tunggakan-bayar-pajak-tahun-berjalan",
+      "snippet": "",
+      "scraped_at": 1782323739.9529612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "denda telat bayar",
+      "title": "Cara Hitung Denda Telat Bayar BPJS Kesehatan 2026, Peserta Wajib Tahu!",
+      "url": "https://www.detik.com/sumbagsel/berita/d-8481800/cara-hitung-denda-telat-bayar-bpjs-kesehatan-2026-peserta-wajib-tahu",
+      "snippet": "",
+      "scraped_at": 1782323739.9529612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "denda telat bayar",
+      "title": "Hari Ini Batas Akhir Lapor SPT, Ada Denda Jika Telat",
+      "url": "https://www.detik.com/kalimantan/berita/d-8468204/hari-ini-batas-akhir-lapor-spt-ada-denda-jika-telat",
+      "snippet": "",
+      "scraped_at": 1782323739.9529612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "denda telat bayar",
+      "title": "Ingat! Batas Lapor SPT Pajak Hari Ini, Telat Kena Denda",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8467421/ingat-batas-lapor-spt-pajak-hari-ini-telat-kena-denda",
+      "snippet": "",
+      "scraped_at": 1782323739.9529612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "denda telat bayar",
+      "title": "Besok Batas Akhir Lapor SPT, Telat Kena Denda!",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8466753/besok-batas-akhir-lapor-spt-telat-kena-denda",
+      "snippet": "",
+      "scraped_at": 1782323739.9529612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "denda telat bayar",
+      "title": "Kapan Terakhir Laporan SPT Tahunan Pribadi 2026? Awas Kena Denda Kalau Telat!",
+      "url": "https://www.detik.com/jateng/bisnis/d-8462854/kapan-terakhir-laporan-spt-tahunan-pribadi-2026-awas-kena-denda-kalau-telat",
+      "snippet": "",
+      "scraped_at": 1782323739.9529612
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar hutang",
+      "title": "22 Poin Manifesto Politik Palantir, Dimaknai Mengerikan",
+      "url": "https://inet.detik.com/law-and-policy/d-8462342/22-poin-manifesto-politik-palantir-dimaknai-mengerikan",
+      "snippet": "",
+      "scraped_at": 1782323741.6275315
+    },
+    {
+      "source": "blog_id",
+      "blog": "detik",
+      "query": "gagal bayar hutang",
+      "title": "Amerika Serikat Gagal Bayar Hutang? Ini Imbasnya Ke Indonesia",
+      "url": "https://20.detik.com/detik-pagi/20230529-230529081/amerika-serikat-gagal-bayar-hutang-ini-imbasnya-ke-indonesia",
+      "snippet": "",
+      "scraped_at": 1782323741.6275315
+    }
+  ]
+}

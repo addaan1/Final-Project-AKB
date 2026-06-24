@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "google_play_reviews",
-    "scraped_at": "2026-06-24T13:12:20.173317+00:00",
+    "scraped_at": "2026-06-24T14:58:07.138238+00:00",
     "scraper": "fintech_reviews",
-    "n_apps": 24,
-    "n_reviews_total": 72000,
+    "n_apps": 42,
+    "n_reviews_total": 169377,
     "mode": "all",
     "count_per_app": null,
-    "max_per_app": 30000,
+    "max_per_app": 10000,
     "keyword_groups": [
       "distress_langsung",
       "tagihan_dan_penagihan",
@@ -256,6 +256,186 @@
         "installs": "5.000.000+",
         "n_reviews": 3000,
         "n_relevant": 55,
+        "mode": "all"
+      },
+      {
+        "app_id": "coin.ajaib.co.id",
+        "app_name": "Ajaib Kripto:Beli BTC & Crypto",
+        "query": "Ajaib",
+        "category": "investasi",
+        "installs": null,
+        "n_reviews": 10000,
+        "n_relevant": 495,
+        "mode": "all"
+      },
+      {
+        "app_id": "ajaib.co.id",
+        "app_name": "Ajaib: Saham, Kripto, Saham AS",
+        "query": "Bibit",
+        "category": "investasi",
+        "installs": null,
+        "n_reviews": 10000,
+        "n_relevant": 289,
+        "mode": "all"
+      },
+      {
+        "app_id": "id.makmur",
+        "app_name": "Makmur - Reksadana & Saham",
+        "query": "Bareksa",
+        "category": "investasi",
+        "installs": null,
+        "n_reviews": 4680,
+        "n_relevant": 295,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.indopremier.ipotpay",
+        "app_name": "IPOTFLEX",
+        "query": "IPOT",
+        "category": "investasi",
+        "installs": null,
+        "n_reviews": 179,
+        "n_relevant": 13,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.pluang.grow",
+        "app_name": "Pluang Grow",
+        "query": "Pluang",
+        "category": "investasi",
+        "installs": null,
+        "n_reviews": 11,
+        "n_relevant": 0,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.btpn.rlb",
+        "app_name": "Jenius Daya",
+        "query": "Jenius",
+        "category": "kartu_kredit",
+        "installs": null,
+        "n_reviews": 27,
+        "n_relevant": 0,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.dbs.sg.dbsmbanking",
+        "app_name": "DBS digibank",
+        "query": "Digibank",
+        "category": "mobile_banking",
+        "installs": null,
+        "n_reviews": 890,
+        "n_relevant": 11,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.bca.mybca.omni.android",
+        "app_name": "myBCA: BCA Banking Apps",
+        "query": "BCA Mobile",
+        "category": "mobile_banking",
+        "installs": null,
+        "n_reviews": 10000,
+        "n_relevant": 544,
+        "mode": "all"
+      },
+      {
+        "app_id": "id.bni.wondr",
+        "app_name": "wondr by BNI",
+        "query": "BNI Mobile",
+        "category": "mobile_banking",
+        "installs": null,
+        "n_reviews": 10000,
+        "n_relevant": 234,
+        "mode": "all"
+      },
+      {
+        "app_id": "id.co.cimbniaga.octobiz",
+        "app_name": "OCTO Biz by CIMB Niaga",
+        "query": "CIMB Niaga",
+        "category": "mobile_banking",
+        "installs": null,
+        "n_reviews": 15,
+        "n_relevant": 0,
+        "mode": "all"
+      },
+      {
+        "app_id": "id.co.danamon.dwallet",
+        "app_name": "D-Wallet",
+        "query": "Danamon",
+        "category": "mobile_banking",
+        "installs": null,
+        "n_reviews": 205,
+        "n_relevant": 10,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.cleevio.spendee",
+        "app_name": "Spendee Budget & Money Tracker",
+        "query": "Investree",
+        "category": "p2p_lending",
+        "installs": null,
+        "n_reviews": 130,
+        "n_relevant": 2,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.amf.superapp.release",
+        "app_name": "A-Partners",
+        "query": "Amartha",
+        "category": "p2p_lending",
+        "installs": null,
+        "n_reviews": 1240,
+        "n_relevant": 26,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.yinshan.program.banda",
+        "app_name": "Adapundi-Pinjaman Dana Cepat",
+        "query": "Akseleran",
+        "category": "p2p_lending",
+        "installs": null,
+        "n_reviews": 10000,
+        "n_relevant": 2088,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.finplus.android",
+        "app_name": "FinPlus - Pinjaman Uang Online",
+        "query": "Finmas",
+        "category": "pinjol",
+        "installs": null,
+        "n_reviews": 10000,
+        "n_relevant": 406,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.loan.cash.credit.easy.kilat.cepat.pinjam.uang.dana.rupiah",
+        "app_name": "RupiahCepat - Pinjaman Dana",
+        "query": "PinjamUang",
+        "category": "pinjol",
+        "installs": null,
+        "n_reviews": 10000,
+        "n_relevant": 1630,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.tunaikumobile.app",
+        "app_name": "Tunaiku - Pinjaman Dana Online",
+        "query": "Maupinjam",
+        "category": "pinjol",
+        "installs": null,
+        "n_reviews": 10000,
+        "n_relevant": 2014,
+        "mode": "all"
+      },
+      {
+        "app_id": "com.smartec.ft",
+        "app_name": "BantuSaku- Pinjaman Daring",
+        "query": "PinjamanGo",
+        "category": "pinjol",
+        "installs": null,
+        "n_reviews": 10000,
+        "n_relevant": 572,
         "mode": "all"
       }
     ]

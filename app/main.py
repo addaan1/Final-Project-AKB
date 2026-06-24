@@ -208,6 +208,90 @@ def produk():
     return render_template("dashboard/produk.html", active_page="produk")
 
 
+# =================================================================
+# Tools: DC Chat Simulator (interactive practice)
+# =================================================================
+@main_bp.route("/tools/dc-simulator", methods=["GET", "POST"])
+def dc_simulator():
+    """Interactive DC conversation simulator for practice.
+
+    User memilih skenario DC, sistem akan simulate chat dari DC dengan
+    tone agresif, intimidasi, dll. User bisa pilih response, sistem
+    kasih feedback apakah response-nya tepat.
+    """
+    from app.api import DC_SCENARIOS, evaluate_dc_response
+
+    if request.method == "POST":
+        scenario_id = request.form.get("scenario", "")
+        user_response = request.form.get("response_text", "")
+        scenario = next((s for s in DC_SCENARIOS if s["id"] == scenario_id), None)
+        if not scenario:
+            flash("Skenario tidak ditemukan.", "error")
+            return redirect(url_for("main.dc_simulator"))
+        result = evaluate_dc_response(scenario, user_response)
+        return render_template(
+            "dashboard/dc_simulator.html",
+            active_page="produk",
+            scenario=scenario,
+            user_response=user_response,
+            result=result,
+        )
+    return render_template(
+        "dashboard/dc_simulator.html",
+        active_page="produk",
+        scenario=None,
+        result=None,
+    )
+
+
+# =================================================================
+# Tools: Emergency Runway Calculator
+# =================================================================
+@main_bp.route("/tools/emergency-runway", methods=["POST"])
+def api_emergency_runway():
+    """Hitung berapa bulan kamu bisa bertahan kalau income berhenti hari ini."""
+    from app.api import calculate_emergency_runway
+    data = request.get_json(silent=True) or request.form.to_dict()
+    result = calculate_emergency_runway(
+        cash_on_hand=float(data.get("cash", 0) or 0),
+        monthly_expenses=float(data.get("expenses", 0) or 0),
+        monthly_income=float(data.get("income", 0) or 0),
+        monthly_debt_payment=float(data.get("debt_payment", 0) or 0),
+    )
+    if request.is_json:
+        return jsonify(result)
+    return render_template(
+        "dashboard/produk.html",
+        active_page="produk",
+        runway_result=result,
+    )
+
+
+# =================================================================
+# Tools: 30-Day Action Plan Generator
+# =================================================================
+@main_bp.route("/tools/30-day-plan", methods=["POST"])
+def api_30_day_plan():
+    """Generate personal 30-day action plan berdasarkan Galbay Score bucket."""
+    from app.api import generate_30_day_plan
+    data = request.get_json(silent=True) or request.form.to_dict()
+    result = generate_30_day_plan(
+        cicilan_aktif=int(data.get("cicilan_aktif", 0) or 0),
+        checkout_impulse=int(data.get("checkout_impulse", 0) or 0),
+        cicilan_0_persen=int(data.get("cicilan_0_persen", 0) or 0),
+        reaksi_tagihan=int(data.get("reaksi_tagihan", 0) or 0),
+        dc_pesan=int(data.get("dc_pesan", 0) or 0),
+        track_pengeluaran=int(data.get("track_pengeluaran", 0) or 0),
+    )
+    if request.is_json:
+        return jsonify(result)
+    return render_template(
+        "dashboard/produk.html",
+        active_page="produk",
+        plan_result=result,
+    )
+
+
 @main_bp.route("/galbay-score", methods=["GET", "POST"])
 def galbay_score():
     """Galbay Score Quiz — personal behavioral risk 0-100.

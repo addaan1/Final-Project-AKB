@@ -396,6 +396,85 @@
   </div>
 </section>
 
+<!-- ========== FITUR BARU: DC CHAT SIMULATOR ========== -->
+<section class="page-section" id="dc-simulator">
+  <div class="page-header">
+    <span class="section-tag game-changer-tag">🆕 Fitur Baru &middot; DC Chat Simulator</span>
+    <h1 class="page-title">Latihan <span>Negosiasi</span> dengan Debt Collector</h1>
+    <p class="page-lead">4 skenario DC (agresif, intimidasi, profesional, kritis). Ketik respons, sistem kasih <strong>feedback langsung</strong> apakah Anda sudah tepat. Aman untuk latihan sebelum situasi nyata.</p>
+    <div class="demo-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <span>Dilatih dengan pola negosiasi yang efektif berdasarkan 13.827 review distress + 865 severity tinggi</span>
+    </div>
+    <a href="{{ url_for('main.dc_simulator') }}" class="btn-primary btn-large">🎮 Mulai Simulator →</a>
+  </div>
+</section>
+
+<!-- ========== FITUR BARU: EMERGENCY RUNWAY CALCULATOR ========== -->
+<section class="page-section page-alt" id="emergency-runway">
+  <div class="page-header">
+    <span class="section-tag game-changer-tag">🆕 Fitur Baru &middot; Emergency Runway</span>
+    <h1 class="page-title">Kalau <span>Di-PHK Hari Ini</span>, Berapa Bulan Kamu Bertahan?</h1>
+    <p class="page-lead">Hitung <em>emergency runway</em> kamu. Apakah tabungan + income cukup untuk menutupi pengeluaran + cicilan kalau sumber income tiba-tiba berhenti?</p>
+  </div>
+
+  <form class="runway-form" id="runwayForm">
+    <div class="runway-grid">
+      <div class="form-group">
+        <label for="rwCash">💰 Cash on Hand (tabungan + saldo saat ini)</label>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="rwCash" class="form-input rupiah-num" placeholder="0" value="5.000.000"></div>
+      </div>
+      <div class="form-group">
+        <label for="rwExpenses">🛒 Pengeluaran Bulanan (makan, transport, dll)</label>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="rwExpenses" class="form-input rupiah-num" placeholder="0" value="3.000.000" required></div>
+      </div>
+      <div class="form-group">
+        <label for="rwIncome">💼 Income Bulanan (gaji, freelance, dll)</label>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="rwIncome" class="form-input rupiah-num" placeholder="0" value="4.500.000"></div>
+      </div>
+      <div class="form-group">
+        <label for="rwDebt">💳 Cicilan Hutang / Bulan</label>
+        <div class="rupiah-input"><span class="rupiah-prefix">Rp</span><input type="text" inputmode="numeric" id="rwDebt" class="form-input rupiah-num" placeholder="0" value="800.000"></div>
+      </div>
+    </div>
+    <button type="submit" class="btn-primary btn-large btn-full">📊 Hitung Runway</button>
+  </form>
+
+  <div class="runway-result-card" id="runwayResult" style="display:none;">
+    <!-- Will be populated by JS -->
+  </div>
+</section>
+
+<!-- ========== FITUR BARU: 30-DAY ACTION PLAN ========== -->
+<section class="page-section" id="30-day-plan">
+  <div class="page-header">
+    <span class="section-tag game-changer-tag">🆕 Fitur Baru &middot; 30-Day Action Plan</span>
+    <h1 class="page-title">Rencana <span>30 Hari</span> Personal untuk Kamu</h1>
+    <p class="page-lead">Berdasarkan jawaban Galbay Score kamu, sistem generate <strong>30-day action plan</strong> yang dipersonalisasi. 4 minggu, 5 action items per minggu.</p>
+    <a href="{{ url_for('main.galbay_score') }}" class="btn-primary btn-large">⚡ Ambil Galbay Score (2 menit) →</a>
+  </div>
+  <div class="plan-preview">
+    <h3 style="color: var(--accent-lime); text-align: center; margin-bottom: 18px;">📅 Preview Plan (Skor Tinggi 70/100)</h3>
+    <div class="plan-week-card" style="--week-color: #9b5de5;">
+      <div class="plan-week-header">
+        <div class="plan-week-emoji">📋</div>
+        <div>
+          <div class="plan-week-num">Minggu 1</div>
+          <h3 class="plan-week-title">Audit & Kesadaran</h3>
+        </div>
+      </div>
+      <ul class="plan-week-actions">
+        <li>Catat SEMUA utang: nominal, bunga, tenor, jatuh tempo</li>
+        <li>Hitung total cash + income + expenses bulanan</li>
+        <li>Download semua app pinjol, cek tagihan</li>
+        <li>Cek skor kredit di SLIK OJK (gratis)</li>
+        <li>Identifikasi 3 pemicu belanja impulsif</li>
+      </ul>
+    </div>
+    <p style="text-align:center; color: var(--text-muted); font-size: 0.9rem; margin-top: 16px;">+ 3 minggu lainnya (Stabilkan, Negosiasi, Build Habits). Unlock dengan Galbay Score kamu →</p>
+  </div>
+</section>
+
 <!-- ========== PRICING + WAITLIST ========== -->
 <section class="page-section page-alt" id="pricing">
   <div class="page-header">

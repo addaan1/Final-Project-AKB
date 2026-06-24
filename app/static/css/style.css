@@ -7192,3 +7192,233 @@ body[data-package="premium"] .user-avatar-initial {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* ============================================================
+   ROUND 10c: THEME POLISH (typography + microinteractions)
+   ============================================================ */
+
+/* --- 1) Better focus ring (accessibility + visual clarity) --- */
+*:focus-visible {
+  outline: 2px solid var(--accent-violet);
+  outline-offset: 3px;
+  border-radius: 4px;
+  transition: outline-offset 0.15s ease;
+}
+button:focus-visible, a:focus-visible {
+  outline-offset: 4px;
+}
+
+/* --- 2) Smoother section transitions (page-section hover lift) --- */
+.page-section {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.page-header {
+  transition: transform 0.3s ease;
+}
+.page-section:hover .page-header {
+  transform: translateY(-2px);
+}
+
+/* --- 3) Card hover microinteraction (depth + glow) --- */
+.card, .kpi-card, .chart-card, .insight-box, .info-card, .pricing-card, .source-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+.card:hover, .kpi-card:hover, .chart-card:hover,
+.insight-box:hover, .info-card:hover, .pricing-card:hover, .source-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(155,93,229,0.22), 0 4px 12px rgba(192,38,211,0.12);
+  border-color: var(--accent-violet);
+}
+:root[data-theme="light"] .card:hover, :root[data-theme="light"] .kpi-card:hover,
+:root[data-theme="light"] .chart-card:hover, :root[data-theme="light"] .insight-box:hover,
+:root[data-theme="light"] .info-card:hover, :root[data-theme="light"] .pricing-card:hover,
+:root[data-theme="light"] .source-card:hover {
+  box-shadow: 0 16px 40px rgba(192,38,211,0.18), 0 4px 12px rgba(155,93,229,0.10);
+}
+
+/* --- 4) Typography hierarchy (display headings get a punch) --- */
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+.page-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+.page-lead {
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.6;
+  max-width: 70ch;
+}
+.section-tag {
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+/* --- 5) Scroll-reveal animation (triggered by IntersectionObserver in scroll-reveal.js) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.10s; }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.15s; }
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.20s; }
+.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.25s; }
+.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.30s; }
+.reveal-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- 6) Better button feedback (press + glow) --- */
+.btn-primary, .btn-outline, .btn-large, .btn-secondary {
+  transition: transform 0.18s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.btn-primary:active, .btn-outline:active, .btn-large:active, .btn-secondary:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* --- 7) Tabular KPI numbers — animated count-up support (data-target + JS) --- */
+.kpi-value, .metric-big {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+/* --- 8) Pricing card 'featured' lift effect --- */
+.pricing-card.pricing-featured {
+  position: relative;
+  z-index: 2;
+  transform: scale(1.03);
+}
+.pricing-card.pricing-featured::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--accent-violet), var(--accent-lime));
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.45;
+  animation: featuredGlow 3s ease-in-out infinite;
+}
+@keyframes featuredGlow {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 0.6; }
+}
+
+/* --- 9) Chat bubble attention pulse (first 4s on page load) --- */
+.chat-bubble {
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+.chat-bubble.attention {
+  animation: bubbleAttention 1.2s ease-in-out 1;
+}
+@keyframes bubbleAttention {
+  0%, 100% { transform: scale(1); }
+  30%      { transform: scale(1.18) rotate(-8deg); }
+  60%      { transform: scale(1.10) rotate(6deg); }
+}
+
+/* --- 10) Topbar shrink on scroll --- */
+.topbar.scrolled {
+  height: 56px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  background: var(--topbar-bg);
+}
+.topbar.scrolled .topbar-brand-text {
+  font-size: 0.95rem;
+}
+
+/* --- 11) Smooth gradient text animation for hero titles --- */
+.gradient-text {
+  background: linear-gradient(90deg, #9b5de5 0%, #c026d3 35%, #b8ff3c 70%, #9b5de5 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 6s linear infinite;
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* --- 12) Mobile responsive fixes (small screens < 600px) --- */
+@media (max-width: 768px) {
+  .topbar { padding: 0 12px; height: 60px; }
+  .topbar-subtitle { display: none; }
+  .topbar-brand-text { font-size: 0.95rem; }
+  .page-title { font-size: 1.5rem; }
+  .page-lead { font-size: 0.95rem; }
+  .kpi-bar { gap: 8px; }
+  .kpi-value { font-size: 1.6rem !important; }
+  .pricing-card.pricing-featured { transform: scale(1); }
+  .nav-pill { padding: 6px 10px; font-size: 12px; }
+  .section-tag { font-size: 0.7rem; }
+  .card:hover, .kpi-card:hover, .chart-card:hover,
+  .insight-box:hover, .info-card:hover { transform: none; }
+}
+@media (max-width: 480px) {
+  .kpi-value { font-size: 1.3rem !important; }
+  .topbar-right { gap: 6px; }
+  .theme-toggle, .dropdown-toggle { padding: 6px 8px; }
+  .hamburger { font-size: 1.2rem; }
+}
+
+/* --- 13) Reduced motion preference --- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right, .reveal-stagger > *,
+  .chat-bubble, .gradient-text, .pricing-card.pricing-featured::after,
+  .nav-pill-cta {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* --- 14) Light mode — softer cards + better contrast for gradient text --- */
+:root[data-theme="light"] .gradient-text {
+  background: linear-gradient(90deg, #9b5de5 0%, #c026d3 35%, #84cc16 70%, #9b5de5 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+:root[data-theme="light"] .topbar.scrolled {
+  box-shadow: 0 6px 20px rgba(155,93,229,0.12);
+}
+

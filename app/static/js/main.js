@@ -4,27 +4,14 @@
 // Conditional chart init: hanya render chart yang canvas-nya ada di page
 // ============================================================
 const D = window.GALBAY_DATA || {};
-// Round 17: Harvard Crimson palette (was vibrant purple/lime).
-// Crimson + Navy + Gold for chart colors — professional/akademis.
-const COL = {
-  lime: '#a41e22',  // Harvard Crimson (was neon lime)
-  pur:  '#0a2540',  // Deep Navy (was vibrant purple)
-  violet:'#bd9b60', // Warm Gold (was magenta)
-  red:  '#7a1f2b',  // Maroon (subtle warning)
-  org:  '#bd9b60',  // Gold accent
-  blu:  '#1e3a5f',  // Mid Navy
-  grn:  '#2d6a4f',  // Forest green (success, was lime green)
-  gray: '#5c5c5c',  // neutral gray
-  text: '#1a1a1a',  // charcoal
-  grid: 'rgba(10,37,64,0.10)',
-};
+const COL = { lime:'#b8ff3c', pur:'#9b5de5', violet:'#6a0dad', red:'#f87171', org:'#f97316', blu:'#3b82f6', grn:'#4ade80', gray:'#6b5e80', text:'#a89ac0' };
 // Theme-aware overrides (mutated by applyThemeColors() before chart init)
 function applyThemeColors() {
   const tc = getThemeColors();
-  COL.text = tc.isDark ? '#f5f1e8' : '#1a1a1a';
-  COL.gray = tc.isDark ? '#c8c2b3' : '#5c5c5c';
-  COL.lime = '#a41e22';     // Crimson constant
-  COL.grid = tc.isDark ? 'rgba(189,155,96,0.12)' : 'rgba(10,37,64,0.10)';
+  COL.text = tc.text;       // dark: #f0eaff, light: #1c1917
+  COL.gray = tc.isDark ? '#6b5e80' : '#6b7280';
+  COL.lime = tc.isDark ? '#b8ff3c' : '#84cc16';
+  COL.grid = tc.isDark ? 'rgba(155,93,229,0.08)' : 'rgba(124,58,237,0.10)';
 }
 applyThemeColors();
 
@@ -248,11 +235,10 @@ function getThemeColors() {
   const isDark = root.getAttribute('data-theme') !== 'light';
   const isPremium = document.body?.getAttribute('data-package') === 'premium';
   return {
-    text: isDark ? '#f5f1e8' : '#1a1a1a',
+    text: isDark ? '#f0eaff' : '#1c1917',
     isDark,
     isPremium,
-    // Round 17: Harvard Crimson as primary accent (was neon lime)
-    accent: isPremium ? '#bd9b60' : '#a41e22',
+    accent: isPremium ? '#fbbf24' : (isDark ? '#b8ff3c' : '#ea580c'),
   };
 }
 

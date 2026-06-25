@@ -41,32 +41,41 @@
   --bg-card: #ffffff;
   --bg-card2: #f3eaff;
   --bg-elevated: #ffffff;
-  --accent-lime: #9b5de5;
-  --accent-lime-soft: rgba(155,93,229,0.12);
-  --accent-purple: #c026d3;
-  --accent-purple-soft: rgba(192,38,211,0.10);
+  --accent-lime: #84cc16;
+  --accent-lime-soft: rgba(132,204,22,0.14);
+  --accent-purple: #7c3aed;
+  --accent-purple-soft: rgba(124,58,237,0.12);
   --accent-violet: #a855f7;
-  --accent-blue: #7c3aed;
-  --accent-gold: #f59e0b;
+  --accent-blue: #2563eb;
+  --accent-blue-soft: rgba(37,99,235,0.12);
+  --accent-coral: #ef4444;
+  --accent-coral-soft: rgba(239,68,68,0.12);
+  --accent-amber: #f59e0b;
+  --accent-amber-soft: rgba(245,158,11,0.14);
+  --accent-teal: #14b8a6;
+  --accent-teal-soft: rgba(20,184,166,0.12);
+  --accent-pink: #ec4899;
+  --accent-pink-soft: rgba(236,72,153,0.12);
+  --accent-gold: #eab308;
   --text-primary: #1a0a3a;
   --text-secondary: #4c3a6e;
-  --text-muted: #8a7ba6;
-  --border: rgba(155,93,229,0.25);
-  --border-purple: rgba(192,38,211,0.30);
+  --text-muted: #6b5e80;
+  --border: rgba(124,58,237,0.20);
+  --border-purple: rgba(192,38,211,0.28);
   --border-neutral: rgba(26,10,58,0.10);
-  --shadow-sm: 0 1px 3px rgba(155,93,229,0.08);
-  --shadow-md: 0 4px 12px rgba(155,93,229,0.12);
-  --shadow-lg: 0 12px 32px rgba(155,93,229,0.18);
-  --shadow-glow: 0 0 24px rgba(192,38,211,0.18);
-  --gradient-hero: radial-gradient(ellipse at 25% 0%, rgba(155,93,229,0.28), transparent 55%),
-                   radial-gradient(ellipse at 75% 20%, rgba(192,38,211,0.20), transparent 50%),
-                   radial-gradient(ellipse at 50% 80%, rgba(184,255,60,0.15), transparent 60%);
+  --shadow-sm: 0 1px 3px rgba(124,58,237,0.10);
+  --shadow-md: 0 4px 12px rgba(124,58,237,0.14);
+  --shadow-lg: 0 12px 32px rgba(124,58,237,0.20);
+  --shadow-glow: 0 0 24px rgba(192,38,211,0.20);
+  --gradient-hero: radial-gradient(ellipse at 25% 0%, rgba(124,58,237,0.22), transparent 55%),
+                   radial-gradient(ellipse at 75% 20%, rgba(192,38,211,0.18), transparent 50%),
+                   radial-gradient(ellipse at 50% 80%, rgba(132,204,22,0.10), transparent 60%);
   --gradient-card: linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(243,234,255,0.85) 50%, rgba(255,255,255,0.95) 100%);
   --topbar-bg: rgba(255,255,255,0.85);
   --topbar-border: 1px solid var(--border-purple);
-  --shadow-colorful: 0 8px 32px rgba(155,93,229,0.15), 0 2px 8px rgba(192,38,211,0.10);
-  --shadow-soft: 0 2px 8px rgba(155,93,229,0.08), 0 1px 3px rgba(0,0,0,0.04);
-  --accent-shimmer: linear-gradient(90deg, transparent, rgba(155,93,229,0.4), transparent);
+  --shadow-colorful: 0 8px 32px rgba(124,58,237,0.15), 0 2px 8px rgba(192,38,211,0.10);
+  --shadow-soft: 0 2px 8px rgba(124,58,237,0.08), 0 1px 3px rgba(0,0,0,0.04);
+  --accent-shimmer: linear-gradient(90deg, transparent, rgba(124,58,237,0.4), transparent);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -8078,40 +8087,50 @@ h1, h2, h3 {
 }
 .source-theme-item {
   display: grid;
-  grid-template-columns: 1fr 50px;
+  grid-template-columns: 1fr 56px;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 .source-theme-bar-bg {
-  height: 22px;
+  height: 28px;
   background: var(--bg-card2);
-  border-radius: 6px;
+  border-radius: 8px;
   position: relative;
   overflow: hidden;
 }
 .source-theme-bar-fill {
   position: absolute;
-  inset: 0;
-  border-radius: 6px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  padding-left: 10px;
+  padding: 0 10px;
   transition: width 0.6s ease-out;
+  min-width: 22%;
+  overflow: hidden;
 }
 .source-theme-label {
-  position: relative;
-  z-index: 1;
   font-size: 0.82rem;
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
-  padding-left: 10px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.55);
+  line-height: 1.2;
 }
 .source-theme-pct {
   text-align: right;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--text-primary);
   font-weight: 700;
+}
+/* Light mode: bar fill is colored (category hue), label is white = readable */
+:root[data-theme="light"] .source-theme-label {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.7);
 }
 
 /* Keyword matrix */

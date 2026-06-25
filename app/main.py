@@ -108,7 +108,7 @@ def auth_google():
         flash("Google OAuth belum di-setup. Gunakan demo login.", "error")
         return redirect(url_for("main.login"))
     oauth = current_app.extensions.get("oauth")
-    if not oauth or "google" not in {p.name for p in []}:
+    if not oauth or not getattr(oauth, "google", None):
         flash("OAuth client tidak ditemukan.", "error")
         return redirect(url_for("main.login"))
     redirect_uri = current_app.config["GOOGLE_REDIRECT_URI"]

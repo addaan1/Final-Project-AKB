@@ -5,6 +5,15 @@
 // ============================================================
 const D = window.GALBAY_DATA || {};
 const COL = { lime:'#b8ff3c', pur:'#9b5de5', violet:'#6a0dad', red:'#f87171', org:'#f97316', blu:'#3b82f6', grn:'#4ade80', gray:'#6b5e80', text:'#a89ac0' };
+// Theme-aware overrides (mutated by applyThemeColors() before chart init)
+function applyThemeColors() {
+  const tc = getThemeColors();
+  COL.text = tc.text;       // dark: #f0eaff, light: #1c1917
+  COL.gray = tc.isDark ? '#6b5e80' : '#6b7280';
+  COL.lime = tc.isDark ? '#b8ff3c' : '#84cc16';
+  COL.grid = tc.isDark ? 'rgba(155,93,229,0.08)' : 'rgba(124,58,237,0.10)';
+}
+applyThemeColors();
 
 document.addEventListener('DOMContentLoaded', () => {
   fillNumbers();
@@ -209,7 +218,7 @@ const chartDefaults = {
 };
 const grid = {
   ticks: { color: COL.gray, font: { size: 11 } },
-  grid: { color: 'rgba(155,93,229,0.08)' }
+  grid: { color: COL.grid }
 };
 const gridY = { ticks: { color: COL.text, font:{size:11} }, grid: { display:false } };
 
@@ -699,12 +708,15 @@ function renderSourceThemes() {
         </div>
         <div class="source-theme-list">`;
     items.forEach(t => {
+      // Min visual width 22% so label stays readable for small percentages
+      const visualPct = Math.max(t.pct, 22);
       html += `
           <div class="source-theme-item">
             <div class="source-theme-bar-bg">
-              <div class="source-theme-bar-fill" style="width:${t.pct}%; background:${t.color}"></div>
+              <div class="source-theme-bar-fill" style="width:${visualPct}%; background:${t.color}">
+                <span class="source-theme-label">${t.theme}</span>
+              </div>
             </div>
-            <div class="source-theme-label">${t.theme}</div>
             <div class="source-theme-pct">${t.pct}%</div>
           </div>`;
     });

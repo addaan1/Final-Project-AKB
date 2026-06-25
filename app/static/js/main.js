@@ -5,6 +5,15 @@
 // ============================================================
 const D = window.GALBAY_DATA || {};
 const COL = { lime:'#b8ff3c', pur:'#9b5de5', violet:'#6a0dad', red:'#f87171', org:'#f97316', blu:'#3b82f6', grn:'#4ade80', gray:'#6b5e80', text:'#a89ac0' };
+// Theme-aware overrides (mutated by applyThemeColors() before chart init)
+function applyThemeColors() {
+  const tc = getThemeColors();
+  COL.text = tc.text;       // dark: #f0eaff, light: #1c1917
+  COL.gray = tc.isDark ? '#6b5e80' : '#6b7280';
+  COL.lime = tc.isDark ? '#b8ff3c' : '#84cc16';
+  COL.grid = tc.isDark ? 'rgba(155,93,229,0.08)' : 'rgba(124,58,237,0.10)';
+}
+applyThemeColors();
 
 document.addEventListener('DOMContentLoaded', () => {
   fillNumbers();
@@ -209,7 +218,7 @@ const chartDefaults = {
 };
 const grid = {
   ticks: { color: COL.gray, font: { size: 11 } },
-  grid: { color: 'rgba(155,93,229,0.08)' }
+  grid: { color: COL.grid }
 };
 const gridY = { ticks: { color: COL.text, font:{size:11} }, grid: { display:false } };
 
@@ -307,7 +316,44 @@ const percentLabelPlugin = {
 };
 Chart.register(percentLabelPlugin);
 
-function make(id, cfg){ const el=document.getElementById(id); if(!el) return; new Chart(el, cfg); }
+function make(id, cfg){
+  const el=document.getElementById(id);
+  if(!el) return;
+  // Get the chart-wrap parent for sizing
+  const wrap = el.closest('.chart-wrap');
+  // Use wrap dimensions if available, fallback to 600x340
+  let w = 600, h = 340;
+  if (wrap) {
+    const rect = wrap.getBoundingClientRect();
+    if (rect.width > 0) w = Math.floor(rect.width);
+    if (rect.height > 0) h = Math.floor(rect.height);
+  }
+  // Set explicit canvas dimensions (Chart.js uses these for rendering)
+  el.setAttribute('width', String(w));
+  el.setAttribute('height', String(h));
+  el.style.width = w + 'px';
+  el.style.height = h + 'px';
+  const chart = new Chart(el, cfg);
+  // Multiple resize attempts to handle async layout
+  [50, 150, 300, 600, 1000, 2000].forEach(delay => {
+    setTimeout(() => {
+      try {
+        if (wrap) {
+          const r = wrap.getBoundingClientRect();
+          if (r.width > 0 && r.height > 0) {
+            el.style.width = r.width + 'px';
+            el.style.height = r.height + 'px';
+            el.setAttribute('width', String(Math.floor(r.width)));
+            el.setAttribute('height', String(Math.floor(r.height)));
+          }
+        }
+        chart.resize();
+        chart.update('none');
+      } catch(e) { /* noop */ }
+    }, delay);
+  });
+  return chart;
+}
 
 // ── CONDITIONAL CHART INIT: hanya render chart yang canvas ada di page ──
 function initCharts() {
@@ -327,9 +373,13 @@ function initCharts() {
   if (ids.has('chartSourceVolume')) chartSourceVolume();
   if (ids.has('chartSourceDistress')) chartSourceDistress();
   if (ids.has('chartSourceSentiment')) chartSourceSentiment();
+  if (ids.has('chartCatMetrics')) chartCatMetrics();
+  if (ids.has('chartLearningCurve')) chartLearningCurve();
+  if (ids.has('chartCVFolds')) chartCVFolds();
   // Render source themes & keyword matrix
   if (document.getElementById('sourceThemesGrid')) renderSourceThemes();
   if (document.getElementById('keywordMatrix')) renderKeywordMatrix();
+  if (document.getElementById('topFeaturesList')) renderTopFeatures();
   if (ids.has('chartSentimentDist')) chartSentimentDist();
   if (ids.has('chartModel')) chartModel();
 }
@@ -658,12 +708,15 @@ function renderSourceThemes() {
         </div>
         <div class="source-theme-list">`;
     items.forEach(t => {
+      // Min visual width 22% so label stays readable for small percentages
+      const visualPct = Math.max(t.pct, 22);
       html += `
           <div class="source-theme-item">
             <div class="source-theme-bar-bg">
-              <div class="source-theme-bar-fill" style="width:${t.pct}%; background:${t.color}"></div>
+              <div class="source-theme-bar-fill" style="width:${visualPct}%; background:${t.color}">
+                <span class="source-theme-label">${t.theme}</span>
+              </div>
             </div>
-            <div class="source-theme-label">${t.theme}</div>
             <div class="source-theme-pct">${t.pct}%</div>
           </div>`;
     });
@@ -715,4 +768,95 @@ function renderKeywordMatrix() {
   });
   html += '</tbody></table>';
   matrix.innerHTML = html;
+}
+
+// 18) Per-category metrics: actual POS rate vs predicted POS rate
+function chartCatMetrics() {
+  const cm = (D.cat_metrics || []).slice(0, 8);
+  if (!cm.length) return;
+  make('chartCatMetrics', { type:'bar', data:{
+    labels: cm.map(x => x.category),
+    datasets: [
+      { label: 'Actual POS rate (%)', data: cm.map(x => x.true_pos_rate), backgroundColor: 'rgba(132,204,22,0.85)', borderRadius: 5 },
+      { label: 'Predicted POS rate (%)', data: cm.map(x => x.pred_pos_rate), backgroundColor: 'rgba(155,93,229,0.85)', borderRadius: 5 },
+      { label: 'F1 Negatif', data: cm.map(x => (x.f1_neg * 100).toFixed(1)), backgroundColor: 'rgba(245,158,11,0.85)', borderRadius: 5 },
+    ]
+  }, options:{
+    ...chartDefaults,
+    plugins: {
+      ...chartDefaults.plugins,
+      percentLabel: { enabled: false },
+      tooltip: { ...chartDefaults.plugins.tooltip,
+        callbacks: { label: (ctx) => ' ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + (ctx.dataset.label.includes('rate') ? '%' : '') }
+      }
+    },
+    scales: { x: { ...grid, ticks: { ...grid.ticks, font: { size: 10 } } }, y: { ...grid, max: 100, ticks: { ...grid.ticks, callback: (v) => v + (v < 1 ? '' : '') } } }
+  }});
+}
+
+// 19) Learning curve: F1 vs train size
+function chartLearningCurve() {
+  const lc = D.learning_curve || [];
+  if (!lc.length) return;
+  make('chartLearningCurve', { type:'line', data:{
+    labels: lc.map(x => x.train_pct + '%'),
+    datasets: [
+      { label: 'F1 Score', data: lc.map(x => (x.f1 * 100).toFixed(1)), borderColor: '#b8ff3c', backgroundColor: 'rgba(184,255,60,0.18)', borderWidth: 3, fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#b8ff3c' },
+      { label: 'Accuracy', data: lc.map(x => (x.accuracy * 100).toFixed(1)), borderColor: '#9b5de5', backgroundColor: 'rgba(155,93,229,0.12)', borderWidth: 3, fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#9b5de5' },
+    ]
+  }, options:{
+    ...chartDefaults,
+    plugins: {
+      ...chartDefaults.plugins,
+      percentLabel: { enabled: false },
+      tooltip: { ...chartDefaults.plugins.tooltip,
+        callbacks: { label: (ctx) => ' ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + '%' }
+      }
+    },
+    scales: { x: { ...grid, ticks: { ...grid.ticks } }, y: { ...grid, min: 60, max: 100, ticks: { ...grid.ticks, callback: (v) => v + '%' } } }
+  }});
+}
+
+// 20) CV stability: F1 per fold (5-fold)
+function chartCVFolds() {
+  const folds = D.cv_fold_scores || [];
+  if (!folds.length) return;
+  make('chartCVFolds', { type:'bar', data:{
+    labels: folds.map(x => 'Fold ' + x.fold),
+    datasets: [
+      { label: 'F1 Score', data: folds.map(x => (x.f1 * 100).toFixed(1)), backgroundColor: 'rgba(184,255,60,0.85)', borderRadius: 6 },
+      { label: 'Accuracy', data: folds.map(x => (x.accuracy * 100).toFixed(1)), backgroundColor: 'rgba(155,93,229,0.85)', borderRadius: 6 },
+    ]
+  }, options:{
+    ...chartDefaults,
+    plugins: {
+      ...chartDefaults.plugins,
+      percentLabel: { enabled: false },
+      tooltip: { ...chartDefaults.plugins.tooltip,
+        callbacks: { label: (ctx) => ' ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) + '%' }
+      }
+    },
+    scales: { x: { ...grid, ticks: { ...grid.ticks } }, y: { ...grid, min: 80, max: 90, ticks: { ...grid.ticks, callback: (v) => v + '%' } } }
+  }});
+}
+
+// 21) Render top features list (words with weights)
+function renderTopFeatures() {
+  const list = document.getElementById('topFeaturesList');
+  if (!list) return;
+  const features = (D.model && D.model.top_features) || [];
+  if (!features.length) {
+    list.innerHTML = '<p class="text-muted">Belum ada data</p>';
+    return;
+  }
+  // Top 12 by abs weight
+  const sorted = features.slice().sort((a, b) => Math.abs(b.weight) - Math.abs(a.weight)).slice(0, 12);
+  list.innerHTML = '<div class="features-grid">' + sorted.map(f => {
+    const isNeg = f.weight < 0;
+    return `<div class="feature-item ${isNeg ? 'feature-neg' : 'feature-pos'}">
+      <span class="feature-word">${f.word}</span>
+      <span class="feature-weight">${f.weight.toFixed(2)}</span>
+      <span class="feature-dir">${isNeg ? 'negatif' : 'positif'}</span>
+    </div>`;
+  }).join('') + '</div>';
 }

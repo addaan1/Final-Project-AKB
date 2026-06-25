@@ -49,9 +49,65 @@
     </div>
   </div>
 
+  <div class="chart-card chart-full" style="margin-top:24px;">
+    <div class="chart-header">
+      <div class="chart-title">📊 Top Sinyal Distress per Kategori Fintech</div>
+      <div class="chart-subtitle">% ulasan mengandung kata kunci galbay (gagal bayar, DC agresif, dll) per kategori</div>
+    </div>
+    <div class="chart-wrap" style="height:300px;"><canvas id="chartScoreDist2"></canvas></div>
+    <div class="insight-box">
+      <p>5 dari 11 kategori memiliki <strong>&gt;30% sinyal distress</strong>. Mobile_banking (68%) &amp; ecommerce (67%) paling tinggi — meski terdengar aneh, ini valid: transaksi gagal/expired/UI buruk = sumber frustrasi. Pinjol (46%) &amp; paylater (46%) sesuai ekspektasi.</p>
+    </div>
+  </div>
+
   <div class="insight-box insight-large">
     <h4>Kesimpulan</h4>
     <p>Data mining terhadap <strong><span data-fill="total_reviews">-</span> ulasan</strong> aplikasi fintech mengonfirmasi adanya masalah perilaku finansial Gen Z yang nyata dan masif. Galbay Predictor menjawabnya dengan pendekatan <strong>coaching preventif berbasis data</strong>, sebuah peluang bisnis yang layak, terdiferensiasi, dan didukung bukti &mdash; bukan sekadar asumsi.</p>
+  </div>
+
+  <div class="page-section" style="padding: 24px 48px 12px;">
+    <div class="page-header">
+      <h2 class="page-title">SWOT <span>Analysis</span></h2>
+      <p class="page-lead">Evaluasi strategis Galbay Predictor berdasarkan data &amp; validasi pasar.</p>
+    </div>
+    <div class="swot-grid">
+      <div class="swot-cell swot-strengths">
+        <h3>💪 Strengths</h3>
+        <ul>
+          <li>Data 602K dari 7 sumber (paling kaya di niche)</li>
+          <li>Model Multinomial NB F1 0.857, CV stabil ±0.003</li>
+          <li>Tools interaktif (DC Simulator, Runway, 30-Day Plan)</li>
+          <li>Privacy-first (no data keuangan pribadi dikumpulkan)</li>
+        </ul>
+      </div>
+      <div class="swot-cell swot-weaknesses">
+        <h3>⚠️ Weaknesses</h3>
+        <ul>
+          <li>Fitur masih rule-based, belum pakai LLM real-time</li>
+          <li>Premium tier belum fully implemented (no payment gateway)</li>
+          <li>6 source non-Play masih tipis (Twitter/TikTok blocked)</li>
+          <li>Onboarding mungkin terlalu panjang untuk Gen Z</li>
+        </ul>
+      </div>
+      <div class="swot-cell swot-opportunities">
+        <h3>🚀 Opportunities</h3>
+        <ul>
+          <li>Pasar Gen Z Indonesia ~70 juta, 60% pengguna fintech</li>
+          <li>OJK butuh tools edukasi (potential B2B partnership)</li>
+          <li>Bisa ekspansi ke SEA (Filipina, Vietnam: similar pain)</li>
+          <li>Premium tier Rp 49rb × 10K user = Rp 4.9M MRR potensial</li>
+        </ul>
+      </div>
+      <div class="swot-cell swot-threats">
+        <h3>🚧 Threats</h3>
+        <ul>
+          <li>Pesaing: aplikasi budgeting besar (Money Lover, Finansialku)</li>
+          <li>Bank digital sudah punya fitur serupa (Jenius, Jago)</li>
+          <li>Regulasi OJK untuk financial advisor (mungkin butuh lisensi)</li>
+          <li>Trust issue: scam di niche financial = sulit dapat user trust</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <div class="info-card" style="margin-top:24px;">

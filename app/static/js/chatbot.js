@@ -10,17 +10,22 @@
     'Cek pinjol legal?',
     'Snowball vs Avalanche',
     'DC agresif, gimana?',
-    'Cara recovery',
+    'Cara recovery 30 hari',
+    'Bunga wajar berapa?',
+    'Bunga tahunan vs harian',
+    'Pinjol aman untuk mahasiswa?',
   ];
 
   const CATEGORY_CHIPS = [
-    { label: 'Galbay basics', query: 'apa itu galbay?' },
-    { label: 'Pinjol legal?', query: 'cara cek pinjol legal' },
-    { label: 'Strategi bayar', query: 'snowball vs avalanche' },
-    { label: 'DC agresif', query: 'DC agresif' },
-    { label: 'Recovery', query: 'cara recovery' },
-    { label: 'Hak hukum', query: 'hak borrower' },
-    { label: 'Mental health', query: 'stress finansial' },
+    { label: '📚 Galbay basics', query: 'apa itu galbay?', icon: '📚' },
+    { label: '⚖️ Pinjol legal?', query: 'cara cek pinjol legal', icon: '⚖️' },
+    { label: '💰 Strategi bayar', query: 'snowball vs avalanche', icon: '💰' },
+    { label: '🤝 DC agresif', query: 'DC agresif', icon: '🤝' },
+    { label: '🛤️ Recovery', query: 'cara recovery', icon: '🛤️' },
+    { label: '📜 Hak hukum', query: 'hak borrower', icon: '📜' },
+    { label: '💚 Mental health', query: 'stress finansial', icon: '💚' },
+    { label: '🎮 DC Simulator', query: 'latihan dc', icon: '🎮' },
+    { label: '📊 Cek Skor', query: 'cek skor', icon: '📊' },
   ];
 
   const SENTIMENT_EMOJI = {
@@ -204,6 +209,20 @@
   // ============================================================
   // Suggestions / Related actions
   // ============================================================
+  async function loadUsage() {
+    try {
+      const r = await fetch('/api/usage');
+      if (!r.ok) return;
+      const usage = await r.json();
+      const header = document.getElementById('chatUsageInfo');
+      if (!header) return;
+      const limit = usage.chat_limit >= 1000000000 ? '∞' : usage.chat_limit;
+      const used = usage.chat_count;
+      const tier = usage.is_premium ? '👑 Premium' : '🆓 Free';
+      header.innerHTML = `<span class="usage-pill">${tier}</span><span class="usage-stat">Chat: ${used}/${limit} hari ini</span>`;
+    } catch (e) { /* silent */ }
+  }
+
   function showSuggestions(suggestions) {
     const actionsEl = document.getElementById('chatActions');
     if (!actionsEl) return;
@@ -293,6 +312,16 @@
           page_context: pageContext(),
         }),
       });
+      // Round 13: Handle 429 (rate limit)
+      if (resp.status === 429) {
+        const result = await resp.json();
+        removeTypingIndicator();
+        addMessage('bot', '', 'rate-limited', `<div class="limit-error"><h3>🚫 ${result.error || 'Limit harian tercapai'}</h3><p>Free tier: 10 chat/hari. Upgrade ke Premium untuk unlimited.</p><a href="/dashboard/produk" class="btn-primary">👑 Upgrade ke Premium</a></div>`);
+        if (result.usage) {
+          addMessage('bot', '', 'usage-info', `📊 Usage hari ini: ${result.usage.chat_count}/${result.usage.chat_limit === 1000000000 ? '∞' : result.usage.chat_limit} chat. Reset besok.`);
+        }
+        return;
+      }
       const result = await resp.json();
       removeTypingIndicator();
 
@@ -462,6 +491,7 @@
       const icon = document.getElementById('chatBubbleIcon');
       if (icon) icon.textContent = ICON_CLOSE;
     }
+    loadUsage();  // Round 13: refresh usage on open
     setTimeout(() => {
       const inp = document.getElementById('chatInput');
       if (inp) inp.focus();
@@ -508,6 +538,7 @@
 
     renderCategories();
     setupVoice();
+    loadUsage();  // Round 13: show free/premium usage pill
 
     bubble.addEventListener('click', () => {
       const panel = document.getElementById('chatPanel');

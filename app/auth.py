@@ -27,6 +27,17 @@ from werkzeug.security import check_password_hash, generate_password_hash
 # =================================================================
 # USER MODEL
 # =================================================================
+def _default_user_usage() -> dict:
+    """Module-level default for User.usage (used by dataclass field & _user_from_dict)."""
+    return {
+        "chat_count": 0,
+        "chat_reset_date": "",
+        "dc_attempts": 0,
+        "dc_reset_date": "",
+        "saved_items": [],
+    }
+
+
 @dataclass
 class User:
     """User model: id, email, name, avatar, package, source, created_at."""
@@ -38,14 +49,8 @@ class User:
     source: str = "demo"  # 'demo' | 'google' | 'register'
     password_hash: str = ""
     created_at: str = field(default_factory=lambda: datetime.now().isoformat() + "Z")
-    # Round 13: usage tracking for free tier limits
-    usage: dict = field(default_factory=lambda: {
-        "chat_count": 0,
-        "chat_reset_date": "",
-        "dc_attempts": 0,
-        "dc_reset_date": "",
-        "saved_items": [],
-    })
+    # Round 13/17: usage tracking for free tier limits
+    usage: dict = field(default_factory=_default_user_usage)
 
     def to_dict(self) -> dict:
         return {
@@ -100,7 +105,12 @@ def _save_users(users: list) -> None:
 
 
 def _user_from_dict(d: dict) -> User:
-    """Build User from dict, ignoring unknown fields."""
+    """Build User from dict, ignoring unknown fields.
+
+    Round 17 fix: now correctly passes `usage` field to User constructor.
+    Previously `usage` was silently dropped, causing rate-limit counter to
+    reset to default on every request (free users could chat unlimited).
+    """
     return User(
         id=d.get("id", str(uuid.uuid4())),
         email=d.get("email", ""),
@@ -110,6 +120,7 @@ def _user_from_dict(d: dict) -> User:
         source=d.get("source", "demo"),
         password_hash=d.get("password_hash", ""),
         created_at=d.get("created_at", datetime.now().isoformat() + "Z"),
+        usage=d.get("usage") or _default_user_usage(),
     )
 
 

@@ -742,12 +742,20 @@ SYNONYMS = {
     "konsolidasi": ["konsolidasi", "gabung", "satuin", "merge", "refinance"],
     "stop_langganan": ["berhenti", "stop", "uninstall", "hapus app", "tutup akun"],
     "utang_keluarga": ["keluarga", "orang tua", "ortu", "teman", "sodara", "pinjam keluarga"],
-    "stress": ["stress", "stres", "cemas", "panik", "khawatir", "takut", "depresi", "bunuh diri", "pusing"],
+    "stress": ["stress", "stres", "cemas", "panik", "khawatir", "takut", "depresi", "bunuh diri", "pusing", "capek", "lelah", "burnout", "hopeless", "putus asa", "ga kuat", "nangis", "menangis", "mental down", "mental health", "frustrasi", "frustasi", "down", "moody", "ingin mati", "pengen mati"],
     "tagihan": ["tagihan", "bills", "jatuh tempo", "due date"],
     "income": ["income", "penghasilan", "gaji", "pendapatan", "duit masuk"],
     "pengeluaran": ["pengeluaran", "expense", "biaya hidup", "shopping", "belanja"],
     "emergency_fund": ["dana darurat", "emergency fund", "tabungan darurat", "cadangan"],
     "tracking": ["tracking", "lacak", "monitor", "cek", "lihat", "progress"],
+    # Round 17: Gen Z slang additions for natural conversation coverage
+    "slang_galbay": ["jebol", "boncos", "kebakar", "kere", "bokek", "males bayar", "gaji numpang lewat", "tanggungan", "kewajiban", "ngutang", "bayar-bayar", "cicil-cicil", "gajian", "habis", "minus", "tekor", "rugi banyak", "rugi besar"],
+    "slang_dc": ["nagih", "nagihin", "nge-tag", "tagihin", "ngomel-ngomel", "ngegas", "tipu-tipu", "maksa", "ngejar", "terus nelpon", "spam chat"],
+    "slang_pinjol": ["payday loan", "bnpl", "consolidation", "consolidasi", "kredit digital", "online loan", "instant loan", "kilat", "cepat cair", "kredit kilat", "kredit instan"],
+    "slang_nego": ["minta keringanan", "minta diskon", "minta restruk", "bisa dicicil", "bisa diangsur", "bisa dikurangi", "keringanan", "diskon bunga", "potongan"],
+    "slang_empathy": ["bingung", "ga ngerti", "ga tau", "tolong", "bantu", "please", "help", "tolongin", "minta tolong", "butuh bantuan", "bingung banget", "parah banget", "parah", "ga tau harus gimana", "bingung mulai dari mana"],
+    "slang_mental": ["pingin nangis", "ingin nangis", "ga kuat", "capek banget", "capek", "lelah", "lelah hidup", "burnout", "mental breakdown", "down banget", "hopeless", "frustasi", "frustrasi", "emosi", "marah besar", "kesal", "jengkel", "sebal", "males hidup", "ingin mati", "pengen mati", "mental", "mental down", "mental health", "depresi", "sendiri", "kesepian", "hampa", "kosong", "gabut", "males"],
+    "slang_safe": ["aman ga", "aman tidak", "berbahaya", "berbahaya ga", "scam ga", "penipu", "tipu", "bohong", "curang", "bohongin", "tipu-tipu", "scam", "penipu ga", "bener ga", "bener tidak", "valid ga"],
 }
 
 
@@ -759,8 +767,9 @@ FAQ_KB = [
     {
         "intent": "apa_itu_galbay",
         "module": "M1_galbay_basics",
-        "keywords": ["apa", "itu", "galbay", "gali", "bayar", "lubang", "artinya", "definisi", "pengertian"],
-        "patterns": ["apa itu galbay", "galbay itu apa", "arti galbay", "gali bayar"],
+        # Round 17: added Gen Z slang (boncos, jebol, etc.) for natural coverage
+        "keywords": ["apa", "itu", "galbay", "gali", "bayar", "lubang", "artinya", "definisi", "pengertian", "boncos", "jebol", "kebakar", "kere", "bokek", "tekor", "minus", "rugi"],
+        "patterns": ["apa itu galbay", "galbay itu apa", "arti galbay", "gali bayar", "boncos", "jebol", "kebakar"],
         "answer": "**Galbay** = *Gali Lubang, Tutup Lubang*. Pola pinjam baru untuk bayar utang lama.\n\nTanda-tanda:\n- Pinjam A untuk bayar B\n- Cicilan tidak turun setelah bayar\n- Cuma bayar minimum, pokok tidak bergerak\n- Stres tiap tanggal jatuh tempo\n\nDi Galbay Predictor, kamu bisa cek **Skor Risiko** gratis untuk tahu seberapa parah kondisi kamu.",
         "suggestions": ["Cek skor risiko", "Pinjol ilegal?", "Cara recovery"],
         "related_actions": [
@@ -806,8 +815,9 @@ FAQ_KB = [
     {
         "intent": "cara_cek_pinjol_legal",
         "module": "M2_pinjol",
-        "keywords": ["cek", "legal", "ojk", "terdaftar", "sah", "resmi", "silo", "satu"],
-        "patterns": ["cara cek pinjol legal", "pinjol aman", "pinjol terdaftar ojk", "cek legalitas"],
+        # Round 17: added "gimana", "caranya" for natural "gimana cara cek" queries
+        "keywords": ["cek", "legal", "ojk", "terdaftar", "sah", "resmi", "silo", "satu", "gimana", "caranya", "cara"],
+        "patterns": ["cara cek pinjol legal", "pinjol aman", "pinjol terdaftar ojk", "cek legalitas", "gimana cara cek", "cara cek legalitas pinjol"],
         "answer": "3 cara cek legalitas pinjol:\n\n1. **[Pinjol Checker Galbay](/dashboard/produk)** — input nama app, langsung ketahuan\n2. **SILO OJK** ([ojk.go.id](https://www.ojk.go.id/)) — daftar 200+ pinjol resmi\n3. **SLIK** — cek histori kredit kamu (ada pinjol gelap yang nyangkut)\n\n**Red flag**: bunga di atas 0.8%/hari, minta akses kontak sebelum pinjam, tidak ada NPWP/izin OJK.",
         "suggestions": ["Pinjol ilegal?", "Bunga wajar?", "Lapor DC ilegal"],
         "related_actions": [
@@ -946,8 +956,9 @@ FAQ_KB = [
     {
         "intent": "cara_recovery",
         "module": "M5_recovery",
-        "keywords": ["cara", "keluar", "recovery", "galbay", "lunas", "selesaikan", "bebas", "sembuh", "pulih"],
-        "patterns": ["cara keluar dari galbay", "cara recovery", "gimana supaya lunas"],
+        # Round 17: added common user phrases for help-discovery
+        "keywords": ["cara", "keluar", "recovery", "galbay", "lunas", "selesaikan", "bebas", "sembuh", "pulih", "bingung", "mulai", "dari", "mana", "males", "habis", "bingung banget", "ga tau", "harus", "gimana"],
+        "patterns": ["cara keluar dari galbay", "cara recovery", "gimana supaya lunas", "bingung mulai dari mana", "harus mulai dari mana", "ga tau harus gimana"],
         "answer": "**Recovery dari galbay** butuh 3 fase:\n\n**Fase 1 (Minggu 1-2)**: Hentikan pendarahan\n- Stop pinjam baru\n- Daftar semua utang (nominal, bunga, tenor, tgl jatuh tempo)\n- Cek SLIK di bank terdekat\n- Hapus app pinjol dari HP\n\n**Fase 2 (Minggu 3-4)**: Negosiasi\n- Hubungi pinjol utama, ajukan restrukturisasi\n- Mulai kerja sampingan (target +Rp 500rb/bln)\n- Buka rekening khusus bayar utang\n\n**Fase 3 (Bulan 2-3)**: Eksekusi\n- Bayar tepat waktu minimal\n- Turun 10-15% dari total utang\n- Bikin emergency fund mini\n\nCek **[Roadmap 30/60/90 hari](/dashboard/produk)** — dipersonalisasi sesuai kondisi kamu.",
         "suggestions": ["Cek skor risiko", "Snowball vs Avalanche", "Negosiasi cicilan"],
         "related_actions": [
@@ -1140,8 +1151,9 @@ FAQ_KB = [
     {
         "intent": "self_harm",
         "module": "M8_mental_health",
-        "keywords": ["bunuh", "diri", "self", "harm", "menyakiti", "mati", "ending", "putus asa", "ç»æœ›", "ç»æœ›", "ç»æœ›"],
-        "patterns": ["bunuh diri", "self harm", "putus asa", "menyakiti diri"],
+        # Round 17: added Gen Z mental health slang for crisis coverage
+        "keywords": ["bunuh", "diri", "self", "harm", "menyakiti", "mati", "ending", "putus asa", "lelah", "males hidup", "ingin mati", "pengen mati", "males", "bunuh diri", "绝望", "ç»æœ›", "ç»æœ›", "ç»æœ›"],
+        "patterns": ["bunuh diri", "self harm", "putus asa", "menyakiti diri", "lelah hidup", "males hidup", "ingin mati", "pengen mati"],
         "answer": "**Kamu penting, dan ini bisa lewat**. Tolong bicara ke seseorang hari ini:\n\n🆘 **Hotline 24/7**:\n- **Sejiwa (119 ext 8)** — Kemenkes RI, gratis\n- **Into The Light** ([intothelightid.org](https://www.into-the-light.id/))\n- **LSM Jangan Bunuh Diri** (021-9696 9293 / 0858-9150-0029)\n- **Yayasan Pulih** ([yayasanpulih.org](http://yayasanpulih.org))\n\n**Masalah finansial bisa selesai. Kamu tidak sendirian.** Bicara ke teman, keluarga, atau profesional — itu langkah pertama.\n\nSaya bisa bantu **rencana pembayaran** kalau kamu mau. **[Cek Skor Risiko](/dashboard/ringkasan)** dulu, biar ada titik terang.",
         "suggestions": ["Cek skor", "Stress finansial", "Konsultan gratis"],
         "related_actions": [
@@ -1222,8 +1234,9 @@ FAQ_KB = [
     {
         "intent": "pinjol_terdaftar",
         "module": "M2_pinjol",
-        "keywords": ["terdaftar", "registrasi", "izin", "sah", "legal", "resmi", "pinjol", "aplikasi"],
-        "patterns": ["pinjol terdaftar", "apakah terdaftar", "izin pinjol"],
+        # Round 17: added "aman", "bener", "valid" for "pinjol aman ga?" queries
+        "keywords": ["terdaftar", "registrasi", "izin", "sah", "legal", "resmi", "pinjol", "aplikasi", "aman", "bener", "valid", "beneran", "terpercaya"],
+        "patterns": ["pinjol terdaftar", "apakah terdaftar", "izin pinjol", "pinjol aman", "pinjol bener", "pinjol valid"],
         "answer": "**Pinjol terdaftar OJK** artinya ada di daftar resmi **SILO OJK** (Sistem Informasi Layanan Otoritas Jasa Keuangan).\n\nCiri-ciri pinjol legal:\n- ✅ Ada di [SILO OJK](https://www.ojk.go.id/silo)\n- ✅ NPWP + izin usaha jelas\n- ✅ Bunga <= 0.3%/hari (pinjol konvensional)\n- ✅ Bunga <= 24%/tahun (KTA/Kartu Kredit)\n- ✅ Tidak minta akses kontak, foto, SMS, gallery\n- ✅ Customer service di aplikasi (bukan SMS misterius)\n- ✅ Call center resmi (bukan nomor random)\n\nCek sekarang di **[Pinjol Checker Galbay](/dashboard/produk)** (24+ database, gratis).",
         "suggestions": ["Cek pinjol legal", "Bunga wajar?", "Pinjol ilegal?"],
         "related_actions": [
@@ -1616,13 +1629,21 @@ def _format_answer_markdown(text: str) -> str:
 
 
 def _score_intent(entry: dict, tokens: set[str], expanded: set[str]) -> float:
-    """Score a single FAQ entry against user tokens."""
+    """Score a single FAQ entry against user tokens.
+
+    Round 17 fix:
+    - Coverage divisor capped at min(len(keywords), 4) so intents with
+      many keywords don't get underweighted (was len(keywords) raw).
+    - Pattern matching relaxed: any pattern token matching counts
+      (was ALL pattern tokens, which failed for short queries).
+    - Both raw keyword and expanded keyword matches are unioned.
+    """
     if not tokens:
         return 0.0
     keywords = set(entry.get("keywords", []))
     patterns = entry.get("patterns", [])
 
-    # Direct keyword match in expanded set
+    # Direct keyword match (union of raw + expanded/synonym)
     keyword_matches = len(keywords & expanded)
     if keyword_matches == 0:
         # Fallback: difflib fuzzy match (typo tolerance)
@@ -1638,17 +1659,27 @@ def _score_intent(entry: dict, tokens: set[str], expanded: set[str]) -> float:
             return 0.0
         keyword_matches = fuzzy_hits * 0.6
 
-    # Pattern matching (whole pattern must be substring of normalized message)
+    # Pattern matching (Round 17: relaxed from "all" to partial)
     # Use ORIGINAL tokens only (no synonym expansion) to avoid over-matching
     pattern_match = 0.0
     for pat in patterns:
         pat_tokens = _tokenize(pat)
-        if pat_tokens and all(p in set(tokens) for p in pat_tokens):
-            pattern_match = 1.0
-            break
+        if not pat_tokens:
+            continue
+        matched = sum(1 for p in pat_tokens if p in set(tokens))
+        # Require at least 50% of pattern tokens to match (was 100%)
+        if matched / len(pat_tokens) >= 0.5:
+            pattern_match = max(pattern_match, matched / len(pat_tokens))
+            # Full match still gives 1.0; partial gives proportional
 
     # Score: 60% keyword overlap + 40% pattern match
-    coverage = keyword_matches / max(len(keywords), 1)
+    # Capped divisor: intents with 4+ keywords get normalized fairly.
+    # Cap keyword_matches at divisor so coverage never exceeds 1.0 (otherwise
+    # intents with many keywords (e.g. pinjol_ilegal with 11) can dominate
+    # via synonym expansion of a single input token like "ilegal").
+    divisor = max(min(len(keywords), 4), 1)
+    keyword_matches = min(keyword_matches, divisor)
+    coverage = keyword_matches / divisor
     score = (coverage * 0.6) + (pattern_match * 0.4)
     return min(score, 1.0)
 
@@ -1687,8 +1718,10 @@ def _match_faq_intent_v2(message: str) -> tuple[dict, float, list[dict]]:
         for e, s in scored[1:4]
     ]
 
-    # Smart fallback: if best confidence < 0.1, return default + suggest top 3 closest
-    if conf < 0.1:
+    # Smart fallback: if best confidence < 0.15, return default + suggest top 3 closest
+    # Round 17: threshold 0.1 -> 0.15 (less aggressive fallback) for
+    # better coverage of short/varied user inputs.
+    if conf < 0.15:
         fallback = FAQ_KB[-1]  # default_fallback
         # Augment the default fallback with the top 3 closest intents
         if scored:
@@ -1752,14 +1785,40 @@ def chat_faq_handler(
     answer = best["answer"]
     answer_html = _format_answer_markdown(answer)
 
+    # Round 17: Empathy prefix for users in emotional distress.
+    # When sentiment is crisis/stressed/frustrated, prepend acknowledgment
+    # BEFORE the informational answer so the user feels heard first.
+    empathy_prefix = ""
+    follow_up = None
+    is_default = best.get("intent") == "default_fallback"
+    if sentiment in ("crisis",):
+        empathy_prefix = (
+            f"**Saya di sini untukmu.** Kalau pikiranmu sangat berat, "
+            f"jangan dipendam sendirian. Kamu bisa hubungi **Into The Light** "
+            f"di **119 ext 8** (24/7, gratis) atau **LSM Jangan Bunuh Diri** "
+            f"di **021-9696 9293**. Tim mereka terlatih dan tidak menghakimi.\n\n"
+        )
+        follow_up = "Mau cerita lebih banyak, atau ada langkah kecil yang ingin kamu coba sekarang?"
+    elif sentiment in ("stressed", "frustrated") and is_default:
+        # Generic stress message that didn't match a specific intent
+        empathy_prefix = (
+            f"**Aku dengar kamu, dan perasaanmu valid.** Galbay memang bikin "
+            f"stres, dan kamu tidak sendirian. Coba tarik napas dalam dulu.\n\n"
+        )
+        follow_up = "Mau cerita apa yang lagi dipikirkan, atau langsung lihat opsi yang bisa kita hitung bareng?"
+
+    if empathy_prefix and best.get("intent") != "self_harm":
+        # Don't prepend for self_harm (already crisis-aware)
+        answer_html = _format_answer_markdown(empathy_prefix) + answer_html
+
     # Context-aware: if user is on a specific page, add tip
     context_tip = ""
     if page_context == "ringkasan":
-        context_tip = "\n\n💡 *Kamu ada di halaman Ringkasan — coba cek Skor Risiko gratis!*"
+        context_tip = "\n\n? *Kamu ada di halaman Ringkasan ? coba cek Skor Risiko gratis!*"
     elif page_context == "produk":
-        context_tip = "\n\n💡 *Kamu ada di halaman Produk — Pinjol Checker & Debt Planner tersedia.*"
+        context_tip = "\n\n? *Kamu ada di halaman Produk ? Pinjol Checker & Debt Planner tersedia.*"
     elif page_context == "solusi":
-        context_tip = "\n\n💡 *Kamu ada di halaman Solusi — 4 modul recovery siap dibaca.*"
+        context_tip = "\n\n? *Kamu ada di halaman Solusi ? 4 modul recovery siap dibaca.*"
 
     if context_tip:
         answer_html += _format_answer_markdown(context_tip)
@@ -1784,6 +1843,7 @@ def chat_faq_handler(
         "sentiment": sentiment,
         "greeting": greeting,
         "name_prefix": name_prefix,
+        "follow_up": follow_up,  # Round 17: question to engage user in distress
         "model_version": CHATBOT_MODEL_VERSION,
         "disclaimer": CHATBOT_DISCLAIMER,
     }

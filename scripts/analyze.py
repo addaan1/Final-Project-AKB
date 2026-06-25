@@ -5,7 +5,7 @@ Galbay Predictor - Modelling & Analysis (Multi-Source)
 - Behavioral (galbay) analysis from matched_categories
 - Trend, category, top-apps insights
 - Multi-source breakdown (Play + News + Forum + Trends + Blog)
-Outputs: data/site/data.js + PNG charts in data/site/assets/
+Outputs: data/site/data.js + app/static/js/data.js (synced for Flask static) + PNG charts in data/site/assets/
 
 Usage:
     python -m scripts.analyze
@@ -16,6 +16,7 @@ import json
 import math
 import os
 import re
+import shutil
 from collections import Counter
 from pathlib import Path
 
@@ -26,7 +27,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from config import DATA_DIR, PROCESSED_DIR
+from config import BASE_DIR, DATA_DIR, PROCESSED_DIR
 from scripts.behavior_analysis import (
     BEH_LABEL,
     DISTRESS_TAGS,
@@ -376,6 +377,11 @@ with open(OUT + "data.js", "w", encoding="utf-8") as f:
     json.dump(DATA, f, ensure_ascii=False, indent=2)
     f.write(";\n")
 print(f"Wrote {OUT}data.js")
+
+# Sync to Flask static folder so browser gets the same data
+STATIC_DATA = str(BASE_DIR / "app" / "static" / "js" / "data.js")
+shutil.copy(OUT + "data.js", STATIC_DATA)
+print(f"Synced to {STATIC_DATA}")
 
 # ================= 8) PNG VISUALS =================
 # 8.1 Confusion matrix

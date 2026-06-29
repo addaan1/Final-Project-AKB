@@ -1,0 +1,16 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="18" fill="#12081F"/>
+  <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#panel)"/>
+  <path d="M21 19C15.4772 19 11 23.4772 11 29V35C11 40.5228 15.4772 45 21 45H29.5C35.0228 45 39.5 40.5228 39.5 35V34H29.5V28H47V35C47 44.9411 38.9411 53 29 53H21C11.0589 53 3 44.9411 3 35V29C3 19.0589 11.0589 11 21 11H46V19H21Z" fill="url(#lime)"/>
+  <circle cx="47" cy="19" r="6" fill="#FFB11B"/>
+  <defs>
+    <linearGradient id="panel" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#23103C"/>
+      <stop offset="1" stop-color="#1A0C2D"/>
+    </linearGradient>
+    <linearGradient id="lime" x1="3" y1="32" x2="47" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8CF400"/>
+      <stop offset="1" stop-color="#C6FF3D"/>
+    </linearGradient>
+  </defs>
+</svg>

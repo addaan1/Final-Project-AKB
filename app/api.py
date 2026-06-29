@@ -1062,30 +1062,26 @@ FAQ_KB = [
         "module": "M7_app_rec",
         "keywords": ["premium", "dapat", "apa", "fitur", "pro", "berbayar", "benefit", "keuntungan"],
         "patterns": ["premium dapat apa", "fitur premium", "benefit premium"],
-        "answer": "**Galbay Premium** (Rp 49rb/bln atau Rp 399rb/tahun):\n\n- 🤖 **AI Coach unlimited** (chatbot lebih dalam, follow-up questions)\n- 💾 **Save unlimited** skor & roadmap (free: 3 history)\n- 📊 **Advanced analytics**: tren 6 bulan, perbandingan antar utang\n- 🎯 **Personalized action plan** mingguan via email\n- 📞 **Priority support** (response < 4 jam)\n- 🎁 **Eksklusif konten** (modul lanjutan galbay recovery)\n\n**[Lihat detail di halaman Pricing](/dashboard/produk)**. Ada diskon 50% di tahun pertama!",
-        "suggestions": ["Diskon premium?", "Cara pakai website", "Data sumber"],
-        "related_actions": [
-            {"label": "Lihat Premium", "href": "/dashboard/produk"},
-        ],
+        "answer": "**Mode Premium** dipakai sebagai lapisan akses tambahan di prototype ini, bukan pusat utama project.\n\nYang dibuka di mode ini:\n- akses lebih longgar ke tool yang berat seperti **Debt Planner** dan **Recovery Roadmap**\n- penggunaan chatbot yang tidak cepat mentok oleh limit demo\n- area eksperimen yang lebih nyaman untuk simulasi lanjutan\n\nKalau tujuanmu presentasi atau belajar alurnya, fokus utamanya tetap di **Galbay Score**, **Debt Planner**, dan **Hadapi Tekanan DC** terlebih dulu.\n\nDetail akses premium ada di halaman produk, tapi nilai inti project tetap ada pada insight data dan tool intinya.",
+        "suggestions": ["Fitur inti gratis apa saja?", "Data ini dominan dari mana?", "Apakah ini masih prototype?"],
+        "related_actions": [],
     },
     {
         "intent": "diskon_premium",
         "module": "M7_app_rec",
         "keywords": ["diskon", "promo", "potongan", "harga", "kupon", "voucher", "kode", "diskon"],
         "patterns": ["ada diskon gak", "promo premium", "kode diskon"],
-        "answer": "**Promo Premium**:\n\n- **Diskon 50%** tahun pertama (Rp 199rb/tahun, dari Rp 399rb)\n- **Gratis 14 hari** untuk user baru (coba dulu, baru bayar)\n- **Bulan pertama** gratis untuk user yang daftar waitlist\n\n**[Daftar Premium](/dashboard/produk)** atau **[Join waitlist](/waitlist)** untuk dapat notifikasi promo.",
-        "suggestions": ["Premium dapat apa?", "Cara pakai", "Data sumber"],
-        "related_actions": [
-            {"label": "Lihat Premium", "href": "/dashboard/produk"},
-        ],
+        "answer": "Bagian premium di project ini masih bersifat **demo monetization layer**, jadi yang paling penting bukan promonya, tetapi **tool mana yang memang relevan untuk masalahmu**.\n\nKalau kamu ingin mencoba flow inti dulu, saya lebih sarankan mulai dari:\n- **Galbay Score** untuk screening cepat\n- **Debt Planner** untuk lihat strategi bayar\n- **Hadapi Tekanan DC** untuk latihan respons\n\nKalau nanti memang perlu akses tambahan, baru lihat bagian premium di halaman produk.",
+        "suggestions": ["Fitur inti gratis apa saja?", "Tool mana yang cocok buat saya?", "Apakah chatbot ini rule-based?"],
+        "related_actions": [],
     },
     {
         "intent": "cara_pakai_website",
         "module": "M7_app_rec",
         "keywords": ["cara", "pakai", "website", "web", "app", "pakai", "penggunaan", "panduan", "tutorial"],
         "patterns": ["cara pakai web", "cara pakai galbay", "tutorial"],
-        "answer": "**Cara pakai Galbay Predictor**:\n\n1. **Ringkasan** → Lihat insight umum dari 602K data multi-source (Play + OJK + Forum + Blog + YouTube + Threads + Trends)\n2. **Analisis** → Confusion matrix, sentiment breakdown, app comparison, multi-source distribution\n3. **Solusi** → Business Model Canvas dari 9 blok data-driven\n4. **Produk** → Skor Risiko, Pinjol Checker, Debt Planner, Recovery Roadmap, Simulasi Cicilan\n5. **Kesimpulan** → Key findings + rekomendasi\n\nCukup **login** (gratis) untuk akses semua fitur. Premium untuk unlimited AI Coach + advanced analytics.",
-        "suggestions": ["Cek skor", "Pinjol Checker", "Recovery Roadmap"],
+        "answer": "**Cara pakai Galbay Predictor** yang paling aman untuk demo:\n\n1. **Ringkasan** → pahami dulu skala data dan caveat utamanya\n2. **Analisis** → lihat bahwa insight utama sangat ditopang oleh review Google Play, sementara source lain dipakai sebagai konteks pendukung\n3. **Produk** → coba 3 tool inti: **Galbay Score**, **Debt Planner**, dan **Hadapi Tekanan DC**\n4. **Kesimpulan** → rangkum insight, batas model, dan arah solusi\n\nCatatan penting:\n- beberapa tool masih **rule-based / prototype**\n- chatbot ini **bukan LLM generatif penuh**\n- skor risiko **bukan diagnosis finansial formal**",
+        "suggestions": ["Lihat sumber data utama", "Coba Galbay Score", "Apa yang masih prototype?"],
         "related_actions": [
             {"label": "Mulai", "href": "/dashboard/ringkasan"},
         ],
@@ -1095,8 +1091,8 @@ FAQ_KB = [
         "module": "M7_app_rec",
         "keywords": ["data", "sumber", "602", "ribu", "ulasan", "review", "dataset", "asal", "multi", "source"],
         "patterns": ["data dari mana", "sumber data", "dataset"],
-        "answer": "**Dataset Galbay Predictor (7 source multi-source, 602K total)**:\n\n- **Google Play Store**: 599.000 review (53 app finansial Gen Z, 11 kategori)\n- **OJK + media**: 460 artikel (regulator & narasi pasar)\n- **Forum Kaskus**: 244 threads (komunitas diskusi utang)\n- **Blog Indonesia**: 1.056 posts (Medium, Hipwee, Kumparan, dll)\n- **YouTube (yt-dlp)**: 283 video + 1.331 komentar\n- **Threads (Meta)**: 231 posts (bahasa natural Gen Z)\n- **Google Trends**: 786 records time-series 5 tahun (minat pencarian publik)\n- **Periode**: 2015-2026 (11 tahun)\n- **Relevan**: 58.120 review (9,7% — setelah filter 65+ keyword galbay)\n- **Distress signal**: 13.827 review (23,8% dari relevan) → basis B2C user potensial\n\n**Bukan data primer**: ini *analisis sekunder* dari data publik. Tidak merepresentasikan semua pengguna Indonesia.\n\nLihat detail metodologi di **[Kesimpulan](/dashboard/kesimpulan)**.",
-        "suggestions": ["AI atau rule-based?", "Premium dapat apa?", "Cara pakai"],
+        "answer": "**Dataset Galbay Predictor** memang multi-source, tetapi perlu dibaca dengan jujur:\n\n- **Google Play Store**: 599.000 review dari 53 aplikasi fintech Indonesia\n- **Source pendukung**: OJK/media, forum, blog, YouTube, Threads, dan Google Trends\n- **Total**: 602.675 item publik\n- **Ulasan relevan galbay**: 58.120\n- **Sinyal distress**: 13.827\n\nPoin pentingnya:\n- volume insight **sangat didominasi Google Play Store**\n- source lain dipakai untuk **triangulasi konteks**, bukan bobot volume yang setara\n- ini adalah **analisis sekunder dari data publik**, jadi tidak mewakili semua pengguna Indonesia\n\nKalau kamu mau membaca project ini secara fair, anggap kekuatan utamanya ada pada **skala review Play Store + konteks lintas sumber**, bukan pada klaim bahwa semua source berkontribusi sama besar.",
+        "suggestions": ["Apa yang masih prototype?", "Lihat analisis multi-source", "Tool mana yang paling data-driven?"],
         "related_actions": [
             {"label": "Lihat Kesimpulan", "href": "/dashboard/kesimpulan"},
         ],
@@ -1106,8 +1102,8 @@ FAQ_KB = [
         "module": "M7_app_rec",
         "keywords": ["ai", "ml", "machine", "learning", "model", "rule", "based", "pakai", "teknologi"],
         "patterns": ["pakai ai gak", "rule based atau ai", "model ml"],
-        "answer": "**Saat ini: Hybrid**:\n\n- **Skor Risiko**: rule-based scoring (bobot pinjol, paylater, telat, dll) — *siap di-swap ke ML model* saat data latih cukup\n- **Chatbot**: rule-based FAQ NLP v2 (35+ intents, 8 modul, sinonim, typo tolerance, sentiment)\n- **Pinjol Checker**: database lookup + pattern matching\n- **Debt Planner**: deterministic (snowball/avalanche algorithm)\n- **Recovery Roadmap**: rule-based (severity threshold)\n\n**Roadmap**: Ganti ke *Random Forest / XGBoost* saat data latih internal siap. Sekarang fokus *prototype & UX*.\n\nLihat **[Kesimpulan](/dashboard/kesimpulan)** untuk detail.",
-        "suggestions": ["Data sumber", "Premium dapat apa?", "Cara pakai"],
+        "answer": "**Jawaban jujurnya: hybrid, dan masih prototype-aware.**\n\nSaat ini:\n- **Model sentimen utama**: Multinomial Naive Bayes dari review publik\n- **Skor Risiko**: rule-based decision support\n- **Chatbot**: rule-based assistant, bukan LLM generatif penuh\n- **Pinjol Checker**: lookup database + pattern matching\n- **Debt Planner**: deterministic planner\n- **Recovery Roadmap**: rule-based generator\n\nJadi project ini kuat sebagai:\n- eksplorasi data publik skala besar\n- penerjemahan insight menjadi tool bantu keputusan\n\nBukan sebagai:\n- sistem diagnosis finansial formal\n- AI percakapan bebas tanpa batas\n- model prediksi produksi yang sudah final",
+        "suggestions": ["Lihat sumber data utama", "Coba tool inti dulu", "Apa batas chatbot ini?"],
         "related_actions": [
             {"label": "Lihat Kesimpulan", "href": "/dashboard/kesimpulan"},
         ],
@@ -1128,7 +1124,7 @@ FAQ_KB = [
         "module": "M7_app_rec",
         "keywords": ["konseling", "berapa", "biaya", "harga", "psikolog", "konsultan"],
         "patterns": ["konseling berapa", "biaya konseling", "psikolog murah"],
-        "answer": "**Estimasi biaya konseling keuangan**:\n\n- **AI Coach Galbay**: **GRATIS** (dengan limitasi), Premium unlimited Rp 49rb/bln\n- **Konsultan online (PFID, Finansialku)**: Rp 50-150rb/sesi\n- **Psikolog finansial**: Rp 200-500rb/sesi\n- **Financial planner tersertifikasi (CFP)**: Rp 500rb-1.5jt/konsultasi\n- **Hotline OJK 157**: **GRATIS**\n\n**Untuk Gen Z dengan budget terbatas**:\n1. Mulai dari **AI Coach Galbay** (gratis)\n2. **Komunitas online** (Reddit, Telegram)\n3. **Konsultan PFID** (terjangkau)\n4. **Profesional bersertifikat** kalau kasus kompleks",
+        "answer": "**Estimasi biaya bantuan profesional**:\n\n- hotline konsumen / pengaduan seperti **OJK 157**: gratis\n- komunitas / edukasi dasar: gratis sampai terjangkau\n- konsultan keuangan online: sekitar Rp 50-150 ribu per sesi\n- psikolog atau financial therapist: sekitar Rp 200-500 ribu per sesi\n\nKalau masalahmu masih di tahap bingung memetakan langkah, biasanya lebih efisien mulai dari:\n1. **Galbay Score** untuk screening cepat\n2. **Debt Planner** untuk hitung opsi bayar\n3. **Hadapi Tekanan DC** kalau masalahnya sudah masuk penagihan\n\nKalau kondisinya sudah kompleks atau sangat mengganggu mental, baru naik ke bantuan profesional.",
         "suggestions": ["Konsultan keuangan", "Cara recovery", "Stress finansial"],
         "related_actions": [
             {"label": "Buka Chat", "href": "/dashboard/produk"},
@@ -1468,7 +1464,7 @@ FAQ_KB = [
         "module": "M1_galbay_basics",
         "keywords": [],
         "patterns": [],
-        "answer": "Hmm, saya belum yakin maksudnya. Bisa jelaskan lebih spesifik?\n\n**Mau tanya soal apa?**\n- **Galbay basics** → *apa itu galbay, skor risiko, simulasi cicilan*\n- **Pinjol** → *legal/ilegal, bunga wajar, cek OJK*\n- **Strategi bayar** → *snowball, avalanche, negosiasi*\n- **DC / penagih** → *nego, template chat, lapor*\n- **Recovery** → *cara keluar, telat 30 hari, roadmap 30/60/90*\n- **Hukum** → *hak borrower, UU PDP, biaya tersembunyi*\n- **Mental health** → *stress, cemas, konseling*\n\nKlik salah satu **chip topik** di atas, atau ketik pertanyaanmu lebih spesifik ya!",
+        "answer": "Saya belum cukup yakin menangkap konteksmu, jadi saya tidak mau memberi jawaban yang meleset.\n\nCoba pilih salah satu arah ini:\n- **Galbay basics** → apa itu galbay, skor risiko, simulasi cicilan\n- **Pinjol** → legal/ilegal, bunga wajar, cek OJK\n- **Strategi bayar** → snowball, avalanche, negosiasi\n- **DC / penagih** → respons saat ditekan, template chat, hak borrower\n- **Recovery** → mulai dari mana, telat 30 hari, langkah 30/60/90\n- **Mental health** → stress finansial, konseling, dukungan keluarga\n\nKalau mau, ketik situasimu dalam 1 kalimat: misalnya **'DC ancam sebar data'** atau **'saya bingung pilih strategi bayar'**.",
         "suggestions": ["Apa itu galbay", "Cek pinjol legal", "Snowball vs Avalanche", "Cara recovery"],
         "related_actions": [
             {"label": "Lihat Semua Topik", "href": "/dashboard/produk"},
@@ -1741,6 +1737,216 @@ def _match_faq_intent_v2(message: str) -> tuple[dict, float, list[dict]]:
     return best, conf, secondary
 
 
+def _find_faq_entry(intent: str | None) -> dict:
+    if not intent:
+        return FAQ_KB[-1]
+    return next((entry for entry in FAQ_KB if entry.get("intent") == intent), FAQ_KB[-1])
+
+
+def _normalize_conversation_state(state: dict | None) -> dict:
+    state = state or {}
+    return {
+        "last_intent": state.get("last_intent"),
+        "last_module": state.get("last_module"),
+        "last_page_context": state.get("last_page_context"),
+        "follow_up_expected": state.get("follow_up_expected"),
+        "last_confidence": state.get("last_confidence", 0.0),
+        "turn_count": int(state.get("turn_count", 0) or 0),
+        "last_suggestions": list(state.get("last_suggestions", []) or []),
+        "last_related_actions": list(state.get("last_related_actions", []) or []),
+    }
+
+
+def _build_context_tip(page_context: str | None) -> str:
+    tips = {
+        "ringkasan": "Kalau mau mulai cepat, buka **[Galbay Score](/galbay-score)** untuk screening awal lalu pindah ke tool yang paling relevan.",
+        "produk": "Dari halaman Produk, fokus paling aman biasanya dimulai dari **Galbay Score**, **Debt Planner**, atau **Hadapi Tekanan DC**.",
+        "solusi": "Kalau fokusmu recovery, baca Solusi sebagai peta arah, lalu pakai tool produk untuk menghitung langkah konkretnya.",
+        "analisis": "Kalau kamu lagi di Analisis, baca source lain sebagai konteks pendukung, tapi tetap ingat volume utama datang dari Google Play.",
+    }
+    return tips.get(page_context or "", "")
+
+
+CHAT_ACTION_LIBRARY = {
+    "score": {"label": "Cek Galbay Score", "href": "/galbay-score"},
+    "planner": {"label": "Buka Debt Planner", "href": "/dashboard/produk#debt-planner"},
+    "dc": {"label": "Hadapi Tekanan DC", "href": "/tools/dc-simulator"},
+    "insight": {"label": "Lihat Analisis Data", "href": "/dashboard/analisis#multi-source"},
+}
+
+DEEMPHASIZED_CHAT_INTENTS = {
+    "premium_dapat_apa",
+    "diskon_premium",
+    "konseling_berapa",
+}
+
+
+def _curate_suggestions(best: dict, secondary: list[dict], sentiment: str) -> list[str]:
+    picks = list(best.get("suggestions", []))
+    for item in secondary[:2]:
+        picks.extend(_find_faq_entry(item.get("intent")).get("suggestions", [])[:1])
+
+    if sentiment in ("stressed", "frustrated", "crisis"):
+        safe_defaults = [
+            "Cara recovery",
+            "Snowball vs Avalanche",
+            "DC agresif, gimana?",
+            "Cek skor risiko",
+        ]
+        picks = safe_defaults + picks
+
+    curated = []
+    for text in picks:
+        if text and text not in curated:
+            curated.append(text)
+    return curated[:4]
+
+
+def _build_standard_related_actions(best: dict, page_context: str | None) -> list[dict]:
+    intent = best.get("intent")
+    module = best.get("module")
+
+    if intent in {"data_sumber", "ai_atau_rule_based", "cara_pakai_website"}:
+        keys = ["insight", "score"]
+    elif module == "M4_dc_negotiation":
+        keys = ["dc", "insight"]
+    elif module == "M3_debt_strategy":
+        keys = ["planner", "score"]
+    elif module == "M5_recovery":
+        keys = ["score", "planner"]
+    elif module == "M8_mental_health":
+        keys = ["score", "dc"]
+    elif intent in DEEMPHASIZED_CHAT_INTENTS:
+        keys = ["score", "planner"]
+    elif page_context == "analisis":
+        keys = ["insight", "score"]
+    else:
+        keys = ["score", "planner"]
+
+    actions = []
+    for key in keys:
+        action = CHAT_ACTION_LIBRARY.get(key)
+        if action and action not in actions:
+            actions.append(action)
+    return actions[:2]
+
+
+def _is_follow_up_message(tokens: list[str], message: str) -> bool:
+    if not tokens:
+        return False
+    follow_up_cues = {"kalau", "terus", "lalu", "jadi", "itu", "yang", "kalaupun", "terusnya"}
+    return len(tokens) <= 6 or any(cue in tokens for cue in follow_up_cues) or "?" in message
+
+
+def _build_low_confidence_payload(
+    *,
+    state: dict,
+    secondary: list[dict],
+    page_context: str | None,
+) -> dict:
+    suggestion_pool = list(state.get("last_suggestions", []))
+    if not suggestion_pool:
+        for item in secondary[:3]:
+            entry = _find_faq_entry(item.get("intent"))
+            suggestion_pool.extend(entry.get("suggestions", [])[:1])
+    suggestions = suggestion_pool[:4] or [
+        "Cek pinjol legal atau ilegal",
+        "DC agresif, harus jawab apa?",
+        "Cara recovery dari galbay",
+        "Cek Galbay Score gratis",
+    ]
+
+    related_actions = list(state.get("last_related_actions", []))
+    if not related_actions and secondary:
+        related_actions = _build_standard_related_actions(
+            _find_faq_entry(secondary[0].get("intent")),
+            page_context,
+        )
+    if not related_actions:
+        related_actions = [CHAT_ACTION_LIBRARY["score"]]
+
+    answer = (
+        "Saya belum cukup yakin menangkap maksudmu, jadi saya tidak mau jawab ngaco.\n\n"
+        "Coba pilih salah satu arah pertanyaan yang paling dekat, atau sebutkan konteksnya sedikit lebih spesifik."
+    )
+    context_tip = _build_context_tip(page_context)
+    if context_tip:
+        answer += f"\n\n{context_tip}"
+
+    return {
+        "intent": "default_fallback",
+        "module": state.get("last_module"),
+        "confidence": 0.0,
+        "answer": answer,
+        "answer_html": _format_answer_markdown(answer),
+        "suggestions": suggestions,
+        "related_actions": related_actions,
+        "follow_up_type": "clarify_low_confidence",
+    }
+
+
+def _resolve_conversational_match(
+    *,
+    message: str,
+    tokens: list[str],
+    best: dict,
+    conf: float,
+    secondary: list[dict],
+    state: dict,
+) -> tuple[dict, float, list[dict], str | None]:
+    if not state.get("last_intent"):
+        return best, conf, secondary, None
+    if conf >= 0.25 or not _is_follow_up_message(tokens, message):
+        return best, conf, secondary, None
+
+    prior_entry = _find_faq_entry(state.get("last_intent"))
+    if prior_entry.get("intent") == "default_fallback":
+        return best, conf, secondary, None
+
+    boosted_secondary = secondary[:]
+    if best.get("intent") != prior_entry.get("intent"):
+        boosted_secondary.insert(0, {
+            "intent": best.get("intent"),
+            "module": best.get("module"),
+            "confidence": round(conf, 2),
+        })
+
+    follow_up_answer = (
+        f"Saya tangkap ini masih lanjutan topik **{prior_entry.get('module', 'sebelumnya')}**. "
+        f"Kalau konteksmu masih sama, patokan utamanya begini:\n\n{prior_entry['answer']}\n\n"
+        "Kalau kamu mau, setelah ini kamu bisa lanjutkan dengan kondisi yang lebih spesifik, misalnya nominal, tenor, atau bentuk ancamannya."
+    )
+    contextual_entry = {
+        **prior_entry,
+        "answer": follow_up_answer,
+        "suggestions": prior_entry.get("suggestions", [])[:3] + ["Jelaskan situasi saya lebih spesifik"],
+    }
+    return contextual_entry, max(conf, 0.26), boosted_secondary[:3], "contextual_follow_up"
+
+
+def _build_conversation_state(
+    *,
+    state: dict,
+    best: dict,
+    conf: float,
+    page_context: str | None,
+    suggestions: list[str],
+    related_actions: list[dict],
+    follow_up_expected: str | None,
+) -> dict:
+    next_state = _normalize_conversation_state(state)
+    if best.get("intent") != "default_fallback":
+        next_state["last_intent"] = best.get("intent")
+        next_state["last_module"] = best.get("module")
+        next_state["last_confidence"] = round(conf, 2)
+        next_state["last_suggestions"] = suggestions[:4]
+        next_state["last_related_actions"] = related_actions[:3]
+    next_state["last_page_context"] = page_context
+    next_state["follow_up_expected"] = follow_up_expected
+    next_state["turn_count"] = next_state.get("turn_count", 0) + 1
+    return next_state
+
+
 # -----------------------------------------------------------------
 # Backward compat: v1 signature
 # -----------------------------------------------------------------
@@ -1757,6 +1963,7 @@ def chat_faq_handler(
     message: str,
     user_name: str | None = None,
     page_context: str | None = None,
+    conversation_state: dict | None = None,
 ) -> dict:
     """Process a user message and return structured response.
 
@@ -1778,9 +1985,58 @@ def chat_faq_handler(
             "disclaimer": CHATBOT_DISCLAIMER,
         }
 
+    state = _normalize_conversation_state(conversation_state)
     best, conf, secondary = _match_faq_intent_v2(message)
+    tokens = _tokenize(message)
+    best, conf, secondary, routed_follow_up_type = _resolve_conversational_match(
+        message=message,
+        tokens=tokens,
+        best=best,
+        conf=conf,
+        secondary=secondary,
+        state=state,
+    )
     sentiment = _detect_sentiment(message)
     greeting = _get_time_greeting()
+    suggestions = _curate_suggestions(best, secondary, sentiment)
+    related_actions = _build_standard_related_actions(best, page_context)
+
+    if best.get("intent") == "default_fallback" and conf < 0.15:
+        low_conf = _build_low_confidence_payload(
+            state=state,
+            secondary=secondary,
+            page_context=page_context,
+        )
+        next_state = _build_conversation_state(
+            state=state,
+            best=_find_faq_entry(state.get("last_intent")),
+            conf=state.get("last_confidence", 0.0),
+            page_context=page_context,
+            suggestions=low_conf["suggestions"],
+            related_actions=low_conf["related_actions"],
+            follow_up_expected=low_conf["follow_up_type"],
+        )
+        return {
+            "valid": True,
+            "intent": low_conf["intent"],
+            "module": state.get("last_module"),
+            "module_name": CHATBOT_MODULES.get(state.get("last_module", ""), {}).get("name"),
+            "module_icon": CHATBOT_MODULES.get(state.get("last_module", ""), {}).get("icon"),
+            "confidence": low_conf["confidence"],
+            "answer": low_conf["answer"],
+            "answer_html": low_conf["answer_html"],
+            "suggestions": low_conf["suggestions"],
+            "related_actions": low_conf["related_actions"],
+            "secondary_intents": secondary,
+            "sentiment": sentiment,
+            "greeting": greeting,
+            "name_prefix": "",
+            "follow_up": "Kalau kamu mau, pilih salah satu contoh pertanyaan di bawah supaya saya bisa bantu lebih tepat.",
+            "follow_up_type": low_conf["follow_up_type"],
+            "conversation_state": next_state,
+            "model_version": CHATBOT_MODEL_VERSION,
+            "disclaimer": CHATBOT_DISCLAIMER,
+        }
 
     answer = best["answer"]
     answer_html = _format_answer_markdown(answer)
@@ -1812,21 +2068,24 @@ def chat_faq_handler(
         answer_html = _format_answer_markdown(empathy_prefix) + answer_html
 
     # Context-aware: if user is on a specific page, add tip
-    context_tip = ""
-    if page_context == "ringkasan":
-        context_tip = "\n\n? *Kamu ada di halaman Ringkasan ? coba cek Skor Risiko gratis!*"
-    elif page_context == "produk":
-        context_tip = "\n\n? *Kamu ada di halaman Produk ? Pinjol Checker & Debt Planner tersedia.*"
-    elif page_context == "solusi":
-        context_tip = "\n\n? *Kamu ada di halaman Solusi ? 4 modul recovery siap dibaca.*"
-
+    context_tip = _build_context_tip(page_context)
     if context_tip:
-        answer_html += _format_answer_markdown(context_tip)
+        answer_html += _format_answer_markdown(f"\n\n{context_tip}")
 
     # Personalization with name (only if name given)
     name_prefix = ""
     if user_name and sentiment in ("stressed", "crisis", "frustrated"):
         name_prefix = f"{user_name}, "
+
+    next_state = _build_conversation_state(
+        state=state,
+        best=best,
+        conf=conf,
+        page_context=page_context,
+        suggestions=suggestions,
+        related_actions=related_actions,
+        follow_up_expected=routed_follow_up_type,
+    )
 
     return {
         "valid": True,
@@ -1837,13 +2096,15 @@ def chat_faq_handler(
         "confidence": round(conf, 2),
         "answer": answer,
         "answer_html": answer_html,
-        "suggestions": best.get("suggestions", []),
-        "related_actions": best.get("related_actions", []),
+        "suggestions": suggestions,
+        "related_actions": related_actions,
         "secondary_intents": secondary,
         "sentiment": sentiment,
         "greeting": greeting,
         "name_prefix": name_prefix,
         "follow_up": follow_up,  # Round 17: question to engage user in distress
+        "follow_up_type": routed_follow_up_type,
+        "conversation_state": next_state,
         "model_version": CHATBOT_MODEL_VERSION,
         "disclaimer": CHATBOT_DISCLAIMER,
     }
@@ -2058,6 +2319,441 @@ DC_SCENARIOS: list[dict] = [
         ],
     },
 ]
+
+
+def _build_dc_branching_scenarios() -> list[dict]:
+    return [
+        {
+            "id": "agresif_tekan",
+            "title": "DC Tekanan Agresif",
+            "difficulty": "Sedang",
+            "description": "DC membuka percakapan dengan tekanan tinggi. Kamu perlu tetap tenang, verifikasi identitas, dan mengarahkan percakapan ke solusi yang realistis.",
+            "tone": "agresif",
+            "max_steps": 2,
+            "entry_node": "opening",
+            "key_points": [
+                "Jangan terpancing ancaman atau volume suara.",
+                "Minta identitas, perusahaan, dan tagihan resmi sebelum bicara nominal.",
+                "Kalau bicara angka, pakai angka yang benar-benar realistis.",
+            ],
+            "evaluation_criteria": {
+                "calm": "Tetap tenang & tidak reaktif",
+                "verify": "Verifikasi identitas/tagihan",
+                "negotiate": "Arahkan ke solusi atau restrukturisasi",
+                "realistic": "Tidak over-promise",
+            },
+            "nodes": {
+                "opening": {
+                    "dc_message": "Pak, saya dari tim penagihan PT Finantara. Tagihan Anda telat 14 hari. Kalau hari ini tidak ada komitmen jelas, saya escalate ke supervisor dan kontak darurat Anda bisa ikut kami hubungi. Sekarang saya tanya: Anda mau selesaikan atau tidak?",
+                    "options": [
+                        {"id": "A", "label": "Balas keras: 'Jangan ancam-ancam saya. Hubungi siapa pun terserah!'", "next_node": "lane_reaktif", "score": 20, "criteria": {"calm": 0, "verify": 0, "negotiate": 5, "realistic": 15}, "feedback": "Nada reaktif bikin DC makin defensif dan menutup ruang negosiasi.", "alt_response": "Pak, saya akan tanggapi dengan tenang. Tolong sebutkan nama lengkap, perusahaan, dan kirimkan tagihan resminya dulu."},
+                        {"id": "B", "label": "Tenang dan minta identitas serta surat tagihan resmi.", "next_node": "lane_terverifikasi", "score": 90, "criteria": {"calm": 25, "verify": 25, "negotiate": 20, "realistic": 20}, "feedback": "Awal yang sangat kuat. Kamu tidak menolak, tapi langsung mengendalikan percakapan dengan verifikasi.", "alt_response": ""},
+                        {"id": "C", "label": "Panik dan bilang siap transfer sekarang asal jangan dibikin malu.", "next_node": "lane_panik", "score": 15, "criteria": {"calm": 0, "verify": 0, "negotiate": 0, "realistic": 15}, "feedback": "Komitmen di bawah tekanan membuat posisi tawarmu langsung jatuh.", "alt_response": "Jangan transfer saat masih tertekan. Amankan dulu percakapan, lalu minta rincian dan opsi restrukturisasi."},
+                        {"id": "D", "label": "Menghindar: bilang sedang sibuk lalu minta ditelepon besok tanpa angka apa pun.", "next_node": "lane_menghindar", "score": 35, "criteria": {"calm": 15, "verify": 5, "negotiate": 5, "realistic": 10}, "feedback": "Lebih baik daripada marah, tetapi belum memberi arah sehingga DC akan mengejar lagi.", "alt_response": "Kalau butuh jeda, tetap beri struktur: minta email resmi dan janji kapan kamu bisa memberi angka realistis."},
+                    ],
+                },
+                "lane_reaktif": {
+                    "dc_message": "Kalau Bapak terus emosional, saya catat sebagai tidak kooperatif. Saya masih kasih satu kesempatan: sebutkan sekarang angka minimum yang benar-benar bisa dibayar minggu ini, atau saya lanjutkan eskalasi.",
+                    "options": [
+                        {"id": "A", "label": "Tetap emosional dan menantang DC untuk menyebarkan data.", "next_node": None, "score": 10, "criteria": {"calm": 0, "verify": 0, "negotiate": 0, "realistic": 10}, "feedback": "Situasi memburuk. Respons seperti ini biasanya mempercepat eskalasi internal.", "alt_response": "Turunkan tensi dan beralih ke angka kecil yang realistis, misalnya komitmen parsial dengan tanggal jelas."},
+                        {"id": "B", "label": "Turunkan nada, minta kirim rincian resmi, lalu tawarkan Rp300.000 tanggal 25 sambil minta restrukturisasi.", "next_node": None, "score": 82, "criteria": {"calm": 20, "verify": 20, "negotiate": 22, "realistic": 20}, "feedback": "Kamu berhasil memulihkan percakapan dan menggesernya ke solusi.", "alt_response": ""},
+                        {"id": "C", "label": "Janji akan melunasi penuh minggu depan walau sebenarnya belum pasti.", "next_node": None, "score": 28, "criteria": {"calm": 12, "verify": 0, "negotiate": 6, "realistic": 10}, "feedback": "Over-promise berisiko besar. Kalau meleset, posisi tawar turun lagi.", "alt_response": "Lebih baik tawarkan angka kecil yang pasti daripada janji besar yang belum tentu bisa dipenuhi."},
+                        {"id": "D", "label": "Minta semua komunikasi dipindah ke email resmi lalu akhiri telepon dengan sopan.", "next_node": None, "score": 72, "criteria": {"calm": 22, "verify": 20, "negotiate": 12, "realistic": 18}, "feedback": "Aman untuk mengurangi tensi, meski akan lebih kuat jika disertai komitmen angka awal.", "alt_response": ""},
+                    ],
+                },
+                "lane_terverifikasi": {
+                    "dc_message": "Baik, saya kirimkan identitas dan nomor tagihan ke email Anda. Sekarang saya butuh komitmen konkret. Kalau ada keringanan bunga dan biaya admin, angka realistis yang bisa Anda mulai bayarkan berapa dan kapan?",
+                    "options": [
+                        {"id": "A", "label": "Tawarkan Rp400.000 tanggal 25 dan minta cicilan 6 bulan dengan bunga lebih rendah.", "next_node": None, "score": 94, "criteria": {"calm": 25, "verify": 20, "negotiate": 25, "realistic": 24}, "feedback": "Ini respons paling kuat: spesifik, realistis, dan tetap menawar dengan sopan.", "alt_response": ""},
+                        {"id": "B", "label": "Bilang belum tahu angkanya dan minta DC menelepon lagi minggu depan.", "next_node": None, "score": 38, "criteria": {"calm": 18, "verify": 15, "negotiate": 0, "realistic": 5}, "feedback": "Verifikasi sudah benar, tapi kamu melewatkan momen untuk mengendalikan negosiasi.", "alt_response": "Setidaknya beri rentang angka kecil yang masih mungkin, lalu minta follow-up tertulis."},
+                        {"id": "C", "label": "Setuju bayar penuh asal DC berhenti menghubungi, tanpa minta surat restrukturisasi.", "next_node": None, "score": 32, "criteria": {"calm": 15, "verify": 10, "negotiate": 2, "realistic": 5}, "feedback": "Kamu terlalu cepat menyerah pada tekanan dan kehilangan dokumentasi penting.", "alt_response": "Tetap minta kesepakatan tertulis sebelum bicara transfer atau pelunasan."},
+                        {"id": "D", "label": "Minta semua opsi tertulis dulu, lalu konfirmasi akan memberi angka final malam ini via email.", "next_node": None, "score": 78, "criteria": {"calm": 23, "verify": 25, "negotiate": 12, "realistic": 18}, "feedback": "Aman dan profesional. Akan lebih kuat jika kamu menyertakan angka awal sekarang.", "alt_response": ""},
+                    ],
+                },
+                "lane_panik": {
+                    "dc_message": "Kalau memang mau transfer sekarang, saya butuh bukti dalam 30 menit. Tapi kalau ternyata Anda belum siap, jangan buat janji kosong. Saya tanya sekali lagi: angka realistisnya berapa?",
+                    "options": [
+                        {"id": "A", "label": "Tetap bilang akan transfer penuh hari ini meski uangnya belum ada.", "next_node": None, "score": 12, "criteria": {"calm": 5, "verify": 0, "negotiate": 0, "realistic": 7}, "feedback": "Janji kosong akan merusak kredibilitasmu sangat cepat.", "alt_response": "Tarik komitmen berlebihan itu, lalu ganti dengan nominal kecil yang benar-benar bisa dipenuhi."},
+                        {"id": "B", "label": "Koreksi diri: minta rincian resmi dan tawarkan pembayaran parsial Rp250.000 akhir bulan.", "next_node": None, "score": 80, "criteria": {"calm": 18, "verify": 22, "negotiate": 20, "realistic": 20}, "feedback": "Kamu berhasil memulihkan posisi setelah sempat panik.", "alt_response": ""},
+                        {"id": "C", "label": "Memohon agar DC berhenti menelepon tanpa memberi angka atau tanggal.", "next_node": None, "score": 24, "criteria": {"calm": 10, "verify": 0, "negotiate": 4, "realistic": 10}, "feedback": "Permintaan tanpa komitmen biasanya tidak menghentikan follow-up.", "alt_response": "Kalau ingin mengurangi kontak, pasangkan permintaan itu dengan timeline dan angka realistis."},
+                        {"id": "D", "label": "Minta pindah ke email resmi dan janji akan balas setelah menghitung kemampuan bayar malam ini.", "next_node": None, "score": 68, "criteria": {"calm": 18, "verify": 20, "negotiate": 10, "realistic": 20}, "feedback": "Lebih aman, walau akan lebih meyakinkan bila ada kisaran angka sejak sekarang.", "alt_response": ""},
+                    ],
+                },
+                "lane_menghindar": {
+                    "dc_message": "Kalau hanya minta dihubungi besok tanpa angka, saya tetap catat belum ada komitmen. Supaya saya tidak escalate malam ini, sebutkan minimal langkah yang bisa Anda ambil dulu.",
+                    "options": [
+                        {"id": "A", "label": "Tawarkan kirim update kondisi keuangan via email resmi malam ini dan bayar Rp200.000 tanggal 27.", "next_node": None, "score": 84, "criteria": {"calm": 22, "verify": 18, "negotiate": 20, "realistic": 24}, "feedback": "Ini mengubah avoidance menjadi komitmen yang terukur.", "alt_response": ""},
+                        {"id": "B", "label": "Tetap menunda tanpa angka karena merasa belum siap bicara.", "next_node": None, "score": 18, "criteria": {"calm": 10, "verify": 5, "negotiate": 0, "realistic": 3}, "feedback": "Avoidance murni biasanya justru membuat tekanan meningkat.", "alt_response": "Sekecil apa pun, tetap beri struktur: angka awal, tanggal, dan media komunikasi resmi."},
+                        {"id": "C", "label": "Minta supervisor menghubungi karena merasa tidak nyaman, tapi tetap minta surat tagihan resmi.", "next_node": None, "score": 64, "criteria": {"calm": 20, "verify": 20, "negotiate": 8, "realistic": 16}, "feedback": "Cukup baik untuk mengamankan proses, tapi belum menyentuh solusi pembayaran.", "alt_response": "Setelah minta supervisor, tetap cantumkan angka awal agar pembicaraan tidak restart dari nol."},
+                        {"id": "D", "label": "Janji akan bayar penuh besok agar telepon dihentikan.", "next_node": None, "score": 26, "criteria": {"calm": 12, "verify": 0, "negotiate": 4, "realistic": 10}, "feedback": "Janji penuh tanpa dasar biasanya cuma menunda masalah satu hari.", "alt_response": "Lebih aman memberi komitmen parsial yang bisa dipenuhi dan dicatat resmi."},
+                    ],
+                },
+            },
+        },
+        {
+            "id": "sebar_data",
+            "title": "DC Ancam Sebar Data",
+            "difficulty": "Sulit",
+            "description": "Fokus skenario ini adalah perlindungan diri: jangan bayar di bawah ancaman, dokumentasikan, dan dorong proses ke jalur legal.",
+            "tone": "intimidasi",
+            "max_steps": 2,
+            "entry_node": "opening",
+            "key_points": [
+                "Ancaman sebar data adalah red flag serius.",
+                "Dokumentasikan chat/suara dan bawa percakapan ke jalur resmi.",
+                "Jangan transfer hanya untuk menghentikan ancaman sesaat.",
+            ],
+            "evaluation_criteria": {
+                "calm": "Tetap tenang",
+                "legal": "Paham hak hukum & kanal laporan",
+                "document": "Dokumentasikan ancaman",
+                "no_payment": "Tidak membayar di bawah tekanan",
+            },
+            "nodes": {
+                "opening": {
+                    "dc_message": "Kalau sampai jam 5 sore ini tidak ada transfer, saya kirim foto dan tagihan Anda ke grup keluarga. Kami sudah punya semua kontaknya. Sekarang putuskan: mau bayar atau mau malu?",
+                    "options": [
+                        {"id": "A", "label": "Panik dan langsung minta nomor rekening agar bisa transfer sekarang.", "next_node": "lane_tunduk", "score": 12, "criteria": {"calm": 0, "legal": 0, "document": 0, "no_payment": 0}, "feedback": "Tunduk pada ancaman memperbesar risiko intimidasi berulang.", "alt_response": "Hentikan dorongan transfer. Fokus dulu ke dokumentasi dan minta komunikasi resmi."},
+                        {"id": "B", "label": "Tegaskan ancaman sebar data melanggar hukum dan bilang percakapan sedang didokumentasikan.", "next_node": "lane_legal", "score": 95, "criteria": {"calm": 25, "legal": 25, "document": 25, "no_payment": 20}, "feedback": "Sangat kuat. Kamu menggeser posisi dari korban panik ke pihak yang sadar hak.", "alt_response": ""},
+                        {"id": "C", "label": "Menantang DC untuk benar-benar menyebarkan data karena merasa sudah tidak peduli.", "next_node": "lane_menantang", "score": 22, "criteria": {"calm": 8, "legal": 5, "document": 4, "no_payment": 5}, "feedback": "Tetap berbahaya. Sikap pasrah tidak melindungi datamu.", "alt_response": "Bersikap tenang lebih efektif daripada menantang. Dokumentasikan dan paksa ke jalur resmi."},
+                        {"id": "D", "label": "Minta semua pembicaraan dipindah ke email resmi perusahaan dan hentikan ancaman dulu.", "next_node": "lane_formal", "score": 72, "criteria": {"calm": 20, "legal": 12, "document": 18, "no_payment": 22}, "feedback": "Aman dan formal, walau akan lebih kuat jika kamu menyebut kanal hukum dengan jelas.", "alt_response": ""},
+                    ],
+                },
+                "lane_tunduk": {
+                    "dc_message": "Kalau Anda memang mau transfer, saya butuh buktinya sekarang. Tapi saya tegaskan: tanpa surat restrukturisasi, pembayaran ini tidak menghapus kewajiban lain. Anda tetap mau lanjut?",
+                    "options": [
+                        {"id": "A", "label": "Tetap transfer dulu agar ancaman berhenti.", "next_node": None, "score": 8, "criteria": {"calm": 2, "legal": 0, "document": 0, "no_payment": 0}, "feedback": "Ini opsi paling riskan. Kamu membayar tanpa perlindungan proses.", "alt_response": "Tarik keputusan ini dan ubah fokus ke bukti ancaman, surat resmi, dan laporan bila perlu."},
+                        {"id": "B", "label": "Batalkan transfer, screenshot ancaman, lalu minta surat tagihan resmi via email perusahaan.", "next_node": None, "score": 82, "criteria": {"calm": 18, "legal": 18, "document": 22, "no_payment": 24}, "feedback": "Kamu berhasil memulihkan kontrol setelah sempat panik.", "alt_response": ""},
+                        {"id": "C", "label": "Minta kompromi: bayar setengah sekarang asal data tidak disebar.", "next_node": None, "score": 20, "criteria": {"calm": 8, "legal": 0, "document": 2, "no_payment": 0}, "feedback": "Masih berangkat dari tekanan, bukan dari proses yang aman.", "alt_response": "Jangan membeli rasa aman semu. Pastikan dulu jalur formal dan bukti ancamannya."},
+                        {"id": "D", "label": "Tutup telepon, lalu lanjutkan dokumentasi dan kirim komplain resmi ke perusahaan.", "next_node": None, "score": 74, "criteria": {"calm": 20, "legal": 16, "document": 24, "no_payment": 14}, "feedback": "Cukup baik untuk melindungi diri. Akan lebih optimal jika ada permintaan tertulis ke kanal resmi.", "alt_response": ""},
+                    ],
+                },
+                "lane_legal": {
+                    "dc_message": "Baik, saya catat Anda keberatan dengan nada ancaman. Kalau kita lanjut secara resmi, saya bisa kirim detail tunggakan dan opsi restrukturisasi ke email. Anda ingin lanjut dengan jalur itu?",
+                    "options": [
+                        {"id": "A", "label": "Setuju lanjut resmi, minta detail tagihan, dan tanya apakah ancaman ke kontak dihentikan.", "next_node": None, "score": 94, "criteria": {"calm": 25, "legal": 25, "document": 20, "no_payment": 24}, "feedback": "Respons paling matang. Kamu tetap membuka ruang solusi tanpa melepaskan perlindungan hukum.", "alt_response": ""},
+                        {"id": "B", "label": "Langsung bilang akan lapor polisi sekarang dan menutup semua ruang komunikasi.", "next_node": None, "score": 66, "criteria": {"calm": 14, "legal": 25, "document": 18, "no_payment": 9}, "feedback": "Secara hukum kuat, tapi kamu menutup peluang menyelesaikan tagihan secara terukur.", "alt_response": "Ancaman laporan boleh, tapi tetap sisakan jalur resmi untuk negosiasi dan dokumentasi."},
+                        {"id": "C", "label": "Minta restrukturisasi tertulis dan baru akan bicara angka setelah menerima dokumen.", "next_node": None, "score": 86, "criteria": {"calm": 22, "legal": 20, "document": 22, "no_payment": 22}, "feedback": "Aman dan disiplin. Ini pilihan yang sangat layak.", "alt_response": ""},
+                        {"id": "D", "label": "Karena takut, tetap ingin transfer kecil dulu sambil menunggu email.", "next_node": None, "score": 30, "criteria": {"calm": 10, "legal": 8, "document": 6, "no_payment": 6}, "feedback": "Begitu uang masuk di bawah tekanan, pesan hukum yang tadi kamu bangun jadi melemah.", "alt_response": "Kalau sudah minta jalur resmi, konsistenlah: tunggu dokumen dulu sebelum ada transaksi."},
+                    ],
+                },
+                "lane_menantang": {
+                    "dc_message": "Saya pahami Anda emosi, tapi sikap menantang seperti ini tidak membantu. Kalau memang keberatan, sebutkan apa yang Anda minta sekarang: penghentian ancaman, surat resmi, atau opsi cicilan.",
+                    "options": [
+                        {"id": "A", "label": "Turunkan tensi, minta ancaman dihentikan dan seluruh komunikasi dialihkan ke email resmi.", "next_node": None, "score": 78, "criteria": {"calm": 20, "legal": 15, "document": 20, "no_payment": 23}, "feedback": "Kamu berhasil membalikkan percakapan ke jalur yang lebih aman.", "alt_response": ""},
+                        {"id": "B", "label": "Tetap menantang sambil menghina balik.", "next_node": None, "score": 10, "criteria": {"calm": 0, "legal": 0, "document": 0, "no_payment": 10}, "feedback": "Ini memperkeruh situasi dan menambah risiko eskalasi.", "alt_response": "Ganti hinaan dengan permintaan resmi: stop ancaman, kirim identitas, dan dokumentasikan."},
+                        {"id": "C", "label": "Minta bukti tagihan resmi dan bilang sedang menyimpan seluruh tangkapan layar.", "next_node": None, "score": 88, "criteria": {"calm": 22, "legal": 20, "document": 24, "no_payment": 22}, "feedback": "Sangat baik. Kamu mengubah sikap pasrah menjadi kontrol berbasis bukti.", "alt_response": ""},
+                        {"id": "D", "label": "Memilih diam tanpa mengakhiri percakapan dengan struktur apa pun.", "next_node": None, "score": 26, "criteria": {"calm": 12, "legal": 4, "document": 4, "no_payment": 6}, "feedback": "Diam saja tidak cukup untuk melindungi posisi dan datamu.", "alt_response": "Kalau ingin berhenti bicara, tetap sampaikan permintaan tertulis atau niat melaporkan ancaman."},
+                    ],
+                },
+                "lane_formal": {
+                    "dc_message": "Saya bisa lanjut lewat email resmi. Tapi saya perlu tahu: apakah Anda hanya keberatan dengan ancaman tadi, atau Anda juga mau membahas komitmen pembayaran yang realistis?",
+                    "options": [
+                        {"id": "A", "label": "Fokus dulu pada penghentian ancaman dan minta detail tagihan resmi sebelum bicara nominal.", "next_node": None, "score": 84, "criteria": {"calm": 22, "legal": 18, "document": 22, "no_payment": 22}, "feedback": "Pilihan aman dan terstruktur.", "alt_response": ""},
+                        {"id": "B", "label": "Jawab bahwa Anda siap membahas komitmen setelah menerima email resmi perusahaan.", "next_node": None, "score": 90, "criteria": {"calm": 24, "legal": 18, "document": 22, "no_payment": 24}, "feedback": "Sangat baik. Kamu tetap kooperatif tanpa menyerahkan posisi hukum.", "alt_response": ""},
+                        {"id": "C", "label": "Karena takut ancaman berulang, Anda transfer sekarang lalu urusan formal belakangan.", "next_node": None, "score": 18, "criteria": {"calm": 8, "legal": 2, "document": 4, "no_payment": 0}, "feedback": "Transfer dulu membuat seluruh jalur formal menjadi lemah.", "alt_response": "Kalau sudah berhasil memindahkan percakapan ke kanal resmi, pertahankan konsistensi itu."},
+                        {"id": "D", "label": "Minta nama supervisor dan kanal komplain internal selain email penagihan.", "next_node": None, "score": 80, "criteria": {"calm": 20, "legal": 20, "document": 20, "no_payment": 20}, "feedback": "Langkah ini bagus untuk menambah jejak resmi dan rasa aman.", "alt_response": ""},
+                    ],
+                },
+            },
+        },
+        {
+            "id": "konsolidasi",
+            "title": "DC Mau Tahu Posisi",
+            "difficulty": "Mudah",
+            "description": "DC terdengar profesional dan membuka ruang solusi. Tantangannya adalah jujur, spesifik, dan tidak over-promise.",
+            "tone": "profesional",
+            "max_steps": 2,
+            "entry_node": "opening",
+            "key_points": [
+                "Gunakan data income, pengeluaran, dan cicilan aktif secara jujur.",
+                "Kalau minta cicilan, sebutkan tenor dan harapan keringanan.",
+                "Komunikasi sopan justru memperkuat posisi tawar.",
+            ],
+            "evaluation_criteria": {
+                "honest": "Jujur tentang kondisi keuangan",
+                "specific": "Angka & tenor spesifik",
+                "negotiate": "Meminta opsi restrukturisasi",
+                "polite": "Nada sopan dan profesional",
+            },
+            "nodes": {
+                "opening": {
+                    "dc_message": "Selamat pagi, saya Rina dari PT Artha Dana. Saya follow up tagihan Anda yang telat 30 hari. Sebelum kita bicara solusi, saya perlu tahu posisi keuangan Anda sekarang supaya penawarannya realistis. Bisa dijelaskan singkat?",
+                    "options": [
+                        {"id": "A", "label": "Jujur soal income, pengeluaran, dan cicilan lain, lalu sebut angka awal yang mampu dibayar.", "next_node": "lane_transparan", "score": 94, "criteria": {"honest": 25, "specific": 24, "negotiate": 20, "polite": 25}, "feedback": "Pembukaan yang sangat matang dan memudahkan negosiasi sehat.", "alt_response": ""},
+                        {"id": "B", "label": "Menghindar dengan bilang belum sempat menghitung apa pun.", "next_node": "lane_kabur", "score": 24, "criteria": {"honest": 5, "specific": 0, "negotiate": 4, "polite": 15}, "feedback": "Terlalu kabur. DC tidak punya dasar untuk membantu.", "alt_response": "Bahkan rentang kasar akan jauh lebih berguna daripada jawaban kosong."},
+                        {"id": "C", "label": "Over-promise: bilang siap melunasi penuh bulan depan padahal belum yakin.", "next_node": "lane_overpromise", "score": 26, "criteria": {"honest": 0, "specific": 8, "negotiate": 4, "polite": 14}, "feedback": "Terdengar manis, tapi berbahaya kalau tidak realistis.", "alt_response": "Lebih baik bicara nominal kecil yang pasti daripada janji besar yang rapuh."},
+                        {"id": "D", "label": "Defensif dan menyalahkan aplikasi tanpa menjawab pertanyaan posisi keuangan.", "next_node": "lane_defensif", "score": 18, "criteria": {"honest": 0, "specific": 0, "negotiate": 3, "polite": 15}, "feedback": "Keluhan boleh disampaikan, tapi bukan sebagai pengganti informasi inti.", "alt_response": "Pisahkan keluhan dari negosiasi. Jawab angka dulu, baru masukkan keberatanmu."},
+                    ],
+                },
+                "lane_transparan": {
+                    "dc_message": "Terima kasih, penjelasan Anda jelas. Dengan posisi seperti itu, saya bisa tawarkan restrukturisasi. Untuk tenor, Anda lebih cocok skema singkat dengan cicilan agak besar atau tenor lebih panjang dengan bunga lebih tinggi?",
+                    "options": [
+                        {"id": "A", "label": "Pilih tenor 6 bulan, minta simulasi bunga, dan tawarkan Rp350.000 per bulan mulai tanggal 26.", "next_node": None, "score": 95, "criteria": {"honest": 22, "specific": 25, "negotiate": 25, "polite": 23}, "feedback": "Ini respons ideal: spesifik, kooperatif, dan tetap negosiasi.", "alt_response": ""},
+                        {"id": "B", "label": "Bilang ikut apa pun yang penting cepat selesai, tanpa hitung angka.", "next_node": None, "score": 36, "criteria": {"honest": 8, "specific": 0, "negotiate": 8, "polite": 20}, "feedback": "Terlalu pasif. Kamu menyerahkan keputusan penting tanpa kontrol.", "alt_response": "Pilih skema berdasarkan kemampuan bayar, bukan sekadar ingin cepat selesai."},
+                        {"id": "C", "label": "Minta tenor 12 bulan, tapi tetap ingin bunga tetap rendah dan tanpa biaya admin.", "next_node": None, "score": 72, "criteria": {"honest": 18, "specific": 20, "negotiate": 20, "polite": 14}, "feedback": "Cukup baik, walau permintaannya perlu dijaga agar tetap realistis.", "alt_response": ""},
+                        {"id": "D", "label": "Minta semua opsi tertulis via email, lalu berjanji balas final malam ini.", "next_node": None, "score": 80, "criteria": {"honest": 20, "specific": 16, "negotiate": 18, "polite": 22}, "feedback": "Aman dan profesional, terutama jika kamu memang butuh waktu verifikasi.", "alt_response": ""},
+                    ],
+                },
+                "lane_kabur": {
+                    "dc_message": "Kalau Anda belum punya hitungan, saya khawatir pembicaraan ini berhenti di janji umum saja. Saya butuh minimal satu angka kasar atau tanggal kapan Anda akan kirim hitungan lengkap.",
+                    "options": [
+                        {"id": "A", "label": "Berikan kisaran Rp250.000–Rp300.000 dan janji kirim rincian malam ini.", "next_node": None, "score": 82, "criteria": {"honest": 20, "specific": 20, "negotiate": 18, "polite": 24}, "feedback": "Kamu berhasil memperbaiki jawaban yang tadinya kabur.", "alt_response": ""},
+                        {"id": "B", "label": "Tetap bilang tidak tahu dan minta dihubungi bulan depan.", "next_node": None, "score": 14, "criteria": {"honest": 2, "specific": 0, "negotiate": 0, "polite": 12}, "feedback": "Ini hampir pasti berujung follow-up yang lebih keras.", "alt_response": "Kalau belum siap, tetap beri tanggal dekat dan kisaran angka minimum."},
+                        {"id": "C", "label": "Mengaku takut salah sebut angka, lalu minta email agar bisa menghitung dulu.", "next_node": None, "score": 66, "criteria": {"honest": 18, "specific": 8, "negotiate": 14, "polite": 26}, "feedback": "Cukup sehat secara komunikasi, meski akan lebih kuat kalau ada kisaran awal.", "alt_response": ""},
+                        {"id": "D", "label": "Tawarkan bayar simbolis Rp100.000 minggu ini sambil menunggu hitungan final.", "next_node": None, "score": 74, "criteria": {"honest": 18, "specific": 18, "negotiate": 16, "polite": 22}, "feedback": "Langkah kecil yang konkret lebih baik daripada jawaban mengambang.", "alt_response": ""},
+                    ],
+                },
+                "lane_overpromise": {
+                    "dc_message": "Kalau Anda bilang bisa lunas bulan depan, saya akan catat itu sebagai komitmen resmi. Saya perlu pastikan dulu: angka itu benar-benar aman, atau Anda sebenarnya lebih cocok ke cicilan bertahap?",
+                    "options": [
+                        {"id": "A", "label": "Koreksi diri dan ubah ke cicilan realistis Rp300.000 per bulan selama 8 bulan.", "next_node": None, "score": 88, "criteria": {"honest": 24, "specific": 22, "negotiate": 20, "polite": 22}, "feedback": "Bagus. Mengoreksi over-promise justru meningkatkan kredibilitas.", "alt_response": ""},
+                        {"id": "B", "label": "Tetap ngotot pelunasan penuh tanpa bukti kemampuan.", "next_node": None, "score": 18, "criteria": {"honest": 0, "specific": 10, "negotiate": 0, "polite": 8}, "feedback": "Ini terlihat seperti janji kosong dan berisiko besar.", "alt_response": "Jangan pertahankan angka hanya demi terlihat baik. Realisme lebih penting."},
+                        {"id": "C", "label": "Minta opsi cicilan tertulis dulu karena belum yakin pelunasan penuh bisa aman.", "next_node": None, "score": 78, "criteria": {"honest": 20, "specific": 14, "negotiate": 20, "polite": 24}, "feedback": "Aman dan dewasa. Kamu memilih koreksi yang terukur.", "alt_response": ""},
+                        {"id": "D", "label": "Bilang akan cari pinjaman baru untuk menutup tagihan ini.", "next_node": None, "score": 22, "criteria": {"honest": 8, "specific": 8, "negotiate": 0, "polite": 6}, "feedback": "Menutup lubang dengan lubang baru biasanya memperburuk siklus.", "alt_response": "Fokus pada restrukturisasi yang ada, bukan menciptakan utang baru."},
+                    ],
+                },
+                "lane_defensif": {
+                    "dc_message": "Saya catat ada keberatan terhadap produk, tapi saya tetap perlu posisi pembayaran Anda. Kalau ingin komplain dan negosiasi jalan bersamaan, kita harus pisahkan dua topik itu sekarang.",
+                    "options": [
+                        {"id": "A", "label": "Pisahkan topik, lalu sebut kemampuan bayar Rp250.000 dan minta kanal komplain resmi.", "next_node": None, "score": 84, "criteria": {"honest": 20, "specific": 22, "negotiate": 18, "polite": 24}, "feedback": "Sangat baik. Kamu tetap bisa komplain tanpa merusak negosiasi.", "alt_response": ""},
+                        {"id": "B", "label": "Fokus terus pada keluhan dan menolak bicara angka.", "next_node": None, "score": 16, "criteria": {"honest": 0, "specific": 0, "negotiate": 2, "polite": 14}, "feedback": "Keluhanmu valid, tapi tanpa data pembayaran hasilnya stagnan.", "alt_response": "Tetap jawab pertanyaan utama dulu, baru lanjutkan komplain tertulis."},
+                        {"id": "C", "label": "Minta email resmi untuk komplain dan follow-up tagihan, lalu akan balas malam ini.", "next_node": None, "score": 74, "criteria": {"honest": 18, "specific": 12, "negotiate": 16, "polite": 28}, "feedback": "Pilihan aman, walau akan lebih kuat bila disertai angka awal.", "alt_response": ""},
+                        {"id": "D", "label": "Tawarkan komitmen kecil minggu ini sambil menunggu hasil komplain.", "next_node": None, "score": 76, "criteria": {"honest": 18, "specific": 18, "negotiate": 18, "polite": 22}, "feedback": "Cukup seimbang antara komplain dan penyelesaian.", "alt_response": ""},
+                    ],
+                },
+            },
+        },
+        {
+            "id": "emergency_kritis",
+            "title": "DC di Masa Kritis",
+            "difficulty": "Sulit",
+            "description": "Kondisi kamu benar-benar mepet. Skenario ini melatih bagaimana tetap kooperatif saat kemampuan bayar sangat terbatas.",
+            "tone": "kritis",
+            "max_steps": 2,
+            "entry_node": "opening",
+            "key_points": [
+                "Kooperatif bukan berarti mengiyakan semua permintaan.",
+                "Kasih angka sekecil apa pun yang benar-benar aman.",
+                "Kalau ada keringanan, akui lalu arahkan ke detail tertulis.",
+            ],
+            "evaluation_criteria": {
+                "cooperative": "Kooperatif tanpa pasrah",
+                "specific": "Angka & tanggal spesifik",
+                "acknowledge": "Mengakui keringanan yang ditawarkan",
+                "realistic": "Tidak over-promise",
+            },
+            "nodes": {
+                "opening": {
+                    "dc_message": "Saya lihat keterlambatan Anda sudah masuk 60 hari. Saya tidak mau kasih tekanan kosong, jadi saya tawarkan opsi: kalau ada angka realistis dari Anda hari ini, saya coba minta keringanan internal. Berapa yang benar-benar bisa Anda mulai, dan kapan?",
+                    "options": [
+                        {"id": "A", "label": "Bilang tidak punya uang sama sekali tanpa angka atau tanggal.", "next_node": "lane_putus_asa", "score": 18, "criteria": {"cooperative": 8, "specific": 0, "acknowledge": 0, "realistic": 10}, "feedback": "Kejujuran penting, tapi tanpa angka DC tidak punya ruang membantu.", "alt_response": "Cari angka terkecil yang masih aman, lalu pasangkan dengan tanggal yang pasti."},
+                        {"id": "B", "label": "Acknowledge tawaran keringanan dan sebut Rp200.000 tanggal 25, lalu sisanya bertahap.", "next_node": "lane_realistis", "score": 96, "criteria": {"cooperative": 25, "specific": 25, "acknowledge": 24, "realistic": 22}, "feedback": "Ini respons paling matang untuk kondisi kritis.", "alt_response": ""},
+                        {"id": "C", "label": "Bilang belum bisa janji apa pun dan minta lihat nanti saja.", "next_node": "lane_mengambang", "score": 12, "criteria": {"cooperative": 4, "specific": 0, "acknowledge": 0, "realistic": 8}, "feedback": "Mengambang membuat pihak penagih menganggap kamu tidak kooperatif.", "alt_response": "Kalau belum yakin, tetap beri angka kecil dan timeline follow-up tertulis."},
+                        {"id": "D", "label": "Janji akan lunas bulan depan agar pembicaraan cepat selesai.", "next_node": "lane_janji_besar", "score": 20, "criteria": {"cooperative": 8, "specific": 8, "acknowledge": 0, "realistic": 4}, "feedback": "Janji besar di kondisi kritis biasanya tidak sustainable.", "alt_response": "Gunakan skema bertahap; di situ justru kamu terlihat lebih kredibel."},
+                    ],
+                },
+                "lane_putus_asa": {
+                    "dc_message": "Kalau tidak ada angka sama sekali, saya sulit membela Anda ke tim internal. Saya minta langkah minimum saja: angka kecil, tanggal, atau permintaan restrukturisasi tertulis. Mana yang bisa Anda lakukan lebih dulu?",
+                    "options": [
+                        {"id": "A", "label": "Tawarkan Rp100.000 akhir bulan sambil minta surat restrukturisasi resmi.", "next_node": None, "score": 82, "criteria": {"cooperative": 20, "specific": 22, "acknowledge": 16, "realistic": 24}, "feedback": "Kamu berhasil keluar dari kebuntuan dengan langkah kecil tapi kredibel.", "alt_response": ""},
+                        {"id": "B", "label": "Tetap bilang tidak bisa apa-apa sama sekali.", "next_node": None, "score": 8, "criteria": {"cooperative": 0, "specific": 0, "acknowledge": 0, "realistic": 8}, "feedback": "Ini membuat peluang keringanan nyaris hilang.", "alt_response": "Sekecil apa pun, tetap berikan bentuk komitmen yang bisa dicatat."},
+                        {"id": "C", "label": "Minta 3 hari untuk menghitung dan kirim angka final via email resmi.", "next_node": None, "score": 70, "criteria": {"cooperative": 18, "specific": 14, "acknowledge": 12, "realistic": 26}, "feedback": "Layak, terutama kalau kamu memang butuh waktu. Akan lebih kuat jika ada kisaran awal.", "alt_response": ""},
+                        {"id": "D", "label": "Minta hanya dihentikan teleponnya dulu tanpa komitmen lain.", "next_node": None, "score": 20, "criteria": {"cooperative": 8, "specific": 0, "acknowledge": 2, "realistic": 10}, "feedback": "Permintaan jeda tanpa struktur biasanya tidak cukup.", "alt_response": "Pasangkan permintaan jeda dengan tanggal dan langkah konkret."},
+                    ],
+                },
+                "lane_realistis": {
+                    "dc_message": "Baik, angka itu masuk akal. Kalau saya bantu ajukan keringanan bunga dan admin, Anda butuh skema 2 kali bayar, cicilan bulanan kecil, atau penundaan singkat sebelum mulai bayar?",
+                    "options": [
+                        {"id": "A", "label": "Pilih 2 kali bayar dengan tanggal pasti dan minta konfirmasi tertulis via email.", "next_node": None, "score": 95, "criteria": {"cooperative": 24, "specific": 25, "acknowledge": 22, "realistic": 24}, "feedback": "Pilihan paling kuat: sederhana, spesifik, dan mudah dicatat resmi.", "alt_response": ""},
+                        {"id": "B", "label": "Minta cicilan bulanan kecil selama 6 bulan dan tetap negosiasi penghapusan admin.", "next_node": None, "score": 90, "criteria": {"cooperative": 22, "specific": 22, "acknowledge": 22, "realistic": 24}, "feedback": "Sangat baik dan tetap aktif menawar.", "alt_response": ""},
+                        {"id": "C", "label": "Karena takut tawaran hilang, langsung setuju apa pun tanpa baca detail.", "next_node": None, "score": 34, "criteria": {"cooperative": 12, "specific": 4, "acknowledge": 8, "realistic": 10}, "feedback": "Kooperatifnya bagus, tapi terlalu pasrah dan berisiko.", "alt_response": "Tetap baca struktur tawaran dan minta dikirim tertulis sebelum setuju."},
+                        {"id": "D", "label": "Minta penundaan 14 hari dulu baru mulai skema pembayaran.", "next_node": None, "score": 76, "criteria": {"cooperative": 20, "specific": 18, "acknowledge": 18, "realistic": 20}, "feedback": "Masuk akal jika benar-benar perlu jeda, asalkan alasannya jelas.", "alt_response": ""},
+                    ],
+                },
+                "lane_mengambang": {
+                    "dc_message": "Saya butuh minimal arah, bukan harapan umum. Kalau Anda belum bisa final sekarang, setidaknya pilih: komitmen kecil minggu ini, permintaan restrukturisasi tertulis, atau jadwal pasti kapan Anda kirim angka.",
+                    "options": [
+                        {"id": "A", "label": "Komitmen kecil Rp150.000 minggu ini dan minta rincian restrukturisasi via email.", "next_node": None, "score": 80, "criteria": {"cooperative": 20, "specific": 22, "acknowledge": 14, "realistic": 24}, "feedback": "Kamu berhasil mengubah jawaban mengambang jadi langkah konkret.", "alt_response": ""},
+                        {"id": "B", "label": "Pilih hanya minta dihubungi lagi lain waktu.", "next_node": None, "score": 16, "criteria": {"cooperative": 6, "specific": 0, "acknowledge": 0, "realistic": 10}, "feedback": "Masih terlalu kosong dan rawan dianggap tidak serius.", "alt_response": "Kalau butuh waktu, beri tanggal follow-up dan kisaran angka."},
+                        {"id": "C", "label": "Minta restrukturisasi tertulis dulu karena ingin hitung dengan tenang malam ini.", "next_node": None, "score": 72, "criteria": {"cooperative": 18, "specific": 14, "acknowledge": 16, "realistic": 24}, "feedback": "Aman dan cukup matang, walau kisaran angka awal akan lebih meyakinkan.", "alt_response": ""},
+                        {"id": "D", "label": "Mengiyakan semua opsi tanpa memilih satu yang realistis.", "next_node": None, "score": 24, "criteria": {"cooperative": 12, "specific": 0, "acknowledge": 4, "realistic": 8}, "feedback": "Mengiyakan semua bukan berarti kooperatif; justru terlihat tidak siap.", "alt_response": "Pilih satu opsi yang benar-benar bisa kamu jalankan."},
+                    ],
+                },
+                "lane_janji_besar": {
+                    "dc_message": "Kalau Anda janji lunas bulan depan, saya akan catat itu resmi. Sebelum saya lakukan, saya perlu pastikan: apakah Anda memang punya sumber dana yang jelas, atau lebih aman kita pecah jadi dua tahap?",
+                    "options": [
+                        {"id": "A", "label": "Koreksi diri dan pecah jadi dua tahap dengan nominal realistis.", "next_node": None, "score": 88, "criteria": {"cooperative": 22, "specific": 22, "acknowledge": 18, "realistic": 26}, "feedback": "Bagus. Mengoreksi janji besar justru membuatmu lebih kredibel.", "alt_response": ""},
+                        {"id": "B", "label": "Tetap ngotot lunas penuh tanpa sumber dana yang jelas.", "next_node": None, "score": 14, "criteria": {"cooperative": 4, "specific": 10, "acknowledge": 0, "realistic": 0}, "feedback": "Komitmen seperti ini sangat mudah jebol dan akan berdampak ke trust.", "alt_response": "Kalau sumber dana belum pasti, jangan paksakan skenario pelunasan penuh."},
+                        {"id": "C", "label": "Minta simulasi dua opsi: lunas penuh vs dua tahap, lalu akan pilih via email malam ini.", "next_node": None, "score": 78, "criteria": {"cooperative": 20, "specific": 16, "acknowledge": 18, "realistic": 24}, "feedback": "Cukup matang dan memberi ruang hitung yang sehat.", "alt_response": ""},
+                        {"id": "D", "label": "Bilang akan meminjam ke pinjol lain untuk melunasi yang ini.", "next_node": None, "score": 10, "criteria": {"cooperative": 4, "specific": 4, "acknowledge": 0, "realistic": 2}, "feedback": "Ini pola gali lubang tutup lubang yang paling berbahaya.", "alt_response": "Jangan tutup utang dengan utang baru. Fokus ke restrukturisasi atau cicilan bertahap."},
+                    ],
+                },
+            },
+        },
+    ]
+
+
+DC_SCENARIOS = _build_dc_branching_scenarios()
+
+
+def get_dc_scenario_by_id(scenario_id: str) -> dict | None:
+    return next((scenario for scenario in DC_SCENARIOS if scenario.get("id") == scenario_id), None)
+
+
+def get_featured_dc_scenarios() -> list[dict]:
+    featured = [
+        {
+            "id": "agresif_tekan",
+            "emoji": "!",
+            "persona": "Manipulatif",
+            "focus": "Tetap tenang, verifikasi identitas, dan arahkan ke solusi tertulis.",
+        },
+        {
+            "id": "sebar_data",
+            "emoji": "!!",
+            "persona": "Intimidatif",
+            "focus": "Tahan diri dari panik, dokumentasikan ancaman, dan jaga hak atas data pribadi.",
+        },
+        {
+            "id": "konsolidasi",
+            "emoji": "~",
+            "persona": "Administratif / Negosiator",
+            "focus": "Latih jawaban yang jujur, spesifik, dan realistis saat ruang negosiasi masih terbuka.",
+        },
+    ]
+
+    scenarios = []
+    for item in featured:
+        scenario = get_dc_scenario_by_id(item["id"])
+        if not scenario:
+            continue
+        scenarios.append({
+            "id": scenario["id"],
+            "title": scenario["title"],
+            "difficulty": scenario["difficulty"],
+            "description": scenario["description"],
+            "emoji": item["emoji"],
+            "persona": item["persona"],
+            "focus": item["focus"],
+        })
+    return scenarios
+
+
+def get_dc_node(scenario: dict, node_id: str) -> dict | None:
+    return (scenario.get("nodes") or {}).get(node_id)
+
+
+def get_dc_option(node: dict | None, option_id: str) -> dict | None:
+    if not node:
+        return None
+    return next((option for option in node.get("options", []) if option.get("id") == option_id), None)
+
+
+def expand_dc_path_history(scenario: dict, path_steps: list[dict]) -> list[dict]:
+    history = []
+    for idx, step in enumerate(path_steps, start=1):
+        node = get_dc_node(scenario, step.get("node_id", ""))
+        option = get_dc_option(node, step.get("option_id", ""))
+        if not node or not option:
+            continue
+        history.append({
+            "turn_number": idx,
+            "node_id": step.get("node_id"),
+            "option_id": option.get("id"),
+            "dc_message": node.get("dc_message", ""),
+            "option_label": option.get("label", ""),
+            "score": option.get("score", 0),
+            "feedback": option.get("feedback", ""),
+            "alt_response": option.get("alt_response", ""),
+            "criteria": option.get("criteria", {}),
+        })
+    return history
+
+
+def evaluate_dc_branching_result(scenario: dict, path_steps: list[dict]) -> dict:
+    history = expand_dc_path_history(scenario, path_steps)
+    criteria_keys = list((scenario.get("evaluation_criteria") or {}).keys())
+    if not history or not criteria_keys:
+        return {"valid": False, "error": "Riwayat skenario tidak valid"}
+
+    criteria_totals = {key: 0 for key in criteria_keys}
+    total_score = 0
+    all_feedback = []
+    improvements = []
+
+    for item in history:
+        total_score += item["score"]
+        for key, value in item.get("criteria", {}).items():
+            if key in criteria_totals:
+                criteria_totals[key] += value
+        if item.get("feedback"):
+            all_feedback.append(f"Turn {item['turn_number']}: {item['feedback']}")
+        if item["score"] < 60 and item.get("alt_response"):
+            improvements.append({
+                "turn_number": item["turn_number"],
+                "situation": item["dc_message"],
+                "chosen_response": item["option_label"],
+                "suggested_response": item["alt_response"],
+            })
+
+    completed = len(history)
+    final_score = round(total_score / completed)
+    for key in criteria_totals:
+        criteria_totals[key] = round(criteria_totals[key] / completed)
+
+    if final_score >= 85:
+        verdict, color, msg = "Sangat Baik", "#84cc16", "Responsmu matang, tenang, dan cukup strategis untuk menjaga posisi tawar."
+    elif final_score >= 70:
+        verdict, color, msg = "Baik", "#84cc16", "Arah responsmu sudah sehat, meski masih ada ruang untuk lebih tajam."
+    elif final_score >= 50:
+        verdict, color, msg = "Cukup", "#f59e0b", "Beberapa keputusan sudah aman, tetapi ada titik yang masih terlalu lemah atau terlalu pasif."
+    else:
+        verdict, color, msg = "Perlu Perbaikan", "#ef4444", "Jalur percakapan ini berisiko memperburuk posisi. Latih ulang dengan fokus pada struktur dan ketenangan."
+
+    weakest = sorted(criteria_totals.items(), key=lambda item: item[1])[:2]
+    general_feedback = []
+    for key, score in weakest:
+        if score < 15:
+            label = scenario["evaluation_criteria"].get(key, key)
+            general_feedback.append(f"⚠️ {label}: masih jadi titik lemah utama di jalur percakapanmu.")
+
+    strongest_turns = sorted(history, key=lambda item: item["score"], reverse=True)[:2]
+    weak_turns = [item for item in history if item["score"] < 60][:2]
+    strengths = [
+        {
+            "turn_number": item["turn_number"],
+            "why": item["feedback"],
+            "response": item["option_label"],
+        }
+        for item in strongest_turns
+    ]
+    risks = [
+        {
+            "turn_number": item["turn_number"],
+            "why": item["feedback"],
+            "response": item["option_label"],
+            "alternative": item.get("alt_response", ""),
+        }
+        for item in weak_turns
+    ]
+
+    return {
+        "valid": True,
+        "score": final_score,
+        "verdict": verdict,
+        "verdict_color": color,
+        "verdict_msg": msg,
+        "criteria_scores": criteria_totals,
+        "per_turn": history,
+        "feedback": all_feedback + general_feedback,
+        "improvements": improvements[:3],
+        "strengths": strengths,
+        "risks": risks,
+        "matched": "matched" if final_score >= 70 else "not-matched",
+        "total_turns": scenario.get("max_steps", completed),
+        "completed_turns": completed,
+    }
 
 
 # =================================================================

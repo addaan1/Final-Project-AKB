@@ -44,6 +44,7 @@
 
   let sessionLog = [];
   let voiceRecorder = null;
+  let conversationState = null;
 
   // ============================================================
   // DOM helpers
@@ -136,7 +137,8 @@
       const safeUrl = url.replace(/"/g, '&quot;');
       const target = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
       const ext = isExternal ? ' <span class="ext-link-icon" aria-hidden="true">↗</span>' : '';
-      return '<a href="' + safeUrl + '"' + target + ' class="md-link">' + label + ext + '</a>';
+      const ctaClass = safeUrl.includes('/galbay-score') ? 'md-link galbay-score-cta' : 'md-link';
+      return '<a href="' + safeUrl + '"' + target + ' class="' + ctaClass + '">' + label + ext + '</a>';
     });
     // Step 5: bold **xxx** (non-greedy, no newlines inside)
     s = s.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
@@ -252,6 +254,9 @@
     relatedEl.innerHTML = '';
     actions.slice(0, 3).forEach(a => {
       const link = el('a', { href: a.href || '#' });
+      if ((a.href || '').includes('/galbay-score')) {
+        link.classList.add('chat-cta-galbay');
+      }
       if (a.external) {
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noopener');
@@ -310,6 +315,7 @@
         body: JSON.stringify({
           message: text,
           page_context: pageContext(),
+          conversation_state: conversationState,
         }),
       });
       // Round 13: Handle 429 (rate limit)
@@ -326,6 +332,7 @@
       removeTypingIndicator();
 
       if (result.valid) {
+        conversationState = result.conversation_state || null;
         const meta = buildMeta(result);
         addMessage('bot', '', meta, result.answer_html || escapeHtml(result.answer || ''));
         sessionLog.push({
@@ -363,6 +370,12 @@
       `${moduleIcon} ${moduleName}`.trim(),
       `${conf}% yakin`,
     ];
+    if (result.follow_up_type === 'clarify_low_confidence') {
+      parts.push('perlu klarifikasi');
+    }
+    if (result.follow_up_type === 'contextual_follow_up') {
+      parts.push('lanjutan topik');
+    }
     if (result.secondary_intents && result.secondary_intents.length > 0) {
       parts.push(`+${result.secondary_intents.length} topik terkait`);
     }
@@ -376,6 +389,7 @@
     const messages = document.getElementById('chatMessages');
     if (messages) messages.innerHTML = '';
     sessionLog = [];
+    conversationState = null;
     showSuggestions(QUICK_REPLIES);
     showRelatedActions([]);
     setTimeout(() => {

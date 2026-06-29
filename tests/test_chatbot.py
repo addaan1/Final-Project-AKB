@@ -199,6 +199,17 @@ class TestChatHandler:
         for s in result["suggestions"]:
             assert isinstance(s, str)
 
+    def test_response_includes_conversation_state(self):
+        result = chat_faq_handler("apa itu galbay?")
+        assert "conversation_state" in result
+        assert result["conversation_state"]["last_intent"] == "apa_itu_galbay"
+
+    def test_low_confidence_uses_clarification_payload(self):
+        result = chat_faq_handler("resep nasi goreng", page_context="produk")
+        assert result["valid"] is True
+        assert result["follow_up_type"] == "clarify_low_confidence"
+        assert "tidak mau jawab ngaco" in result["answer"].lower()
+
 
 # =================================================================
 # FAQ KB Quality
@@ -414,6 +425,17 @@ class TestContextAware:
         # No name prefix for neutral sentiment
         r = chat_faq_handler("apa itu galbay?", user_name="Adi")
         assert r["name_prefix"] == ""
+
+    def test_contextual_follow_up_uses_previous_state(self):
+        first = chat_faq_handler("DC saya agresif, ancam-ancam")
+        second = chat_faq_handler(
+            "kalau begitu terus gimana?",
+            page_context="produk",
+            conversation_state=first["conversation_state"],
+        )
+        assert second["valid"] is True
+        assert second["follow_up_type"] == "contextual_follow_up"
+        assert second["conversation_state"]["last_intent"] == first["conversation_state"]["last_intent"]
 
 
 # =================================================================

@@ -1,4 +1,5 @@
 """Blueprint utama: landing, dashboard multi-page, API, dan aset proyek."""
+import json
 from pathlib import Path
 
 from flask import (
@@ -166,7 +167,7 @@ def upgrade_to_premium():
             # Refresh session: re-login to pick up new package
             login_user(updated)
             flash("Selamat! Anda sekarang Premium. Nikmati semua fitur.", "success")
-    return redirect(url_for("main.produk", anchor="pricing"))
+    return redirect(f"{url_for('main.produk')}#pricing")
 
 
 # =================================================================
@@ -236,12 +237,22 @@ def dc_simulator():
 
     Round 13: Free tier rate limit (1 DC attempt/day). Premium unlimited.
     """
-    from app.api import DC_SCENARIOS, evaluate_dc_multi_turn, evaluate_dc_response, check_dc_limit, get_user_usage
+    from app.api import (
+        check_dc_limit,
+        evaluate_dc_branching_result,
+        evaluate_dc_response,
+        expand_dc_path_history,
+        get_featured_dc_scenarios,
+        get_dc_node,
+        get_dc_option,
+        get_dc_scenario_by_id,
+        get_user_usage,
+    )
 
     if request.method == "POST":
         scenario_id = request.form.get("scenario", "")
         action = request.form.get("action", "")
-        scenario = next((s for s in DC_SCENARIOS if s["id"] == scenario_id), None)
+        scenario = get_dc_scenario_by_id(scenario_id)
         if not scenario:
             flash("Skenario tidak ditemukan.", "error")
             return redirect(url_for("main.dc_simulator"))
@@ -255,6 +266,7 @@ def dc_simulator():
                     return render_template(
                         "dashboard/dc_simulator.html",
                         active_page="produk",
+                        scenarios=get_featured_dc_scenarios(),
                         scenario=None,
                         result=None,
                         usage=limit_check["usage"],
@@ -264,60 +276,68 @@ def dc_simulator():
                     from app.auth import update_user_data
                     update_user_data(user.id, {"usage": user.usage})
 
-        # Check if scenario has multi-turn (new format)
-        if scenario.get("turns"):
+        if scenario.get("nodes"):
             if action == "choose":
-                # User picked an option for current turn
-                # Parse all previous choices + new one
-                turn_choices = []
-                # Reconstruct from form fields
-                for i in range(len(scenario["turns"])):
-                    opt_idx = request.form.get(f"choice_{i}")
-                    if opt_idx is not None:
-                        try:
-                            turn_choices.append({
-                                "turn_index": i,
-                                "option_index": int(opt_idx),
-                            })
-                        except (ValueError, TypeError):
-                            pass
+                current_node_id = request.form.get("current_node", scenario.get("entry_node", ""))
+                current_node = get_dc_node(scenario, current_node_id)
+                option_id = request.form.get("option", "")
 
-                if not turn_choices:
+                try:
+                    path_steps = json.loads(request.form.get("path", "[]"))
+                except json.JSONDecodeError:
+                    path_steps = []
+                if not isinstance(path_steps, list):
+                    path_steps = []
+
+                option = get_dc_option(current_node, option_id)
+                if not current_node or not option:
                     flash("Pilih salah satu opsi respons.", "error")
                     return redirect(url_for("main.dc_simulator"))
 
-                # Determine current turn
-                current_turn = len(turn_choices) - 1
+                path_steps.append({"node_id": current_node_id, "option_id": option_id})
+                path_history = expand_dc_path_history(scenario, path_steps)
+                next_node_id = option.get("next_node")
 
-                # If this was the last turn, calculate final result
-                if current_turn >= len(scenario["turns"]) - 1:
-                    result = evaluate_dc_multi_turn(scenario, turn_choices)
+                if next_node_id:
+                    next_node = get_dc_node(scenario, next_node_id)
+                    if not next_node:
+                        flash("Alur skenario tidak valid.", "error")
+                        return redirect(url_for("main.dc_simulator"))
                     return render_template(
                         "dashboard/dc_simulator.html",
                         active_page="produk",
                         scenario=scenario,
-                        result=result,
-                        turn_choices=turn_choices,
-                        current_turn=current_turn,
+                        current_node=next_node_id,
+                        current_node_obj=next_node,
+                        path_steps=path_steps,
+                        path_json=json.dumps(path_steps, ensure_ascii=False),
+                        path_history=path_history,
+                        current_turn=len(path_history),
                     )
 
-                # Otherwise, show next turn
+                result = evaluate_dc_branching_result(scenario, path_steps)
                 return render_template(
                     "dashboard/dc_simulator.html",
                     active_page="produk",
                     scenario=scenario,
-                    current_turn=current_turn + 1,
-                    turn_choices=turn_choices,
+                    result=result,
+                    path_history=path_history,
+                    current_turn=len(path_history),
                 )
-            else:
-                # Start scenario
-                return render_template(
-                    "dashboard/dc_simulator.html",
-                    active_page="produk",
-                    scenario=scenario,
-                    current_turn=0,
-                    turn_choices=[],
-                )
+
+            entry_node_id = scenario.get("entry_node", "")
+            entry_node = get_dc_node(scenario, entry_node_id)
+            return render_template(
+                "dashboard/dc_simulator.html",
+                active_page="produk",
+                scenario=scenario,
+                current_node=entry_node_id,
+                current_node_obj=entry_node,
+                current_turn=0,
+                path_steps=[],
+                path_json="[]",
+                path_history=[],
+            )
         else:
             # Legacy single-turn (fallback)
             user_response = request.form.get("response_text", "")
@@ -334,6 +354,7 @@ def dc_simulator():
     return render_template(
         "dashboard/dc_simulator.html",
         active_page="produk",
+        scenarios=get_featured_dc_scenarios(),
         scenario=None,
         result=None,
     )
@@ -742,7 +763,14 @@ def api_chat():
         message=data.get("message", ""),
         user_name=user_name,
         page_context=data.get("page_context") or None,
+        conversation_state=(
+            data["conversation_state"]
+            if "conversation_state" in data
+            else session.get("chatbot_state")
+        ),
     )
+    if result.get("valid"):
+        session["chatbot_state"] = result.get("conversation_state")
     result["usage"] = usage
     return jsonify(result)
 

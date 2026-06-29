@@ -301,7 +301,7 @@ def premium_required(view):
                     "current_package": "free",
                 }), 403
             flash("Fitur ini khusus user Premium. Upgrade untuk akses.", "warning")
-            return redirect(url_for("main.produk", anchor="pricing"))
+            return redirect(f"{url_for('main.produk')}#pricing")
         return view(*args, **kwargs)
     return wrapped
 

@@ -14,7 +14,33 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initLockDismiss();
   initRunwayCalculator();
+  restoreInitialHashTarget();
 });
+
+function getScrollOffset() {
+  const topbar = document.querySelector('.topbar');
+  return (topbar ? topbar.offsetHeight : 72) + 24;
+}
+
+function scrollToElement(target, behavior = 'smooth') {
+  if (!target) return;
+  const top = target.getBoundingClientRect().top + window.scrollY - getScrollOffset();
+  window.scrollTo({ top: Math.max(top, 0), behavior });
+}
+
+function restoreInitialHashTarget() {
+  if (!window.location.hash || window.location.hash === '#') return;
+  const target = document.querySelector(window.location.hash);
+  if (!target) return;
+
+  setTimeout(() => {
+    scrollToElement(target);
+    if (typeof target.focus === 'function') {
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    }
+  }, 80);
+}
 
 // ============================================================
 // 1. PINJOL BLACKLIST CHECKER
@@ -79,6 +105,7 @@ function renderPinjolResult(result) {
       <div class="pinjol-disclaimer">${result.disclaimer || ''}</div>
     </div>
   `;
+  setTimeout(() => scrollToElement(container), 120);
 }
 
 // ============================================================
@@ -171,6 +198,7 @@ function renderDebtPlannerResult(result) {
   if (!container) return;
   if (!result.valid) {
     container.innerHTML = `<div class="skor-placeholder"><p>${result.error || 'Error'}</p></div>`;
+    setTimeout(() => scrollToElement(container), 120);
     return;
   }
 
@@ -223,6 +251,7 @@ function renderDebtPlannerResult(result) {
       <div class="planner-disclaimer">${result.disclaimer || ''}</div>
     </div>
   `;
+  setTimeout(() => scrollToElement(container), 120);
 }
 
 // ============================================================
@@ -265,6 +294,7 @@ function renderRoadmapResult(result) {
   if (!container) return;
   if (!result.valid) {
     container.innerHTML = `<div class="skor-placeholder"><p>${result.error || 'Error'}</p></div>`;
+    setTimeout(() => scrollToElement(container), 120);
     return;
   }
 
@@ -303,6 +333,7 @@ function renderRoadmapResult(result) {
       <div class="roadmap-disclaimer">${result.disclaimer}</div>
     </div>
   `;
+  setTimeout(() => scrollToElement(container), 120);
 }
 
 // ============================================================
@@ -385,11 +416,13 @@ function renderSkorResult(result) {
   const numEl = container.querySelector('.skor-number');
   if (numEl) animateCounter(numEl, parseInt(numEl.dataset.target, 10));
   if (category === 'aman') setTimeout(() => triggerConfetti(), 300);
+  setTimeout(() => scrollToElement(container), 120);
 }
 
 function renderSkorError() {
   const c = document.getElementById('skorResult');
   if (c) c.innerHTML = `<div class="skor-placeholder"><svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>Terjadi kesalahan. Coba lagi.</p></div>`;
+  if (c) setTimeout(() => scrollToElement(c), 120);
 }
 
 // ============================================================
@@ -509,12 +542,7 @@ function showPremiumModal() {
       particlesEl.appendChild(p);
     }
   }
-  // Reset to form view (in case previously showed success)
-  const content = document.getElementById('premiumContent');
-  if (content && content.dataset.state === 'success') {
-    location.reload(); // simplest way to reset content
-    return;
-  }
+  resetPremiumModal();
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
@@ -530,11 +558,21 @@ function closePremiumModal() {
   modal.classList.remove('open');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+
+  const content = document.getElementById('premiumContent');
+  if (content?.dataset.state === 'success') {
+    window.setTimeout(() => resetPremiumModal(), 180);
+  }
 }
 
 function initPremiumModal() {
   const modal = document.getElementById('premiumModal');
   if (!modal) return;
+  const content = document.getElementById('premiumContent');
+  if (content && !content.dataset.initialMarkup) {
+    content.dataset.initialMarkup = content.innerHTML;
+    content.dataset.state = 'form';
+  }
   const closeBtn = document.getElementById('premiumCloseBtn');
   if (closeBtn) closeBtn.addEventListener('click', closePremiumModal);
 
@@ -548,30 +586,44 @@ function initPremiumModal() {
     if (e.key === 'Escape' && modal.classList.contains('open')) closePremiumModal();
   });
 
-  // Form submit
+  bindPremiumForm();
+}
+
+function bindPremiumForm() {
   const form = document.getElementById('premiumForm');
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const name = document.getElementById('premiumName').value.trim();
-      const email = document.getElementById('premiumEmail').value.trim();
-      if (!name || !email) return;
-      const submitBtn = form.querySelector('.premium-submit');
-      setLoading(submitBtn, true);
-      try {
-        await fetch('/api/waitlist', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, name, package: 'premium' }),
-        });
-        showPremiumSuccess(name);
-      } catch (err) {
-        console.error('Premium submit error:', err);
-        alert('Gagal aktivasi. Coba lagi.');
-        setLoading(submitBtn, false);
-      }
-    });
-  }
+  if (!form || form.dataset.bound === '1') return;
+
+  form.dataset.bound = '1';
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('premiumName').value.trim();
+    const email = document.getElementById('premiumEmail').value.trim();
+    if (!name || !email) return;
+    const submitBtn = form.querySelector('.premium-submit');
+    setLoading(submitBtn, true);
+    try {
+      await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name, package: 'premium' }),
+      });
+      showPremiumSuccess(name);
+    } catch (err) {
+      console.error('Premium submit error:', err);
+      alert('Gagal aktivasi. Coba lagi.');
+      setLoading(submitBtn, false);
+    }
+  });
+}
+
+function resetPremiumModal() {
+  const content = document.getElementById('premiumContent');
+  if (!content?.dataset.initialMarkup) return;
+  if (content.dataset.state !== 'success') return;
+
+  content.innerHTML = content.dataset.initialMarkup;
+  content.dataset.state = 'form';
+  bindPremiumForm();
 }
 
 function showPremiumSuccess(name) {
@@ -671,12 +723,12 @@ function renderRunwayResult(result) {
     </div>
     ${recsHtml}
     <div style="margin-top:24px; text-align:center;">
-      <a href="{{ url_for('main.galbay_score') if url_for else '#' }" class="btn-primary">⚡ Cek Galbay Score Lengkap</a>
+      <a href="/galbay-score" class="btn-secondary">⚡ Cek Galbay Score Lengkap</a>
     </div>
   `;
   card.style.display = 'block';
   // Smooth scroll to result
-  setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+  setTimeout(() => scrollToElement(card), 100);
 }
 
 function parseRupiah(str) {
@@ -688,12 +740,20 @@ function parseRupiah(str) {
 // 5. SMOOTH SCROLL
 // ============================================================
 function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
+  document.querySelectorAll('a[href*="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
-      if (href === '#' || href === '#!') return;
-      const target = document.querySelector(href);
-      if (target) { e.preventDefault(); const top = target.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({ top, behavior: 'smooth' }); }
+      if (!href || href === '#' || href === '#!') return;
+
+      const parsed = new URL(href, window.location.href);
+      if (!parsed.hash || parsed.pathname !== window.location.pathname) return;
+
+      const target = document.querySelector(parsed.hash);
+      if (!target) return;
+
+      e.preventDefault();
+      history.replaceState(null, '', `${window.location.pathname}${window.location.search}${parsed.hash}`);
+      scrollToElement(target);
     });
   });
 }
@@ -719,8 +779,7 @@ function initLockDismiss() {
         const targetHref = el.getAttribute('href');
         const target = document.querySelector(targetHref);
         if (target) {
-          const top = target.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior: 'smooth' });
+          scrollToElement(target);
         }
       }
     });

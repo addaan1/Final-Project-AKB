@@ -7,7 +7,7 @@
   <div class="page-header">
     <span class="section-tag">B &middot; Data Mining dan Analisis</span>
     <h1 class="page-title">Dari <span>Data Mentah</span> Menuju Insight</h1>
-    <p class="page-lead">Data dikumpulkan dari <strong>Google Play Store</strong> (<span data-fill="total_reviews_fmt">-</span> ulasan dari <span data-fill="n_apps">-</span> aplikasi fintech), lalu dibersihkan, divalidasi relevansinya dengan 65+ kata kunci psikologis, dan dianalisis sentimen menggunakan Multinomial Naive Bayes (from scratch).</p>
+    <p class="page-lead">Data utama dikumpulkan dari <strong>Google Play Store</strong> (<span data-fill="total_reviews_fmt">-</span> ulasan dari <span data-fill="n_apps">-</span> aplikasi fintech), lalu dibersihkan, divalidasi relevansinya dengan 65+ kata kunci psikologis, dan dianalisis sentimen menggunakan Multinomial Naive Bayes. Source lain dibaca sebagai konteks pendukung, bukan volume utama.</p>
   </div>
 
   <div class="source-badges">
@@ -25,7 +25,7 @@
       </div>
       <div class="chart-wrap"><canvas id="chartScoreDist"></canvas></div>
       <div class="insight-box">
-        <p>Skor 5 bintang mendominasi (<strong><span data-fill="score_5_count">-</span> ulasan</strong>), tapi skor 1 juga tinggi (<strong><span data-fill="score_1_count">-</span> ulasan</strong>). Polarisasi ini khas ulasan app store.</p>
+        <p>Skor 5 bintang mendominasi (<strong><span data-fill="score_5_count">-</span> ulasan</strong>), tapi skor 1 juga tinggi (<strong><span data-fill="score_1_count">-</span> ulasan</strong>). Polarisasi ini khas ulasan app store, jadi interpretasinya perlu dibaca bersama konteks kategori dan keluhan.</p>
       </div>
     </div>
     <div class="chart-card">
@@ -35,7 +35,7 @@
       </div>
       <div class="chart-wrap"><canvas id="chartCategory"></canvas></div>
       <div class="insight-box">
-        <p>Kategori <strong>pinjol</strong> mendominasi percakapan galbay, diikuti paylater dan e-wallet. Ini sejalan dengan viralitas fenomena pinjaman online di media sosial.</p>
+        <p>Kategori <strong>pinjol</strong> mendominasi percakapan galbay, diikuti paylater dan e-wallet. Ini menguatkan bahwa distress paling sering muncul ketika utang digital terasa dekat dengan kebutuhan harian.</p>
       </div>
     </div>
   </div>
@@ -54,7 +54,7 @@
       </table>
     </div>
     <div class="insight-box">
-      <p>Aplikasi dengan rasio negatif tertinggi berasal dari kategori <strong>e-wallet</strong> dan <strong>bank digital</strong>. Keluhan umum: error transaksi, customer service lambat, dan biaya tersembunyi.</p>
+        <p>Aplikasi dengan rasio negatif tertinggi memperlihatkan bahwa distress tidak selalu datang dari pinjaman saja; error transaksi, customer service lambat, dan biaya tersembunyi juga ikut memicu frustrasi.</p>
     </div>
   </div>
 
@@ -65,7 +65,7 @@
     </div>
     <div class="chart-wrap" style="height:300px;"><canvas id="chartTimeline"></canvas></div>
     <div class="insight-box">
-      <p>Volume ulasan naik signifikan sejak <strong>2023</strong>, seiring viralitas fenomena galbay di TikTok dan media. Lonjakan sinyal distress (garis merah) mengindikasikan masalah gagal bayar yang memburuk.</p>
+        <p>Volume ulasan naik signifikan sejak <strong>2023</strong>, seiring viralitas fenomena galbay di media sosial. Lonjakan sinyal distress menunjukkan masalah gagal bayar ikut bergerak bersama percakapan publik.</p>
     </div>
   </div>
 </section>
@@ -74,7 +74,7 @@
   <div class="page-header">
     <span class="section-tag">B &middot; Multi-Source</span>
     <h1 class="page-title">Diversifikasi <span>Sumber Data</span></h1>
-    <p class="page-lead">Volume <strong><span data-fill="total_reviews_fmt">-</span> review</strong> utama dari Google Play, ditopang oleh <strong><span data-fill="n_sources_active">-</span> sumber sekunder</strong> (OJK, forum, blog, YouTube, Threads, Google Trends) untuk triangulasi insight. Total kumulatif: <strong><span data-fill="total_multi_source_fmt">-</span> item</strong>.</p>
+    <p class="page-lead">Volume <strong><span data-fill="total_reviews_fmt">-</span> review</strong> utama berasal dari Google Play, lalu ditopang oleh <strong><span data-fill="n_sources_active">-</span> sumber sekunder</strong> untuk triangulasi insight. Total kumulatifnya <strong><span data-fill="total_multi_source_fmt">-</span> item</strong>, tetapi kontribusi tiap source tidak setara.</p>
   </div>
 
   <div class="metric-grid">
@@ -91,7 +91,7 @@
     </div>
     <div class="chart-wrap" style="height:380px;"><canvas id="chartSourceVolume"></canvas></div>
     <div class="insight-box">
-      <p><strong>Google Play</strong> adalah backbone volume (599K review). 6 source lain menambah <strong>konteks regulator (OJK), bahasa natural (Threads), voice of customer (Forum), edukasi (Blog), video &amp; komentar (YouTube), dan tren publik (Trends)</strong> &mdash; bukan sekadar penambah volume.</p>
+        <p><strong>Google Play</strong> adalah backbone volume. Source lain menambah <strong>konteks regulator, bahasa natural, voice of customer, edukasi, video, dan tren publik</strong> &mdash; berguna untuk triangulasi, tetapi tidak boleh dibaca seolah bobot volumenya sama.</p>
     </div>
   </div>
 
@@ -114,7 +114,7 @@
       </div>
       <div class="chart-wrap" style="height:340px;"><canvas id="chartSourceSentiment"></canvas></div>
       <div class="insight-box">
-        <p>Play Store relatif <strong>balanced</strong> (49% positif), tapi <strong>YouTube &amp; Forum</strong> didominasi sentimen negatif. Insight: source bukan cuma soal volume, tapi juga <strong>sudut pandang</strong>.</p>
+        <p>Play Store relatif <strong>balanced</strong>, tapi <strong>YouTube &amp; Forum</strong> lebih negatif. Insight pentingnya: source bukan cuma soal volume, tetapi juga <strong>sudut pandang dan gaya bicara</strong>.</p>
       </div>
     </div>
   </div>

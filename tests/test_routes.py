@@ -213,3 +213,38 @@ class TestStaticAssets:
     def test_nonexistent_api_returns_404(self, client):
         r = client.get("/api/nonexistent")
         assert r.status_code == 404
+
+
+class TestDCSimulatorBranching:
+    def test_dc_simulator_branch_changes_message(self, client):
+        start = client.post("/tools/dc-simulator", data={
+            "scenario": "agresif_tekan",
+            "action": "start",
+        })
+        assert start.status_code == 200
+        assert b"DC Tekanan Agresif" in start.data
+
+        choose = client.post("/tools/dc-simulator", data={
+            "scenario": "agresif_tekan",
+            "action": "choose",
+            "current_node": "opening",
+            "path": "[]",
+            "option": "B",
+        })
+        assert choose.status_code == 200
+        assert b"Baik, saya kirimkan identitas" in choose.data
+        assert b"minta rincian resmi" not in choose.data.lower()
+
+    def test_dc_simulator_result_uses_actual_path(self, client):
+        result = client.post("/tools/dc-simulator", data={
+            "scenario": "agresif_tekan",
+            "action": "choose",
+            "current_node": "lane_terverifikasi",
+            "path": json.dumps([{"node_id": "opening", "option_id": "B"}]),
+            "option": "A",
+        })
+        assert result.status_code == 200
+        assert b"Hasil Skenario" in result.data
+        assert b"Tegangan" not in result.data
+        assert b"Turn 1" in result.data
+        assert b"Tegang" not in result.data

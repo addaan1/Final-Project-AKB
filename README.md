@@ -21,34 +21,38 @@ Repositori ini berisi pipeline scraping 7 sumber data, paket dataset terkurasi, 
 
 ## Ringkasan
 
-**Galbay Predictor** adalah *financial behavior coach* pertama di Indonesia yang dibangun dari data nyata — **602.675 item dari 7 sumber** (Google Play Store + OJK + Forum + Blog + YouTube + Threads + Google Trends) yang dipakai Gen Z. Tujuannya: membaca sinyal financial distress (gagal bayar, impulsive spending, debt collector) dari pola bahasa dan emosi di review publik, lalu menerjemahkannya menjadi tools bantu keputusan yang bisa dipakai siapa saja.
+**Galbay Predictor** adalah proyek analisis perilaku finansial Gen Z berbasis **602.675 data publik multi-source**. Backbone datanya tetap **599.000 review Google Play Store** dari 53 aplikasi fintech Indonesia, sedangkan OJK/media, forum, blog, YouTube, Threads, dan Google Trends dipakai sebagai **konteks pendukung**, bukan bobot yang setara.
 
 Repositori ini disusun untuk dua kebutuhan:
 
 - anggota tim yang perlu mengambil dataset besar dengan alur yang jelas;
-- reviewer yang ingin cepat memahami ruang lingkup, hasil data, dan nilai analisis proyek.
+- reviewer yang ingin cepat memahami apa yang benar-benar kuat dari proyek ini: data besar, insight perilaku, batas model, lalu demo tools turunannya.
+
+## Cara Membaca Project Ini
+
+- **Data-first**: nilai utama proyek ada pada pemetaan sinyal distress finansial dari dataset publik besar.
+- **Play Store-dominant**: label “multi-source” benar, tetapi volumenya tetap sangat didominasi review aplikasi di Google Play Store.
+- **Prototype-aware**: beberapa tool di web bersifat **rule-based decision support**, bukan model ML generatif penuh.
+- **Demo-focused**: chatbot, Galbay Score, dan simulator DC diposisikan sebagai alat bantu orientasi untuk demo, bukan diagnosis finansial formal.
 
 ## Highlights
 
-- **602.675 item multi-source** dari **7 platform** (Play Store, OJK, Forum, Blog, YouTube, Threads, Google Trends)
-- **599.000 review Google Play** dari **53 aplikasi fintech** Indonesia (paylater, pinjol, e-wallet, bank digital, dll)
-- **58.120 review relevan** (9,7% dari total) — teridentifikasi mengandung sinyal galbay
-- **11 kategori distress**: gagal bayar, DC agresif, bunga tinggi, dc sebar data, dll
-- **Model Multinomial Naive Bayes** F1=0,857, CV 5-fold stabil ±0,003
-- **6 tools interaktif** di dashboard:
-  - **Pinjol Blacklist Checker** — cek legal/ilegal dari 50+ app database OJK
-  - **Debt Snowball/Avalanche Planner** — simulasi multi-utang dengan timeline lunas
-  - **Recovery Roadmap 30/60/90** — personal keluar dari galbay berdasarkan severity
-  - **DC Chat Simulator (Multi-Turn)** — latihan negosiasi debt collector 3-5 turn interaktif
-  - **Emergency Runway Calculator** — hitung berapa bulan kamu bisa bertahan kalau income berhenti
-  - **30-Day Action Plan** — personal plan mingguan berdasarkan Galbay Score
-- **Galbay AI Coach v3** — chatbot NLP-like dengan **60+ intents**, 8 modul, sinonim, typo tolerance, markdown rendering, contextual Quick Replies
-- **Galbay Score Quiz** — public, 6 pertanyaan, scoring 0-100 + personalized recommendations
-- **Auth + Premium tier** — Google OAuth + demo login, premium unlock unlimited AI Coach & tools
-- **Rate limits** — Free: 10 chat/day, 1 DC scenario/day, 3 save; Premium: unlimited
-- **Privacy + Terms** — UU PDP compliant
-- **Multi-source analysis** — per-source sentiment, distress signal, themes, keyword matrix
-- **Dual theme** — vibrant purple (dark default) + warm light, premium gold atmosphere
+- **602.675 item** dari 7 sumber, dengan **599.000 review Google Play Store** sebagai sumber volume utama
+- **58.120 review relevan** (9,7% dari total) yang mengandung sinyal galbay/distress
+- **11 kategori distress** untuk membaca pola gagal bayar, tekanan DC, bunga/biaya, dan perilaku impulsif
+- **Model Multinomial Naive Bayes** untuk klasifikasi sentimen/relevansi pada review terpilih
+- **Dashboard insight** yang memisahkan data-driven insight, rule-based support, dan demo interaction
+- **Tool inti**:
+  - **Galbay Score** — pembacaan awal risiko berbasis pola perilaku yang ditemukan di data publik
+  - **Debt Planner** — simulasi snowball vs avalanche untuk strategi bayar
+  - **Hadapi Tekanan DC** — simulator respons penagihan bercabang multi-turn
+- **Tool pendukung**:
+  - **Pinjol Checker**
+  - **Emergency Runway Calculator**
+  - **30-Day Action Plan**
+  - **Recovery Roadmap 30/60/90**
+- **Chat assistant rule-based** dengan intent routing, fallback klarifikasi, dan navigasi ke tool yang relevan
+- **Distribusi data** memakai **DVC + Google Drive** agar anggota tim bisa `dvc pull` setelah setup OAuth sekali
 
 ## 🆕 What's New (Round 8-13)
 
@@ -103,7 +107,7 @@ python run.py
 | **Auth** | Hybrid Google OAuth (authlib) + demo login + JSON storage + usage tracking |
 | **Data** | Pandas, NumPy, scikit-learn, DVC + Google Drive |
 | **Scraping** | BeautifulSoup, Playwright (Kaskus SPA), requests, yt-dlp (YouTube) |
-| **NLP** | Rule-based FAQ matcher (60+ intents, 8 modul), synonym, typo tolerance, markdown render |
+| **NLP** | Rule-based assistant (intent routing, synonym, typo tolerance, clarification fallback, markdown render) |
 | **Testing** | pytest, 342 tests passing |
 
 ## Gambaran Dataset
@@ -111,7 +115,7 @@ python run.py
 | Komponen | Nilai |
 |---|---|
 | **Total multi-source** | **602.675 item** dari 7 platform |
-| **Sumber utama** | Google Play Store (599K review) |
+| **Sumber utama** | Google Play Store (599K review, backbone insight) |
 | **Sumber sekunder** | OJK + media, Forum, Blog, YouTube, Threads, Google Trends |
 | **Aplikasi fintech** | 53 app Indonesia (paylater, pinjol, e-wallet, bank digital, dll) |
 | **Periode Play Store** | 2015-10-02 s/d 2026-06-23 |
@@ -121,6 +125,8 @@ python run.py
 | **Distribusi** | DVC + Google Drive (~200MB) |
 
 ### Multi-Source Breakdown
+
+Catatan penting: label *multi-source* dipakai karena memang ada 7 sumber, tetapi pembacaan utama project tetap harus dibaca sebagai **Play Store-dominant dataset with supporting context**.
 
 | Source | Items | % | Icon |
 |---|---|---|---|
@@ -236,7 +242,7 @@ app/
 | `/api/check-pinjol` | POST | cek status legal/ilegal pinjol | No |
 | `/api/debt-planner` | POST | snowball vs avalanche + timeline | No |
 | `/api/recovery-roadmap` | POST | generate 30/60/90 hari plan | No |
-| `/api/chat` | POST | Galbay AI Coach (FAQ NLP v3, 60+ intents) | Rate-limit 10/day free |
+| `/api/chat` | POST | Assistant rule-based untuk FAQ + navigasi tool | Rate-limit 10/day free |
 | `/api/waitlist` | POST | daftar waitlist premium | No |
 | `/api/usage` | GET | current usage (rate limit tracking) | Auto |
 | `/galbay-score` | GET/POST | Galbay Score Quiz (6 pertanyaan) | No |

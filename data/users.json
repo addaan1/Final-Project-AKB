@@ -7,7 +7,14 @@
     "package": "free",
     "source": "demo",
     "password_hash": "scrypt:32768:8:1$Z8zjXipFSjME0JwX$69fc8b6d12461b9d80481f374addf5ea731f4041b435f1cae5b5506af5a9298ec0c7076451c416e8cb76ee9610c9d2f2d8368fc83bbddb8725a58457c24d5772",
-    "created_at": "2026-06-23T22:24:38.363845Z"
+    "created_at": "2026-06-23T22:24:38.363845Z",
+    "usage": {
+      "chat_count": 0,
+      "chat_reset_date": "2026-06-29",
+      "dc_attempts": 1,
+      "dc_reset_date": "2026-06-29",
+      "saved_items": []
+    }
   },
   {
     "id": "529adc93-e67c-411f-8660-71e8caabee26",
@@ -208,5 +215,90 @@
     "source": "register",
     "password_hash": "scrypt:32768:8:1$3qc6AmtgVxKpAHvf$a05fc43e44135a9ecf5071ada9fb0dfce4af2efbb23f1f08357fc17e00e4b6451a2a13263f1c0723703a345ed910cd07ec1dd2331151ca81d1b439de0386a6f4",
     "created_at": "2026-06-24T01:34:58.360949Z"
+  },
+  {
+    "id": "6af98940-a4b3-49f2-a305-fc95c54bfcf9",
+    "email": "newuser-1c46076b@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$tE8qVk8iuyqJXR3t$9faa23fe8cf772ea2c975d453b2c1343396c3d036885100a3cf05f4183af51ac3790e5e0963722e6a4ef9cc3d5f90c32580d3d9b97e430e75ee280b2a30fcafb",
+    "created_at": "2026-06-29T18:26:22.638945Z",
+    "usage": {
+      "chat_count": 0,
+      "chat_reset_date": "",
+      "dc_attempts": 0,
+      "dc_reset_date": "",
+      "saved_items": []
+    }
+  },
+  {
+    "id": "0f07958b-e558-41d7-aaed-b8971aca1a2c",
+    "email": "newuser-5ef5a415@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$3vG2ic2RorSFknNH$41c5d3962879230b2f086c16dc324916989f69f5355c836057ed9899e5e33cc57fea818cab4082679df05aefecb342e636ab9825d1a01603d8992049bdd4120a",
+    "created_at": "2026-06-29T18:26:52.328839Z",
+    "usage": {
+      "chat_count": 0,
+      "chat_reset_date": "",
+      "dc_attempts": 0,
+      "dc_reset_date": "",
+      "saved_items": []
+    }
+  },
+  {
+    "id": "6203829a-3c96-4aef-a597-72af8874f243",
+    "email": "newuser-22cdb44d@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$OPgimpoV6SDl7EhS$7a4c2b78e797f566bd11e7fd400ce44d6133360c836d93f5e17937697bfb0e7a5437bfa941d8c5136655849294a09a84daa6b1681818ca179e4552d4c233cb2d",
+    "created_at": "2026-06-29T18:27:44.943203Z",
+    "usage": {
+      "chat_count": 0,
+      "chat_reset_date": "",
+      "dc_attempts": 0,
+      "dc_reset_date": "",
+      "saved_items": []
+    }
+  },
+  {
+    "id": "e6f7dca1-2547-4faf-8155-4a2def8811bb",
+    "email": "newuser-2fe5be9b@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$cZGJb2K887qlq2jV$729883b943bbc254b2cd27380c761abd9b447097e1e9596ddabf18850778ecc0407cfd274e97ffd39a440c69adfd1ba573dceefa841ee5f3f15b4a56587a2227",
+    "created_at": "2026-06-29T18:53:06.986945Z",
+    "usage": {
+      "chat_count": 0,
+      "chat_reset_date": "",
+      "dc_attempts": 0,
+      "dc_reset_date": "",
+      "saved_items": []
+    }
+  },
+  {
+    "id": "476833d2-6586-44c1-a1bf-37ac1c6d218a",
+    "email": "newuser-6933250c@test.com",
+    "name": "Test User",
+    "avatar_url": "",
+    "package": "free",
+    "source": "register",
+    "password_hash": "scrypt:32768:8:1$SSwAmAadAaTGlYfZ$6844f9e70082c74b70ea1d274d791736653e0233b3067812ae432597732bbfa515ad2bb339029ad9a866fb7c198127ba3292888d93222d706e3612881bbffe09",
+    "created_at": "2026-06-29T18:53:50.094246Z",
+    "usage": {
+      "chat_count": 0,
+      "chat_reset_date": "",
+      "dc_attempts": 0,
+      "dc_reset_date": "",
+      "saved_items": []
+    }
   }
 ]

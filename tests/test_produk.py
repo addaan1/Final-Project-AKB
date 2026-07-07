@@ -139,3 +139,22 @@ class TestWaitlistIntegration:
                         json={"email": "notanemail", "package": "premium"})
         data = r.get_json()
         assert data["valid"] is False
+
+    def test_waitlist_demo_mode_returns_non_persistent_message(self, client):
+        client.application.config["ALLOW_WAITLIST"] = False
+        client.application.config["DEMO_ONLY"] = True
+        r = client.post("/api/waitlist",
+                        json={"email": "demo@example.com", "package": "premium"})
+        assert r.status_code == 200
+        data = r.get_json()
+        assert data["valid"] is True
+        assert data["persisted"] is False
+        assert data["demo_only"] is True
+
+    def test_produk_page_hides_waitlist_form_in_demo_mode(self, auth_client):
+        auth_client.application.config["ALLOW_WAITLIST"] = False
+        auth_client.application.config["DEMO_ONLY"] = True
+        r = auth_client.get("/dashboard/produk")
+        assert r.status_code == 200
+        assert b'waitlistForm' not in r.data
+        assert b'Public demo tidak menyimpan waitlist' in r.data

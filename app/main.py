@@ -40,6 +40,42 @@ from app.auth import (
 main_bp = Blueprint("main", __name__)
 
 
+def _oauth_available() -> bool:
+    return current_app.config.get("ALLOW_OAUTH", True) and is_oauth_configured()
+
+
+def _registration_allowed() -> bool:
+    return current_app.config.get("ALLOW_REGISTRATION", True)
+
+
+def _waitlist_allowed() -> bool:
+    return current_app.config.get("ALLOW_WAITLIST", True)
+
+
+def _writes_enabled() -> bool:
+    return current_app.config.get("PERSIST_LOCAL_WRITES", True)
+
+
+def _get_usage_snapshot(user):
+    from app.api import get_user_usage
+
+    if _writes_enabled():
+        return get_user_usage(user)
+    if user is not None and user.is_premium:
+        return get_user_usage(user)
+    return get_user_usage(None)
+
+
+def _render_login(next_url: str, oauth_error: bool = False):
+    return render_template(
+        "login.html",
+        oauth_enabled=_oauth_available(),
+        registration_enabled=_registration_allowed(),
+        next=next_url,
+        oauth_error=oauth_error,
+    )
+
+
 # =================================================================
 # LANDING
 # =================================================================
@@ -74,21 +110,21 @@ def login():
                 flash(f"Login berhasil! Welcome back, {user.name}.", "success")
                 return redirect(next_url)
             flash("Email atau password salah. Coba lagi.", "error")
-            return render_template("login.html", oauth_enabled=is_oauth_configured(),
-                                   next=next_url, oauth_error=False)
+            return _render_login(next_url, oauth_error=False)
 
         elif action == "register":
+            if not _registration_allowed():
+                flash("Pendaftaran akun dimatikan di public demo. Gunakan akun demo yang tersedia.", "warning")
+                return _render_login(next_url, oauth_error=False)
             name = request.form.get("name", "").strip()
             email = request.form.get("email", "").strip()
             password = request.form.get("password", "")
             if not (name and email and password and "@" in email and len(password) >= 6):
                 flash("Lengkapi semua field. Password minimal 6 karakter.", "error")
-                return render_template("login.html", oauth_enabled=is_oauth_configured(),
-                                       next=next_url, oauth_error=False)
+                return _render_login(next_url, oauth_error=False)
             if find_user_by_email(email):
                 flash("Email sudah terdaftar. Silakan login.", "error")
-                return render_template("login.html", oauth_enabled=is_oauth_configured(),
-                                       next=next_url, oauth_error=False)
+                return _render_login(next_url, oauth_error=False)
             from werkzeug.security import generate_password_hash
             user = create_user(
                 email=email, name=name, package="free", source="register",
@@ -98,8 +134,7 @@ def login():
             flash(f"Akun berhasil dibuat! Welcome, {user.name}.", "success")
             return redirect(next_url)
 
-    return render_template("login.html", oauth_enabled=is_oauth_configured(),
-                           next=next_url, oauth_error=False)
+    return _render_login(next_url, oauth_error=False)
 
 
 @main_bp.route("/auth/google")
@@ -160,6 +195,10 @@ def logout():
 @login_required
 def upgrade_to_premium():
     """Demo-only: upgrade user to premium (no payment gateway for UAS)."""
+    if current_app.config.get("DEMO_ONLY", False) or not _writes_enabled():
+        flash("Versi public demo tidak menyimpan upgrade akun. Gunakan akun premium demo untuk melihat fitur lanjutan.", "info")
+        return redirect(f"{url_for('main.produk')}#pricing")
+
     user = get_current_user()
     if user and not user.is_premium:
         updated = update_user_package(user.id, "premium")
@@ -260,7 +299,7 @@ def dc_simulator():
         # Check DC rate limit when STARTING a scenario
         if action == "start" or not action:
             user = get_current_user()
-            if user is not None and not user.is_premium:
+            if user is not None and not user.is_premium and _writes_enabled():
                 limit_check = check_dc_limit(user)
                 if not limit_check["allowed"]:
                     return render_template(
@@ -272,7 +311,7 @@ def dc_simulator():
                         usage=limit_check["usage"],
                         limit_error=limit_check["error"],
                     )
-                if user.id:
+                if user.id and _writes_enabled():
                     from app.auth import update_user_data
                     update_user_data(user.id, {"usage": user.usage})
 
@@ -648,6 +687,17 @@ def api_waitlist():
             "name": request.form.get("name", ""),
             "package": request.form.get("package", "general"),
         }
+    if not _waitlist_allowed():
+        package_name = data.get("package", "general")
+        return jsonify({
+            "valid": True,
+            "persisted": False,
+            "demo_only": current_app.config.get("DEMO_ONLY", False),
+            "message": (
+                f"Mode public demo aktif. Permintaan paket '{package_name}' tidak disimpan "
+                "di server gratis ini."
+            ),
+        })
     result = add_to_waitlist(
         email=data.get("email", ""),
         package=data.get("package", "general"),
@@ -739,7 +789,7 @@ def api_chat():
     user_name = (user.name if user else None) or session.get("user_name")
 
     # Check rate limit (Free tier)
-    if user is not None and not user.is_premium:
+    if user is not None and not user.is_premium and _writes_enabled():
         from app.api import check_chat_limit
         limit_check = check_chat_limit(user)
         if not limit_check["allowed"]:
@@ -751,13 +801,12 @@ def api_chat():
                 "upgrade_url": "/dashboard/produk",
             }), 429
         # Persist updated usage
-        if user.id:
+        if user.id and _writes_enabled():
             from app.auth import update_user_data
             update_user_data(user.id, {"usage": user.usage})
         usage = limit_check["usage"]
     else:
-        from app.api import get_user_usage
-        usage = get_user_usage(user)
+        usage = _get_usage_snapshot(user)
 
     result = chat_faq_handler(
         message=data.get("message", ""),
@@ -781,7 +830,6 @@ def api_chat():
 @main_bp.route("/api/usage", methods=["GET"])
 def api_usage():
     """Get current user usage (rate limit tracking)."""
-    from app.api import get_user_usage
     user = get_current_user()
-    usage = get_user_usage(user)
+    usage = _get_usage_snapshot(user)
     return jsonify(usage)

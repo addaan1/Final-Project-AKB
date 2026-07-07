@@ -15,6 +15,7 @@ from flask import (
     current_app,
     flash,
     g,
+    has_app_context,
     jsonify,
     redirect,
     request,
@@ -85,6 +86,18 @@ class User:
 USERS_FILE = Path("data/users.json")
 
 
+def local_writes_enabled() -> bool:
+    """Check whether runtime is allowed to persist local JSON changes."""
+    if has_app_context():
+        return current_app.config.get("PERSIST_LOCAL_WRITES", True)
+    return os.environ.get("PERSIST_LOCAL_WRITES", "1").strip().lower() in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }
+
+
 def _load_users() -> list:
     """Load users from JSON file."""
     if not USERS_FILE.exists():
@@ -97,6 +110,8 @@ def _load_users() -> list:
 
 def _save_users(users: list) -> None:
     """Save users to JSON file."""
+    if not local_writes_enabled():
+        return
     USERS_FILE.parent.mkdir(parents=True, exist_ok=True)
     USERS_FILE.write_text(
         json.dumps(users, ensure_ascii=False, indent=2),
@@ -311,6 +326,8 @@ def premium_required(view):
 # =================================================================
 def is_oauth_configured() -> bool:
     """Check if Google OAuth credentials are present in env."""
+    if has_app_context() and not current_app.config.get("ALLOW_OAUTH", True):
+        return False
     return bool(
         os.environ.get("GOOGLE_CLIENT_ID")
         and os.environ.get("GOOGLE_CLIENT_SECRET")
@@ -319,7 +336,17 @@ def is_oauth_configured() -> bool:
 
 def init_oauth(app):
     """Initialize authlib OAuth client. Idempotent."""
-    from authlib.integrations.flask_client import OAuth
+    if not app.config.get("ALLOW_OAUTH", True):
+        app.extensions["oauth"] = None
+        return None
+
+    try:
+        from authlib.integrations.flask_client import OAuth
+    except ImportError:
+        app.logger.warning("authlib tidak tersedia; Google OAuth dinonaktifkan.")
+        app.extensions["oauth"] = None
+        return None
+
     oauth = OAuth(app)
     if is_oauth_configured():
         oauth.register(

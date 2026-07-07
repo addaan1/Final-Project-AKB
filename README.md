@@ -1,6 +1,6 @@
 <div align="center">
 
-![Galbay Predictor Banner](docs/assets/galbay-readme-hero.svg)
+![Preview landing page Galbay Predictor](docs/assets/landing-page-preview.png)
 
 # Galbay Predictor
 

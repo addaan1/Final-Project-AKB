@@ -42,6 +42,13 @@ function restoreInitialHashTarget() {
   }, 80);
 }
 
+function getProdukFlags() {
+  const el = document.getElementById('produkRuntimeFlags');
+  return {
+    demoOnly: el?.dataset.demoOnly === '1',
+    waitlistEnabled: el?.dataset.waitlistEnabled !== '0',
+  };
+}
 // ============================================================
 // 1. PINJOL BLACKLIST CHECKER
 // ============================================================
@@ -483,6 +490,7 @@ function renderSimulasiResult(result) {
 // WAITLIST (legacy) + PREMIUM MODAL
 // ============================================================
 function initWaitlist() {
+  const flags = getProdukFlags();
   const form = document.getElementById('waitlistForm');
   const success = document.getElementById('waitlistSuccess');
   if (form) {
@@ -493,13 +501,18 @@ function initWaitlist() {
       const btn = form.querySelector('button[type=submit]');
       setLoading(btn, true);
       try {
-        await fetch('/api/waitlist', {
+        const resp = await fetch('/api/waitlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, package: 'general' }),
         });
+        const result = await resp.json();
         form.style.display = 'none';
-        if (success) success.style.display = 'inline-flex';
+        if (success) {
+          const successText = success.querySelector('span');
+          if (successText && result?.message) successText.textContent = result.message;
+          success.style.display = 'inline-flex';
+        }
       } catch (err) { console.error(err); alert('Gagal daftar. Coba lagi.'); }
       finally { setLoading(btn, false); }
     });
@@ -511,8 +524,22 @@ function initWaitlist() {
       if (pkg === 'premium') {
         showPremiumModal();
       } else {
+        if (!flags.waitlistEnabled && success) {
+          const successText = success.querySelector('span');
+          if (successText) {
+            successText.textContent = flags.demoOnly
+              ? 'Public demo aktif. Fitur ini hanya ditampilkan sebagai preview dan tidak menyimpan permintaan baru.'
+              : 'Flow ini tidak menyimpan data baru pada mode saat ini.';
+          }
+          success.style.display = 'inline-flex';
+          scrollToElement(success);
+          return;
+        }
         const emailInput = document.getElementById('waitlistEmail');
-        if (emailInput) { emailInput.focus(); emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        if (emailInput) {
+          emailInput.focus();
+          scrollToElement(emailInput);
+        }
       }
     });
   });
@@ -590,6 +617,7 @@ function initPremiumModal() {
 }
 
 function bindPremiumForm() {
+  const flags = getProdukFlags();
   const form = document.getElementById('premiumForm');
   if (!form || form.dataset.bound === '1') return;
 
@@ -602,12 +630,13 @@ function bindPremiumForm() {
     const submitBtn = form.querySelector('.premium-submit');
     setLoading(submitBtn, true);
     try {
-      await fetch('/api/waitlist', {
+      const resp = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, name, package: 'premium' }),
       });
-      showPremiumSuccess(name);
+      const result = await resp.json();
+      showPremiumSuccess(name, result?.message, flags.demoOnly);
     } catch (err) {
       console.error('Premium submit error:', err);
       alert('Gagal aktivasi. Coba lagi.');
@@ -626,15 +655,18 @@ function resetPremiumModal() {
   bindPremiumForm();
 }
 
-function showPremiumSuccess(name) {
+function showPremiumSuccess(name, message, demoOnly = false) {
   const content = document.getElementById('premiumContent');
   if (!content) return;
   content.dataset.state = 'success';
   content.innerHTML = `
     <div class="premium-success">
       <div class="premium-success-icon">✓</div>
-      <h3>Selamat, ${escapeHtml(name)}!</h3>
-      <p>Kamu sudah masuk daftar Premium. Cek email kamu dalam 24 jam untuk link aktivasi.</p>
+      <h3>${demoOnly ? `Preview siap, ${escapeHtml(name)}!` : `Selamat, ${escapeHtml(name)}!`}</h3>
+      <p>${escapeHtml(message || (demoOnly
+        ? 'Mode public demo aktif. Form ini tidak menyimpan aktivasi permanen, tetapi paket premium sudah siap kamu jelaskan saat demo.'
+        : 'Kamu sudah masuk daftar Premium. Cek email kamu dalam 24 jam untuk link aktivasi.'
+      ))}</p>
       <button type="button" class="premium-submit" id="premiumDoneBtn" style="margin-top:20px;">🎉 Tutup</button>
     </div>
   `;

@@ -38,6 +38,23 @@ def client(app_with_users):
     return app_with_users.test_client()
 
 
+@pytest.fixture
+def demo_only_client(monkeypatch):
+    """Client untuk mode public demo stateless."""
+    from app import create_app
+
+    monkeypatch.setenv("APP_CONFIG", "production")
+    monkeypatch.setenv("DEMO_ONLY", "1")
+    monkeypatch.setenv("ALLOW_REGISTRATION", "0")
+    monkeypatch.setenv("ALLOW_WAITLIST", "0")
+    monkeypatch.setenv("ALLOW_OAUTH", "0")
+    monkeypatch.setenv("PERSIST_LOCAL_WRITES", "0")
+
+    app = create_app()
+    app.config["TESTING"] = True
+    return app.test_client()
+
+
 # =================================================================
 # User model
 # =================================================================
@@ -271,6 +288,22 @@ class TestAuthRoutes:
         }, follow_redirects=False)
         assert r.status_code == 200
         assert b"sudah terdaftar" in r.data
+
+    def test_register_disabled_in_demo_only(self, demo_only_client):
+        r = demo_only_client.post("/login", data={
+            "action": "register",
+            "name": "No Persist",
+            "email": "demo-space@test.com",
+            "password": "secret123",
+        }, follow_redirects=False)
+        assert r.status_code == 200
+        assert b"public demo" in r.data.lower()
+
+    def test_demo_only_login_hides_register_and_google(self, demo_only_client):
+        r = demo_only_client.get("/login")
+        assert r.status_code == 200
+        assert b'data-tab="register"' not in r.data
+        assert b"Lanjut dengan Google" not in r.data
 
     def test_logout(self, client):
         # Login first

@@ -13,6 +13,10 @@
 </div>
 {% endif %}
 
+<div id="produkRuntimeFlags"
+     data-demo-only="{{ '1' if demo_only else '0' }}"
+     data-waitlist-enabled="{{ '1' if allow_waitlist else '0' }}"
+     hidden></div>
 <section class="produk-hero">
   <div class="produk-hero-inner">
     <span class="section-tag">Produk Inti</span>
@@ -26,6 +30,12 @@
       <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       Cukup login sekali. Hasil tool diproses dari input aktif, bukan untuk dijual atau dibagikan.
     </div>
+    {% if demo_only %}
+    <div class="demo-badge" style="margin-top: 18px;">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <span><strong>Public demo aktif.</strong> Register, waitlist, dan penyimpanan permanen dimatikan pada deploy gratis ini.</span>
+    </div>
+    {% endif %}
   </div>
 </section>
 
@@ -45,7 +55,6 @@
     </div>
   </div>
 </section>
-
 <section class="page-section product-hub" id="tools-prioritas">
   <div class="product-hub-grid">
     <a href="#pinjol-checker" class="product-hub-card">
@@ -541,7 +550,7 @@
         <li>Emergency Runway</li>
         <li>30-Day Plan preview</li>
       </ul>
-      <button class="btn-outline btn-full" data-waitlist="gratis">Mulai Gratis</button>
+      <button class="btn-outline btn-full" data-waitlist="gratis">{{ 'Sedang di Mode Demo' if demo_only else 'Mulai Gratis' }}</button>
     </div>
     <div class="pricing-card pricing-featured">
       <div class="pricing-badge">PALING POPULER</div>
@@ -558,7 +567,7 @@
       {% if current_user and current_user.is_premium %}
       <button class="btn-outline btn-full" disabled>📊 Premium Aktif</button>
       {% else %}
-      <button class="btn-primary btn-full" data-waitlist="premium">{{ 'Coba Premium' if not current_user else '👑 Upgrade Sekarang' }}</button>
+      <button class="btn-primary btn-full" data-waitlist="premium">{{ 'Lihat Preview Premium' if demo_only else ('Coba Premium' if not current_user else 'Upgrade Sekarang') }}</button>
       {% endif %}
     </div>
     <div class="pricing-card">
@@ -571,12 +580,13 @@
         <li>Confidential &amp; aman</li>
         <li>Termasuk semua fitur Premium</li>
       </ul>
-      <button class="btn-outline btn-full" data-waitlist="konseling">Booking Sesi</button>
+      <button class="btn-outline btn-full" data-waitlist="konseling">{{ 'Lihat Info Demo' if demo_only else 'Booking Sesi' }}</button>
     </div>
   </div>
 
   <div class="pricing-cta">
-    <p>App ini masih berada di tahap prototype. Form ini hanya dipakai untuk simulasi minat akses lanjutan, bukan sebagai fokus utama demo.</p>
+    <p>App ini masih berada di tahap prototype. Area ini hanya pelengkap penjelasan akses dan tidak menjadi fokus utama demo.</p>
+    {% if allow_waitlist %}
     <form class="waitlist-form" id="waitlistForm">
       <input type="email" id="waitlistEmail" class="form-input" placeholder="email@kamu.com" required>
       <button type="submit" class="btn-primary">Daftar Waitlist</button>
@@ -585,6 +595,12 @@
       <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       <span>Terima kasih! Minat akses lanjutanmu sudah tercatat.</span>
     </div>
+    {% else %}
+    <div class="waitlist-success" id="waitlistSuccess" style="display:inline-flex;">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <span>Public demo tidak menyimpan waitlist. Untuk demo, gunakan akun demo dan jelajahi tool yang sudah aktif.</span>
+    </div>
+    {% endif %}
   </div>
 </section>
 
@@ -596,11 +612,17 @@
       <div class="premium-crown">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v2H5v-2z"/></svg>
       </div>
-      <h2 class="premium-title" id="premiumTitle">Selamat Datang di Premium</h2>
-      <p class="premium-subtitle">Akses penuh ke semua fitur ditambah <strong>AI Coach 24/7</strong> yang siap bantu recovery kapan saja.</p>
+      <h2 class="premium-title" id="premiumTitle">{{ 'Preview Akses Premium' if demo_only else 'Selamat Datang di Premium' }}</h2>
+      <p class="premium-subtitle">
+        {% if demo_only %}
+        Ini adalah preview fitur lanjutan. Pada public demo gratis, form ini tidak menyimpan data permanen dan hanya menjelaskan paket yang tersedia.
+        {% else %}
+        Akses penuh ke semua fitur ditambah <strong>AI Coach 24/7</strong> yang siap bantu recovery kapan saja.
+        {% endif %}
+      </p>
       <div class="premium-countdown">
         <span class="premium-countdown-pulse"></span>
-        <span>Hanya 100 user pertama - diskon 50%</span>
+        <span>{{ 'Mode demo stateless aktif' if demo_only else 'Hanya 100 user pertama - diskon 50%' }}</span>
       </div>
       <div class="premium-benefits">
         <div class="premium-benefit"><span class="premium-benefit-icon">🚀</span><span>AI Coach 24/7</span></div>
@@ -613,11 +635,11 @@
       <form class="premium-form" id="premiumForm">
         <input type="text" id="premiumName" placeholder="Nama kamu" required autocomplete="name">
         <input type="email" id="premiumEmail" placeholder="email@kamu.com" required autocomplete="email">
-        <button type="submit" class="premium-submit">✅ Aktivasi Premium</button>
+        <button type="submit" class="premium-submit">{{ 'Lihat Cara Akses' if demo_only else '✅ Aktivasi Premium' }}</button>
       </form>
       <div class="premium-trust">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <span>Data kamu tidak disimpan. Aktivasi instan via email.</span>
+        <span>{{ 'Data tidak disimpan di public demo ini.' if demo_only else 'Data kamu tidak disimpan. Aktivasi instan via email.' }}</span>
       </div>
     </div>
   </div>

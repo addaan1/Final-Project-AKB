@@ -1,6 +1,6 @@
 <div align="center">
 
-![Galbay Predictor Banner](docs/assets/galbay-readme-hero.svg)
+![Preview landing page Galbay Predictor](docs/assets/landing-page-preview.png)
 
 # Galbay Predictor
 
@@ -94,9 +94,36 @@ python run.py
 # → http://localhost:5000
 ```
 
+**Live demo publik**:
+- [Galbay Predictor on Hugging Face Spaces](https://adan11-galbay-predictor.hf.space)
+
 **Demo login** (no setup needed):
 - `demo@galbay.id` / `demo123` — Free tier (10 chat/day, 1 DC/day)
 - `premium@galbay.id` / `demo123` — Premium tier (unlimited all features)
+
+## Deploy Gratis ke Hugging Face Spaces
+
+Repo ini sekarang sudah disiapkan untuk **Hugging Face Docker Space** dalam mode **public demo stateless**.
+
+- Runtime deploy memakai `requirements-runtime.txt`, bukan dependency scraping penuh.
+- Container dijalankan lewat `gunicorn` pada port `7860`.
+- Dataset besar **tidak** ditarik via DVC saat runtime.
+- Register, waitlist, Google OAuth, dan penyimpanan lokal dimatikan pada deploy gratis.
+
+Langkah ringkas:
+
+1. Buat Space baru dengan SDK **Docker**.
+2. Copy isi [HF_SPACE_README.md](HF_SPACE_README.md) menjadi `README.md` di repo Space.
+3. Tambahkan `SECRET_KEY` di **Settings > Variables and secrets**.
+4. Push source ke repo Space.
+5. Login memakai akun demo:
+   - `demo@galbay.id` / `demo123`
+   - `premium@galbay.id` / `demo123`
+
+URL deploy aktif saat ini:
+- [https://adan11-galbay-predictor.hf.space](https://adan11-galbay-predictor.hf.space)
+
+Panduan lengkap ada di [DEPLOY_HF.md](DEPLOY_HF.md).
 
 ## Tech Stack
 

@@ -110,13 +110,21 @@
       <div class="login-card">
         <div class="login-tabs" role="tablist">
           <button type="button" class="login-tab active" data-tab="login" role="tab" aria-selected="true">Masuk</button>
+          {% if registration_enabled %}
           <button type="button" class="login-tab" data-tab="register" role="tab" aria-selected="false">Daftar</button>
+          {% endif %}
         </div>
 
         <!-- LOGIN TAB -->
         <div class="login-tab-panel active" data-panel="login">
           <h2 class="login-card-title">Selamat Datang Kembali</h2>
           <p class="login-card-subtitle">Login untuk akses dashboard, skor risiko, dan tools coaching.</p>
+
+          {% if demo_only %}
+          <div class="login-flash login-flash-warning">
+            Public demo aktif. Gunakan akun demo bawaan. Registrasi baru, penyimpanan permanen, dan flow premium real tidak diaktifkan di deploy gratis ini.
+          </div>
+          {% endif %}
 
           {% if oauth_enabled %}
           <a href="{{ url_for('main.auth_google', next=next) }}" class="btn-google">
@@ -171,6 +179,7 @@
         </div>
 
         <!-- REGISTER TAB -->
+        {% if registration_enabled %}
         <div class="login-tab-panel" data-panel="register">
           <h2 class="login-card-title">Daftar Akun Baru</h2>
           <p class="login-card-subtitle">Gratis. Setup dalam 30 detik.</p>
@@ -195,6 +204,7 @@
 
           <p class="login-register-note">Sudah punya akun? <button type="button" class="link-btn" data-switch-tab="login">Login di sini</button></p>
         </div>
+        {% endif %}
       </div>
 
       <div class="login-trust">

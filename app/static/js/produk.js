@@ -49,7 +49,6 @@ function getProdukFlags() {
     waitlistEnabled: el?.dataset.waitlistEnabled !== '0',
   };
 }
-
 // ============================================================
 // 1. PINJOL BLACKLIST CHECKER
 // ============================================================
